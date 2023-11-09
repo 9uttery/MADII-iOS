@@ -39,9 +39,9 @@
 		515EFC822AFCA0D000230647 = {
 			isa = PBXGroup;
 			children = (
+				515EFC8D2AFCA0D100230647 /* Madii */,
 				51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */,
 				515EFC9C2AFCA0E500230647 /* .gitignore */,
-				515EFC8D2AFCA0D100230647 /* Madii */,
 				515EFC8C2AFCA0D100230647 /* Products */,
 			);
 			sourceTree = "<group>";
