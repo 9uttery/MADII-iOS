@@ -1,8 +1,8 @@
 ---
-name: "✨ Feature ✨"
-about: Feature 작업 사항을 입력해주세요 :D
-title: "✨ Feature: (제목)"
-labels: "✨ feat"
+name: "\U0001F41B Bug \U0001F41B"
+about: Bug 발생 시 작성해주세요 :D
+title: "\U0001F41B Bug: (제목)"
+labels: "\U0001F41B bug"
 assignees: ''
 
 ---
