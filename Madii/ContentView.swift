@@ -12,9 +12,10 @@ struct ContentView: View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
-                .foregroundStyle(.tint)
+                .foregroundStyle(.gray800)
+            
             Text("madiiTitle")
-                .madiiFont(font: .madiiTitle, color: .black)
+                .madiiFont(font: .madiiTitle, color: .white)
         }
         .padding()
     }
