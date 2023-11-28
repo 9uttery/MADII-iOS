@@ -7,21 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
+		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC912AFCA0D100230647 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC902AFCA0D100230647 /* ContentView.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
 		515EFC9D2AFCA0E500230647 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC9C2AFCA0E500230647 /* .gitignore */; };
+		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
+		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC902AFCA0D100230647 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		515EFC952AFCA0D200230647 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		515EFC9C2AFCA0E500230647 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,9 +66,11 @@
 		515EFC8D2AFCA0D100230647 /* Madii */ = {
 			isa = PBXGroup;
 			children = (
+				51D690DF2B15B9EA00F8D705 /* Info.plist */,
+				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
 				515EFC902AFCA0D100230647 /* ContentView.swift */,
-				515EFC922AFCA0D200230647 /* Assets.xcassets */,
+				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
 			);
 			path = Madii;
@@ -71,6 +82,25 @@
 				515EFC952AFCA0D200230647 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		51D690D92B15B94F00F8D705 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				51D690DA2B15B95700F8D705 /* Font */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		51D690DA2B15B95700F8D705 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */,
+				510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */,
+				51D690DD2B15B9B700F8D705 /* FontExtension.swift */,
+				51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +163,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */,
+				510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */,
+				510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
@@ -168,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
+				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				515EFC912AFCA0D100230647 /* ContentView.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 			);
@@ -306,6 +340,7 @@
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Madii/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,6 +375,7 @@
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Madii/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
