@@ -19,6 +19,8 @@
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
 		51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3612B176161001B6793 /* MadiiTabView.swift */; };
 		51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3632B1768AA001B6793 /* CornerRadius.swift */; };
+		51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */; };
+		51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3672B177020001B6793 /* TabBarButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		51D8D3612B176161001B6793 /* MadiiTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabView.swift; sourceTree = "<group>"; };
 		51D8D3632B1768AA001B6793 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabBar.swift; sourceTree = "<group>"; };
+		51D8D3672B177020001B6793 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +114,21 @@
 		51D8D3602B17613C001B6793 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				51D8D3692B177048001B6793 /* TabView */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
 				515EFC902AFCA0D100230647 /* ContentView.swift */,
-				51D8D3612B176161001B6793 /* MadiiTabView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		51D8D3692B177048001B6793 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D3612B176161001B6793 /* MadiiTabView.swift */,
+				51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */,
+				51D8D3672B177020001B6793 /* TabBarButton.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
+				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
+				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				515EFC912AFCA0D100230647 /* ContentView.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 			);
