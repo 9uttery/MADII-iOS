@@ -18,6 +18,7 @@
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
 		51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3612B176161001B6793 /* MadiiTabView.swift */; };
+		51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3632B1768AA001B6793 /* CornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		51D8D3612B176161001B6793 /* MadiiTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabView.swift; sourceTree = "<group>"; };
+		51D8D3632B1768AA001B6793 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				51D690DA2B15B95700F8D705 /* Font */,
+				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
+				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				515EFC912AFCA0D100230647 /* ContentView.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
