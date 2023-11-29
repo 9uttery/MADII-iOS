@@ -11,7 +11,7 @@ import SwiftUI
 struct MadiiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MadiiTabView()
         }
     }
 }
