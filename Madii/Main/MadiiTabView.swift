@@ -16,7 +16,8 @@ struct MadiiTabView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            if tabIndex == .home {
+            switch tabIndex {
+            case .home:
                 VStack {
                     Spacer()
                     HStack {
@@ -26,54 +27,86 @@ struct MadiiTabView: View {
                     }
                     Spacer()
                 }
-//                .background(Color.green)
-            } else if tabIndex == .record {
+            case .record:
                 Text("record")
-            } else {
+            case .calendar:
                 Text("calendar")
             }
             
-            HStack(spacing: 0) {
-                VStack(spacing: 4) {
-                    Rectangle()
-                        .frame(width: 24, height: 24)
-                    
-                    Text("홈")
-                        .madiiFont(font: .madiiBody4, color: .madiiYellowGreen)
-                }
-                .frame(width: 48)
-                .background(Color.blue)
+            tabBar
+        }
+    }
+    
+    var tabBar: some View {
+        HStack(spacing: 0) {
+            TabBarButton(tabIndex: .home,
+                         selectedTabIndex: $tabIndex)
                 .padding(.leading, 42)
-                
-                Spacer()
-                
-                VStack(spacing: 4) {
-                    Rectangle()
-                        .frame(width: 24, height: 24)
-                    
-                    Text("레코드")
-                        .madiiFont(font: .madiiBody4, color: .madiiYellowGreen)
-                }
-                .frame(width: 48)
-                .background(Color.blue)
-                
-                Spacer()
-                
-                VStack(spacing: 4) {
-                    Rectangle()
-                        .frame(width: 24)
-                    
-                    Text("캘린더")
-                        .madiiFont(font: .madiiBody4, color: .madiiYellowGreen)
-                }
-                .frame(width: 48, height: 40)
-                .background(Color.blue)
+            
+            Spacer()
+            
+            TabBarButton(tabIndex: .record,
+                         selectedTabIndex: $tabIndex)
+            
+            Spacer()
+            
+            TabBarButton(tabIndex: .calendar,
+                         selectedTabIndex: $tabIndex)
                 .padding(.trailing, 42)
+        }
+        .padding(.vertical, 10)
+        .background(Color.black)
+        .cornerRadius(12, corners: [.topLeft, .topRight])
+        .shadow(color: .gray800, radius: 0, y: -2)
+    }
+}
+
+struct TabBarButton: View {
+    let tabIndex: TabIndex
+    @Binding var selectedTabIndex: TabIndex
+    
+    var body: some View {
+        Button {
+            selectedTabIndex = tabIndex
+        } label: {
+            VStack(spacing: 4) {
+                Image(imageName())
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                
+                Text(title())
+                    .madiiFont(font: .madiiBody4, color: fontColor())
             }
-            .padding(.vertical, 10)
-            .background(Color.black)
-            .cornerRadius(12, corners: [.topLeft, .topRight])
-            .shadow(color: .gray800, radius: 0, y: -2)
+            .frame(width: 48)
+        }
+    }
+    
+    func title() -> String {
+        switch tabIndex {
+        case .home: "홈"
+        case .record: "레코드"
+        case .calendar: "캘린더"
+        }
+    }
+    
+    func imageName() -> String {
+        let isSelected: Bool = tabIndex == selectedTabIndex
+        
+        switch tabIndex {
+        case .home:
+            return isSelected ? "home" : "unHome"
+        case .record:
+            return isSelected ? "record" : "unRecord"
+        case .calendar:
+            return isSelected ? "calendar" : "unCalendar"
+        }
+    }
+    
+    func fontColor() -> Color {
+        if selectedTabIndex == tabIndex {
+            return .madiiYellowGreen
+        } else {
+            return .gray500
         }
     }
 }
