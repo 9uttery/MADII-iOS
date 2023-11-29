@@ -17,6 +17,7 @@
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
+		51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3612B176161001B6793 /* MadiiTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		51D8D3612B176161001B6793 /* MadiiTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,7 @@
 			children = (
 				51D690DF2B15B9EA00F8D705 /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
-				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
-				515EFC902AFCA0D100230647 /* ContentView.swift */,
+				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
 			);
@@ -101,6 +102,16 @@
 				51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		51D8D3602B17613C001B6793 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
+				515EFC902AFCA0D100230647 /* ContentView.swift */,
+				51D8D3612B176161001B6793 /* MadiiTabView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
+				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				515EFC912AFCA0D100230647 /* ContentView.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
