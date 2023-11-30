@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .home
+    @State var tabIndex: TabIndex = .record
     
     var body: some View {
         NavigationStack {
