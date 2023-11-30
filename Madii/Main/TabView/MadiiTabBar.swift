@@ -32,8 +32,8 @@ struct MadiiTabBar: View {
                 .padding(.trailing, 42)
         }
         .padding(.vertical, 10)
-        .background(Color.black)
-        .cornerRadius(12, corners: [.topLeft, .topRight])
+//        .background(Color.black)
+//        .cornerRadius(12, corners: [.topLeft, .topRight])
         .background(Color.black)
         .shadow(color: .gray800, radius: 0, y: -1)
         .ignoresSafeArea(edges: .bottom)
