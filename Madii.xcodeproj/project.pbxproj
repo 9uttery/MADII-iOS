@@ -23,6 +23,7 @@
 		51D8D36C2B177098001B6793 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D36B2B177098001B6793 /* HomeView.swift */; };
 		51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D36E2B1770E7001B6793 /* RecordView.swift */; };
 		51D8D3722B177111001B6793 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3712B177111001B6793 /* CalendarView.swift */; };
+		51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		51D8D36B2B177098001B6793 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		51D8D36E2B1770E7001B6793 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		51D8D3712B177111001B6793 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBoxBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				51D690DA2B15B95700F8D705 /* Font */,
 				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
+				51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
+				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
