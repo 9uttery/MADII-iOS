@@ -24,6 +24,7 @@
 		51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D36E2B1770E7001B6793 /* RecordView.swift */; };
 		51D8D3722B177111001B6793 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3712B177111001B6793 /* CalendarView.swift */; };
 		51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */; };
+		51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3762B188F44001B6793 /* AlbumRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		51D8D36E2B1770E7001B6793 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		51D8D3712B177111001B6793 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBoxBackground.swift; sourceTree = "<group>"; };
+		51D8D3762B188F44001B6793 /* AlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		51D8D3602B17613C001B6793 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				51D8D3752B188F35001B6793 /* Components */,
 				51D8D36A2B177085001B6793 /* Home */,
 				51D8D36D2B1770DC001B6793 /* Record */,
 				51D8D3702B177104001B6793 /* Calendar */,
@@ -162,6 +165,14 @@
 				51D8D3712B177111001B6793 /* CalendarView.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		51D8D3752B188F35001B6793 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 			files = (
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
+				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,

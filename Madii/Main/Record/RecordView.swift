@@ -45,35 +45,24 @@ struct RecordView: View {
                     
                     // 최근 & 많이 실천한 소확행
                     HStack(spacing: 12) {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Rectangle()
-                                .fill(Color.gray400)
-                                .frame(width: 36, height: 36)
+                        ForEach(0 ... 1, id: \.self) { index in
+                            let title = ["최근 실천한 소확행", "많이 실천한 소확행"]
                             
-                            HStack {
-                                Text("최근 실천한 소확행")
-                                    .madiiFont(font: .madiiBody2, color: .white)
-                                Spacer()
+                            VStack(alignment: .leading, spacing: 12) {
+                                Rectangle()
+                                    .fill(Color.gray400)
+                                    .frame(width: 36, height: 36)
+                                
+                                HStack {
+                                    Text(title[index])
+                                        .madiiFont(font: .madiiBody2, color: .white)
+                                    Spacer()
+                                }
                             }
+                            .padding(16)
+                            .padding(.leading, 4)
+                            .roundBackground()
                         }
-                        .padding(16)
-                        .padding(.leading, 4)
-                        .roundBackground()
-                        
-                        VStack(alignment: .leading, spacing: 12) {
-                            Rectangle()
-                                .fill(Color.gray400)
-                                .frame(width: 36, height: 36)
-                            
-                            HStack {
-                                Text("많이 실천한 소확행")
-                                    .madiiFont(font: .madiiBody2, color: .white)
-                                Spacer()
-                            }
-                        }
-                        .padding(16)
-                        .padding(.leading, 4)
-                        .roundBackground()
                     }
                     
                     // 소확행 앨범
@@ -93,24 +82,15 @@ struct RecordView: View {
                         }
                         
                         VStack(spacing: 16) {
-                            ForEach(0 ... 6, id: \.self) { index in
-                                HStack(spacing: 15) {
-                                    Rectangle()
-                                        .frame(width: 56, height: 56)
-                                        .foregroundStyle(Color.madiiPurple)
-                                        .cornerRadius(4)
-                                    
-                                    Text("내가 찾은 소확행들의 앨범")
-                                        .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
-                                    
-                                    Spacer()
-                                    
+                            ForEach(0 ... 6, id: \.self) { _ in
+                                AlbumRowWithRightView {
                                     Button {
                                         
                                     } label: {
                                         Image(systemName: "ellipsis")
                                             .resizable()
                                             .frame(width: 20, height: 4)
+                                            .foregroundStyle(Color.gray500)
                                             .padding(10)
                                             .padding(.vertical, 8)
                                     }
