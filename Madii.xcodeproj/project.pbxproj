@@ -10,13 +10,19 @@
 		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
 		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
-		515EFC912AFCA0D100230647 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC902AFCA0D100230647 /* ContentView.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
 		515EFC9D2AFCA0E500230647 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC9C2AFCA0E500230647 /* .gitignore */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
+		51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3612B176161001B6793 /* MadiiTabView.swift */; };
+		51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3632B1768AA001B6793 /* CornerRadius.swift */; };
+		51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */; };
+		51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3672B177020001B6793 /* TabBarButton.swift */; };
+		51D8D36C2B177098001B6793 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D36B2B177098001B6793 /* HomeView.swift */; };
+		51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D36E2B1770E7001B6793 /* RecordView.swift */; };
+		51D8D3722B177111001B6793 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3712B177111001B6793 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +30,6 @@
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
-		515EFC902AFCA0D100230647 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		515EFC952AFCA0D200230647 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		515EFC9C2AFCA0E500230647 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -32,6 +37,13 @@
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		51D8D3612B176161001B6793 /* MadiiTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabView.swift; sourceTree = "<group>"; };
+		51D8D3632B1768AA001B6793 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabBar.swift; sourceTree = "<group>"; };
+		51D8D3672B177020001B6793 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		51D8D36B2B177098001B6793 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		51D8D36E2B1770E7001B6793 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		51D8D3712B177111001B6793 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +80,7 @@
 			children = (
 				51D690DF2B15B9EA00F8D705 /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
-				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
-				515EFC902AFCA0D100230647 /* ContentView.swift */,
+				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
 			);
@@ -88,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				51D690DA2B15B95700F8D705 /* Font */,
+				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -101,6 +113,52 @@
 				51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		51D8D3602B17613C001B6793 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D36A2B177085001B6793 /* Home */,
+				51D8D36D2B1770DC001B6793 /* Record */,
+				51D8D3702B177104001B6793 /* Calendar */,
+				51D8D3692B177048001B6793 /* TabView */,
+				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		51D8D3692B177048001B6793 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D3612B176161001B6793 /* MadiiTabView.swift */,
+				51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */,
+				51D8D3672B177020001B6793 /* TabBarButton.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		51D8D36A2B177085001B6793 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D36B2B177098001B6793 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		51D8D36D2B1770DC001B6793 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D36E2B1770E7001B6793 /* RecordView.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		51D8D3702B177104001B6793 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D3712B177111001B6793 /* CalendarView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +258,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
+				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
+				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
+				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
+				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
+				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
-				515EFC912AFCA0D100230647 /* ContentView.swift in Sources */,
+				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
