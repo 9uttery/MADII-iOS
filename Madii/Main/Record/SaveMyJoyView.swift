@@ -1,0 +1,43 @@
+//
+//  SaveMyJoyView.swift
+//  Madii
+//
+//  Created by 이안진 on 12/1/23.
+//
+
+import SwiftUI
+
+struct SaveMyJoyView: View {
+    @Binding var isTabBarShown: Bool
+    
+    @State private var myNewJoy: String = ""
+    @Binding var showSaveJoyPopUp: Bool
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("나만의 소확행을 수집해보세요")
+                .madiiFont(font: .madiiSubTitle, color: .white)
+            
+            HStack(spacing: 0) {
+                TextField("누워서 빗소리 감상하기", text: $myNewJoy)
+                    .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
+                
+                Button {
+                    isTabBarShown = false
+                    showSaveJoyPopUp = true
+                } label: {
+                    // TODO: 저장 버튼 이미지 추가하기
+                    Rectangle()
+                        .frame(width: 36, height: 36)
+                }
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 16)
+            // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
+            .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+            .cornerRadius(6)
+        }
+        .padding(20)
+        .roundBackground()
+    }
+}

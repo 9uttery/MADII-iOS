@@ -31,6 +31,7 @@
 		51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0C2B19BD6500F6CCFE /* PopUpWithNameDescription.swift */; };
 		51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */; };
 		51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */; };
+		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		51F25E0C2B19BD6500F6CCFE /* PopUpWithNameDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWithNameDescription.swift; sourceTree = "<group>"; };
 		51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyPopUpView.swift; sourceTree = "<group>"; };
 		51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumRow.swift; sourceTree = "<group>"; };
+		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				51D8D36E2B1770E7001B6793 /* RecordView.swift */,
 				51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */,
 				51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */,
+				51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
+				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
