@@ -35,8 +35,7 @@ struct PopUpWithNameDescription: View {
                         .madiiFont(font: .madiiBody3, color: .white)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 6)
-                        // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
-                        .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+                        .background(Color.madiiOption)
                         .cornerRadius(4)
                 }
                 
@@ -50,8 +49,7 @@ struct PopUpWithNameDescription: View {
                         .madiiFont(font: .madiiBody3, color: .white)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 6)
-                        // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
-                        .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+                        .background(Color.madiiOption)
                         .cornerRadius(4)
                 }
             }

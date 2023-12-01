@@ -34,8 +34,7 @@ struct SaveMyJoyView: View {
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 16)
-            // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
-            .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+            .background(Color.madiiOption)
             .cornerRadius(6)
         }
         .padding(20)

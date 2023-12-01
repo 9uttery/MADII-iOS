@@ -10,8 +10,7 @@ import SwiftUI
 struct RoundBoxBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
-            // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
-            .background(Color(red: 0.1, green: 0.1, blue: 0.15))
+            .background(Color.madiiBox)
             .cornerRadius(20)
     }
 }
