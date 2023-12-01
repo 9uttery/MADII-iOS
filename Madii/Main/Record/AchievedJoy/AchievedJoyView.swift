@@ -11,7 +11,7 @@ struct AchievedJoyView: View {
     var body: some View {
         HStack(spacing: 12) {
             NavigationLink {
-                RecentAchievedJoy()
+                RecentAchievedJoyView()
             } label: {
                 achievedJoy(title: "최근 실천한 소확행")
             }

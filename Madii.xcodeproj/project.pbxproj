@@ -33,7 +33,7 @@
 		51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */; };
 		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
 		51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */; };
-		51F25E192B1A085200F6CCFE /* RecentAchievedJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoy.swift */; };
+		51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +65,7 @@
 		51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumRow.swift; sourceTree = "<group>"; };
 		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
 		51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedJoyView.swift; sourceTree = "<group>"; };
-		51F25E182B1A085200F6CCFE /* RecentAchievedJoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoy.swift; sourceTree = "<group>"; };
+		51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */,
-				51F25E182B1A085200F6CCFE /* RecentAchievedJoy.swift */,
+				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
 			);
 			path = AchievedJoy;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
-				51F25E192B1A085200F6CCFE /* RecentAchievedJoy.swift in Sources */,
+				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
