@@ -9,7 +9,12 @@ import SwiftUI
 
 struct PopUp<Content>: View where Content: View {
     let title: String
+    
+    var leftButtonTitle: String
     var leftButtonAction: () -> Void
+    
+    var rightButtonTitle: String
+    var rightButtonColor: ButtonColor
     var rightButtonAction: () -> Void
     
     @ViewBuilder var content: Content
@@ -27,20 +32,13 @@ struct PopUp<Content>: View where Content: View {
                 Button {
                     leftButtonAction()
                 } label: {
-                    // FIXME: 버튼 컴포넌트로 변경
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(height: 40)
-                        .cornerRadius(6)
+                    MadiiButton(title: leftButtonTitle, size: .small)
                 }
                     
                 Button {
                     rightButtonAction()
                 } label: {
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(height: 40)
-                        .cornerRadius(6)
+                    MadiiButton(title: rightButtonTitle, color: rightButtonColor, size: .small)
                 }
             }
         }
