@@ -52,8 +52,7 @@ struct ManyAchievedJoyView: View {
                         }
                     }
                 }
-                // FIXME: 제목 없는데 bottom padding 바꾸는걸로 변경
-                .roundBackground("1111", bottomPadding: 32)
+                .roundBackground(bottomPadding: 32)
             }
             .padding(.top, 32)
             .padding(.horizontal, 16)
