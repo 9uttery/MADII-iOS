@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct RoundBoxBackground: ViewModifier {
+    var bottomPadding: CGFloat = 20
+    
     func body(content: Content) -> some View {
         content
+            .padding(.top, 20)
+            .padding(.horizontal, 20)
+            .padding(.bottom, bottomPadding)
             .background(Color.madiiBox)
             .cornerRadius(20)
     }
@@ -39,11 +44,15 @@ extension View {
         modifier(RoundBoxBackground())
     }
     
+    func roundBackground(bottomPadding bottom: CGFloat) -> some View {
+        modifier(RoundBoxBackground(bottomPadding: bottom))
+    }
+    
     func roundBackground(_ title: String) -> some View {
         modifier(RoundBoxBackgroundWithTitle(title: title))
     }
     
-    func roundBackground(_ title: String, bottomPadding: CGFloat) -> some View {
-        modifier(RoundBoxBackgroundWithTitle(title: title, bottomPadding: bottomPadding))
+    func roundBackground(_ title: String, bottomPadding bottom: CGFloat) -> some View {
+        modifier(RoundBoxBackgroundWithTitle(title: title, bottomPadding: bottom))
     }
 }
