@@ -16,8 +16,6 @@ struct RecordView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     title
-                        .padding(.horizontal, 22)
-                        .padding(.bottom, 12)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // 나만의 소확행을 수집해보세요
@@ -29,20 +27,22 @@ struct RecordView: View {
                         
                         // 소확행 앨범
                         albums
-                            .padding(20)
-                            .padding(.bottom, 12)
-                            .roundBackground()
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
                     
                     Spacer()
                 }
+                // 하단 여백 40
+                .padding(.bottom, 40)
             }
             .scrollIndicators(.hidden)
             
             // 나만의 소확행 저장 팝업
-            if showSaveJoyPopUp { SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown, showSaveJoyPopUp: $showSaveJoyPopUp) }
+            if showSaveJoyPopUp {
+                SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown,
+                                   showSaveJoyPopUp: $showSaveJoyPopUp)
+            }
         }
     }
     
@@ -54,6 +54,8 @@ struct RecordView: View {
             
             Spacer()
         }
+        .padding(.horizontal, 22)
+        .padding(.bottom, 12)
     }
     
     var recentJoy: some View {
@@ -110,6 +112,9 @@ struct RecordView: View {
                 }
             }
         }
+        .padding(20)
+        .padding(.bottom, 12)
+        .roundBackground()
     }
 }
 
