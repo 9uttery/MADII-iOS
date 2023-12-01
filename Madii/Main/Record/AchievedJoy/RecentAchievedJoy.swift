@@ -10,7 +10,14 @@ import SwiftUI
 struct RecentAchievedJoy: View {
     var body: some View {
         ScrollView {
-            Text("최근 실천")
+            VStack {
+                HStack {
+                    Text("최근 실천")
+                    Spacer()
+                }
+            }
+            .roundBackground("2023.12.25", bottomPadding: 32)
+            .padding(.horizontal, 16)
         }
         .navigationTitle("최근 실천한 소확행")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
