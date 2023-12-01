@@ -23,7 +23,7 @@ struct RecordView: View {
                                       showSaveJoyPopUp: $showSaveJoyPopUp)
                         
                         // 최근 & 많이 실천한 소확행
-                        RecentAndManyAchievedJoyView()
+                        AchievedJoyView()
                         
                         // 소확행 앨범
                         albums
