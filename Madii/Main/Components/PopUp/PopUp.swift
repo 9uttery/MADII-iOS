@@ -1,5 +1,5 @@
 //
-//  PopUpView.swift
+//  PopUp.swift
 //  Madii
 //
 //  Created by 이안진 on 12/1/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopUpView<Content>: View where Content: View {
+struct PopUp<Content>: View where Content: View {
     let title: String
     var leftButtonAction: () -> Void
     var rightButtonAction: () -> Void
