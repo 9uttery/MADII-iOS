@@ -8,14 +8,116 @@
 import SwiftUI
 
 struct RecordView: View {
+    @State private var myNewJoy: String = ""
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Text("record")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                title
+                    .padding(.horizontal, 22)
+                    .padding(.bottom, 12)
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    // 나만의 소확행을 수집해보세요
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("나만의 소확행을 수집해보세요")
+                            .madiiFont(font: .madiiSubTitle, color: .white)
+                        
+                        HStack(spacing: 0) {
+                            TextField("누워서 빗소리 감상하기", text: $myNewJoy)
+                                .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
+                            
+                            Button {
+                                // save joy
+                            } label: {
+                                // TODO: 저장 버튼 구현
+                                Rectangle()
+                                    .frame(width: 36, height: 36)
+                            }
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 16)
+                        // FIXME: Color System에 없는 색상 -> 추후 추가해서 넣기
+                        .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+                        .cornerRadius(6)
+                    }
+                    .padding(20)
+                    .roundBackground()
+                    
+                    // 최근 & 많이 실천한 소확행
+                    HStack(spacing: 12) {
+                        ForEach(0 ... 1, id: \.self) { index in
+                            let title = ["최근 실천한 소확행", "많이 실천한 소확행"]
+                            
+                            VStack(alignment: .leading, spacing: 12) {
+                                Rectangle()
+                                    .fill(Color.gray400)
+                                    .frame(width: 36, height: 36)
+                                
+                                HStack {
+                                    Text(title[index])
+                                        .madiiFont(font: .madiiBody2, color: .white)
+                                    Spacer()
+                                }
+                            }
+                            .padding(16)
+                            .padding(.leading, 4)
+                            .roundBackground()
+                        }
+                    }
+                    
+                    // 소확행 앨범
+                    VStack(alignment: .leading, spacing: 20) {
+                        HStack(spacing: 0) {
+                            Text("소확행 앨범")
+                                .madiiFont(font: .madiiSubTitle, color: .white)
+                            
+                            Spacer()
+                            
+                            Text("추가")
+                                .madiiFont(font: .madiiBody2, color: .white)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+                                .cornerRadius(6)
+                        }
+                        
+                        VStack(spacing: 16) {
+                            ForEach(0 ... 6, id: \.self) { _ in
+                                AlbumRowWithRightView {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "ellipsis")
+                                            .resizable()
+                                            .frame(width: 20, height: 4)
+                                            .foregroundStyle(Color.gray500)
+                                            .padding(10)
+                                            .padding(.vertical, 8)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .padding(20)
+                    .padding(.bottom, 12)
+                    .roundBackground()
+                    
+                }
+                // 화면 전체 좌우 여백 16
+                .padding(.horizontal, 16)
+                
                 Spacer()
             }
+        }
+        .scrollIndicators(.hidden)
+    }
+    
+    var title: some View {
+        HStack(spacing: 0) {
+            Text("레코드")
+                .madiiFont(font: .madiiTitle, color: .white)
+                .padding(.vertical, 12)
+            
             Spacer()
         }
     }
