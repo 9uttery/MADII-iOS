@@ -18,6 +18,13 @@ struct RecentAchievedJoy: Identifiable {
 struct Joy: Identifiable {
     let id = UUID()
     let title: String
+    var counts: Int = 0
+    
+    static let manyAchievedDummy: [Joy] = [Joy(title: "샤브샤브 먹기", counts: 21),
+                                           Joy(title: "방어 먹기", counts: 17),
+                                           Joy(title: "열라면 먹기", counts: 12),
+                                           Joy(title: "연어 먹기", counts: 5),
+                                           Joy(title: "돈까스 먹기", counts: 3)]
 }
 
 struct RecentAchievedJoyView: View {
@@ -59,7 +66,7 @@ struct RecentAchievedJoyView: View {
         .scrollIndicators(.hidden)
         .navigationTitle("최근 실천한 소확행")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
-//              .toolbarBackground(.visible, for: .navigationBar)
+              .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

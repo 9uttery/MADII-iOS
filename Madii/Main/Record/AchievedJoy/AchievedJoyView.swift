@@ -16,7 +16,11 @@ struct AchievedJoyView: View {
                 achievedJoy(title: "최근 실천한 소확행")
             }
             
-            achievedJoy(title: "많이 실천한 소확행")
+            NavigationLink {
+                ManyAchievedJoyView()
+            } label: {
+                achievedJoy(title: "많이 실천한 소확행")
+            }
         }
     }
     

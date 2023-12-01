@@ -35,6 +35,7 @@
 		51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */; };
 		51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */; };
 		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
+		51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedJoyView.swift; sourceTree = "<group>"; };
 		51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoyView.swift; sourceTree = "<group>"; };
 		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
+		51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyAchievedJoyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */,
 				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
+				51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */,
 			);
 			path = AchievedJoy;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
+				51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
