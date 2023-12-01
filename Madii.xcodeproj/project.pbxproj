@@ -25,6 +25,7 @@
 		51D8D3722B177111001B6793 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3712B177111001B6793 /* CalendarView.swift */; };
 		51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */; };
 		51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3762B188F44001B6793 /* AlbumRow.swift */; };
+		51F25E062B19AE7E00F6CCFE /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E052B19AE7E00F6CCFE /* PopUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		51D8D3712B177111001B6793 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBoxBackground.swift; sourceTree = "<group>"; };
 		51D8D3762B188F44001B6793 /* AlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRow.swift; sourceTree = "<group>"; };
+		51F25E052B19AE7E00F6CCFE /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +172,18 @@
 		51D8D3752B188F35001B6793 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				51F25E042B19AE7100F6CCFE /* PopUp */,
 				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		51F25E042B19AE7100F6CCFE /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				51F25E052B19AE7E00F6CCFE /* PopUpView.swift */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
+				51F25E062B19AE7E00F6CCFE /* PopUpView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
