@@ -16,18 +16,21 @@ struct SaveMyJoyPopUpView: View {
     @Binding var isTabBarShown: Bool
     @Binding var showSaveJoyPopUp: Bool
     
-    @State private var albums: [Album] = [Album(id: 1, title: "비 올 때 하기 좋은 소확행"),
-                                          Album(id: 2, title: "샤브샤브 먹고 싶어")]
+    @State private var albums: [Album] = [Album(id: 1, title: "비 올 때 하기 좋은 소확행"), Album(id: 2, title: "샤브샤브 먹고 싶어")]
     @State private var selectedAlbumIds: [Int] = []
 
     var body: some View {
         ZStack(alignment: .top) {
             Color.black.opacity(0.8).ignoresSafeArea()
+                .onTapGesture {
+                    dismissPopUp()
+                }
 
             PopUp(title: "어떤 앨범에 저장할까요?",
-                  leftButtonTitle: "취소", leftButtonAction: leftA,
-                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: rightA) {
+                  leftButtonTitle: "취소", leftButtonAction: dismissPopUp,
+                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 
+                // 앨범 리스트
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 12) {
                         // 기본 선택: 내가 찾은 소확행
@@ -81,10 +84,12 @@ struct SaveMyJoyPopUpView: View {
         }
     }
 
-    func leftA() {
+    func dismissPopUp() {
         showSaveJoyPopUp = false
         isTabBarShown = true
     }
     
-    func rightA() {}
+    func saveJoy() {
+        // 소확행 저장
+    }
 }
