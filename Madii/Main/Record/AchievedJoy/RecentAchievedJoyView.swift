@@ -12,11 +12,7 @@ struct RecentAchievedJoy: Identifiable {
     let date: String
     let joys: [Joy]
     
-    static let dummy1: RecentAchievedJoy = RecentAchievedJoy(date: "2023.12.25", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")])
-    
-    static let dummy2: RecentAchievedJoy = RecentAchievedJoy(date: "2023.12.24", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")])
-    
-    static let dummy3: RecentAchievedJoy = RecentAchievedJoy(date: "2023.12.23", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기")])
+    static let dummys: [RecentAchievedJoy] = [RecentAchievedJoy(date: "2023.12.25", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]), RecentAchievedJoy(date: "2023.12.24", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]), RecentAchievedJoy(date: "2023.12.23", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기")])]
 }
 
 struct Joy: Identifiable {
@@ -25,7 +21,7 @@ struct Joy: Identifiable {
 }
 
 struct RecentAchievedJoyView: View {
-    let allJoys: [RecentAchievedJoy] = [RecentAchievedJoy.dummy1, RecentAchievedJoy.dummy2, RecentAchievedJoy.dummy3]
+    @State private var allJoys: [RecentAchievedJoy] = RecentAchievedJoy.dummys
     
     var body: some View {
         ScrollView {
@@ -35,24 +31,17 @@ struct RecentAchievedJoyView: View {
                     VStack(spacing: 16) {
                         // 각 날짜의 모든 소확행
                         ForEach(eachDayJoy.joys) { joy in
-                            HStack(spacing: 15) {
-                                // 소확행 커버 이미지
-                                Circle()
-                                    .fill(Color.madiiOrange)
-                                    .frame(width: 40, height: 40)
-                                
-                                Text(joy.title)
-                                    .madiiFont(font: .madiiBody3, color: .white)
-                                
-                                Spacer()
-                            }
+                            JoyRow(title: joy.title)
                         }
                     }
                     .roundBackground(eachDayJoy.date, bottomPadding: 32)
                 }
                 
+                // 이전 내역 더보기 버튼
                 Button {
-                    
+                    withAnimation {
+                        allJoys.append(contentsOf: RecentAchievedJoy.dummys)
+                    }
                 } label: {
                     Text("이전 내역 더보기")
                         .madiiFont(font: .madiiBody3, color: .white)

@@ -34,6 +34,7 @@
 		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
 		51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */; };
 		51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */; };
+		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
 		51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedJoyView.swift; sourceTree = "<group>"; };
 		51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoyView.swift; sourceTree = "<group>"; };
+		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				51F25E092B19B3D800F6CCFE /* Button */,
 				51F25E042B19AE7100F6CCFE /* PopUp */,
 				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
+				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
+				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
