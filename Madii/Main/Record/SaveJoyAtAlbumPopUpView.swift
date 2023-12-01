@@ -31,36 +31,10 @@ struct SaveJoyAtAlbumPopUpView: View {
                         SelectAlbumRow(title: "내가 찾은 소확행", isSelected: true)
                         
                         // 내가 가지고 있는 앨범들
-                        ForEach(albums) { album in
-                            Button {
-                                if let index = selectedAlbumIds.firstIndex(of: album.id) {
-                                    selectedAlbumIds.remove(at: index)
-                                } else {
-                                    selectedAlbumIds.append(album.id)
-                                }
-                            } label: {
-                                SelectAlbumRow(title: album.title, isSelected: selectedAlbumIds.contains(album.id))
-                            }
-                        }
+                        myAlbums
 
                         // 새로운 앨범 추가 버튼
-                        Button {
-                            // showCreateAlbumPopUp
-                        } label: {
-                            HStack {
-                                Image(systemName: "plus.app")
-                                    .frame(width: 20, height: 20)
-                                    .foregroundStyle(Color.gray500)
-
-                                Text("새로운 앨범")
-                                    .madiiFont(font: .madiiBody3, color: .gray500)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 8)
-                            .background(Color(red: 0.21, green: 0.22, blue: 0.29))
-                            .cornerRadius(4)
-                        }
+                        createAlbumButton
                     }
                 }
                 .frame(maxHeight: 180)
@@ -69,8 +43,43 @@ struct SaveJoyAtAlbumPopUpView: View {
             .padding(.top, 160)
         }
     }
+    
+    var myAlbums: some View {
+        ForEach(albums) { album in
+            Button {
+                if let index = selectedAlbumIds.firstIndex(of: album.id) {
+                    selectedAlbumIds.remove(at: index)
+                } else {
+                    selectedAlbumIds.append(album.id)
+                }
+            } label: {
+                SelectAlbumRow(title: album.title, isSelected: selectedAlbumIds.contains(album.id))
+            }
+        }
+    }
+    
+    var createAlbumButton: some View {
+        Button {
+            // showCreateAlbumPopUp
+        } label: {
+            HStack {
+                Image(systemName: "plus.app")
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(Color.gray500)
+
+                Text("새로운 앨범")
+                    .madiiFont(font: .madiiBody3, color: .gray500)
+                Spacer()
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 8)
+            .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+            .cornerRadius(4)
+        }
+    }
 
     func leftA() {}
+    
     func rightA() {}
 }
 
