@@ -23,7 +23,7 @@ struct RecordView: View {
                                       showSaveJoyPopUp: $showSaveJoyPopUp)
                         
                         // 최근 & 많이 실천한 소확행
-                        recentJoy
+                        RecentAndManyAchievedJoyView()
                         
                         // 소확행 앨범
                         albums
@@ -44,6 +44,7 @@ struct RecordView: View {
                                    showSaveJoyPopUp: $showSaveJoyPopUp)
             }
         }
+        .navigationTitle("")
     }
     
     var title: some View {
@@ -56,29 +57,6 @@ struct RecordView: View {
         }
         .padding(.horizontal, 22)
         .padding(.bottom, 12)
-    }
-    
-    var recentJoy: some View {
-        HStack(spacing: 12) {
-            ForEach(0 ... 1, id: \.self) { index in
-                let title = ["최근 실천한 소확행", "많이 실천한 소확행"]
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    Rectangle()
-                        .fill(Color.gray400)
-                        .frame(width: 36, height: 36)
-                    
-                    HStack {
-                        Text(title[index])
-                            .madiiFont(font: .madiiBody2, color: .white)
-                        Spacer()
-                    }
-                }
-                .padding(16)
-                .padding(.leading, 4)
-                .roundBackground()
-            }
-        }
     }
     
     var albums: some View {
@@ -116,8 +94,4 @@ struct RecordView: View {
         .padding(.bottom, 12)
         .roundBackground()
     }
-}
-
-#Preview {
-    MadiiTabView()
 }

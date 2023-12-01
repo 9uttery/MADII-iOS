@@ -32,6 +32,7 @@
 		51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */; };
 		51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */; };
 		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
+		51F25E152B19FE2100F6CCFE /* RecentAndManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* RecentAndManyAchievedJoyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyPopUpView.swift; sourceTree = "<group>"; };
 		51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumRow.swift; sourceTree = "<group>"; };
 		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
+		51F25E142B19FE2100F6CCFE /* RecentAndManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAndManyAchievedJoyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */,
 				51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */,
 				51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */,
+				51F25E142B19FE2100F6CCFE /* RecentAndManyAchievedJoyView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
+				51F25E152B19FE2100F6CCFE /* RecentAndManyAchievedJoyView.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
