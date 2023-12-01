@@ -10,7 +10,7 @@ import SwiftUI
 struct SaveMyJoyView: View {
     @Binding var isTabBarShown: Bool
     
-    @State private var myNewJoy: String = ""
+    @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
     @Binding var showSaveJoyPopUp: Bool
     
     var body: some View {
@@ -26,10 +26,11 @@ struct SaveMyJoyView: View {
                     isTabBarShown = false
                     showSaveJoyPopUp = true
                 } label: {
-                    // TODO: 저장 버튼 이미지 추가하기
-                    Rectangle()
+                    Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
+                        .resizable()
                         .frame(width: 36, height: 36)
                 }
+                .disabled(myNewJoy.isEmpty)
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 16)
@@ -40,4 +41,8 @@ struct SaveMyJoyView: View {
         .padding(20)
         .roundBackground()
     }
+}
+
+#Preview {
+    MadiiTabView()
 }
