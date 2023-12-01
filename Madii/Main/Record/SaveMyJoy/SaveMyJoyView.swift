@@ -37,7 +37,6 @@ struct SaveMyJoyView: View {
             .background(Color.madiiOption)
             .cornerRadius(6)
         }
-        .padding(20)
         .roundBackground()
     }
 }

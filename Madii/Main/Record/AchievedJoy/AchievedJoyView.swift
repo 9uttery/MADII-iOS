@@ -37,8 +37,8 @@ struct AchievedJoyView: View {
                 Spacer()
             }
         }
-        .padding(16)
-        .padding(.leading, 4)
+        .padding(-4)
+        .padding(.leading, 6)
         .roundBackground()
     }
 }

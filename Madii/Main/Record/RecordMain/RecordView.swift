@@ -90,8 +90,6 @@ struct RecordView: View {
                 }
             }
         }
-        .padding(20)
-        .padding(.bottom, 12)
-        .roundBackground()
+        .roundBackground(bottomPadding: 32)
     }
 }
