@@ -12,7 +12,10 @@ struct Album: Identifiable {
     let title: String
 }
 
-struct SaveJoyAtAlbumPopUpView: View {
+struct SaveMyJoyPopUpView: View {
+    @Binding var isTabBarShown: Bool
+    @Binding var showSaveJoyPopUp: Bool
+    
     @State private var albums: [Album] = [Album(id: 1, title: "비 올 때 하기 좋은 소확행"),
                                           Album(id: 2, title: "샤브샤브 먹고 싶어")]
     @State private var selectedAlbumIds: [Int] = []
@@ -78,11 +81,10 @@ struct SaveJoyAtAlbumPopUpView: View {
         }
     }
 
-    func leftA() {}
+    func leftA() {
+        showSaveJoyPopUp = false
+        isTabBarShown = true
+    }
     
     func rightA() {}
-}
-
-#Preview {
-    RecordView()
 }

@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct RecordView: View {
+    @Binding var isTabBarShown: Bool
+    
     @State private var myNewJoy: String = ""
+    @State private var showSaveJoyPopUp: Bool = false
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -28,7 +32,8 @@ struct RecordView: View {
                                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
                                 
                                 Button {
-                                    // save joy
+                                    isTabBarShown = false
+                                    showSaveJoyPopUp = true
                                 } label: {
                                     // TODO: 저장 버튼 구현
                                     Rectangle()
@@ -61,7 +66,8 @@ struct RecordView: View {
             }
             .scrollIndicators(.hidden)
             
-            SaveJoyAtAlbumPopUpView()
+            // 나만의 소확행 저장 팝업
+            if showSaveJoyPopUp { SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown, showSaveJoyPopUp: $showSaveJoyPopUp) }
         }
     }
     
@@ -133,5 +139,5 @@ struct RecordView: View {
 }
 
 #Preview {
-    RecordView()
+    MadiiTabView()
 }
