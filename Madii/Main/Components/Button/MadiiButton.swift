@@ -24,6 +24,7 @@ struct MadiiButton: View {
         HStack {
             Spacer()
             Text(title)
+                // 팝업의 버튼은 madiiBody2
                 .madiiFont(font: size == .big ? .madiiBody1 : .madiiBody2, color: fontColor())
             Spacer()
         }

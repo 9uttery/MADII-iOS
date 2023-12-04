@@ -51,7 +51,7 @@ struct RecentAchievedJoyView: View {
                     }
                 } label: {
                     Text("이전 내역 더보기")
-                        .madiiFont(font: .madiiBody3, color: .white)
+                        .madiiFont(font: .madiiBody5, color: .white)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 8)
                         .background(Color.madiiOption)

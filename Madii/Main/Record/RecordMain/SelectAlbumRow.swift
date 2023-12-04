@@ -19,7 +19,7 @@ struct SelectAlbumRow: View {
         }
         .padding(.horizontal, 6)
         .padding(.vertical, 8)
-        .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+        .background(Color.madiiOption)
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)

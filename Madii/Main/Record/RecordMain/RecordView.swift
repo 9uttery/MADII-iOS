@@ -68,10 +68,10 @@ struct RecordView: View {
                 Spacer()
                 
                 Text("추가")
-                    .madiiFont(font: .madiiBody2, color: .white)
+                    .madiiFont(font: .madiiBody5, color: .white)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
-                    .background(Color(red: 0.21, green: 0.22, blue: 0.29))
+                    .background(Color.madiiOption)
                     .cornerRadius(6)
             }
             

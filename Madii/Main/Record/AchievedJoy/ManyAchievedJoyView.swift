@@ -42,8 +42,7 @@ struct ManyAchievedJoyView: View {
                                 Spacer()
                                 
                                 Text("\(joys[index].counts) 회")
-                                    // FIXME: 폰트 확인하고 변경하기
-                                    .madiiFont(font: .madiiBody3, color: .gray400)
+                                    .madiiFont(font: .madiiBody5, color: .gray400)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
                                     .background(Color.madiiOption)
