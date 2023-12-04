@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
-    @State private var showAlbumSettingSheet: Bool = false
+    @State private var showAlbumSettingSheet: Bool = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -45,10 +45,9 @@ struct MyAlbumsView: View {
         }
         .roundBackground(bottomPadding: 32)
         .sheet(isPresented: $showAlbumSettingSheet) {
-            Color.blue
-                .presentationDetents([.fraction(0.4)])
+            AlbumSettingBottomSheet()
+                .presentationDetents([.height(360)])
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea()
         }
     }
 }

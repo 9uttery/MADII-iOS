@@ -10,6 +10,8 @@
 		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
 		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
 		5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */; };
+		5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */; };
+		5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsView.swift; sourceTree = "<group>"; };
+		5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheet.swift; sourceTree = "<group>"; };
+		5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheetRow.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */,
+				5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */,
+				5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */,
 			);
 			path = MyAlbums;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
+				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
@@ -371,6 +378,7 @@
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
+				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
