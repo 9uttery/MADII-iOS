@@ -21,7 +21,7 @@ struct TabBarButton: View {
                     .frame(width: 24, height: 24)
                 
                 Text(title())
-                    .madiiFont(font: .madiiBody4, color: fontColor())
+                    .madiiFont(font: .madiiCaption, color: fontColor(), withHeight: true)
             }
             .frame(width: 48)
         }
