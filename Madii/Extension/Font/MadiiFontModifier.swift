@@ -15,6 +15,7 @@ struct MadiiFontModifier: ViewModifier {
     let heightFor: [Font: CGFloat] = [
         Font.madiiBody3: 21,
         Font.madiiBody4: 20,
+        Font.madiiBody5: 20,
         Font.madiiCaption: 16
     ]
     

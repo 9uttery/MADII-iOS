@@ -44,8 +44,7 @@ struct PopUp<Content>: View where Content: View {
         }
         .padding(.vertical, 24)
         .padding(.horizontal, 20)
-        // FIXME: 색상 이름 추가
-        .background(Color(red: 0.17, green: 0.18, blue: 0.23))
+        .background(Color.madiiPopUp)
         .cornerRadius(14)
     }
 }
