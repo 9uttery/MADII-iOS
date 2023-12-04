@@ -24,7 +24,7 @@ struct MadiiButton: View {
         HStack {
             Spacer()
             Text(title)
-                .madiiFont(font: .madiiBody1, color: fontColor())
+                .madiiFont(font: size == .big ? .madiiBody1 : .madiiBody2, color: fontColor())
             Spacer()
         }
         .frame(height: size == .big ? 56 : 40)
