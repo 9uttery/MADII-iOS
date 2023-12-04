@@ -59,6 +59,7 @@ extension Font {
     static var madiiBody2: Font { Font.spoqaHanSansNeo(weight: .regular, size: 16) } // line height: -
     static var madiiBody3: Font { Font.spoqaHanSansNeo(weight: .regular, size: 15) } // line height: 140%
     static var madiiBody4: Font { Font.spoqaHanSansNeo(weight: .regular, size: 12) } // line height: 20
+    static var madiiBody5: Font { Font.spoqaHanSansNeo(weight: .bold, size: 12) } // line height: 20
     
     static var madiiCaption: Font { Font.spoqaHanSansNeo(weight: .regular, size: 10) } // line height: 16
 }
