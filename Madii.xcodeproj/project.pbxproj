@@ -14,6 +14,7 @@
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
 		515EFC9D2AFCA0E500230647 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC9C2AFCA0E500230647 /* .gitignore */; };
 		516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455952B1EFE140010199B /* AlbumDetailView.swift */; };
+		516455992B1F07150010199B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455982B1F07150010199B /* Album.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -48,6 +49,7 @@
 		515EFC952AFCA0D200230647 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		515EFC9C2AFCA0E500230647 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		516455952B1EFE140010199B /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
+		516455982B1F07150010199B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				51D690DF2B15B9EA00F8D705 /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
+				516455972B1F07080010199B /* Model */,
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
@@ -121,6 +124,14 @@
 				515EFC952AFCA0D200230647 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		516455972B1F07080010199B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				516455982B1F07150010199B /* Album.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		51D690D92B15B94F00F8D705 /* Extension */ = {
@@ -357,6 +368,7 @@
 				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
+				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,

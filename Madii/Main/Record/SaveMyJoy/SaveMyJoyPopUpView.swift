@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-struct Album: Identifiable {
-    let id: Int
-    let title: String
-}
-
 struct SaveMyJoyPopUpView: View {
     @Binding var isTabBarShown: Bool
     @Binding var showSaveJoyPopUp: Bool
     
-    @State private var albums: [Album] = [Album(id: 1, title: "비 올 때 하기 좋은 소확행"), Album(id: 2, title: "샤브샤브 먹고 싶어")]
+    @State private var albums: [Album] = Album.dummy2
     @State private var selectedAlbumIds: [Int] = []
 
     var body: some View {
