@@ -57,7 +57,7 @@ struct AlbumDetailView: View {
                     // 다른 소확행 앨범 모음
                     VStack(spacing: 12) {
                         ForEach(0 ..< 4, id: \.self) { _ in
-                            AlbumRow(hasName: true)
+                            AlbumRow(hasName: true, name: "구떠리", title: "무더웠던 여름이 지나가고 다가오는 가을..?")
                         }
                     }
                     .roundBackground("다른 소확행 앨범 모음", bottomPadding: 32)
