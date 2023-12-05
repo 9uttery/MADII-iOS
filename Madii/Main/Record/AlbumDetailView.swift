@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
+    let title: String = "기분 좋을 때 할 일"
+    let creator: String = "구떠리"
+    let description: String = "이 소확행은 기분이 째질 때 츄라이해보면 좋은 소확행이에요"
+    
+    let myAlbums: [Album] = Album.dummy4
+    
     var body: some View {
         ScrollView {
             ZStack(alignment: .top) {
@@ -18,13 +24,13 @@ struct AlbumDetailView: View {
                         .frame(height: UIScreen.main.bounds.width)
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("앨범 제목")
+                        Text(title)
                             .madiiFont(font: .madiiTitle, color: .black)
                         
-                        Text("구떠리님")
+                        Text("\(creator)님")
                             .madiiFont(font: .madiiBody4, color: .black.opacity(0.6))
                         
-                        Text("이 소확행은 기분이 째질 때 츄라이해보면 좋은 소확행이에요")
+                        Text(description)
                             .madiiFont(font: .madiiCaption, color: .black.opacity(0.6))
                     }
                     .padding(.top, 20)
@@ -52,12 +58,12 @@ struct AlbumDetailView: View {
                             .padding(.vertical, 8)
                         }
                     }
-                    .roundBackground(bottomPadding: 32)
+                    .roundBackground()
                     
                     // 다른 소확행 앨범 모음
                     VStack(spacing: 12) {
-                        ForEach(0 ..< 4, id: \.self) { _ in
-                            AlbumRow(hasName: true, name: "구떠리", title: "무더웠던 여름이 지나가고 다가오는 가을..?")
+                        ForEach(myAlbums) { album in
+                            AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
                         }
                     }
                     .roundBackground("다른 소확행 앨범 모음", bottomPadding: 32)
@@ -68,6 +74,7 @@ struct AlbumDetailView: View {
             .padding(.bottom, 40)
         }
         .scrollIndicators(.hidden)
+        .navigationTitle("소확행 앨범")
     }
 }
 
