@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
-    let title: String = "기분 좋을 때 할 일"
-    let creator: String = "구떠리"
-    let description: String = "이 소확행은 기분이 째질 때 츄라이해보면 좋은 소확행이에요"
-    
+    @State var album: Album = Album.dummy1
     let myAlbums: [Album] = Album.dummy4
     
     var body: some View {
@@ -24,13 +21,13 @@ struct AlbumDetailView: View {
                         .frame(height: UIScreen.main.bounds.width)
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(title)
+                        Text(album.title)
                             .madiiFont(font: .madiiTitle, color: .black)
                         
-                        Text("\(creator)님")
+                        Text("\(album.creator)님")
                             .madiiFont(font: .madiiBody4, color: .black.opacity(0.6))
                         
-                        Text(description)
+                        Text(album.description)
                             .madiiFont(font: .madiiCaption, color: .black.opacity(0.6))
                     }
                     .padding(.top, 20)
@@ -63,7 +60,14 @@ struct AlbumDetailView: View {
                     // 다른 소확행 앨범 모음
                     VStack(spacing: 12) {
                         ForEach(myAlbums) { album in
-                            AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
+                            NavigationLink {
+                                AlbumDetailView(album: Album(id: album.id,
+                                                             title: album.title,
+                                                             creator: album.creator,
+                                                             description: album.description))
+                            } label: {
+                                AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
+                            }
                         }
                     }
                     .roundBackground("다른 소확행 앨범 모음", bottomPadding: 32)
@@ -74,7 +78,10 @@ struct AlbumDetailView: View {
             .padding(.bottom, 40)
         }
         .scrollIndicators(.hidden)
+        // 다음 앨범으로 넘어갈 때 title "" 처리하기
         .navigationTitle("소확행 앨범")
+        .toolbarBackground(Color.madiiBox, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
