@@ -23,7 +23,7 @@ struct CalendarDays: View {
                 VStack(spacing: 0) {
                     // 일자
                     Text(date.day)
-                        .madiiFont(font: .madiiTitle, color: fontColor(at: date))
+                        .madiiFont(font: .madiiCalendar, color: fontColor(at: date))
                         .frame(width: 36, height: 36)
                         .background(backgroundColor(at: date))
                         .overlay(Circle().strokeBorder(borderColor(at: date), lineWidth: 1))
