@@ -16,14 +16,14 @@ struct CalendarView: View {
         ZStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    title
-                        .padding(.bottom, 20)
+                    // "캘린더" 타이틀과 마이페이지 버튼
+                    title.padding(.bottom, 20)
                     
                     // 월 선택 header
                     SelectDateHeaderView(selectedDate: $selectedDate)
                     
-                    weekdaysHeader
-                        .padding(.bottom, 12)
+                    // 요일 header
+                    weekdaysHeader.padding(.bottom, 12)
                     
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
                         ForEach(0 ..< countWeekday(), id: \.self) { _ in
@@ -132,28 +132,4 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
-}
-
-extension Date {
-    var day: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d"
-        return dateFormatter.string(from: self)
-    }
-    
-    var month: String {
-        let calendar = Calendar.current
-        let month = calendar.component(.month, from: self)
-        return "\(month)"
-    }
-    
-    var year: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy" // "yyyy"는 4자리 연도를 나타내는 포맷입니다
-        return dateFormatter.string(from: self)
-    }
-    
-    func isSameDay(as date: Date) -> Bool {
-        Calendar.current.isDate(self, inSameDayAs: date)
-    }
 }
