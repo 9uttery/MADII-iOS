@@ -9,33 +9,43 @@ import SwiftUI
 
 struct SelectDateHeaderView: View {
     @Binding var selectedDate: Date
+    @Binding var showDatePicker: Bool
     
     var body: some View {
-        HStack {
-            Button {
-                changeMonth(add: -1)
-            } label: {
-                changeMonthButton(image: "arrow.left.circle.fill")
+        ZStack {
+            HStack {
+                // 한 달 전
+                Button {
+                    changeMonth(add: -1)
+                } label: {
+                    changeMonthButton(image: "arrow.left.circle.fill")
+                }
+                
+                Spacer()
+                
+                // 월, 년 표시
+                Button {
+                    showDatePicker.toggle()
+                } label: {
+                    VStack {
+                        Text("\(selectedDate.month)월")
+                            .madiiFont(font: .madiiTitle, color: .white)
+                        Text("\(selectedDate.year)년")
+                            .madiiFont(font: .madiiBody4, color: .gray500)
+                    }
+                }
+                
+                Spacer()
+                
+                // 한 달 후
+                Button {
+                    changeMonth(add: 1)
+                } label: {
+                    changeMonthButton(image: "arrow.right.circle.fill")
+                }
             }
-            
-            Spacer()
-            
-            VStack {
-                Text("\(selectedDate.month)월")
-                    .madiiFont(font: .madiiTitle, color: .white)
-                Text("\(selectedDate.year)년")
-                    .madiiFont(font: .madiiBody4, color: .gray500)
-            }
-            
-            Spacer()
-            
-            Button {
-                changeMonth(add: 1)
-            } label: {
-                changeMonthButton(image: "arrow.right.circle.fill")
-            }
+            .padding(.horizontal, 38)
         }
-        .padding(.horizontal, 38)
     }
     
     func changeMonth(add addAmount: Int) {

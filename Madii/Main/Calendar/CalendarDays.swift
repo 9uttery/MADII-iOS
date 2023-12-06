@@ -11,6 +11,10 @@ struct CalendarDays: View {
     let today = Date()
     @Binding var selectedDate: Date
     
+    // 소확행 커버 구현에 필요한 임시 데이터
+    let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    let colors = [Color.madiiPurple, Color.madiiOrange, Color.teal]
+    
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             emptyDays
@@ -22,10 +26,7 @@ struct CalendarDays: View {
                         .madiiFont(font: .madiiTitle, color: fontColor(at: date))
                         .frame(width: 36, height: 36)
                         .background(backgroundColor(at: date))
-                        .overlay(
-                            Circle()
-                                .strokeBorder(borderColor(at: date), lineWidth: 1)
-                        )
+                        .overlay(Circle().strokeBorder(borderColor(at: date), lineWidth: 1))
                         .clipShape(Circle())
                         .frame(width: 42, height: 42)
                         .onTapGesture {
@@ -33,10 +34,8 @@ struct CalendarDays: View {
                         }
                     
                     // 각 일마다 있는 소확행 커버
-                    let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement() ?? 9
                     LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
-                        ForEach(0 ..< count, id: \.self) { _ in
-                            let colors = [Color.madiiPurple, Color.madiiOrange, Color.teal]
+                        ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
                             Circle()
                                 .fill(colors.randomElement() ?? Color.madiiPurple)
                         }
