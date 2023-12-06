@@ -17,6 +17,11 @@ struct CalendarView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     title
+                        .padding(.bottom, 20)
+                    
+                    // 월 선택 header
+                    SelectDateHeaderView(selectedDate: $selectedDate)
+                    
                     weekdaysHeader
                         .padding(.bottom, 12)
                     
