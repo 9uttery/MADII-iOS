@@ -15,7 +15,7 @@
 		515EFC9D2AFCA0E500230647 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC9C2AFCA0E500230647 /* .gitignore */; };
 		516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455952B1EFE140010199B /* AlbumDetailView.swift */; };
 		516455992B1F07150010199B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455982B1F07150010199B /* Album.swift */; };
-		516455B72B20A99D0010199B /* SelectDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455B62B20A99D0010199B /* SelectDateHeaderView.swift */; };
+		516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455B62B20A99D0010199B /* SelectDateHeader.swift */; };
 		516455B92B20AE0C0010199B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455B82B20AE0C0010199B /* DateExtension.swift */; };
 		516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BA2B20AF3E0010199B /* CalendarDays.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
@@ -53,7 +53,7 @@
 		515EFC9C2AFCA0E500230647 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		516455952B1EFE140010199B /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
 		516455982B1F07150010199B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		516455B62B20A99D0010199B /* SelectDateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateHeaderView.swift; sourceTree = "<group>"; };
+		516455B62B20A99D0010199B /* SelectDateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateHeader.swift; sourceTree = "<group>"; };
 		516455B82B20AE0C0010199B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		516455BA2B20AF3E0010199B /* CalendarDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDays.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				51D8D3712B177111001B6793 /* CalendarView.swift */,
-				516455B62B20A99D0010199B /* SelectDateHeaderView.swift */,
+				516455B62B20A99D0010199B /* SelectDateHeader.swift */,
 				516455BA2B20AF3E0010199B /* CalendarDays.swift */,
 			);
 			path = Calendar;
@@ -386,7 +386,7 @@
 				516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
-				516455B72B20A99D0010199B /* SelectDateHeaderView.swift in Sources */,
+				516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */,
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,

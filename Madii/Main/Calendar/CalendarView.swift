@@ -20,7 +20,7 @@ struct CalendarView: View {
                     title.padding(.bottom, 20)
                     
                     // 월 선택 header
-                    SelectDateHeaderView(selectedDate: $selectedDate,
+                    SelectDateHeader(selectedDate: $selectedDate,
                                          showDatePicker: $showDatePicker)
                     
                     // 요일 header
@@ -52,7 +52,6 @@ struct CalendarView: View {
         HStack(spacing: 0) {
             Text("캘린더")
                 .madiiFont(font: .madiiTitle, color: .white)
-                .padding(.vertical, 12)
             
             Spacer()
             
@@ -66,7 +65,7 @@ struct CalendarView: View {
             }
         }
         .padding(.horizontal, 22)
-        .padding(.bottom, 12)
+        .padding(.vertical, 12)
     }
     
     var weekdaysHeader: some View {

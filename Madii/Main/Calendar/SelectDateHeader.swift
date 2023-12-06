@@ -1,5 +1,5 @@
 //
-//  SelectDateHeaderView.swift
+//  SelectDateHeader.swift
 //  Madii
 //
 //  Created by 이안진 on 12/6/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectDateHeaderView: View {
+struct SelectDateHeader: View {
     @Binding var selectedDate: Date
     @Binding var showDatePicker: Bool
     
