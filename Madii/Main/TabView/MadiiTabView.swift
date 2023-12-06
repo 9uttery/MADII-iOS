@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .record
+    @State var tabIndex: TabIndex = .calendar
     @State var isTabBarShown: Bool = true
 
     var body: some View {
@@ -17,7 +17,7 @@ struct MadiiTabView: View {
                 switch tabIndex {
                 case .home: HomeView().padding(.bottom, 60)
                 case .record: RecordView(isTabBarShown: $isTabBarShown)
-                case .calendar: CalendarView().padding(.bottom, 60)
+                case .calendar: CalendarView()
                 }
 
                 if isTabBarShown {

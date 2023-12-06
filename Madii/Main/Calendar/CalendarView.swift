@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
+    let today = Date()
     @State private var selectedDate = Date()
     let weekdays = ["일", "월", "화", "수", "목", "금", "토"]
     
@@ -22,7 +23,7 @@ struct CalendarView: View {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
                         ForEach(0 ..< countWeekday(), id: \.self) { _ in
                             Rectangle()
-                                .foregroundStyle(Color.blue)
+                                .foregroundStyle(Color.clear)
                                 .frame(width: 42, height: 98)
                         }
                         
@@ -30,21 +31,29 @@ struct CalendarView: View {
                             VStack(spacing: 0) {
                                 // 일자
                                 Text(date.day)
+                                    .madiiFont(font: .madiiTitle, color: (date.isSameDay(as: today) && selectedDate.day != today.day) ? .madiiOrange : .white)
+                                    .frame(width: 36, height: 36)
+                                    .background(date.isSameDay(as: selectedDate) ? Color.madiiOrange : Color.clear)
+                                    .overlay(
+                                        Circle()
+                                            .strokeBorder(date.isSameDay(as: today) ? Color.madiiOrange : Color.clear, lineWidth: 1)
+                                    )
+                                    .clipShape(Circle())
                                     .frame(width: 42, height: 42)
-                                    .background(date.isSameDay(as: selectedDate) ? Color.blue : Color.gray)
-                                //                                .clipShape(Circle())
                                     .onTapGesture {
                                         selectedDate = date
                                     }
                                 
                                 // 각 일마다 있는 소확행 커버
+                                let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement() ?? 9
                                 LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
-                                    ForEach(0 ..< 9, id: \.self) { i in
+                                    ForEach(0 ..< count, id: \.self) { _ in
+                                        let colors = [Color.madiiPurple, Color.madiiOrange, Color.teal]
                                         Circle()
+                                            .fill(colors.randomElement() ?? Color.madiiPurple)
                                     }
                                 }
                                 .frame(width: 42)
-                                .background(Color.brown)
                                 
                                 Spacer()
                             }
@@ -55,7 +64,6 @@ struct CalendarView: View {
                     
                     Spacer()
                 }
-                .background(Color.red)
                 // 하단 여백 40
                 .padding(.bottom, 40)
             }
@@ -89,9 +97,8 @@ struct CalendarView: View {
         HStack(spacing: 0) {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
-                    .madiiFont(font: .madiiBody3, color: .gray100)
+                    .madiiFont(font: .madiiBody3, color: .gray700)
                     .frame(width: 42, height: 42)
-                    .background(Color.green)
                 
                 if weekday != weekdays.last {
                     Spacer()
