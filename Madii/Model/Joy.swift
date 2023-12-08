@@ -20,8 +20,8 @@ struct Joy: Identifiable {
                                            Joy(title: "돈까스 먹기", counts: 3)]
     
     static let dailyJoyDummy: [Joy] = [
-        Joy(title: "샤브샤브 냠냠", satisfaction: 80.0),
-        Joy(title: "방어 냠냠", satisfaction: 65.0),
+        Joy(title: "산책하면서 크리스마스 플리 듣기", satisfaction: 80.0),
+        Joy(title: "샤워하고 아이스크림 먹기", satisfaction: 65.0),
         Joy(title: "전기장판에 누워서 귤 까먹기", satisfaction: 90.0)]
 }
 

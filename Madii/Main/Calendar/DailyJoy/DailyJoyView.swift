@@ -10,17 +10,27 @@ import SwiftUI
 struct DailyJoyView: View {
     @State private var satisfaction: Float = 100
     
+    @State private var dummy: [Joy] = Joy.dailyJoyDummy
+    @State private var index: Int = 0
+    
     var body: some View {
         VStack(spacing: 0) {
-            Text("뜨끈한 메밀차 마시기")
+            Text(dummy[index].title)
                 .madiiFont(font: .madiiTitle, color: .white)
                 .padding(.top, 56)
             
             HStack(spacing: 0) {
-                Image(systemName: "arrow.left.circle.fill")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .foregroundStyle(Color.gray700)
+                Button {
+                    if index > 0 {
+                        index -= 1
+                    }
+                } label: {
+                    Image(systemName: "arrow.left.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundStyle(index == 0 ? Color.gray700 : Color.white)
+                }
+                .disabled(index == 0)
                 
                 Spacer()
                 
@@ -30,10 +40,17 @@ struct DailyJoyView: View {
                 
                 Spacer()
                 
-                Image(systemName: "arrow.right.circle.fill")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .foregroundStyle(Color.white)
+                Button {
+                    if index < dummy.count - 1 {
+                        index += 1
+                    }
+                } label: {
+                    Image(systemName: "arrow.right.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundStyle(index == dummy.count - 1 ? Color.gray700 : Color.white)
+                }
+                .disabled(index == dummy.count - 1)
             }
             .padding(20)
             
@@ -44,7 +61,8 @@ struct DailyJoyView: View {
                     .padding(.horizontal, 4)
                 
                 // Slider
-                MadiiSlider(percentage: $satisfaction, onEnded: saveSatisfaction)
+                MadiiSlider(percentage: $dummy[index].satisfaction,
+                            onEnded: saveSatisfaction)
             }
             .padding(20)
             
