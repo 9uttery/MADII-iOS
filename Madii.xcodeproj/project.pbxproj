@@ -20,6 +20,7 @@
 		516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BA2B20AF3E0010199B /* CalendarDays.swift */; };
 		516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BE2B21B72E0010199B /* DailyJoyView.swift */; };
 		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
+		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -60,6 +61,7 @@
 		516455BA2B20AF3E0010199B /* CalendarDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDays.swift; sourceTree = "<group>"; };
 		516455BE2B21B72E0010199B /* DailyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJoyView.swift; sourceTree = "<group>"; };
 		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
+		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				516455982B1F07150010199B /* Album.swift */,
+				516455C22B22FFEA0010199B /* Joy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
+				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
