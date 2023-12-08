@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DailyJoyView: View {
-    @State private var sliderValue: Double = 50.0 // 초기 값 설정
+    @State private var satisfaction: Float = 100
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,31 +37,20 @@ struct DailyJoyView: View {
             }
             .padding(20)
             
+            // 만족도 조사
             VStack(alignment: .leading, spacing: 16) {
                 Text("얼마나 행복하셨나요?")
                     .madiiFont(font: .madiiBody3, color: .white)
                     .padding(.horizontal, 4)
                 
                 // Slider
-                ZStack {
-                    Rectangle()
-                        .foregroundStyle(
-                            LinearGradient(
-                                stops: [
-                                    Gradient.Stop(color: Color.madiiYellowGreen, location: 0.00),
-                                    Gradient.Stop(color: .white, location: 1.00)
-                                ],
-                                startPoint: UnitPoint(x: 1, y: 0.5),
-                                endPoint: UnitPoint(x: 0, y: 0.5)
-                            )
-                        )
-                        .frame(height: 36)
-                }
+                MadiiSlider(percentage: $satisfaction)
             }
             .padding(20)
             
             Spacer()
             
+            // 저장 버튼
             MadiiButton(title: "저장", color: .yellowGreen)
                 .padding(.horizontal, 16)
                 .padding(.bottom, 20)
