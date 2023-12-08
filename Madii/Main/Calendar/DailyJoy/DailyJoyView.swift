@@ -49,7 +49,7 @@ struct DailyJoyView: View {
                             LinearGradient(
                                 stops: [
                                     Gradient.Stop(color: Color.madiiYellowGreen, location: 0.00),
-                                    Gradient.Stop(color: .white, location: 1.00),
+                                    Gradient.Stop(color: .white, location: 1.00)
                                 ],
                                 startPoint: UnitPoint(x: 1, y: 0.5),
                                 endPoint: UnitPoint(x: 0, y: 0.5)
@@ -66,6 +66,7 @@ struct DailyJoyView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 20)
         }
+        .navigationTitle("데일리 소확행")
     }
 }
 
