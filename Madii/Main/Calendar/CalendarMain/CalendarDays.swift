@@ -33,14 +33,18 @@ struct CalendarDays: View {
                             selectedDate = date
                         }
                     
-                    // 각 일마다 있는 소확행 커버
-                    LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
-                        ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
-                            Circle()
-                                .fill(colors.randomElement() ?? Color.madiiPurple)
+                    NavigationLink {
+                        DailyJoyView()
+                    } label: {
+                        // 각 일마다 있는 소확행 커버
+                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
+                            ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
+                                Circle()
+                                    .fill(colors.randomElement() ?? Color.madiiPurple)
+                            }
                         }
+                        .frame(width: 42)
                     }
-                    .frame(width: 42)
                     
                     Spacer()
                 }
