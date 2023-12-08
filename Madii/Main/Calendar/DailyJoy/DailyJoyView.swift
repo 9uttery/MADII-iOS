@@ -44,7 +44,7 @@ struct DailyJoyView: View {
                     .padding(.horizontal, 4)
                 
                 // Slider
-                MadiiSlider(percentage: $satisfaction)
+                MadiiSlider(percentage: $satisfaction, onEnded: saveSatisfaction)
             }
             .padding(20)
             
@@ -56,6 +56,10 @@ struct DailyJoyView: View {
                 .padding(.bottom, 20)
         }
         .navigationTitle("데일리 소확행")
+    }
+    
+    private func saveSatisfaction() {
+        print(satisfaction)
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MadiiSlider: View {
     @Binding var percentage: Float
+    var onEnded: () -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,6 +37,9 @@ struct MadiiSlider: View {
                     .gesture(DragGesture(minimumDistance: 0)
                         .onChanged { value in
                             updatePercentage(from: value, geometry: geometry)
+                        }
+                        .onEnded { _ in
+                            onEnded()
                         })
             }
         }
@@ -47,4 +51,8 @@ struct MadiiSlider: View {
         let ratio = Float(changedXLocaion / sliderSize * 100)
         percentage = min(max(0, ratio), 100)
     }
+}
+
+#Preview {
+    DailyJoyView()
 }
