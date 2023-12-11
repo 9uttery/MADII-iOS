@@ -43,7 +43,6 @@ struct SaveMyJoyPopUpView: View {
             .padding(.horizontal, 40)
             .padding(.top, 160)
         }
-        .onAppear { tabBarManager.isTabBarShown = false }
     }
     
     var myAlbums: some View {

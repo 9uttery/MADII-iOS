@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PopUpWithNameDescription: View {
-    let title: String = "앨범 이름 & 설명 수정"
+    var title: String
+    
+    @Binding var name: String
+    @Binding var description: String
     
     var leftButtonTitle: String = "취소"
-    var leftButtonAction: () -> Void = {}
+    var leftButtonAction: () -> Void
     
     var rightButtonTitle: String = "확인"
-    var rightButtonAction: () -> Void = {}
-    
-    @State var name: String = ""
-    @State var description: String = ""
+    var rightButtonAction: () -> Void
     
     var body: some View {
         PopUp(title: title,
@@ -64,8 +64,4 @@ struct PopUpWithNameDescription: View {
             return .yellowGreen
         }
     }
-}
-
-#Preview {
-    PopUpWithNameDescription()
 }
