@@ -16,6 +16,14 @@
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
 		515EFC9D2AFCA0E500230647 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC9C2AFCA0E500230647 /* .gitignore */; };
+		516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455952B1EFE140010199B /* AlbumDetailView.swift */; };
+		516455992B1F07150010199B /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455982B1F07150010199B /* Album.swift */; };
+		516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455B62B20A99D0010199B /* SelectDateHeader.swift */; };
+		516455B92B20AE0C0010199B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455B82B20AE0C0010199B /* DateExtension.swift */; };
+		516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BA2B20AF3E0010199B /* CalendarDays.swift */; };
+		516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BE2B21B72E0010199B /* DailyJoyView.swift */; };
+		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
+		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -54,6 +62,14 @@
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		515EFC952AFCA0D200230647 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		515EFC9C2AFCA0E500230647 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		516455952B1EFE140010199B /* AlbumDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailView.swift; sourceTree = "<group>"; };
+		516455982B1F07150010199B /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		516455B62B20A99D0010199B /* SelectDateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateHeader.swift; sourceTree = "<group>"; };
+		516455B82B20AE0C0010199B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		516455BA2B20AF3E0010199B /* CalendarDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDays.swift; sourceTree = "<group>"; };
+		516455BE2B21B72E0010199B /* DailyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJoyView.swift; sourceTree = "<group>"; };
+		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
+		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -127,6 +143,7 @@
 			children = (
 				51D690DF2B15B9EA00F8D705 /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
+				516455972B1F07080010199B /* Model */,
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
@@ -142,12 +159,40 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		516455972B1F07080010199B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				516455982B1F07150010199B /* Album.swift */,
+				516455C22B22FFEA0010199B /* Joy.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		516455BC2B21B7110010199B /* CalendarMain */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D3712B177111001B6793 /* CalendarView.swift */,
+				516455B62B20A99D0010199B /* SelectDateHeader.swift */,
+				516455BA2B20AF3E0010199B /* CalendarDays.swift */,
+			);
+			path = CalendarMain;
+			sourceTree = "<group>";
+		};
+		516455BD2B21B7200010199B /* DailyJoy */ = {
+			isa = PBXGroup;
+			children = (
+				516455BE2B21B72E0010199B /* DailyJoyView.swift */,
+			);
+			path = DailyJoy;
+			sourceTree = "<group>";
+		};
 		51D690D92B15B94F00F8D705 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				51D690DA2B15B95700F8D705 /* Font */,
 				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
 				51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */,
+				516455B82B20AE0C0010199B /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -202,6 +247,7 @@
 				51F25E1A2B1A08E600F6CCFE /* SaveMyJoy */,
 				51F25E172B1A080700F6CCFE /* AchievedJoy */,
 				5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */,
+				516455952B1EFE140010199B /* AlbumDetailView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -209,7 +255,8 @@
 		51D8D3702B177104001B6793 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				51D8D3712B177111001B6793 /* CalendarView.swift */,
+				516455BC2B21B7110010199B /* CalendarMain */,
+				516455BD2B21B7200010199B /* DailyJoy */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -221,6 +268,7 @@
 				51F25E042B19AE7100F6CCFE /* PopUp */,
 				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
 				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
+				516455C02B22FB540010199B /* MadiiSlider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -377,19 +425,27 @@
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
+				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
+				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
+				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
+				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
+				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
+				516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
+				516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */,
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */,
+				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
