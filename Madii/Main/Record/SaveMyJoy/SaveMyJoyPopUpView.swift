@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SaveMyJoyPopUpView: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showSaveJoyPopUp: Bool
     
     @State private var albums: [Album] = Album.dummy2
@@ -43,6 +43,7 @@ struct SaveMyJoyPopUpView: View {
             .padding(.horizontal, 40)
             .padding(.top, 160)
         }
+        .onAppear { tabBarManager.isTabBarShown = false }
     }
     
     var myAlbums: some View {
@@ -81,7 +82,7 @@ struct SaveMyJoyPopUpView: View {
 
     func dismissPopUp() {
         showSaveJoyPopUp = false
-        isTabBarShown = true
+        tabBarManager.isTabBarShown = true
     }
     
     func saveJoy() {

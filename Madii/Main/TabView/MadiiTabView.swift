@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .calendar
-    @State var isTabBarShown: Bool = true
+    @State var tabIndex: TabIndex = .record
+    @StateObject private var tabBarManager = TabBarManager()
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 switch tabIndex {
                 case .home: HomeView().padding(.bottom, 60)
-                case .record: RecordView(isTabBarShown: $isTabBarShown)
+                case .record: RecordView()
                 case .calendar: CalendarView()
                 }
 
-                if isTabBarShown {
+                if tabBarManager.isTabBarShown {
                     MadiiTabBar(tabIndex: $tabIndex)
                 }
             }
+            .environmentObject(tabBarManager)
             .onAppear {
+                tabBarManager.isTabBarShown = true
                 checkIsTabBarShown()
             }
         }
@@ -35,11 +37,11 @@ struct MadiiTabView: View {
         // 키보드가 없을 때만 나타나도록 구현
         
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
-            isTabBarShown = false
+            tabBarManager.isTabBarShown = false
         }
 
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-            isTabBarShown = true
+            tabBarManager.isTabBarShown = true
         }
     }
 }

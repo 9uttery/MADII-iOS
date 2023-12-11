@@ -8,25 +8,32 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Binding var isTabBarShown: Bool
     @State private var showSaveJoyPopUp: Bool = false
+    @State private var showChangeAlbumInfoPopUp: Bool = false
     
     var body: some View {
         ZStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    title
+                    HStack(spacing: 0) {
+                        Text("레코드")
+                            .madiiFont(font: .madiiTitle, color: .white)
+                            .padding(.vertical, 12)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, 22)
+                    .padding(.bottom, 12)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // 나만의 소확행을 수집해보세요
-                        SaveMyJoyView(isTabBarShown: $isTabBarShown,
-                                      showSaveJoyPopUp: $showSaveJoyPopUp)
+                        SaveMyJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
                         
                         // 최근 & 많이 실천한 소확행
                         AchievedJoyView()
                         
                         // 소확행 앨범
-                        albums
+                        MyAlbumsView(showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -40,41 +47,14 @@ struct RecordView: View {
             
             // 나만의 소확행 저장 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown,
-                                   showSaveJoyPopUp: $showSaveJoyPopUp)
-            }
-        }
-        .navigationTitle("")
-    }
-    
-    var title: some View {
-        HStack(spacing: 0) {
-            Text("레코드")
-                .madiiFont(font: .madiiTitle, color: .white)
-                .padding(.vertical, 12)
-            
-            Spacer()
-        }
-        .padding(.horizontal, 22)
-        .padding(.bottom, 12)
-    }
-    
-    var albums: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack(spacing: 0) {
-                Text("소확행 앨범")
-                    .madiiFont(font: .madiiSubTitle, color: .white)
-                
-                Spacer()
-                
-                Text("추가")
-                    .madiiFont(font: .madiiBody5, color: .white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color.madiiOption)
-                    .cornerRadius(6)
+                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp)
             }
             
+            // 앨범 정보 수정 팝업
+            if showChangeAlbumInfoPopUp {
+                ChangeAlbumInfoPopUpView()
+            }
+          /*
             VStack(spacing: 16) {
                 ForEach(0 ... 6, id: \.self) { _ in
                     NavigationLink {
@@ -94,8 +74,8 @@ struct RecordView: View {
                         }
                     }
                 }
-            }
+          */
         }
-        .roundBackground(bottomPadding: 32)
+        .navigationTitle("")
     }
 }
