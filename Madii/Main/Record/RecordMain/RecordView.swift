@@ -56,11 +56,7 @@ struct RecordView: View {
             
             // 앨범 정보 수정 팝업
             if showChangeAlbumInfoPopUp {
-                ZStack(alignment: .top) {
-                    Color.black.opacity(0.8).ignoresSafeArea()
-                    
-                    PopUpWithNameDescription(leftButtonAction: { showChangeAlbumInfoPopUp = false })
-                }
+                ChangeAlbumInfoPopUpView()
             }
         }
         .navigationTitle("")
