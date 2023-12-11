@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecordView: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
     @State private var showSaveJoyPopUp: Bool = false
     @State private var showChangeAlbumInfoPopUp: Bool = false
     

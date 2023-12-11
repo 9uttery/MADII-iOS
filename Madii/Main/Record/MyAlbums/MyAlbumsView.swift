@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
-    
     @State private var showAlbumSettingSheet: Bool = false
     @Binding var showChangeAlbumInfoPopUp: Bool
     
