@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
+    @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @Binding var showAlbumSettingSheet: Bool
     
     let title: String = "소확행 앨범 제목"
     let description: String = "설명 어쩌고 저쩌고"
     
-    @Binding var showChangeAlbumInfoPopUp: Bool
     @State private var isAlbumPublic: Bool = false
     
     var body: some View {
@@ -46,7 +46,7 @@ struct AlbumSettingBottomSheet: View {
                     Button {
                         tabBarManager.isTabBarShown = false
                         showAlbumSettingSheet = false
-                        showChangeAlbumInfoPopUp = true
+                        popUpStatus.showChangeAlbumInfo = true
                     } label: {
                         AlbumSettingBottomSheetRow(title: "앨범 이름・설명 수정")
                     }

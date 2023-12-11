@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecordView: View {
     @State private var showSaveJoyPopUp: Bool = false
-    @State private var showChangeAlbumInfoPopUp: Bool = false
+    @EnvironmentObject private var popUpStatus: PopUpStatus
     
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct RecordView: View {
                         AchievedJoyView()
                         
                         // 소확행 앨범
-                        MyAlbumsView(showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
+                        MyAlbumsView()
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -51,7 +51,7 @@ struct RecordView: View {
             }
             
             // 앨범 정보 수정 팝업
-            if showChangeAlbumInfoPopUp {
+            if popUpStatus.showChangeAlbumInfo {
                 ChangeAlbumInfoPopUpView()
             }
         }
