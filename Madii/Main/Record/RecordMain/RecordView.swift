@@ -10,6 +10,7 @@ import SwiftUI
 struct RecordView: View {
     @Binding var isTabBarShown: Bool
     @State private var showSaveJoyPopUp: Bool = false
+    @State private var showChangeAlbumInfoPopUp: Bool = false
     
     var body: some View {
         ZStack {
@@ -34,7 +35,8 @@ struct RecordView: View {
                         AchievedJoyView()
                         
                         // 소확행 앨범
-                        MyAlbumsView()
+                        MyAlbumsView(isTabBarShown: $isTabBarShown,
+                                     showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -50,6 +52,15 @@ struct RecordView: View {
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown,
                                    showSaveJoyPopUp: $showSaveJoyPopUp)
+            }
+            
+            // 앨범 정보 수정 팝업
+            if showChangeAlbumInfoPopUp {
+                ZStack(alignment: .top) {
+                    Color.black.opacity(0.8).ignoresSafeArea()
+                    
+                    PopUpWithNameDescription(leftButtonAction: { showChangeAlbumInfoPopUp = false })
+                }
             }
         }
         .navigationTitle("")

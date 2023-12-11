@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
+    @Binding var isTabBarShown: Bool
+    @Binding var showAlbumSettingSheet: Bool
+    
     let title: String = "소확행 앨범 제목"
     let description: String = "설명 어쩌고 저쩌고"
     
+    @Binding var showChangeAlbumInfoPopUp: Bool
     @State private var isAlbumPublic: Bool = false
     
     var body: some View {
@@ -38,7 +42,13 @@ struct AlbumSettingBottomSheet: View {
                 
                 // 앨범 설정 row
                 VStack(alignment: .leading, spacing: 10) {
-                    AlbumSettingBottomSheetRow(title: "앨범 이름・설명 수정")
+                    Button {
+                        isTabBarShown = false
+                        showAlbumSettingSheet = false
+                        showChangeAlbumInfoPopUp = true
+                    } label: {
+                        AlbumSettingBottomSheetRow(title: "앨범 이름・설명 수정")
+                    }
                     
                     AlbumSettingBottomSheetRow(title: "소확행 추가")
                     

@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
-    @State private var showAlbumSettingSheet: Bool = true
+    @Binding var isTabBarShown: Bool
+    
+    @State private var showAlbumSettingSheet: Bool = false
+    @Binding var showChangeAlbumInfoPopUp: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 0) {
                 Text("소확행 앨범")
                     .madiiFont(font: .madiiSubTitle, color: .white)
-                
+                    
                 Spacer()
-                
+                    
                 Text("추가")
                     .madiiFont(font: .madiiBody5, color: .white)
                     .padding(.horizontal, 12)
@@ -25,7 +28,7 @@ struct MyAlbumsView: View {
                     .background(Color.madiiOption)
                     .cornerRadius(6)
             }
-            
+                
             VStack(spacing: 16) {
                 ForEach(0 ... 6, id: \.self) { _ in
                     AlbumRowWithRightView {
@@ -45,7 +48,9 @@ struct MyAlbumsView: View {
         }
         .roundBackground(bottomPadding: 32)
         .sheet(isPresented: $showAlbumSettingSheet) {
-            AlbumSettingBottomSheet()
+            AlbumSettingBottomSheet(isTabBarShown: $isTabBarShown,
+                                    showAlbumSettingSheet: $showAlbumSettingSheet,
+                                    showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
                 .presentationDetents([.height(360)])
                 .presentationDragIndicator(.visible)
         }
