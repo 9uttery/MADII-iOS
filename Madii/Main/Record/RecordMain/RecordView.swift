@@ -54,6 +54,11 @@ struct RecordView: View {
             if popUpStatus.showChangeAlbumInfo {
                 ChangeAlbumInfoPopUpView()
             }
+            
+            // 앨범 삭제 팝업
+            if popUpStatus.showDeleteAlbum {
+                DeleteAlbumPopUpView()
+            }
         }
         .navigationTitle("")
     }
