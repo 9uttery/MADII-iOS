@@ -10,9 +10,11 @@ import SwiftUI
 struct SaveMyJoyPopUpView: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showSaveJoyPopUp: Bool
-    
+
     @State private var albums: [Album] = Album.dummy2
     @State private var selectedAlbumIds: [Int] = []
+
+    @Binding var showSaveJoyToast: Bool
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -23,14 +25,14 @@ struct SaveMyJoyPopUpView: View {
 
             PopUp(title: "어떤 앨범에 저장할까요?",
                   leftButtonTitle: "취소", leftButtonAction: dismissPopUp,
-                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
-                
+                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy)
+            {
                 // 앨범 리스트
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 12) {
                         // 기본 선택: 내가 찾은 소확행
                         SelectAlbumRow(title: "내가 찾은 소확행", isSelected: true)
-                        
+
                         // 내가 가지고 있는 앨범들
                         myAlbums
 
@@ -44,7 +46,7 @@ struct SaveMyJoyPopUpView: View {
             .padding(.top, 160)
         }
     }
-    
+
     var myAlbums: some View {
         ForEach(albums) { album in
             Button {
@@ -58,7 +60,7 @@ struct SaveMyJoyPopUpView: View {
             }
         }
     }
-    
+
     var createAlbumButton: some View {
         Button {
             // showCreateAlbumPopUp
@@ -83,8 +85,18 @@ struct SaveMyJoyPopUpView: View {
         showSaveJoyPopUp = false
         tabBarManager.isTabBarShown = true
     }
-    
+
     func saveJoy() {
         // 소확행 저장
+        dismissPopUp()
+
+        withAnimation {
+            showSaveJoyToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            withAnimation {
+                showSaveJoyToast = false
+            }
+        }
     }
 }

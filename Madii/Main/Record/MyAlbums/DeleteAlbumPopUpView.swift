@@ -25,6 +25,7 @@ struct DeleteAlbumPopUpView: View {
     
     private func dismissPopUp() {
         popUpStatus.showDeleteAlbum = false
+        // TODO: 탭바 올리기
     }
     
     private func deleteAlbum() {
