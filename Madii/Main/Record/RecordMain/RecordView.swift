@@ -54,27 +54,6 @@ struct RecordView: View {
             if showChangeAlbumInfoPopUp {
                 ChangeAlbumInfoPopUpView()
             }
-          /*
-            VStack(spacing: 16) {
-                ForEach(0 ... 6, id: \.self) { _ in
-                    NavigationLink {
-                        AlbumDetailView()
-                    } label: {
-                        AlbumRowWithRightView {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .resizable()
-                                    .frame(width: 20, height: 4)
-                                    .foregroundStyle(Color.gray500)
-                                    .padding(10)
-                                    .padding(.vertical, 8)
-                            }
-                        }
-                    }
-                }
-          */
         }
         .navigationTitle("")
     }

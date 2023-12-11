@@ -29,16 +29,20 @@ struct MyAlbumsView: View {
                 
             VStack(spacing: 16) {
                 ForEach(0 ... 6, id: \.self) { _ in
-                    AlbumRowWithRightView {
-                        Button {
-                            showAlbumSettingSheet = true
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .resizable()
-                                .frame(width: 20, height: 4)
-                                .foregroundStyle(Color.gray500)
-                                .padding(10)
-                                .padding(.vertical, 8)
+                    NavigationLink {
+                        AlbumDetailView()
+                    } label: {
+                        AlbumRowWithRightView {
+                            Button {
+                                showAlbumSettingSheet = true
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .resizable()
+                                    .frame(width: 20, height: 4)
+                                    .foregroundStyle(Color.gray500)
+                                    .padding(10)
+                                    .padding(.vertical, 8)
+                            }
                         }
                     }
                 }
