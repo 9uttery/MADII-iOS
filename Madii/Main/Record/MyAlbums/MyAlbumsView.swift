@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
     
     @State private var showAlbumSettingSheet: Bool = false
     @Binding var showChangeAlbumInfoPopUp: Bool
@@ -48,8 +48,7 @@ struct MyAlbumsView: View {
         }
         .roundBackground(bottomPadding: 32)
         .sheet(isPresented: $showAlbumSettingSheet) {
-            AlbumSettingBottomSheet(isTabBarShown: $isTabBarShown,
-                                    showAlbumSettingSheet: $showAlbumSettingSheet,
+            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet,
                                     showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
                 .presentationDetents([.height(360)])
                 .presentationDragIndicator(.visible)

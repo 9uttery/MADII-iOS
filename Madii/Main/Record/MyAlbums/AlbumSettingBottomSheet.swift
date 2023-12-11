@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
+    
     @Binding var showAlbumSettingSheet: Bool
     
     let title: String = "소확행 앨범 제목"
@@ -43,7 +44,7 @@ struct AlbumSettingBottomSheet: View {
                 // 앨범 설정 row
                 VStack(alignment: .leading, spacing: 10) {
                     Button {
-                        isTabBarShown = false
+                        tabBarManager.isTabBarShown = false
                         showAlbumSettingSheet = false
                         showChangeAlbumInfoPopUp = true
                     } label: {

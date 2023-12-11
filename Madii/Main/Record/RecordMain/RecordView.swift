@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
     @State private var showSaveJoyPopUp: Bool = false
     @State private var showChangeAlbumInfoPopUp: Bool = false
     
@@ -28,15 +28,13 @@ struct RecordView: View {
                     
                     VStack(alignment: .leading, spacing: 16) {
                         // 나만의 소확행을 수집해보세요
-                        SaveMyJoyView(isTabBarShown: $isTabBarShown,
-                                      showSaveJoyPopUp: $showSaveJoyPopUp)
+                        SaveMyJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
                         
                         // 최근 & 많이 실천한 소확행
                         AchievedJoyView()
                         
                         // 소확행 앨범
-                        MyAlbumsView(isTabBarShown: $isTabBarShown,
-                                     showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
+                        MyAlbumsView(showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -50,8 +48,7 @@ struct RecordView: View {
             
             // 나만의 소확행 저장 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(isTabBarShown: $isTabBarShown,
-                                   showSaveJoyPopUp: $showSaveJoyPopUp)
+                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp)
             }
             
             // 앨범 정보 수정 팝업

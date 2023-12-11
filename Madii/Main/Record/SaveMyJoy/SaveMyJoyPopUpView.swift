@@ -13,7 +13,7 @@ struct Album: Identifiable {
 }
 
 struct SaveMyJoyPopUpView: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showSaveJoyPopUp: Bool
     
     @State private var albums: [Album] = [Album(id: 1, title: "비 올 때 하기 좋은 소확행"), Album(id: 2, title: "샤브샤브 먹고 싶어")]
@@ -48,6 +48,7 @@ struct SaveMyJoyPopUpView: View {
             .padding(.horizontal, 40)
             .padding(.top, 160)
         }
+        .onAppear { tabBarManager.isTabBarShown = false }
     }
     
     var myAlbums: some View {
@@ -86,7 +87,7 @@ struct SaveMyJoyPopUpView: View {
 
     func dismissPopUp() {
         showSaveJoyPopUp = false
-        isTabBarShown = true
+        tabBarManager.isTabBarShown = true
     }
     
     func saveJoy() {

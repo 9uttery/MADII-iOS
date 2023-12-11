@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SaveMyJoyView: View {
-    @Binding var isTabBarShown: Bool
+    @EnvironmentObject private var tabBarManager: TabBarManager
     
     @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
     @Binding var showSaveJoyPopUp: Bool
@@ -23,7 +23,7 @@ struct SaveMyJoyView: View {
                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
                 
                 Button {
-                    isTabBarShown = false
+                    tabBarManager.isTabBarShown = false
                     showSaveJoyPopUp = true
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
