@@ -41,6 +41,7 @@
 		51E025A02B26F7EB00F4F41A /* PopUpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */; };
 		51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */; };
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
+		51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025B02B28988C00F4F41A /* OnboardingView.swift */; };
 		51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E052B19AE7E00F6CCFE /* PopUp.swift */; };
 		51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */; };
 		51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */; };
@@ -91,6 +92,7 @@
 		51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpStatus.swift; sourceTree = "<group>"; };
 		51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumPopUpView.swift; sourceTree = "<group>"; };
 		51E025A32B27291900F4F41A /* SaveJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveJoyToast.swift; sourceTree = "<group>"; };
+		51E025B02B28988C00F4F41A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		51F25E052B19AE7E00F6CCFE /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWithDescription.swift; sourceTree = "<group>"; };
 		51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiButton.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				51D8D3752B188F35001B6793 /* Components */,
+				51E025AE2B28986200F4F41A /* Login */,
 				51D8D36A2B177085001B6793 /* Home */,
 				51D8D36D2B1770DC001B6793 /* Record */,
 				51D8D3702B177104001B6793 /* Calendar */,
@@ -287,6 +290,22 @@
 				51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		51E025AE2B28986200F4F41A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				51E025AF2B28986D00F4F41A /* Onboarding */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		51E025AF2B28986D00F4F41A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				51E025B02B28988C00F4F41A /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		51F25E042B19AE7100F6CCFE /* PopUp */ = {
@@ -446,6 +465,7 @@
 				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
+				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
