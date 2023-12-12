@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct ChangeAlbumInfoPopUpView: View {
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    
+    @State private var name: String = ""
+    @State private var description: String = ""
+    
     var body: some View {
         ZStack(alignment: .center) {
             Color.black.opacity(0.8).ignoresSafeArea()
+                .onTapGesture { dismissPopUp() }
             
-            PopUpWithNameDescription()
+            PopUpWithNameDescription(title: "앨범 이름・설명 수정",
+                                     name: $name, description: $description,
+                                     leftButtonAction: dismissPopUp, rightButtonAction: changeInfo)
         }
+    }
+    
+    private func dismissPopUp() {
+        popUpStatus.showChangeAlbumInfo = false
+    }
+    
+    private func changeInfo() {
+        // 정보 수정 서버 업데이트
+        dismissPopUp()
     }
 }
 

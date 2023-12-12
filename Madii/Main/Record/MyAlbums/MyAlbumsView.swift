@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MyAlbumsView: View {
     @State private var showAlbumSettingSheet: Bool = false
-    @Binding var showChangeAlbumInfoPopUp: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -50,8 +49,7 @@ struct MyAlbumsView: View {
         }
         .roundBackground(bottomPadding: 32)
         .sheet(isPresented: $showAlbumSettingSheet) {
-            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet,
-                                    showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
+            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
                 .presentationDetents([.height(360)])
                 .presentationDragIndicator(.visible)
         }

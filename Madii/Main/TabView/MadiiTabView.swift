@@ -10,6 +10,7 @@ import SwiftUI
 struct MadiiTabView: View {
     @State var tabIndex: TabIndex = .record
     @StateObject private var tabBarManager = TabBarManager()
+    @StateObject private var popUpStatus = PopUpStatus()
 
     var body: some View {
         NavigationStack {
@@ -25,6 +26,7 @@ struct MadiiTabView: View {
                 }
             }
             .environmentObject(tabBarManager)
+            .environmentObject(popUpStatus)
             .onAppear {
                 tabBarManager.isTabBarShown = true
                 checkIsTabBarShown()

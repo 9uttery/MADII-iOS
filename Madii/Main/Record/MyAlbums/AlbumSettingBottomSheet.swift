@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
+    @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @Binding var showAlbumSettingSheet: Bool
     
     let title: String = "소확행 앨범 제목"
     let description: String = "설명 어쩌고 저쩌고"
     
-    @Binding var showChangeAlbumInfoPopUp: Bool
     @State private var isAlbumPublic: Bool = false
     
     var body: some View {
@@ -44,9 +44,8 @@ struct AlbumSettingBottomSheet: View {
                 // 앨범 설정 row
                 VStack(alignment: .leading, spacing: 10) {
                     Button {
-                        tabBarManager.isTabBarShown = false
-                        showAlbumSettingSheet = false
-                        showChangeAlbumInfoPopUp = true
+                        hideTabBarWithSheet()
+                        popUpStatus.showChangeAlbumInfo = true
                     } label: {
                         AlbumSettingBottomSheetRow(title: "앨범 이름・설명 수정")
                     }
@@ -55,13 +54,23 @@ struct AlbumSettingBottomSheet: View {
                     
                     AlbumSettingBottomSheetToggleRow(title: "전체 공개 여부 설정", isToggleTrue: $isAlbumPublic)
                     
-                    AlbumSettingBottomSheetRow(title: "삭제")
+                    Button {
+                        hideTabBarWithSheet()
+                        popUpStatus.showDeleteAlbum = true
+                    } label: {
+                        AlbumSettingBottomSheetRow(title: "삭제")
+                    }
                 }
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 40)
         }
         .ignoresSafeArea()
+    }
+    
+    private func hideTabBarWithSheet() {
+        tabBarManager.isTabBarShown = false
+        showAlbumSettingSheet = false
     }
 }
 

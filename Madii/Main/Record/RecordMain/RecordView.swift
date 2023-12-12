@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RecordView: View {
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    
     @State private var showSaveJoyPopUp: Bool = false
-    @State private var showChangeAlbumInfoPopUp: Bool = false
+    @State private var showSaveJoyToast: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
@@ -33,7 +35,7 @@ struct RecordView: View {
                         AchievedJoyView()
                         
                         // 소확행 앨범
-                        MyAlbumsView(showChangeAlbumInfoPopUp: $showChangeAlbumInfoPopUp)
+                        MyAlbumsView()
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -47,14 +49,27 @@ struct RecordView: View {
             
             // 나만의 소확행 저장 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp)
+                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp,
+                                   showSaveJoyToast: $showSaveJoyToast)
             }
             
             // 앨범 정보 수정 팝업
-            if showChangeAlbumInfoPopUp {
+            if popUpStatus.showChangeAlbumInfo {
                 ChangeAlbumInfoPopUpView()
             }
+            
+            // 앨범 삭제 팝업
+            if popUpStatus.showDeleteAlbum {
+                DeleteAlbumPopUpView()
+            }
+            
+            // 앨범 저장 토스트메시지
+            if showSaveJoyToast { SaveJoyToast() }
         }
         .navigationTitle("")
     }
+}
+
+#Preview {
+    MadiiTabView()
 }
