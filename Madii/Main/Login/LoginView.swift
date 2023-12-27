@@ -5,6 +5,9 @@
 //  Created by 이안진 on 12/27/23.
 //
 
+import KakaoSDKAuth
+import KakaoSDKCommon
+import KakaoSDKUser
 import SwiftUI
 
 struct LoginView: View {
@@ -12,19 +15,47 @@ struct LoginView: View {
         VStack {
             HStack { Spacer() }
             Spacer()
-            
+
             Button {
-                print("\(Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? "")")
+                kakaoLogin()
             } label: {
                 Text("카카오 로그인")
                     .font(.title.bold())
             }
-            
+
             Spacer()
         }
-        .background( background() )
+        .background(background())
     }
-    
+
+    func kakaoLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            // 카카오톡 앱 실행 가능
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("loginWithKakaoTalk() success.")
+
+                    // do something
+                    _ = oauthToken
+                }
+            }
+        } else {
+            // 카카오톡 앱 실행 불가능
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("loginWithKakaoAccount() success.")
+
+                    // do something
+                    _ = oauthToken
+                }
+            }
+        }
+    }
+
     func background() -> LinearGradient {
         LinearGradient(
             stops: [
