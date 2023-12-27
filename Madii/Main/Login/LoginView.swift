@@ -14,7 +14,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                
+                print("\(Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? "")")
             } label: {
                 Text("카카오 로그인")
                     .font(.title.bold())
