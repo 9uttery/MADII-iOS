@@ -22,6 +22,20 @@ struct LoginView: View {
                 Text("카카오 로그인")
                     .font(.title.bold())
             }
+            
+            Button {
+                kakaoLogout()
+            } label: {
+                Text("카카오 로그아웃")
+                    .font(.title.bold())
+            }
+            
+            Button {
+                kakaoUnlink()
+            } label: {
+                Text("카카오 연결 해제")
+                    .font(.title.bold())
+            }
 
             Spacer()
         }
@@ -35,7 +49,7 @@ struct LoginView: View {
                 if let error = error {
                     print(error)
                 } else {
-                    print("loginWithKakaoTalk() success.")
+                    print("DEBUG: loginWithKakaoTalk() success.")
 
                     // do something
                     _ = oauthToken
@@ -47,11 +61,31 @@ struct LoginView: View {
                 if let error = error {
                     print(error)
                 } else {
-                    print("loginWithKakaoAccount() success.")
+                    print("DEBUG: loginWithKakaoAccount() success.")
 
                     // do something
                     _ = oauthToken
                 }
+            }
+        }
+    }
+    
+    func kakaoLogout() {
+        UserApi.shared.logout { error in
+            if let error = error {
+                print("DEBUG: kakao logout error: \(error)")
+            } else {
+                print("DEBUG: kakao logout success.")
+            }
+        }
+    }
+    
+    func kakaoUnlink() {
+        UserApi.shared.unlink {(error) in
+            if let error = error {
+                print("DEBUG: kakao unlink error: \(error)")
+            } else {
+                print("DEBUG: kakao unlink success.")
             }
         }
     }
