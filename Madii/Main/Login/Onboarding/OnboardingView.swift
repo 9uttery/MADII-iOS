@@ -19,6 +19,7 @@ struct OnboardingView: View {
         OnboardingPage(id: 1, title: "아주 소소한 것이라도 좋아요!", description: "바쁜 일상 속에서도 잠깐 시간을 내어\n내가 온전히 행복한 순간들을 기록해보세요", image: .gray200),
         OnboardingPage(id: 2, title: "새로운 행복을 발견해요", description: "무심코 놓치고 있던 행복을 발견하고,\n취향에 맞는 행복도 추천받을 수 있어요", image: .gray400)]
     @State private var selectedPage: Int = 0
+    @State private var showMainView: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -46,16 +47,10 @@ struct OnboardingView: View {
             
             Spacer()
         }
-        .background(
-            LinearGradient(
-                stops: [
-                    Gradient.Stop(color: Color(red: 0.09, green: 0.09, blue: 0.15), location: 0.00),
-                    Gradient.Stop(color: Color(red: 0.42, green: 0.44, blue: 0.68), location: 1.00)
-                ],
-                startPoint: UnitPoint(x: 0.5, y: 0),
-                endPoint: UnitPoint(x: 0.5, y: 1)
-            )
-        )
+        .background(OnboardingBackgroundGradient())
+        .navigationDestination(isPresented: $showMainView) {
+            MadiiTabView().navigationBarBackButtonHidden()
+        }
     }
     
     // 페이지 위치 점 세개
@@ -97,7 +92,7 @@ struct OnboardingView: View {
     // '회원가입 없이 둘러보기' 메인화면으로 넘어가는 버튼
     var showMainButton: some View {
         Button {
-            showMainView()
+            showMainView = true
         } label: {
             Text("회원가입 없이 둘러보기")
                 .madiiFont(font: .madiiBody2, color: .white)
@@ -109,15 +104,26 @@ struct OnboardingView: View {
     // 다음 버튼 Action
     private func showNextPage() {
         if selectedPage < 2 {
-            selectedPage += 1
+            withAnimation {
+                selectedPage += 1
+            }
         } else if selectedPage == 3 {
             // TODO: 로그인 페이지로 이동
         }
     }
-    
-    // '회원가입 없이 둘러보기' 메인화면 버튼 Action
-    private func showMainView() {
-        // TODO: 메인 화면으로
+}
+
+struct OnboardingBackgroundGradient: View {
+    var body: some View {
+        LinearGradient(
+            stops: [
+                Gradient.Stop(color: Color(red: 0.09, green: 0.09, blue: 0.15), location: 0.00),
+                Gradient.Stop(color: Color(red: 0.42, green: 0.44, blue: 0.68), location: 1.00)
+            ],
+            startPoint: UnitPoint(x: 0.5, y: 0),
+            endPoint: UnitPoint(x: 0.5, y: 1)
+        )
+        .ignoresSafeArea()
     }
 }
 

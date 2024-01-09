@@ -19,12 +19,15 @@ struct MadiiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
-                .onOpenURL { url in
-                    if AuthApi.isKakaoTalkLoginUrl(url) {
-                        _ = AuthController.handleOpenUrl(url: url)
-                    }
-                }
+//            LoginView()
+//                .onOpenURL { url in
+//                    if AuthApi.isKakaoTalkLoginUrl(url) {
+//                        _ = AuthController.handleOpenUrl(url: url)
+//                    }
+//                }
+            NavigationStack {
+                OnboardingView()
+            }
         }
     }
 }
