@@ -77,7 +77,7 @@ struct DailyJoyView: View {
     }
     
     private func saveSatisfaction() {
-        print(satisfaction)
+        print(dummy[index].satisfaction)
     }
 }
 
