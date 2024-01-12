@@ -28,6 +28,7 @@
 		5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
+		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheetRow.swift; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
+		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */,
+				514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
+				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
