@@ -12,34 +12,53 @@ import SwiftUI
 
 struct LoginView: View {
     var body: some View {
-        VStack {
-            HStack { Spacer() }
+        VStack(spacing: 0) {
             Spacer()
-
-            Button {
-                kakaoLogin()
-            } label: {
+            
+            Rectangle()
+                .frame(height: 392)
+                .padding(.bottom, 40)
+            
+            HStack {
+                Circle()
+                    .frame(width: 22, height: 22)
+                    .foregroundStyle(Color.black)
+                Spacer()
                 Text("카카오 로그인")
-                    .font(.title.bold())
+                    .madiiFont(font: .madiiBody2, color: .black)
+                Spacer()
             }
+            .padding(16)
+            .background(Color(red: 1, green: 0.9, blue: 0))
+            .cornerRadius(12)
+            .padding(.bottom, 12)
             
-            Button {
-                kakaoLogout()
-            } label: {
-                Text("카카오 로그아웃")
-                    .font(.title.bold())
+            HStack {
+                Circle()
+                    .frame(width: 22, height: 22)
+                    .foregroundStyle(Color.white)
+                Spacer()
+                Text("애플 로그인")
+                    .madiiFont(font: .madiiBody2, color: .white)
+                Spacer()
             }
+            .padding(16)
+            .background(Color.black)
+            .cornerRadius(12)
             
-            Button {
-                kakaoUnlink()
-            } label: {
-                Text("카카오 연결 해제")
-                    .font(.title.bold())
-            }
+            Rectangle()
+                .foregroundStyle(Color.white.opacity(0.2))
+                .frame(height: 1)
+                .padding(.vertical, 20)
 
-            Spacer()
+            HStack(spacing: 8) {
+                MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .small)
+                MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .small)
+            }
+            .padding(.bottom, 48)
         }
-        .background(background())
+        .padding(.horizontal, 16)
+        .background(OnboardingBackgroundGradient())
     }
 
     func kakaoLogin() {
@@ -88,17 +107,6 @@ struct LoginView: View {
                 print("DEBUG: kakao unlink success.")
             }
         }
-    }
-
-    func background() -> LinearGradient {
-        LinearGradient(
-            stops: [
-                Gradient.Stop(color: Color(red: 0.09, green: 0.09, blue: 0.15), location: 0.00),
-                Gradient.Stop(color: Color(red: 0.42, green: 0.44, blue: 0.68), location: 1.00)
-            ],
-            startPoint: UnitPoint(x: 0.5, y: 0),
-            endPoint: UnitPoint(x: 0.5, y: 1)
-        )
     }
 }
 

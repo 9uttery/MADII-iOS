@@ -159,6 +159,14 @@
 			path = MyAlbums;
 			sourceTree = "<group>";
 		};
+		514C36AA2B4D43EA001A55D1 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		515EFC822AFCA0D000230647 = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				51E025AF2B28986D00F4F41A /* Onboarding */,
-				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
+				514C36AA2B4D43EA001A55D1 /* LoginView */,
 			);
 			path = Login;
 			sourceTree = "<group>";

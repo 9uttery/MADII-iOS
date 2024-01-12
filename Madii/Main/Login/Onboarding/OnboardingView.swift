@@ -20,6 +20,7 @@ struct OnboardingView: View {
         OnboardingPage(id: 2, title: "새로운 행복을 발견해요", description: "무심코 놓치고 있던 행복을 발견하고,\n취향에 맞는 행복도 추천받을 수 있어요", image: .gray400)]
     @State private var selectedPage: Int = 0
     @State private var showMainView: Bool = false
+    @State private var showLoginView: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -28,6 +29,7 @@ struct OnboardingView: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
             
+            // FIXME: TabView로 전환해서 슬라이드 가능하도록
             // 문구(제목과 설명)
             titleAndDescription
                 .padding(.top, 66)
@@ -50,6 +52,9 @@ struct OnboardingView: View {
         .background(OnboardingBackgroundGradient())
         .navigationDestination(isPresented: $showMainView) {
             MadiiTabView().navigationBarBackButtonHidden()
+        }
+        .navigationDestination(isPresented: $showLoginView) {
+            LoginView().navigationBarBackButtonHidden()
         }
     }
     
@@ -108,7 +113,7 @@ struct OnboardingView: View {
                 selectedPage += 1
             }
         } else if selectedPage == 3 {
-            // TODO: 로그인 페이지로 이동
+            showLoginView = true
         }
     }
 }
