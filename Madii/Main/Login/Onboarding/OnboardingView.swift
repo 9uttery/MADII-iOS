@@ -112,7 +112,7 @@ struct OnboardingView: View {
             withAnimation {
                 selectedPage += 1
             }
-        } else if selectedPage == 3 {
+        } else if selectedPage == 2 {
             showLoginView = true
         }
     }
