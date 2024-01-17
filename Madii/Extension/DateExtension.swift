@@ -14,10 +14,22 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var twoDigitDay: String {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: self)
+        return String(format: "%02d", day)
+    }
+    
     var month: String {
         let calendar = Calendar.current
         let month = calendar.component(.month, from: self)
         return "\(month)"
+    }
+    
+    var twoDigitMonth: String {
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: self)
+        return String(format: "%02d", month)
     }
     
     var year: String {

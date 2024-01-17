@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .record
+    @State var tabIndex: TabIndex = .calendar
     @StateObject private var tabBarManager = TabBarManager()
     @StateObject private var popUpStatus = PopUpStatus()
 

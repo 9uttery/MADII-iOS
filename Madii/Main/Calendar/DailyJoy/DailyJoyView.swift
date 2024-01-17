@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyJoyView: View {
+    let date: Date
     @State private var satisfaction: Float = 100
     
     @State private var dummy: [Joy] = Joy.dailyJoyDummy
@@ -73,7 +74,7 @@ struct DailyJoyView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 20)
         }
-        .navigationTitle("데일리 소확행")
+        .navigationTitle("\(date.year != Date().year ? "\(date.year)년 " : "")\(date.twoDigitMonth)월 \(date.twoDigitDay)일 소확행")
     }
     
     private func saveSatisfaction() {
@@ -81,6 +82,8 @@ struct DailyJoyView: View {
     }
 }
 
-#Preview {
-    DailyJoyView()
-}
+ #Preview {
+     NavigationStack {
+         MadiiTabView()
+     }
+ }

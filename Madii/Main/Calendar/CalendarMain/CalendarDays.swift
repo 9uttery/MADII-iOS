@@ -53,7 +53,7 @@ struct CalendarDays: View {
         }
         .padding(.horizontal, 26)
         .navigationDestination(isPresented: $showDailyJoyView) {
-            DailyJoyView()
+            DailyJoyView(date: selectedDate)
         }
     }
     
