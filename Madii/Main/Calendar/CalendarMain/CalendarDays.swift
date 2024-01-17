@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarDays: View {
     let today = Date()
     @Binding var selectedDate: Date
+    @State private var showDailyJoyView: Bool = false
     
     // 소확행 커버 구현에 필요한 임시 데이터
     let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -20,22 +21,20 @@ struct CalendarDays: View {
             emptyDays
             
             ForEach(monthDates(), id: \.self) { date in
-                VStack(spacing: 0) {
-                    // 일자
-                    Text(date.day)
-                        .madiiFont(font: .madiiCalendar, color: fontColor(at: date))
-                        .frame(width: 36, height: 36)
-                        .background(backgroundColor(at: date))
-                        .overlay(Circle().strokeBorder(borderColor(at: date), lineWidth: 1))
-                        .clipShape(Circle())
-                        .frame(width: 42, height: 42)
-                        .onTapGesture {
-                            selectedDate = date
-                        }
-                    
-                    NavigationLink {
-                        DailyJoyView()
-                    } label: {
+                Button {
+                    selectedDate = date
+                    showDailyJoyView = true
+                } label: {
+                    VStack(spacing: 0) {
+                        // 일자
+                        Text(date.day)
+                            .madiiFont(font: .madiiCalendar, color: fontColor(at: date))
+                            .frame(width: 36, height: 36)
+                            .background(backgroundColor(at: date))
+                            .overlay(Circle().strokeBorder(borderColor(at: date), lineWidth: 1))
+                            .clipShape(Circle())
+                            .frame(width: 42, height: 42)
+                        
                         // 각 일마다 있는 소확행 커버
                         LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
                             ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
@@ -44,14 +43,18 @@ struct CalendarDays: View {
                             }
                         }
                         .frame(width: 42)
+                        
+                        Spacer()
                     }
+                    .frame(height: 98)
                     
-                    Spacer()
                 }
-                .frame(height: 98)
             }
         }
         .padding(.horizontal, 26)
+        .navigationDestination(isPresented: $showDailyJoyView) {
+            DailyJoyView()
+        }
     }
     
     var emptyDays: some View {

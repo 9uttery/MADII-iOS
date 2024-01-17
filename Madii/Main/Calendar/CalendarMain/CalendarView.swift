@@ -85,5 +85,7 @@ struct CalendarView: View {
 }
 
 #Preview {
-    CalendarView()
+    NavigationStack {
+        MadiiTabView()
+    }
 }
