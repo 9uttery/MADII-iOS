@@ -41,6 +41,7 @@
 		516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BE2B21B72E0010199B /* DailyJoyView.swift */; };
 		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
 		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
+		519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -59,6 +60,7 @@
 		51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */; };
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
 		51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025B02B28988C00F4F41A /* OnboardingView.swift */; };
+		51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */; };
 		51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E052B19AE7E00F6CCFE /* PopUp.swift */; };
 		51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */; };
 		51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */; };
@@ -96,6 +98,7 @@
 		516455BE2B21B72E0010199B /* DailyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJoyView.swift; sourceTree = "<group>"; };
 		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
 		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
+		519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoySatisfactionBottomSheet.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumPopUpView.swift; sourceTree = "<group>"; };
 		51E025A32B27291900F4F41A /* SaveJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveJoyToast.swift; sourceTree = "<group>"; };
 		51E025B02B28988C00F4F41A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		51E29E5F2B552E6C00A35EBF /* Madii.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Madii.entitlements; sourceTree = "<group>"; };
+		51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		51F25E052B19AE7E00F6CCFE /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWithDescription.swift; sourceTree = "<group>"; };
 		51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiButton.swift; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
+				51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 		515EFC8D2AFCA0D100230647 /* Madii */ = {
 			isa = PBXGroup;
 			children = (
+				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
 				51D690DF2B15B9EA00F8D705 /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51E0259E2B26F7C500F4F41A /* Service */,
@@ -244,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				516455BE2B21B72E0010199B /* DailyJoyView.swift */,
+				519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */,
 			);
 			path = DailyJoy;
 			sourceTree = "<group>";
@@ -529,6 +537,7 @@
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,
+				519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
@@ -546,6 +555,7 @@
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
+				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
@@ -700,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
@@ -737,6 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";

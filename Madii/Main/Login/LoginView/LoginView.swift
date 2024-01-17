@@ -19,6 +19,18 @@ struct LoginView: View {
                 .frame(height: 392)
                 .padding(.bottom, 40)
             
+            Button {
+                kakaoLogin()
+            } label: {
+                Text("카카오 로그인")
+            }
+            
+            Button {
+                kakaoUnlink()
+            } label: {
+                Text("카카오 연결 해제")
+            }
+            
             HStack {
                 Circle()
                     .frame(width: 22, height: 22)
@@ -33,18 +45,7 @@ struct LoginView: View {
             .cornerRadius(12)
             .padding(.bottom, 12)
             
-            HStack {
-                Circle()
-                    .frame(width: 22, height: 22)
-                    .foregroundStyle(Color.white)
-                Spacer()
-                Text("애플 로그인")
-                    .madiiFont(font: .madiiBody2, color: .white)
-                Spacer()
-            }
-            .padding(16)
-            .background(Color.black)
-            .cornerRadius(12)
+            AppleLoginButton()
             
             Rectangle()
                 .foregroundStyle(Color.white.opacity(0.2))

@@ -11,7 +11,12 @@ struct Joy: Identifiable {
     let id = UUID()
     let title: String
     var counts: Int = 0
-    var satisfaction: Float = 100.0
+    var satisfaction: Int = 3
+    
+    private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
+    var satisfactionImage: String {
+        satisfactionImages[satisfaction] ?? ""
+    }
     
     static let manyAchievedDummy: [Joy] = [Joy(title: "샤브샤브 먹기", counts: 21),
                                            Joy(title: "방어 먹기", counts: 17),
@@ -20,9 +25,9 @@ struct Joy: Identifiable {
                                            Joy(title: "돈까스 먹기", counts: 3)]
     
     static let dailyJoyDummy: [Joy] = [
-        Joy(title: "산책하면서 크리스마스 플리 듣기", satisfaction: 80.0),
-        Joy(title: "샤워하고 아이스크림 먹기", satisfaction: 65.0),
-        Joy(title: "전기장판에 누워서 귤 까먹기", satisfaction: 90.0)]
+        Joy(title: "산책하면서 크리스마스 플리 듣기", satisfaction: 2),
+        Joy(title: "샤워하고 아이스크림 먹기", satisfaction: 4),
+        Joy(title: "전기장판에 누워서 귤 까먹기", satisfaction: 5)]
 }
 
 struct RecentAchievedJoy: Identifiable {

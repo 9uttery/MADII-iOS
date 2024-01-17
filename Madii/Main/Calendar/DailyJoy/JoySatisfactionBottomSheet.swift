@@ -1,0 +1,82 @@
+//
+//  JoySatisfactionBottomSheet.swift
+//  Madii
+//
+//  Created by 이안진 on 1/17/24.
+//
+
+import SwiftUI
+
+struct JoySatisfactionBottomSheet: View {
+    let joy: Joy
+    private let satisfactions: [Int] = [1, 2, 3, 4, 5]
+    private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
+    @State private var selectedSatisfaction: Int = 3
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(joy.title)
+                    .madiiFont(font: .madiiSubTitle, color: .white)
+                Text("얼마나 행복하셨나요?")
+                    .madiiFont(font: .madiiBody3, color: .white)
+            }
+            
+            Spacer()
+            
+            ZStack {
+                Rectangle()
+                    .foregroundStyle(Color.madiiPopUp)
+                    .frame(height: 3)
+                
+                HStack(spacing: 0) {
+                    ForEach(satisfactions, id: \.self) { satisfaction in
+                        Button {
+                            selectedSatisfaction = satisfaction
+                        } label: {
+                            satisfactionIcon(of: satisfaction)
+                        }
+                        
+                        if satisfaction != satisfactions.last {
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .frame(height: 120)
+            .background(Color.madiiOption)
+            .cornerRadius(12)
+            .padding(.bottom, 32)
+        }
+        .padding(.top, 36)
+        .padding(.horizontal, 16)
+        .background(Color.madiiPopUp)
+        .onAppear { selectedSatisfaction = joy.satisfaction }
+    }
+    
+    @ViewBuilder
+    private func satisfactionIcon(of satisfaction: Int) -> some View {
+        let isSelected: Bool = satisfaction == selectedSatisfaction
+        
+        ZStack {
+            Circle()
+                .frame(width: 36, height: 36)
+                .foregroundStyle(Color.madiiOption)
+                .overlay {
+                    Circle()
+                        .stroke(isSelected ? Color.madiiYellowGreen : Color.madiiPopUp, lineWidth: 2)
+                }
+            
+            if isSelected {
+                Image(satisfactionImages[satisfaction] ?? "")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            } else {
+                Circle()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(Color.madiiPopUp)
+            }
+        }
+    }
+}
