@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DailyJoyView: View {
     let date: Date
-    
     @State private var joys: [Joy] = Joy.dailyJoyDummy
     @State private var selectedJoy: Joy?
     
@@ -23,10 +22,9 @@ struct DailyJoyView: View {
                         joyRow(joy)
                     }
                 }
-                .sheet(item: $selectedJoy) { _ in
-                    // Content of the sheet for the selected item
-                    Text("넷플릭스 보면서 귤 까먹기 냠냠냠 맛있다 소확행이 길면 이렇게 처리 (최대 35자)")
-                        .presentationDetents([.height(360)])
+                .sheet(item: $selectedJoy) { item in
+                    JoySatisfactionBottomSheet(joy: item)
+                        .presentationDetents([.height(300)])
                         .presentationDragIndicator(.hidden)
                 }
             }
