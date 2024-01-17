@@ -10,6 +10,7 @@ import SwiftUI
 struct JoySatisfactionBottomSheet: View {
     let joy: Joy
     private let satisfactions: [Int] = [1, 2, 3, 4, 5]
+    private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
     @State private var selectedSatisfaction: Int = 3
     
     var body: some View {
@@ -33,19 +34,7 @@ struct JoySatisfactionBottomSheet: View {
                         Button {
                             selectedSatisfaction = satisfaction
                         } label: {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 36, height: 36)
-                                    .foregroundStyle(Color.madiiOption)
-                                    .overlay {
-                                        Circle()
-                                            .stroke(satisfaction == selectedSatisfaction ? Color.madiiYellowGreen : Color.madiiPopUp, lineWidth: 2)
-                                    }
-                                
-                                Circle()
-                                    .frame(width: 24, height: 24)
-                                    .foregroundStyle(satisfaction == selectedSatisfaction ? Color.madiiYellowGreen : Color.madiiPopUp)
-                            }
+                            satisfactionIcon(of: satisfaction)
                         }
                         
                         if satisfaction != satisfactions.last {
@@ -64,5 +53,30 @@ struct JoySatisfactionBottomSheet: View {
         .padding(.horizontal, 16)
         .background(Color.madiiPopUp)
         .onAppear { selectedSatisfaction = joy.satisfaction }
+    }
+    
+    @ViewBuilder
+    private func satisfactionIcon(of satisfaction: Int) -> some View {
+        let isSelected: Bool = satisfaction == selectedSatisfaction
+        
+        ZStack {
+            Circle()
+                .frame(width: 36, height: 36)
+                .foregroundStyle(Color.madiiOption)
+                .overlay {
+                    Circle()
+                        .stroke(isSelected ? Color.madiiYellowGreen : Color.madiiPopUp, lineWidth: 2)
+                }
+            
+            if isSelected {
+                Image(satisfactionImages[satisfaction] ?? "")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            } else {
+                Circle()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(Color.madiiPopUp)
+            }
+        }
     }
 }

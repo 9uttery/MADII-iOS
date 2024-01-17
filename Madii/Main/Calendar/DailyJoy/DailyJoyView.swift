@@ -52,7 +52,8 @@ struct DailyJoyView: View {
             
             Spacer()
             
-            Circle()
+            Image(joy.satisfactionImage)
+                .resizable()
                 .frame(width: 28, height: 28)
                 .foregroundStyle(Color.madiiYellowGreen)
         }

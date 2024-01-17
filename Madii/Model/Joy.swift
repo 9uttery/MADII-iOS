@@ -13,6 +13,11 @@ struct Joy: Identifiable {
     var counts: Int = 0
     var satisfaction: Int = 3
     
+    private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
+    var satisfactionImage: String {
+        satisfactionImages[satisfaction] ?? ""
+    }
+    
     static let manyAchievedDummy: [Joy] = [Joy(title: "샤브샤브 먹기", counts: 21),
                                            Joy(title: "방어 먹기", counts: 17),
                                            Joy(title: "열라면 먹기", counts: 12),
