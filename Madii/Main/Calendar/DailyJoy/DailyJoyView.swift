@@ -9,28 +9,36 @@ import SwiftUI
 
 struct DailyJoyView: View {
     let date: Date
-    @State private var satisfaction: Float = 100
     
-    @State private var dummy: [Joy] = Joy.dailyJoyDummy
+    @State private var joys: [Joy] = Joy.dailyJoyDummy
+    @State private var selectedJoy: Joy?
     
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                ForEach(dummy) { joy in
-                    joyRow(joy.title)
+                ForEach(joys) { joy in
+                    Button {
+                        selectedJoy = joy
+                    } label: {
+                        joyRow(joy)
+                    }
                 }
-                
-                joyRow("나 진짜 긴 소확행 하나 할건데 아무도 말리지마!!!")
+                .sheet(item: $selectedJoy) { _ in
+                    // Content of the sheet for the selected item
+                    Text("넷플릭스 보면서 귤 까먹기 냠냠냠 맛있다 소확행이 길면 이렇게 처리 (최대 35자)")
+                        .presentationDetents([.height(360)])
+                        .presentationDragIndicator(.hidden)
+                }
             }
             .padding(.top, 20)
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 16)
         }
         .scrollIndicators(.never)
         .navigationTitle("\(date.year != Date().year ? "\(date.year)년 " : "")\(date.twoDigitMonth)월 \(date.twoDigitDay)일 소확행")
     }
     
     @ViewBuilder
-    private func joyRow(_ title: String) -> some View {
+    private func joyRow(_ joy: Joy) -> some View {
         HStack(spacing: 15) {
             Circle()
                 .frame(width: 48, height: 48)
@@ -41,7 +49,7 @@ struct DailyJoyView: View {
                         .stroke(.white.opacity(0.4), lineWidth: 0.2)
                 )
             
-            Text(title)
+            Text(joy.title)
                 .madiiFont(font: .madiiBody3, color: .white)
             
             Spacer()
@@ -54,9 +62,9 @@ struct DailyJoyView: View {
 }
 
 #Preview {
-     NavigationStack {
-         MadiiTabView()
-     }
+//    NavigationStack {
+//        MadiiTabView()
+//    }
      
-//    DailyJoyView(date: Date())
+    DailyJoyView(date: Date())
 }
