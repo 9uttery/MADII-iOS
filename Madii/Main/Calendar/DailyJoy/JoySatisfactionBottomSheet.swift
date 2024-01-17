@@ -10,7 +10,7 @@ import SwiftUI
 struct JoySatisfactionBottomSheet: View {
     let joy: Joy
     private let satisfactions: [Int] = [1, 2, 3, 4, 5]
-    @State private var selectedSatisfaction: Int = 1
+    @State private var selectedSatisfaction: Int = 3
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -63,5 +63,6 @@ struct JoySatisfactionBottomSheet: View {
         .padding(.top, 36)
         .padding(.horizontal, 16)
         .background(Color.madiiPopUp)
+        .onAppear { selectedSatisfaction = joy.satisfaction }
     }
 }
