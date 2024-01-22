@@ -23,7 +23,7 @@ struct UserAnalyticsView: View {
         UserAnalyticsContent(type: .many, title: "많이 실천한 소확행",
                              image: "trophy.fill", imageColor: Color.madiiOrange),
         UserAnalyticsContent(type: .myJoy, title: "내가 기록한 소확행",
-                             image: "note.text", imageColor: Color.madiiPurple)]
+                             image: "note.text", imageColor: Color.madiiPink)]
     
     var body: some View {
         // 최근 본 앨범 & 많이 실천한 소확행 & 내가 기록한 소확행
