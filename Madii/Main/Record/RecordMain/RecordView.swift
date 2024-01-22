@@ -21,13 +21,13 @@ struct RecordView: View {
                         Text("레코드")
                             .madiiFont(font: .madiiTitle, color: .white)
                             .padding(.vertical, 12)
+                            .padding(.horizontal, 22)
                         
                         Spacer()
                     }
-                    .padding(.horizontal, 22)
                     .padding(.bottom, 12)
                     
-                    VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 20) {
                         // 나만의 소확행을 수집해보세요
                         SaveMyJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
                         
@@ -39,8 +39,6 @@ struct RecordView: View {
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
-                    
-                    Spacer()
                 }
                 // 하단 여백 40
                 .padding(.bottom, 40)
