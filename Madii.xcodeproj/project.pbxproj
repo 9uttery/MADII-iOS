@@ -42,6 +42,7 @@
 		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
 		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
 		519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */; };
+		519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -99,6 +100,7 @@
 		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
 		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
 		519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoySatisfactionBottomSheet.swift; sourceTree = "<group>"; };
+		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		51F25E172B1A080700F6CCFE /* UserAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */,
 				51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */,
 				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
 				51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */,
@@ -534,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
+				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,

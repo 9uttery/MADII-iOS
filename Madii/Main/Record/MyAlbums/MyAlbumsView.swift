@@ -17,13 +17,17 @@ struct MyAlbumsView: View {
                     .madiiFont(font: .madiiSubTitle, color: .white)
                     
                 Spacer()
-                    
+                
+                /*
+                // 추가 버튼 삭제
+                 
                 Text("추가")
                     .madiiFont(font: .madiiBody5, color: .white)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
                     .background(Color.madiiOption)
                     .cornerRadius(6)
+                 */
             }
                 
             VStack(spacing: 16) {
