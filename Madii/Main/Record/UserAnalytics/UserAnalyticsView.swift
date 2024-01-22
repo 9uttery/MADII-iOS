@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-enum UserAnalyticsType { case recent, many, myJoy }
-
-struct UserAnalyticsContent: Identifiable {
-    let id = UUID()
-    let type: UserAnalyticsType
-    let title, image: String
-    let imageColor: Color
-}
-
 struct UserAnalyticsView: View {
     private let contents: [UserAnalyticsContent] = [
         UserAnalyticsContent(type: .recent, title: "최근 본 앨범",
