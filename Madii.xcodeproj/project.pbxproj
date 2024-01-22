@@ -68,7 +68,7 @@
 		51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */; };
 		51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */; };
 		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
-		51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */; };
+		51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */; };
 		51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */; };
 		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
 		51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */; };
@@ -127,7 +127,7 @@
 		51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyPopUpView.swift; sourceTree = "<group>"; };
 		51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumRow.swift; sourceTree = "<group>"; };
 		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
-		51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedJoyView.swift; sourceTree = "<group>"; };
+		51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsView.swift; sourceTree = "<group>"; };
 		51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoyView.swift; sourceTree = "<group>"; };
 		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
 		51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyAchievedJoyView.swift; sourceTree = "<group>"; };
@@ -401,7 +401,7 @@
 		51F25E172B1A080700F6CCFE /* AchievedJoy */ = {
 			isa = PBXGroup;
 			children = (
-				51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */,
+				51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */,
 				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
 				51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */,
 			);
@@ -570,7 +570,7 @@
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
-				51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */,
+				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
