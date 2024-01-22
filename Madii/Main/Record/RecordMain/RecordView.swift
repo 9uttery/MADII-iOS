@@ -28,7 +28,7 @@ struct RecordView: View {
                     .padding(.bottom, 12)
                     
                     VStack(alignment: .leading, spacing: 20) {
-                        // 나만의 소확행을 수집해보세요
+                        // 나만의 소확행을 기록해 보세요
                         SaveMyJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
                         
                         // 최근 & 많이 실천한 소확행

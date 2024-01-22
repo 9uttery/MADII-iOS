@@ -15,7 +15,7 @@ struct SaveMyJoyView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("나만의 소확행을 수집해보세요")
+            Text("나만의 소확행을 기록해 보세요")
                 .madiiFont(font: .madiiSubTitle, color: .white)
             
             HStack(spacing: 0) {
