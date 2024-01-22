@@ -316,7 +316,7 @@
 			children = (
 				51F25E162B1A07E500F6CCFE /* RecordMain */,
 				51F25E1A2B1A08E600F6CCFE /* SaveMyJoy */,
-				51F25E172B1A080700F6CCFE /* AchievedJoy */,
+				51F25E172B1A080700F6CCFE /* UserAnalytics */,
 				5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */,
 				516455952B1EFE140010199B /* AlbumDetailView.swift */,
 			);
@@ -398,14 +398,14 @@
 			path = RecordMain;
 			sourceTree = "<group>";
 		};
-		51F25E172B1A080700F6CCFE /* AchievedJoy */ = {
+		51F25E172B1A080700F6CCFE /* UserAnalytics */ = {
 			isa = PBXGroup;
 			children = (
 				51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */,
 				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
 				51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */,
 			);
-			path = AchievedJoy;
+			path = UserAnalytics;
 			sourceTree = "<group>";
 		};
 		51F25E1A2B1A08E600F6CCFE /* SaveMyJoy */ = {
