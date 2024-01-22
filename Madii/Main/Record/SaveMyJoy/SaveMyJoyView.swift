@@ -18,9 +18,10 @@ struct SaveMyJoyView: View {
             Text("나만의 소확행을 기록해 보세요")
                 .madiiFont(font: .madiiSubTitle, color: .white)
             
-            HStack(spacing: 0) {
+            HStack(spacing: 12) {
                 TextField("누워서 빗소리 감상하기", text: $myNewJoy)
                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
+                    .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
                 
                 Button {
                     tabBarManager.isTabBarShown = false
