@@ -50,10 +50,16 @@ struct ManyAchievedJoyView: View {
                     let count = joys.count
                     ForEach(0 ..< count, id: \.self) { index in
                         if index > 0 {
-                            HStack {
+                            HStack(spacing: 15) {
+                                // 순위
+                                Text("\(index + 1)")
+                                    .madiiFont(font: .madiiBody3, color: .gray500)
+                                
                                 JoyRow(title: joys[index].title)
+                                
                                 Spacer()
                                 
+                                // 실천 횟수
                                 Text("\(joys[index].counts) 회")
                                     .madiiFont(font: .madiiBody5, color: .gray400)
                                     .padding(.horizontal, 12)
