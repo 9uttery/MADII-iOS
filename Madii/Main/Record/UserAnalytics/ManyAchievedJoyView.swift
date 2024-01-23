@@ -14,23 +14,36 @@ struct ManyAchievedJoyView: View {
         ScrollView {
             VStack(alignment: .center, spacing: 32) {
                 // 1등
-                VStack(spacing: 0) {
-                    Circle()
-                        .foregroundStyle(Color.madiiOrange)
-                        .frame(width: 208, height: 208)
-                        .padding(.bottom, 12)
+                VStack(spacing: 12) {
+                    ZStack(alignment: .topLeading) {
+                        Circle()
+                            .frame(width: 100, height: 100)
+                            .foregroundStyle(Color.black)
+                            .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
+                        
+                        // FIXME: 이미지로 변경
+                        Circle()
+                            .frame(width: 28, height: 28)
+                            .foregroundStyle(Color.madiiYellowGreen)
+                    }
                     
                     Text(joys[0].title)
-                        .madiiFont(font: .madiiTitle, color: .white)
-                        .padding(.bottom, 6)
+                        .madiiFont(font: .madiiBody1, color: .white)
+                        .frame(width: 200)
+                        .multilineTextAlignment(.center)
                     
                     Text("\(joys[0].counts) 회")
-                        .madiiFont(font: .madiiTitle, color: .madiiYellowGreen)
-                        .padding(.horizontal, 20)
+                        .madiiFont(font: .madiiBody1, color: .white)
+                        .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                        .background(Color.madiiOption)
+                        .background(Color.madiiBox)
                         .cornerRadius(90)
                 }
+                .padding(.vertical, 32)
+                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity)
+                .background(Color.madiiOption)
+                .cornerRadius(20)
                 
                 // 2등 ~ 5등
                 VStack(spacing: 16) {
@@ -53,14 +66,14 @@ struct ManyAchievedJoyView: View {
                 }
                 .roundBackground(bottomPadding: 32)
             }
-            .padding(.top, 32)
+            .padding(.top, 28)
             .padding(.horizontal, 16)
-            .padding(.bottom, 40)
+            .padding(.bottom, 60)
         }
         .scrollIndicators(.hidden)
         .navigationTitle("많이 실천한 소확행")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
-              .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

@@ -18,7 +18,7 @@ struct Joy: Identifiable {
         satisfactionImages[satisfaction] ?? ""
     }
     
-    static let manyAchievedDummy: [Joy] = [Joy(title: "샤브샤브 먹기", counts: 21),
+    static let manyAchievedDummy: [Joy] = [Joy(title: "뜨끈한 메밀차 마시기 뜨끈한 메밀차 마시기 뜨끈한 메밀", counts: 21),
                                            Joy(title: "방어 먹기", counts: 17),
                                            Joy(title: "열라면 먹기", counts: 12),
                                            Joy(title: "연어 먹기", counts: 5),
