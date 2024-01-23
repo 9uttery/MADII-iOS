@@ -15,23 +15,37 @@ struct MyJoyView: View {
             VStack(spacing: 20) {
                 // (박스) 모든 날짜
                 ForEach(allJoys) { eachDayJoy in
-                    VStack(spacing: 8) {
-                        // 각 날짜의 모든 소확행
-                        ForEach(eachDayJoy.joys) { joy in
-                            JoyRow(title: joy.title)
-                        }
-                    }
-                    .roundBackground(eachDayJoy.date, bottomPadding: 32)
+                    joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
                 }
             }
             .padding(.top, 28)
             .padding(.horizontal, 16)
-            .padding(.bottom, 40)
+            .padding(.bottom, 60)
         }
         .scrollIndicators(.hidden)
         .navigationTitle("내가 기록한 소확행")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+    }
+    
+    @ViewBuilder
+    private func joyBoxByDate(_ date: String, joys: [Joy]) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(date)
+                .madiiFont(font: .madiiSubTitle, color: .white)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 20)
+            
+            ForEach(joys) { joy in
+                JoyRow(title: joy.title)
+                    .padding(.leading, 12)
+                    .padding(.trailing, 15)
+                    .padding(.vertical, 4)
+            }
+        }
+        .padding(.bottom, 20)
+        .background(Color.madiiBox)
+        .cornerRadius(20)
     }
 }
 
