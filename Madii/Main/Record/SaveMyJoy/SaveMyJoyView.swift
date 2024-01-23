@@ -11,7 +11,7 @@ struct SaveMyJoyView: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
     
     @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
-    @Binding var showSaveJoyPopUp: Bool
+    @Binding var showSaveJoyToast: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -25,7 +25,7 @@ struct SaveMyJoyView: View {
                 
                 Button {
                     tabBarManager.isTabBarShown = false
-                    showSaveJoyPopUp = true
+                    showSaveJoyToast = true
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()
