@@ -9,13 +9,18 @@ import SwiftUI
 
 struct MyJoyView: View {
     @State private var allJoys: [MyJoy] = MyJoy.dummys
+    @State private var selectedJoy: Joy?
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // (박스) 모든 날짜
                 ForEach(allJoys) { eachDayJoy in
+                    // 날짜별 소확행 박스
                     joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+                }
+                .sheet(item: $selectedJoy) { item in
+                    Text(item.title)
+                        .presentationDetents([.medium])
                 }
             }
             .padding(.top, 28)
@@ -37,7 +42,11 @@ struct MyJoyView: View {
                 .padding(.vertical, 20)
             
             ForEach(joys) { joy in
-                JoyRowWithButton(title: joy.title, buttonAction: showBottomSheet) {
+                JoyRowWithButton(title: joy.title) {
+                    // 메뉴 버튼 action
+                    selectedJoy = joy
+                } buttonLabel: {
+                    // 메뉴 버튼 이미지
                     Image(systemName: "ellipsis")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -53,10 +62,6 @@ struct MyJoyView: View {
         .padding(.bottom, 20)
         .background(Color.madiiBox)
         .cornerRadius(20)
-    }
-    
-    private func showBottomSheet() {
-        
     }
 }
 
