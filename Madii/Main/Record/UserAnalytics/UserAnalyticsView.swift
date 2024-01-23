@@ -22,9 +22,9 @@ struct UserAnalyticsView: View {
             ForEach(contents) { content in
                 NavigationLink {
                     switch content.type {
-                    case .recent: RecentAchievedJoyView() // 최근 본 앨범
+                    case .recent: MyJoyView() // 최근 본 앨범
                     case .many: ManyAchievedJoyView() // 많이 실천한 소확행
-                    case .myJoy: RecentAchievedJoyView() // 최근 본 앨범
+                    case .myJoy: MyJoyView() // 최근 본 앨범
                     }
                 } label: {
                     analyticsBox(title: content.title, image: content.image, color: content.imageColor)

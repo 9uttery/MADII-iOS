@@ -17,7 +17,7 @@ struct JoyRow: View {
                 .fill(Color.madiiOrange)
                 .frame(width: 40, height: 40)
             
-            Text(title)
+            Text(title)                  
                 .madiiFont(font: .madiiBody3, color: .white)
             
             Spacer()
