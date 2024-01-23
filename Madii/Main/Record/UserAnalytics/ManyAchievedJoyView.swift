@@ -21,10 +21,9 @@ struct ManyAchievedJoyView: View {
                             .foregroundStyle(Color.black)
                             .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
                         
-                        // FIXME: 이미지로 변경
-                        Circle()
+                        Image("first")
+                            .resizable()
                             .frame(width: 28, height: 28)
-                            .foregroundStyle(Color.madiiYellowGreen)
                     }
                     
                     Text(joys[0].title)
