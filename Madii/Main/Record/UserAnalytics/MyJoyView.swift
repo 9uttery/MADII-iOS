@@ -8,26 +8,55 @@
 import SwiftUI
 
 struct MyJoyView: View {
-    @State private var allJoys: [MyJoy] = MyJoy.dummys
+//    @State private var allJoys: [MyJoy] = MyJoy.dummys
+    @State private var allJoys: [MyJoy] = []
     @State private var selectedJoy: Joy?
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(allJoys) { eachDayJoy in
-                    // 날짜별 소확행 박스
-                    joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+        VStack(spacing: 0) {
+            if allJoys.isEmpty {
+                // 내가 기록한 소확행 없을 때
+                VStack(spacing: 60) {
+                    Rectangle()
+                        .frame(width: 200, height: 200)
+                    
+                    VStack(spacing: 16) {
+                        Text("기록된 소확행이 없어요.\n소확행을 기록하고 행복을 충전하세요!")
+                            .madiiFont(font: .madiiBody3, color: .gray500)
+                            .multilineTextAlignment(.center)
+                        
+                        Button {
+                            // TODO: 레코드 탭 화면으로 넘어가서 소확행 기록 박스 테두리
+                        } label: {
+                            Text("소확행 기록하러 가기")
+                                .madiiFont(font: .madiiBody1, color: Color(red: 0.51, green: 0.68, blue: 0.02))
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 12)
+                                .background(Color.madiiYellowGreen)
+                                .clipShape(RoundedRectangle(cornerRadius: 90))
+                        }
+                    }
                 }
-                .sheet(item: $selectedJoy) { item in
-                    Text(item.title)
-                        .presentationDetents([.medium])
+            } else {               
+                // 내가 기록한 소확행 있을 때
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(allJoys) { eachDayJoy in
+                            // 날짜별 소확행 박스
+                            joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+                        }
+                        .sheet(item: $selectedJoy) { item in
+                            Text(item.title)
+                                .presentationDetents([.medium])
+                        }
+                    }
+                    .padding(.top, 28)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 60)
                 }
+                .scrollIndicators(.hidden)
             }
-            .padding(.top, 28)
-            .padding(.horizontal, 16)
-            .padding(.bottom, 60)
         }
-        .scrollIndicators(.hidden)
         .navigationTitle("내가 기록한 소확행")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
