@@ -37,15 +37,26 @@ struct MyJoyView: View {
                 .padding(.vertical, 20)
             
             ForEach(joys) { joy in
-                JoyRow(title: joy.title)
-                    .padding(.leading, 12)
-                    .padding(.trailing, 15)
-                    .padding(.vertical, 4)
+                JoyRowWithButton(title: joy.title, buttonAction: showBottomSheet) {
+                    Image(systemName: "ellipsis")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(Color.gray500)
+                        .padding(10)
+                }
+                .padding(.leading, 12)
+                .padding(.trailing, 15)
+                .padding(.vertical, 4)
             }
         }
         .padding(.bottom, 20)
         .background(Color.madiiBox)
         .cornerRadius(20)
+    }
+    
+    private func showBottomSheet() {
+        
     }
 }
 
