@@ -42,6 +42,9 @@
 		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
 		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
 		519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */; };
+		519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */; };
+		519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */; };
+		519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -68,8 +71,8 @@
 		51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */; };
 		51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */; };
 		51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */; };
-		51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */; };
-		51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */; };
+		51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */; };
+		51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* MyJoyView.swift */; };
 		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
 		51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +102,9 @@
 		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
 		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
 		519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoySatisfactionBottomSheet.swift; sourceTree = "<group>"; };
+		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
+		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
+		519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyMenuBottomSheet.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690DF2B15B9EA00F8D705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
@@ -127,8 +133,8 @@
 		51F25E0E2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyPopUpView.swift; sourceTree = "<group>"; };
 		51F25E102B19D5FD00F6CCFE /* SelectAlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlbumRow.swift; sourceTree = "<group>"; };
 		51F25E122B19DC9800F6CCFE /* SaveMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyJoyView.swift; sourceTree = "<group>"; };
-		51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedJoyView.swift; sourceTree = "<group>"; };
-		51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievedJoyView.swift; sourceTree = "<group>"; };
+		51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsView.swift; sourceTree = "<group>"; };
+		51F25E182B1A085200F6CCFE /* MyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJoyView.swift; sourceTree = "<group>"; };
 		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
 		51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyAchievedJoyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +262,15 @@
 			path = DailyJoy;
 			sourceTree = "<group>";
 		};
+		519C97EC2B6048FD004F1AFF /* Joy */ = {
+			isa = PBXGroup;
+			children = (
+				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
+				519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */,
+			);
+			path = Joy;
+			sourceTree = "<group>";
+		};
 		51D690D92B15B94F00F8D705 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,7 +331,7 @@
 			children = (
 				51F25E162B1A07E500F6CCFE /* RecordMain */,
 				51F25E1A2B1A08E600F6CCFE /* SaveMyJoy */,
-				51F25E172B1A080700F6CCFE /* AchievedJoy */,
+				51F25E172B1A080700F6CCFE /* UserAnalytics */,
 				5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */,
 				516455952B1EFE140010199B /* AlbumDetailView.swift */,
 			);
@@ -338,8 +353,8 @@
 				514C36AD2B5107CF001A55D1 /* TextField */,
 				51F25E092B19B3D800F6CCFE /* Button */,
 				51F25E042B19AE7100F6CCFE /* PopUp */,
+				519C97EC2B6048FD004F1AFF /* Joy */,
 				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
-				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
 				516455C02B22FB540010199B /* MadiiSlider.swift */,
 			);
 			path = Components;
@@ -398,14 +413,16 @@
 			path = RecordMain;
 			sourceTree = "<group>";
 		};
-		51F25E172B1A080700F6CCFE /* AchievedJoy */ = {
+		51F25E172B1A080700F6CCFE /* UserAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				51F25E142B19FE2100F6CCFE /* AchievedJoyView.swift */,
-				51F25E182B1A085200F6CCFE /* RecentAchievedJoyView.swift */,
+				519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */,
+				51F25E142B19FE2100F6CCFE /* UserAnalyticsView.swift */,
+				51F25E182B1A085200F6CCFE /* MyJoyView.swift */,
 				51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */,
+				519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */,
 			);
-			path = AchievedJoy;
+			path = UserAnalytics;
 			sourceTree = "<group>";
 		};
 		51F25E1A2B1A08E600F6CCFE /* SaveMyJoy */ = {
@@ -534,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
+				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,
@@ -546,11 +564,12 @@
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
-				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
+				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
+				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
@@ -558,6 +577,7 @@
 				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
+				519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
@@ -570,7 +590,7 @@
 				51D8D3642B1768AA001B6793 /* CornerRadius.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
-				51F25E152B19FE2100F6CCFE /* AchievedJoyView.swift in Sources */,
+				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,

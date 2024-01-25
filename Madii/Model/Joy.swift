@@ -18,7 +18,7 @@ struct Joy: Identifiable {
         satisfactionImages[satisfaction] ?? ""
     }
     
-    static let manyAchievedDummy: [Joy] = [Joy(title: "샤브샤브 먹기", counts: 21),
+    static let manyAchievedDummy: [Joy] = [Joy(title: "뜨끈한 메밀차 마시기 뜨끈한 메밀차 마시기 뜨끈한 메밀", counts: 21),
                                            Joy(title: "방어 먹기", counts: 17),
                                            Joy(title: "열라면 먹기", counts: 12),
                                            Joy(title: "연어 먹기", counts: 5),
@@ -30,10 +30,13 @@ struct Joy: Identifiable {
         Joy(title: "전기장판에 누워서 귤 까먹기", satisfaction: 5)]
 }
 
-struct RecentAchievedJoy: Identifiable {
+struct MyJoy: Identifiable {
     let id = UUID()
     let date: String
     let joys: [Joy]
     
-    static let dummys: [RecentAchievedJoy] = [RecentAchievedJoy(date: "2023.12.25", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]), RecentAchievedJoy(date: "2023.12.24", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]), RecentAchievedJoy(date: "2023.12.23", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기")])]
+    static let dummys: [MyJoy] = [MyJoy(date: "2023.12.25", joys: [Joy(title: "뜨끈한 메밀차 마시기 뜨끈한 메밀차 마시기 뜨끈한 메밀"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]), 
+                                  MyJoy(date: "2023.12.24", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]),
+                                  MyJoy(date: "2023.12.23", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기")]),
+                                  MyJoy(date: "2023.12.22", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")])]
 }

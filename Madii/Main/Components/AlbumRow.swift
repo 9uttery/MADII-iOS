@@ -15,7 +15,7 @@ struct AlbumRow: View {
     let title: String
     
     var body: some View {
-        HStack(spacing: 15) {
+        HStack(spacing: 16) {
             Rectangle()
                 .frame(width: 56, height: 56)
                 .foregroundStyle(Color.madiiPurple)
