@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Joy: Identifiable {
+struct Joy: Identifiable, Equatable {
     let id = UUID()
     let title: String
     var counts: Int = 0
