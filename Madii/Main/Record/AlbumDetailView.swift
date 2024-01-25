@@ -7,11 +7,15 @@
 
 import SwiftUI
 
-struct AlbumDetailView: View {
+struct AlbumDetailView: View {    
     @State var album: Album = .dummy1
-    let myAlbums: [Album] = Album.dummy4
+    private let joys: [Joy] = Joy.manyAchievedDummy
+    private let othersAlbums: [Album] = Album.dummy4
+    
+    private let isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
-    private let isJoyMine: Bool = false
+    
+    @State private var selectedJoy: Joy?
     
     var body: some View {
         ScrollView {
@@ -36,32 +40,34 @@ struct AlbumDetailView: View {
                     }
                     
                     // 저장 버튼
-                    Button {
-                        isAlbumSaved.toggle()
-                    } label: {
-                        HStack(spacing: 4) {
-                            Image(systemName: "bookmark.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 18)
-                                .foregroundStyle(isAlbumSaved ? Color.madiiYellowGreen : Color.white)
-                            
-                            Text(isAlbumSaved ? "저장 완료" : "앨범 저장")
-                                .madiiFont(font: .madiiBody3, color: .white)
+                    if isAlbumMine == false {
+                        Button {
+                            isAlbumSaved.toggle()
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "bookmark.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 18)
+                                    .foregroundStyle(isAlbumSaved ? Color.madiiYellowGreen : Color.white)
+                                
+                                Text(isAlbumSaved ? "저장 완료" : "앨범 저장")
+                                    .madiiFont(font: .madiiBody3, color: .white)
+                            }
+                            .padding(.leading, 8)
+                            .padding(.trailing, 12)
+                            .padding(.vertical, 8)
+                            .frame(height: 40, alignment: .center)
+                            .background(.black.opacity(isAlbumSaved ? 0.6 : 1.0))
+                            .cornerRadius(6)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.white, lineWidth: 1)
+                            )
+                            .opacity(isAlbumSaved ? 1.0 : 0.5)
                         }
-                        .padding(.leading, 8)
-                        .padding(.trailing, 12)
-                        .padding(.vertical, 8)
-                        .frame(height: 40, alignment: .center)
-                        .background(.black.opacity(isAlbumSaved ? 0.6 : 1.0))
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(.white, lineWidth: 1)
-                        )
-                        .opacity(isAlbumSaved ? 1.0 : 0.5)
+                        .offset(x: -18, y: -12)
                     }
-                    .offset(x: -18, y: -12)
                 }
                 
                 // 앨범 정보
@@ -69,25 +75,29 @@ struct AlbumDetailView: View {
                     Text(album.title)
                         .madiiFont(font: .madiiTitle, color: .white)
                     
-                    Text(album.description)
-                        .madiiFont(font: .madiiBody4, color: .white.opacity(0.6))
+                    VStack(alignment: .leading, spacing: 4) {
+                        if isAlbumMine == false { Text("\(album.creator)님") }
+                        Text(album.description)
+                    }
+                    .madiiFont(font: .madiiBody4, color: .white.opacity(0.6))
                 }
                 .padding(.horizontal, 25)
                 .padding(.vertical, 20)
                 
-                VStack(spacing: 12) {
+                VStack(spacing: 20) {
                     // 소확행 리스트
                     VStack(spacing: 4) {
-                        ForEach(0 ..< 3, id: \.self) { index in
+                        ForEach(joys) { joy in
                             HStack {
-                                JoyRowWithButton(title: "샤브샤브 먹기") {
-                                    if isJoyMine {
+                                JoyRowWithButton(title: joy.title) {
+                                    if isAlbumMine {
                                         // 나의 앨범: 소확행 메뉴 bottom sheet
+                                        selectedJoy = joy
                                     } else {
                                         // 타인의 앨범: 소확행 저장 아이콘
                                     }
                                 } buttonLabel: {
-                                    if isJoyMine {
+                                    if isAlbumMine {
                                         // 나의 앨범: 메뉴 버튼 이미지
                                         Image(systemName: "ellipsis")
                                             .resizable()
@@ -97,7 +107,7 @@ struct AlbumDetailView: View {
                                             .padding(10)
                                     } else {
                                         // 타인의 앨범: 북마크 버튼 이미지
-                                        Image(index.isMultiple(of: 2) ? "inactiveSave" : "activeSave")
+                                        Image(true ? "inactiveSave" : "activeSave")
                                             .resizable()
                                             .frame(width: 36, height: 36)
                                     }
@@ -108,13 +118,16 @@ struct AlbumDetailView: View {
                             }
                         }
                     }
+                    .sheet(item: $selectedJoy, content: { item in
+                        JoyMenuBottomSheet(joy: item, isMine: true)
+                    })
                     .padding(.vertical, 20)
                     .background(Color.madiiBox)
                     .cornerRadius(20)
                     
                     // 다른 소확행 앨범 모음
                     VStack(spacing: 12) {
-                        ForEach(myAlbums) { album in
+                        ForEach(othersAlbums) { album in
                             NavigationLink {
                                 AlbumDetailView(album: Album(id: album.id,
                                                              title: album.title,
