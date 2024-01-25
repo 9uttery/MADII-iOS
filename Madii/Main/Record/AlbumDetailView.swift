@@ -134,6 +134,19 @@ struct AlbumDetailView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle("")
+        .navigationBarItems(trailing:
+            Button {
+                // Handle button tap
+                print("Button tapped!")
+            } label: {
+                Image(systemName: "ellipsis")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(Color.gray500)
+                    .padding(10)
+            }
+        )
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
