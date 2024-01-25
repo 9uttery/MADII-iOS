@@ -16,7 +16,7 @@ struct MadiiTabView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 switch tabIndex {
-                case .home: HomeView().padding(.bottom, 60)
+                case .home: HomeView()
                 case .record: RecordView()
                 case .calendar: CalendarView()
                 }
@@ -32,6 +32,7 @@ struct MadiiTabView: View {
                 checkIsTabBarShown()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     func checkIsTabBarShown() {
