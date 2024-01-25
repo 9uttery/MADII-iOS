@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showSaveJoyPopUp: Bool = false
+    @State private var showSaveJoyToast: Bool = false
+    @State private var showNewAlbumPopUp: Bool = false
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                
-                NavigationLink {
-                    Text("홈에서 넘어온 화면")
-                } label: {
-                    Text("home")
-                }
-                    
+        ZStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 0) {
+                HomeTodayJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
+                HomeMyJoyView()
+                HomePlayJoyView()
                 Spacer()
             }
-            Spacer()
+            .padding(.horizontal, 16)
+            if showSaveJoyPopUp {
+                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp, showSaveJoyToast: $showSaveJoyToast)
+            }
         }
     }
 }
