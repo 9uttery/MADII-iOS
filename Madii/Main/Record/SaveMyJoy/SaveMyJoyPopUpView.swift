@@ -25,8 +25,7 @@ struct SaveMyJoyPopUpView: View {
 
             PopUp(title: "어떤 앨범에 저장할까요?",
                   leftButtonTitle: "취소", leftButtonAction: dismissPopUp,
-                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy)
-            {
+                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 // 앨범 리스트
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 12) {

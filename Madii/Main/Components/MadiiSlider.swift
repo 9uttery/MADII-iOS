@@ -52,7 +52,3 @@ struct MadiiSlider: View {
         percentage = min(max(0, ratio), 100)
     }
 }
-
-#Preview {
-    DailyJoyView()
-}
