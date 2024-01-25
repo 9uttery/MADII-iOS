@@ -88,7 +88,7 @@ struct MyJoyView: View {
                         .padding(10)
                 }
                 .padding(.leading, 12)
-                .padding(.trailing, 15)
+                .padding(.trailing, 16)
                 .padding(.vertical, 4)
             }
         }

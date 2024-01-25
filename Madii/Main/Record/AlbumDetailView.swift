@@ -8,54 +8,65 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
-    @State var album: Album = Album.dummy1
+    @State var album: Album = .dummy1
     let myAlbums: [Album] = Album.dummy4
     
     var body: some View {
         ScrollView {
-            ZStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 0) {
                 // 앨범 커버
-                ZStack(alignment: .topLeading) {
-                    Rectangle()
-                        .foregroundStyle(Color.madiiPurple)
-                        .frame(height: UIScreen.main.bounds.width)
+                ZStack {
+                    Color.madiiPurple
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 180)
                     
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(album.title)
-                            .madiiFont(font: .madiiTitle, color: .black)
-                        
-                        Text("\(album.creator)님")
-                            .madiiFont(font: .madiiBody4, color: .black.opacity(0.6))
-                        
-                        Text(album.description)
-                            .madiiFont(font: .madiiCaption, color: .black.opacity(0.6))
+                    HStack(spacing: 0) {
+                        ForEach(0 ..< 3, id: \.self) { index in
+                            Rectangle()
+                                .frame(width: 100, height: 100)
+                            
+                            if index != 2 { Spacer() }
+                        }
                     }
-                    .padding(.top, 20)
-                    .padding(.horizontal, 24)
+                    .padding(.horizontal, 12)
                 }
+                
+                // 앨범 정보
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(album.title)
+                        .madiiFont(font: .madiiTitle, color: .white)
+                    
+                    Text(album.description)
+                        .madiiFont(font: .madiiBody4, color: .white.opacity(0.6))
+                }
+                .padding(.horizontal, 25)
+                .padding(.vertical, 20)
                 
                 VStack(spacing: 12) {
                     // 소확행 리스트
-                    VStack(spacing: 12) {
+                    VStack(spacing: 4) {
                         ForEach(0 ..< 3, id: \.self) { _ in
                             HStack {
-                                JoyRow(title: "샤브샤브 먹기")
-                                Spacer()
-                                Button {
-                                    
-                                } label: {
+                                JoyRowWithButton(title: "샤브샤브 먹기") {
+                                    // sheet
+                                } buttonLabel: {
+                                    // 메뉴 버튼 이미지
                                     Image(systemName: "ellipsis")
                                         .resizable()
-                                        .frame(width: 20, height: 4)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 20, height: 20)
                                         .foregroundStyle(Color.gray500)
                                         .padding(10)
-                                        .padding(.vertical, 8)
                                 }
+                                .padding(.leading, 12)
+                                .padding(.trailing, 16)
+                                .padding(.vertical, 4)
                             }
-                            .padding(.vertical, 8)
                         }
                     }
-                    .roundBackground()
+                    .padding(.vertical, 20)
+                    .background(Color.madiiBox)
+                    .cornerRadius(20)
                     
                     // 다른 소확행 앨범 모음
                     VStack(spacing: 12) {
@@ -66,20 +77,19 @@ struct AlbumDetailView: View {
                                                              creator: album.creator,
                                                              description: album.description))
                             } label: {
-                                AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
+                                AlbumRow(hasName: true, name: "\(album.creator)님의", title: album.title)
                             }
                         }
                     }
                     .roundBackground("다른 소확행 앨범 모음", bottomPadding: 32)
                 }
                 .padding(.horizontal, 16)
-                .padding(.top, 284)
             }
+            // 스크롤 하단 여백 40
             .padding(.bottom, 40)
         }
         .scrollIndicators(.hidden)
-        // 다음 앨범으로 넘어갈 때 title "" 처리하기
-        .navigationTitle("소확행 앨범")
+        .navigationTitle("")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
