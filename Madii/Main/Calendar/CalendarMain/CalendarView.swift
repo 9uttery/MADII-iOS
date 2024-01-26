@@ -56,7 +56,7 @@ struct CalendarView: View {
             Spacer()
             
             NavigationLink {
-                Text("프로필")
+                ProfileView()
             } label: {
                 Image(systemName: "person.crop.circle")
                     .resizable()
