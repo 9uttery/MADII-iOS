@@ -56,6 +56,7 @@ struct ServiceTermsView: View {
                     .opacity(essentialTermsAgreed ? 1.0 : 0.4)
             }
             .disabled(essentialTermsAgreed == false)
+            .padding(.bottom, 24)
         }
         .padding(.horizontal, 18)
     }
