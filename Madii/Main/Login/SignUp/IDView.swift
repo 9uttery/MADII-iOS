@@ -25,6 +25,8 @@ class TextFieldObserver: ObservableObject {
 }
 
 struct IDView: View {
+    @EnvironmentObject private var signUpStatus: SignUpStatus
+    
     @StateObject private var textFieldObserver = TextFieldObserver()
     private var cancellable: AnyCancellable?
 
@@ -57,7 +59,7 @@ struct IDView: View {
             Spacer()
             
             Button {
-                
+                signUpStatus.count += 1
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(idType == .possible ? 1.0 : 0.4)

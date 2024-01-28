@@ -27,7 +27,7 @@ struct MadiiApp: App {
 //                            _ = AuthController.handleOpenUrl(url: url)
 //                        }
 //                    }
-                ServiceTermsView()
+                SignUpView()
             }
         }
     }
