@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MadiiTextField: View {
+    var isSecureField: Bool = false
+    
     let placeHolder: String
     @Binding var text: String
     
@@ -19,13 +21,23 @@ struct MadiiTextField: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                TextField(placeHolder, text: $text, axis: .vertical)
-                    .madiiFont(font: .madiiBody3, color: .white)
-                    .onChange(of: text, perform: {
-                        if limitText {
-                            text = String($0.prefix(limit))
-                        }
-                    })
+                if isSecureField == false {
+                    TextField(placeHolder, text: $text, axis: .vertical)
+                        .madiiFont(font: .madiiBody3, color: .white)
+                        .onChange(of: text, perform: {
+                            if limitText {
+                                text = String($0.prefix(limit))
+                            }
+                        })
+                } else {
+                    SecureField(placeHolder, text: $text)
+                        .madiiFont(font: .madiiBody3, color: .white)
+                        .onChange(of: text, perform: {
+                            if limitText {
+                                text = String($0.prefix(limit))
+                            }
+                        })
+                }
                 
                 Spacer()
                 
