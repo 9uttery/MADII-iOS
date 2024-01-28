@@ -27,33 +27,41 @@ struct PasswordView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("비밀번호를 입력해 주세요")
-                .madiiFont(font: .madiiTitle, color: .white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 10)
-                .padding(.bottom, 14)
-                .padding(.horizontal, 18)
-
-            MadiiTextField(isSecureField: true, placeHolder: "비밀번호를 입력하세요",
-                           text: $password, strokeColor: strokeColor())
-                .textFieldHelperMessage(helperMessage, color: strokeColor())
-                .padding(.horizontal, 25)
-                .onChange(of: password) { checkValidPassword($0) }
-                .padding(.bottom, 28)
-            
-            if showCheckPassword {
-                Text("다시 한 번 비밀번호를 입력해 주세요")
-                    .madiiFont(font: .madiiTitle, color: .white)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 10)
-                    .padding(.bottom, 14)
-                    .padding(.horizontal, 18)
-                
-                MadiiTextField(isSecureField: true, placeHolder: "비밀번호를 입력하세요",
-                               text: $reenteredPassword, strokeColor: reenteredStrokeColor())
-                    .textFieldHelperMessage(reenterHelperMessage, color: reenteredStrokeColor())
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("비밀번호를 입력해 주세요")
+                        .madiiFont(font: .madiiTitle, color: .white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 10)
+                        .padding(.bottom, 14)
+                        .padding(.horizontal, 18)
+                    
+                    MadiiTextField(isSecureField: true, placeHolder: "비밀번호를 입력하세요",
+                                   text: $password, strokeColor: strokeColor())
+                    .textFieldHelperMessage(helperMessage, color: strokeColor())
                     .padding(.horizontal, 25)
+                    .onChange(of: password) { checkValidPassword($0) }
+                    .padding(.bottom, 28)
+                    
+                    if showCheckPassword {
+                        Text("다시 한 번 비밀번호를 입력해 주세요")
+                            .madiiFont(font: .madiiTitle, color: .white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 10)
+                            .padding(.bottom, 14)
+                            .padding(.horizontal, 18)
+                        
+                        MadiiTextField(isSecureField: true, placeHolder: "비밀번호를 입력하세요",
+                                       text: $reenteredPassword, strokeColor: reenteredStrokeColor())
+                        .textFieldHelperMessage(reenterHelperMessage, color: reenteredStrokeColor())
+                        .padding(.horizontal, 25)
+                    }
+                }
+                .padding(.top, 34)
+                .padding(.bottom, 24)
             }
+            .scrollIndicators(.never)
+            .padding(.top, 60)
             
             Spacer()
             

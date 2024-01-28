@@ -50,7 +50,6 @@ struct SignUpView: View {
                     .padding(.top, 94)
             } else {
                 PasswordView()
-                    .padding(.top, 94)
             }
         }
         .environmentObject(signUpStatus)
