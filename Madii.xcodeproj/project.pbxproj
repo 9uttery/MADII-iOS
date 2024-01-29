@@ -91,6 +91,8 @@
 		BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986732B635AC100643805 /* LogOutPopUpView.swift */; };
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
+		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
+		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
 		BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */; };
@@ -172,6 +174,8 @@
 		BE3986732B635AC100643805 /* LogOutPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpView.swift; sourceTree = "<group>"; };
 		BE3986752B63604A00643805 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		BE3986772B63651300643805 /* GuestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestProfileView.swift; sourceTree = "<group>"; };
+		BE3986792B63790600643805 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
 		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 				BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */,
 				BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */,
 				BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */,
+				BE3986792B63790600643805 /* RecommendView.swift */,
+				BE98A4042B6627560064CC6F /* RecommendJoyView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -686,11 +692,13 @@
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
+				BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */,
 				511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */,
 				51E0259D2B26EE6800F4F41A /* TabBarManager.swift in Sources */,
 				51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */,
 				510B7BC02B3BEB5400CB7ADA /* LoginView.swift in Sources */,
 				51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */,
+				BE39867A2B63790600643805 /* RecommendView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

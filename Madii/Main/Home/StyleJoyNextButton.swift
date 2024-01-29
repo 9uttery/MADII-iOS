@@ -16,8 +16,7 @@ struct StyleJoyNextButton: View {
             .madiiFont(font: .madiiBody1, color: .black)
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(.vertical, 18)
-            .background(isDisabled ? Color.white.opacity(0.5) : Color.madiiYellowGreen)
+            .background(isDisabled ? Color.white : Color.white.opacity(0.4))
             .cornerRadius(12)
     }
 }
-
