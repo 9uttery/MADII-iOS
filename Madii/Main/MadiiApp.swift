@@ -21,12 +21,13 @@ struct MadiiApp: App {
         WindowGroup {
             NavigationStack {
 //                OnboardingView()
-                MadiiTabView(tabIndex: .record)
-                    .onOpenURL { url in
-                        if AuthApi.isKakaoTalkLoginUrl(url) {
-                            _ = AuthController.handleOpenUrl(url: url)
-                        }
-                    }
+//                MadiiTabView(tabIndex: .record)
+//                    .onOpenURL { url in
+//                        if AuthApi.isKakaoTalkLoginUrl(url) {
+//                            _ = AuthController.handleOpenUrl(url: url)
+//                        }
+//                    }
+                SignUpView()
             }
         }
     }
