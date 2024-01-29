@@ -12,6 +12,7 @@ struct Joy: Identifiable, Equatable {
     let title: String
     var counts: Int = 0
     var satisfaction: Int = 3
+    var isSaved: Bool = false
     
     private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
     var satisfactionImage: String {
