@@ -18,7 +18,7 @@ struct HomeMyJoyView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                
+                RecommendView()
             } label: {
                 Rectangle()
                     .frame(height: 100)
@@ -51,7 +51,7 @@ struct HomeMyJoyView: View {
     }
     
     private func addAngle() {
-        Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
             withAnimation(.smooth) {
                 if angle > 360 || angle < 0 {
                     addNum *= -1
