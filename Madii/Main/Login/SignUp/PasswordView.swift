@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PasswordView: View {
+    @EnvironmentObject private var signUpStatus: SignUpStatus
+    
     @State private var password: String = ""
     @State private var isValidPassword: Bool = false
     var helperMessage: String {
@@ -85,7 +87,7 @@ struct PasswordView: View {
             .disabled(isValidPassword == false)
         } else {
             Button {
-                
+                signUpStatus.count += 1
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isValidPassword && isPasswordSame ? 1.0 : 0.4)

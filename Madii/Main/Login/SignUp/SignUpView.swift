@@ -9,11 +9,10 @@ import SwiftUI
 
 class SignUpStatus: ObservableObject {
     @Published var allCounts: Int = 4
-    @Published var count: Int = 0
+    @Published var count: Int = 3
 }
 
 struct SignUpView: View {
-    @EnvironmentObject private var pathStatus: PathStatus
     @StateObject var signUpStatus = SignUpStatus()
     
     var body: some View {
@@ -49,14 +48,14 @@ struct SignUpView: View {
             } else if signUpStatus.count == 1 {
                 IDView()
                     .padding(.top, 94)
-            } else {
+            } else if signUpStatus.count == 2 {
                 PasswordView()
+            } else {
+                AddProfileView()
+                    .padding(.top, 94)
             }
         }
         .environmentObject(signUpStatus)
-        .onAppear {
-            print("path는 \(pathStatus.path)")
-        }
     }
 }
 
