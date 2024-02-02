@@ -14,6 +14,8 @@ struct OnboardingPage: Identifiable {
 }
 
 struct OnboardingView: View {
+    @EnvironmentObject private var pathStatus: PathStatus
+    
     let contents: [OnboardingPage] = [
         OnboardingPage(id: 0, title: "단단한 내가 되기 위한 시간", description: "매일매일 나를 위한 시간을 가지면서\n나를 들여다보고, 일상을 다시 살아갈 힘을 얻어요", image: .gray400),
         OnboardingPage(id: 1, title: "아주 소소한 것이라도 좋아요!", description: "바쁜 일상 속에서도 잠깐 시간을 내어\n내가 온전히 행복한 순간들을 기록해보세요", image: .gray200),
@@ -29,7 +31,6 @@ struct OnboardingView: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 28)
             
-            // FIXME: TabView로 전환해서 슬라이드 가능하도록
             // 문구(제목과 설명)
             titleAndDescription
                 .padding(.top, 66)

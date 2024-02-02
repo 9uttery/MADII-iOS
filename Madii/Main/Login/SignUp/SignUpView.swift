@@ -13,6 +13,7 @@ class SignUpStatus: ObservableObject {
 }
 
 struct SignUpView: View {
+    @EnvironmentObject private var pathStatus: PathStatus
     @StateObject var signUpStatus = SignUpStatus()
     
     var body: some View {
@@ -53,6 +54,9 @@ struct SignUpView: View {
             }
         }
         .environmentObject(signUpStatus)
+        .onAppear {
+            print("path는 \(pathStatus.path)")
+        }
     }
 }
 
