@@ -18,6 +18,8 @@ struct AddProfileView: View {
     private var helperMessage: String {
         self.isNicknameVaild ? "사용할 수 있는 닉네임이에요." : "대소문자 영문 및 한글, 숫자만 사용 가능해요."
     }
+    
+    @State private var showCompleteSignUpView: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -87,7 +89,7 @@ struct AddProfileView: View {
             Spacer()
 
             Button {
-                
+                showCompleteSignUpView = true
             } label: {
                 MadiiButton(title: "완료", size: .big)
                     .opacity(self.isNicknameVaild ? 1.0 : 0.4)
@@ -95,6 +97,9 @@ struct AddProfileView: View {
             .disabled(self.isNicknameVaild == false)
             .padding(.horizontal, 18)
             .padding(.bottom, 24)
+            .navigationDestination(isPresented: $showCompleteSignUpView) {
+                CompleteSignUpView().navigationBarBackButtonHidden()
+            }
         }
     }
 
