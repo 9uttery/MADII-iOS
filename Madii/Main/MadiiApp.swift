@@ -11,8 +11,6 @@ import SwiftUI
 
 @main
 struct MadiiApp: App {
-    @StateObject private var pathStatus = PathStatus()
-    
     init() {
         // Kakao SDK 초기화
         let kakaoNativeAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
@@ -21,7 +19,7 @@ struct MadiiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $pathStatus.path) {
+            NavigationStack {
                 OnboardingView()
                     .onOpenURL { url in
                         if AuthApi.isKakaoTalkLoginUrl(url) {
@@ -29,11 +27,6 @@ struct MadiiApp: App {
                         }
                     }
             }
-            .environmentObject(pathStatus)
         }
     }
-}
-
-class PathStatus: ObservableObject {
-    @Published var path: [String] = []
 }
