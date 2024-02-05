@@ -96,7 +96,3 @@ struct ServiceTermsView: View {
         .frame(height: 28)
     }
 }
-
-//#Preview {
-//    ServiceTermsView(path: $path)
-//}
