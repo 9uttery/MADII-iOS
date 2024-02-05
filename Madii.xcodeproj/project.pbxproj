@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
 		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
+		510743EF2B68DEA000787F54 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 510743EE2B68DEA000787F54 /* Config.xcconfig */; };
+		510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510743F02B6CD62A00787F54 /* AddProfileView.swift */; };
 		510B7BC02B3BEB5400CB7ADA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */; };
 		510B7BC32B3BED7B00CB7ADA /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BC22B3BED7B00CB7ADA /* KakaoSDK */; };
 		510B7BC52B3BED7B00CB7ADA /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BC42B3BED7B00CB7ADA /* KakaoSDKAuth */; };
@@ -22,7 +24,6 @@
 		510B7BD52B3BED7B00CB7ADA /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD42B3BED7B00CB7ADA /* KakaoSDKTalk */; };
 		510B7BD72B3BED7B00CB7ADA /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD62B3BED7B00CB7ADA /* KakaoSDKTemplate */; };
 		510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD82B3BED7B00CB7ADA /* KakaoSDKUser */; };
-		510B7BDB2B3BEE6800CB7ADA /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 510B7BDA2B3BEE6800CB7ADA /* Config.xcconfig */; };
 		510F94342B66D00E00457205 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F94332B66D00E00457205 /* SignUpView.swift */; };
 		5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */; };
 		5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */; };
@@ -31,6 +32,7 @@
 		511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50D2B66B24C00D2B01D /* IDView.swift */; };
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
+		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
@@ -83,7 +85,6 @@
 		BE2BFC1A2B36B5D6006282F2 /* HomeMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */; };
 		BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */; };
 		BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */; };
-		BE3986692B625E9F00643805 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE3986682B625E9F00643805 /* Config.xcconfig */; };
 		BE39866C2B62680600643805 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866B2B62680600643805 /* ProfileView.swift */; };
 		BE39866E2B62696100643805 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866D2B62696100643805 /* MyProfileView.swift */; };
 		BE3986702B6272F900643805 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866F2B6272F900643805 /* NoticeView.swift */; };
@@ -102,8 +103,9 @@
 /* Begin PBXFileReference section */
 		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
+		510743EE2B68DEA000787F54 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		510743F02B6CD62A00787F54 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
 		510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		510B7BDA2B3BEE6800CB7ADA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		510F94332B66D00E00457205 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsView.swift; sourceTree = "<group>"; };
 		5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheet.swift; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		511DB50D2B66B24C00D2B01D /* IDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDView.swift; sourceTree = "<group>"; };
 		511DB50F2B66C49100D2B01D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		5141CACB2B710C7D00FD407E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +170,6 @@
 		BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMyJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyListView.swift; sourceTree = "<group>"; };
-		BE3986682B625E9F00643805 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BE39866B2B62680600643805 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BE39866D2B62696100643805 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		BE39866F2B6272F900643805 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				511DB50B2B66A35000D2B01D /* ServiceTermsView.swift */,
 				511DB50D2B66B24C00D2B01D /* IDView.swift */,
 				511DB50F2B66C49100D2B01D /* PasswordView.swift */,
+				510743F02B6CD62A00787F54 /* AddProfileView.swift */,
+				5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -268,12 +273,14 @@
 			isa = PBXGroup;
 			children = (
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
+				5141CACB2B710C7D00FD407E /* Info.plist */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51E0259E2B26F7C500F4F41A /* Service */,
 				516455972B1F07080010199B /* Model */,
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
+				510743EE2B68DEA000787F54 /* Config.xcconfig */,
 			);
 			path = Madii;
 			sourceTree = "<group>";
@@ -281,7 +288,6 @@
 		515EFC942AFCA0D200230647 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				BE3986682B625E9F00643805 /* Config.xcconfig */,
 				515EFC952AFCA0D200230647 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -595,7 +601,7 @@
 				510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
-				BE3986692B625E9F00643805 /* Config.xcconfig in Resources */,
+				510743EF2B68DEA000787F54 /* Config.xcconfig in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +672,7 @@
 				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,
 				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
+				5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */,
 				BE3986782B63651300643805 /* GuestProfileView.swift in Sources */,
@@ -689,6 +696,7 @@
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */,
+				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,

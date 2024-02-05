@@ -54,7 +54,13 @@ struct LoginView: View {
 
             HStack(spacing: 8) {
                 MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .small)
-                MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .small)
+                
+                NavigationLink {
+                    SignUpView().navigationBarBackButtonHidden()
+                } label: {
+                    MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .small)
+                }
+
             }
             .padding(.bottom, 48)
         }
