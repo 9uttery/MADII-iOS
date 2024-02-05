@@ -11,20 +11,21 @@ struct SaveMyJoyView: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
     
     @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
-    @Binding var showSaveJoyPopUp: Bool
+    @Binding var showSaveJoyToast: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("나만의 소확행을 수집해보세요")
+            Text("나만의 소확행을 기록해 보세요")
                 .madiiFont(font: .madiiSubTitle, color: .white)
             
-            HStack(spacing: 0) {
+            HStack(spacing: 12) {
                 TextField("누워서 빗소리 감상하기", text: $myNewJoy)
                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
+                    .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
                 
                 Button {
                     tabBarManager.isTabBarShown = false
-                    showSaveJoyPopUp = true
+                    showSaveJoyToast = true
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()

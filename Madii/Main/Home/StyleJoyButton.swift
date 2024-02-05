@@ -9,26 +9,29 @@ import SwiftUI
 
 struct StyleJoyButton: View {
     var label: String
-        @Binding var isClicked: Bool
-    var action: () -> Void
+    @Binding var isClicked: Bool
+    var buttonColor: Color
+    var action: (() -> Void)?
 
     var body: some View {
         Button {
             isClicked.toggle()
-            action()
+            action?()
         } label: {
-            Text(label)
-                .madiiFont(font: .madiiBody3, color: .black)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(isClicked ? Color.white : Color.white.opacity(0.4))
-                .cornerRadius(90)
-                .overlay(
-                    isClicked ?
-                        RoundedRectangle(cornerRadius: 90)
-                            .stroke(Color.madiiYellowGreen, lineWidth: 1) :
-                        nil
-                )
+            HStack {
+                Text(label)
+                    .madiiFont(font: .madiiBody4, color: isClicked ? .black : .white)
+                if isClicked {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, isClicked ? 12 : 16)
+            .background(isClicked ? Color.white : buttonColor.opacity(0.3))
+            .cornerRadius(90)
         }
     }
 }
