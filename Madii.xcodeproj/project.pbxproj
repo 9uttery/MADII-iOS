@@ -83,13 +83,6 @@
 		BE2BFC1A2B36B5D6006282F2 /* HomeMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */; };
 		BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */; };
 		BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */; };
-		BE4E4C0B2B710DE000FF74DC /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C072B710DE000FF74DC /* StyleJoyButton.swift */; };
-		BE4E4C0C2B710DE000FF74DC /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C082B710DE000FF74DC /* StyleJoyNextButton.swift */; };
-		BE4E4C0D2B710DE000FF74DC /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C092B710DE000FF74DC /* RecommendJoyView.swift */; };
-		BE4E4C0E2B710DE000FF74DC /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C0A2B710DE000FF74DC /* RecommendView.swift */; };
-		BE4E4C142B71127C00FF74DC /* YesterdayPlayListJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C112B71127B00FF74DC /* YesterdayPlayListJoyView.swift */; };
-		BE4E4C152B71127C00FF74DC /* TodayPlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C122B71127B00FF74DC /* TodayPlayListView.swift */; };
-		BE4E4C162B71127C00FF74DC /* TodayPlayListJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4C132B71127B00FF74DC /* TodayPlayListJoyView.swift */; };
 		BE3986692B625E9F00643805 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE3986682B625E9F00643805 /* Config.xcconfig */; };
 		BE39866C2B62680600643805 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866B2B62680600643805 /* ProfileView.swift */; };
 		BE39866E2B62696100643805 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866D2B62696100643805 /* MyProfileView.swift */; };
@@ -98,7 +91,11 @@
 		BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986732B635AC100643805 /* LogOutPopUpView.swift */; };
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
+		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
+		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
+		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
+		BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */; };
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
 /* End PBXBuildFile section */
 
@@ -169,14 +166,6 @@
 		BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMyJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyListView.swift; sourceTree = "<group>"; };
-		BE4E4C042B710CF900FF74DC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE4E4C072B710DE000FF74DC /* StyleJoyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
-		BE4E4C082B710DE000FF74DC /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
-		BE4E4C092B710DE000FF74DC /* RecommendJoyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
-		BE4E4C0A2B710DE000FF74DC /* RecommendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
-		BE4E4C112B71127B00FF74DC /* YesterdayPlayListJoyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdayPlayListJoyView.swift; sourceTree = "<group>"; };
-		BE4E4C122B71127B00FF74DC /* TodayPlayListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPlayListView.swift; sourceTree = "<group>"; };
-		BE4E4C132B71127B00FF74DC /* TodayPlayListJoyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayPlayListJoyView.swift; sourceTree = "<group>"; };
 		BE3986682B625E9F00643805 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BE39866B2B62680600643805 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BE39866D2B62696100643805 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
@@ -185,7 +174,11 @@
 		BE3986732B635AC100643805 /* LogOutPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpView.swift; sourceTree = "<group>"; };
 		BE3986752B63604A00643805 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		BE3986772B63651300643805 /* GuestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestProfileView.swift; sourceTree = "<group>"; };
+		BE3986792B63790600643805 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
+		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
+		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
 		BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,7 +267,6 @@
 		515EFC8D2AFCA0D100230647 /* Madii */ = {
 			isa = PBXGroup;
 			children = (
-				BE4E4C042B710CF900FF74DC /* Info.plist */,
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51E0259E2B26F7C500F4F41A /* Service */,
@@ -383,11 +375,6 @@
 		51D8D36A2B177085001B6793 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BE4E4C132B71127B00FF74DC /* TodayPlayListJoyView.swift */,
-				BE4E4C122B71127B00FF74DC /* TodayPlayListView.swift */,
-				BE4E4C112B71127B00FF74DC /* YesterdayPlayListJoyView.swift */,
-				BE4E4C0F2B710DEC00FF74DC /* HomeMain */,
-				BE4E4C062B710DE000FF74DC /* Recommend */,
 				51D8D36B2B177098001B6793 /* HomeView.swift */,
 				BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */,
 				BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */,
@@ -513,29 +500,6 @@
 			path = SaveMyJoy;
 			sourceTree = "<group>";
 		};
-		BE4E4C062B710DE000FF74DC /* Recommend */ = {
-			isa = PBXGroup;
-			children = (
-				BE4E4C072B710DE000FF74DC /* StyleJoyButton.swift */,
-				BE4E4C082B710DE000FF74DC /* StyleJoyNextButton.swift */,
-				BE4E4C092B710DE000FF74DC /* RecommendJoyView.swift */,
-				BE4E4C0A2B710DE000FF74DC /* RecommendView.swift */,
-			);
-			path = Recommend;
-			sourceTree = "<group>";
-		};
-		BE4E4C0F2B710DEC00FF74DC /* HomeMain */ = {
-			isa = PBXGroup;
-			children = (
-				51D8D36B2B177098001B6793 /* HomeView.swift */,
-				BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */,
-				BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */,
-				BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */,
-				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
-				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
-				BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */,
-			);
-			path = HomeMain;
 		BE39866A2B6267F400643805 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,7 +633,7 @@
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
-				BE4E4C0D2B710DE000FF74DC /* RecommendJoyView.swift in Sources */,
+				BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,
 				BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */,
@@ -685,8 +649,6 @@
 				BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */,
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
-				BE4E4C0B2B710DE000FF74DC /* StyleJoyButton.swift in Sources */,
-				51F25E192B1A085200F6CCFE /* RecentAchievedJoyView.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
@@ -695,8 +657,6 @@
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
-				BE4E4C152B71127C00FF74DC /* TodayPlayListView.swift in Sources */,
-				BE4E4C162B71127C00FF74DC /* TodayPlayListJoyView.swift in Sources */,
 				511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
@@ -712,14 +672,12 @@
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
-				BE4E4C0E2B710DE000FF74DC /* RecommendView.swift in Sources */,
 				BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */,
 				516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */,
 				BE39866C2B62680600643805 /* ProfileView.swift in Sources */,
 				BE39866E2B62696100643805 /* MyProfileView.swift in Sources */,
 				51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
-				BE4E4C142B71127C00FF74DC /* YesterdayPlayListJoyView.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
 				516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */,
@@ -733,7 +691,6 @@
 				511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
-				BE4E4C0C2B710DE000FF74DC /* StyleJoyNextButton.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 				BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */,
 				511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */,
@@ -898,7 +855,6 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -936,7 +892,6 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
