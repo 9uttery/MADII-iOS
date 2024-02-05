@@ -21,9 +21,8 @@ struct CalendarDays: View {
             emptyDays
             
             ForEach(monthDates(), id: \.self) { date in
-                Button {
-                    selectedDate = date
-                    showDailyJoyView = true
+                NavigationLink {
+                    DailyJoyView(date: date)
                 } label: {
                     VStack(spacing: 0) {
                         // 일자
@@ -49,12 +48,16 @@ struct CalendarDays: View {
                     .frame(height: 98)
                     
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    selectedDate = date
+                    print(selectedDate)
+                })
             }
         }
         .padding(.horizontal, 26)
-        .navigationDestination(isPresented: $showDailyJoyView) {
-            DailyJoyView(date: selectedDate)
-        }
+//        .navigationDestination(isPresented: $showDailyJoyView) {
+//            DailyJoyView(date: selectedDate)
+//        }
     }
     
     var emptyDays: some View {

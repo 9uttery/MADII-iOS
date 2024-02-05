@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
 		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
-		510743EF2B68DEA000787F54 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 510743EE2B68DEA000787F54 /* Config.xcconfig */; };
 		510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510743F02B6CD62A00787F54 /* AddProfileView.swift */; };
 		510B7BC02B3BEB5400CB7ADA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */; };
 		510B7BC32B3BED7B00CB7ADA /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BC22B3BED7B00CB7ADA /* KakaoSDK */; };
@@ -93,6 +92,7 @@
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
 		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
+		BE459A442B712887002E9AB2 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE459A432B712887002E9AB2 /* Config.xcconfig */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
@@ -103,7 +103,6 @@
 /* Begin PBXFileReference section */
 		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
-		510743EE2B68DEA000787F54 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		510743F02B6CD62A00787F54 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
 		510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		510F94332B66D00E00457205 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		BE3986752B63604A00643805 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		BE3986772B63651300643805 /* GuestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestProfileView.swift; sourceTree = "<group>"; };
 		BE3986792B63790600643805 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		BE459A432B712887002E9AB2 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
 				515EFC942AFCA0D200230647 /* Preview Content */,
-				510743EE2B68DEA000787F54 /* Config.xcconfig */,
 			);
 			path = Madii;
 			sourceTree = "<group>";
@@ -288,6 +287,7 @@
 		515EFC942AFCA0D200230647 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				BE459A432B712887002E9AB2 /* Config.xcconfig */,
 				515EFC952AFCA0D200230647 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -600,8 +600,8 @@
 				510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
+				BE459A442B712887002E9AB2 /* Config.xcconfig in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
-				510743EF2B68DEA000787F54 /* Config.xcconfig in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
