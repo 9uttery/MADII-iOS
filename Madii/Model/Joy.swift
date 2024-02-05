@@ -13,12 +13,24 @@ struct Joy: Identifiable, Equatable {
     var counts: Int = 0
     var satisfaction: Int = 3
     var isSaved: Bool = false
+    var isCompleted: Bool = false
     
     private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
     var satisfactionImage: String {
         satisfactionImages[satisfaction] ?? ""
     }
     
+    static var todayPlayListDummy: [Joy] = [Joy(title: "뜨끈한 메밀차 마시기 뜨끈한 메밀차 마시기 뜨끈한 메밀", counts: 21, isCompleted: false),
+                                           Joy(title: "방어 먹기", counts: 17, isCompleted: true),
+                                           Joy(title: "열라면 먹기", counts: 12, isCompleted: false),
+                                           Joy(title: "연어 먹기", counts: 5, isCompleted: true),
+                                           Joy(title: "돈까스 먹기", counts: 3, isCompleted: false)]
+    
+    static var yesterdayPlayListDummy: [Joy] = [Joy(title: "차가운 메밀차 마시기", counts: 21, isCompleted: false),
+                                           Joy(title: "광어 먹기", counts: 17, isCompleted: true),
+                                           Joy(title: "신라면 먹기", counts: 12, isCompleted: false),
+                                           Joy(title: "송어 먹기", counts: 5, isCompleted: true)]
+  
     static let manyAchievedDummy: [Joy] = [Joy(title: "뜨끈한 메밀차 마시기 뜨끈한 메밀차 마시기 뜨끈한 메밀", counts: 21),
                                            Joy(title: "방어 먹기", counts: 17),
                                            Joy(title: "열라면 먹기", counts: 12),
