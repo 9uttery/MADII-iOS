@@ -33,6 +33,7 @@
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
+		5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD32B7504D300FD407E /* LoginWithIdView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
@@ -117,6 +118,7 @@
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		5141CACF2B74EDE700FD407E /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
+		5141CAD32B7504D300FD407E /* LoginWithIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithIdView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +243,7 @@
 				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
 				51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */,
 				5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */,
+				5141CAD32B7504D300FD407E /* LoginWithIdView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
+				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
