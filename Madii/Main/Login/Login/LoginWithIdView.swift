@@ -12,6 +12,8 @@ struct LoginWithIdView: View {
     @State private var password: String = ""
     var isTextFieldAllFilled: Bool { id.isEmpty == false && password.isEmpty == false }
     
+    @State private var showMainView: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             ScrollView {
@@ -23,11 +25,14 @@ struct LoginWithIdView: View {
             
             Button {
                 // 로그인
+                showMainView = true
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
             }
             .disabled(isTextFieldAllFilled == false)
+            .navigationDestination(isPresented: $showMainView) {
+                MadiiTabView().navigationBarBackButtonHidden() }
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 24)
