@@ -13,13 +13,16 @@ struct HomeView: View {
     @State private var showNewAlbumPopUp: Bool = false
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 0) {
-                HomeTodayJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
-                HomeMyJoyView()
-                HomePlayJoyView()
-                Spacer()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HomeTodayJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
+                    HomeMyJoyView()
+                    HomePlayJoyView()
+                }
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
+            .scrollIndicators(.never)
+            
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp, showSaveJoyToast: $showSaveJoyToast)
             }

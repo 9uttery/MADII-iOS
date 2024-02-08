@@ -32,6 +32,8 @@
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
+		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
+		5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD32B7504D300FD407E /* LoginWithIdView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
@@ -92,7 +94,6 @@
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
 		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
-		BE459A442B712887002E9AB2 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE459A432B712887002E9AB2 /* Config.xcconfig */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
@@ -115,6 +116,9 @@
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		5141CACB2B710C7D00FD407E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
+		5141CACF2B74EDE700FD407E /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
+		5141CAD32B7504D300FD407E /* LoginWithIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithIdView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,13 +237,15 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		514C36AA2B4D43EA001A55D1 /* LoginView */ = {
+		514C36AA2B4D43EA001A55D1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
 				51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */,
+				5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */,
+				5141CAD32B7504D300FD407E /* LoginWithIdView.swift */,
 			);
-			path = LoginView;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		514C36AD2B5107CF001A55D1 /* TextField */ = {
@@ -274,6 +280,7 @@
 			children = (
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
 				5141CACB2B710C7D00FD407E /* Info.plist */,
+				5141CACF2B74EDE700FD407E /* Config.xcconfig */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51E0259E2B26F7C500F4F41A /* Service */,
 				516455972B1F07080010199B /* Model */,
@@ -355,7 +362,6 @@
 		51D8D3602B17613C001B6793 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BE39866A2B6267F400643805 /* Profile */,
 				51D8D3752B188F35001B6793 /* Components */,
 				51E025AE2B28986200F4F41A /* Login */,
 				51D8D36A2B177085001B6793 /* Home */,
@@ -413,6 +419,7 @@
 			children = (
 				516455BC2B21B7110010199B /* CalendarMain */,
 				516455BD2B21B7200010199B /* DailyJoy */,
+				BE39866A2B6267F400643805 /* Profile */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -443,7 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				51E025AF2B28986D00F4F41A /* Onboarding */,
-				514C36AA2B4D43EA001A55D1 /* LoginView */,
+				514C36AA2B4D43EA001A55D1 /* Login */,
 				511DB50A2B66A30A00D2B01D /* SignUp */,
 			);
 			path = Login;
@@ -600,7 +607,6 @@
 				510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
-				BE459A442B712887002E9AB2 /* Config.xcconfig in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
 			);
@@ -660,6 +666,7 @@
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
+				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
@@ -668,6 +675,7 @@
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				BE2BFC1A2B36B5D6006282F2 /* HomeMyJoyView.swift in Sources */,
+				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,
@@ -715,6 +723,7 @@
 /* Begin XCBuildConfiguration section */
 		515EFC972AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5141CACF2B74EDE700FD407E /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -778,6 +787,7 @@
 		};
 		515EFC982AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5141CACF2B74EDE700FD407E /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -834,6 +844,7 @@
 		};
 		515EFC9A2AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5141CACF2B74EDE700FD407E /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -871,6 +882,7 @@
 		};
 		515EFC9B2AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5141CACF2B74EDE700FD407E /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

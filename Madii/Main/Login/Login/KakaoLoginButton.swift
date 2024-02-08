@@ -1,8 +1,8 @@
 //
-//  LoginView.swift
+//  KakaoLoginButton.swift
 //  Madii
 //
-//  Created by 이안진 on 12/27/23.
+//  Created by 이안진 on 2/8/24.
 //
 
 import KakaoSDKAuth
@@ -10,65 +10,32 @@ import KakaoSDKCommon
 import KakaoSDKUser
 import SwiftUI
 
-struct LoginView: View {
+struct KakaoLoginButton: View {
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            
-            Rectangle()
-                .frame(height: 392)
-                .padding(.bottom, 40)
-            
-            Button {
-                kakaoLogin()
-            } label: {
-                Text("카카오 로그인")
-            }
-            
-            Button {
-                kakaoUnlink()
-            } label: {
-                Text("카카오 연결 해제")
-            }
-            
+        Button {
+            kakaoLogin()
+        } label: {
             HStack {
-                Circle()
+                Image("kakaoLogin")
                     .frame(width: 22, height: 22)
-                    .foregroundStyle(Color.black)
+                
                 Spacer()
+                
                 Text("카카오 로그인")
                     .madiiFont(font: .madiiBody2, color: .black)
+                
                 Spacer()
             }
             .padding(16)
+            .frame(height: 56)
             .background(Color(red: 1, green: 0.9, blue: 0))
             .cornerRadius(12)
-            .padding(.bottom, 12)
-            
-            AppleLoginButton()
-            
-            Rectangle()
-                .foregroundStyle(Color.white.opacity(0.2))
-                .frame(height: 1)
-                .padding(.vertical, 20)
-
-            HStack(spacing: 8) {
-                MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .small)
-                
-                NavigationLink {
-                    SignUpView().navigationBarBackButtonHidden()
-                } label: {
-                    MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .small)
-                }
-
-            }
-            .padding(.bottom, 48)
         }
-        .padding(.horizontal, 16)
-        .background(OnboardingBackgroundGradient())
     }
-
-    func kakaoLogin() {
+    
+    private func kakaoLogin() -> String {
+        var kakaoIdToken: String = ""
+        
         if UserApi.isKakaoTalkLoginAvailable() {
             // 카카오톡 앱 실행 가능
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
@@ -76,9 +43,9 @@ struct LoginView: View {
                     print(error)
                 } else {
                     print("DEBUG: loginWithKakaoTalk() success.")
-
-                    // do something
-                    _ = oauthToken
+                    guard let idToken = oauthToken?.idToken else { return }
+                    print("DEBUG: loginWithKakaoTalk() idToken - \(idToken)")
+                    kakaoIdToken = idToken
                 }
             }
         } else {
@@ -88,15 +55,18 @@ struct LoginView: View {
                     print(error)
                 } else {
                     print("DEBUG: loginWithKakaoAccount() success.")
-
-                    // do something
-                    _ = oauthToken
+                    
+                    guard let idToken = oauthToken?.idToken else { return }
+                    print("DEBUG: loginWithKakaoAccount() idToken - \(idToken)")
+                    kakaoIdToken = idToken
                 }
             }
         }
+        
+        return kakaoIdToken
     }
     
-    func kakaoLogout() {
+    private func kakaoLogout() {
         UserApi.shared.logout { error in
             if let error = error {
                 print("DEBUG: kakao logout error: \(error)")
@@ -106,7 +76,7 @@ struct LoginView: View {
         }
     }
     
-    func kakaoUnlink() {
+    private func kakaoUnlink() {
         UserApi.shared.unlink {(error) in
             if let error = error {
                 print("DEBUG: kakao unlink error: \(error)")
@@ -118,5 +88,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    KakaoLoginButton()
 }
