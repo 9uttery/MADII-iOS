@@ -235,14 +235,14 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		514C36AA2B4D43EA001A55D1 /* LoginView */ = {
+		514C36AA2B4D43EA001A55D1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */,
 				51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */,
 				5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */,
 			);
-			path = LoginView;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		514C36AD2B5107CF001A55D1 /* TextField */ = {
@@ -447,7 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				51E025AF2B28986D00F4F41A /* Onboarding */,
-				514C36AA2B4D43EA001A55D1 /* LoginView */,
+				514C36AA2B4D43EA001A55D1 /* Login */,
 				511DB50A2B66A30A00D2B01D /* SignUp */,
 			);
 			path = Login;
