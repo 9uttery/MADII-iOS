@@ -362,7 +362,6 @@
 		51D8D3602B17613C001B6793 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BE39866A2B6267F400643805 /* Profile */,
 				51D8D3752B188F35001B6793 /* Components */,
 				51E025AE2B28986200F4F41A /* Login */,
 				51D8D36A2B177085001B6793 /* Home */,
@@ -420,6 +419,7 @@
 			children = (
 				516455BC2B21B7110010199B /* CalendarMain */,
 				516455BD2B21B7200010199B /* DailyJoy */,
+				BE39866A2B6267F400643805 /* Profile */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
