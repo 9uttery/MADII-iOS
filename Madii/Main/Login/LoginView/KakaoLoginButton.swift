@@ -13,7 +13,7 @@ import SwiftUI
 struct KakaoLoginButton: View {
     var body: some View {
         Button {
-            
+            kakaoLogin()
         } label: {
             HStack {
                 Image("kakaoLogin")
@@ -33,7 +33,9 @@ struct KakaoLoginButton: View {
         }
     }
     
-    private func kakaoLogin() {
+    private func kakaoLogin() -> String {
+        var kakaoIdToken: String = ""
+        
         if UserApi.isKakaoTalkLoginAvailable() {
             // 카카오톡 앱 실행 가능
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
@@ -41,9 +43,9 @@ struct KakaoLoginButton: View {
                     print(error)
                 } else {
                     print("DEBUG: loginWithKakaoTalk() success.")
-
-                    // do something
-                    _ = oauthToken
+                    guard let idToken = oauthToken?.idToken else { return }
+                    print("DEBUG: loginWithKakaoTalk() idToken - \(idToken)")
+                    kakaoIdToken = idToken
                 }
             }
         } else {
@@ -53,12 +55,15 @@ struct KakaoLoginButton: View {
                     print(error)
                 } else {
                     print("DEBUG: loginWithKakaoAccount() success.")
-
-                    // do something
-                    _ = oauthToken
+                    
+                    guard let idToken = oauthToken?.idToken else { return }
+                    print("DEBUG: loginWithKakaoAccount() idToken - \(idToken)")
+                    kakaoIdToken = idToken
                 }
             }
         }
+        
+        return kakaoIdToken
     }
     
     private func kakaoLogout() {
