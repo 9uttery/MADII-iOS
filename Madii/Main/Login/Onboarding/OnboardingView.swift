@@ -7,17 +7,36 @@
 
 import SwiftUI
 
-struct OnboardingPage: Identifiable {
-    let id: Int
-    let title, description: String
-    let image: Color
+enum OnboardingPages {
+    case first, second, third
+    
+    var title: String {
+        switch self {
+        case .first: "단단한 내가 되기 위한 시간"
+        case .second: "아주 소소한 것이라도 좋아요!"
+        case .third: "새로운 행복을 발견해요"
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .first: "매일매일 나를 위한 시간을 가지면서\n나를 들여다보고, 일상을 다시 살아갈 힘을 얻어요"
+        case .second: "바쁜 일상 속에서도 잠깐 시간을 내어\n내가 온전히 행복한 순간들을 기록해보세요"
+        case .third: "무심코 놓치고 있던 행복을 발견하고,\n취향에 맞는 행복도 추천받을 수 있어요"
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .first: ""
+        case .second: ""
+        case .third: ""
+        }
+    }
 }
 
 struct OnboardingView: View {
-    let contents: [OnboardingPage] = [
-        OnboardingPage(id: 0, title: "단단한 내가 되기 위한 시간", description: "매일매일 나를 위한 시간을 가지면서\n나를 들여다보고, 일상을 다시 살아갈 힘을 얻어요", image: .gray400),
-        OnboardingPage(id: 1, title: "아주 소소한 것이라도 좋아요!", description: "바쁜 일상 속에서도 잠깐 시간을 내어\n내가 온전히 행복한 순간들을 기록해보세요", image: .gray200),
-        OnboardingPage(id: 2, title: "새로운 행복을 발견해요", description: "무심코 놓치고 있던 행복을 발견하고,\n취향에 맞는 행복도 추천받을 수 있어요", image: .gray400)]
+    let contents: [Int: OnboardingPages] = [0: .first, 1: .second, 2: .third]
     @State private var selectedPage: Int = 0
     @State private var showMainView: Bool = false
     @State private var showLoginView: Bool = false
@@ -36,7 +55,6 @@ struct OnboardingView: View {
             
             // 이미지
             Rectangle()
-                .foregroundStyle(contents[selectedPage].image)
                 .frame(width: 360, height: 392)
                 .padding(.top, 40)
             
@@ -50,11 +68,9 @@ struct OnboardingView: View {
         }
         .background(OnboardingBackgroundGradient())
         .navigationDestination(isPresented: $showMainView) {
-            MadiiTabView().navigationBarBackButtonHidden()
-        }
+            MadiiTabView().navigationBarBackButtonHidden() }
         .navigationDestination(isPresented: $showLoginView) {
-            LoginView().navigationBarBackButtonHidden()
-        }
+            LoginView().navigationBarBackButtonHidden() }
     }
     
     // 페이지 위치 점 세개
@@ -74,9 +90,9 @@ struct OnboardingView: View {
             
             Spacer()
             
-            ForEach(contents) { content in
+            ForEach(0 ..< 3, id: \.self) { index in
                 Circle()
-                    .foregroundStyle(content.id == selectedPage ? Color.white : Color.gray700)
+                    .foregroundStyle(index == selectedPage ? Color.white : Color.gray700)
                     .frame(width: 8, height: 8)
             }
         }
@@ -88,10 +104,10 @@ struct OnboardingView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack { Spacer() }
                 
-            Text(contents[selectedPage].title)
+            Text(contents[selectedPage]?.title ?? "")
                 .madiiFont(font: .madiiTitle, color: .white)
                 
-            Text(contents[selectedPage].description)
+            Text(contents[selectedPage]?.description ?? "")
                 .madiiFont(font: .madiiBody3, color: .white)
         }
     }
@@ -122,9 +138,7 @@ struct OnboardingView: View {
     // 다음 버튼 Action
     private func showNextPage() {
         if selectedPage < 2 {
-            withAnimation {
-                selectedPage += 1
-            }
+            selectedPage += 1
         } else if selectedPage == 2 {
             showLoginView = true
         }
