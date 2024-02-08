@@ -26,12 +26,12 @@ struct OnboardingView: View {
         VStack(spacing: 0) {
             // 페이지 위치 점 세개
             pageStatus
-                .padding(.top, 30)
-                .padding(.horizontal, 28)
+                .padding(.leading, 20)
+                .padding(.trailing, 28)
             
             // 문구(제목과 설명)
             titleAndDescription
-                .padding(.top, 66)
+                .padding(.top, 44)
                 .padding(.horizontal, 24)
             
             // 이미지
@@ -60,13 +60,27 @@ struct OnboardingView: View {
     // 페이지 위치 점 세개
     var pageStatus: some View {
         HStack(spacing: 12) {
+            if selectedPage > 0 {
+                Button {
+                    selectedPage -= 1
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .frame(width: 10, height: 16)
+                        .foregroundStyle(Color.white)
+                        .padding()
+                        .frame(width: 20, height: 20)
+                }
+            }
+            
             Spacer()
+            
             ForEach(contents) { content in
                 Circle()
                     .foregroundStyle(content.id == selectedPage ? Color.white : Color.gray700)
                     .frame(width: 8, height: 8)
             }
         }
+        .frame(height: 60)
     }
     
     // 문구(제목과 설명)
