@@ -13,32 +13,31 @@ struct MadiiTabView: View {
     @StateObject private var popUpStatus = PopUpStatus()
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                switch tabIndex {
-                case .home: HomeView()
-                case .record: RecordView()
-                case .calendar: CalendarView()
-                }
-
-                if tabBarManager.isTabBarShown {
-                    MadiiTabBar(tabIndex: $tabIndex)
-                }
+        VStack(spacing: 0) {
+            switch tabIndex {
+            case .home: HomeView()
+            case .record: RecordView()
+            case .calendar: CalendarView()
             }
-            .environmentObject(tabBarManager)
-            .environmentObject(popUpStatus)
-            .onAppear {
-                tabBarManager.isTabBarShown = true
-                checkIsTabBarShown()
+            
+            PlaylistBar()
+            
+            if tabBarManager.isTabBarShown {
+                MadiiTabBar(tabIndex: $tabIndex)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .environmentObject(tabBarManager)
+        .environmentObject(popUpStatus)
+        .onAppear {
+            tabBarManager.isTabBarShown = true
+            checkIsTabBarShown()
+        }
     }
 
     func checkIsTabBarShown() {
         // 키보드가 올라오면 함께 올라오는 문제 해결을 위해
         // 키보드가 없을 때만 나타나도록 구현
-        
+
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
             tabBarManager.isTabBarShown = false
         }
