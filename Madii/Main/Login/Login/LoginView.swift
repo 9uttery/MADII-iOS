@@ -27,7 +27,11 @@ struct LoginView: View {
                 .padding(.vertical, 20)
 
             HStack(spacing: 8) {
-                MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .big)
+                NavigationLink {
+                    LoginWithIdView()
+                } label: {
+                    MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .big)
+                }
                 
                 NavigationLink {
                     SignUpView().navigationBarBackButtonHidden()
@@ -40,6 +44,7 @@ struct LoginView: View {
         }
         .padding(.horizontal, 16)
         .background(OnboardingBackgroundGradient())
+        .navigationTitle("")
     }
 }
 

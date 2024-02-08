@@ -14,13 +14,15 @@ struct LoginWithIdView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            idTextField
-            passwordTextField
-            
-            Spacer()
+            ScrollView {
+                idTextField
+                    .padding(.top, 44)
+                passwordTextField
+            }
+            .scrollIndicators(.never)
             
             Button {
-                
+                // 로그인
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
@@ -28,7 +30,6 @@ struct LoginWithIdView: View {
             .disabled(isTextFieldAllFilled == false)
         }
         .padding(.horizontal, 16)
-        .padding(.top, 44)
         .padding(.bottom, 24)
     }
     
