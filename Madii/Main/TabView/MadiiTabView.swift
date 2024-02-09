@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MadiiTabView: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var showPlaylist: Bool = false
+    
     @State var tabIndex: TabIndex = .record
     @StateObject private var tabBarManager = TabBarManager()
     @StateObject private var popUpStatus = PopUpStatus()
@@ -20,7 +23,30 @@ struct MadiiTabView: View {
             case .calendar: CalendarView()
             }
             
-            PlaylistBar()
+            Button {
+                showPlaylist = true
+            } label: {
+                PlaylistBar()
+            }
+            .fullScreenCover(isPresented: $showPlaylist, content: {
+                ZStack {
+                    Color.red
+                    
+                    Button {
+                        showPlaylist = false
+                    } label: {
+                        Text("dismiss")
+                    }
+                }
+                .gesture(
+                    DragGesture().onEnded { value in
+                        if value.location.y - value.startLocation.y > 150 {
+                            /// Use presentationMode.wrappedValue.dismiss() for iOS 14 and below
+                            showPlaylist = false
+                        }
+                    }
+                )
+            })
             
             if tabBarManager.isTabBarShown {
                 MadiiTabBar(tabIndex: $tabIndex)
