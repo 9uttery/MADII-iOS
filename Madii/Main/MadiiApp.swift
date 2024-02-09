@@ -11,19 +11,21 @@ import SwiftUI
 
 @main
 struct MadiiApp: App {
-    @AppStorage("hasEverLogin") var hasEverLogin = false
+    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
+    @AppStorage("isLoggedIn") var isLoggedIn = false
     
     init() {
         // Kakao SDK 초기화
         let kakaoNativeAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
         KakaoSDK.initSDK(appKey: kakaoNativeAppKey as! String)
-        print("DEBUG @AppStorage hasEverLogin: \(hasEverLogin)")
+        print("DEBUG @AppStorage hasEverLoggedIn: \(hasEverLoggedIn)")
+        print("DEBUG @AppStorage isLoggedIn: \(isLoggedIn)")
     }
 
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                if hasEverLogin {
+                if hasEverLoggedIn {
                     LoginView()
                 } else {
                     OnboardingView()
