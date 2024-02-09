@@ -89,13 +89,21 @@ struct IDView: View {
     
     // 아이디 중복 체크
     private func checkIdDuplicated(_ id: String) {
+        // id 형식이 올바를 때만 중복 체크
         if idType == .correct {
             if id.isEmpty {
+                // 비어 있으면 none
                 idType = IdType.none
-            } else if id == "123" {
-                idType = IdType.possible
             } else {
-                idType = IdType.impossible
+                UsersAPI.shared.getIdCheck(id: id) { isSuccess, canUseID in
+                    if isSuccess && canUseID {
+                        // api 통신 성공 && 아이디 사용 가능
+                        idType = IdType.possible
+                    } else {
+                        // api 통신 오류 || 아이디 사용 불가능
+                        idType = IdType.impossible
+                    }
+                }
             }
         }
     }
