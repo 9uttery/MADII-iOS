@@ -35,6 +35,7 @@
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
 		5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD32B7504D300FD407E /* LoginWithIdView.swift */; };
 		5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD52B7525C900FD407E /* PlaylistBar.swift */; };
+		5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAFA2B76944C00FD407E /* UsersAPI.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
@@ -125,6 +126,7 @@
 		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
 		5141CAD32B7504D300FD407E /* LoginWithIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithIdView.swift; sourceTree = "<group>"; };
 		5141CAD52B7525C900FD407E /* PlaylistBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBar.swift; sourceTree = "<group>"; };
+		5141CAFA2B76944C00FD407E /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,14 @@
 				5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		5141CAF72B7693F500FD407E /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				5141CAFA2B76944C00FD407E /* UsersAPI.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		514C36AA2B4D43EA001A55D1 /* Login */ = {
@@ -543,6 +553,7 @@
 		BE459A572B762621002E9AB2 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				5141CAF72B7693F500FD407E /* Users */,
 				BE459A582B762621002E9AB2 /* Record */,
 				BE459A5B2B762621002E9AB2 /* BaseResponse.swift */,
 			);
@@ -702,6 +713,7 @@
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
+				5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
@@ -762,6 +774,7 @@
 /* Begin XCBuildConfiguration section */
 		515EFC972AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -825,6 +838,7 @@
 		};
 		515EFC982AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -881,6 +895,7 @@
 		};
 		515EFC9A2AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -918,6 +933,7 @@
 		};
 		515EFC9B2AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
