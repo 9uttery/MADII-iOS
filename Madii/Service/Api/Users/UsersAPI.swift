@@ -8,6 +8,7 @@
 import Alamofire
 import Foundation
 import KeychainSwift
+import SwiftUI
 
 class UsersAPI {
     let keychain = KeychainSwift()
@@ -43,6 +44,44 @@ class UsersAPI {
                 case .failure(let error):
                     print("DEBUG(getIdCheck): error \(error))")
                     completion(false, false)
+                }
+            }
+    }
+    
+    // 일반 로그인
+    func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/login/normal"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "loginId": id,
+            "password": password
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(login with id): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(login with id) access token: \(accessToken)")
+                    print("DEBUG(login with id) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    // UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(login with id) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
                 }
             }
     }

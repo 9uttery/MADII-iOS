@@ -30,6 +30,7 @@
 		511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50B2B66A35000D2B01D /* ServiceTermsView.swift */; };
 		511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50D2B66B24C00D2B01D /* IDView.swift */; };
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
+		512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AE7F92B769F8200926DE6 /* UsersDTO.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
@@ -120,6 +121,7 @@
 		511DB50B2B66A35000D2B01D /* ServiceTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTermsView.swift; sourceTree = "<group>"; };
 		511DB50D2B66B24C00D2B01D /* IDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDView.swift; sourceTree = "<group>"; };
 		511DB50F2B66C49100D2B01D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		512AE7F92B769F8200926DE6 /* UsersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDTO.swift; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		5141CACB2B710C7D00FD407E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				5141CAFA2B76944C00FD407E /* UsersAPI.swift */,
+				512AE7F92B769F8200926DE6 /* UsersDTO.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */,
+				512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */,
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
