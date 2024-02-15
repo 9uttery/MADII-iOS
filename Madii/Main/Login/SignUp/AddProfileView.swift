@@ -120,7 +120,3 @@ struct AddProfileView: View {
         }
     }
 }
-
-#Preview {
-    SignUpView()
-}

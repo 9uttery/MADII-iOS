@@ -11,6 +11,9 @@ import KakaoSDKUser
 import SwiftUI
 
 struct KakaoLoginButton: View {
+    @State private var showMainView: Bool = false
+    @State private var showSignUpView: Bool = false
+    
     var body: some View {
         Button {
             kakaoLogin()
@@ -31,11 +34,31 @@ struct KakaoLoginButton: View {
             .background(Color(red: 1, green: 0.9, blue: 0))
             .cornerRadius(12)
         }
+        .navigationDestination(isPresented: $showMainView) {
+            MadiiTabView().navigationBarBackButtonHidden() }
+        .navigationDestination(isPresented: $showSignUpView) {
+            SignUpView(from: .kakao).navigationBarBackButtonHidden() }
     }
     
-    private func kakaoLogin() -> String {
-        var kakaoIdToken: String = ""
-        
+    private func login(idToken: String) {
+        UsersAPI.shared.loginWithKakao(idToken: idToken) { isSuccess, response in
+            if isSuccess {
+//                if response.hasProfile {
+//                    showMainView = true
+//                } else {
+//                    // 프로필 화면 없으면 약관 동의 + 프로필 등록
+//                    showSignUpView = true
+//                }
+                
+                showSignUpView = true
+                
+            } else {
+                print("DEBUG KakaoLoginButton: isSuccess false")
+            }
+        }
+    }
+    
+    private func kakaoLogin() {
         if UserApi.isKakaoTalkLoginAvailable() {
             // 카카오톡 앱 실행 가능
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
@@ -43,9 +66,10 @@ struct KakaoLoginButton: View {
                     print(error)
                 } else {
                     print("DEBUG: loginWithKakaoTalk() success.")
+                    
                     guard let idToken = oauthToken?.idToken else { return }
                     print("DEBUG: loginWithKakaoTalk() idToken - \(idToken)")
-                    kakaoIdToken = idToken
+                    login(idToken: idToken)
                 }
             }
         } else {
@@ -58,12 +82,10 @@ struct KakaoLoginButton: View {
                     
                     guard let idToken = oauthToken?.idToken else { return }
                     print("DEBUG: loginWithKakaoAccount() idToken - \(idToken)")
-                    kakaoIdToken = idToken
+                    login(idToken: idToken)
                 }
             }
         }
-        
-        return kakaoIdToken
     }
     
     private func kakaoLogout() {

@@ -85,4 +85,41 @@ class UsersAPI {
                 }
             }
     }
+    
+    // 카카오 로그인
+    func loginWithKakao(idToken: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/login/kakao"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "idToken": idToken
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(login with kakao): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(login with kakao) access token: \(accessToken)")
+                    print("DEBUG(login with kakao) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    // UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(login with kakao) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
 }

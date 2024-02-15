@@ -14,6 +14,8 @@ class SignUpStatus: ObservableObject {
 
 struct SignUpView: View {
     @StateObject var signUpStatus = SignUpStatus()
+    let from: LoginType
+    enum LoginType { case kakao, apple, id }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -64,8 +66,4 @@ struct SignUpView: View {
         }
         .environmentObject(signUpStatus)
     }
-}
-
-#Preview {
-    SignUpView()
 }

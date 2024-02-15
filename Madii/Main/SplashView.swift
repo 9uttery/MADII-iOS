@@ -26,6 +26,7 @@ struct SplashView: View {
             } else if isTokenVaild {
                 // 리프레시 토큰 유효 - main
                 if isProfileExist {
+                    // 프로필 있음 - 메인 화면
                     MadiiTabView()
                 } else {
                     // 프로필 없음 - 프로필 저장 화면

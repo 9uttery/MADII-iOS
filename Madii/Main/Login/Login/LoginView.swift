@@ -34,7 +34,7 @@ struct LoginView: View {
                 }
                 
                 NavigationLink {
-                    SignUpView().navigationBarBackButtonHidden()
+                    SignUpView(from: .id).navigationBarBackButtonHidden()
                 } label: {
                     MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .big)
                 }
@@ -46,8 +46,4 @@ struct LoginView: View {
         .background(OnboardingBackgroundGradient())
         .navigationTitle("")
     }
-}
-
-#Preview {
-    LoginView()
 }
