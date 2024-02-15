@@ -1,0 +1,239 @@
+//
+//  RecordAPI.swift
+//  Madii
+//
+//  Created by 정태우 on 2/5/24.
+//
+
+import Alamofire
+import Foundation
+import KeychainSwift
+
+class RecordAPI {
+    let keychain = KeychainSwift()
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    static let shared = RecordAPI()
+    
+    // (R-레코드) 소확행 기록
+    func postJoy(contents: String, completion: @escaping (_ isSuccess: Bool, _ joyContent: PostJoyResponse) -> Void) {
+        let url = "\(baseUrl)/joy"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: String] = [
+            "contents": contents
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<PostJoyResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(postJoy): data nil")
+                        completion(false, PostJoyResponse(joyIconNum: 0, contents: ""))
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(postJoy): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(postJoy): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(postJoy): error \(error))")
+                    completion(false, PostJoyResponse(joyIconNum: 0, contents: ""))
+                }
+            }
+    }
+    
+    // (R-레코드) 최근 본 소확행 앨범 조회
+    func getRecent(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
+        let url = "\(baseUrl)/recent"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getRecent): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getRecent): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getRecent): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getRecent): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+    
+    // (R-레코드) 내가 기록한 소확행 조회
+    func getJoy(completion: @escaping (_ isSuccess: Bool, _ joyList: [GetJoyResponse]) -> Void) {
+        let url = "\(baseUrl)/joy"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetJoyResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getJoy): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getJoy): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getJoy): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getJoy): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+    
+    // (R-레코드) 내가 만든 & 저장한 앨범 목록 조회
+    func getAlbums(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
+        let url = "\(baseUrl)/albums"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getAlbums): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getAlbums): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getAlbums): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getAlbums): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+    
+    // (R-레코드) 다른 소확행 앨범 모음 조회
+    func getRandomAlbumsById(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
+        let url = "\(baseUrl)/albums/\(albumId)/random"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getRandomAlbumsById): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getRandomAlbumsById): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getRandomAlbumsById): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getRandomAlbumsById): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+    
+    // 새로운 앨범 생성
+    func postAlbum(name: String, description: String, completion: @escaping (_ isSuccess: Bool, _ albumList: [PostAlbumResponse]) -> Void) {
+        let url = "\(baseUrl)/albums"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "\(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: String] = [
+            "name": name,
+            "description": description
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[PostAlbumResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(PostAlbum): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(PostAlbum): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(PostAlbum): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(PostAlbum): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+}

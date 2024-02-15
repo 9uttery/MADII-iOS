@@ -7,14 +7,33 @@
 
 import Foundation
 
+struct PostJoyResponse: Codable {
+    let joyIconNum: Int
+    let contents: String
+}
+
 struct GetJoyResponse: Codable {
-    var createdAt: String
-    var size: Int
-    var joyList: [GetJoyResponseJoy]
+    let createdAt: String
+    let size: Int
+    let joyList: [GetJoyResponseJoy]
 }
 
 struct GetJoyResponseJoy: Codable {
-    var joyId: Int
-    var joyIconNum: Int
-    var contents: String
+    let joyId: Int
+    let joyIconNum: Int
+    let contents: String
+}
+
+struct GetAlbumsResponse: Codable {
+    let albumId: Int
+    let joyIconNum: Int
+    let albumColorNum: Int
+    let name: String
+    let modifiedAt: String?
+    let nickName: String?
+}
+
+struct PostAlbumResponse: Codable {
+    let albumId: Int
+    let name: String
 }
