@@ -9,13 +9,14 @@ import SwiftUI
 
 class SignUpStatus: ObservableObject {
     @Published var allCounts: Int = 4
-    @Published var count: Int = 3
+    @Published var count: Int = 0
 }
+
+enum LoginType { case kakao, apple, id }
 
 struct SignUpView: View {
     @StateObject var signUpStatus = SignUpStatus()
-    let from: LoginType
-    enum LoginType { case kakao, apple, id }
+    let from: LoginType    
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -52,7 +53,7 @@ struct SignUpView: View {
             .padding(.trailing, 28)
             
             if signUpStatus.count == 0 {
-                ServiceTermsView()
+                ServiceTermsView(from: from)
                     .padding(.top, 94)
             } else if signUpStatus.count == 1 {
                 IDView()
@@ -65,5 +66,8 @@ struct SignUpView: View {
             }
         }
         .environmentObject(signUpStatus)
+        .onAppear {
+            signUpStatus.allCounts = from == .id ? 4 : 2
+        }
     }
 }

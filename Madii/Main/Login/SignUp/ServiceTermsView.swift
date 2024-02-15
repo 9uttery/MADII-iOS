@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ServiceTermsView: View {
+    let from: LoginType
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
     private let options: [String] = ["서비스 이용약관 (필수)", "개인정보 처리방침 (필수)", "마케팅 수신 동의 (선택)"]
@@ -52,7 +53,11 @@ struct ServiceTermsView: View {
             Spacer()
             
             Button {
-                signUpStatus.count += 1
+                if from == .id {
+                    signUpStatus.count += 1
+                } else {
+                    signUpStatus.count = 3
+                }
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(essentialTermsAgreed ? 1.0 : 0.4)
