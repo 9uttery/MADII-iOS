@@ -122,4 +122,39 @@ class UsersAPI {
                 }
             }
     }
+    
+    // 토큰 재발급
+    func reissueToken(completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/refresh"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "refreshToken": "\(keychain.get("refreshToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(reissue token): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(reissue token) access token: \(accessToken)")
+                    print("DEBUG(reissue token) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(reissue token) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
 }

@@ -54,11 +54,21 @@ struct SplashView: View {
     }
     
     private func reissueTokens() {
-        DispatchQueue.global().async {
-            // TODO: 리프레시 토큰으로 재발행
-            isTokenVaild = false
-            isProfileExist = true
-        }
+        isLoggedIn = false
+        
+//        DispatchQueue.global().async {
+//            UsersAPI.shared.reissueToken { isSuccess, response in
+//                if isSuccess {
+//                    isTokenVaild = true
+//                    isProfileExist = response.hasProfile
+//                    isLoggedIn = true
+//                } else {
+//                    isTokenVaild = false
+//                    isProfileExist = false
+//                    isLoggedIn = false
+//                }
+//            }
+//        }
     }
     
     private func delaySplashView() {
