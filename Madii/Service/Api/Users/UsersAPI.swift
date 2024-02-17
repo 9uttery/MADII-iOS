@@ -121,6 +121,41 @@ class UsersAPI {
             }
     }
     
+    // 애플 로그인
+    func loginWithApple(idToken: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/login/apple"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "idToken": idToken
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(login with apple): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(login with apple) access token: \(accessToken)")
+                    print("DEBUG(login with apple) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(login with apple) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
+    
     // 토큰 재발급
     func reissueToken(completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/refresh"
