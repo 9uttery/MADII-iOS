@@ -37,8 +37,16 @@ struct CalendarDays: View {
                         // 각 일마다 있는 소확행 커버
                         LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
                             ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
-                                Circle()
-                                    .fill(colors.randomElement() ?? Color.madiiPurple)
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 12, height: 12)
+                                        .foregroundStyle(Color.black)
+                                        .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
+                                    
+                                    Image("icon_1_2")
+                                        .resizable()
+                                        .frame(width: 6, height: 6)
+                                }
                             }
                         }
                         .frame(width: 42)
@@ -55,9 +63,20 @@ struct CalendarDays: View {
             }
         }
         .padding(.horizontal, 26)
+        .onAppear { getJoyIcons() }
 //        .navigationDestination(isPresented: $showDailyJoyView) {
 //            DailyJoyView(date: selectedDate)
 //        }
+    }
+    
+    private func getJoyIcons() {
+        AchievementsAPI.shared.getJoyIconsForMonth(date: selectedDate) { isSuccess, response in
+            if isSuccess {
+                print("DEBUG CalendarDays \(response)")
+            } else {
+                print("DEBUG CalendarDays 실패")
+            }
+        }
     }
     
     var emptyDays: some View {

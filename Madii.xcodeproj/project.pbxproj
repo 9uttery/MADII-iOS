@@ -58,6 +58,7 @@
 		51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3B2B7E816B008CF3AD /* SplashView.swift */; };
 		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
 		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
+		51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -160,6 +161,7 @@
 		51BEBA3B2B7E816B008CF3AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
 		51BEBA412B813F5B008CF3AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsAPI.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */,
+				51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */,
 			);
 			path = ETC;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				BE459A612B7E089E002E9AB2 /* AlbumAPI.swift in Sources */,
 				BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */,
+				51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,

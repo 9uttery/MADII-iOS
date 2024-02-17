@@ -66,21 +66,21 @@ struct SplashView: View {
     private func reissueTokens() {
         isLoggedIn = false
         
-//        DispatchQueue.global().async {
-//            UsersAPI.shared.reissueToken { isSuccess, response in
-//                if isSuccess {
-//                    isTokenVaild = true
-//                    isProfileExist = response.hasProfile
-//                    isLoggedIn = true
-//                    print("DEBUG(reissue token) isSucees true: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
-//                } else {
-//                    isTokenVaild = false
-//                    isProfileExist = false
-//                    isLoggedIn = false
-//                    print("DEBUG(reissue token) isSucees false: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
-//                }
-//            }
-//        }
+        DispatchQueue.global().async {
+            UsersAPI.shared.reissueToken { isSuccess, response in
+                if isSuccess {
+                    isTokenVaild = true
+                    isProfileExist = response.hasProfile
+                    isLoggedIn = true
+                    print("DEBUG(reissue token) isSucees true: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
+                } else {
+                    isTokenVaild = false
+                    isProfileExist = false
+                    isLoggedIn = false
+                    print("DEBUG(reissue token) isSucees false: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
+                }
+            }
+        }
     }
     
     private func delaySplashView() {
