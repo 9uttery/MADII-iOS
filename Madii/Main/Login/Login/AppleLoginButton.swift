@@ -9,6 +9,9 @@ import AuthenticationServices
 import SwiftUI
 
 struct AppleLoginButton: View {
+    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
+    @AppStorage("isLoggedIn") var isLoggedIn = false
+    
     @State private var showMainView: Bool = false
     @State private var showSignUpView: Bool = false
     
@@ -45,8 +48,11 @@ struct AppleLoginButton: View {
     private func loginWithApple(idToken: String) {
         UsersAPI.shared.loginWithApple(idToken: idToken) { isSuccess, response in
             if isSuccess {
+                hasEverLoggedIn = true
+                
                 if response.hasProfile {
                     showMainView = true
+                    isLoggedIn = true
                     print("DEBUG AppleLoginButton: isSuccess true profile yes")
                 } else {
                     // 프로필 화면 없으면 약관 동의 + 프로필 등록

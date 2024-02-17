@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PasswordView: View {
+    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
     @State private var password: String = ""
@@ -98,9 +99,11 @@ struct PasswordView: View {
     
     private func signUp() {
         // 일반 회원가입
-        UsersAPI.shared.signUpWithId(id: signUpStatus.id, password: password) { isSuccess, _ in
+        UsersAPI.shared.signUpWithId(id: signUpStatus.id, password: password,
+                                     agree: signUpStatus.marketingAgreed) { isSuccess, _ in
             if isSuccess {
                 print("DEBUG PasswordView: signup isSuccess true")
+                hasEverLoggedIn = true
                 signUpStatus.count += 1
             } else {
                 print("DEBUG PasswordView: signup isSuccess false")

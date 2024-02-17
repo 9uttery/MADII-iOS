@@ -49,13 +49,13 @@ class UsersAPI {
     }
     
     // 일반 회원가입
-    func signUpWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+    func signUpWithId(id: String, password: String, agree: Bool, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/sign-up"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         let parameters: [String: Any] = [
             "loginId": id,
             "password": password,
-            "agreesMarketing": false
+            "agreesMarketing": agree
         ]
         
         let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
