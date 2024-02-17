@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginWithIdView: View {
+    @AppStorage("isLoggedIn") var isLoggedIn = false
+    
     @State private var id: String = ""
     @State private var password: String = ""
     var isTextFieldAllFilled: Bool { id.isEmpty == false && password.isEmpty == false }
@@ -70,6 +72,7 @@ struct LoginWithIdView: View {
                 if response.hasProfile {
                     // 프로필 저장 완료 -> 메인 화면으로
                     showMainView = true
+                    isLoggedIn = true
                 } else {
                     // 프로필 저장 전 -> 프로필 설정 화면으로
                     print("DEBUG(LoginWithIdView): login() hasProfile false")
