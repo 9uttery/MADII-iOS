@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
+    @AppStorage("isLoggedIn") var isLoggedIn = false
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @State private var showSaveJoyPopUp: Bool = false
@@ -34,8 +35,31 @@ struct RecordView: View {
                         // 최근 본 앨범 & 많이 실천한 소확행 & 내가 기록한 소확행
                         UserAnalyticsView()
                         
-                        // 소확행 앨범
-                        MyAlbumsView()
+                        if isLoggedIn {
+                            // 소확행 앨범
+                            MyAlbumsView()
+                        } else {
+                            HStack {
+                                Spacer()
+                                
+                                VStack(spacing: 16) {
+                                    Text("로그인 후 나만의 소확행 앨범을 만들고,\n오늘 해보고 싶은 소확행을 앨범에 담아보세요")
+                                        .madiiFont(font: .madiiBody4, color: .gray500)
+                                        .multilineTextAlignment(.center)
+                                    
+                                    Text("로그인하러 가기")
+                                        .font(.madiiBody1)
+                                        .foregroundColor(Color(red: 0.51, green: 0.68, blue: 0.02))
+                                        .padding(.horizontal, 24)
+                                        .padding(.vertical, 12)
+                                        .background(Color.madiiYellowGreen)
+                                        .cornerRadius(90)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(.top, 120)
+                        }
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
@@ -69,5 +93,5 @@ struct RecordView: View {
 }
 
 #Preview {
-    MadiiTabView()
+    SplashView()
 }

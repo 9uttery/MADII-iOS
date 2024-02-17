@@ -9,6 +9,12 @@ import AuthenticationServices
 import SwiftUI
 
 struct AppleLoginButton: View {
+    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
+    @AppStorage("isLoggedIn") var isLoggedIn = false
+    
+    @State private var showMainView: Bool = false
+    @State private var showSignUpView: Bool = false
+    
     var body: some View {
         SignInWithAppleButton { request in
             request.requestedScopes = [.fullName]
@@ -20,7 +26,9 @@ struct AppleLoginButton: View {
                     print("DEBUG(애플 로그인 success): \(credential.realUserStatus)")
 
                     guard let idToken = credential.identityToken else { return }
-                    print("DEBUG identityToken: \(String(data: idToken, encoding: .utf8) ?? "")")
+                    guard let idTokenString = String(data: idToken, encoding: .utf8) else { return }
+                    print("DEBUG identityToken: \(idTokenString)")
+                    loginWithApple(idToken: idTokenString)
 
                 default:
                     print("DEBUG(애플 로그인): sign success but credetial is nil")
@@ -31,6 +39,30 @@ struct AppleLoginButton: View {
         }
         .frame(height: 56)
         .cornerRadius(12)
+        .navigationDestination(isPresented: $showMainView) {
+            MadiiTabView().navigationBarBackButtonHidden() }
+        .navigationDestination(isPresented: $showSignUpView) {
+            SignUpView(from: .kakao).navigationBarBackButtonHidden() }
+    }
+    
+    private func loginWithApple(idToken: String) {
+        UsersAPI.shared.loginWithApple(idToken: idToken) { isSuccess, response in
+            if isSuccess {
+                hasEverLoggedIn = true
+                
+                if response.hasProfile {
+                    showMainView = true
+                    isLoggedIn = true
+                    print("DEBUG AppleLoginButton: isSuccess true profile yes")
+                } else {
+                    // 프로필 화면 없으면 약관 동의 + 프로필 등록
+                    showSignUpView = true
+                    print("DEBUG AppleLoginButton: isSuccess true profile no")
+                }
+            } else {
+                print("DEBUG AppleLoginButton: isSuccess false")
+            }
+        }
     }
 }
 

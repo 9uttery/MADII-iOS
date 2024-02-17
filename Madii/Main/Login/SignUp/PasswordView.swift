@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PasswordView: View {
+    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
     @State private var password: String = ""
@@ -87,7 +88,7 @@ struct PasswordView: View {
             .disabled(isValidPassword == false)
         } else {
             Button {
-                signUpStatus.count += 1
+                signUp()
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isValidPassword && isPasswordSame ? 1.0 : 0.4)
@@ -96,9 +97,23 @@ struct PasswordView: View {
         }
     }
     
+    private func signUp() {
+        // 일반 회원가입
+        UsersAPI.shared.signUpWithId(id: signUpStatus.id, password: password,
+                                     agree: signUpStatus.marketingAgreed) { isSuccess, _ in
+            if isSuccess {
+                print("DEBUG PasswordView: signup isSuccess true")
+                hasEverLoggedIn = true
+                signUpStatus.count += 1
+            } else {
+                print("DEBUG PasswordView: signup isSuccess false")
+            }
+        }
+    }
+    
     private func checkValidPassword(_ password: String) {
-//        let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!_@#$%^&*+=])[A-Za-z0-9~!_@#$%^&*+=]{8,}$"
-        let passwordRegEx = "^[A-Za-z0-9!_@*]{8,}$"
+        let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!_@#$%^&*+=])[A-Za-z0-9~!_@#$%^&*+=]{8,}$"
+//        let passwordRegEx = "^[A-Za-z0-9!_@*]{8,}$"
 
         let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         isValidPassword = passwordPred.evaluate(with: password)

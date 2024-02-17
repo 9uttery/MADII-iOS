@@ -9,6 +9,19 @@ import SwiftUI
 
 // FIXME: 이 두개를 합칠 수 있는 방법을 찾아보자
 
+enum AlbumCoverImage {
+    case orange, purple, blue, pink
+    
+    var backgroundColor: Color {
+        switch self {
+        case .orange: Color.madiiOrange
+        case .purple: Color.madiiPurple
+        case .blue: Color.madiiSkyBlue
+        case .pink: Color.madiiPink
+        }
+    }
+}
+
 struct AlbumRow: View {
     var hasName: Bool = false
     var name: String = ""
@@ -16,10 +29,16 @@ struct AlbumRow: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            Rectangle()
-                .frame(width: 56, height: 56)
-                .foregroundStyle(Color.madiiPurple)
-                .cornerRadius(4)
+            ZStack {
+                Rectangle()
+                    .frame(width: 56, height: 56)
+                    .foregroundStyle(Color.madiiPurple)
+                    .cornerRadius(4)
+                
+                Image("icon_1_3")
+                    .resizable()
+                    .frame(width: 36, height: 36)
+            }
             
             VStack(alignment: .leading, spacing: 0) {
                 if hasName {

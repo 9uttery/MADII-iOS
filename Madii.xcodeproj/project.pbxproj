@@ -55,6 +55,10 @@
 		519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */; };
 		519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */; };
 		519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */; };
+		51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3B2B7E816B008CF3AD /* SplashView.swift */; };
+		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
+		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
+		51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -154,6 +158,10 @@
 		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
 		519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyMenuBottomSheet.swift; sourceTree = "<group>"; };
+		51BEBA3B2B7E816B008CF3AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
+		51BEBA412B813F5B008CF3AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsAPI.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -374,6 +382,15 @@
 			path = Joy;
 			sourceTree = "<group>";
 		};
+		51BEBA3E2B813D8F008CF3AD /* ETC */ = {
+			isa = PBXGroup;
+			children = (
+				51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */,
+				51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */,
+			);
+			path = ETC;
+			sourceTree = "<group>";
+		};
 		51D690D92B15B94F00F8D705 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +423,7 @@
 				51D8D3702B177104001B6793 /* Calendar */,
 				51D8D3692B177048001B6793 /* TabView */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
+				51BEBA3B2B7E816B008CF3AD /* SplashView.swift */,
 				5138980F2B4A714F00AFA327 /* TestView.swift */,
 			);
 			path = Main;
@@ -480,6 +498,7 @@
 			children = (
 				51E0259C2B26EE6800F4F41A /* TabBarManager.swift */,
 				51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */,
+				51BEBA412B813F5B008CF3AD /* ImagePicker.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -573,6 +592,7 @@
 				BE459A5F2B7E088C002E9AB2 /* Album */,
 				5141CAF72B7693F500FD407E /* Users */,
 				BE459A582B762621002E9AB2 /* Record */,
+				51BEBA3E2B813D8F008CF3AD /* ETC */,
 				BE459A5B2B762621002E9AB2 /* BaseResponse.swift */,
 			);
 			name = Api;
@@ -742,6 +762,7 @@
 				BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */,
 				BE3986762B63604A00643805 /* SignOutView.swift in Sources */,
 				519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */,
+				51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
@@ -758,6 +779,8 @@
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
+				51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */,
+				51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */,
@@ -773,6 +796,7 @@
 				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				BE459A612B7E089E002E9AB2 /* AlbumAPI.swift in Sources */,
 				BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */,
+				51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */,
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,

@@ -10,8 +10,10 @@ import SwiftUI
 struct SaveMyJoyView: View {
     @EnvironmentObject private var tabBarManager: TabBarManager
     
-    @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
+    @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
+    
+    @State private var showPopUp: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -24,14 +26,18 @@ struct SaveMyJoyView: View {
                     .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
                 
                 Button {
-                    tabBarManager.isTabBarShown = false
-                    showSaveJoyToast = true
+//                    tabBarManager.isTabBarShown = false
+//                    showSaveJoyToast = true
+                    showPopUp = true
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()
                         .frame(width: 36, height: 36)
                 }
                 .disabled(myNewJoy.isEmpty)
+                .transparentFullScreenCover(isPresented: $showPopUp) {
+                    SaveMyJoyPopUpView(showSaveJoyPopUp: $showPopUp, showSaveJoyToast: $showSaveJoyToast)
+                }
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 16)
