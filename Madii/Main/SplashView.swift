@@ -15,14 +15,13 @@ struct SplashView: View {
     @State private var isTokenVaild: Bool = false
     @State private var isProfileExist: Bool = false
     
+    @State private var imageName: String = "LaunchScreen"
+    
     var body: some View {
         NavigationStack {
             if isLoadingFinished == false {
                 // 로딩 중.. - 스플래시 뷰
-                ScrollView {
-                    Text("스플래시")
-                }
-                .background(Color.red)
+                splashView
             } else if isTokenVaild {
                 // 리프레시 토큰 유효 - main
                 if isProfileExist {
@@ -48,6 +47,18 @@ struct SplashView: View {
         }
     }
     
+    private var splashView: some View {
+        VStack {
+            Image(imageName)
+                .resizable()
+                .frame(width: 252, height: 35)
+                .padding(.top, 220)
+            Spacer()
+            HStack { Spacer() }
+        }
+        .background(Color.madiiNavy)
+    }
+    
     private func printAppStorageVariables() {
         print("DEBUG @AppStorage hasEverLoggedIn: \(hasEverLoggedIn)")
         print("DEBUG @AppStorage isLoggedIn: \(isLoggedIn)")
@@ -56,23 +67,31 @@ struct SplashView: View {
     private func reissueTokens() {
         isLoggedIn = false
         
-//        DispatchQueue.global().async {
-//            UsersAPI.shared.reissueToken { isSuccess, response in
-//                if isSuccess {
-//                    isTokenVaild = true
-//                    isProfileExist = response.hasProfile
-//                    isLoggedIn = true
-//                } else {
-//                    isTokenVaild = false
-//                    isProfileExist = false
-//                    isLoggedIn = false
-//                }
-//            }
-//        }
+        DispatchQueue.global().async {
+            UsersAPI.shared.reissueToken { isSuccess, response in
+                if isSuccess {
+                    isTokenVaild = true
+                    isProfileExist = response.hasProfile
+                    isLoggedIn = true
+                    print("DEBUG(reissue token) isSucees true: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
+                } else {
+                    isTokenVaild = false
+                    isProfileExist = false
+                    isLoggedIn = false
+                    print("DEBUG(reissue token) isSucees false: isTokenValie \(isTokenVaild), isProfileExist \(isProfileExist), isLoggedIn \(isLoggedIn)")
+                }
+            }
+        }
     }
     
     private func delaySplashView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation(.smooth) {
+                imageName = "LaunchScreenGreen"
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             withAnimation {
                 isLoadingFinished = true
             }
