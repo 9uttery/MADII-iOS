@@ -10,17 +10,25 @@ import SwiftUI
 struct LoginView: View {
     var body: some View {
         VStack(spacing: 0) {
-            Spacer()
+            VStack(alignment: .center, spacing: 12) {
+                Text("바쁜 일상 속\n나만의 일시정지 버튼")
+                    .font(.spoqaHanSansNeo(weight: .bold, size: 28))
+                    .foregroundStyle(Color.white)
+                    .multilineTextAlignment(.center)
+                
+                Image("LaunchScreenGreen")
+                    .resizable()
+                    .frame(width: 168, height: 24)
+            }
+            .padding(.top, 96)
             
-            Rectangle()
-                .frame(height: 392)
-                .padding(.bottom, 40)
+            Spacer()
             
             KakaoLoginButton()
                 .padding(.bottom, 12)
             
             AppleLoginButton()
-            
+                
             Rectangle()
                 .foregroundStyle(Color.white.opacity(0.2))
                 .frame(height: 1)
@@ -30,15 +38,14 @@ struct LoginView: View {
                 NavigationLink {
                     LoginWithIdView()
                 } label: {
-                    MadiiButton(title: "아이디로 로그인", color: .yellowGreen, size: .big)
+                    button(image: "arrow.forward", title: "아이디로 로그인")
                 }
                 
                 NavigationLink {
                     SignUpView(from: .id).navigationBarBackButtonHidden()
                 } label: {
-                    MadiiButton(title: "간편 회원가입", color: .yellowGreen, size: .big)
+                    button(image: "person", title: "간편 회원가입")
                 }
-
             }
             .padding(.bottom, 28)
         }
@@ -46,4 +53,29 @@ struct LoginView: View {
         .background(OnboardingBackgroundGradient())
         .navigationTitle("")
     }
+    
+    @ViewBuilder
+    private func button(image: String, title: String) -> some View {
+        HStack(spacing: 8) {
+            Spacer()
+            
+            Image(systemName: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 20)
+                .foregroundStyle(Color.black)
+            
+            Text(title)
+                .madiiFont(font: .madiiBody2, color: .black)
+            
+            Spacer()
+        }
+        .frame(height: 56)
+        .background(Color.white)
+        .cornerRadius(12)
+    }
+}
+
+#Preview {
+    LoginView()
 }
