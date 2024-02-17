@@ -11,7 +11,7 @@ struct ServiceTermsView: View {
     let from: LoginType
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
-    private let options: [String] = ["서비스 이용약관 (필수)", "개인정보 처리방침 (필수)", "마케팅 수신 동의 (선택)"]
+    private let options: [String] = ["서비스 이용약관 동의", "개인정보 처리방침 동의", "마케팅 수신 동의"]
     @State private var status: [Bool] = [false, false, false]
     var allTermsAgreed: Bool { status[0] && status[1] && status[2] }
     var essentialTermsAgreed: Bool { status[0] && status[1] }
@@ -34,7 +34,7 @@ struct ServiceTermsView: View {
                         .padding(2)
                         .foregroundStyle(allTermsAgreed ? Color.madiiYellowGreen : Color.gray200.opacity(0.4))
                     
-                    Text("모두 동의하기 (선택 정보 포함)")
+                    Text("전체 동의")
                         .madiiFont(font: .madiiBody3, color: .white)
                 }
             }
@@ -53,6 +53,9 @@ struct ServiceTermsView: View {
             Spacer()
             
             Button {
+                // 마케팅 수신 동의 여부 저장
+                signUpStatus.marketingAgreed = status[2]
+                
                 if from == .id {
                     signUpStatus.count += 1
                 } else {

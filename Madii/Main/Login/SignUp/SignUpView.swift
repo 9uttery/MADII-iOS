@@ -10,11 +10,16 @@ import SwiftUI
 class SignUpStatus: ObservableObject {
     @Published var allCounts: Int = 4
     @Published var count: Int = 0
+    
+    @Published var id: String = ""
+    @Published var password: String = ""
+    @Published var marketingAgreed: Bool = false
 }
 
 enum LoginType { case kakao, apple, id }
 
 struct SignUpView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject var signUpStatus = SignUpStatus()
     let from: LoginType    
     
@@ -22,17 +27,19 @@ struct SignUpView: View {
         ZStack(alignment: .top) {
             ZStack {
                 HStack(spacing: 12) {
-                    if signUpStatus.count != 0 {
-                        Button {
+                    Button {
+                        if signUpStatus.count == 0 {
+                            dismiss()
+                        } else {
                             signUpStatus.count -= 1
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .frame(width: 10, height: 16)
-                                .foregroundStyle(Color.white)
-                                .padding()
-                                .frame(width: 20, height: 20)
-                                .padding(.horizontal, 20)
                         }
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .frame(width: 10, height: 16)
+                            .foregroundStyle(Color.white)
+                            .padding()
+                            .frame(width: 20, height: 20)
+                            .padding(.horizontal, 20)
                     }
                     
                     Spacer()

@@ -59,6 +59,10 @@ struct IDView: View {
             Spacer()
             
             Button {
+                // id 저장
+                signUpStatus.id = textFieldObserver.searchText
+                print("id 저장 \(textFieldObserver.searchText)")
+                
                 signUpStatus.count += 1
             } label: {
                 MadiiButton(title: "다음", size: .big)

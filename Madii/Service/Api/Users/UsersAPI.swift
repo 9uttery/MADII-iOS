@@ -48,6 +48,39 @@ class UsersAPI {
             }
     }
     
+    // 일반 회원가입
+    func signUpWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/sign-up"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "loginId": id,
+            "password": password,
+            "agreesMarketing": false
+        ]
+        
+        let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    print("DEBUG(sign-up) success \(response.message)")
+                    self.loginWithId(id: id, password: password) { isSuccess, response in
+                        if isSuccess {
+                            print("DEBUG(sign-up) login success")
+                            completion(true, response)
+                        } else {
+                            print("DEBUG(sign-up) login fail")
+                            completion(false, response)
+                        }
+                    }
+                case .failure(let error):
+                    print("DEBUG(sign-up) error: \(error)")
+                    completion(false, dummy)
+                }
+            }
+    }
+    
     // 일반 로그인
     func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/login/normal"
