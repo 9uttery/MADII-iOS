@@ -43,15 +43,14 @@ struct KakaoLoginButton: View {
     private func login(idToken: String) {
         UsersAPI.shared.loginWithKakao(idToken: idToken) { isSuccess, response in
             if isSuccess {
-//                if response.hasProfile {
-//                    showMainView = true
-//                } else {
-//                    // 프로필 화면 없으면 약관 동의 + 프로필 등록
-//                    showSignUpView = true
-//                }
-                
-                showSignUpView = true
-                
+                if response.hasProfile {
+                    showMainView = true
+                    print("DEBUG KakaoLoginButton: isSuccess true profile yes")
+                } else {
+                    // 프로필 화면 없으면 약관 동의 + 프로필 등록
+                    showSignUpView = true
+                    print("DEBUG KakaoLoginButton: isSuccess true profile no")
+                }
             } else {
                 print("DEBUG KakaoLoginButton: isSuccess false")
             }

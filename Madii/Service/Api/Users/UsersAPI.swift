@@ -112,8 +112,6 @@ class UsersAPI {
                     self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
                     self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
                     
-                    // UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                    
                     completion(true, data)
                     
                 case .failure(let error):

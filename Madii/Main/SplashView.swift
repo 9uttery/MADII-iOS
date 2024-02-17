@@ -29,8 +29,7 @@ struct SplashView: View {
                     MadiiTabView()
                 } else {
                     // 프로필 없음 - 프로필 저장 화면
-                    ScrollView { Text("프로필 저장") }
-                        .background(Color.blue)
+                    LoginView()
                 }
             } else if hasEverLoggedIn {
                 // 로그인 경험 O - 온보딩 X
