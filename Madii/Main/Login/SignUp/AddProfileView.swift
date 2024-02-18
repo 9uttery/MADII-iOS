@@ -9,7 +9,9 @@ import PhotosUI
 import SwiftUI
 
 struct AddProfileView: View {
+    let from: LoginType
     @AppStorage("isLoggedIn") var isLoggedIn = false
+    @StateObject var signUpStatus = SignUpStatus()
     
     @State private var image = UIImage(named: "defaultProfile") ?? UIImage()
     @State private var showImageSheet = false
@@ -158,6 +160,16 @@ struct AddProfileView: View {
     }
     
     private func postProfile() {
+        if from != .id {
+            UsersAPI.shared.editMarketingAgree(agree: signUpStatus.marketingAgreed) { isSuccess in
+                if isSuccess {
+                    print("DEBUG AddProfileView: marketing isSuccess true")
+                } else {
+                    print("DEBUG AddProfileView: marketing isSuccess false")
+                }
+            }
+        }
+        
         ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
             if isSuccess {
                 isLoggedIn = true

@@ -223,4 +223,43 @@ class UsersAPI {
                 }
             }
     }
+    
+    // 마케팅 동의 여부 수정
+    func editMarketingAgree(agree: Bool, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/marketing-agreement"
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
+            "Content-Type": "application/json"
+        ]
+        let parameters: [String: Any] = [
+            "agreesMarketing": agree
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(edit marketing agree): data nil")
+                        completion(false)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(edit marketing agree): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(edit marketing agree): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(edit marketing agree) error: \(error)")
+                    completion(false)
+                }
+            }
+    }
 }
