@@ -89,7 +89,7 @@ struct AlbumDetailView: View {
                     VStack(spacing: 4) {
                         ForEach(joys) { joy in
                             HStack {
-                                JoyRowWithButton(title: joy.title) {
+                                JoyRowWithButton(joy: joy) {
                                     if isAlbumMine {
                                         // 나의 앨범: 소확행 메뉴 bottom sheet
                                         selectedJoy = joy

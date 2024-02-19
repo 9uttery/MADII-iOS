@@ -9,10 +9,7 @@ import SwiftUI
 
 struct MyJoyView: View {
     @State private var allJoys: [MyJoy] = MyJoy.dummys
-//    @State private var allJoys: [MyJoy] = []
-    @State private var selectedJoy: Joy? = MyJoy.dummys[0].joys[0]
-    
-    @State private var sheetHeight: CGFloat = .zero
+    @State private var selectedJoy: Joy?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -38,6 +35,7 @@ struct MyJoyView: View {
             }
         }
         .navigationTitle("내가 기록한 소확행")
+        .onAppear { getJoy() }
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
@@ -75,7 +73,7 @@ struct MyJoyView: View {
                 .padding(.vertical, 20)
             
             ForEach(joys) { joy in
-                JoyRowWithButton(title: joy.title) {
+                JoyRowWithButton(joy: joy) {
                     // 메뉴 버튼 action
                     selectedJoy = joy
                 } buttonLabel: {
@@ -95,6 +93,26 @@ struct MyJoyView: View {
         .padding(.bottom, 20)
         .background(Color.madiiBox)
         .cornerRadius(20)
+    }
+    
+    private func getJoy() {
+        RecordAPI.shared.getJoy { isSuccess, joyList in
+            if isSuccess {
+                allJoys = []
+                for date in joyList {
+                    var joys: [Joy] = []
+                    for joy in date.joyList {
+                        let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents)
+                        joys.append(newJoy)
+                    }
+                    
+                    let newDate = MyJoy(date: date.createdAt, joys: joys)
+                    allJoys.append(newDate)
+                }
+            } else {
+                print("DEBUG MyJoyView: isSuccess false")
+            }
+        }
     }
 }
 
