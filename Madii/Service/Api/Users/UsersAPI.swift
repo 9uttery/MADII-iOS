@@ -239,12 +239,6 @@ class UsersAPI {
             .responseDecodable(of: BaseResponse<String?>.self) { response in
                 switch response.result {
                 case .success(let response):
-                    guard let data = response.data else {
-                        print("DEBUG(edit marketing agree): data nil")
-                        completion(false)
-                        return
-                    }
-                    
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true

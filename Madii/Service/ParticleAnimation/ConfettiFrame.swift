@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct ConfettiFrame: View{
-    //For Animation.timingCurve
-    //https://matthewlein.com/tools/ceaser
+struct ConfettiFrame: View {
+    // For Animation.timingCurve
+    // https://matthewlein.com/tools/ceaser
     @StateObject var confettiVM: ConfettiCenterVM
     @State var location: CGPoint = CGPoint(x: 0, y: 0)
     @State var opacity: Double = 0.0
 
-    var body: some View{
+    var body: some View {
         ConfettiItem(shape: getShape(), color: getColor())
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
-            .onAppear(){
+            .onAppear {
                 withAnimation(Animation.timingCurve(0.1, 1.0, 0, 1, duration: getAnimationDuration())) {
                 
                     opacity = confettiVM.opacity
                     
-                    let randomAngle:CGFloat
-                    if confettiVM.openingAngle.degrees <= confettiVM.closingAngle.degrees{
+                    let randomAngle: CGFloat
+                    if confettiVM.openingAngle.degrees <= confettiVM.closingAngle.degrees {
                         randomAngle = CGFloat.random(in: CGFloat(confettiVM.openingAngle.degrees)...CGFloat(confettiVM.closingAngle.degrees))
-                    }else{
+                    } else {
                         randomAngle = CGFloat.random(in: CGFloat(confettiVM.openingAngle.degrees)...CGFloat(confettiVM.closingAngle.degrees + 360)).truncatingRemainder(dividingBy: 360)
                     }
                     
@@ -57,7 +57,7 @@ struct ConfettiFrame: View{
         return 0.2 + confettiVM.explosionAnimationDuration + getRandomExplosionTimeVariation()
     }
     func getDistance() -> CGFloat {
-        if !confettiVM.fireworkEffect{
+        if !confettiVM.fireworkEffect {
             return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiVM.radius
         }
         return confettiVM.radius

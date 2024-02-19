@@ -20,7 +20,7 @@ public enum ConfettiType: CaseIterable, Hashable {
     case text(String)
     case sfSymbol(symbolName: String)
     
-    public var view: AnyView{
+    public var view: AnyView {
         switch self {
         case .shape(.square):
             return AnyView(Rectangle())

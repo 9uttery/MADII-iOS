@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayParticleView: View {
     @State var counter = 0
     
-    var body: some View{
+    var body: some View {
         ZStack {
             Text("🎉").onTapGesture { counter += 1 }
 

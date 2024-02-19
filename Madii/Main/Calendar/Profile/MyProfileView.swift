@@ -39,9 +39,9 @@ struct MyProfileView: View {
             }
             Spacer()
             Button {
-                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: "") { isSuccess in
-                    
-                }
+//                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: "") { isSuccess in
+//                    
+//                }
             } label: {
                 StyleJoyNextButton(label: "저장", isDisabled: nickname.isEmpty)
             }

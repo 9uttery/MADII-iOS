@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ConfettiCenterVM: ObservableObject{
+class ConfettiCenterVM: ObservableObject {
     /// - Parameters:
     ///  - counter: on any change of this variable the animation is run
     ///  - num: amount of confettis
@@ -71,12 +71,12 @@ class ConfettiCenterVM: ObservableObject{
         self.explosionAnimationDuration = explosionAnimDuration
         self.dropAnimationDuration = dropAnimationDuration
     }
-    func getShapes() -> [AnyView]{
+    func getShapes() -> [AnyView] {
         var shapes = [AnyView]()
-        for confetti in confettiTypes{
-            for color in colors{
+        for confetti in confettiTypes {
+            for color in colors {
                 switch confetti {
-                case .shape(_):
+                case .shape:
                     shapes.append(AnyView(confetti.view.foregroundColor(color).frame(width: confettiSize, height: confettiSize, alignment: .center)))
                 default:
                     shapes.append(AnyView(confetti.view.foregroundColor(color).font(.system(size: confettiSize))))
@@ -86,7 +86,7 @@ class ConfettiCenterVM: ObservableObject{
         return shapes
     }
     
-    func getAnimDuration() -> CGFloat{
+    func getAnimDuration() -> CGFloat {
         return explosionAnimationDuration + dropAnimationDuration
     }
 }

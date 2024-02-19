@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ConfettiItem: View {
-    
     @State var shape: AnyView
     @State var color: Color
     
@@ -26,8 +25,6 @@ struct ConfettiItem: View {
             .animation(Animation.linear(duration: xSpeed).repeatForever(), value: move)
             .rotation3DEffect(.degrees(move ? 360:0), axis: (x: 0, y: 0, z: spinDirZ), anchor: UnitPoint(x: anchor, y: anchor))
             .animation(Animation.linear(duration: zSpeed).repeatForever(), value: move)
-            .onAppear() {
-                move = true
-            }
+            .onAppear { move = true }
     }
 }
