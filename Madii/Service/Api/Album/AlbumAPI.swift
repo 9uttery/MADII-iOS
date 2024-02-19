@@ -19,18 +19,13 @@ class AlbumAPI {
         let url = "\(baseUrl)/recent/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<Bool?>.self) { response in
                 switch response.result {
                 case .success(let response):
-                    guard let data = response.data else {
-                        print("DEBUG(postRecentByAlbumId): data nil")
-                        completion(false)
-                        return
-                    }
                     
                     let statusCode = response.status
                     if statusCode == 200 {
@@ -55,7 +50,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -91,7 +86,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/joy/\(joyId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -127,7 +122,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/joy/\(joyId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         let parameters: [String: [Int]] = [
             "albumIds": albumIds
@@ -161,7 +156,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         let parameters: [String: String] = [
             "name": name,
@@ -196,7 +191,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/\(albumId)/status"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
@@ -227,7 +222,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/\(albumId)/bookmarks"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers)
@@ -258,7 +253,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/\(albumId)/bookmarks"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
@@ -289,7 +284,7 @@ class AlbumAPI {
         let url = "\(baseUrl)/albums/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
