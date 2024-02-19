@@ -18,7 +18,7 @@ struct GuestProfileView: View {
                 NavigationLink {
                     LoginView()
                 } label: {
-                    HStack() {
+                    HStack {
                         Spacer()
                         Text("회원가입하기 →")
                             .madiiFont(font: .madiiBody1, color: .black)
@@ -35,7 +35,7 @@ struct GuestProfileView: View {
                 NavigationLink {
                     NoticeView()
                 } label: {
-                    HStack() {
+                    HStack {
                         Text("공지사항")
                             .madiiFont(font: .madiiBody3, color: .white)
                         Spacer()
@@ -49,7 +49,7 @@ struct GuestProfileView: View {
                 NavigationLink {
                     InquiryView()
                 } label: {
-                    HStack() {
+                    HStack {
                         Text("문의하기")
                             .madiiFont(font: .madiiBody3, color: .white)
                         Spacer()
