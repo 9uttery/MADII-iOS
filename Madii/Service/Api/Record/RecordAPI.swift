@@ -19,7 +19,7 @@ class RecordAPI {
         let url = "\(baseUrl)/joy"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         let parameters: [String: String] = [
             "contents": contents
@@ -58,7 +58,7 @@ class RecordAPI {
         let url = "\(baseUrl)/recent"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -94,7 +94,7 @@ class RecordAPI {
         let url = "\(baseUrl)/joy"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -130,7 +130,7 @@ class RecordAPI {
         let url = "\(baseUrl)/albums"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
