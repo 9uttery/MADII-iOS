@@ -29,7 +29,8 @@ struct HomePlayJoyView: View {
                     NavigationLink {
                         AlbumDetailView(album: Album(id: album.albumId, title: album.name, creator: album.nickname ?? "", description: ""))
                     } label: {
-                        AlbumRow(hasName: true, name: "\(album.nickname ?? "")님", title: album.name)
+                        let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
+                        AlbumRow(album: newAlbum)
                     }
                 }
             }

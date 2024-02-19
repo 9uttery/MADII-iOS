@@ -134,7 +134,7 @@ struct AlbumDetailView: View {
                                                              creator: album.creator,
                                                              description: album.description))
                             } label: {
-                                AlbumRow(hasName: true, name: "\(album.creator)님의", title: album.title)
+                                AlbumRow(album: album)
                             }
                         }
                     }

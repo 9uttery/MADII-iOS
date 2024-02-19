@@ -14,7 +14,7 @@ struct LatestViewedAlbumView: View {
         ScrollView {
             VStack(spacing: 16) {
                 ForEach(albums) { album in
-                    AlbumRow(title: album.title)
+                    AlbumRow(album: album)
                         .padding(.leading, 8)
                 }
             }

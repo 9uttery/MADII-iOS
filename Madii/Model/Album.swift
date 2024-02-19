@@ -9,8 +9,10 @@ import Foundation
 
 struct Album: Identifiable {
     let id: Int
+    var backgroundColorNum: Int = 0
+    var iconNum: Int = 0
     let title: String
-    let creator: String
+    var creator: String = ""
     var description: String = ""
     
     static let dummy1: Album = .init(id: 0, title: "기분 좋을 때 할 일", creator: "구떠리",
