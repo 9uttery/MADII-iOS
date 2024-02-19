@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct MyProfileView: View {
-    @State var nickName: String = ""
+    @State var nickname: String = ""
     var body: some View {
-        VStack() {
+        VStack {
             Image("defaultProfile")
                 .resizable()
                 .frame(width: 116, height: 116)
             
-            HStack() {
-                TextField("닉네임을 입력해주세요", text: $nickName, axis: .vertical)
+            HStack {
+                TextField("닉네임 (1-10자, 한글/영문/숫자 사용 가능)", text: $nickname, axis: .vertical)
                     .madiiFont(font: .madiiBody3, color: .white)
-                    .onChange(of: nickName) { newValue in
+                    .onChange(of: nickname) { newValue in
                         // 입력값이 변경될 때 호출되는 블록
                         // 여기서 원하는 동작을 수행하면 됩니다.
                         let limitedInput = String(newValue.prefix(10)) // 최대 10글자로 제한
-                        nickName = limitedInput
+                        nickname = limitedInput
                     }
                 
-                Text("\(nickName.count)/10")
+                Text("\(nickname.count)/10")
                     .madiiFont(font: .madiiBody3, color: .gray500)
             }
             .padding(.vertical, 16)
@@ -38,7 +38,13 @@ struct MyProfileView: View {
                 Spacer()
             }
             Spacer()
-            StyleJoyNextButton(label: "저장", isDisabled: nickName.isEmpty)
+            Button {
+                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: "") { isSuccess in
+                    
+                }
+            } label: {
+                StyleJoyNextButton(label: "저장", isDisabled: nickname.isEmpty)
+            }
         }
         .padding(.horizontal, 16)
         .navigationTitle("프로필")
