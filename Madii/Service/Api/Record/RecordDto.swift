@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct PostJoyResponse: Codable {
-    let joyIconNum: Int
-    let contents: String
-}
-
 struct GetJoyResponse: Codable {
     let createdAt: String
     let size: Int

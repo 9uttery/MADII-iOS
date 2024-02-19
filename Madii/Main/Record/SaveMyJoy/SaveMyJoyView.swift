@@ -39,13 +39,18 @@ struct SaveMyJoyView: View {
     }
     
     private func saveJoy() {
-        hideKeyboard()
-        
-        myNewJoy = ""
-        
-        withAnimation { showSaveJoyToast = true }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            withAnimation { showSaveJoyToast = false }
+        JoyAPI.shared.postJoy(contents: myNewJoy) { isSuccess, joyContent in
+            if isSuccess {
+                hideKeyboard()
+                myNewJoy = ""
+                
+                withAnimation { showSaveJoyToast = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    withAnimation { showSaveJoyToast = false }
+                }
+            } else {
+                print("DEBUG SaveMyJoyView: isSuccess false")
+            }
         }
     }
     
