@@ -25,7 +25,7 @@ struct HomeMyJoyView: View {
                     .cornerRadius(20)
                     .clipped()
                     .overlay(
-                        HStack() {
+                        HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("나만의 취향저격 소확행")
                                     .madiiFont(font: .madiiSubTitle, color: .white)
