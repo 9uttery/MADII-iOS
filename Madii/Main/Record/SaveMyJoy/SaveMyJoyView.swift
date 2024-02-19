@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SaveMyJoyView: View {
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    @FocusState private var isFocused: Bool
+    
     @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
     
@@ -20,6 +23,11 @@ struct SaveMyJoyView: View {
                 TextField("누워서 빗소리 감상하기", text: $myNewJoy)
                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
                     .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
+//                    .onTapGesture { isFocused = true }
+                    .focused($isFocused)
+                    .onChange(of: isFocused) {
+                        if $0 { popUpStatus.showSaveMyJoyOverlay = false }
+                    }
                 
                 Button {
                     saveJoy()
@@ -36,6 +44,11 @@ struct SaveMyJoyView: View {
             .cornerRadius(6)
         }
         .roundBackground()
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
+                .inset(by: 0.5)
+                .stroke(popUpStatus.showSaveMyJoyOverlay ? Color.madiiYellowGreen : Color.clear, lineWidth: 1)
+        }
     }
     
     private func saveJoy() {

@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MyJoyView: View {
-    @State private var allJoys: [MyJoy] = MyJoy.dummys
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var allJoys: [MyJoy] = []
     @State private var selectedJoy: Joy?
 
     var body: some View {
@@ -35,6 +38,7 @@ struct MyJoyView: View {
             }
         }
         .navigationTitle("내가 기록한 소확행")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear { getJoy() }
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -42,25 +46,33 @@ struct MyJoyView: View {
     
     private var emptyJoyView: some View {
         VStack(spacing: 60) {
-            Rectangle()
-                .frame(width: 200, height: 200)
+            Spacer()
             
-            VStack(spacing: 16) {
-                Text("기록된 소확행이 없어요.\n소확행을 기록하고 행복을 충전하세요!")
+            Image("myJoyEmpty")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 240)
+            
+            VStack(spacing: 20) {
+                Text("아직 기록한 소확행이 없어요")
                     .madiiFont(font: .madiiBody3, color: .gray500)
                     .multilineTextAlignment(.center)
                 
                 Button {
-                    // TODO: 레코드 탭 화면으로 넘어가서 소확행 기록 박스 테두리
+                    popUpStatus.showSaveMyJoyOverlay = true
+                    dismiss()
                 } label: {
                     Text("소확행 기록하러 가기")
-                        .madiiFont(font: .madiiBody1, color: Color(red: 0.51, green: 0.68, blue: 0.02))
+                        .madiiFont(font: .madiiBody2, color: .black)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 12)
                         .background(Color.madiiYellowGreen)
                         .clipShape(RoundedRectangle(cornerRadius: 90))
                 }
             }
+            
+            Spacer()
+            Spacer()
         }
     }
     

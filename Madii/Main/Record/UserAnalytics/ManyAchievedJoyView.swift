@@ -77,6 +77,7 @@ struct ManyAchievedJoyView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle("많이 실천한 소확행")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }

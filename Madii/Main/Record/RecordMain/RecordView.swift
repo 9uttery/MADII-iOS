@@ -27,7 +27,7 @@ struct RecordView: View {
                         // 최근 본 앨범 & 많이 실천한 소확행 & 내가 기록한 소확행
                         UserAnalyticsView()
                         
-                        if !isLoggedIn {
+                        if isLoggedIn {
                             // 소확행 앨범
                             MyAlbumsView()
                         } else {
@@ -98,8 +98,8 @@ struct RecordView: View {
 }
 
 #Preview {
-//    SplashView()
-    MadiiTabView()
+    SplashView()
+//    MadiiTabView()
 }
 
 extension View {

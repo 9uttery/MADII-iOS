@@ -25,6 +25,7 @@ struct LatestViewedAlbumView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle("최근 본 앨범")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }

@@ -13,7 +13,6 @@ struct MadiiTabView: View {
     @State private var showPlaylist: Bool = false
     
     @State var tabIndex: TabIndex = .record
-    @StateObject private var popUpStatus = PopUpStatus()
     
     @State private var isKeyboardVisible = false
 
@@ -66,7 +65,6 @@ struct MadiiTabView: View {
             }
             .ignoresSafeArea(.keyboard)
         }
-        .environmentObject(popUpStatus)
     }
 }
 
