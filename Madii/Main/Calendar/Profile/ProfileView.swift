@@ -16,7 +16,7 @@ struct ProfileView: View {
                 NavigationLink {
                     MyProfileView()
                 } label: {
-                    HStack() {
+                    HStack {
                         Image("")
                             .resizable()
                             .frame(width: 40, height: 40)
@@ -34,7 +34,7 @@ struct ProfileView: View {
                     NavigationLink {
                         
                     } label: {
-                        HStack() {
+                        HStack {
                             Text("알림")
                                 .madiiFont(font: .madiiBody3, color: .white)
                             Spacer()
@@ -48,7 +48,7 @@ struct ProfileView: View {
                     NavigationLink {
                         NoticeView()
                     } label: {
-                        HStack() {
+                        HStack {
                             Text("공지사항")
                                 .madiiFont(font: .madiiBody3, color: .white)
                             Spacer()
@@ -62,7 +62,7 @@ struct ProfileView: View {
                     NavigationLink {
                         InquiryView()
                     } label: {
-                        HStack() {
+                        HStack {
                             Text("문의하기")
                                 .madiiFont(font: .madiiBody3, color: .white)
                             Spacer()
@@ -79,7 +79,7 @@ struct ProfileView: View {
                     Button {
                         showLogOutPopUp = true
                     } label: {
-                        HStack() {
+                        HStack {
                             Text("로그아웃")
                                 .madiiFont(font: .madiiBody3, color: .white)
                             Spacer()
@@ -93,7 +93,7 @@ struct ProfileView: View {
                     NavigationLink {
                         SignOutView()
                     } label: {
-                        HStack() {
+                        HStack {
                             Text("회원탈퇴")
                                 .madiiFont(font: .madiiBody3, color: .white)
                             Spacer()
@@ -110,6 +110,15 @@ struct ProfileView: View {
             .navigationTitle("마이페이지")
             .toolbarBackground(Color.madiiBox, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            .onAppear {
+                ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+                    if isSuccess {
+                        name = userProfile.nickname
+                    }
+                }
+            }
+            
+            
             if showLogOutPopUp {
                 LogOutPopUpView(showLogOutPopUp: $showLogOutPopUp)
             }
