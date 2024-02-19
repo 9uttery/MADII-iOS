@@ -27,4 +27,3 @@ struct GetAllAlbumsResponsePageable: Codable {
     let unpaged: Bool
     let paged: Bool
 }
-
