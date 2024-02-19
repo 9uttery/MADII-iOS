@@ -13,38 +13,40 @@ struct CalendarView: View {
     @State private var showDatePicker: Bool = false
     
     var body: some View {
-        ScrollView {
-            ZStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 0) {
-                    // "캘린더" 타이틀과 마이페이지 버튼
-                    title.padding(.bottom, 20)
+        VStack(alignment: .leading, spacing: 0) {
+            title // "캘린더" 타이틀과 마이페이지 버튼
+            
+            ScrollView {
+                ZStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        // 월 선택 header
+                        SelectDateHeader(selectedDate: $selectedDate,
+                                             showDatePicker: $showDatePicker)
+                        .padding(.top, 20)
+                        
+                        // 요일 header
+                        weekdaysHeader.padding(.bottom, 12)
+                        
+                        // 일 (캘린더 일자)
+                        CalendarDays(selectedDate: $selectedDate)
+                        
+                        Spacer()
+                    }
+                    // 하단 여백 40
+                    .padding(.bottom, 40)
                     
-                    // 월 선택 header
-                    SelectDateHeader(selectedDate: $selectedDate,
-                                         showDatePicker: $showDatePicker)
-                    
-                    // 요일 header
-                    weekdaysHeader.padding(.bottom, 12)
-                    
-                    // 일 (캘린더 일자)
-                    CalendarDays(selectedDate: $selectedDate)
-                    
-                    Spacer()
-                }
-                // 하단 여백 40
-                .padding(.bottom, 40)
-                
-                if showDatePicker {
-                    DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
-                        .datePickerStyle(.wheel)
-                        .labelsHidden()
-                        .background(Color(red: 0.13, green: 0.13, blue: 0.13))
-                        .cornerRadius(12)
-                        .offset(y: 130)
+                    if showDatePicker {
+                        DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                            .cornerRadius(12)
+                            .offset(y: 130)
+                    }
                 }
             }
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
         .navigationTitle("")
     }
     

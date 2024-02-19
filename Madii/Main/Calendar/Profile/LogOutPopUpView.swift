@@ -5,9 +5,11 @@
 //  Created by 정태우 on 1/26/24.
 //
 
+import KeychainSwift
 import SwiftUI
 
 struct LogOutPopUpView: View {
+    let keychain = KeychainSwift()
     @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showLogOutPopUp: Bool
     
@@ -36,6 +38,8 @@ struct LogOutPopUpView: View {
     
     func logOut() {
         showLogOutPopUp = false
+        keychain.clear()
+        print("keychain: \(keychain.allKeys)")
     }
 }
 

@@ -21,7 +21,7 @@ enum LoginType { case kakao, apple, id }
 struct SignUpView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var signUpStatus = SignUpStatus()
-    let from: LoginType    
+    let from: LoginType
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -31,7 +31,11 @@ struct SignUpView: View {
                         if signUpStatus.count == 0 {
                             dismiss()
                         } else {
-                            signUpStatus.count -= 1
+                            if from == .id {
+                                signUpStatus.count -= 1
+                            } else {
+                                signUpStatus.count = 1
+                            }
                         }
                     } label: {
                         Image(systemName: "chevron.left")
@@ -47,7 +51,7 @@ struct SignUpView: View {
                     ForEach(0 ..< signUpStatus.allCounts, id: \.self) { index in
                         Circle()
                             .frame(width: 8, height: 8)
-                            .foregroundStyle(index == signUpStatus.count ? Color.white : Color.gray700)
+                            .foregroundStyle(circleColor(index: index))
                     }
                 }
                 
@@ -68,13 +72,25 @@ struct SignUpView: View {
             } else if signUpStatus.count == 2 {
                 PasswordView()
             } else {
-                AddProfileView()
+                AddProfileView(from: from)
                     .padding(.top, 94)
             }
         }
         .environmentObject(signUpStatus)
         .onAppear {
             signUpStatus.allCounts = from == .id ? 4 : 2
+        }
+    }
+    
+    private func circleColor(index: Int) -> Color {
+        if from == .id {
+            return index == signUpStatus.count ? Color.white : Color.gray700
+        } else {
+            if index == 0 {
+                return index == signUpStatus.count ? Color.white : Color.gray700
+            } else {
+                return index == 1 ? Color.white : Color.gray700
+            }
         }
     }
 }
