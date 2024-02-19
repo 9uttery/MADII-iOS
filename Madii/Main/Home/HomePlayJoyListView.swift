@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct HomePlayJoyListView: View {
-    let playAlbums: [Album] = Album.dummy5
+    @State var playAlbums: [GetAlbumsResponse] = []
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
                 VStack(spacing: 12) {
                     ForEach(playAlbums) { album in
                         NavigationLink {
-                            AlbumDetailView(album: Album(id: album.id, title: album.title, creator: album.creator, description: album.description))
+                            AlbumDetailView(album: Album(id: album.albumId, title: album.name, creator: album.nickname ?? "", description: ""))
                         } label: {
-                            AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
+                            AlbumRow(hasName: true, name: "\(album.nickname ?? "")님", title: album.name)
                         }
                     }
                 }
@@ -39,6 +39,13 @@ struct HomePlayJoyListView: View {
             }
         }
         .padding(.horizontal, 16)
+        .onAppear {
+            HomeAPI.shared.getAllAlbums(albumId: nil, size: 10) { isSuccess, allAlbum in
+                if isSuccess {
+                    playAlbums = allAlbum.content
+                }
+            }
+        }
     }
 }
 
