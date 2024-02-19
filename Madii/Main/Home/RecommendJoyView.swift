@@ -10,7 +10,7 @@ import SwiftUI
 struct RecommendJoyView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var nickName: String = "코코"
-    @State var recommendJoy: Joy = Joy(title: "넷플릭스 보면서 귤 까먹기", counts: 1, satisfaction: 3, isSaved: true)
+    @State var recommendJoy: Joy = Joy(title: "넷플릭스 보면서 귤 까먹기", counts: 1, satisfaction: JoySatisfaction.great, isSaved: true)
     
     var body: some View {
         VStack(spacing: 0) {

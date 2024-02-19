@@ -9,9 +9,9 @@ import SwiftUI
 
 struct JoySatisfactionBottomSheet: View {
     let joy: Joy
-    private let satisfactions: [Int] = [1, 2, 3, 4, 5]
+    private let satisfactions = JoySatisfaction.allCases
     private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
-    @State private var selectedSatisfaction: Int = 3
+    @State private var selectedSatisfaction: JoySatisfaction = .bad
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -56,7 +56,7 @@ struct JoySatisfactionBottomSheet: View {
     }
     
     @ViewBuilder
-    private func satisfactionIcon(of satisfaction: Int) -> some View {
+    private func satisfactionIcon(of satisfaction: JoySatisfaction) -> some View {
         let isSelected: Bool = satisfaction == selectedSatisfaction
         
         ZStack {
@@ -69,7 +69,7 @@ struct JoySatisfactionBottomSheet: View {
                 }
             
             if isSelected {
-                Image(satisfactionImages[satisfaction] ?? "")
+                Image(satisfaction.imageName)
                     .resizable()
                     .frame(width: 24, height: 24)
             } else {

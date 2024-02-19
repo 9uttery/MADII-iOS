@@ -44,25 +44,13 @@ struct DailyJoyView: View {
                 for joy in response.dailyJoyAchievementInfos {
                     let newJoy: Joy = Joy(joyId: joy.joyId, achievementId: joy.achievementId,
                                           icon: joy.joyIconNum, title: joy.contents,
-                                          satisfaction: getSatisfactionFromServerEnum(joy.satisfaction))
+                                          satisfaction: JoySatisfaction.fromServer(joy.satisfaction))
                     joys.append(newJoy)
                     print("DEBUG DailyJoyView \(joys)")
                 }
             } else {
                 print("DEBUG DailyJoyView 실패")
             }
-        }
-    }
-    
-    // 만족도 서버 enum 에서 숫자로 변경
-    func getSatisfactionFromServerEnum(_ serverEnum: String) -> Int {
-        switch serverEnum {
-        case "BAD": 1
-        case "SO_SO": 2
-        case "GOOD": 3
-        case "GREAT": 4
-        case "EXCELLENT": 5
-        default: 1
         }
     }
     
@@ -89,7 +77,7 @@ struct DailyJoyView: View {
             
             Spacer()
             
-            Image(joy.satisfactionImage)
+            Image(joy.satisfaction.imageName)
                 .resizable()
                 .frame(width: 28, height: 28)
                 .foregroundStyle(Color.madiiYellowGreen)

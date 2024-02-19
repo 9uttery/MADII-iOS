@@ -130,6 +130,41 @@ class AchievementsAPI {
 //            }
 //    }
     
+    // 소확행 만족도 수정
+    func putJoySatisfaction(achievementId: Int, satisfacton: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/achievements/rate"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: Any] = [
+            "achievementId": achievementId,
+            "satisfaction": "SO_SO"
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(postAlbumsJoyByJoyId): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(postAlbumsJoyByJoyId): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(postAlbumsJoyByJoyId): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
     func countDates(date: Date) -> Int {
         let calendar = Calendar.current
         let monthRange = calendar.range(of: .day, in: .month, for: date)!
