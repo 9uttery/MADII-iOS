@@ -15,11 +15,11 @@ class ProfileAPI {
     static let shared = ProfileAPI()
     
     // 프로필 정보 조회
-    func getUsersProfile(completion: @escaping (_ isSuccess: Bool, _ albumList: GetUsersProfileResponse) -> Void) {
+    func getUsersProfile(completion: @escaping (_ isSuccess: Bool, _ userProfile: GetUsersProfileResponse) -> Void) {
         let url = "\(baseUrl)/users/profile"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -55,7 +55,7 @@ class ProfileAPI {
         let url = "\(baseUrl)/users/profile"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         let parameters: [String: Any] = [
             "nickname": nickname,
@@ -66,11 +66,6 @@ class ProfileAPI {
             .responseDecodable(of: BaseResponse<Bool?>.self) { response in
                 switch response.result {
                 case .success(let response):
-                    guard let data = response.data else {
-                        print("DEBUG(postUsersProfile): data nil")
-                        completion(false)
-                        return
-                    }
                     
                     let statusCode = response.status
                     if statusCode == 200 {
