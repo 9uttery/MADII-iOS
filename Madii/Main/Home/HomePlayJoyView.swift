@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomePlayJoyView: View {
-    let playAlbums: [Album] = Album.dummy4
+    @State var playAlbums: [GetAlbumsResponse] = []
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             NavigationLink {
@@ -27,14 +27,22 @@ struct HomePlayJoyView: View {
             VStack(spacing: 12) {
                 ForEach(playAlbums) { album in
                     NavigationLink {
-                        AlbumDetailView(album: Album(id: album.id, title: album.title, creator: album.creator, description: album.description))
+                        AlbumDetailView(album: Album(id: album.albumId, title: album.name, creator: album.nickname ?? "", description: ""))
                     } label: {
-                        AlbumRow(hasName: true, name: "\(album.creator)님", title: album.title)
+                        AlbumRow(hasName: true, name: "\(album.nickname ?? "")님", title: album.name)
                     }
                 }
             }
         }
         .roundBackground()
+        .onAppear {
+            HomeAPI.shared.getAllAlbums(albumId: nil, size: 5) { isSuccess, allAlbum in
+                if isSuccess {
+                    playAlbums = allAlbum.content
+                }
+                
+            }
+        }
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InquiryView: View {
     var body: some View {
-        VStack() {
+        VStack {
             Image("")
                 .resizable()
                 .frame(width: 198, height: 198)

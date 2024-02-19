@@ -18,19 +18,25 @@ struct GetJoyResponse: Codable {
     let joyList: [GetJoyResponseJoy]
 }
 
-struct GetJoyResponseJoy: Codable {
+struct GetJoyResponseJoy: Codable, Identifiable {
+    var id: Int {
+        return joyId
+    }
     let joyId: Int
     let joyIconNum: Int
     let contents: String
 }
 
-struct GetAlbumsResponse: Codable {
+struct GetAlbumsResponse: Codable, Identifiable {
+    var id: Int {
+        return albumId
+    }
     let albumId: Int
     let joyIconNum: Int
     let albumColorNum: Int
     let name: String
     let modifiedAt: String?
-    let nickName: String?
+    let nickname: String?
 }
 
 struct PostAlbumResponse: Codable {

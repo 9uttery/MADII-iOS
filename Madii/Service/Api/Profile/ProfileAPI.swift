@@ -15,11 +15,11 @@ class ProfileAPI {
     static let shared = ProfileAPI()
     
     // 프로필 정보 조회
-    func getUsersProfile(completion: @escaping (_ isSuccess: Bool, _ albumList: GetUsersProfileResponse) -> Void) {
+    func getUsersProfile(completion: @escaping (_ isSuccess: Bool, _ userProfile: GetUsersProfileResponse) -> Void) {
         let url = "\(baseUrl)/users/profile"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)

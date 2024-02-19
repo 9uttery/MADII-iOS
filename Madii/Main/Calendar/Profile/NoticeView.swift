@@ -18,13 +18,13 @@ struct NoticeView: View {
     let notices: [Notice] = [
         Notice(title: "공지 제목 1", content: "공지 내용 1", date: "2024-01-25"),
         Notice(title: "공지 제목 2", content: "공지 내용 2", date: "2024-01-26"),
-        Notice(title: "공지 제목 3", content: "공지 내용 3", date: "2024-01-27"),
+        Notice(title: "공지 제목 3", content: "공지 내용 3", date: "2024-01-27")
     ]
     var body: some View {
         VStack(spacing: 12) {
             ForEach(notices) { notice in
                 VStack(alignment: .leading) {
-                    HStack() {
+                    HStack {
                         Text(notice.title)
                             .madiiFont(font: .madiiSubTitle, color: .white)
                             .padding(.bottom, 20)
