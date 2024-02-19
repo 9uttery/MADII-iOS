@@ -94,6 +94,42 @@ class AchievementsAPI {
             }
     }
     
+    // 오늘, 어제의 플레이리스트 조회
+//    func getPlaylist(completion: @escaping (_ isSuccess: Bool, _ response: GetJoyIconsForDayResponse) -> Void) {
+//        let url = "\(baseUrl)/achievements"
+//        let headers: HTTPHeaders = [
+//            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
+//            "Content-Type": "application/json"
+//        ]
+//        
+//        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+//            .responseDecodable(of: BaseResponse<GetJoyIconsForDayResponse>.self) { response in
+//                switch response.result {
+//                case .success(let response):
+//                    guard let data = response.data else {
+//                        print("DEBUG(get joy icons for day): data nil")
+//                        completion(false, dummy)
+//                        return
+//                    }
+//                    
+//                    let statusCode = response.status
+//                    if statusCode == 200 {
+//                        // status 200으로 -> isSuccess: true
+//                        print("DEBUG(get joy icons for day): success")
+//                        completion(true, data)
+//                    } else {
+//                        // status 200 아님 -> isSuccess: false
+//                        print("DEBUG(get joy icons for day): status \(statusCode))")
+//                        completion(false, data)
+//                    }
+//                    
+//                case .failure(let error):
+//                    print("DEBUG(get joy icons for day): error \(error))")
+//                    completion(false, dummy)
+//                }
+//            }
+//    }
+    
     func countDates(date: Date) -> Int {
         let calendar = Calendar.current
         let monthRange = calendar.range(of: .day, in: .month, for: date)!
@@ -108,11 +144,7 @@ struct GetJoyIconsForMonthResponse: Codable {
 
 struct JoyColorInfoForDate: Codable {
     let date: String
-    let achievementColorInfos: [JoyColorInfo]
-}
-
-struct JoyColorInfo: Codable {
-    let joyId, joyIconNum: Int
+    let achievementColorInfos: [Int]
 }
 
 struct GetJoyIconsForDayResponse: Codable {
@@ -124,14 +156,65 @@ struct JoyColorInfoForDay: Codable {
     let contents, satisfaction: String
 }
 
+struct GetPlaylistResponse: Codable {
+    let todayJoyPlayList: TodayJoyPlaylistResponse
+}
+
+struct TodayJoyPlaylistResponse: Codable {
+    let date: String
+    let joyAchievementInfos: [JoyAchievementsInfosResponse]
+}
+
+struct JoyAchievementsInfosResponse: Codable {
+    let joyId, achievementId, joyIconNum: Int
+    let contents: Int
+    let isAchieved: Bool
+    let satisfaction: String?
+}
+
 /*
- "dailyJoyAchievementInfos": [
-             {
-                 "joyId": 1,
-                 "achievementId": 4,
-                 "joyIconNum": 2,
-                 "contents": "낮잠 자기1",
-                 "satisfaction": "SO_SO"
-             }
-         ]
+ "data": {
+         "todayJoyPlayList": {
+             "date": "2024-02-17",
+             "joyAchievementInfos": [
+                 {
+                     "joyId": 1,
+                     "achievementId": 5,
+                     "joyIconNum": 2,
+                     "contents": "낮잠 자기1",
+                     "isAchieved": false,
+                     "satisfaction": null
+                 },
+                 {
+                     "joyId": 1,
+                     "achievementId": 4,
+                     "joyIconNum": 2,
+                     "contents": "낮잠 자기1",
+                     "isAchieved": false,
+                     "satisfaction": null
+                 },
+                 {
+                     "joyId": 1,
+                     "achievementId": 3,
+                     "joyIconNum": 2,
+                     "contents": "낮잠 자기1",
+                     "isAchieved": true,
+                     "satisfaction": "SO_SO"
+                 }
+             ]
+         },
+         "yesterdayJoyPlayList": {
+             "date": "2024-02-16",
+             "joyAchievementInfos": [
+                 {
+                     "joyId": 1,
+                     "achievementId": 2,
+                     "joyIconNum": 2,
+                     "contents": "낮잠 자기1",
+                     "isAchieved": false,
+                     "satisfaction": null
+                 }
+             ]
+         }
+     },
  */

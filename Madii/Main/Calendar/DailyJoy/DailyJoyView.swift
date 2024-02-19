@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyJoyView: View {
     let date: Date
-    @State private var joys: [Joy] = Joy.dailyJoyDummy
+    @State private var joys: [Joy] = []
     @State private var selectedJoy: Joy?
     
     var body: some View {
@@ -34,29 +34,55 @@ struct DailyJoyView: View {
         .scrollIndicators(.never)
         .onAppear { getJoys() }
         .navigationTitle("\(date.year != Date().year ? "\(date.year)년 " : "")\(date.twoDigitMonth)월 \(date.twoDigitDay)일 소확행")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func getJoys() {
         AchievementsAPI.shared.getAchievedJoyForDay(date: date) { isSuccess, response in
             if isSuccess {
                 print("DEBUG DailyJoyView \(response)")
+                for joy in response.dailyJoyAchievementInfos {
+                    let newJoy: Joy = Joy(joyId: joy.joyId, achievementId: joy.achievementId,
+                                          icon: joy.joyIconNum, title: joy.contents,
+                                          satisfaction: getSatisfactionFromServerEnum(joy.satisfaction))
+                    joys.append(newJoy)
+                    print("DEBUG DailyJoyView \(joys)")
+                }
             } else {
                 print("DEBUG DailyJoyView 실패")
             }
         }
     }
     
+    // 만족도 서버 enum 에서 숫자로 변경
+    func getSatisfactionFromServerEnum(_ serverEnum: String) -> Int {
+        switch serverEnum {
+        case "BAD": 1
+        case "SO_SO": 2
+        case "GOOD": 3
+        case "GREAT": 4
+        case "EXCELLENT": 5
+        default: 1
+        }
+    }
+    
     @ViewBuilder
     private func joyRow(_ joy: Joy) -> some View {
         HStack(spacing: 15) {
-            Circle()
-                .frame(width: 48, height: 48)
-                .foregroundStyle(Color.black)
-                .overlay(
-                    Circle()
-                        .inset(by: 1.0)
-                        .stroke(.white.opacity(0.4), lineWidth: 0.2)
-                )
+            ZStack {
+                Circle()
+                    .frame(width: 48, height: 48)
+                    .foregroundStyle(Color.black)
+                    .overlay(
+                        Circle()
+                            .inset(by: 1.0)
+                            .stroke(.white.opacity(0.4), lineWidth: 0.2)
+                    )
+                
+                Image("icon_\(joy.icon)")
+                    .resizable()
+                    .frame(width: 26, height: 26)
+            }
             
             Text(joy.title)
                 .madiiFont(font: .madiiBody3, color: .white)

@@ -41,4 +41,10 @@ extension Date {
     func isSameDay(as date: Date) -> Bool {
         Calendar.current.isDate(self, inSameDayAs: date)
     }
+    
+    var serverDateFormat: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
 }

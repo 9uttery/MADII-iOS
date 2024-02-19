@@ -9,11 +9,15 @@ import Foundation
 
 struct Joy: Identifiable, Equatable {
     let id = UUID()
+    var joyId: Int = 0 /// DB에서 사용하는 Joy id
+    var achievementId: Int = 0 /// Server에서 사용하는 실천 Id
+    var icon: Int = 1 /// Joy의 커버 아이콘 이미지
     let title: String
-    var counts: Int = 0
-    var satisfaction: Int = 3
+    var counts: Int = 0 /// 수행횟수
+    var satisfaction: Int = 3 /// 만족도 1, 2, 3, 4, 5 가능
     var isSaved: Bool = false
     
+    // 만족도 이미지 이름
     private let satisfactionImages: [Int: String] = [1: "bad", 2: "soso", 3: "good", 4: "great", 5: "excellent"]
     var satisfactionImage: String {
         satisfactionImages[satisfaction] ?? ""

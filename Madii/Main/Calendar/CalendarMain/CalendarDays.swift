@@ -16,6 +16,8 @@ struct CalendarDays: View {
     let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     let colors = [Color.madiiPurple, Color.madiiOrange, Color.teal]
     
+    @State private var joyIcons: [String: [Int]] = [:]
+    
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             emptyDays
@@ -34,22 +36,21 @@ struct CalendarDays: View {
                             .clipShape(Circle())
                             .frame(width: 42, height: 42)
                         
-                        // 각 일마다 있는 소확행 커버
-                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
-                            ForEach(0 ..< (count.randomElement() ?? 9), id: \.self) { _ in
-                                ZStack {
-                                    Circle()
-                                        .frame(width: 12, height: 12)
-                                        .foregroundStyle(Color.black)
-                                        .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
+                        if let joys = joyIcons[date.serverDateFormat] {
+                            // 각 일마다 있는 소확행 커버
+                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
+                                ForEach(joys, id: \.self) { joyColor in
+                                    let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
                                     
-                                    Image("icon_1_2")
-                                        .resizable()
-                                        .frame(width: 6, height: 6)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 12, height: 12)
+                                            .foregroundStyle(colors[joyColor] ?? Color.red)
+                                    }
                                 }
                             }
+                            .frame(width: 42)
                         }
-                        .frame(width: 42)
                         
                         Spacer()
                     }
@@ -64,6 +65,10 @@ struct CalendarDays: View {
         }
         .padding(.horizontal, 26)
         .onAppear { getJoyIcons() }
+        .onChange(of: selectedDate) {
+            getJoyIcons()
+            print($0)
+        }
 //        .navigationDestination(isPresented: $showDailyJoyView) {
 //            DailyJoyView(date: selectedDate)
 //        }
@@ -73,6 +78,8 @@ struct CalendarDays: View {
         AchievementsAPI.shared.getJoyIconsForMonth(date: selectedDate) { isSuccess, response in
             if isSuccess {
                 print("DEBUG CalendarDays \(response)")
+                joyIcons = Dictionary(uniqueKeysWithValues: response.dailyAchievementColorInfos.map { ($0.date, $0.achievementColorInfos) })
+                print("DEBUG CalendarDays joyIcons \(joyIcons)")
             } else {
                 print("DEBUG CalendarDays 실패")
             }
