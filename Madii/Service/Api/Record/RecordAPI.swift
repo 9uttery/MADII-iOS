@@ -9,21 +9,26 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
+struct GetRecentAlbumResponse: Codable {
+    let albumId, joyIconNum, albumColorNum: Int
+    let name: String
+}
+
 class RecordAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
     static let shared = RecordAPI()
     
     // (R-레코드) 최근 본 소확행 앨범 조회
-    func getRecent(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
-        let url = "\(baseUrl)/recent"
+    func getRecent(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetRecentAlbumResponse]) -> Void) {
+        let url = "\(baseUrl)/albums/recent"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+            .responseDecodable(of: BaseResponse<[GetRecentAlbumResponse]>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
