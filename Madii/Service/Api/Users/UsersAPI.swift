@@ -48,6 +48,39 @@ class UsersAPI {
             }
     }
     
+    // 일반 회원가입
+    func signUpWithId(id: String, password: String, agree: Bool, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/sign-up"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "loginId": id,
+            "password": password,
+            "agreesMarketing": agree
+        ]
+        
+        let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    print("DEBUG(sign-up) success \(response.message)")
+                    self.loginWithId(id: id, password: password) { isSuccess, response in
+                        if isSuccess {
+                            print("DEBUG(sign-up) login success")
+                            completion(true, response)
+                        } else {
+                            print("DEBUG(sign-up) login fail")
+                            completion(false, response)
+                        }
+                    }
+                case .failure(let error):
+                    print("DEBUG(sign-up) error: \(error)")
+                    completion(false, dummy)
+                }
+            }
+    }
+    
     // 일반 로그인
     func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/login/normal"
@@ -81,6 +114,111 @@ class UsersAPI {
                     
                 case .failure(let error):
                     print("DEBUG(login with id) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
+    
+    // 카카오 로그인
+    func loginWithKakao(idToken: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/login/kakao"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "idToken": idToken
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(login with kakao): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(login with kakao) access token: \(accessToken)")
+                    print("DEBUG(login with kakao) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(login with kakao) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
+    
+    // 애플 로그인
+    func loginWithApple(idToken: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/login/apple"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "idToken": idToken
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(login with apple): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(login with apple) access token: \(accessToken)")
+                    print("DEBUG(login with apple) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(login with apple) error: \(error)")
+                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                }
+            }
+    }
+    
+    // 토큰 재발급
+    func reissueToken(completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+        let url = "\(baseUrl)/users/refresh"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        let parameters: [String: Any] = [
+            "refreshToken": "\(keychain.get("refreshToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(reissue token): data nil")
+                        return
+                    }
+                    
+                    let accessToken = data.accessToken
+                    let refreshToken = data.refreshToken
+                    
+                    print("DEBUG(reissue token) access token: \(accessToken)")
+                    print("DEBUG(reissue token) refresh token: \(refreshToken)")
+                    
+                    self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
+                    self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    completion(true, data)
+                    
+                case .failure(let error):
+                    print("DEBUG(reissue token) error: \(error)")
                     completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
                 }
             }

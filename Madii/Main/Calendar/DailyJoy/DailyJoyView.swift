@@ -32,7 +32,18 @@ struct DailyJoyView: View {
             .padding(.horizontal, 16)
         }
         .scrollIndicators(.never)
+        .onAppear { getJoys() }
         .navigationTitle("\(date.year != Date().year ? "\(date.year)년 " : "")\(date.twoDigitMonth)월 \(date.twoDigitDay)일 소확행")
+    }
+    
+    private func getJoys() {
+        AchievementsAPI.shared.getAchievedJoyForDay(date: date) { isSuccess, response in
+            if isSuccess {
+                print("DEBUG DailyJoyView \(response)")
+            } else {
+                print("DEBUG DailyJoyView 실패")
+            }
+        }
     }
     
     @ViewBuilder

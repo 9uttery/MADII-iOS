@@ -28,9 +28,9 @@ enum OnboardingPages {
     
     var image: String {
         switch self {
-        case .first: ""
-        case .second: ""
-        case .third: ""
+        case .first: "onboarding_1"
+        case .second: "onboarding_2"
+        case .third: "onboarding_3"
         }
     }
 }
@@ -42,29 +42,39 @@ struct OnboardingView: View {
     @State private var showLoginView: Bool = false
     
     var body: some View {
-        VStack(spacing: 0) {
-            // 페이지 위치 점 세개
-            pageStatus
-                .padding(.leading, 20)
-                .padding(.trailing, 28)
-            
-            // 문구(제목과 설명)
-            titleAndDescription
-                .padding(.top, 44)
-                .padding(.horizontal, 24)
-            
-            // 이미지
+        ZStack(alignment: .bottom) {
             Rectangle()
-                .frame(width: 360, height: 392)
-                .padding(.top, 40)
+                .frame(height: 540)
+                .foregroundStyle(Color.clear)
+                .ignoresSafeArea(edges: .bottom)
+                .background {
+                    Image(contents[selectedPage]?.image ?? "")
+                        .resizable()
+                        .frame(width: selectedPage == 0 ? 460 : 340, height: 640)
+                        .ignoresSafeArea()
+                        .offset(y: 52)
+                }
             
-            // 다음으로 넘어가는 버튼
-            nextButton
-            
-            // 메인화면으로 넘어가는 버튼
-            showMainButton
-            
-            Spacer()
+            VStack(spacing: 0) {
+                // 페이지 위치 점 세개
+                pageStatus
+                    .padding(.leading, 20)
+                    .padding(.trailing, 28)
+                
+                // 문구(제목과 설명)
+                titleAndDescription
+                    .padding(.top, 44)
+                    .padding(.horizontal, 24)
+                
+                Spacer()
+                
+                // 다음으로 넘어가는 버튼
+                nextButton
+                
+                // 메인화면으로 넘어가는 버튼
+                showMainButton
+                    .padding(.bottom, 24)
+            }
         }
         .background(OnboardingBackgroundGradient())
         .navigationDestination(isPresented: $showMainView) {
