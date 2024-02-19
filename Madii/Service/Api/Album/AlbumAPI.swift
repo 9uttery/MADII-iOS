@@ -14,6 +14,43 @@ class AlbumAPI {
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
     static let shared = AlbumAPI()
     
+    // 앨범 상세 조회
+    func getAlbumsCreatedByMe(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsCreatedByMeResponse]) -> Void) {
+        let url = "\(baseUrl)/albums/created"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let dummy = GetAlbumsCreatedByMeResponse(albumId: 0, name: "")
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsCreatedByMeResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getAlbumsCreatedByMe): data nil")
+                        completion(false, [dummy])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getAlbumsCreatedByMe): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getAlbumsCreatedByMe): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getAlbumsCreatedByMe): error \(error))")
+                    completion(false, [dummy])
+                }
+            }
+    }
+    
     // 최근 본 소확행 앨범 등록
     func postRecentByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/recent/\(albumId)"

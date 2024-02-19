@@ -21,3 +21,8 @@ struct GetAlbumByIdResponseJoyInfo: Codable {
     let contents: String
     let isJoySaved: Bool
 }
+
+struct GetAlbumsCreatedByMeResponse: Codable {
+    let albumId: Int
+    let name: String
+}

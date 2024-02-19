@@ -10,7 +10,7 @@ import SwiftUI
 struct SaveMyJoyPopUpView: View {
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
-    @State private var albums: [Album] = Album.dummy2
+    @State private var albums: [Album] = []
     @State private var selectedAlbumIds: [Int] = []
 
     var body: some View {
@@ -40,6 +40,19 @@ struct SaveMyJoyPopUpView: View {
                 }
             }
             .padding(.horizontal, 40)
+        }
+        .onAppear { getMyAlbums() }
+    }
+    
+    private func getMyAlbums() {
+        AlbumAPI.shared.getAlbumsCreatedByMe { isSuccess, albumList in
+            if isSuccess {
+                albums = []
+                for album in albumList {
+                    let newAlbum = Album(id: album.albumId, title: album.name, creator: "")
+                    albums.append(newAlbum)
+                }
+            }
         }
     }
 
