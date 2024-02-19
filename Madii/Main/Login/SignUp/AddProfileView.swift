@@ -75,8 +75,6 @@ struct AddProfileView: View {
                 .task(id: self.selectedPhoto) {
                     self.showProfileImageSheet = false
                     self.profileImage = try? await self.selectedPhoto?.loadTransferable(type: Image.self)
-                    
-                    // FIXME: 이미지 회전되어 나타나는 버그 수정
                 }
 
                 MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
