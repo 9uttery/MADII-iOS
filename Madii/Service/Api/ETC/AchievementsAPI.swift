@@ -131,7 +131,7 @@ class AchievementsAPI {
 //    }
     
     // 소확행 만족도 수정
-    func putJoySatisfaction(achievementId: Int, satisfacton: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func putJoySatisfaction(achievementId: Int, satisfacton: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/achievements/rate"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -139,14 +139,13 @@ class AchievementsAPI {
         ]
         let parameters: [String: Any] = [
             "achievementId": achievementId,
-            "satisfaction": "SO_SO"
+            "satisfaction": satisfacton
         ]
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetPlaylistResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
-                    
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
@@ -156,6 +155,11 @@ class AchievementsAPI {
                         // status 200 아님 -> isSuccess: false
                         print("DEBUG(postAlbumsJoyByJoyId): status \(statusCode))")
                         completion(false)
+                    }
+                    
+                    guard let data = response.data else {
+                        print("DEBUG() data nil")
+                        return
                     }
                     
                 case .failure(let error):
@@ -192,17 +196,17 @@ struct JoyColorInfoForDay: Codable {
 }
 
 struct GetPlaylistResponse: Codable {
-    let todayJoyPlayList: TodayJoyPlaylistResponse
+    let todayJoyPlayList, yesterdayJoyPlayList: JoyPlaylistResponse
 }
 
-struct TodayJoyPlaylistResponse: Codable {
+struct JoyPlaylistResponse: Codable {
     let date: String
     let joyAchievementInfos: [JoyAchievementsInfosResponse]
 }
 
 struct JoyAchievementsInfosResponse: Codable {
     let joyId, achievementId, joyIconNum: Int
-    let contents: Int
+    let contents: String
     let isAchieved: Bool
     let satisfaction: String?
 }

@@ -22,7 +22,7 @@ struct DailyJoyView: View {
                         joyRow(joy)
                     }
                 }
-                .sheet(item: $selectedJoy) { item in
+                .sheet(item: $selectedJoy, onDismiss: getJoys) { item in
                     JoySatisfactionBottomSheet(joy: item)
                         .presentationDetents([.height(300)])
                         .presentationDragIndicator(.hidden)
@@ -40,13 +40,12 @@ struct DailyJoyView: View {
     private func getJoys() {
         AchievementsAPI.shared.getAchievedJoyForDay(date: date) { isSuccess, response in
             if isSuccess {
-                print("DEBUG DailyJoyView \(response)")
+                joys = []
                 for joy in response.dailyJoyAchievementInfos {
                     let newJoy: Joy = Joy(joyId: joy.joyId, achievementId: joy.achievementId,
                                           icon: joy.joyIconNum, title: joy.contents,
                                           satisfaction: JoySatisfaction.fromServer(joy.satisfaction))
                     joys.append(newJoy)
-                    print("DEBUG DailyJoyView \(joys)")
                 }
             } else {
                 print("DEBUG DailyJoyView 실패")

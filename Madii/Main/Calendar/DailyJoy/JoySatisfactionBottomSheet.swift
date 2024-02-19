@@ -33,6 +33,7 @@ struct JoySatisfactionBottomSheet: View {
                     ForEach(satisfactions, id: \.self) { satisfaction in
                         Button {
                             selectedSatisfaction = satisfaction
+                            putSatisfaction()
                         } label: {
                             satisfactionIcon(of: satisfaction)
                         }
@@ -53,6 +54,16 @@ struct JoySatisfactionBottomSheet: View {
         .padding(.horizontal, 16)
         .background(Color.madiiPopUp)
         .onAppear { selectedSatisfaction = joy.satisfaction }
+    }
+    
+    private func putSatisfaction() {
+        AchievementsAPI.shared.putJoySatisfaction(achievementId: joy.achievementId, satisfacton: selectedSatisfaction.serverEnum) { isSuccess in
+            if isSuccess {
+                print("야호 성공이다")
+            } else {
+                print("이런 실패다")
+            }
+        }
     }
     
     @ViewBuilder
