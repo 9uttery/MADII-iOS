@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct SaveMyJoyView: View {
-    
     @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
-    
-    @State private var showPopUp: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -25,17 +22,13 @@ struct SaveMyJoyView: View {
                     .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
                 
                 Button {
-//                    showSaveJoyToast = true 
-                    showPopUp = true
+                    saveJoy()
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()
                         .frame(width: 36, height: 36)
                 }
                 .disabled(myNewJoy.isEmpty)
-                .transparentFullScreenCover(isPresented: $showPopUp) {
-                    SaveMyJoyPopUpView(showSaveJoyPopUp: $showPopUp, showSaveJoyToast: $showSaveJoyToast)
-                }
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 16)
@@ -43,6 +36,22 @@ struct SaveMyJoyView: View {
             .cornerRadius(6)
         }
         .roundBackground()
+    }
+    
+    private func saveJoy() {
+        hideKeyboard()
+        
+        myNewJoy = ""
+        
+        withAnimation { showSaveJoyToast = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            withAnimation { showSaveJoyToast = false }
+        }
+    }
+    
+    // 키보드 내리기
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

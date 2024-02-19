@@ -26,10 +26,10 @@ struct MadiiTabView: View {
                 case .calendar: CalendarView()
                 }
             }
+            .padding(.bottom, isKeyboardVisible ? 0 : 120)
             .onReceive(Publishers.keyboardHeight) { keyboardHeight in
                 self.isKeyboardVisible = keyboardHeight > 0
             }
-            .padding(.bottom, isKeyboardVisible ? 0 : 120)
             
             VStack(spacing: 0) {
                 Spacer()
