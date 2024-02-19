@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @Binding var showAlbumSettingSheet: Bool
@@ -69,7 +68,6 @@ struct AlbumSettingBottomSheet: View {
     }
     
     private func hideTabBarWithSheet() {
-        tabBarManager.isTabBarShown = false
         showAlbumSettingSheet = false
     }
 }

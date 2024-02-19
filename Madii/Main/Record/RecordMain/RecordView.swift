@@ -16,21 +16,21 @@ struct RecordView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(spacing: 0) {
-                        Text("레코드")
-                            .madiiFont(font: .madiiTitle, color: .white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 22)
-                        
-                        Spacer()
-                    }
-                    .padding(.bottom, 12)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(spacing: 0) {
+                    Text("레코드")
+                        .madiiFont(font: .madiiTitle, color: .white)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 22)
                     
+                    Spacer()
+                }
+                    
+                ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         // 나만의 소확행을 기록해 보세요
                         SaveMyJoyView(showSaveJoyToast: $showSaveJoyPopUp)
+                            .padding(.top, 12)
                         
                         // 최근 본 앨범 & 많이 실천한 소확행 & 내가 기록한 소확행
                         UserAnalyticsView()
@@ -63,12 +63,13 @@ struct RecordView: View {
                     }
                     // 화면 전체 좌우 여백 16
                     .padding(.horizontal, 16)
+                    // 하단 여백 40
+                    .padding(.bottom, 40)
+                    
                 }
-                // 하단 여백 40
-                .padding(.bottom, 40)
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
-            
+                
             // 나만의 소확행 저장 팝업
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp,

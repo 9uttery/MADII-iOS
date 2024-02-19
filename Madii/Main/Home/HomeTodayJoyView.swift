@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeTodayJoyView: View {
     @State var counter = 0
-    @EnvironmentObject private var tabBarManager: TabBarManager
     @State var todayJoy: GetJoyResponseJoy?
     @State var todayJoyTitle: String = ""
     @State private var isClickedToday: Bool = false
@@ -56,7 +55,6 @@ struct HomeTodayJoyView: View {
                             .madiiFont(font: .madiiBody3, color: .white)
                         Spacer()
                         Button {
-                            // tabBarManager.isTabBarShown = false
                             showSaveJoyPopUp = true
                         } label: {
                             Image("play")

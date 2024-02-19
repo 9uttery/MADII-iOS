@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SaveMyJoyView: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
     
     @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
@@ -26,8 +25,7 @@ struct SaveMyJoyView: View {
                     .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
                 
                 Button {
-//                    tabBarManager.isTabBarShown = false
-//                    showSaveJoyToast = true
+//                    showSaveJoyToast = true 
                     showPopUp = true
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")

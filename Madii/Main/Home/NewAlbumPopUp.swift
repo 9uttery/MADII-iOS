@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NewAlbumPopUp: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showSaveJoyPopUp: Bool
 
     @State private var selectedAlbumIds: [Int] = []
@@ -96,7 +95,6 @@ struct NewAlbumPopUp: View {
 
     func dismissPopUp() {
         showSaveJoyPopUp = false
-        tabBarManager.isTabBarShown = true
     }
 
     func saveJoy() {

@@ -72,7 +72,6 @@
 		51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */; };
 		51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3762B188F44001B6793 /* AlbumRow.swift */; };
 		51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */; };
-		51E0259D2B26EE6800F4F41A /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259C2B26EE6800F4F41A /* TabBarManager.swift */; };
 		51E025A02B26F7EB00F4F41A /* PopUpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */; };
 		51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */; };
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
@@ -183,7 +182,6 @@
 		51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBoxBackground.swift; sourceTree = "<group>"; };
 		51D8D3762B188F44001B6793 /* AlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRow.swift; sourceTree = "<group>"; };
 		51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAlbumInfoPopUpView.swift; sourceTree = "<group>"; };
-		51E0259C2B26EE6800F4F41A /* TabBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarManager.swift; sourceTree = "<group>"; };
 		51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpStatus.swift; sourceTree = "<group>"; };
 		51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumPopUpView.swift; sourceTree = "<group>"; };
 		51E025A32B27291900F4F41A /* SaveJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveJoyToast.swift; sourceTree = "<group>"; };
@@ -514,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				BE0C3F8D2B81E77200275FD3 /* ParticleAnimation */,
-				51E0259C2B26EE6800F4F41A /* TabBarManager.swift */,
 				51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */,
 				51BEBA412B813F5B008CF3AD /* ImagePicker.swift */,
 			);
@@ -877,7 +874,6 @@
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 				BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */,
 				511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */,
-				51E0259D2B26EE6800F4F41A /* TabBarManager.swift in Sources */,
 				5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */,
 				BE459A632B7E08A7002E9AB2 /* AlbumDTO.swift in Sources */,
 				51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */,

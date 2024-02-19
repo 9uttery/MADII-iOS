@@ -10,7 +10,6 @@ import SwiftUI
 
 struct LogOutPopUpView: View {
     let keychain = KeychainSwift()
-    @EnvironmentObject private var tabBarManager: TabBarManager
     @Binding var showLogOutPopUp: Bool
     
     var body: some View {
@@ -29,7 +28,6 @@ struct LogOutPopUpView: View {
     
     func dismissPopUp() {
         showLogOutPopUp = false
-        tabBarManager.isTabBarShown = true
     }
 
     func cancleLogOut() {
