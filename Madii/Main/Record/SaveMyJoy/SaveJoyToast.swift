@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SaveJoyToast: View {
+    @EnvironmentObject private var popUpStatus: PopUpStatus
     var transitionEdge: Edge = .bottom
     
     var body: some View {
@@ -18,7 +19,7 @@ struct SaveJoyToast: View {
             Spacer()
             
             Button {
-                
+                popUpStatus.showSaveJoyToAlbumPopUp = true
             } label: {
                 Text("앨범 저장")
                     .madiiFont(font: .madiiBody4, color: .madiiOrange)

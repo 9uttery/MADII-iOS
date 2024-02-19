@@ -15,14 +15,17 @@ struct SelectAlbumRow: View {
         HStack {
             Text(title)
                 .madiiFont(font: .madiiBody3, color: isSelected ? .white : .gray500)
+                .multilineTextAlignment(.leading)
+            
             Spacer()
         }
-        .padding(.horizontal, 6)
-        .padding(.vertical, 8)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 16)
         .background(Color.madiiOption)
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
+                .inset(by: 0.5)
                 .stroke(Color.madiiYellowGreen.opacity(isSelected ? 1.0 : 0.0), lineWidth: 1)
         )
     }

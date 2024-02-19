@@ -11,7 +11,6 @@ struct RecordView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
-    @State private var showSaveJoyPopUp: Bool = false
     @State private var showSaveJoyToast: Bool = false
     
     var body: some View {
@@ -43,15 +42,12 @@ struct RecordView: View {
                 }
                 .scrollIndicators(.hidden)
             }
+            // 나만의 소확행 앨범에 저장 팝업
+            .transparentFullScreenCover(isPresented: $popUpStatus.showSaveJoyToAlbumPopUp) {
+                SaveMyJoyPopUpView() }
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast() }
-                
-            // 나만의 소확행 저장 팝업
-            if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp,
-                                   showSaveJoyToast: $showSaveJoyToast)
-            }
             
             // 앨범 정보 수정 팝업
             if popUpStatus.showChangeAlbumInfo {
@@ -104,4 +100,14 @@ struct RecordView: View {
 #Preview {
 //    SplashView()
     MadiiTabView()
+}
+
+extension View {
+    func withoutAnimation(action: @escaping () -> Void) {
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            action()
+        }
+    }
 }

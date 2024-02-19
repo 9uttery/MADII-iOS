@@ -8,40 +8,38 @@
 import SwiftUI
 
 struct SaveMyJoyPopUpView: View {
-    @Binding var showSaveJoyPopUp: Bool
-
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    
     @State private var albums: [Album] = Album.dummy2
     @State private var selectedAlbumIds: [Int] = []
 
-    @Binding var showSaveJoyToast: Bool
-
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             Color.black.opacity(0.8).ignoresSafeArea()
-                .onTapGesture {
-                    dismissPopUp()
-                }
+                .onTapGesture { withoutAnimation { dismissPopUp() } }
 
-            PopUp(title: "어떤 앨범에 저장할까요?",
-                  leftButtonTitle: "취소", leftButtonAction: dismissPopUp,
-                  rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
-                // 앨범 리스트
-                ScrollView(.vertical) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        // 기본 선택: 내가 찾은 소확행
-                        SelectAlbumRow(title: "내가 찾은 소확행", isSelected: true)
+            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: selectedAlbumIds.isEmpty ? .gray : .white, rightButtonAction: saveJoy) {
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    SelectAlbumRow(title: "달디단 밤양갱", isSelected: false)
+                    
+                    Text("어떤 앨범에 저장할까요?")
+                        .madiiFont(font: .madiiSubTitle, color: .white)
+                    
+                    // 앨범 리스트
+                    ScrollView(.vertical) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            // 내가 만든 앨범들
+                            myAlbums
 
-                        // 내가 가지고 있는 앨범들
-                        myAlbums
-
-                        // 새로운 앨범 추가 버튼
-                        createAlbumButton
+                            // 새로운 앨범 추가 버튼
+                            createAlbumButton
+                        }
                     }
+                    .frame(maxHeight: 248)
                 }
-                .frame(maxHeight: 180)
             }
             .padding(.horizontal, 40)
-            .padding(.top, 160)
         }
     }
 
@@ -72,29 +70,20 @@ struct SaveMyJoyPopUpView: View {
                     .madiiFont(font: .madiiBody3, color: .gray500)
                 Spacer()
             }
-            .padding(.horizontal, 6)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 16)
             .background(Color.madiiOption)
             .cornerRadius(4)
         }
     }
 
     func dismissPopUp() {
-        showSaveJoyPopUp = false
+        popUpStatus.showSaveJoyToAlbumPopUp = false
     }
 
     func saveJoy() {
         // 소확행 저장
         dismissPopUp()
-
-        withAnimation {
-            showSaveJoyToast = true
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            withAnimation {
-                showSaveJoyToast = false
-            }
-        }
     }
 }
 
@@ -120,4 +109,9 @@ struct TransparentBackground: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {}
+}
+
+#Preview {
+//    SplashView()
+    MadiiTabView()
 }

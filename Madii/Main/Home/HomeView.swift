@@ -24,7 +24,7 @@ struct HomeView: View {
             .scrollIndicators(.never)
             
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(showSaveJoyPopUp: $showSaveJoyPopUp, showSaveJoyToast: $showSaveJoyToast)
+                SaveMyJoyPopUpView()
             }
         }
     }
