@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ManyAchievedJoyView: View {
     @State private var joys: [Joy] = []
+    @State private var selectedJoy: Joy?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,7 +19,11 @@ struct ManyAchievedJoyView: View {
                 ScrollView {
                     VStack(alignment: .center, spacing: 32) {
                         // 1등
-                        firstRank
+                        Button {
+                            selectedJoy = joys[0]
+                        } label: {
+                            firstRank
+                        }
                         
                         if joys.count > 1 {
                             // 2등 ~ 5등
@@ -26,23 +31,7 @@ struct ManyAchievedJoyView: View {
                                 let count = joys.count
                                 ForEach(0 ..< count, id: \.self) { index in
                                     if index > 0 {
-                                        HStack(spacing: 15) {
-                                            // 순위
-                                            Text("\(index + 1)")
-                                                .madiiFont(font: .madiiBody3, color: .gray500)
-                                            
-                                            JoyRow(joy: joys[index])
-                                            
-                                            Spacer()
-                                            
-                                            // 실천 횟수
-                                            Text("\(joys[index].counts) 회")
-                                                .madiiFont(font: .madiiBody5, color: .gray400)
-                                                .padding(.horizontal, 12)
-                                                .padding(.vertical, 6)
-                                                .background(Color.madiiOption)
-                                                .cornerRadius(6)
-                                        }
+                                        joyRow(index: index, joy: joys[index])
                                     }
                                 }
                             }
@@ -54,6 +43,8 @@ struct ManyAchievedJoyView: View {
                     .padding(.bottom, 60)
                 }
                 .scrollIndicators(.hidden)
+                .sheet(item: $selectedJoy) { joy in
+                    JoyMenuBottomSheet(joy: joy) }
             }
         }
         .navigationTitle("많이 실천한 소확행")
@@ -99,6 +90,46 @@ struct ManyAchievedJoyView: View {
         .frame(maxWidth: .infinity)
         .background(Color.madiiOption)
         .cornerRadius(20)
+    }
+    
+    @ViewBuilder
+    private func joyRow(index: Int, joy: Joy) -> some View {
+        Button {
+            selectedJoy = joy
+        } label: {
+            HStack(spacing: 15) {
+                // 순위
+                Text("\(index + 1)")
+                    .madiiFont(font: .madiiBody3, color: .gray500)
+                
+                ZStack {
+                    Circle()
+                        .frame(width: 48, height: 48)
+                        .foregroundStyle(Color.black)
+                        .overlay {
+                            Circle()
+                                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                        }
+                    
+                    Image("icon_\(joy.icon)")
+                        .resizable()
+                        .frame(width: 26, height: 26)
+                }
+                
+                Text(joy.title)
+                    .madiiFont(font: .madiiBody3, color: .white)
+                
+                Spacer()
+                
+                // 실천 횟수
+                Text("\(joy.counts) 회")
+                    .madiiFont(font: .madiiBody5, color: .gray400)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.madiiOption)
+                    .cornerRadius(6)
+            }
+        }
     }
     
     private var emptyView: some View {

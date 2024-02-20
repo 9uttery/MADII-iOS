@@ -18,10 +18,14 @@ struct LatestViewedAlbumView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(albums) { album in
-                            AlbumRow(album: album)
-                                .padding(.leading, 8)
+                            NavigationLink {
+                                AlbumDetailView(album: album)
+                            } label: {
+                                AlbumRow(album: album)
+                            }
                         }
                     }
+                    .padding(.leading, 8)
                     .padding(.top, 28)
                     .padding(.horizontal, 16)
                     .padding(.bottom, 60)
@@ -34,6 +38,7 @@ struct LatestViewedAlbumView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear { getAlbums() }
     }
     
     private var emptyView: some View {

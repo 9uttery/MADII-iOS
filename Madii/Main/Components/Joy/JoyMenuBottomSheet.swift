@@ -55,7 +55,7 @@ struct JoyMenuBottomSheet: View {
             Spacer()
         }
         .background(Color.madiiPopUp)
-        .presentationDetents([.height(isMine ? 350 : 250)])
+        .presentationDetents([.height(isMine ? 350 : 280)])
     }
     
     @ViewBuilder
