@@ -8,68 +8,44 @@
 import SwiftUI
 
 struct ManyAchievedJoyView: View {
-    @State private var joys: [Joy] = Joy.manyAchievedDummy
+    @State private var joys: [Joy] = []
     
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 32) {
-                // 1등
-                VStack(spacing: 12) {
-                    ZStack(alignment: .topLeading) {
-                        Circle()
-                            .frame(width: 100, height: 100)
-                            .foregroundStyle(Color.black)
-                            .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
-                        
-                        Image("first")
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                    }
+                if joys.isEmpty == false {
+                    // 1등
+                    firstRank
                     
-                    Text(joys[0].title)
-                        .madiiFont(font: .madiiBody1, color: .white)
-                        .frame(width: 200)
-                        .multilineTextAlignment(.center)
-                    
-                    Text("\(joys[0].counts) 회")
-                        .madiiFont(font: .madiiBody1, color: .white)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.madiiBox)
-                        .cornerRadius(90)
-                }
-                .padding(.vertical, 32)
-                .padding(.horizontal, 10)
-                .frame(maxWidth: .infinity)
-                .background(Color.madiiOption)
-                .cornerRadius(20)
-                
-                // 2등 ~ 5등
-                VStack(spacing: 16) {
-                    let count = joys.count
-                    ForEach(0 ..< count, id: \.self) { index in
-                        if index > 0 {
-                            HStack(spacing: 15) {
-                                // 순위
-                                Text("\(index + 1)")
-                                    .madiiFont(font: .madiiBody3, color: .gray500)
-                                
-                                JoyRow(title: joys[index].title)
-                                
-                                Spacer()
-                                
-                                // 실천 횟수
-                                Text("\(joys[index].counts) 회")
-                                    .madiiFont(font: .madiiBody5, color: .gray400)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 6)
-                                    .background(Color.madiiOption)
-                                    .cornerRadius(6)
+                    if joys.count > 1 {
+                        // 2등 ~ 5등
+                        VStack(spacing: 16) {
+                            let count = joys.count
+                            ForEach(0 ..< count, id: \.self) { index in
+                                if index > 0 {
+                                    HStack(spacing: 15) {
+                                        // 순위
+                                        Text("\(index + 1)")
+                                            .madiiFont(font: .madiiBody3, color: .gray500)
+                                        
+                                        JoyRow(joy: joys[index])
+                                        
+                                        Spacer()
+                                        
+                                        // 실천 횟수
+                                        Text("\(joys[index].counts) 회")
+                                            .madiiFont(font: .madiiBody5, color: .gray400)
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 6)
+                                            .background(Color.madiiOption)
+                                            .cornerRadius(6)
+                                    }
+                                }
                             }
                         }
+                        .roundBackground(bottomPadding: 32)
                     }
                 }
-                .roundBackground(bottomPadding: 32)
             }
             .padding(.top, 28)
             .padding(.horizontal, 16)
@@ -80,6 +56,59 @@ struct ManyAchievedJoyView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear { getJoys() }
+    }
+    
+    private var firstRank: some View {
+        VStack(spacing: 12) {
+            ZStack(alignment: .topLeading) {
+                ZStack {
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .foregroundStyle(Color.black)
+                        .overlay { Circle().stroke(Color.white.opacity(0.2), lineWidth: 1) }
+                    
+                    Image("icon_\(joys[0].icon)")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                }
+                
+                Image("first")
+                    .resizable()
+                    .frame(width: 28, height: 28)
+            }
+            
+            Text(joys[0].title)
+                .madiiFont(font: .madiiBody1, color: .white)
+                .frame(width: 200)
+                .multilineTextAlignment(.center)
+            
+            Text("\(joys[0].counts) 회")
+                .madiiFont(font: .madiiBody1, color: .white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(Color.madiiBox)
+                .cornerRadius(90)
+        }
+        .padding(.vertical, 32)
+        .padding(.horizontal, 10)
+        .frame(maxWidth: .infinity)
+        .background(Color.madiiOption)
+        .cornerRadius(20)
+    }
+    
+    private func getJoys() {
+        RecordAPI.shared.getMostAchievedJoy { isSuccess, joyList in
+            if isSuccess {
+                joys = []
+                for joy in joyList.mostAchievedJoyInfos {
+                    let newJoy = Joy(icon: joy.joyIconNum, title: joy.contents, counts: joy.achieveCount)
+                    joys.append(newJoy)
+                }
+            } else {
+                print("DEBUG ManyAchievedJoyView: isSuccess false")
+            }
+        }
     }
 }
 

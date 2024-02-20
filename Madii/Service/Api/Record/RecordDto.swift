@@ -22,6 +22,16 @@ struct GetJoyResponseJoy: Codable, Identifiable {
     let contents: String
 }
 
+struct GetMostAchievedJoyResponse: Codable {
+    let mostAchievedJoyInfos: [GetMostAchievedJoyInfoResponse]
+}
+
+struct GetMostAchievedJoyInfoResponse: Codable {
+    let joyIconNum: Int
+    let contents: String
+    let achieveCount, rank: Int
+}
+
 struct GetAlbumsResponse: Codable, Identifiable {
     var id: Int {
         return albumId
