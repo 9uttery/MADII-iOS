@@ -128,15 +128,15 @@ class RecordAPI {
     }
     
     // (R-레코드) 다른 소확행 앨범 모음 조회
-    func getRandomAlbumsById(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
+    func getRandomAlbumsById(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: [GetRandomAlbumsResponse]) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)/random"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "\(keychain.get("accessToken") ?? "")"
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+            .responseDecodable(of: BaseResponse<[GetRandomAlbumsResponse]>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
