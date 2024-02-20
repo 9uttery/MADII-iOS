@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
-    private let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
     @State var album: Album
     
     @State private var joys: [Joy] = Joy.manyAchievedDummy
@@ -25,22 +24,7 @@ struct AlbumDetailView: View {
                 // 앨범 커버 & 저장 버튼
                 ZStack(alignment: .bottomTrailing) {
                     // 앨범 커버 이미지
-                    ZStack {
-                        colors[album.backgroundColorNum]
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 180)
-                        
-                        HStack(spacing: 0) {
-                            ForEach(0 ..< 3, id: \.self) { index in
-                                Image("icon_\(album.iconNum)")
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                
-                                if index != 2 { Spacer() }
-                            }
-                        }
-                        .padding(.horizontal, 12)
-                    }
+                    AlbumDetailCoverView(album: album)
                     
                     // 저장 버튼
                     if isAlbumMine == false {
