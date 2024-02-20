@@ -9,9 +9,7 @@ import SwiftUI
 
 struct AlbumDetailView: View {
     @State var album: Album
-    
     @State private var joys: [Joy] = Joy.manyAchievedDummy
-    
     
     @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
@@ -123,22 +121,27 @@ struct AlbumDetailView: View {
         .scrollIndicators(.hidden)
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing:
-            Button {
-                // Handle button tap
-                print("Button tapped!")
-            } label: {
-                Image(systemName: "ellipsis")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
-                    .foregroundStyle(Color.gray500)
-                    .padding(10)
-            }
-        )
+        .navigationBarItems(trailing: showAlbumSheetButton)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear { getAlbumInfo() }
+        .onAppear {
+            getAlbumInfo()
+            postRecentAlbum()
+        }
+    }
+    
+    private var showAlbumSheetButton: some View {
+        Button {
+            // Handle button tap
+            print("Button tapped!")
+        } label: {
+            Image(systemName: "ellipsis")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 20, height: 20)
+                .foregroundStyle(Color.gray500)
+                .padding(10)
+        }
     }
     
     private func getAlbumInfo() {
@@ -167,6 +170,16 @@ struct AlbumDetailView: View {
                 }
             } else {
                 print("DEBUG AlbumDetailView getAlbumInfos: isSuccess false")
+            }
+        }
+    }
+    
+    private func postRecentAlbum() {
+        AlbumAPI.shared.postRecentByAlbumId(albumId: album.id) { isSuccess in
+            if isSuccess {
+                print("DEBUG AlbumDetailView: 최근 본 앨범 등록 success")
+            } else {
+                print("DEBUG AlbumDetailView: 최근 본 앨범 등록 fail")
             }
         }
     }

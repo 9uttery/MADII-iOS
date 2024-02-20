@@ -53,7 +53,7 @@ class AlbumAPI {
     
     // 최근 본 소확행 앨범 등록
     func postRecentByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/recent/\(albumId)"
+        let url = "\(baseUrl)/albums/recent/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
