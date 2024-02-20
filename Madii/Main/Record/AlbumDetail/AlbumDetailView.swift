@@ -26,32 +26,8 @@ struct AlbumDetailView: View {
                     
                     // 저장 버튼
                     if isAlbumMine == false {
-                        Button {
-                            isAlbumSaved.toggle()
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "bookmark.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 20, height: 18)
-                                    .foregroundStyle(isAlbumSaved ? Color.madiiYellowGreen : Color.white)
-                                
-                                Text(isAlbumSaved ? "저장 완료" : "앨범 저장")
-                                    .madiiFont(font: .madiiBody3, color: .white)
-                            }
-                            .padding(.leading, 8)
-                            .padding(.trailing, 12)
-                            .padding(.vertical, 8)
-                            .frame(height: 40, alignment: .center)
-                            .background(.black.opacity(isAlbumSaved ? 0.6 : 1.0))
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(.white, lineWidth: 1)
-                            )
-                            .opacity(isAlbumSaved ? 1.0 : 0.5)
-                        }
-                        .offset(x: -18, y: -12)
+                        AlbumDetailBookmarkButton(albumId: album.id, isAlbumSaved: $isAlbumSaved)
+                            .offset(x: -18, y: -12)
                     }
                 }
                 
