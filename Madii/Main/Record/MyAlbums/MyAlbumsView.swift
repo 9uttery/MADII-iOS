@@ -12,6 +12,8 @@ struct MyAlbumsView: View {
     @State private var showAlbumDetailView: Bool = false
     @State private var showAlbumSettingSheet: Bool = false
     
+    @State private var selectedAlbum: Album = Album(id: 0, backgroundColorNum: 1, iconNum: 21, title: "앨범을 불러오지 못했어요")
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 0) {
@@ -35,6 +37,7 @@ struct MyAlbumsView: View {
             VStack(spacing: 16) {
                 ForEach(albums) { album in
                     Button {
+                        selectedAlbum = album
                         showAlbumDetailView = true
                     } label: {
                         AlbumRowWithRightView(album: album) {
@@ -50,10 +53,9 @@ struct MyAlbumsView: View {
                             }
                         }
                     }
-                    .navigationDestination(isPresented: $showAlbumDetailView) {
-                        AlbumDetailView(album: album)
-                    }
                 }
+                .navigationDestination(isPresented: $showAlbumDetailView) {
+                    AlbumDetailView(album: selectedAlbum) }
             }
             .onAppear { getAlbums() }
         }
