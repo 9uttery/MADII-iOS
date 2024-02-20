@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyAlbumsView: View {
     @State private var albums: [Album] = []
+    @State private var showAlbumDetailView: Bool = false
     @State private var showAlbumSettingSheet: Bool = false
     
     var body: some View {
@@ -33,8 +34,14 @@ struct MyAlbumsView: View {
                 
             VStack(spacing: 16) {
                 ForEach(albums) { album in
-                    NavigationLink {
-                        AlbumDetailView(album: album)
+//                    NavigationLink {
+//                        AlbumDetailView(album: album)
+//                    } label: {
+//                        
+//                    }
+                    
+                    Button {
+                        showAlbumDetailView = true
                     } label: {
                         AlbumRowWithRightView(album: album) {
                             Button {
@@ -48,6 +55,9 @@ struct MyAlbumsView: View {
                                     .padding(.vertical, 8)
                             }
                         }
+                    }
+                    .navigationDestination(isPresented: $showAlbumDetailView) {
+                        AlbumDetailView(album: album)
                     }
                 }
             }
@@ -69,7 +79,6 @@ struct MyAlbumsView: View {
                     let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
                     albums.append(newAlbum)
                 }
-                print("DEBUG MyAlbumsView: albums \(albums)")
             } else {
                 print("DEBUG MyAlbumsView: isSuccess false")
             }
