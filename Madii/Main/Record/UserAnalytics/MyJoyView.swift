@@ -58,6 +58,7 @@ struct MyJoyView: View {
                     .madiiFont(font: .madiiBody3, color: .gray500)
                     .multilineTextAlignment(.center)
                 
+                /* 임시 삭제
                 Button {
                     popUpStatus.showSaveMyJoyOverlay = true
                     dismiss()
@@ -69,6 +70,7 @@ struct MyJoyView: View {
                         .background(Color.madiiYellowGreen)
                         .clipShape(RoundedRectangle(cornerRadius: 90))
                 }
+                 */
             }
             
             Spacer()

@@ -11,47 +11,51 @@ struct ManyAchievedJoyView: View {
     @State private var joys: [Joy] = []
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 32) {
-                if joys.isEmpty == false {
-                    // 1등
-                    firstRank
-                    
-                    if joys.count > 1 {
-                        // 2등 ~ 5등
-                        VStack(spacing: 16) {
-                            let count = joys.count
-                            ForEach(0 ..< count, id: \.self) { index in
-                                if index > 0 {
-                                    HStack(spacing: 15) {
-                                        // 순위
-                                        Text("\(index + 1)")
-                                            .madiiFont(font: .madiiBody3, color: .gray500)
-                                        
-                                        JoyRow(joy: joys[index])
-                                        
-                                        Spacer()
-                                        
-                                        // 실천 횟수
-                                        Text("\(joys[index].counts) 회")
-                                            .madiiFont(font: .madiiBody5, color: .gray400)
-                                            .padding(.horizontal, 12)
-                                            .padding(.vertical, 6)
-                                            .background(Color.madiiOption)
-                                            .cornerRadius(6)
+        VStack(spacing: 0) {
+            if joys.isEmpty {
+                emptyView
+            } else {
+                ScrollView {
+                    VStack(alignment: .center, spacing: 32) {
+                        // 1등
+                        firstRank
+                        
+                        if joys.count > 1 {
+                            // 2등 ~ 5등
+                            VStack(spacing: 16) {
+                                let count = joys.count
+                                ForEach(0 ..< count, id: \.self) { index in
+                                    if index > 0 {
+                                        HStack(spacing: 15) {
+                                            // 순위
+                                            Text("\(index + 1)")
+                                                .madiiFont(font: .madiiBody3, color: .gray500)
+                                            
+                                            JoyRow(joy: joys[index])
+                                            
+                                            Spacer()
+                                            
+                                            // 실천 횟수
+                                            Text("\(joys[index].counts) 회")
+                                                .madiiFont(font: .madiiBody5, color: .gray400)
+                                                .padding(.horizontal, 12)
+                                                .padding(.vertical, 6)
+                                                .background(Color.madiiOption)
+                                                .cornerRadius(6)
+                                        }
                                     }
                                 }
                             }
+                            .roundBackground(bottomPadding: 32)
                         }
-                        .roundBackground(bottomPadding: 32)
                     }
+                    .padding(.top, 28)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 60)
                 }
+                .scrollIndicators(.hidden)
             }
-            .padding(.top, 28)
-            .padding(.horizontal, 16)
-            .padding(.bottom, 60)
         }
-        .scrollIndicators(.hidden)
         .navigationTitle("많이 실천한 소확행")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
@@ -95,6 +99,40 @@ struct ManyAchievedJoyView: View {
         .frame(maxWidth: .infinity)
         .background(Color.madiiOption)
         .cornerRadius(20)
+    }
+    
+    private var emptyView: some View {
+        VStack(spacing: 60) {
+            Spacer()
+            
+            Image("myJoyEmpty")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 240)
+            
+            VStack(spacing: 20) {
+                Text("아직 여러 번 실천한 소확행이 없어요\n2회 이상 실천한 소확행부터 확인할 수 있어요")
+                    .madiiFont(font: .madiiBody3, color: .gray500)
+                    .multilineTextAlignment(.center)
+                
+                /* 임시 삭제
+                Button {
+                    popUpStatus.showSaveMyJoyOverlay = true
+                    dismiss()
+                } label: {
+                    Text("소확행 기록하러 가기")
+                        .madiiFont(font: .madiiBody2, color: .black)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 12)
+                        .background(Color.madiiYellowGreen)
+                        .clipShape(RoundedRectangle(cornerRadius: 90))
+                }
+                 */
+            }
+            
+            Spacer()
+            Spacer()
+        }
     }
     
     private func getJoys() {
