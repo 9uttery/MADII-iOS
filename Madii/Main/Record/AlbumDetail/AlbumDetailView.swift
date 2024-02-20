@@ -68,7 +68,7 @@ struct AlbumDetailView: View {
                                             .padding(10)
                                     } else {
                                         // 타인의 앨범: 북마크 버튼 이미지
-                                        Image(true ? "inactiveSave" : "activeSave")
+                                        Image(joy.isSaved ? "inactiveSave" : "activeSave")
                                             .resizable()
                                             .frame(width: 36, height: 36)
                                     }

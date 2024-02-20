@@ -43,7 +43,7 @@ struct HomePlayJoyListView: View {
         }
         .padding(.horizontal, 16)
         .onAppear {
-            HomeAPI.shared.getAllAlbums(albumId: nil, size: 10) { isSuccess, allAlbum in
+            HomeAPI.shared.getAllAlbums(albumId: nil, size: 30) { isSuccess, allAlbum in
                 if isSuccess {
                     playAlbums = allAlbum.content
                 }
