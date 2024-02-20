@@ -31,7 +31,7 @@ struct MyAlbumsView: View {
                     .cornerRadius(6)
                  */
             }
-                
+            
             VStack(spacing: 16) {
                 ForEach(albums) { album in
                     Button {

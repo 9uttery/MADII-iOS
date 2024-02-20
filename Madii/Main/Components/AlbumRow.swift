@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlbumRow: View {
-    private let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+    private let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
     let album: Album
     
     var body: some View {
@@ -33,7 +33,7 @@ struct AlbumRow: View {
 }
 
 struct AlbumRowWithRightView<Content>: View where Content: View {
-    private let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+    private let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
     let album: Album
     @ViewBuilder var rightView: Content
     

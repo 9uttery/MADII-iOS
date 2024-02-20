@@ -40,7 +40,7 @@ struct CalendarDays: View {
                             // 각 일마다 있는 소확행 커버
                             LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
                                 ForEach(joys, id: \.self) { joyColor in
-                                    let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+                                    let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
                                     
                                     ZStack {
                                         Circle()

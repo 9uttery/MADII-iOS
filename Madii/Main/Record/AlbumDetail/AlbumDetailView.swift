@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
-    private let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+    private let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
     @State var album: Album
     
-    private let joys: [Joy] = Joy.manyAchievedDummy
-    private let othersAlbums: [Album] = Album.dummy4
+    @State private var joys: [Joy] = Joy.manyAchievedDummy
+    
     
     @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
@@ -129,19 +129,7 @@ struct AlbumDetailView: View {
                     .cornerRadius(20)
                     
                     // 다른 소확행 앨범 모음
-                    VStack(spacing: 12) {
-                        ForEach(othersAlbums) { album in
-                            NavigationLink {
-                                AlbumDetailView(album: Album(id: album.id,
-                                                             title: album.title,
-                                                             creator: album.creator,
-                                                             description: album.description))
-                            } label: {
-                                AlbumRow(album: album)
-                            }
-                        }
-                    }
-                    .roundBackground("다른 소확행 앨범 모음", bottomPadding: 32)
+                    AlbumDetailOtherAlbumsView(album: album)
                 }
                 .padding(.horizontal, 16)
             }
@@ -150,6 +138,7 @@ struct AlbumDetailView: View {
         }
         .scrollIndicators(.hidden)
         .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
             Button {
                 // Handle button tap
@@ -183,18 +172,18 @@ struct AlbumDetailView: View {
                     isAlbumMine = true
                 }
                 
+                // 앨범 설명
+                album.description = albumInfo.description
+                
                 // 소확행 리스트
-                
-                // 다른 소확행 앨범 모음
-                
-                
+                joys = []
+                for joy in albumInfo.joyInfoList {
+                    let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents, isSaved: joy.isJoySaved ?? false)
+                    joys.append(newJoy)
+                }
             } else {
-                print("DEBUG AlbumDetailView: isSuccess false")
+                print("DEBUG AlbumDetailView getAlbumInfos: isSuccess false")
             }
         }
     }
-}
-
-#Preview {
-    AlbumDetailView(album: Album(id: 1, title: ""))
 }
