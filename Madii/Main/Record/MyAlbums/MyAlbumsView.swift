@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
+    @State private var albums: [Album] = []
     @State private var showAlbumSettingSheet: Bool = false
     
     var body: some View {
@@ -31,11 +32,11 @@ struct MyAlbumsView: View {
             }
                 
             VStack(spacing: 16) {
-                ForEach(0 ... 6, id: \.self) { _ in
+                ForEach(albums) { album in
                     NavigationLink {
-                        AlbumDetailView()
+                        AlbumDetailView(album: album)
                     } label: {
-                        AlbumRowWithRightView {
+                        AlbumRowWithRightView(album: album) {
                             Button {
                                 showAlbumSettingSheet = true
                             } label: {
@@ -50,12 +51,28 @@ struct MyAlbumsView: View {
                     }
                 }
             }
+            .onAppear { getAlbums() }
         }
         .roundBackground(bottomPadding: 32)
         .sheet(isPresented: $showAlbumSettingSheet) {
             AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
                 .presentationDetents([.height(360)])
                 .presentationDragIndicator(.visible)
+        }
+    }
+    
+    private func getAlbums() {
+        RecordAPI.shared.getAlbums { isSuccess, albumList in
+            if isSuccess {
+                albums = []
+                for album in albumList {
+                    let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
+                    albums.append(newAlbum)
+                }
+                print("DEBUG MyAlbumsView: albums \(albums)")
+            } else {
+                print("DEBUG MyAlbumsView: isSuccess false")
+            }
         }
     }
 }

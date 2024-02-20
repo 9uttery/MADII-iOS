@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlbumDetailView: View {    
-    @State var album: Album = .dummy1
+    let album: Album
     private let joys: [Joy] = Joy.manyAchievedDummy
     private let othersAlbums: [Album] = Album.dummy4
     
@@ -166,5 +166,5 @@ struct AlbumDetailView: View {
 }
 
 #Preview {
-    AlbumDetailView()
+    AlbumDetailView(album: Album(id: 1, title: ""))
 }
