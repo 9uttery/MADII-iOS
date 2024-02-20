@@ -9,11 +9,7 @@ import Combine
 import SwiftUI
 
 struct MadiiTabView: View {
-    @Environment(\.dismiss) private var dismiss
-    @State private var showPlaylist: Bool = false
-    
     @State var tabIndex: TabIndex = .record
-    
     @State private var isKeyboardVisible = false
 
     var body: some View {
@@ -33,32 +29,7 @@ struct MadiiTabView: View {
             VStack(spacing: 0) {
                 Spacer()
                 
-                Button {
-                    showPlaylist = true
-                } label: {
-                    PlaylistBar()
-                        .background(Color.black)
-                        .frame(height: 60)
-                }
-                .fullScreenCover(isPresented: $showPlaylist, content: {
-                    ZStack {
-                        Color.red
-                        
-                        Button {
-                            showPlaylist = false
-                        } label: {
-                            Text("dismiss")
-                        }
-                    }
-                    .gesture(
-                        DragGesture().onEnded { value in
-                            if value.location.y - value.startLocation.y > 150 {
-                                /// Use presentationMode.wrappedValue.dismiss() for iOS 14 and below
-                                showPlaylist = false
-                            }
-                        }
-                    )
-                })
+                PlaylistBar()
                 
                 MadiiTabBar(tabIndex: $tabIndex)
                     .frame(height: 60)

@@ -95,40 +95,42 @@ class AchievementsAPI {
     }
     
     // 오늘, 어제의 플레이리스트 조회
-//    func getPlaylist(completion: @escaping (_ isSuccess: Bool, _ response: GetJoyIconsForDayResponse) -> Void) {
-//        let url = "\(baseUrl)/achievements"
-//        let headers: HTTPHeaders = [
-//            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
-//            "Content-Type": "application/json"
-//        ]
-//        
-//        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-//            .responseDecodable(of: BaseResponse<GetJoyIconsForDayResponse>.self) { response in
-//                switch response.result {
-//                case .success(let response):
-//                    guard let data = response.data else {
-//                        print("DEBUG(get joy icons for day): data nil")
-//                        completion(false, dummy)
-//                        return
-//                    }
-//                    
-//                    let statusCode = response.status
-//                    if statusCode == 200 {
-//                        // status 200으로 -> isSuccess: true
-//                        print("DEBUG(get joy icons for day): success")
-//                        completion(true, data)
-//                    } else {
-//                        // status 200 아님 -> isSuccess: false
-//                        print("DEBUG(get joy icons for day): status \(statusCode))")
-//                        completion(false, data)
-//                    }
-//                    
-//                case .failure(let error):
-//                    print("DEBUG(get joy icons for day): error \(error))")
-//                    completion(false, dummy)
-//                }
-//            }
-//    }
+    func getPlaylist(completion: @escaping (_ isSuccess: Bool, _ response: GetPlaylistResponse) -> Void) {
+        let url = "\(baseUrl)/achievements"
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
+            "Content-Type": "application/json"
+        ]
+        
+        let pl = JoyPlaylistResponse(date: "", joyAchievementInfos: [])
+        let dummy = GetPlaylistResponse(todayJoyPlayList: pl, yesterdayJoyPlayList: pl)
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetPlaylistResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(get joy icons for day): data nil")
+                        completion(false, dummy)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(get joy icons for day): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(get joy icons for day): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(get joy icons for day): error \(error))")
+                    completion(false, dummy)
+                }
+            }
+    }
     
     // 소확행 만족도 수정
     func putJoySatisfaction(achievementId: Int, satisfacton: String, completion: @escaping (_ isSuccess: Bool) -> Void) {

@@ -63,12 +63,6 @@ struct TestView: View {
     }
 }
 
-extension CGPoint {
-    static func - (lhs: Self, rhs: Self) -> Self {
-        CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
-    }
-}
-
 #Preview {
     TestView()
 }
