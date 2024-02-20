@@ -83,20 +83,21 @@ class AlbumAPI {
     }
     
     // 앨범 상세 조회
-    func getAlbumByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: GetAlbumByIdResponse) -> Void) {
+    func getAlbumByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumInfo: GetAlbumByIdResponse) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
+        let dummy = GetAlbumByIdResponse(albumIconNum: 0, albumColorNum: 0, isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: [])
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<GetAlbumByIdResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
                         print("DEBUG(getAlbumByAlbumId): data nil")
-                        completion(false, GetAlbumByIdResponse(isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: []))
+                        completion(false, dummy)
                         return
                     }
                     
@@ -113,7 +114,7 @@ class AlbumAPI {
                     
                 case .failure(let error):
                     print("DEBUG(getAlbumByAlbumId): error \(error))")
-                    completion(false, GetAlbumByIdResponse(isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: []))
+                    completion(false, dummy)
                 }
             }
     }

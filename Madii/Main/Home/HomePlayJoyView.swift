@@ -26,10 +26,11 @@ struct HomePlayJoyView: View {
             }
             VStack(spacing: 12) {
                 ForEach(playAlbums) { album in
+                    let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
+                    
                     NavigationLink {
-                        AlbumDetailView(album: Album(id: album.albumId, title: album.name, creator: album.nickname ?? "", description: ""))
+                        AlbumDetailView(album: newAlbum)
                     } label: {
-                        let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
                         AlbumRow(album: newAlbum)
                     }
                 }

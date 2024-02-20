@@ -34,12 +34,6 @@ struct MyAlbumsView: View {
                 
             VStack(spacing: 16) {
                 ForEach(albums) { album in
-//                    NavigationLink {
-//                        AlbumDetailView(album: album)
-//                    } label: {
-//                        
-//                    }
-                    
                     Button {
                         showAlbumDetailView = true
                     } label: {

@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct AlbumDetailView: View {    
-    let album: Album
+struct AlbumDetailView: View {
+    private let colors: [Int: Color] = [1: Color.orange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+    @State var album: Album
+    
     private let joys: [Joy] = Joy.manyAchievedDummy
     private let othersAlbums: [Album] = Album.dummy4
     
-    private let isAlbumMine: Bool = true
+    @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
     
     @State private var selectedJoy: Joy?
@@ -24,13 +26,14 @@ struct AlbumDetailView: View {
                 ZStack(alignment: .bottomTrailing) {
                     // 앨범 커버 이미지
                     ZStack {
-                        Color.madiiPurple
+                        colors[album.backgroundColorNum]
                             .frame(maxWidth: .infinity)
                             .frame(height: 180)
                         
                         HStack(spacing: 0) {
                             ForEach(0 ..< 3, id: \.self) { index in
-                                Rectangle()
+                                Image("icon_\(album.iconNum)")
+                                    .resizable()
                                     .frame(width: 100, height: 100)
                                 
                                 if index != 2 { Spacer() }
@@ -162,6 +165,33 @@ struct AlbumDetailView: View {
         )
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear { getAlbumInfo() }
+    }
+    
+    private func getAlbumInfo() {
+        AlbumAPI.shared.getAlbumByAlbumId(albumId: album.id) { isSuccess, albumInfo in
+            if isSuccess {
+                print("DEBUG AlbumDetailView: albumInfo \(albumInfo)")
+                
+                if let creator = albumInfo.nickname {
+                    // 다른 사람의 앨범
+                    isAlbumMine = false
+                    isAlbumSaved = albumInfo.isAlbumSaved ?? true
+                    album.creator = creator
+                } else {
+                    // 나의 앨범
+                    isAlbumMine = true
+                }
+                
+                // 소확행 리스트
+                
+                // 다른 소확행 앨범 모음
+                
+                
+            } else {
+                print("DEBUG AlbumDetailView: isSuccess false")
+            }
+        }
     }
 }
 
