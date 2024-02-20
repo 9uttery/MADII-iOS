@@ -9,15 +9,50 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-struct GetRecentAlbumResponse: Codable {
-    let albumId, joyIconNum, albumColorNum: Int
-    let name: String
+struct GetPlaceholderResponse : Codable {
+    let contents: String
 }
 
 class RecordAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
     static let shared = RecordAPI()
+    
+    // (R-레코드) 소확행 기록 placeholder
+    func getPlaceholder(completion: @escaping (_ isSuccess: Bool, _ placeholder: String) -> Void) {
+        let url = "\(baseUrl)/placeholder"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetPlaceholderResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getPlaceholder): data nil")
+                        completion(false, "")
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getPlaceholder): success")
+                        completion(true, data.contents)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getPlaceholder): status \(statusCode))")
+                        completion(false, data.contents)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getPlaceholder): error \(error))")
+                    completion(false, "")
+                }
+            }
+    }
     
     // (R-레코드) 최근 본 소확행 앨범 조회
     func getRecent(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetRecentAlbumResponse]) -> Void) {

@@ -11,6 +11,7 @@ struct SaveMyJoyView: View {
     @EnvironmentObject private var popUpStatus: PopUpStatus
     @FocusState private var isFocused: Bool
     
+    @State private var placeholder: String = ""
     @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
     
@@ -20,7 +21,7 @@ struct SaveMyJoyView: View {
                 .madiiFont(font: .madiiSubTitle, color: .white)
             
             HStack(spacing: 12) {
-                TextField("누워서 빗소리 감상하기", text: $myNewJoy)
+                TextField(placeholder, text: $myNewJoy)
                     .madiiFont(font: .madiiBody3, color: .white, withHeight: true)
                     .onChange(of: myNewJoy, perform: { myNewJoy = String($0.prefix(30)) })
 //                    .onTapGesture { isFocused = true }
@@ -48,6 +49,17 @@ struct SaveMyJoyView: View {
             RoundedRectangle(cornerRadius: 20)
                 .inset(by: 0.5)
                 .stroke(popUpStatus.showSaveMyJoyOverlay ? Color.madiiYellowGreen : Color.clear, lineWidth: 1)
+        }
+        .onAppear { getPlaceholder() }
+    }
+    
+    private func getPlaceholder() {
+        RecordAPI.shared.getPlaceholder { isSuccess, placeholder in
+            if isSuccess {
+                self.placeholder = placeholder
+            } else {
+                print("DEBUG SaveMyJoyView: isSuccess false")
+            }
         }
     }
     
