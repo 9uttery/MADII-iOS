@@ -104,12 +104,32 @@ struct TodayPlaylistView: View {
                     selectedJoy = joy
                 } buttonLabel: {
                     // 메뉴 버튼 이미지
-                    Image(systemName: "ellipsis")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundStyle(Color.gray500)
-                        .padding(10)
+                    if joy.isAchieved {
+                        // 실천한 경우 -> 실천 해제
+                        Button {
+                            cancelAchievement(id: joy.achievementId)
+                        } label: {
+                            Image(systemName: "checkmark.circle.fill")
+                                .frame(width: 24, height: 24)
+                                .foregroundStyle(Color.madiiYellowGreen)
+                                .padding()
+                                .frame(width: 28, height: 28)
+                        }
+                    } else {
+                        // 실천하지 않은 경우 -> bottomsheet
+                        Button {
+                            selectedJoy = joy
+                        } label: {
+                            Image(systemName: "checkmark.circle")
+                                .frame(width: 24, height: 24)
+                                .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+                                .padding()
+                                .frame(width: 28, height: 28)
+                        }
+                        .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
+                            JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
+                                .presentationDetents([.height(300)])
+                                .presentationDragIndicator(.hidden) } }
                 }
                 .padding(.leading, 12)
                 .padding(.trailing, 16)
@@ -131,7 +151,7 @@ struct TodayPlaylistView: View {
                 let today = response.todayJoyPlayList
                 var newJoys: [Joy] = []
                 for joy in today.joyAchievementInfos {
-                    let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
+                    let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, isAchieved: joy.isAchieved, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
                     newJoys.append(newJoy)
                 }
                 allJoys.append(MyJoy(date: today.date, joys: newJoys))
@@ -139,7 +159,7 @@ struct TodayPlaylistView: View {
                 let yesterday = response.yesterdayJoyPlayList
                 newJoys = []
                 for joy in yesterday.joyAchievementInfos {
-                    let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
+                    let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, isAchieved: joy.isAchieved, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
                     newJoys.append(newJoy)
                 }
                 
@@ -150,6 +170,17 @@ struct TodayPlaylistView: View {
                 }
             } else {
                 print("DEBUG TodayPlaylistView: isSuccess false")
+            }
+        }
+    }
+    
+    private func cancelAchievement(id: Int) {
+        AchievementsAPI.shared.cancelAchievement(achievementId: id) { isSuccess in
+            if isSuccess {
+                print("DEBUG PlaylistBar cancelAchievement: isSuccess true")
+                getPlaylist()
+            } else {
+                print("DEBUG PlaylistBar cancelAchievement: isSuccess false")
             }
         }
     }
