@@ -27,7 +27,7 @@ struct MyJoyView: View {
                             // 날짜별 소확행 박스
                             joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
                         }
-                        .sheet(item: $selectedJoy) { _ in
+                        .sheet(item: $selectedJoy, onDismiss: getJoy) { _ in
                             JoyMenuBottomSheet(joy: $selectedJoy, isMine: true) }
                     }
                     .padding(.top, 28)

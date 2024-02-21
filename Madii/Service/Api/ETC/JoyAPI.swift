@@ -52,6 +52,37 @@ class JoyAPI {
                 }
             }
     }
+    
+    // 소확행 삭제
+    func deleteJoy(joyId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/joy/\(joyId)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(deleteBookmarksByAlbumId): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(deleteBookmarksByAlbumId): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(deleteBookmarksByAlbumId): error \(error))")
+                    completion(false)
+                }
+            }
+    }
 }
 
 struct PostJoyResponse: Codable {

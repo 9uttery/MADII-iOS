@@ -52,7 +52,14 @@ struct JoyMenuBottomSheet: View {
                 
                 if isMine {
                     Button {
-                        
+                        JoyAPI.shared.deleteJoy(joyId: joy?.joyId ?? 0) { isSuccess in
+                            if isSuccess {
+                                print("DEBUG JoyMenuBottomSheet: deleteJoy true")
+                                joy = nil
+                            } else {
+                                print("DEBUG JoyMenuBottomSheet: deleteJoy false")
+                            }
+                        }
                     } label: {
                         bottomSheetRow("삭제")
                     }
