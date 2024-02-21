@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct HomeTodayJoyView: View {
+    @State private var todayJoy: Joy = Joy(title: "") /// 오늘의 소확행
     @State private var isClickedToday: Bool = true /// 클릭 여부
+    @State private var counter = 0 /// 파티클 애니메이션 추가
+    @State var selectedJoy: Joy? /// 소확행 메뉴 bottom sheet 연결 joy
     
-    @State var counter = 0 /// 파티클 애니메이션 추가
-    @State var todayJoy: GetJoyResponseJoy?
-    @State var todayJoyTitle: String = ""
-    @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
-    @Binding var showSaveJoyPopUp: Bool
-    @State var todayJoyEllipsis: GetJoyResponseJoy?
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
@@ -23,31 +20,27 @@ struct HomeTodayJoyView: View {
                     // 클릭해보세요! 버튼
                     TodayJoyBeforeClickButton(isClickedToday: $isClickedToday, counter: $counter)
                 } else {
-                    HStack {
-                        Image("play")
-                            .resizable()
-                            .frame(width: 56, height: 56)
-                        Text(todayJoyTitle)
-                            .madiiFont(font: .madiiBody3, color: .white)
-                        Spacer()
+                    JoyRowWithButton(joy: todayJoy) { } buttonLabel: {
                         Button {
-                            showSaveJoyPopUp = true
+                            // 소확행 오플리에 추가하기
+                            playJoy()
                         } label: {
                             Image("play")
                                 .resizable()
                                 .foregroundColor(.gray300)
                                 .frame(width: 16, height: 18)
                         }
+                        
                         Button {
-                            guard let todayJoyEllipsis = todayJoy else { return }
+                            // 소확행 메뉴 bottom sheet
+                            selectedJoy = todayJoy
                         } label: {
                             Image(systemName: "ellipsis")
                                 .foregroundColor(.gray500)
                                 .rotationEffect(Angle(degrees: 90))
                         }
-                            .sheet(item: $todayJoyEllipsis, content: { item in
-                                JoyMenuBottomSheet(joy: Joy(title: ""), isMine: false)
-                            })
+                        .sheet(item: $selectedJoy) { joy in
+                            JoyMenuBottomSheet(joy: joy, isMine: false) }
                     }
                 }
             }
@@ -57,9 +50,27 @@ struct HomeTodayJoyView: View {
             
             ParticleView(counter: $counter)
         }
+        .onAppear { getTodayJoy() }
     }
-}
-
-#Preview {
-    HomeTodayJoyView(todayJoy: GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: ""), showSaveJoyPopUp: .constant(true))
+    
+    private func getTodayJoy() {
+        HomeAPI.shared.getJoyToday { isSuccess, todayJoy in
+            if isSuccess {
+                print("DEBUG HomeTodayJoyView getTodayJoy isSuccess true, \(todayJoy)")
+                self.todayJoy = Joy(joyId: todayJoy.joyId, icon: todayJoy.joyIconNum, title: todayJoy.contents)
+            } else {
+                print("DEBUG HomeTodayJoyView getTodayJoy isSuccess false")
+            }
+        }
+    }
+    
+    private func playJoy() {
+        AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId) { isSuccess in
+            if isSuccess {
+                print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
+            } else {
+                print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
+            }
+        }
+    }
 }

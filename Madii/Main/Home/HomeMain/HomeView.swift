@@ -21,7 +21,7 @@ struct HomeView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        HomeTodayJoyView(showSaveJoyPopUp: $showSaveJoyPopUp)
+                        HomeTodayJoyView()
                         HomeMyJoyView()
                         HomePlayJoyView()
                     }
