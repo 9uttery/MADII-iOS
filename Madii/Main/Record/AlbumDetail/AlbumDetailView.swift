@@ -79,8 +79,8 @@ struct AlbumDetailView: View {
                             }
                         }
                     }
-                    .sheet(item: $selectedJoy, content: { item in
-                        JoyMenuBottomSheet(joy: item, isMine: true)
+                    .sheet(item: $selectedJoy, content: { _ in
+                        JoyMenuBottomSheet(joy: $selectedJoy, isMine: true)
                     })
                     .padding(.vertical, 20)
                     .background(Color.madiiBox)

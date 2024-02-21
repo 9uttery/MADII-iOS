@@ -39,8 +39,8 @@ struct HomeTodayJoyView: View {
                                 .foregroundColor(.gray500)
                                 .rotationEffect(Angle(degrees: 90))
                         }
-                        .sheet(item: $selectedJoy) { joy in
-                            JoyMenuBottomSheet(joy: joy, isMine: false) }
+                        .sheet(item: $selectedJoy) { _ in
+                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: false) }
                     }
                 }
             }

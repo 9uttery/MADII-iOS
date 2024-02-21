@@ -44,7 +44,7 @@ struct ManyAchievedJoyView: View {
                 }
                 .scrollIndicators(.hidden)
                 .sheet(item: $selectedJoy) { joy in
-                    JoyMenuBottomSheet(joy: joy, isMine: joy.isMine) }
+                    JoyMenuBottomSheet(joy: $selectedJoy, isMine: joy.isMine) }
             }
         }
         .navigationTitle("많이 실천한 소확행")

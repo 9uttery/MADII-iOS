@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct JoyMenuBottomSheet: View {
-    let joy: Joy
+    @Binding var joy: Joy?
     var isMine: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text(joy.title)
+                Text(joy?.title ?? "")
                     .madiiFont(font: .madiiTitle, color: .white)
                     .padding(.horizontal, 16)
                     .padding(.top, 28)
@@ -26,7 +26,14 @@ struct JoyMenuBottomSheet: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Button {
-                    
+                    AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
+                        if isSuccess {
+                            print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
+                            joy = nil
+                        } else {
+                            print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
+                        }
+                    }
                 } label: {
                     bottomSheetRow("오늘의 플레이리스트에 추가하기")
                 }
