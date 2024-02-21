@@ -35,7 +35,11 @@ struct JoySatisfactionBottomSheet: View {
                         ForEach(satisfactions, id: \.self) { satisfaction in
                             Button {
                                 selectedSatisfaction = satisfaction
-                                putSatisfaction()
+                                if fromPlaylistBar {
+                                    postSatisfaction()
+                                } else {
+                                    putSatisfaction()
+                                }
                             } label: {
                                 satisfactionIcon(of: satisfaction)
                             }
@@ -81,10 +85,20 @@ struct JoySatisfactionBottomSheet: View {
         }
     }
     
+    private func postSatisfaction() {
+        AchievementsAPI.shared.postJoySatisfaction(achievementId: joy.achievementId, satisfacton: selectedSatisfaction?.serverEnum ?? "GREAT") { isSuccess in
+            if isSuccess {
+                print("야호 실천 완료 성공이다")
+            } else {
+                print("이런 실천 완료 실패다")
+            }
+        }
+    }
+    
     @ViewBuilder
     private func satisfactionIcon(of satisfaction: JoySatisfaction) -> some View {
         if let selected = selectedSatisfaction {
-            let isSelected: Bool = satisfaction == selectedSatisfaction
+            let isSelected: Bool = satisfaction == selected
             
             ZStack {
                 Circle()
