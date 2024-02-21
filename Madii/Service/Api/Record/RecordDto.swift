@@ -27,8 +27,9 @@ struct GetMostAchievedJoyResponse: Codable {
 }
 
 struct GetMostAchievedJoyInfoResponse: Codable {
-    let joyIconNum: Int
+    let joyId, joyIconNum: Int
     let contents: String
+    let isCreatedByMe: Bool
     let achieveCount, rank: Int
 }
 

@@ -11,9 +11,11 @@ import SwiftUI
 struct MadiiTabView: View {
     @State var tabIndex: TabIndex = .record
     @State private var isKeyboardVisible = false
+    
+    @State private var showPlaylistBar: Bool = false
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             VStack(spacing: 0) {
                 switch tabIndex {
                 case .home: HomeView()
@@ -21,15 +23,13 @@ struct MadiiTabView: View {
                 case .calendar: CalendarView()
                 }
             }
-            .padding(.bottom, isKeyboardVisible ? 0 : 120)
+            .padding(.bottom, isKeyboardVisible ? 0 : (showPlaylistBar ? 120 : 60))
             .onReceive(Publishers.keyboardHeight) { keyboardHeight in
                 self.isKeyboardVisible = keyboardHeight > 0
             }
             
             VStack(spacing: 0) {
-                Spacer()
-                
-                PlaylistBar()
+                PlaylistBar(showPlaylistBar: $showPlaylistBar)
                 
                 MadiiTabBar(tabIndex: $tabIndex)
                     .frame(height: 60)

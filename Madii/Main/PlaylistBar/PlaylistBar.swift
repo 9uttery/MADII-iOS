@@ -13,7 +13,7 @@ struct PlaylistBar: View {
     @State private var todayJoys: MyJoy = MyJoy(date: "", joys: [])
     @State private var showPlaylist: Bool = false
     
-    @State private var showPlaylistBar: Bool = false
+    @Binding var showPlaylistBar: Bool
     @State private var selectedJoyIndex: Int = 0
     
     var isLeftButtonActive: Bool { selectedJoyIndex > 0 }
@@ -83,9 +83,9 @@ struct PlaylistBar: View {
                     alignment: .top
                 )
                 .background(Color.black)
-                .frame(height: 60)
             }
         }
+        .frame(height: showPlaylistBar ? 60 : 0)
         .opacity(showPlaylistBar ? 1.0 : 0.0)
         .onAppear { getPlaylist() }
         .transparentFullScreenCover(isPresented: $showPlaylist) {

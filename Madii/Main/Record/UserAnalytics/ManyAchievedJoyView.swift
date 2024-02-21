@@ -44,7 +44,7 @@ struct ManyAchievedJoyView: View {
                 }
                 .scrollIndicators(.hidden)
                 .sheet(item: $selectedJoy) { joy in
-                    JoyMenuBottomSheet(joy: joy) }
+                    JoyMenuBottomSheet(joy: joy, isMine: joy.isMine) }
             }
         }
         .navigationTitle("많이 실천한 소확행")
@@ -118,8 +118,9 @@ struct ManyAchievedJoyView: View {
                 
                 Text(joy.title)
                     .madiiFont(font: .madiiBody3, color: .white)
+                    .multilineTextAlignment(.leading)
                 
-                Spacer()
+                Spacer(minLength: 15)
                 
                 // 실천 횟수
                 Text("\(joy.counts) 회")
@@ -171,7 +172,7 @@ struct ManyAchievedJoyView: View {
             if isSuccess {
                 joys = []
                 for joy in joyList.mostAchievedJoyInfos {
-                    let newJoy = Joy(icon: joy.joyIconNum, title: joy.contents, counts: joy.achieveCount)
+                    let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents, counts: joy.achieveCount, isMine: joy.isCreatedByMe)
                     joys.append(newJoy)
                 }
             } else {
