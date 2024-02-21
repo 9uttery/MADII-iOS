@@ -12,31 +12,13 @@ struct TodayPlaylistView: View {
     @State private var allJoys: [MyJoy] = []
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
-    @State private var showMoveJoyBottomSheet: Bool = false
+    @State private var showMoveJoyBottomSheet: Bool = true
 
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                ZStack(alignment: .bottom) {
-                    Color.madiiBox
-                    
-                    ZStack(alignment: .leading) {
-                        HStack {
-                            Spacer()
-                            Text("오늘의 플레이리스트")
-                                .madiiFont(font: .madiiBody2, color: .white)
-                            Spacer()
-                        }
-                        .padding(.vertical, 20)
-                        
-                        Button {
-                            showPlaylist = false
-                        } label: {
-                            Image(systemName: "chevron.down")
-                        }.padding(.leading, 20)
-                    }
-                }
-                .frame(height: geo.safeAreaInsets.top + 60)
+                TodayPlaylistNavigationBar(showPlaylist: $showPlaylist)
+                    .frame(height: geo.safeAreaInsets.top + 60)
                 
                 if allJoys.isEmpty || showEmptyView {
                     // 내가 기록한 소확행 없을 때
@@ -62,11 +44,15 @@ struct TodayPlaylistView: View {
                 }
             }
             .ignoresSafeArea()
-            .onAppear { getPlaylist() }
+            .onAppear {
+                getPlaylist()
+            }
             .sheet(isPresented: $showMoveJoyBottomSheet) {
-                Text("wow")
-                    .presentationDetents([.height(300)])
-                    .presentationDragIndicator(.hidden)
+                GeometryReader { geo in
+                    PlaylistBarMoveToTodayBottmSheet()
+                        .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
+                        .presentationDragIndicator(.hidden)
+                }
             }
         }
     }
@@ -180,7 +166,10 @@ struct TodayPlaylistView: View {
                     newJoys.append(newJoy)
                 }
                 allJoys.append(MyJoy(date: yesterday.date, joys: newJoys))
-                showMoveJoyBottomSheet = newJoys.contains { $0.isAchieved == false }
+                
+                if showMoveJoyBottomSheet {
+                    showMoveJoyBottomSheet = allJoys[0].joys.contains { $0.isAchieved == false }
+                }
                 
                 if allJoys[0].joys.isEmpty && allJoys[1].joys.isEmpty {
                     showEmptyView = true

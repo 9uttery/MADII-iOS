@@ -23,6 +23,8 @@
 		510B7BD52B3BED7B00CB7ADA /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD42B3BED7B00CB7ADA /* KakaoSDKTalk */; };
 		510B7BD72B3BED7B00CB7ADA /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD62B3BED7B00CB7ADA /* KakaoSDKTemplate */; };
 		510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD82B3BED7B00CB7ADA /* KakaoSDKUser */; };
+		510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */; };
+		510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */; };
 		510F94342B66D00E00457205 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F94332B66D00E00457205 /* SignUpView.swift */; };
 		5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */; };
 		5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */; };
@@ -137,6 +139,8 @@
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		510743F02B6CD62A00787F54 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
 		510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBarMoveToTodayBottmSheet.swift; sourceTree = "<group>"; };
+		510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistNavigationBar.swift; sourceTree = "<group>"; };
 		510F94332B66D00E00457205 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsView.swift; sourceTree = "<group>"; };
 		5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheet.swift; sourceTree = "<group>"; };
@@ -272,6 +276,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510EF9052B86399F000768D7 /* PlaylistBar */ = {
+			isa = PBXGroup;
+			children = (
+				51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */,
+				510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */,
+				5141CAD52B7525C900FD407E /* PlaylistBar.swift */,
+				510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */,
+			);
+			path = PlaylistBar;
+			sourceTree = "<group>";
+		};
 		5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +472,7 @@
 				51D8D36A2B177085001B6793 /* Home */,
 				51D8D36D2B1770DC001B6793 /* Record */,
 				51D8D3702B177104001B6793 /* Calendar */,
+				510EF9052B86399F000768D7 /* PlaylistBar */,
 				51D8D3692B177048001B6793 /* TabView */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
 				51BEBA3B2B7E816B008CF3AD /* SplashView.swift */,
@@ -471,7 +487,6 @@
 				51D8D3612B176161001B6793 /* MadiiTabView.swift */,
 				51D8D3652B176FC5001B6793 /* MadiiTabBar.swift */,
 				51D8D3672B177020001B6793 /* TabBarButton.swift */,
-				5141CAD52B7525C900FD407E /* PlaylistBar.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -526,7 +541,6 @@
 				519C97EC2B6048FD004F1AFF /* Joy */,
 				51D8D3762B188F44001B6793 /* AlbumRow.swift */,
 				516455C02B22FB540010199B /* MadiiSlider.swift */,
-				51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -810,6 +824,7 @@
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
+				510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */,
 				BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
 				51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */,
@@ -831,6 +846,7 @@
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
+				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
