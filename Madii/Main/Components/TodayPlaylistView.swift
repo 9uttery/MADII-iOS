@@ -12,6 +12,7 @@ struct TodayPlaylistView: View {
     @State private var allJoys: [MyJoy] = []
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
+    @State private var showMoveJoyBottomSheet: Bool = false
 
     var body: some View {
         GeometryReader { geo in
@@ -51,8 +52,6 @@ struct TodayPlaylistView: View {
                                     joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
                                 }
                             }
-                            .sheet(item: $selectedJoy) { item in
-                                JoyMenuBottomSheet(joy: item, isMine: true) }
                         }
                         .padding(.top, 28)
                         .padding(.bottom, 60)
@@ -64,6 +63,11 @@ struct TodayPlaylistView: View {
             }
             .ignoresSafeArea()
             .onAppear { getPlaylist() }
+            .sheet(isPresented: $showMoveJoyBottomSheet) {
+                Text("wow")
+                    .presentationDetents([.height(300)])
+                    .presentationDragIndicator(.hidden)
+            }
         }
     }
     
@@ -113,13 +117,13 @@ struct TodayPlaylistView: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .foregroundStyle(Color.madiiYellowGreen)
-                                .frame(width: 28, height: 28)
+                                .frame(width: 24, height: 24)
                         }
                     } else {
                         if isYesterday {
                             // 어제 실천하지 않은 경우 -> 오늘로
                             Button {
-                                
+                                moveAchievementToToday(id: joy.achievementId)
                             } label: {
                                 ZStack {
                                     Circle()
@@ -129,7 +133,7 @@ struct TodayPlaylistView: View {
                                         .resizable()
                                         .frame(width: 13, height: 13)
                                 }
-                                .frame(width: 28, height: 25)
+                                .frame(width: 24, height: 24)
                             }
                         } else {
                             // 오늘 실천하지 않은 경우 -> bottomsheet
@@ -144,7 +148,7 @@ struct TodayPlaylistView: View {
                             .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
                                 JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
                                     .presentationDetents([.height(300)])
-                                .presentationDragIndicator(.hidden) } }
+                                    .presentationDragIndicator(.hidden) } }
                     }
                 }
                 .padding(.leading, 12)
@@ -159,10 +163,7 @@ struct TodayPlaylistView: View {
     
     private func getPlaylist() {
         AchievementsAPI.shared.getPlaylist { isSuccess, response in
-            if isSuccess {
-                print("DEBUG TodayPlaylistView: isSuccess true")
-                print("DEBUG TodayPlaylistView: response \(response)")
-                allJoys = []
+            if isSuccess {                allJoys = []
                 
                 let today = response.todayJoyPlayList
                 var newJoys: [Joy] = []
@@ -178,8 +179,8 @@ struct TodayPlaylistView: View {
                     let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, isAchieved: joy.isAchieved, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
                     newJoys.append(newJoy)
                 }
-                
                 allJoys.append(MyJoy(date: yesterday.date, joys: newJoys))
+                showMoveJoyBottomSheet = newJoys.contains { $0.isAchieved == false }
                 
                 if allJoys[0].joys.isEmpty && allJoys[1].joys.isEmpty {
                     showEmptyView = true
@@ -198,6 +199,18 @@ struct TodayPlaylistView: View {
             } else {
                 print("DEBUG PlaylistBar cancelAchievement: isSuccess false")
             }
+        }
+    }
+    
+    private func moveAchievementToToday(id: Int) {
+        AchievementsAPI.shared.moveAchievementToToday(achievementId: id) { isSuccess in
+            if isSuccess {
+                print("DEBUG PlaylistBar moveAchievementToToday: isSuccess true")
+                getPlaylist()
+            } else {
+                print("DEBUG PlaylistBar moveAchievementToToday: isSuccess false")
+            }
+
         }
     }
 }
