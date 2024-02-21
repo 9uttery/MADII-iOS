@@ -8,39 +8,20 @@
 import SwiftUI
 
 struct HomeTodayJoyView: View {
-    @State var counter = 0
+    @State private var isClickedToday: Bool = true /// 클릭 여부
+    
+    @State var counter = 0 /// 파티클 애니메이션 추가
     @State var todayJoy: GetJoyResponseJoy?
     @State var todayJoyTitle: String = ""
-    @State private var isClickedToday: Bool = false
     @State private var myNewJoy: String = "샤브샤브 먹고 싶어"
     @Binding var showSaveJoyPopUp: Bool
     @State var todayJoyEllipsis: GetJoyResponseJoy?
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
-                if !isClickedToday {
-                    Button {
-                        HomeAPI.shared.getJoyToday { isSuccess, todayJoy  in
-                            if isSuccess {
-                                self.todayJoy = todayJoy
-                                self.todayJoyTitle = todayJoy.contents
-                            }
-                        }
-                        isClickedToday.toggle()
-                        counter += 1
-                    } label: {
-                        ZStack {
-                            HStack {
-                                Spacer()
-                                Text("클릭해보세요!")
-                                    .madiiFont(font: .madiiBody1, color: .black)
-                                    .padding(.vertical, 18)
-                                Spacer()
-                            }
-                            .background(isClickedToday ? Color.madiiYellowGreen : Color.madiiOrange)
-                            .cornerRadius(90)
-                        }
-                    }
+                if isClickedToday == false {
+                    // 클릭해보세요! 버튼
+                    TodayJoyBeforeClickButton(isClickedToday: $isClickedToday, counter: $counter)
                 } else {
                     HStack {
                         Image("play")

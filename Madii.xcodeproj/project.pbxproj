@@ -25,6 +25,7 @@
 		510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 510B7BD82B3BED7B00CB7ADA /* KakaoSDKUser */; };
 		510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */; };
 		510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */; };
+		510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */; };
 		510F94342B66D00E00457205 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F94332B66D00E00457205 /* SignUpView.swift */; };
 		5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */; };
 		5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */; };
@@ -141,6 +142,7 @@
 		510B7BBF2B3BEB5400CB7ADA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBarMoveToTodayBottmSheet.swift; sourceTree = "<group>"; };
 		510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistNavigationBar.swift; sourceTree = "<group>"; };
+		510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoyBeforeClickButton.swift; sourceTree = "<group>"; };
 		510F94332B66D00E00457205 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsView.swift; sourceTree = "<group>"; };
 		5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheet.swift; sourceTree = "<group>"; };
@@ -285,6 +287,23 @@
 				510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */,
 			);
 			path = PlaylistBar;
+			sourceTree = "<group>";
+		};
+		510EF90A2B863F28000768D7 /* HomeMain */ = {
+			isa = PBXGroup;
+			children = (
+				51D8D36B2B177098001B6793 /* HomeView.swift */,
+			);
+			path = HomeMain;
+			sourceTree = "<group>";
+		};
+		510EF90B2B863F34000768D7 /* TodayJoy */ = {
+			isa = PBXGroup;
+			children = (
+				BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */,
+				510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */,
+			);
+			path = TodayJoy;
 			sourceTree = "<group>";
 		};
 		5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */ = {
@@ -494,8 +513,8 @@
 		51D8D36A2B177085001B6793 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				51D8D36B2B177098001B6793 /* HomeView.swift */,
-				BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */,
+				510EF90A2B863F28000768D7 /* HomeMain */,
+				510EF90B2B863F34000768D7 /* TodayJoy */,
 				BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */,
 				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
 				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
@@ -821,6 +840,7 @@
 			files = (
 				BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */,
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
+				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
