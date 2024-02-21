@@ -16,11 +16,6 @@ struct HomeTodayJoyView: View {
     @Binding var showSaveJoyPopUp: Bool
     @State var todayJoyEllipsis: GetJoyResponseJoy?
     var body: some View {
-        Image("madiiLogo")
-            .resizable()
-            .frame(width: 160, height: 22)
-            .padding(.leading, 6)
-            .padding(.vertical, 12)
         ZStack {
             VStack(alignment: .leading, spacing: 20) {
                 if !isClickedToday {

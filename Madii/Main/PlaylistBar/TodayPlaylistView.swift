@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodayPlaylistView: View {
     @Binding var showPlaylist: Bool
-    @State private var allJoys: [MyJoy] = []
+    @State private var allJoys: [MyJoy] = MyJoy.dummys
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
     @State private var showMoveJoyBottomSheet: Bool = true
@@ -134,7 +134,7 @@ struct TodayPlaylistView: View {
                             .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
                                 JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
                                     .presentationDetents([.height(300)])
-                                    .presentationDragIndicator(.hidden) } }
+                                .presentationDragIndicator(.hidden) } }
                     }
                 }
                 .padding(.leading, 12)
