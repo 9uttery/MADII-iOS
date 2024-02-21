@@ -53,15 +53,9 @@ struct PlaylistBar: View {
             .frame(height: 60)
         }
         .transparentFullScreenCover(isPresented: $showPlaylist) {
-            VStack {
-                HStack { Spacer() }
-                Spacer()
-                Text("haha")
-                Spacer()
-            }
-            .background(Color.madiiPink)
-            .offset(draggedOffset)
-            .gesture(swipeDownToDismiss)
+            TodayPlaylistView(showPlaylist: $showPlaylist)
+                .offset(draggedOffset)
+                .gesture(swipeDownToDismiss)
         }
     }
     
