@@ -44,10 +44,11 @@ struct TodayPlaylistView: View {
                     // 내가 기록한 소확행 있을 때
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(allJoys) { eachDayJoy in
+                            ForEach(0 ..< 2) { index in
+                                let eachDayJoy = allJoys[index]
                                 if eachDayJoy.joys.isEmpty == false {
                                     // 날짜별 소확행 박스
-                                    joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+                                    joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
                                 }
                             }
                             .sheet(item: $selectedJoy) { item in
@@ -87,7 +88,7 @@ struct TodayPlaylistView: View {
     }
     
     @ViewBuilder
-    private func joyBoxByDate(_ date: String, joys: [Joy]) -> some View {
+    private func joyBoxByDate(_ date: String, isYesterday: Bool, joys: [Joy]) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Text(date)
@@ -110,26 +111,41 @@ struct TodayPlaylistView: View {
                             cancelAchievement(id: joy.achievementId)
                         } label: {
                             Image(systemName: "checkmark.circle.fill")
-                                .frame(width: 24, height: 24)
+                                .resizable()
                                 .foregroundStyle(Color.madiiYellowGreen)
-                                .padding()
                                 .frame(width: 28, height: 28)
                         }
                     } else {
-                        // 실천하지 않은 경우 -> bottomsheet
-                        Button {
-                            selectedJoy = joy
-                        } label: {
-                            Image(systemName: "checkmark.circle")
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-                                .padding()
-                                .frame(width: 28, height: 28)
-                        }
-                        .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
-                            JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
-                                .presentationDetents([.height(300)])
+                        if isYesterday {
+                            // 어제 실천하지 않은 경우 -> 오늘로
+                            Button {
+                                
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundStyle(Color.madiiPurple)
+                                    
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width: 13, height: 13)
+                                }
+                                .frame(width: 28, height: 25)
+                            }
+                        } else {
+                            // 오늘 실천하지 않은 경우 -> bottomsheet
+                            Button {
+                                selectedJoy = joy
+                            } label: {
+                                Image(systemName: "checkmark.circle")
+                                    .resizable()
+                                    .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+                                    .frame(width: 28, height: 28)
+                            }
+                            .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
+                                JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
+                                    .presentationDetents([.height(300)])
                                 .presentationDragIndicator(.hidden) } }
+                    }
                 }
                 .padding(.leading, 12)
                 .padding(.trailing, 16)
