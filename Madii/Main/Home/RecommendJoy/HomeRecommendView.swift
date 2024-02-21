@@ -1,5 +1,5 @@
 //
-//  HomeMyJoyView.swift
+//  HomeRecommendView.swift
 //  Madii
 //
 //  Created by 정태우 on 12/23/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeMyJoyView: View {
+struct HomeRecommendView: View {
     @State private var xangle: CGFloat = 180.00
     @State private var angle: CGFloat = 0.00
     @State private var addNum: CGFloat = 0.03
@@ -73,8 +73,4 @@ struct HomeMyJoyView: View {
             endPoint: UnitPoint(x: radius * cos(angle) + coreAxis, y: radius * sin(angle) + coreAxis)
         )
     }
-}
-
-#Preview {
-    HomeMyJoyView()
 }

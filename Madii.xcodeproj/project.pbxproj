@@ -106,7 +106,7 @@
 		BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F942B81E77200275FD3 /* ConfettiContainer.swift */; };
 		BE0C3F9D2B81E77200275FD3 /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F952B81E77200275FD3 /* ParticleView.swift */; };
 		BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */; };
-		BE2BFC1A2B36B5D6006282F2 /* HomeMyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */; };
+		BE2BFC1A2B36B5D6006282F2 /* HomeRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC192B36B5D6006282F2 /* HomeRecommendView.swift */; };
 		BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */; };
 		BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */; };
 		BE39866C2B62680600643805 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866B2B62680600643805 /* ProfileView.swift */; };
@@ -226,7 +226,7 @@
 		BE0C3F942B81E77200275FD3 /* ConfettiContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiContainer.swift; sourceTree = "<group>"; };
 		BE0C3F952B81E77200275FD3 /* ParticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
 		BE2BFC172B36B479006282F2 /* HomeTodayJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTodayJoyView.swift; sourceTree = "<group>"; };
-		BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMyJoyView.swift; sourceTree = "<group>"; };
+		BE2BFC192B36B5D6006282F2 /* HomeRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendView.swift; sourceTree = "<group>"; };
 		BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyListView.swift; sourceTree = "<group>"; };
 		BE39866B2B62680600643805 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -304,6 +304,28 @@
 				510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */,
 			);
 			path = TodayJoy;
+			sourceTree = "<group>";
+		};
+		510EF90E2B864650000768D7 /* RecommendJoy */ = {
+			isa = PBXGroup;
+			children = (
+				BE2BFC192B36B5D6006282F2 /* HomeRecommendView.swift */,
+				BE3986792B63790600643805 /* RecommendView.swift */,
+				BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */,
+				BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */,
+				BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */,
+			);
+			path = RecommendJoy;
+			sourceTree = "<group>";
+		};
+		510EF90F2B8649F0000768D7 /* PlayJoy */ = {
+			isa = PBXGroup;
+			children = (
+				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
+				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
+				BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */,
+			);
+			path = PlayJoy;
 			sourceTree = "<group>";
 		};
 		5119CB2F2B1DEDFA00D8EE74 /* MyAlbums */ = {
@@ -515,16 +537,10 @@
 			children = (
 				510EF90A2B863F28000768D7 /* HomeMain */,
 				510EF90B2B863F34000768D7 /* TodayJoy */,
-				BE2BFC192B36B5D6006282F2 /* HomeMyJoyView.swift */,
-				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
-				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
-				BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */,
-				BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */,
-				BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */,
+				510EF90E2B864650000768D7 /* RecommendJoy */,
+				510EF90F2B8649F0000768D7 /* PlayJoy */,
 				BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */,
-				BE3986792B63790600643805 /* RecommendView.swift */,
 				BE98A4042B6627560064CC6F /* RecommendJoyView.swift */,
-				BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -887,7 +903,7 @@
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */,
-				BE2BFC1A2B36B5D6006282F2 /* HomeMyJoyView.swift in Sources */,
+				BE2BFC1A2B36B5D6006282F2 /* HomeRecommendView.swift in Sources */,
 				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				BE459A612B7E089E002E9AB2 /* AlbumAPI.swift in Sources */,
 				BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */,

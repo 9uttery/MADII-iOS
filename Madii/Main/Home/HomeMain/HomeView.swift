@@ -21,9 +21,9 @@ struct HomeView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        HomeTodayJoyView()
-                        HomeMyJoyView()
-                        HomePlayJoyView()
+                        HomeTodayJoyView() // 오늘의 소확행
+                        HomeRecommendView() // 나만의 취향저격 소확행
+                        HomePlayJoyView() // 행복을 재생해요
                     }
                     .padding(.horizontal, 16)
                     .padding(.bottom, 40) // 하단 여백 40
@@ -34,6 +34,7 @@ struct HomeView: View {
             // 소확행 저장하기 팝업
             if showSaveJoyPopUp { SaveMyJoyPopUpView() }
         }
+        .navigationTitle("")
     }
 }
 
