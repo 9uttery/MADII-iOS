@@ -20,7 +20,7 @@ class RecordAPI {
     
     // (R-레코드) 소확행 기록 placeholder
     func getPlaceholder(completion: @escaping (_ isSuccess: Bool, _ placeholder: String) -> Void) {
-        let url = "\(baseUrl)/placeholder"
+        let url = "\(baseUrl)/placeholders"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"

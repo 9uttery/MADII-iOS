@@ -102,8 +102,8 @@ class AchievementsAPI {
             "Content-Type": "application/json"
         ]
         
-        let pl = JoyPlaylistResponse(date: "", joyAchievementInfos: [])
-        let dummy = GetPlaylistResponse(todayJoyPlayList: pl, yesterdayJoyPlayList: pl)
+        let dummyPl = JoyPlaylistResponse(date: "", joyAchievementInfos: [])
+        let dummy = GetPlaylistResponse(todayJoyPlayList: dummyPl, yesterdayJoyPlayList: dummyPl)
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<GetPlaylistResponse>.self) { response in
                 switch response.result {
@@ -162,6 +162,39 @@ class AchievementsAPI {
                     guard let data = response.data else {
                         print("DEBUG() data nil")
                         return
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(postAlbumsJoyByJoyId): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
+    // 소확행 만족도 수정
+    func cancelAchievement(achievementId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/achievements/cancel"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: Any] = [
+            "achievementId": achievementId
+        ]
+        
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetPlaylistResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(postAlbumsJoyByJoyId): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(postAlbumsJoyByJoyId): status \(statusCode))")
+                        completion(false)
                     }
                     
                 case .failure(let error):
