@@ -26,6 +26,7 @@
 		510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */; };
 		510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */; };
 		510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */; };
+		510EF9112B8659AC000768D7 /* ReportBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */; };
 		510F94342B66D00E00457205 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F94332B66D00E00457205 /* SignUpView.swift */; };
 		5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */; };
 		5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */; };
@@ -143,6 +144,7 @@
 		510EF9032B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBarMoveToTodayBottmSheet.swift; sourceTree = "<group>"; };
 		510EF9082B8639F6000768D7 /* TodayPlaylistNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistNavigationBar.swift; sourceTree = "<group>"; };
 		510EF90C2B864112000768D7 /* TodayJoyBeforeClickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoyBeforeClickButton.swift; sourceTree = "<group>"; };
+		510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBottomSheet.swift; sourceTree = "<group>"; };
 		510F94332B66D00E00457205 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5119CB302B1DEE1E00D8EE74 /* MyAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsView.swift; sourceTree = "<group>"; };
 		5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingBottomSheet.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */,
 				51811E872B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift */,
 				51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */,
+				510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */,
 			);
 			path = AlbumDetail;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,
 				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
 				51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */,
+				510EF9112B8659AC000768D7 /* ReportBottomSheet.swift in Sources */,
 				5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
 				BE459A5C2B762621002E9AB2 /* RecordDto.swift in Sources */,

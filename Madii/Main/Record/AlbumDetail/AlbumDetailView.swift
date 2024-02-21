@@ -16,6 +16,8 @@ struct AlbumDetailView: View {
     
     @State private var selectedJoy: Joy?
     
+    @State private var showReportSheet: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -104,12 +106,23 @@ struct AlbumDetailView: View {
             getAlbumInfo()
             postRecentAlbum()
         }
+        .sheet(isPresented: $showReportSheet) {
+            GeometryReader { geo in
+                ReportBottomSheet(showReportSheet: $showReportSheet, album: album)
+                    .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+            }
+        }
     }
     
     private var showAlbumSheetButton: some View {
         Button {
-            // Handle button tap
-            print("Button tapped!")
+            if isAlbumMine {
+                // 내 앨범이면 설정
+            } else {
+                // 다른 사람 앨범이면 신고
+                showReportSheet = true
+            }
         } label: {
             Image(systemName: "ellipsis")
                 .resizable()
