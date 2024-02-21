@@ -29,6 +29,8 @@ struct MadiiTabView: View {
             }
             
             VStack(spacing: 0) {
+                Spacer()
+                
                 PlaylistBar(showPlaylistBar: $showPlaylistBar)
                 
                 MadiiTabBar(tabIndex: $tabIndex)
