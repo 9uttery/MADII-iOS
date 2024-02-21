@@ -13,6 +13,8 @@ struct TodayPlaylistView: View {
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
     @State private var showMoveJoyBottomSheet: Bool = true
+    
+    @State private var showAlert = false
 
     var body: some View {
         GeometryReader { geo in
@@ -140,6 +142,14 @@ struct TodayPlaylistView: View {
                 .padding(.leading, 12)
                 .padding(.trailing, 16)
                 .padding(.vertical, 4)
+                .onLongPressGesture { self.showAlert = true }
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("소확행 실행 취소"),
+                          message: Text("\(joy.title)의 실천을 취소할까요?"),
+                          primaryButton: .cancel(Text("취소")),
+                          secondaryButton: .destructive(Text("삭제"),
+                          action: { self.deleteAchivement(id: joy.achievementId) }))
+                }
             }
         }
         .padding(.bottom, 20)
@@ -199,7 +209,17 @@ struct TodayPlaylistView: View {
             } else {
                 print("DEBUG PlaylistBar moveAchievementToToday: isSuccess false")
             }
-
+        }
+    }
+    
+    private func deleteAchivement(id: Int) {
+        AchievementsAPI.shared.deleteJoy(achievementId: id) { isSuccess in
+            if isSuccess {
+                print("DEBUG PlaylistBar deleteJoy: isSuccess true")
+                getPlaylist()
+            } else {
+                print("DEBUG PlaylistBar deleteJoy: isSuccess false")
+            }
         }
     }
 }
