@@ -14,7 +14,6 @@ struct CalendarDays: View {
     
     // 소확행 커버 구현에 필요한 임시 데이터
     let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    let colors = [Color.madiiPurple, Color.madiiOrange, Color.teal]
     
     @State private var joyIcons: [String: [Int]] = [:]
     
