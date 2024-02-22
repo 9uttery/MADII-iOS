@@ -15,7 +15,7 @@ struct HomeTodayJoyView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 0) {
                 if isClickedToday == false {
                     // 클릭해보세요! 버튼
                     TodayJoyBeforeClickButton(isClickedToday: $isClickedToday, counter: $counter)
@@ -44,6 +44,7 @@ struct HomeTodayJoyView: View {
                     }
                 }
             }
+            .frame(height: 56)
             .roundBackground("오늘의 소확행")
             .padding(.top, 14)
             .padding(.bottom, 16)
