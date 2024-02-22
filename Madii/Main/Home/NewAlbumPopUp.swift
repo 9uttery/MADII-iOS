@@ -25,8 +25,7 @@ struct NewAlbumPopUp: View {
 
             PopUp(title: "새로운 앨범",
                   leftButtonTitle: "취소", leftButtonAction: dismissPopUp,
-                  rightButtonTitle: "생성", rightButtonColor: .white, rightButtonAction: saveJoy)
-            {
+                  rightButtonTitle: "생성", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 // 이름 설명 입력
                 VStack(alignment: .leading, spacing: 0) {
                     Text("이름")
@@ -111,7 +110,6 @@ struct NewAlbumPopUp: View {
         }
     }
 }
-
 
 #Preview {
     NewAlbumPopUp(showSaveJoyPopUp: .constant(false), showSaveJoyToast: .constant(false))

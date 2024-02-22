@@ -17,16 +17,16 @@ struct ParticleView: View {
     
     var body: some View {
         ZStack {
-            ForEach(finishedAnimationCounter..<animate, id: \.self) { idx in
+            ForEach(finishedAnimationCounter..<animate, id: \.self) { _ in
                 ConfettiContainer(
                     confettiVM: confettiVM, finishedAnimationCounter: $finishedAnimationCounter
                 )
             }
         }
         .onAppear { firstAppear = true }
-        .onChange(of: counter) { value in
+        .onChange(of: counter) { _ in
             if firstAppear {
-                for idx in 0...confettiVM.repetitions{
+                for idx in 0...confettiVM.repetitions {
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiVM.repetitionInterval * Double(idx)) {
                         animate += 1
                     }

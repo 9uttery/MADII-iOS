@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-struct GetPlaceholderResponse : Codable {
+struct GetPlaceholderResponse: Codable {
     let contents: String
 }
 
