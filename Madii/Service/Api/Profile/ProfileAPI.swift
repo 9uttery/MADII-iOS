@@ -99,4 +99,49 @@ class ProfileAPI {
             }
         }
     }
+    
+    // 공지사항 조회
+    func getNotice(completion: @escaping (_ isSuccess: Bool, _ notices: [GetNoticeItemResponse]) -> Void) {
+        let url = "\(baseUrl)/notice"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetNoticeResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getNotice): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getNotice): success")
+                        completion(true, data.notices)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getNotice): status \(statusCode))")
+                        completion(false, data.notices)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getNotice): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
+}
+
+struct GetNoticeResponse: Codable {
+    let notices: [GetNoticeItemResponse]
+}
+
+struct GetNoticeItemResponse: Codable {
+    let id: Int
+    let title, contents, createdAt: String
 }
