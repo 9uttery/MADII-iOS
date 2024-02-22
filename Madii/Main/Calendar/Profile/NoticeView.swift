@@ -30,17 +30,24 @@ struct NoticeView: View {
                             .padding(.bottom, 20)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    
                     Text(notice.content)
                         .madiiFont(font: .madiiBody3, color: .gray400)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 12)
+                    
                     Text(notice.date)
                         .madiiFont(font: .madiiBody3, color: .gray700)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 12)
                 }
-                .roundBackground()
+                .padding(20)
+                .background(Color.madiiBox)
+                .cornerRadius(20)
             }
+            
             Spacer()
         }
+        .padding(.top, 28)
         .padding(.horizontal, 16)
         .navigationTitle("공지사항")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)

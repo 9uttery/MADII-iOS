@@ -6,8 +6,8 @@
 //
 
 import Alamofire
-import SwiftUI
 import KeychainSwift
+import SwiftUI
 
 class ProfileAPI {
     let keychain = KeychainSwift()
