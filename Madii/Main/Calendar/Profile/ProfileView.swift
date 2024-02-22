@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State var name: String = "코코"
+    @State var name: String = ""
     @State var url: String = ""
     @State var showLogOutPopUp: Bool = false
     
@@ -46,14 +46,7 @@ struct ProfileView: View {
             .navigationTitle("마이페이지")
             .toolbarBackground(Color.madiiBox, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .onAppear {
-                ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
-                    if isSuccess {
-                        name = userProfile.nickname
-                        url = userProfile.image
-                    }
-                }
-            }
+            .onAppear { getUser() }
             
             if showLogOutPopUp { LogOutPopUpView(showLogOutPopUp: $showLogOutPopUp) }
         }
@@ -95,6 +88,17 @@ struct ProfileView: View {
         }
         .padding(16)
         .padding(.leading, 6)
+    }
+    
+    private func getUser() {
+        ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+            if isSuccess {
+                name = userProfile.nickname
+                url = userProfile.image
+            } else {
+                print("DEBUG ProfileView isSuccess false")
+            }
+        }
     }
 }
 
