@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeTodayJoyView: View {
     @State private var todayJoy: Joy = Joy(title: "") /// 오늘의 소확행
-    @State private var isClickedToday: Bool = true /// 클릭 여부
+    @State private var isClickedToday: Bool = false /// 클릭 여부
     @State private var counter = 0 /// 파티클 애니메이션 추가
     @State var selectedJoy: Joy? /// 소확행 메뉴 bottom sheet 연결 joy
     
