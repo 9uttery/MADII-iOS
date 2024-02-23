@@ -11,6 +11,7 @@ struct AlbumSettingBottomSheet: View {
     let album: Album
     @Binding var showAlbumSettingSheet: Bool
     
+    @State private var showChangeInfo: Bool = false
     @State private var isAlbumPublic: Bool = false
     @State private var showChangePublicPopUp: Bool = false
     @State private var showDeleteAlbumPopUp: Bool = false
@@ -40,7 +41,7 @@ struct AlbumSettingBottomSheet: View {
                 // 앨범 설정 row
                 VStack(alignment: .leading, spacing: 0) {
                     Button {
-                        
+                        showChangeInfo = true
                     } label: {
                         albumRow(title: "앨범 이름・설명 수정")
                     }
@@ -60,6 +61,11 @@ struct AlbumSettingBottomSheet: View {
                 }
                 
                 Spacer()
+            }
+            
+            // 앨범 정보 수정
+            if showChangeInfo {
+                ChangeAlbumInfoPopUpView()
             }
         }
         .ignoresSafeArea()
