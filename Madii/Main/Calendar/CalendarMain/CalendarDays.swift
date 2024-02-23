@@ -12,9 +12,6 @@ struct CalendarDays: View {
     @Binding var selectedDate: Date
     @State private var showDailyJoyView: Bool = false
     
-    // 소확행 커버 구현에 필요한 임시 데이터
-    let count = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    
     @State private var joyIcons: [String: [Int]] = [:]
     
     var body: some View {
@@ -38,8 +35,9 @@ struct CalendarDays: View {
                         if let joys = joyIcons[date.serverDateFormat] {
                             // 각 일마다 있는 소확행 커버
                             LazyVGrid(columns: Array(repeating: GridItem(spacing: 3), count: 3), spacing: 3) {
-                                ForEach(joys, id: \.self) { joyColor in
+                                ForEach(0 ..< joys.count, id: \.self) { index in
                                     let colors: [Int: Color] = [1: Color.madiiOrange, 2: Color.madiiPurple, 3: Color.madiiSkyBlue, 4: Color.madiiPink]
+                                    let joyColor = joys[index]
                                     
                                     ZStack {
                                         Circle()
