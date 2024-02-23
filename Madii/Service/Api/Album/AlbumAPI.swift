@@ -224,6 +224,40 @@ class AlbumAPI {
             }
     }
     
+    // 앨범 신고
+    func reportAlbum(albumId: Int, contents: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/albums/\(albumId)/report"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: String] = [
+            "contents": contents
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(putAlbumsByAlbumId): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(putAlbumsByAlbumId): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(putAlbumsByAlbumId): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
     // 앨범 공개 여부 수정
     func putAlbumsStatusByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)/status"

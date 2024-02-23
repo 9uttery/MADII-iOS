@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ReportPopUp: View {
+    let album: Album
+    
+    @Binding var showReportSheet: Bool
     @Binding var showReportPopUp: Bool
     
     private let options: [String] = ["부적절한 표현", "음란성", "개인정보 노출", "특정인 비방", "기타"]
@@ -54,7 +57,8 @@ struct ReportPopUp: View {
 //                            )
                         }
                     }
-                    .frame(maxHeight: 180)
+                    .scrollIndicators(.never)
+                    .frame(maxHeight: 220)
                 }
             }
             .padding(.horizontal, 40)
@@ -63,7 +67,13 @@ struct ReportPopUp: View {
     
     private func report() {
         if selectedOption.isEmpty == false {
-            
+            AlbumAPI.shared.reportAlbum(albumId: album.id, contents: selectedOption) { isSuccess in
+                if isSuccess {
+                    print("신고 성공")
+                } else {
+                    print("신고 실패")
+                }
+            }
         }
     }
 }

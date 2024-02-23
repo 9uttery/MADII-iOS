@@ -39,7 +39,7 @@ struct ReportBottomSheet: View {
         .background(Color.madiiPopUp)
         .background(Color.madiiPopUp)
         .transparentFullScreenCover(isPresented: $showReportPopUp) {
-            ReportPopUp(showReportPopUp: $showReportPopUp) }
+            ReportPopUp(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp) }
     }
     
     @ViewBuilder
