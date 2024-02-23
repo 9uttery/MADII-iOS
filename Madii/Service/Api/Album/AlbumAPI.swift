@@ -14,9 +14,46 @@ class AlbumAPI {
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
     static let shared = AlbumAPI()
     
+    // 앨범 상세 조회
+    func getAlbumsCreatedByMe(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsCreatedByMeResponse]) -> Void) {
+        let url = "\(baseUrl)/albums/created"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let dummy = GetAlbumsCreatedByMeResponse(albumId: 0, name: "")
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsCreatedByMeResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getAlbumsCreatedByMe): data nil")
+                        completion(false, [dummy])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getAlbumsCreatedByMe): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getAlbumsCreatedByMe): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getAlbumsCreatedByMe): error \(error))")
+                    completion(false, [dummy])
+                }
+            }
+    }
+    
     // 최근 본 소확행 앨범 등록
     func postRecentByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/recent/\(albumId)"
+        let url = "\(baseUrl)/albums/recent/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
@@ -46,20 +83,21 @@ class AlbumAPI {
     }
     
     // 앨범 상세 조회
-    func getAlbumByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: GetAlbumByIdResponse) -> Void) {
+    func getAlbumByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool, _ albumInfo: GetAlbumByIdResponse) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
+        let dummy = GetAlbumByIdResponse(albumIconNum: 0, albumColorNum: 0, isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: [])
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<GetAlbumByIdResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
                         print("DEBUG(getAlbumByAlbumId): data nil")
-                        completion(false, GetAlbumByIdResponse(isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: []))
+                        completion(false, dummy)
                         return
                     }
                     
@@ -76,7 +114,7 @@ class AlbumAPI {
                     
                 case .failure(let error):
                     print("DEBUG(getAlbumByAlbumId): error \(error))")
-                    completion(false, GetAlbumByIdResponse(isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: []))
+                    completion(false, dummy)
                 }
             }
     }
@@ -186,8 +224,42 @@ class AlbumAPI {
             }
     }
     
+    // 앨범 신고
+    func reportAlbum(albumId: Int, contents: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/albums/\(albumId)/report"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: String] = [
+            "contents": contents
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(putAlbumsByAlbumId): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(putAlbumsByAlbumId): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(putAlbumsByAlbumId): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
     // 앨범 공개 여부 수정
-    func putAlbumsStatusByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func changePublic(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)/status"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",

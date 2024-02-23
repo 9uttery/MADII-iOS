@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct MyAlbumsView: View {
+    @State private var albums: [Album] = []
+    @State private var showAlbumDetailView: Bool = false
     @State private var showAlbumSettingSheet: Bool = false
+    
+    @State private var selectedAlbum: Album = Album(id: 0, backgroundColorNum: 1, iconNum: 21, title: "앨범을 불러오지 못했어요")
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -29,33 +33,51 @@ struct MyAlbumsView: View {
                     .cornerRadius(6)
                  */
             }
-                
+            
             VStack(spacing: 16) {
-                ForEach(0 ... 6, id: \.self) { _ in
-                    NavigationLink {
-                        AlbumDetailView()
+                ForEach(albums) { album in
+                    Button {
+                        selectedAlbum = album
+                        showAlbumDetailView = true
                     } label: {
-                        AlbumRowWithRightView {
-                            Button {
-                                showAlbumSettingSheet = true
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .resizable()
-                                    .frame(width: 20, height: 4)
-                                    .foregroundStyle(Color.gray500)
-                                    .padding(10)
-                                    .padding(.vertical, 8)
-                            }
+                        AlbumRowWithRightView(album: album) {
+//                            Button {
+//                                showAlbumSettingSheet = true
+//                            } label: {
+//                                Image(systemName: "ellipsis")
+//                                    .resizable()
+//                                    .frame(width: 20, height: 4)
+//                                    .foregroundStyle(Color.gray500)
+//                                    .padding(10)
+//                                    .padding(.vertical, 8)
+//                            }
                         }
                     }
                 }
+                .navigationDestination(isPresented: $showAlbumDetailView) {
+                    AlbumDetailView(album: selectedAlbum) }
             }
+            .onAppear { getAlbums() }
         }
         .roundBackground(bottomPadding: 32)
-        .sheet(isPresented: $showAlbumSettingSheet) {
-            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
-                .presentationDetents([.height(360)])
-                .presentationDragIndicator(.visible)
+//        .sheet(isPresented: $showAlbumSettingSheet) {
+//            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
+//                .presentationDetents([.height(360)])
+//                .presentationDragIndicator(.visible)
+//        }
+    }
+    
+    private func getAlbums() {
+        RecordAPI.shared.getAlbums { isSuccess, albumList in
+            if isSuccess {
+                albums = []
+                for album in albumList {
+                    let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
+                    albums.append(newAlbum)
+                }
+            } else {
+                print("DEBUG MyAlbumsView: isSuccess false")
+            }
         }
     }
 }

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ChangeAlbumInfoPopUpView: View {
-    @EnvironmentObject private var popUpStatus: PopUpStatus
-    
     @State private var name: String = ""
     @State private var description: String = ""
     
@@ -25,7 +23,7 @@ struct ChangeAlbumInfoPopUpView: View {
     }
     
     private func dismissPopUp() {
-        popUpStatus.showChangeAlbumInfo = false
+        
     }
     
     private func changeInfo() {

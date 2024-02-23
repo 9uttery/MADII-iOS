@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MyJoyView: View {
-    @State private var allJoys: [MyJoy] = MyJoy.dummys
-//    @State private var allJoys: [MyJoy] = []
-    @State private var selectedJoy: Joy? = MyJoy.dummys[0].joys[0]
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    @Environment(\.dismiss) private var dismiss
     
-    @State private var sheetHeight: CGFloat = .zero
+    @State private var allJoys: [MyJoy] = []
+    @State private var selectedJoy: Joy?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,8 +27,8 @@ struct MyJoyView: View {
                             // 날짜별 소확행 박스
                             joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
                         }
-                        .sheet(item: $selectedJoy) { item in
-                            JoyMenuBottomSheet(joy: item, isMine: true) }
+                        .sheet(item: $selectedJoy, onDismiss: getJoy) { _ in
+                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: true) }
                     }
                     .padding(.top, 28)
                     .padding(.horizontal, 16)
@@ -38,31 +38,43 @@ struct MyJoyView: View {
             }
         }
         .navigationTitle("내가 기록한 소확행")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear { getJoy() }
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
     
     private var emptyJoyView: some View {
         VStack(spacing: 60) {
-            Rectangle()
-                .frame(width: 200, height: 200)
+            Spacer()
             
-            VStack(spacing: 16) {
-                Text("기록된 소확행이 없어요.\n소확행을 기록하고 행복을 충전하세요!")
+            Image("myJoyEmpty")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 240)
+            
+            VStack(spacing: 20) {
+                Text("아직 기록한 소확행이 없어요")
                     .madiiFont(font: .madiiBody3, color: .gray500)
                     .multilineTextAlignment(.center)
                 
+                /* 임시 삭제
                 Button {
-                    // TODO: 레코드 탭 화면으로 넘어가서 소확행 기록 박스 테두리
+                    popUpStatus.showSaveMyJoyOverlay = true
+                    dismiss()
                 } label: {
                     Text("소확행 기록하러 가기")
-                        .madiiFont(font: .madiiBody1, color: Color(red: 0.51, green: 0.68, blue: 0.02))
+                        .madiiFont(font: .madiiBody2, color: .black)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 12)
                         .background(Color.madiiYellowGreen)
                         .clipShape(RoundedRectangle(cornerRadius: 90))
                 }
+                 */
             }
+            
+            Spacer()
+            Spacer()
         }
     }
     
@@ -75,7 +87,7 @@ struct MyJoyView: View {
                 .padding(.vertical, 20)
             
             ForEach(joys) { joy in
-                JoyRowWithButton(title: joy.title) {
+                JoyRowWithButton(joy: joy) {
                     // 메뉴 버튼 action
                     selectedJoy = joy
                 } buttonLabel: {
@@ -95,6 +107,26 @@ struct MyJoyView: View {
         .padding(.bottom, 20)
         .background(Color.madiiBox)
         .cornerRadius(20)
+    }
+    
+    private func getJoy() {
+        RecordAPI.shared.getJoy { isSuccess, joyList in
+            if isSuccess {
+                allJoys = []
+                for date in joyList {
+                    var joys: [Joy] = []
+                    for joy in date.joyList {
+                        let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents)
+                        joys.append(newJoy)
+                    }
+                    
+                    let newDate = MyJoy(date: date.createdAt, joys: joys)
+                    allJoys.append(newDate)
+                }
+            } else {
+                print("DEBUG MyJoyView: isSuccess false")
+            }
+        }
     }
 }
 

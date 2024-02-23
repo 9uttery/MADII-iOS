@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct SaveJoyToast: View {
+    @EnvironmentObject private var popUpStatus: PopUpStatus
+    var transitionEdge: Edge = .bottom
+    
     var body: some View {
         HStack {
-            Text("기본 앨범에 저장되었습니다.")
+            Text("기록되었어요.")
                 .madiiFont(font: .madiiBody4, color: .black)
+            
             Spacer()
-            Image(systemName: "chevron.right")
-                .resizable()
-                .frame(width: 8, height: 12)
-                .foregroundStyle(Color.gray400)
+            
+            Button {
+                popUpStatus.showSaveJoyToAlbumPopUp = true
+            } label: {
+                Text("앨범 저장")
+                    .madiiFont(font: .madiiBody4, color: .madiiOrange)
+                    .padding(.horizontal, 8)
+            }
         }
+        .padding(.vertical, 10)
         .padding(.horizontal, 12)
-        .padding(.vertical, 8)
         .background(Color.white)
         .cornerRadius(6)
         .padding(.horizontal, 16)
-        .offset(y: -24)
+        .offset(y: -20)
+        .transition(.move(edge: transitionEdge))
     }
 }

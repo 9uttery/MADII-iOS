@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct PostJoyResponse: Codable {
-    let joyIconNum: Int
-    let contents: String
-}
-
 struct GetJoyResponse: Codable {
     let createdAt: String
     let size: Int
@@ -27,6 +22,17 @@ struct GetJoyResponseJoy: Codable, Identifiable {
     let contents: String
 }
 
+struct GetMostAchievedJoyResponse: Codable {
+    let mostAchievedJoyInfos: [GetMostAchievedJoyInfoResponse]
+}
+
+struct GetMostAchievedJoyInfoResponse: Codable {
+    let joyId, joyIconNum: Int
+    let contents: String
+    let isCreatedByMe: Bool
+    let achieveCount, rank: Int
+}
+
 struct GetAlbumsResponse: Codable, Identifiable {
     var id: Int {
         return albumId
@@ -39,7 +45,17 @@ struct GetAlbumsResponse: Codable, Identifiable {
     let nickname: String?
 }
 
+struct GetRandomAlbumsResponse: Codable {
+    let albumId, joyIconNum, albumColorNum: Int
+    let name: String
+}
+
 struct PostAlbumResponse: Codable {
     let albumId: Int
+    let name: String
+}
+
+struct GetRecentAlbumResponse: Codable {
+    let albumId, joyIconNum, albumColorNum: Int
     let name: String
 }

@@ -10,4 +10,7 @@ import SwiftUI
 class PopUpStatus: ObservableObject {
     @Published var showChangeAlbumInfo: Bool = false
     @Published var showDeleteAlbum: Bool = false
+    
+    @Published var showSaveJoyToAlbumPopUp: Bool = false
+    @Published var showSaveMyJoyOverlay: Bool = false
 }

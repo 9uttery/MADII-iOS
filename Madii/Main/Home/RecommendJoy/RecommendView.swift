@@ -14,6 +14,7 @@ struct RecommendView: View {
     @State var when: [Int] = []
     @State var who: [Int] = []
     @State var which: [Int] = []
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("키워드를 선택해주세요")

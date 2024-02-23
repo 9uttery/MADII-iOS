@@ -8,72 +8,99 @@
 import SwiftUI
 
 struct AlbumSettingBottomSheet: View {
-    @EnvironmentObject private var tabBarManager: TabBarManager
-    @EnvironmentObject private var popUpStatus: PopUpStatus
-    
+    let album: Album
     @Binding var showAlbumSettingSheet: Bool
     
-    let title: String = "소확행 앨범 제목"
-    let description: String = "설명 어쩌고 저쩌고"
-    
+    @State private var showChangeInfo: Bool = false
     @State private var isAlbumPublic: Bool = false
+    @State private var showChangePublicPopUp: Bool = false
+    @State private var showDeleteAlbumPopUp: Bool = false
+    
+    var dismiss: () -> Void
     
     var body: some View {
         ZStack {
             Color.madiiPopUp
             
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 12) {
                 // 앨범 설명
-                HStack(spacing: 16) {
-                    // 앨범 이미지
-                    Rectangle()
-                        .frame(width: 60, height: 60)
-                        .foregroundStyle(Color.gray400)
-                        .cornerRadius(8)
-                    
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(title)
-                            .madiiFont(font: .madiiBody3, color: .white)
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(album.title)
+                        .madiiFont(font: .madiiTitle, color: .white)
                         
-                        Text(description)
-                            .madiiFont(font: .madiiBody4, color: .gray500)
-                    }
+                    Text(album.description)
+                        .madiiFont(font: .madiiBody4, color: .white.opacity(0.6))
+                    
+                    HStack { Spacer() }
                 }
-                .padding(.vertical, 22)
+                .padding(.horizontal, 16)
+                .padding(.top, 28)
+                .padding(.bottom, 32)
+                .background(Color.madiiOption)
                 
                 // 앨범 설정 row
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 0) {
                     Button {
-                        hideTabBarWithSheet()
-                        popUpStatus.showChangeAlbumInfo = true
+                        showChangeInfo = true
                     } label: {
-                        AlbumSettingBottomSheetRow(title: "앨범 이름・설명 수정")
+                        albumRow(title: "앨범 이름・설명 수정")
                     }
                     
-                    AlbumSettingBottomSheetRow(title: "소확행 추가")
+                    albumRow(title: "소확행 추가")
                     
-                    AlbumSettingBottomSheetToggleRow(title: "전체 공개 여부 설정", isToggleTrue: $isAlbumPublic)
+                    toggleRow
+                        .onChange(of: isAlbumPublic) { _ in
+                            showChangePublicPopUp = true
+                        }
                     
                     Button {
-                        hideTabBarWithSheet()
-                        popUpStatus.showDeleteAlbum = true
+                        showDeleteAlbumPopUp = true
                     } label: {
-                        AlbumSettingBottomSheetRow(title: "삭제")
+                        albumRow(title: "삭제")
                     }
                 }
+                
+                Spacer()
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 40)
+            
+            // 앨범 정보 수정
+            if showChangeInfo {
+                ChangeAlbumInfoPopUpView()
+            }
         }
         .ignoresSafeArea()
+        // 앨범 전체 공개 여부
+        .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
+            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
+        // 앨범 삭제
+        .transparentFullScreenCover(isPresented: $showDeleteAlbumPopUp) {
+            DeleteAlbumPopUp(album: album, showDeleteAlbumPopUp: $showDeleteAlbumPopUp, dismiss: dismiss) }
+        .onAppear { }
     }
     
-    private func hideTabBarWithSheet() {
-        tabBarManager.isTabBarShown = false
-        showAlbumSettingSheet = false
+    @ViewBuilder
+    private func albumRow(title: String) -> some View {
+        HStack {
+            Text(title)
+                .madiiFont(font: .madiiBody3, color: .white)
+            
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .frame(height: 50)
     }
-}
-
-#Preview {
-    MadiiTabView()
+    
+    private var toggleRow: some View {
+        HStack {
+            Text("전체 공개 여부 설정")
+                .madiiFont(font: .madiiBody3, color: .white)
+                
+            Spacer()
+            
+            Toggle("", isOn: $isAlbumPublic)
+                .tint(.madiiYellowGreen)
+        }
+        .padding(.horizontal, 16)
+        .frame(height: 50)
+    }
 }

@@ -15,11 +15,8 @@ struct Notice: Identifiable {
 }
 
 struct NoticeView: View {
-    let notices: [Notice] = [
-        Notice(title: "공지 제목 1", content: "공지 내용 1", date: "2024-01-25"),
-        Notice(title: "공지 제목 2", content: "공지 내용 2", date: "2024-01-26"),
-        Notice(title: "공지 제목 3", content: "공지 내용 3", date: "2024-01-27")
-    ]
+    @State private var notices: [Notice] = []
+    
     var body: some View {
         VStack(spacing: 12) {
             ForEach(notices) { notice in
@@ -28,23 +25,46 @@ struct NoticeView: View {
                         Text(notice.title)
                             .madiiFont(font: .madiiSubTitle, color: .white)
                             .padding(.bottom, 20)
+                        
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    
                     Text(notice.content)
                         .madiiFont(font: .madiiBody3, color: .gray400)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 12)
+                    
                     Text(notice.date)
                         .madiiFont(font: .madiiBody3, color: .gray700)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 12)
                 }
-                .roundBackground()
+                .padding(20)
+                .background(Color.madiiBox)
+                .cornerRadius(20)
             }
+            
             Spacer()
         }
+        .padding(.top, 28)
         .padding(.horizontal, 16)
         .navigationTitle("공지사항")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear { getNotices() }
+    }
+    
+    private func getNotices() {
+        ProfileAPI.shared.getNotice { isSuccess, notices in
+            if isSuccess {
+                self.notices = []
+                for notice in notices {
+                    let newNotice = Notice(title: notice.title, content: notice.contents, date: notice.createdAt)
+                    self.notices.append(newNotice)
+                }
+            } else {
+                print("DEBUG NoticeView isSuccess false")
+            }
+        }
     }
 }
 

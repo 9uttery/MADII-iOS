@@ -8,7 +8,8 @@
 import Foundation
 
 struct GetAlbumByIdResponse: Codable {
-    let isAlbumSaved: Bool
+    let albumIconNum, albumColorNum: Int
+    let isAlbumSaved: Bool?
     let name: String
     let nickname: String?
     let description: String
@@ -19,5 +20,10 @@ struct GetAlbumByIdResponseJoyInfo: Codable {
     let joyId: Int
     let joyIconNum: Int
     let contents: String
-    let isJoySaved: Bool
+    let isJoySaved: Bool?
+}
+
+struct GetAlbumsCreatedByMeResponse: Codable {
+    let albumId: Int
+    let name: String
 }

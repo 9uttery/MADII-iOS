@@ -44,16 +44,6 @@ struct AddProfileView: View {
                     Button {
                         self.showProfileImageSheet = true
                     } label: {
-                        //                    if let image = profileImage {
-                        //                        image
-                        //                            .resizable()
-                        //                            .frame(width: 140, height: 140)
-                        //                            .scaledToFill()
-                        //                            .cornerRadius(200)
-                        //                    } else {
-                        //                        Image("defaultProfile")
-                        //                            .frame(width: 140, height: 140)
-                        //                    }
                         if image == UIImage() {
                             Image("defaultProfile")
                                 .frame(width: 140, height: 140)
@@ -67,16 +57,6 @@ struct AddProfileView: View {
                     }
                     .sheet(isPresented: self.$showProfileImageSheet) {
                         VStack(spacing: 0) {
-                            //                        PhotosPicker(selection: self.$selectedPhoto, matching: .images) {
-                            //                            HStack {
-                            //                                Text("라이브러리에서 선택")
-                            //                                    .madiiFont(font: .madiiBody2, color: .white)
-                            //                                Spacer()
-                            //                            }
-                            //                            .padding(.horizontal, 16)
-                            //                            .frame(height: 50)
-                            //                        }
-                            
                             Button {
                                 let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
                                 if status == .notDetermined {
@@ -124,12 +104,6 @@ struct AddProfileView: View {
                         //  If you wish to take a photo from camera instead:
                         // ImagePicker(sourceType: .camera, selectedImage: self.$image)
                     }
-                    //                .task(id: self.selectedPhoto) {
-                    //                    self.showProfileImageSheet = false
-                    //                    self.profileImage = try? await self.selectedPhoto?.loadTransferable(type: Image.self)
-                    //
-                    //                    // FIXME: 이미지 회전되어 나타나는 버그 수정
-                    //                }
                     
                     MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
                                    strokeColor: self.strokeColor(), limit: 10)

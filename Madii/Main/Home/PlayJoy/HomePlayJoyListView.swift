@@ -14,14 +14,17 @@ struct HomePlayJoyListView: View {
             VStack(alignment: .center) {
                 VStack(spacing: 12) {
                     ForEach(playAlbums) { album in
+                        let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
+                        
                         NavigationLink {
-                            AlbumDetailView(album: Album(id: album.albumId, title: album.name, creator: album.nickname ?? "", description: ""))
+                            AlbumDetailView(album: newAlbum)
                         } label: {
-                            AlbumRow(hasName: true, name: "\(album.nickname ?? "")님", title: album.name)
+                            AlbumRow(album: newAlbum)
                         }
                     }
                 }
                 .padding(.vertical, 28)
+                
                 Text("마지막이에요! 나만의 소확행 모음을 만들어보세요")
                     .madiiFont(font: .madiiBody4, color: .gray500)
                     .padding(.bottom, 8)
@@ -40,7 +43,7 @@ struct HomePlayJoyListView: View {
         }
         .padding(.horizontal, 16)
         .onAppear {
-            HomeAPI.shared.getAllAlbums(albumId: nil, size: 10) { isSuccess, allAlbum in
+            HomeAPI.shared.getAllAlbums(albumId: nil, size: 30) { isSuccess, allAlbum in
                 if isSuccess {
                     playAlbums = allAlbum.content
                 }
