@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AlbumDetailView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @State var album: Album
     @State private var joys: [Joy] = Joy.manyAchievedDummy
     
@@ -118,11 +120,15 @@ struct AlbumDetailView: View {
         }
         .sheet(isPresented: $showSettingSheet) {
             GeometryReader { geo in
-                AlbumSettingBottomSheet(album: album, showAlbumSettingSheet: $showSettingSheet)
+                AlbumSettingBottomSheet(album: album, showAlbumSettingSheet: $showSettingSheet, dismiss: dismissView)
                     .presentationDetents([.height(340 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
             }
         }
+    }
+    
+    private func dismissView() {
+        dismiss()
     }
     
     private var showAlbumSheetButton: some View {
