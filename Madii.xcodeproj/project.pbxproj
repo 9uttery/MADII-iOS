@@ -60,6 +60,7 @@
 		51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */; };
 		51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */; };
 		51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */; };
+		519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B014E2B89151D00519B11 /* ReportPopUp.swift */; };
 		519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */; };
 		519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */; };
 		519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */; };
@@ -179,6 +180,7 @@
 		51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailCoverView.swift; sourceTree = "<group>"; };
 		51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailBookmarkButton.swift; sourceTree = "<group>"; };
 		51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistView.swift; sourceTree = "<group>"; };
+		519B014E2B89151D00519B11 /* ReportPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUp.swift; sourceTree = "<group>"; };
 		519B510C2B5820F700778E21 /* JoySatisfactionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoySatisfactionBottomSheet.swift; sourceTree = "<group>"; };
 		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				51811E872B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift */,
 				51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */,
 				510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */,
+				519B014E2B89151D00519B11 /* ReportPopUp.swift */,
 			);
 			path = AlbumDetail;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				BE3986722B635A3400643805 /* InquiryView.swift in Sources */,
 				BE3986702B6272F900643805 /* NoticeView.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
+				519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */,
 				BE0C3F9A2B81E77200275FD3 /* ConfettiCenterVM.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,

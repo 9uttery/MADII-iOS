@@ -17,6 +17,7 @@ struct AlbumDetailView: View {
     @State private var selectedJoy: Joy?
     
     @State private var showReportSheet: Bool = false
+    @State private var showReportPopUp: Bool = false
     
     var body: some View {
         ScrollView {
@@ -108,7 +109,7 @@ struct AlbumDetailView: View {
         }
         .sheet(isPresented: $showReportSheet) {
             GeometryReader { geo in
-                ReportBottomSheet(showReportSheet: $showReportSheet, album: album)
+                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp)
                     .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
             }

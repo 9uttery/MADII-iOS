@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ReportBottomSheet: View {
-    @Binding var showReportSheet: Bool
     let album: Album
+    
+    @Binding var showReportSheet: Bool
+    @Binding var showReportPopUp: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -26,7 +28,7 @@ struct ReportBottomSheet: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Button {
-                    
+                    showReportPopUp = true
                 } label: {
                     bottomSheetRow("신고")
                 }
@@ -36,6 +38,8 @@ struct ReportBottomSheet: View {
         }
         .background(Color.madiiPopUp)
         .background(Color.madiiPopUp)
+        .transparentFullScreenCover(isPresented: $showReportPopUp) {
+            ReportPopUp(showReportPopUp: $showReportPopUp) }
     }
     
     @ViewBuilder
