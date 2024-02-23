@@ -5,12 +5,16 @@
 //  Created by 이안진 on 11/9/23.
 //
 
+import FirebaseCore
 import KakaoSDKAuth
 import KakaoSDKCommon
 import SwiftUI
 
 @main
 struct MadiiApp: App {
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     @StateObject private var popUpStatus = PopUpStatus()
     
     init() {
@@ -30,4 +34,13 @@ struct MadiiApp: App {
                 }
         }
     }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
 }

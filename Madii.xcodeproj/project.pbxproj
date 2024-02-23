@@ -67,6 +67,11 @@
 		519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */; };
 		519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */; };
 		519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */; };
+		519DF2E02B8936230017023E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2DF2B8936230017023E /* FirebaseAnalytics */; };
+		519DF2E22B8936230017023E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E12B8936230017023E /* FirebaseAnalyticsOnDeviceConversion */; };
+		519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E32B8936230017023E /* FirebaseAnalyticsSwift */; };
+		519DF2E62B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E52B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		519DF2E82B8936230017023E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E72B8936230017023E /* FirebaseAppCheck */; };
 		51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3B2B7E816B008CF3AD /* SplashView.swift */; };
 		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
 		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
@@ -267,18 +272,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519DF2E02B8936230017023E /* FirebaseAnalytics in Frameworks */,
 				510B7BCF2B3BED7B00CB7ADA /* KakaoSDKFriendCore in Frameworks */,
 				510B7BC92B3BED7B00CB7ADA /* KakaoSDKCertCore in Frameworks */,
 				510B7BC72B3BED7B00CB7ADA /* KakaoSDKCert in Frameworks */,
 				510B7BD72B3BED7B00CB7ADA /* KakaoSDKTemplate in Frameworks */,
 				510B7BD12B3BED7B00CB7ADA /* KakaoSDKNavi in Frameworks */,
 				BE459A4D2B7625CD002E9AB2 /* KeychainSwift in Frameworks */,
+				519DF2E22B8936230017023E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				510B7BC32B3BED7B00CB7ADA /* KakaoSDK in Frameworks */,
+				519DF2E62B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				510B7BCB2B3BED7B00CB7ADA /* KakaoSDKCommon in Frameworks */,
 				510B7BC52B3BED7B00CB7ADA /* KakaoSDKAuth in Frameworks */,
 				510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */,
+				519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */,
 				510B7BD52B3BED7B00CB7ADA /* KakaoSDKTalk in Frameworks */,
 				510B7BCD2B3BED7B00CB7ADA /* KakaoSDKFriend in Frameworks */,
+				519DF2E82B8936230017023E /* FirebaseAppCheck in Frameworks */,
 				510B7BD32B3BED7B00CB7ADA /* KakaoSDKShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,6 +814,11 @@
 				510B7BD62B3BED7B00CB7ADA /* KakaoSDKTemplate */,
 				510B7BD82B3BED7B00CB7ADA /* KakaoSDKUser */,
 				BE459A4C2B7625CD002E9AB2 /* KeychainSwift */,
+				519DF2DF2B8936230017023E /* FirebaseAnalytics */,
+				519DF2E12B8936230017023E /* FirebaseAnalyticsOnDeviceConversion */,
+				519DF2E32B8936230017023E /* FirebaseAnalyticsSwift */,
+				519DF2E52B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport */,
+				519DF2E72B8936230017023E /* FirebaseAppCheck */,
 			);
 			productName = Madii;
 			productReference = 515EFC8B2AFCA0D100230647 /* Madii.app */;
@@ -836,6 +851,7 @@
 			packageReferences = (
 				510B7BC12B3BED7B00CB7ADA /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 515EFC8C2AFCA0D100230647 /* Products */;
 			projectDirPath = "";
@@ -1235,6 +1251,14 @@
 				minimumVersion = 2.20.0;
 			};
 		};
+		519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
 		BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -1305,6 +1329,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 510B7BC12B3BED7B00CB7ADA /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		519DF2DF2B8936230017023E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		519DF2E12B8936230017023E /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		519DF2E32B8936230017023E /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		519DF2E52B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		519DF2E72B8936230017023E /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
 		};
 		BE459A4C2B7625CD002E9AB2 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
