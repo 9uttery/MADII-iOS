@@ -102,7 +102,7 @@ class ProfileAPI {
     
     // 공지사항 조회
     func getNotice(completion: @escaping (_ isSuccess: Bool, _ notices: [GetNoticeItemResponse]) -> Void) {
-        let url = "\(baseUrl)/notice"
+        let url = "\(baseUrl)/notices"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
