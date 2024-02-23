@@ -460,14 +460,22 @@
 		51811E862B851F6E00E2D2DB /* AlbumDetail */ = {
 			isa = PBXGroup;
 			children = (
+				519B01502B891A6800519B11 /* Report */,
 				516455952B1EFE140010199B /* AlbumDetailView.swift */,
 				51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */,
 				51811E872B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift */,
 				51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */,
+			);
+			path = AlbumDetail;
+			sourceTree = "<group>";
+		};
+		519B01502B891A6800519B11 /* Report */ = {
+			isa = PBXGroup;
+			children = (
 				510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */,
 				519B014E2B89151D00519B11 /* ReportPopUp.swift */,
 			);
-			path = AlbumDetail;
+			path = Report;
 			sourceTree = "<group>";
 		};
 		519C97EC2B6048FD004F1AFF /* Joy */ = {
