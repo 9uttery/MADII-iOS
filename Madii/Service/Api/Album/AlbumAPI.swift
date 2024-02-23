@@ -259,7 +259,7 @@ class AlbumAPI {
     }
     
     // 앨범 공개 여부 수정
-    func putAlbumsStatusByAlbumId(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func changePublic(albumId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/albums/\(albumId)/status"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",

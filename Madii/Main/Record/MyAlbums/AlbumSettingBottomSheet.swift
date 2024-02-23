@@ -12,6 +12,7 @@ struct AlbumSettingBottomSheet: View {
     @Binding var showAlbumSettingSheet: Bool
     
     @State private var isAlbumPublic: Bool = false
+    @State private var showChangePublicPopUp: Bool = false
     @State private var showDeleteAlbumPopUp: Bool = false
     
     var dismiss: () -> Void
@@ -48,7 +49,7 @@ struct AlbumSettingBottomSheet: View {
                     
                     toggleRow
                         .onChange(of: isAlbumPublic) { _ in
-                            print("wow")
+                            showChangePublicPopUp = true
                         }
                     
                     Button {
@@ -62,9 +63,13 @@ struct AlbumSettingBottomSheet: View {
             }
         }
         .ignoresSafeArea()
+        // 앨범 전체 공개 여부
+        .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
+            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
         // 앨범 삭제
         .transparentFullScreenCover(isPresented: $showDeleteAlbumPopUp) {
             DeleteAlbumPopUp(album: album, showDeleteAlbumPopUp: $showDeleteAlbumPopUp, dismiss: dismiss) }
+        .onAppear { }
     }
     
     @ViewBuilder
