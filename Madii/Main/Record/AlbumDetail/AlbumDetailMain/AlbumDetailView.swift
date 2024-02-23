@@ -19,6 +19,8 @@ struct AlbumDetailView: View {
     @State private var showReportSheet: Bool = false
     @State private var showReportPopUp: Bool = false
     
+    @State private var showSettingSheet: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -114,12 +116,20 @@ struct AlbumDetailView: View {
                     .presentationDragIndicator(.hidden)
             }
         }
+        .sheet(isPresented: $showSettingSheet) {
+            GeometryReader { geo in
+                AlbumSettingBottomSheet(album: album, showAlbumSettingSheet: $showSettingSheet)
+                    .presentationDetents([.height(340 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+            }
+        }
     }
     
     private var showAlbumSheetButton: some View {
         Button {
             if isAlbumMine {
                 // 내 앨범이면 설정
+                showSettingSheet = true
             } else {
                 // 다른 사람 앨범이면 신고
                 showReportSheet = true

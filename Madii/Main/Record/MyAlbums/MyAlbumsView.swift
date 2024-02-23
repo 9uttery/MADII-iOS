@@ -41,16 +41,16 @@ struct MyAlbumsView: View {
                         showAlbumDetailView = true
                     } label: {
                         AlbumRowWithRightView(album: album) {
-                            Button {
-                                showAlbumSettingSheet = true
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .resizable()
-                                    .frame(width: 20, height: 4)
-                                    .foregroundStyle(Color.gray500)
-                                    .padding(10)
-                                    .padding(.vertical, 8)
-                            }
+//                            Button {
+//                                showAlbumSettingSheet = true
+//                            } label: {
+//                                Image(systemName: "ellipsis")
+//                                    .resizable()
+//                                    .frame(width: 20, height: 4)
+//                                    .foregroundStyle(Color.gray500)
+//                                    .padding(10)
+//                                    .padding(.vertical, 8)
+//                            }
                         }
                     }
                 }
@@ -60,11 +60,11 @@ struct MyAlbumsView: View {
             .onAppear { getAlbums() }
         }
         .roundBackground(bottomPadding: 32)
-        .sheet(isPresented: $showAlbumSettingSheet) {
-            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
-                .presentationDetents([.height(360)])
-                .presentationDragIndicator(.visible)
-        }
+//        .sheet(isPresented: $showAlbumSettingSheet) {
+//            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
+//                .presentationDetents([.height(360)])
+//                .presentationDragIndicator(.visible)
+//        }
     }
     
     private func getAlbums() {
