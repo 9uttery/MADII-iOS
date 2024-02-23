@@ -265,7 +265,7 @@ class AchievementsAPI {
     
     // 소확행 실천 완료 만족도 입력
     func postJoySatisfaction(achievementId: Int, satisfacton: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/achievements/rate"
+        let url = "\(baseUrl)/achievements/finish"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
