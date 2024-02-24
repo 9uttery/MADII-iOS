@@ -5,6 +5,7 @@
 //  Created by 이안진 on 11/9/23.
 //
 
+import Firebase
 import FirebaseCore
 import FirebaseMessaging
 import KakaoSDKAuth
@@ -78,5 +79,20 @@ extension AppDelegate: MessagingDelegate {
             object: nil,
             userInfo: dataDict
         )
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    // 백그라운드에서 푸시 알림을 탭했을 때 실행
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNS token: \(deviceToken)")
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    // Foreground(앱 켜진 상태)에서도 알림 오는 설정
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner])
     }
 }
