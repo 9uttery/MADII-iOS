@@ -17,6 +17,8 @@ struct AlbumDetailView: View {
     @State private var isAlbumSaved: Bool = true
     
     @State private var selectedJoy: Joy?
+    @State private var joy: Joy = Joy(title: "")
+    @State private var showSaveJoyPopUp: Bool = false
     
     @State private var showReportSheet: Bool = false
     @State private var showReportPopUp: Bool = false
@@ -65,6 +67,8 @@ struct AlbumDetailView: View {
                                             selectedJoy = joy
                                         } else {
                                             // 타인의 앨범: 소확행 저장 아이콘
+                                            showSaveJoyPopUp = true
+                                            self.joy = joy
                                         }
                                     } buttonLabel: {
                                         if isAlbumMine {
@@ -77,7 +81,7 @@ struct AlbumDetailView: View {
                                                 .padding(10)
                                         } else {
                                             // 타인의 앨범: 북마크 버튼 이미지
-                                            Image(joy.isSaved ? "inactiveSave" : "activeSave")
+                                            Image(joy.isSaved ? "activeSave" : "inactiveSave")
                                                 .resizable()
                                                 .frame(width: 36, height: 36)
                                         }
@@ -105,10 +109,19 @@ struct AlbumDetailView: View {
             }
             .scrollIndicators(.hidden)
             .refreshable { getAlbumInfo() }
+            .onChange(of: showSaveJoyPopUp) { _ in
+                // 소확행을 앨범에 저장하는 팝업이 사라지면 앨범정보 새로 부르기
+                if showSaveJoyPopUp == false { getAlbumInfo() }
+            }
             
             // 앨범 정보 수정
             if showChangeInfo {
                 ChangeAlbumInfoPopUpView(showChangeInfo: $showChangeInfo)
+            }
+            
+            // 소확행을 앨범에 저장하는 팝업
+            if showSaveJoyPopUp {
+                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, fromAlbumSetting: true)
             }
         }
         .navigationTitle("")

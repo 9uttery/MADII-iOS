@@ -23,7 +23,7 @@ struct SaveMyJoyPopUpView: View {
             Color.black.opacity(0.8).ignoresSafeArea()
                 .onTapGesture { withoutAnimation { dismissPopUp() } }
 
-            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: selectedAlbumIds.isEmpty ? .gray : .white, rightButtonAction: saveJoy) {
+            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 
                 VStack(alignment: .leading, spacing: 24) {
                     SelectAlbumRow(title: joy.title, isSelected: false)
