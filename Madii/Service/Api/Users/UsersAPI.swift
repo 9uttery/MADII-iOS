@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import CryptoKit
 import Foundation
 import KeychainSwift
 import SwiftUI
@@ -52,9 +53,11 @@ class UsersAPI {
     func signUpWithId(id: String, password: String, agree: Bool, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/sign-up"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        
+        guard let hashedPassword = hashPassword(password: password) else { return }
         let parameters: [String: Any] = [
             "loginId": id,
-            "password": password,
+            "password": hashedPassword,
             "agreesMarketing": agree
         ]
         
@@ -80,14 +83,27 @@ class UsersAPI {
                 }
             }
     }
+
+    func hashPassword(password: String) -> String? {
+        guard let data = password.data(using: .utf8) else {
+            return nil
+        }
+        
+        let hashed = SHA256.hash(data: data)
+        let hashedString = hashed.compactMap { String(format: "%02x", $0) }.joined()
+        
+        return hashedString
+    }
     
     // 일반 로그인
     func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/login/normal"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        
+        guard let hashedPassword = hashPassword(password: password) else { return }
         let parameters: [String: Any] = [
             "loginId": id,
-            "password": password
+            "password": hashedPassword
         ]
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)

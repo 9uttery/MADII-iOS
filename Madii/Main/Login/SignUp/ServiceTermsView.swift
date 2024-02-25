@@ -11,7 +11,8 @@ struct ServiceTermsView: View {
     let from: LoginType
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
-    private let options: [String] = ["서비스 이용약관 동의", "개인정보 처리방침 동의", "마케팅 수신 동의"]
+    private let options: [String] = ["서비스 이용약관 동의", "개인정보 처리방침 동의", "마케팅 수신 동의 (선택)"]
+    private let urls: [String] = ["https://docs.google.com/document/d/e/2PACX-1vRFuhWLyIE43X99pvLCJfdD9FEkyWDqW34pgA6YiRvGaVyoJo48WR2EBZeTK4T9Rcq7-7m71BJUeuSF/pub", "https://docs.google.com/document/d/e/2PACX-1vTUyhxvK17s7JMJFZcKgOe6JJxLXgzeBSdY16EzglDNmb2YanuaNWC2A_jPhrOXT8Z-FkqAHPFsBqiZ/pub"]
     @State private var status: [Bool] = [false, false, false]
     var allTermsAgreed: Bool { status[0] && status[1] && status[2] }
     var essentialTermsAgreed: Bool { status[0] && status[1] }
@@ -91,14 +92,16 @@ struct ServiceTermsView: View {
             
             Spacer()
             
-            Button {
-                if let url = URL(string: "https://www.naver.com") {
-                    UIApplication.shared.open(url)
+            if index != 2 {
+                Button {
+                    if let url = URL(string: urls[index]) {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    Text("보기")
+                        .madiiFont(font: .madiiBody4, color: .gray500)
+                        .padding(.horizontal, 2)
                 }
-            } label: {
-                Text("보기")
-                    .madiiFont(font: .madiiBody4, color: .gray500)
-                    .padding(.horizontal, 2)
             }
         }
         .frame(height: 28)

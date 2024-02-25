@@ -120,7 +120,7 @@ class AlbumAPI {
     }
     
     // 특정 소확행 저장 여부와 함께 앨범 목록 조회
-    func getAlbumsJoyByJoyId(joyId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsResponse]) -> Void) {
+    func getAlbumsWithJoySavedInfo(joyId: Int, completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsWithJoySavedResponse]) -> Void) {
         let url = "\(baseUrl)/albums/joy/\(joyId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -128,7 +128,7 @@ class AlbumAPI {
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<[GetAlbumsResponse]>.self) { response in
+            .responseDecodable(of: BaseResponse<[GetAlbumsWithJoySavedResponse]>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {

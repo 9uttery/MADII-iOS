@@ -10,18 +10,23 @@ import SwiftUI
 struct SaveMyJoyPopUpView: View {
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
+    @Binding var joy: Joy
+    @Binding var showSaveJoyToAlbumPopUp: Bool
     @State private var albums: [Album] = []
+    @State private var beforeAlbumIds: [Int] = []
     @State private var selectedAlbumIds: [Int] = []
+    
+    var fromAlbumSetting: Bool = false
 
     var body: some View {
         ZStack {
             Color.black.opacity(0.8).ignoresSafeArea()
                 .onTapGesture { withoutAnimation { dismissPopUp() } }
 
-            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: selectedAlbumIds.isEmpty ? .gray : .white, rightButtonAction: saveJoy) {
+            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 
                 VStack(alignment: .leading, spacing: 24) {
-                    SelectAlbumRow(title: "달디단 밤양갱", isSelected: false)
+                    SelectAlbumRow(title: joy.title, isSelected: false)
                     
                     Text("어떤 앨범에 저장할까요?")
                         .madiiFont(font: .madiiSubTitle, color: .white)
@@ -33,7 +38,7 @@ struct SaveMyJoyPopUpView: View {
                             myAlbums
 
                             // 새로운 앨범 추가 버튼
-                            createAlbumButton
+//                            createAlbumButton
                         }
                     }
                     .frame(maxHeight: 248)
@@ -45,13 +50,21 @@ struct SaveMyJoyPopUpView: View {
     }
     
     private func getMyAlbums() {
-        AlbumAPI.shared.getAlbumsCreatedByMe { isSuccess, albumList in
+        AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId) { isSuccess, albumList in
             if isSuccess {
                 albums = []
+                beforeAlbumIds = []
+                selectedAlbumIds = []
                 for album in albumList {
-                    let newAlbum = Album(id: album.albumId, title: album.name, creator: "")
+                    if album.isSaved {
+                        selectedAlbumIds.append(album.albumId)
+                        beforeAlbumIds.append(album.albumId)
+                    }
+                    let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
                     albums.append(newAlbum)
                 }
+            } else {
+                print("앨범 목록 가져오기 실패")
             }
         }
     }
@@ -91,12 +104,24 @@ struct SaveMyJoyPopUpView: View {
     }
 
     func dismissPopUp() {
-        popUpStatus.showSaveJoyToAlbumPopUp = false
+        if fromAlbumSetting {
+            showSaveJoyToAlbumPopUp = false
+        } else {
+            popUpStatus.showSaveJoyToAlbumPopUp = false
+        }
     }
 
     func saveJoy() {
         // 소확행 저장
-        dismissPopUp()
+        print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
+        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, response in
+            if isSuccess {
+                print("소확행 앨범에 저장 성공")
+                dismissPopUp()
+            } else {
+                print("소확행 앨범에 저장 실패")
+            }
+        }
     }
 }
 

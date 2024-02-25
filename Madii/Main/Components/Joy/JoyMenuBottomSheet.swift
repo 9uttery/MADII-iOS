@@ -11,6 +11,9 @@ struct JoyMenuBottomSheet: View {
     @Binding var joy: Joy?
     var isMine: Bool = false
     
+    @State private var newJoy: Joy = Joy(title: "")
+    @State private var showSaveJoyToAlbumPopUp: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -39,7 +42,7 @@ struct JoyMenuBottomSheet: View {
                 }
                 
                 Button {
-                    
+                    showSaveJoyToAlbumPopUp = true
                 } label: {
                     bottomSheetRow("앨범에 저장하기")
                 }
@@ -69,6 +72,10 @@ struct JoyMenuBottomSheet: View {
             Spacer()
         }
         .background(Color.madiiPopUp)
+        .onAppear { newJoy = joy ?? Joy(title: "") }
+        // 나만의 소확행 앨범에 저장 팝업
+        .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, fromAlbumSetting: true) }
         .presentationDetents([.height(isMine ? 350 : 280)])
     }
     

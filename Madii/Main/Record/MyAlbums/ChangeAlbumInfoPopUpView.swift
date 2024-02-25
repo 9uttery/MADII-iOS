@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChangeAlbumInfoPopUpView: View {
+    @Binding var showChangeInfo: Bool
     @State private var name: String = ""
     @State private var description: String = ""
     
@@ -23,15 +24,11 @@ struct ChangeAlbumInfoPopUpView: View {
     }
     
     private func dismissPopUp() {
-        
+        print("what!!")
     }
     
     private func changeInfo() {
         // 정보 수정 서버 업데이트
         dismissPopUp()
     }
-}
-
-#Preview {
-    ChangeAlbumInfoPopUpView()
 }

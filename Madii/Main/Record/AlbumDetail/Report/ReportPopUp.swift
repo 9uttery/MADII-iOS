@@ -24,7 +24,7 @@ struct ReportPopUp: View {
                     
             PopUp(title: "신고 이유를 알려주세요", leftButtonTitle: "취소", leftButtonAction: dismiss, rightButtonTitle: "확인", rightButtonColor: selectedOption.isEmpty ? .gray : .white, rightButtonAction: report) {
                 VStack(alignment: .leading, spacing: 24) {
-                    ScrollView(.vertical) {
+//                    ScrollView(.vertical) {
                         VStack(alignment: .leading, spacing: 12) {
                             ForEach(0 ..< 5, id: \.self) { index in
                                 Button {
@@ -55,9 +55,9 @@ struct ReportPopUp: View {
                             //                                    .stroke(Color.madiiYellowGreen.opacity(etc.isEmpty == false ? 1.0 : 0.0), lineWidth: 1)
                             //                            )
                         }
-                    }
-                    .scrollIndicators(.never)
-                    .frame(maxHeight: 220)
+//                    }
+//                    .scrollIndicators(.never)
+//                    .frame(maxHeight: 220)
                 }
             }
             .padding(.horizontal, 40)
