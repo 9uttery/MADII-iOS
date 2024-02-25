@@ -18,6 +18,7 @@ struct Joy: Identifiable, Equatable {
     var satisfaction: JoySatisfaction = .bad /// 만족도 1, 2, 3, 4, 5 가능
     var isSaved: Bool = false
     var isMine: Bool = false
+    var rank: Int = 0
 }
 
 enum JoySatisfaction: CaseIterable {

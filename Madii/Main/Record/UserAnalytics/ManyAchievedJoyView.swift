@@ -99,7 +99,7 @@ struct ManyAchievedJoyView: View {
         } label: {
             HStack(spacing: 15) {
                 // 순위
-                Text("\(index + 1)")
+                Text("\(joy.rank)")
                     .madiiFont(font: .madiiBody3, color: .gray500)
                 
                 ZStack {
@@ -172,7 +172,7 @@ struct ManyAchievedJoyView: View {
             if isSuccess {
                 joys = []
                 for joy in joyList.mostAchievedJoyInfos {
-                    let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents, counts: joy.achieveCount, isMine: joy.isCreatedByMe)
+                    let newJoy = Joy(joyId: joy.joyId, icon: joy.joyIconNum, title: joy.contents, counts: joy.achieveCount, isMine: joy.isCreatedByMe, rank: joy.rank)
                     joys.append(newJoy)
                 }
             } else {
