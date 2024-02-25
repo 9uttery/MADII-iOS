@@ -64,7 +64,14 @@ struct AddAlbumPopUp: View {
     
     private func addAlbum() {
         if title.isEmpty == false {
-            
+            RecordAPI.shared.postAlbum(name: title, description: description) { isSuccess, _ in
+                if isSuccess {
+                    print("앨범 생성 성공")
+                    showAddAlbumPopUp = false
+                } else {
+                    print("앨범 생성 실패")
+                }
+            }
         }
     }
 }

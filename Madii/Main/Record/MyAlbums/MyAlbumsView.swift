@@ -53,6 +53,10 @@ struct MyAlbumsView: View {
                     AlbumDetailView(album: selectedAlbum) }
             }
             .onAppear { getAlbums() }
+            .onChange(of: showAddAlbumPopUp) { _ in
+                // 팝업 사라지면 앨범 새로 불러오기
+                if showAddAlbumPopUp == false { getAlbums() }
+            }
         }
         .roundBackground(bottomPadding: 32)
     }
