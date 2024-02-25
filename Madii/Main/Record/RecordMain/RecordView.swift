@@ -45,7 +45,7 @@ struct RecordView: View {
             }
             // 나만의 소확행 앨범에 저장 팝업
             .transparentFullScreenCover(isPresented: $popUpStatus.showSaveJoyToAlbumPopUp) {
-                SaveMyJoyPopUpView(joy: $newJoy) }
+                SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: .constant(true)) }
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast() }

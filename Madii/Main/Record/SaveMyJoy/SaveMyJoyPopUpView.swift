@@ -11,8 +11,12 @@ struct SaveMyJoyPopUpView: View {
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @Binding var joy: Joy
+    @Binding var showSaveJoyToAlbumPopUp: Bool
     @State private var albums: [Album] = []
+    @State private var beforeAlbumIds: [Int] = []
     @State private var selectedAlbumIds: [Int] = []
+    
+    var fromAlbumSetting: Bool = false
 
     var body: some View {
         ZStack {
@@ -49,9 +53,13 @@ struct SaveMyJoyPopUpView: View {
         AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId) { isSuccess, albumList in
             if isSuccess {
                 albums = []
+                beforeAlbumIds = []
                 selectedAlbumIds = []
                 for album in albumList {
-                    if album.isSaved { selectedAlbumIds.append(album.albumId) }
+                    if album.isSaved {
+                        selectedAlbumIds.append(album.albumId)
+                        beforeAlbumIds.append(album.albumId)
+                    }
                     let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
                     albums.append(newAlbum)
                 }
@@ -96,20 +104,17 @@ struct SaveMyJoyPopUpView: View {
     }
 
     func dismissPopUp() {
-        popUpStatus.showSaveJoyToAlbumPopUp = false
+        if fromAlbumSetting {
+            showSaveJoyToAlbumPopUp = false
+        } else {
+            popUpStatus.showSaveJoyToAlbumPopUp = false
+        }
     }
 
     func saveJoy() {
         // 소확행 저장
-//        RecordAPI.shared.saveJoy(joyId: joy.joyId, albumIds: selectedAlbumIds) { isSuccess in
-//            if isSuccess {
-//                print("소확행 앨범에 저장 성공")
-//                dismissPopUp()
-//            } else {
-//                print("소확행 앨범에 저장 실패")
-//            }
-//        }
-        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: [], afterAlbumIds: selectedAlbumIds) { isSuccess, response in
+        print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
+        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, response in
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
                 dismissPopUp()
