@@ -61,29 +61,39 @@ struct AlbumDetailView: View {
                         VStack(spacing: 4) {
                             ForEach(joys) { joy in
                                 HStack {
-                                    JoyRowWithButton(joy: joy) {
-                                        if isAlbumMine {
-                                            // 나의 앨범: 소확행 메뉴 bottom sheet
-                                            selectedJoy = joy
-                                        } else {
-                                            // 타인의 앨범: 소확행 저장 아이콘
-                                            showSaveJoyPopUp = true
-                                            self.joy = joy
+                                    Button {
+                                        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
+                                            if isSuccess {
+                                                print("DEBUG AlbumDetailView: 오플리에 추가 true")
+                                            } else {
+                                                print("DEBUG AlbumDetailView: 오플리에 추가 false")
+                                            }
                                         }
-                                    } buttonLabel: {
-                                        if isAlbumMine {
-                                            // 나의 앨범: 메뉴 버튼 이미지
-                                            Image(systemName: "ellipsis")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 20)
-                                                .foregroundStyle(Color.gray500)
-                                                .padding(10)
-                                        } else {
-                                            // 타인의 앨범: 북마크 버튼 이미지
-                                            Image(joy.isSaved ? "activeSave" : "inactiveSave")
-                                                .resizable()
-                                                .frame(width: 36, height: 36)
+                                    } label: {
+                                        JoyRowWithButton(joy: joy) {
+                                            if isAlbumMine {
+                                                // 나의 앨범: 소확행 메뉴 bottom sheet
+                                                selectedJoy = joy
+                                            } else {
+                                                // 타인의 앨범: 소확행 저장 아이콘
+                                                showSaveJoyPopUp = true
+                                                self.joy = joy
+                                            }
+                                        } buttonLabel: {
+                                            if isAlbumMine {
+                                                // 나의 앨범: 메뉴 버튼 이미지
+                                                Image(systemName: "ellipsis")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 20, height: 20)
+                                                    .foregroundStyle(Color.gray500)
+                                                    .padding(10)
+                                            } else {
+                                                // 타인의 앨범: 북마크 버튼 이미지
+                                                Image(joy.isSaved ? "activeSave" : "inactiveSave")
+                                                    .resizable()
+                                                    .frame(width: 36, height: 36)
+                                            }
                                         }
                                     }
                                     .padding(.leading, 12)
