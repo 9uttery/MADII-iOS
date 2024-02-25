@@ -14,6 +14,8 @@ struct RecordView: View {
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToast: Bool = false
     
+    @State private var showAddAlbumPopUp: Bool = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 0) {
@@ -30,7 +32,7 @@ struct RecordView: View {
                         
                         if isLoggedIn {
                             // 소확행 앨범
-                            MyAlbumsView()
+                            MyAlbumsView(showAddAlbumPopUp: $showAddAlbumPopUp)
                         } else {
                             beforeLoginMyAlbums
                         }
@@ -49,6 +51,9 @@ struct RecordView: View {
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast() }
+            
+            // 새로운 앨범 추가 팝업
+            if showAddAlbumPopUp { AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }
         }
         .navigationTitle("")
     }
