@@ -88,6 +88,10 @@ struct PlaylistBar: View {
         .frame(height: showPlaylistBar ? 60 : 0)
         .opacity(showPlaylistBar ? 1.0 : 0.0)
         .onAppear { getPlaylist() }
+        .onChange(of: showPlaylist) { _ in
+            // 오플리 사라지면 플리바 새로고침
+            if showPlaylist == false { getPlaylist() }
+        }
         .transparentFullScreenCover(isPresented: $showPlaylist) {
             TodayPlaylistView(showPlaylist: $showPlaylist)
                 .offset(draggedOffset)
