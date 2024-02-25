@@ -88,7 +88,7 @@ struct AlbumDetailView: View {
                                 }
                             }
                         }
-                        .sheet(item: $selectedJoy, content: { _ in
+                        .sheet(item: $selectedJoy, onDismiss: getAlbumInfo, content: { _ in
                             JoyMenuBottomSheet(joy: $selectedJoy, isMine: true)
                         })
                         .padding(.vertical, 20)
@@ -104,6 +104,7 @@ struct AlbumDetailView: View {
                 .padding(.bottom, 40)
             }
             .scrollIndicators(.hidden)
+            .refreshable { getAlbumInfo() }
             
             // 앨범 정보 수정
             if showChangeInfo {
