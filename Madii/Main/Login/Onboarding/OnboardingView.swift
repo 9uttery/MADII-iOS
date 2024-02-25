@@ -72,8 +72,8 @@ struct OnboardingView: View {
                 nextButton
                 
                 // 메인화면으로 넘어가는 버튼
-                showMainButton
-                    .padding(.bottom, 24)
+//                showMainButton
+//                    .padding(.bottom, 24)
             }
         }
         .background(OnboardingBackgroundGradient())
