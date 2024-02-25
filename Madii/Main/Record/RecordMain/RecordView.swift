@@ -48,16 +48,6 @@ struct RecordView: View {
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast() }
-            
-            // 앨범 정보 수정 팝업
-            if popUpStatus.showChangeAlbumInfo {
-                ChangeAlbumInfoPopUpView()
-            }
-            
-            // 앨범 삭제 팝업
-            if popUpStatus.showDeleteAlbum {
-                DeleteAlbumPopUpView()
-            }
         }
         .navigationTitle("")
     }
