@@ -11,6 +11,7 @@ struct RecordView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
     @EnvironmentObject private var popUpStatus: PopUpStatus
     
+    @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToast: Bool = false
     
     var body: some View {
@@ -21,7 +22,7 @@ struct RecordView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         // 나만의 소확행을 기록해 보세요
-                        SaveMyJoyView(showSaveJoyToast: $showSaveJoyToast)
+                        SaveMyJoyView(joy: $newJoy, showSaveJoyToast: $showSaveJoyToast)
                             .padding(.top, 12)
                         
                         // 최근 본 앨범 & 많이 실천한 소확행 & 내가 기록한 소확행
@@ -44,7 +45,7 @@ struct RecordView: View {
             }
             // 나만의 소확행 앨범에 저장 팝업
             .transparentFullScreenCover(isPresented: $popUpStatus.showSaveJoyToAlbumPopUp) {
-                SaveMyJoyPopUpView() }
+                SaveMyJoyPopUpView(joy: $newJoy) }
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast() }

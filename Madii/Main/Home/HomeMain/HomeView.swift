@@ -32,7 +32,7 @@ struct HomeView: View {
             }
 
             // 소확행 저장하기 팝업
-            if showSaveJoyPopUp { SaveMyJoyPopUpView() }
+//            if showSaveJoyPopUp { SaveMyJoyPopUpView() }
         }
         .navigationTitle("")
     }
