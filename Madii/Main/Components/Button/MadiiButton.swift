@@ -25,7 +25,7 @@ struct MadiiButton: View {
             Spacer()
             Text(title)
                 // 팝업의 버튼은 madiiBody2
-                .madiiFont(font: size == .big ? .madiiBody1 : .madiiBody2, color: fontColor())
+                .madiiFont(font: size == .big ? .madiiBody1 : .madiiBody2, color: .black)
             Spacer()
         }
         .frame(height: size == .big ? 56 : 40)
@@ -35,17 +35,9 @@ struct MadiiButton: View {
     
     func backgroundColor() -> Color {
         switch color {
-        case .gray: Color(red: 0.84, green: 0.84, blue: 0.84)
+        case .gray: Color.white.opacity(0.4)
         case .white: Color.white
         case .yellowGreen: Color.madiiYellowGreen
-        }
-    }
-    
-    func fontColor() -> Color {
-        if color == .gray {
-            return Color(red: 0.44, green: 0.44, blue: 0.44)
-        } else {
-            return .black
         }
     }
 }

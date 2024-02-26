@@ -12,6 +12,7 @@ struct AlbumSettingBottomSheet: View {
     @Binding var showAlbumSettingSheet: Bool
     
     @Binding var showChangeInfo: Bool
+    @State private var showAddJoyPopUp: Bool = false
     @State private var isAlbumPublic: Bool = false
     @State private var showChangePublicPopUp: Bool = false
     @State private var showDeleteAlbumPopUp: Bool = false
@@ -55,7 +56,7 @@ struct AlbumSettingBottomSheet: View {
                         }
                     
                     Button {
-                        showDeleteAlbumPopUp = true
+                        withoutAnimation { showDeleteAlbumPopUp = true }
                     } label: {
                         albumRow(title: "삭제")
                     }
@@ -65,9 +66,10 @@ struct AlbumSettingBottomSheet: View {
             }
         }
         .ignoresSafeArea()
-        // 앨범 정보 수정
-//        .transparentFullScreenCover(isPresented: $showChangeInfo) {
-//            ChangeAlbumInfoPopUpView(showChangeInfo: $showChangeInfo) }
+        // 소확행 추가
+//        .transparentFullScreenCover(isPresented: $showAddJoyPopUp) {
+//            
+//        }
         // 앨범 전체 공개 여부
         .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
             ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
