@@ -91,12 +91,20 @@ struct AddJoyPopUp: View {
     
     private func addJoy() {
         if newJoyTitle.isEmpty == false {
-            RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: [], afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
+            // 소확행 추가
+            JoyAPI.shared.postJoy(contents: newJoyTitle) { isSuccess, newJoy in
                 if isSuccess {
-                    print("소확행 앨범에 저장 성공")
-                    dismissPopUp()
+                    // 소확행을 앨범에 추가
+                    RecordAPI.shared.editJoy(joyId: newJoy.joyId, contents: newJoy.contents, beforeAlbumIds: [], afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
+                        if isSuccess {
+                            print("앨범 설정 소확행 추가에서 edit joy 성공")
+                            dismiss()
+                        } else {
+                            print("앨범 설정 소확행 추가에서 edit joy 실패")
+                        }
+                    }
                 } else {
-                    print("소확행 앨범에 저장 실패")
+                    print("앨범 설정 소확행 추가에서 postJoy 실패")
                 }
             }
         }
