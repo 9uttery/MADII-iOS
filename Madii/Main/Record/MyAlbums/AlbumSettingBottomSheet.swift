@@ -48,7 +48,11 @@ struct AlbumSettingBottomSheet: View {
                         albumRow(title: "앨범 이름・설명 수정")
                     }
                     
-                    albumRow(title: "소확행 추가")
+                    Button {
+                        showAddJoyPopUp = true
+                    } label: {
+                        albumRow(title: "소확행 추가")
+                    }
                     
                     toggleRow
                         .onChange(of: isAlbumPublic) { _ in
@@ -67,9 +71,8 @@ struct AlbumSettingBottomSheet: View {
         }
         .ignoresSafeArea()
         // 소확행 추가
-//        .transparentFullScreenCover(isPresented: $showAddJoyPopUp) {
-//            
-//        }
+        .transparentFullScreenCover(isPresented: $showAddJoyPopUp) {
+            AddJoyPopUp(album: album, showAddJoyPopUp: $showAddJoyPopUp) }
         // 앨범 전체 공개 여부
         .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
             ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
