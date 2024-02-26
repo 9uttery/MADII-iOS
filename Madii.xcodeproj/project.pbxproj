@@ -99,7 +99,6 @@
 		51B6B7A72B89A89F00A31FEE /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7A62B89A89F00A31FEE /* FirebaseRemoteConfigSwift */; };
 		51B6B7A92B89A89F00A31FEE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7A82B89A89F00A31FEE /* FirebaseStorage */; };
 		51B6B7AB2B89A89F00A31FEE /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7AA2B89A89F00A31FEE /* FirebaseStorageCombine-Community */; };
-		51B6B7AD2B89A93300A31FEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51B6B7AC2B89A93300A31FEE /* GoogleService-Info.plist */; };
 		51B6B7AF2B8BDAE600A31FEE /* AddAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6B7AE2B8BDAE600A31FEE /* AddAlbumPopUp.swift */; };
 		51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3B2B7E816B008CF3AD /* SplashView.swift */; };
 		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
@@ -224,7 +223,6 @@
 		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
 		519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyMenuBottomSheet.swift; sourceTree = "<group>"; };
-		51B6B7AC2B89A93300A31FEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51B6B7AE2B8BDAE600A31FEE /* AddAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumPopUp.swift; sourceTree = "<group>"; };
 		51BEBA3B2B7E816B008CF3AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
@@ -1248,6 +1246,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MADII;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진 등록을 위해 사진 라이브러리에 접근하도록 허용합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1267,6 +1266,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1287,6 +1287,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MADII;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진 등록을 위해 사진 라이브러리에 접근하도록 허용합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1306,6 +1307,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
