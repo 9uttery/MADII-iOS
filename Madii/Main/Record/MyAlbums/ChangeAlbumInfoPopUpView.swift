@@ -68,8 +68,16 @@ struct ChangeAlbumInfoPopUpView: View {
     
     private func changeInfo() {
         if title.isEmpty == false {
-            // 정보 수정 서버 업데이트
-            dismissPopUp()
+            AlbumAPI.shared.editAlbumInfos(albumId: album.id, name: title, description: description) { isSuccess in
+                if isSuccess {
+                    print("앨범 정보 수정 성공")
+                    withAnimation {
+                        dismissPopUp()
+                    }
+                } else {
+                    print("앨범 정보 수정 실패")
+                }
+            }
         }
     }
 }

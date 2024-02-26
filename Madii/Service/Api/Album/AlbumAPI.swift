@@ -190,8 +190,8 @@ class AlbumAPI {
     }
     
     // 앨범 이름, 설명 수정
-    func putAlbumsByAlbumId(name: String, description: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/albums"
+    func editAlbumInfos(albumId: Int, name: String, description: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/albums/\(albumId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
@@ -209,16 +209,16 @@ class AlbumAPI {
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(putAlbumsByAlbumId): success")
+                        print("DEBUG(editAlbumInfos): success")
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(putAlbumsByAlbumId): status \(statusCode))")
+                        print("DEBUG(editAlbumInfos): status \(statusCode))")
                         completion(false)
                     }
                     
                 case .failure(let error):
-                    print("DEBUG(putAlbumsByAlbumId): error \(error))")
+                    print("DEBUG(editAlbumInfos): error \(error))")
                     completion(false)
                 }
             }
