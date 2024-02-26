@@ -61,6 +61,34 @@ class ProfileAPI {
         var imageUrl: String = ""
         if image == UIImage(named: "defaultProfile") {
             imageUrl = "https://\(Bundle.main.infoDictionary?["DEFAULT_PROFILE_IMAGE_URL"] ?? "nil default profile image url")"
+            print("DEBUG 프로필 등록 Image url: \(imageUrl)")
+            
+            let parameters: [String: Any] = [
+                "nickname": nickname,
+                "image": imageUrl
+            ]
+            
+            print("wow url은 \(imageUrl)")
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .responseDecodable(of: BaseResponse<String?>.self) { response in
+                    switch response.result {
+                    case .success(let response):
+                        let statusCode = response.status
+                        if statusCode == 200 {
+                            // status 200으로 -> isSuccess: true
+                            print("DEBUG(postUsersProfile): success")
+                            completion(true)
+                        } else {
+                            // status 200 아님 -> isSuccess: false
+                            print("DEBUG(postUsersProfile): status \(statusCode))")
+                            completion(false)
+                        }
+                        
+                    case .failure(let error):
+                        print("DEBUG(postUsersProfile): error \(error))")
+                        completion(false)
+                    }
+                }
         } else {
             FileAPI.shared.uploadImageFile(image: image) { isSuccess, imageUrlString in
                 if isSuccess {

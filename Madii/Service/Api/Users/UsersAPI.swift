@@ -64,7 +64,7 @@ class UsersAPI {
         let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<String?>.self) { response in
+            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
                     print("DEBUG(sign-up) success \(response.message)")

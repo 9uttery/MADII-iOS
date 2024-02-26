@@ -144,8 +144,11 @@ struct AddProfileView: View {
             }
         }
         
+        print("wow")
+        
         ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
             if isSuccess {
+                print("wowwow")
                 isLoggedIn = true
                 showCompleteSignUpView = true
             } else {
