@@ -10,13 +10,14 @@ import SwiftUI
 struct StyleJoyNextButton: View {
     var label: String
     var isDisabled: Bool
+    var color: Color?
 
     var body: some View {
         Text(label)
             .madiiFont(font: .madiiBody1, color: .black)
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(.vertical, 18)
-            .background(isDisabled ? Color.white : Color.white.opacity(0.4))
+            .background(isDisabled ? (color ?? Color.white) : Color.white.opacity(0.4))
             .cornerRadius(12)
     }
 }

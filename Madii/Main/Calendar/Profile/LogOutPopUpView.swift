@@ -35,9 +35,12 @@ struct LogOutPopUpView: View {
     }
     
     func logOut() {
+        ProfileAPI.shared.deleteUsersLogout { isSuccess in
+            if isSuccess {
+                print("Success LogOut")
+            }
+        }
         showLogOutPopUp = false
-        keychain.clear()
-        print("keychain: \(keychain.allKeys)")
     }
 }
 
