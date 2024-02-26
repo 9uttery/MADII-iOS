@@ -42,15 +42,12 @@ struct MyAlbumsView: View {
             
             VStack(spacing: 16) {
                 ForEach(albums) { album in
-                    Button {
-                        selectedAlbum = album
-                        showAlbumDetailView = true
+                    NavigationLink {
+                        AlbumDetailView(album: album)
                     } label: {
                         AlbumRowWithRightView(album: album) { }
                     }
                 }
-                .navigationDestination(isPresented: $showAlbumDetailView) {
-                    AlbumDetailView(album: selectedAlbum) }
             }
             .onAppear { getAlbums() }
             .onChange(of: showAddAlbumPopUp) { _ in

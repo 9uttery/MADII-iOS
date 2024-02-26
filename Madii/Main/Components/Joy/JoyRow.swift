@@ -29,6 +29,7 @@ struct JoyRow: View {
             
             Text(joy.title)
                 .madiiFont(font: .madiiBody3, color: .white)
+                .multilineTextAlignment(.leading)
             
             Spacer()
         }
@@ -60,6 +61,7 @@ struct JoyRowWithButton<Content>: View where Content: View {
             
             Text(joy.title)
                 .madiiFont(font: .madiiBody3, color: .white)
+                .multilineTextAlignment(.leading)
             
             Spacer()
             
