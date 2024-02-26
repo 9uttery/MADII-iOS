@@ -131,7 +131,7 @@ struct AlbumDetailView: View {
             
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, fromAlbumSetting: true)
+                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
             }
         }
         .navigationTitle("")

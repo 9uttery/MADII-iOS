@@ -75,7 +75,7 @@ struct JoyMenuBottomSheet: View {
         .onAppear { newJoy = joy ?? Joy(title: "") }
         // 나만의 소확행 앨범에 저장 팝업
         .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
-            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, fromAlbumSetting: true) }
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
         .presentationDetents([.height(isMine ? 350 : 280)])
     }
     

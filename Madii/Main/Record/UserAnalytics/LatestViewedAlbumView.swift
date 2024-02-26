@@ -54,20 +54,6 @@ struct LatestViewedAlbumView: View {
                 Text("최근 본 앨범이 없어요")
                     .madiiFont(font: .madiiBody3, color: .gray500)
                     .multilineTextAlignment(.center)
-                
-                /* 임시 삭제
-                Button {
-                    popUpStatus.showSaveMyJoyOverlay = true
-                    dismiss()
-                } label: {
-                    Text("소확행 기록하러 가기")
-                        .madiiFont(font: .madiiBody2, color: .black)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 12)
-                        .background(Color.madiiYellowGreen)
-                        .clipShape(RoundedRectangle(cornerRadius: 90))
-                }
-                 */
             }
             
             Spacer()

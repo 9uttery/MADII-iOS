@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct SaveMyJoyPopUpView: View {
-    @EnvironmentObject private var popUpStatus: PopUpStatus
-    
     @Binding var joy: Joy
     @Binding var showSaveJoyToAlbumPopUp: Bool
+    @Binding var showSaveJoyPopUpFromRecordMain: Bool
     @State private var albums: [Album] = []
     @State private var beforeAlbumIds: [Int] = []
     @State private var selectedAlbumIds: [Int] = []
@@ -107,7 +106,7 @@ struct SaveMyJoyPopUpView: View {
         if fromAlbumSetting {
             showSaveJoyToAlbumPopUp = false
         } else {
-            popUpStatus.showSaveJoyToAlbumPopUp = false
+            showSaveJoyPopUpFromRecordMain = false
         }
     }
 

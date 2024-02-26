@@ -94,7 +94,6 @@
 		51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3762B188F44001B6793 /* AlbumRow.swift */; };
 		51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */; };
 		51E025A02B26F7EB00F4F41A /* PopUpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */; };
-		51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */; };
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
 		51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025B02B28988C00F4F41A /* OnboardingView.swift */; };
 		51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */; };
@@ -219,7 +218,6 @@
 		51D8D3762B188F44001B6793 /* AlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRow.swift; sourceTree = "<group>"; };
 		51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAlbumInfoPopUpView.swift; sourceTree = "<group>"; };
 		51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpStatus.swift; sourceTree = "<group>"; };
-		51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumPopUpView.swift; sourceTree = "<group>"; };
 		51E025A32B27291900F4F41A /* SaveJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveJoyToast.swift; sourceTree = "<group>"; };
 		51E025B02B28988C00F4F41A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		51E29E5F2B552E6C00A35EBF /* Madii.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Madii.entitlements; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				5119CB322B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift */,
 				5119CB342B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift */,
 				51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */,
-				51E025A12B26FFE600F4F41A /* DeleteAlbumPopUpView.swift */,
 				51B6B7AE2B8BDAE600A31FEE /* AddAlbumPopUp.swift */,
 			);
 			path = MyAlbums;
@@ -1003,7 +1000,6 @@
 				516455BB2B20AF3E0010199B /* CalendarDays.swift in Sources */,
 				BE39866C2B62680600643805 /* ProfileView.swift in Sources */,
 				BE39866E2B62696100643805 /* MyProfileView.swift in Sources */,
-				51E025A22B26FFE600F4F41A /* DeleteAlbumPopUpView.swift in Sources */,
 				BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */,
 				BE459A5E2B762621002E9AB2 /* BaseResponse.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
@@ -1169,7 +1165,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1210,7 +1206,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;

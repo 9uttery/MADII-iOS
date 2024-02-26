@@ -30,9 +30,6 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.never)
             }
-
-            // 소확행 저장하기 팝업
-//            if showSaveJoyPopUp { SaveMyJoyPopUpView() }
         }
         .navigationTitle("")
     }
