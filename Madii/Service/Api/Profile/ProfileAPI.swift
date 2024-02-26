@@ -209,40 +209,34 @@ class ProfileAPI {
     }
     
     // 유저 로그아웃 하기
-    func deleteUsersLogout(completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/users/profile"
+    func logout(completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/logout"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
         let parameters: [String: Any] = [
-            "refreshToken": "\(keychain.get("refreshToken"))"
+            "refreshToken": "\(keychain.get("refreshToken") ?? "")"
         ]
         
-        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<Bool?>.self) { response in
                 switch response.result {
                 case .success(let response):
-                    guard let data = response.data else {
-                        print("DEBUG(getUsersStat): data nil")
-                        completion(false)
-                        return
-                    }
-                    
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(getUsersStat): success")
+                        print("DEBUG(logout): success")
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(getUsersStat): status \(statusCode))")
+                        print("DEBUG(logout): status \(statusCode))")
                         completion(false)
                     }
                     
                 case .failure(let error):
-                    print("DEBUG(getUsersStat): error \(error))")
+                    print("DEBUG(logout): error \(error))")
                     completion(false)
                 }
             }

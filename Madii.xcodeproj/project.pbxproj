@@ -35,6 +35,7 @@
 		511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50D2B66B24C00D2B01D /* IDView.swift */; };
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
 		512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AE7F92B769F8200926DE6 /* UsersDTO.swift */; };
+		5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
@@ -190,6 +191,7 @@
 		511DB50D2B66B24C00D2B01D /* IDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDView.swift; sourceTree = "<group>"; };
 		511DB50F2B66C49100D2B01D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		512AE7F92B769F8200926DE6 /* UsersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDTO.swift; sourceTree = "<group>"; };
+		5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				BE0C3F8D2B81E77200275FD3 /* ParticleAnimation */,
 				51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */,
 				51BEBA412B813F5B008CF3AD /* ImagePicker.swift */,
+				5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
+				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				519B01562B8924C400519B11 /* ChangePublicPopUp.swift in Sources */,
