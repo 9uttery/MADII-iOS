@@ -52,7 +52,7 @@ struct SignOutView: View {
                         stops: [
                             Gradient.Stop(color: Color(red: 0.16, green: 0.16, blue: 0.28), location: 0.00),
                             Gradient.Stop(color: Color(red: 0.09, green: 0.09, blue: 0.15), location: 0.79),
-                            Gradient.Stop(color: Color(red: 0.1, green: 0.1, blue: 0.16), location: 1.00),
+                            Gradient.Stop(color: Color(red: 0.1, green: 0.1, blue: 0.16), location: 1.00)
                         ],
                         startPoint: UnitPoint(x: 0.5, y: 0),
                         endPoint: UnitPoint(x: 0.5, y: 1.62)
@@ -112,7 +112,7 @@ struct SignOutView: View {
                         stops: [
                         Gradient.Stop(color: Color(red: 0.16, green: 0.16, blue: 0.28), location: 0.00),
                         Gradient.Stop(color: Color(red: 0.09, green: 0.09, blue: 0.15), location: 0.79),
-                        Gradient.Stop(color: Color(red: 0.1, green: 0.1, blue: 0.16), location: 1.00),
+                        Gradient.Stop(color: Color(red: 0.1, green: 0.1, blue: 0.16), location: 1.00)
                         ],
                     startPoint: UnitPoint(x: 0.5, y: -0.55),
                     endPoint: UnitPoint(x: 0.5, y: 1)

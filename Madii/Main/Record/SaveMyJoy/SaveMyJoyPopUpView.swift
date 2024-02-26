@@ -114,7 +114,7 @@ struct SaveMyJoyPopUpView: View {
     func saveJoy() {
         // 소확행 저장
         print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
-        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, response in
+        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
                 dismissPopUp()

@@ -129,7 +129,6 @@ struct PlaylistBar: View {
         AchievementsAPI.shared.getPlaylist { isSuccess, response in
             if isSuccess {
                 print("DEBUG TodayPlaylistView getPlaylist: isSuccess true")
-                print("DEBUG TodayPlaylistView getPlaylist: response \(response)")
                 
                 let today = response.todayJoyPlayList
                 var newJoys: [Joy] = []
