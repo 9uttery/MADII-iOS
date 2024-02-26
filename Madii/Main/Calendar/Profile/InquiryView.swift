@@ -10,11 +10,15 @@ import SwiftUI
 struct InquiryView: View {
     var body: some View {
         VStack {
-            Image("")
+            Image("MailArrow")
                 .resizable()
-                .frame(width: 198, height: 198)
-            Text("새로운@메일주소로 문의해주세요")
+                .frame(width: 111, height: 85)
+                .padding(.bottom, 32)
+            Text("madii.service.cs@gmail.com로 문의해주세요")
         }
+        .navigationTitle("문의하기")
+        .toolbarBackground(Color.madiiBox, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

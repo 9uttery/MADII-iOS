@@ -12,3 +12,10 @@ struct GetUsersProfileResponse: Codable {
     let nickname: String
     let image: String
 }
+
+struct GetUsersStatResponse: Codable {
+    let nickname: String
+    let activeDays: Int
+    let achievedJoyCount: Int
+    let achievementCount: Int
+}

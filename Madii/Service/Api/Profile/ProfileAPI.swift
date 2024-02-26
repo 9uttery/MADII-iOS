@@ -135,6 +135,118 @@ class ProfileAPI {
                 }
             }
     }
+    
+    // 탈퇴 전 통계 정보 조회
+    func getUsersStat(completion: @escaping (_ isSuccess: Bool, _ userStat: GetUsersStatResponse) -> Void) {
+        let url = "\(baseUrl)/users/stat"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetUsersStatResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getUsersStat): data nil")
+                        completion(false, GetUsersStatResponse(nickname: "", activeDays: 0, achievedJoyCount: 0, achievementCount: 0))
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getUsersStat): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getUsersStat): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getUsersStat): error \(error))")
+                    completion(false, GetUsersStatResponse(nickname: "", activeDays: 0, achievedJoyCount: 0, achievementCount: 0))
+                }
+            }
+    }
+    
+    // 회원 탈퇴하기
+    func deleteUsersProfile(completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/profile"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getUsersStat): data nil")
+                        completion(false)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getUsersStat): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getUsersStat): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getUsersStat): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
+    // 유저 로그아웃 하기
+    func deleteUsersLogout(completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/profile"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let parameters: [String: Any] = [
+            "refreshToken": "\(keychain.get("refreshToken"))"
+        ]
+        
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getUsersStat): data nil")
+                        completion(false)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getUsersStat): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getUsersStat): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getUsersStat): error \(error))")
+                    completion(false)
+                }
+            }
+    }
 }
 
 struct GetNoticeResponse: Codable {

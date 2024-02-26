@@ -14,6 +14,7 @@ struct MyProfileView: View {
             Image("defaultProfile")
                 .resizable()
                 .frame(width: 116, height: 116)
+                .padding(.vertical, 28)
             
             HStack {
                 TextField("닉네임 (1-10자, 한글/영문/숫자 사용 가능)", text: $nickname, axis: .vertical)
