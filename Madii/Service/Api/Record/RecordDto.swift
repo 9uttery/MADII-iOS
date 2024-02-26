@@ -45,6 +45,15 @@ struct GetAlbumsResponse: Codable, Identifiable {
     let nickname: String?
 }
 
+struct GetAlbumsWithJoySavedResponse: Codable {
+    let isSaved: Bool
+    let albumId: Int
+    let joyIconNum: Int
+    let albumColorNum: Int
+    let name: String
+    let modifiedAt: String?
+}
+
 struct GetRandomAlbumsResponse: Codable {
     let albumId, joyIconNum, albumColorNum: Int
     let name: String

@@ -11,6 +11,7 @@ struct SaveMyJoyView: View {
     @EnvironmentObject private var popUpStatus: PopUpStatus
     @FocusState private var isFocused: Bool
     
+    @Binding var joy: Joy
     @State private var placeholder: String = ""
     @State private var myNewJoy: String = ""
     @Binding var showSaveJoyToast: Bool
@@ -64,10 +65,11 @@ struct SaveMyJoyView: View {
     }
     
     private func saveJoy() {
-        JoyAPI.shared.postJoy(contents: myNewJoy) { isSuccess, joyContent in
+        JoyAPI.shared.postJoy(contents: myNewJoy) { isSuccess, newJoy in
             if isSuccess {
                 hideKeyboard()
                 myNewJoy = ""
+                joy = Joy(joyId: newJoy.joyId, icon: newJoy.joyIconNum, title: newJoy.contents)
                 
                 withAnimation { showSaveJoyToast = true }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {

@@ -10,7 +10,7 @@ import SwiftUI
 struct MyAlbumsView: View {
     @State private var albums: [Album] = []
     @State private var showAlbumDetailView: Bool = false
-    @State private var showAlbumSettingSheet: Bool = false
+    @Binding var showAddAlbumPopUp: Bool
     
     @State private var selectedAlbum: Album = Album(id: 0, backgroundColorNum: 1, iconNum: 21, title: "앨범을 불러오지 못했어요")
     
@@ -22,16 +22,22 @@ struct MyAlbumsView: View {
                     
                 Spacer()
                 
-                /*
-                // 추가 버튼 삭제
-                 
-                Text("추가")
-                    .madiiFont(font: .madiiBody5, color: .white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color.madiiOption)
-                    .cornerRadius(6)
-                 */
+                // 새로운 앨범 추가 버튼
+                Button {
+                    showAddAlbumPopUp = true
+                } label: {
+                    ZStack {
+                        Circle()
+                            .foregroundStyle(Color.white)
+                            .frame(width: 24, height: 24)
+                        
+                        Image(systemName: "plus.app.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(Color.madiiOption)
+                            .padding(.horizontal, 8)
+                    }
+                }
             }
             
             VStack(spacing: 16) {
@@ -40,31 +46,19 @@ struct MyAlbumsView: View {
                         selectedAlbum = album
                         showAlbumDetailView = true
                     } label: {
-                        AlbumRowWithRightView(album: album) {
-//                            Button {
-//                                showAlbumSettingSheet = true
-//                            } label: {
-//                                Image(systemName: "ellipsis")
-//                                    .resizable()
-//                                    .frame(width: 20, height: 4)
-//                                    .foregroundStyle(Color.gray500)
-//                                    .padding(10)
-//                                    .padding(.vertical, 8)
-//                            }
-                        }
+                        AlbumRowWithRightView(album: album) { }
                     }
                 }
                 .navigationDestination(isPresented: $showAlbumDetailView) {
                     AlbumDetailView(album: selectedAlbum) }
             }
             .onAppear { getAlbums() }
+            .onChange(of: showAddAlbumPopUp) { _ in
+                // 팝업 사라지면 앨범 새로 불러오기
+                if showAddAlbumPopUp == false { getAlbums() }
+            }
         }
         .roundBackground(bottomPadding: 32)
-//        .sheet(isPresented: $showAlbumSettingSheet) {
-//            AlbumSettingBottomSheet(showAlbumSettingSheet: $showAlbumSettingSheet)
-//                .presentationDetents([.height(360)])
-//                .presentationDragIndicator(.visible)
-//        }
     }
     
     private func getAlbums() {

@@ -67,7 +67,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("fcmToken: \(fcmToken)")
+        print("fcmToken: \(fcmToken ?? "")")
         
         // fcmToken UserDefaults에 저장
         UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
