@@ -126,8 +126,7 @@ struct AlbumDetailView: View {
             
             // 앨범 정보 수정
             if showChangeInfo {
-//                ChangeAlbumInfoPopUpView(showChangeInfo: $showChangeInfo)
-                AddAlbumPopUp(showAddAlbumPopUp: $showChangeInfo)
+                ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
             }
             
             // 소확행을 앨범에 저장하는 팝업
