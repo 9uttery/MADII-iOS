@@ -42,7 +42,7 @@ struct HomeTodayJoyView: View {
                                 .rotationEffect(Angle(degrees: 90))
                         }
                         .sheet(item: $selectedJoy) { _ in
-                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: false) }
+                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: false, isFromTodayJoy: true) }
                     }
                 }
             }

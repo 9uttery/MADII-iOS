@@ -10,6 +10,7 @@ import SwiftUI
 struct JoyMenuBottomSheet: View {
     @Binding var joy: Joy?
     var isMine: Bool = false
+    var isFromTodayJoy: Bool = false
     
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToAlbumPopUp: Bool = false
@@ -48,19 +49,21 @@ struct JoyMenuBottomSheet: View {
                     bottomSheetRow("앨범에 저장하기")
                 }
                 
-                Button {
-                    
-                } label: {
-                    bottomSheetRow("수정")
-                }
-                
-                if isMine {
+                if isFromTodayJoy == false {
                     Button {
-                        withoutAnimation {
-                            showDeleteJoyPopUp = true
-                        }
+                        
                     } label: {
-                        bottomSheetRow("삭제")
+                        bottomSheetRow("수정")
+                    }
+                    
+                    if isMine {
+                        Button {
+                            withoutAnimation {
+                                showDeleteJoyPopUp = true
+                            }
+                        } label: {
+                            bottomSheetRow("삭제")
+                        }
                     }
                 }
             }
