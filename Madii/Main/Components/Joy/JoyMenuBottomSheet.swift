@@ -13,6 +13,7 @@ struct JoyMenuBottomSheet: View {
     
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToAlbumPopUp: Bool = false
+    @State private var showDeleteJoyPopUp: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -55,13 +56,8 @@ struct JoyMenuBottomSheet: View {
                 
                 if isMine {
                     Button {
-                        JoyAPI.shared.deleteJoy(joyId: joy?.joyId ?? 0) { isSuccess in
-                            if isSuccess {
-                                print("DEBUG JoyMenuBottomSheet: deleteJoy true")
-                                joy = nil
-                            } else {
-                                print("DEBUG JoyMenuBottomSheet: deleteJoy false")
-                            }
+                        withoutAnimation {
+                            showDeleteJoyPopUp = true
                         }
                     } label: {
                         bottomSheetRow("삭제")
@@ -76,6 +72,10 @@ struct JoyMenuBottomSheet: View {
         // 나만의 소확행 앨범에 저장 팝업
         .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
             SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
+        // 소확행 삭제
+        .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
+            DeleteJoyPopUp(joy: newJoy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
+        }
         .presentationDetents([.height(isMine ? 350 : 280)])
     }
     
