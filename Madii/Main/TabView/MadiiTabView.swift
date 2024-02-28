@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .record
+    @State var tabIndex: TabIndex = .home
     @State private var isKeyboardVisible = false
     
     @State private var showPlaylistBar: Bool = false
