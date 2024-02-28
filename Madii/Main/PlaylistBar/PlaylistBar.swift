@@ -12,6 +12,7 @@ struct PlaylistBar: View {
     
     @State private var todayJoys: MyJoy = MyJoy(date: "", joys: [])
     @State private var showPlaylist: Bool = false
+    @Binding var updatePlaylistBar: Bool /// 플리바 업데이트
     
     @Binding var showPlaylistBar: Bool
     @State private var selectedJoyIndex: Int = 0
@@ -22,7 +23,7 @@ struct PlaylistBar: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if showPlaylistBar {
+            if showPlaylistBar && todayJoys.joys.isEmpty == false {
                 let joy = todayJoys.joys[selectedJoyIndex]
                 
                 HStack(spacing: 22) {
@@ -92,6 +93,9 @@ struct PlaylistBar: View {
             // 오플리 사라지면 플리바 새로고침
             if showPlaylist == false { getPlaylist() }
         }
+        .onChange(of: updatePlaylistBar) { _ in
+            if updatePlaylistBar { getPlaylist() }
+        }
         .transparentFullScreenCover(isPresented: $showPlaylist) {
             TodayPlaylistView(showPlaylist: $showPlaylist)
                 .offset(draggedOffset)
@@ -129,7 +133,6 @@ struct PlaylistBar: View {
         AchievementsAPI.shared.getPlaylist { isSuccess, response in
             if isSuccess {
                 print("DEBUG TodayPlaylistView getPlaylist: isSuccess true")
-                print("DEBUG TodayPlaylistView getPlaylist: response \(response)")
                 
                 let today = response.todayJoyPlayList
                 var newJoys: [Joy] = []

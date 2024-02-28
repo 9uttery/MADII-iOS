@@ -123,15 +123,19 @@ struct AlbumDetailView: View {
                 // 소확행을 앨범에 저장하는 팝업이 사라지면 앨범정보 새로 부르기
                 if showSaveJoyPopUp == false { getAlbumInfo() }
             }
+            .onChange(of: showChangeInfo) { _ in
+                // 앨범 정보를 수정하는 팝업이 사라지면 앨범정보 새로 부르기
+                if showSaveJoyPopUp == false { getAlbumInfo() }
+            }
             
             // 앨범 정보 수정
             if showChangeInfo {
-                ChangeAlbumInfoPopUpView(showChangeInfo: $showChangeInfo)
+                ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
             }
             
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, fromAlbumSetting: true)
+                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
             }
         }
         .navigationTitle("")

@@ -88,7 +88,7 @@ struct RecommendJoyView: View {
             Spacer()
     
             NavigationLink {
-                HomeView()
+//                HomeView()
             } label: {
                 StyleJoyNextButton(label: "완료", isDisabled: true)
             }

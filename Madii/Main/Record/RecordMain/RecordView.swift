@@ -9,10 +9,10 @@ import SwiftUI
 
 struct RecordView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
-    @EnvironmentObject private var popUpStatus: PopUpStatus
     
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToast: Bool = false
+    @State private var showSaveJoyPopUp: Bool = false
     
     @State private var showAddAlbumPopUp: Bool = false
     
@@ -46,11 +46,11 @@ struct RecordView: View {
                 .scrollIndicators(.hidden)
             }
             // 나만의 소확행 앨범에 저장 팝업
-            .transparentFullScreenCover(isPresented: $popUpStatus.showSaveJoyToAlbumPopUp) {
-                SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: .constant(true)) }
+            .transparentFullScreenCover(isPresented: $showSaveJoyPopUp) {
+                SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: .constant(true), showSaveJoyPopUpFromRecordMain: $showSaveJoyPopUp) }
             
             // 소확행 기록 완료 토스트메시지
-            if showSaveJoyToast { SaveJoyToast() }
+            if showSaveJoyToast { SaveJoyToast(showSaveJoyToAlbumPopUp: $showSaveJoyPopUp) }
             
             // 새로운 앨범 추가 팝업
             if showAddAlbumPopUp { AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }

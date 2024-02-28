@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct SaveMyJoyPopUpView: View {
-    @EnvironmentObject private var popUpStatus: PopUpStatus
-    
     @Binding var joy: Joy
     @Binding var showSaveJoyToAlbumPopUp: Bool
+    @Binding var showSaveJoyPopUpFromRecordMain: Bool
     @State private var albums: [Album] = []
     @State private var beforeAlbumIds: [Int] = []
     @State private var selectedAlbumIds: [Int] = []
@@ -107,14 +106,14 @@ struct SaveMyJoyPopUpView: View {
         if fromAlbumSetting {
             showSaveJoyToAlbumPopUp = false
         } else {
-            popUpStatus.showSaveJoyToAlbumPopUp = false
+            showSaveJoyPopUpFromRecordMain = false
         }
     }
 
     func saveJoy() {
         // 소확행 저장
         print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
-        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, response in
+        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
                 dismissPopUp()

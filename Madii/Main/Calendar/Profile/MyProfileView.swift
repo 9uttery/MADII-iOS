@@ -5,52 +5,143 @@
 //  Created by 정태우 on 1/25/24.
 //
 
+import PhotosUI
 import SwiftUI
 
 struct MyProfileView: View {
+    @State private var image = UIImage(named: "defaultProfile") ?? UIImage()
+    @State private var showImageSheet = false
+    @State private var showProfileImageSheet: Bool = false
+    
     @State var nickname: String = ""
+    @State private var isNicknameVaild: Bool = false
+    private var helperMessage: String {
+        self.isNicknameVaild ? "사용할 수 있는 닉네임이에요." : "대소문자 영문 및 한글, 숫자만 사용 가능해요."
+    }
+    
     var body: some View {
         VStack {
-            Image("defaultProfile")
-                .resizable()
-                .frame(width: 116, height: 116)
-                .padding(.vertical, 28)
-            
-            HStack {
-                TextField("닉네임 (1-10자, 한글/영문/숫자 사용 가능)", text: $nickname, axis: .vertical)
-                    .madiiFont(font: .madiiBody3, color: .white)
-                    .onChange(of: nickname) { newValue in
-                        // 입력값이 변경될 때 호출되는 블록
-                        // 여기서 원하는 동작을 수행하면 됩니다.
-                        let limitedInput = String(newValue.prefix(10)) // 최대 10글자로 제한
-                        nickname = limitedInput
+            ScrollView {
+                VStack(spacing: 24) {
+                    Button {
+                        self.showProfileImageSheet = true
+                    } label: {
+                        if image == UIImage() {
+                            Image("defaultProfile")
+                                .frame(width: 140, height: 140)
+                        } else {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .cornerRadius(140)
+                        }
                     }
-                
-                Text("\(nickname.count)/10")
-                    .madiiFont(font: .madiiBody3, color: .gray500)
+                    .sheet(isPresented: self.$showProfileImageSheet) {
+                        VStack(spacing: 0) {
+                            Button {
+                                let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+                                if status == .notDetermined {
+                                    print("notDetermined")
+                                    PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                        showPhotoLibrary(status: status)
+                                    }
+                                } else {
+                                    showPhotoLibrary(status: status)
+                                }
+                            } label: {
+                                HStack {
+                                    Text("라이브러리에서 선택")
+                                        .madiiFont(font: .madiiBody2, color: .white)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 16)
+                                .frame(height: 50)
+                            }
+                            
+                            Button {
+                                image = UIImage(named: "defaultProfile") ?? UIImage()
+                                showProfileImageSheet = false
+                            } label: {
+                                HStack {
+                                    Text("현재 사진 삭제")
+                                        .madiiFont(font: .madiiBody2, color: .white)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 16)
+                                .frame(height: 50)
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.top, 60)
+                        .background(Color.madiiPopUp)
+                        .presentationDetents([.height(180)])
+                        .presentationDragIndicator(.visible)
+                    }
+                    .sheet(isPresented: $showImageSheet) {
+                        // Pick an image from the photo library:
+                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                        
+                        //  If you wish to take a photo from camera instead:
+                        // ImagePicker(sourceType: .camera, selectedImage: self.$image)
+                    }
+                    
+                    MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
+                                   strokeColor: self.strokeColor(), limit: 10)
+                    .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
+                    .onChange(of: self.nickname) { self.checkValidNickname($0) }
+                }
+                .padding(.top, 28)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 20)
             }
-            .padding(.vertical, 16)
-            .padding(.horizontal, 12)
-            .background(Color.madiiOption)
-            .cornerRadius(8)
-            HStack {
-                Text("특수문자는 사용하실 수 없어요.")
-                    .madiiFont(font: .madiiBody4, color: .gray500)
-                Spacer()
-            }
+            .scrollIndicators(.never)
+            
             Spacer()
+            
             Button {
-//                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: "") { isSuccess in
-//                    
-//                }
+                
             } label: {
-                StyleJoyNextButton(label: "저장", isDisabled: nickname.isEmpty)
+                MadiiButton(title: "저장", color: nickname.isEmpty ? .gray : .white)
             }
+            .padding(.bottom, 24)
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
         .navigationTitle("프로필")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+    }
+    
+    private func showPhotoLibrary(status: PHAuthorizationStatus) {
+        showProfileImageSheet = false
+        
+        if status == .authorized {
+            print("허용")
+            showImageSheet.toggle()
+        } else if status == .limited {
+            print("제한")
+            showImageSheet.toggle()
+        } else {
+            print("거부")
+        }
+    }
+    
+    private func checkValidNickname(_ nickname: String) {
+        let nicknameRegEx = "^[가-힣a-zA-Z0-9]*$"
+        let nicknamePred = NSPredicate(format: "SELF MATCHES %@", nicknameRegEx)
+        self.isNicknameVaild = nicknamePred.evaluate(with: nickname)
+        if nickname.isEmpty { self.isNicknameVaild = false }
+    }
+    
+    private func strokeColor() -> Color {
+        if self.nickname.isEmpty {
+            return Color.gray500
+        } else if self.isNicknameVaild {
+            return Color.madiiYellowGreen
+        } else {
+            return Color.madiiOrange
+        }
     }
 }
 

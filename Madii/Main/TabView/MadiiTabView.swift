@@ -9,16 +9,17 @@ import Combine
 import SwiftUI
 
 struct MadiiTabView: View {
-    @State var tabIndex: TabIndex = .record
+    @State var tabIndex: TabIndex = .home
     @State private var isKeyboardVisible = false
     
     @State private var showPlaylistBar: Bool = false
+    @State private var updatePlaylistBar: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0) {
                 switch tabIndex {
-                case .home: HomeView()
+                case .home: HomeView(updatePlaylistBar: $updatePlaylistBar)
                 case .record: RecordView()
                 case .calendar: CalendarView()
                 }
@@ -31,7 +32,7 @@ struct MadiiTabView: View {
             VStack(spacing: 0) {
                 Spacer()
                 
-                PlaylistBar(showPlaylistBar: $showPlaylistBar)
+                PlaylistBar(updatePlaylistBar: $updatePlaylistBar, showPlaylistBar: $showPlaylistBar)
                 
                 MadiiTabBar(tabIndex: $tabIndex)
                     .frame(height: 60)
@@ -39,10 +40,6 @@ struct MadiiTabView: View {
             .ignoresSafeArea(.keyboard)
         }
     }
-}
-
-#Preview {
-    MadiiTabView()
 }
 
 extension Publishers {

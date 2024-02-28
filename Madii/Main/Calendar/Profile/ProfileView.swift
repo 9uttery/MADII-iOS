@@ -15,7 +15,7 @@ struct ProfileView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 18) {
-                NavigationLink { MyProfileView() } label: { userInfoRow }
+                NavigationLink { MyProfileView(nickname: name) } label: { userInfoRow }
                     .background(Color.madiiBox)
                     .cornerRadius(20)
                 

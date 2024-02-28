@@ -27,14 +27,15 @@ struct MyAlbumsView: View {
                     showAddAlbumPopUp = true
                 } label: {
                     ZStack {
-                        Circle()
-                            .foregroundStyle(Color.white)
-                            .frame(width: 24, height: 24)
-                        
-                        Image(systemName: "plus.app.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
+                        Rectangle()
                             .foregroundStyle(Color.madiiOption)
+                            .frame(width: 24, height: 24)
+                            .cornerRadius(6)
+                        
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 13, height: 13)
+                            .foregroundStyle(Color.white)
                             .padding(.horizontal, 8)
                     }
                 }
@@ -42,15 +43,12 @@ struct MyAlbumsView: View {
             
             VStack(spacing: 16) {
                 ForEach(albums) { album in
-                    Button {
-                        selectedAlbum = album
-                        showAlbumDetailView = true
+                    NavigationLink {
+                        AlbumDetailView(album: album)
                     } label: {
                         AlbumRowWithRightView(album: album) { }
                     }
                 }
-                .navigationDestination(isPresented: $showAlbumDetailView) {
-                    AlbumDetailView(album: selectedAlbum) }
             }
             .onAppear { getAlbums() }
             .onChange(of: showAddAlbumPopUp) { _ in

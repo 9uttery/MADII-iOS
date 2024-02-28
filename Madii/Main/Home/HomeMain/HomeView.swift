@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showSaveJoyPopUp: Bool = false
+    
+    @Binding var updatePlaylistBar: Bool /// 플리바 업데이트
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -21,7 +23,7 @@ struct HomeView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        HomeTodayJoyView() // 오늘의 소확행
+                        HomeTodayJoyView(updatePlaylistBar: $updatePlaylistBar) // 오늘의 소확행
                         HomeRecommendView() // 나만의 취향저격 소확행
                         HomePlayJoyView() // 행복을 재생해요
                     }
@@ -30,14 +32,7 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.never)
             }
-
-            // 소확행 저장하기 팝업
-//            if showSaveJoyPopUp { SaveMyJoyPopUpView() }
         }
         .navigationTitle("")
     }
-}
-
-#Preview {
-    HomeView()
 }
