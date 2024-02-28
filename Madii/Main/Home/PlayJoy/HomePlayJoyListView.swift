@@ -52,11 +52,24 @@ struct HomePlayJoyListView: View {
         .scrollIndicators(.never)
         .navigationTitle("행복을 재생해요")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            HomeAPI.shared.getAllAlbums(albumId: nil, size: 30) { isSuccess, allAlbum in
-                if isSuccess {
-                    playAlbums = allAlbum.content
-                }
+        .onAppear { getAlbums() }
+        .navigationBarItems(trailing:
+            Button(action: {
+                // 버튼을 탭했을 때 수행할 작업
+            }) {
+                Image(systemName: "gear")
+                    .foregroundColor(.blue) // 버튼 색상 설정
+                    .imageScale(.large) // 이미지 크기 설정
+            }
+        )
+    }
+    
+    private func getAlbums() {
+        HomeAPI.shared.getAllAlbums(albumId: nil, size: 999) { isSuccess, allAlbum in
+            if isSuccess {
+                playAlbums = allAlbum.content
+            } else {
+                print("행복을 재생해요 - 전체 앨범 불러오기 실패")
             }
         }
     }
