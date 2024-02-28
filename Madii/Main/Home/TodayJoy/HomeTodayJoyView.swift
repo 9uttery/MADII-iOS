@@ -13,6 +13,8 @@ struct HomeTodayJoyView: View {
     @State private var counter = 0 /// 파티클 애니메이션 추가
     @State var selectedJoy: Joy? /// 소확행 메뉴 bottom sheet 연결 joy
     
+    @Binding var updatePlaylistBar: Bool /// 플리바 업데이트
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
@@ -69,6 +71,7 @@ struct HomeTodayJoyView: View {
         AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId) { isSuccess in
             if isSuccess {
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
+                updatePlaylistBar.toggle()
             } else {
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
             }
