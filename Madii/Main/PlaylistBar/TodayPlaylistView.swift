@@ -12,7 +12,7 @@ struct TodayPlaylistView: View {
     @State private var allJoys: [MyJoy] = MyJoy.dummys
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
-    @State private var showMoveJoyBottomSheet: Bool = true
+    @State private var showMoveJoyBottomSheet: Bool = false
     
     @State private var showAlert = false
 
@@ -177,9 +177,7 @@ struct TodayPlaylistView: View {
                 }
                 allJoys.append(MyJoy(date: yesterday.date, joys: newJoys))
                 
-                if showMoveJoyBottomSheet {
-                    showMoveJoyBottomSheet = allJoys[0].joys.contains { $0.isAchieved == false }
-                }
+                showMoveJoyBottomSheet = allJoys[1].joys.contains { $0.isAchieved == false }
                 
                 if allJoys[0].joys.isEmpty && allJoys[1].joys.isEmpty {
                     showEmptyView = true
