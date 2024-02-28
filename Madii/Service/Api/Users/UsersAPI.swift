@@ -124,7 +124,7 @@ class UsersAPI {
                     self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
                     self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
                     
-                    // UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    self.saveFCMToken()
                     
                     completion(true, data)
                     
@@ -161,6 +161,8 @@ class UsersAPI {
                     self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
                     self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
                     
+                    self.saveFCMToken()
+                    
                     completion(true, data)
                     
                 case .failure(let error):
@@ -196,6 +198,8 @@ class UsersAPI {
                     self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
                     self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
                     
+                    self.saveFCMToken()
+                    
                     completion(true, data)
                     
                 case .failure(let error):
@@ -230,6 +234,8 @@ class UsersAPI {
                     
                     self.keychain.set(accessToken, forKey: "accessToken", withAccess: .accessibleWhenUnlocked)
                     self.keychain.set(refreshToken, forKey: "refreshToken", withAccess: .accessibleWhenUnlocked)
+                    
+                    self.saveFCMToken()
                     
                     completion(true, data)
                     
@@ -271,5 +277,16 @@ class UsersAPI {
                     completion(false)
                 }
             }
+    }
+    
+    private func saveFCMToken() {
+        let token = UserDefaults.standard.value(forKey: "fcmToken") as? String
+        NotificationAPI.shared.postFCMToken(token: token ?? "") { isSuccess in
+            if isSuccess {
+                print("fcm 토큰 저장 성공")
+            } else {
+                print("fcm 토큰 저장 실패")
+            }
+        }
     }
 }

@@ -35,6 +35,12 @@ struct LogOutPopUpView: View {
         ProfileAPI.shared.logout { isSuccess in
             if isSuccess {
                 print("Success LogOut")
+                
+                // UserDefaults 삭제
+                for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                    UserDefaults.standard.removeObject(forKey: key.description)
+                }
+                
                 keychain.clear()
                 showSplash = true
             } else {
