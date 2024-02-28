@@ -66,15 +66,6 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("fcmToken: \(fcmToken ?? "")")
         
-        // UserDefaults.standard.value(forKey: "fcmToken") as? String
-        NotificationAPI.shared.postFCMToken(token: fcmToken ?? "") { isSuccess in
-            if isSuccess {
-                print("fcm 토큰 저장 성공")
-            } else {
-                print("fcm 토큰 저장 실패")
-            }
-        }
-        
         // fcmToken UserDefaults에 저장
         UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
         UserDefaults.standard.synchronize()
