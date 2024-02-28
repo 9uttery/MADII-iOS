@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomePlayJoyListView: View {
     @State var playAlbums: [GetAlbumsResponse] = []
+    @State private var showAddAlbumPopUp: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
@@ -36,7 +38,9 @@ struct HomePlayJoyListView: View {
                     .padding(.bottom, 8)
                 
                 Button {
-                    
+                    withoutAnimation {
+                        showAddAlbumPopUp = true
+                    }
                 } label: {
                     Text("나만의 소확행 앨범 만들기")
                         .madiiFont(font: .madiiBody5, color: .darkYellowGreen)
@@ -54,11 +58,15 @@ struct HomePlayJoyListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { getAlbums() }
         .navigationBarItems(trailing: addButton)
+        .transparentFullScreenCover(isPresented: $showAddAlbumPopUp) {
+            AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }
     }
     
     private var addButton: some View {
         Button {
-            
+            withoutAnimation {
+                showAddAlbumPopUp = true
+            }
         } label: {
             Text("추가")
                 .madiiFont(font: .madiiBody5, color: .darkYellowGreen)

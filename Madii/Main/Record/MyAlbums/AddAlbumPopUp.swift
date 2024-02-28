@@ -59,7 +59,9 @@ struct AddAlbumPopUp: View {
     }
     
     private func dismiss() {
-        showAddAlbumPopUp = false
+        withoutAnimation {
+            showAddAlbumPopUp = false
+        }
     }
     
     private func addAlbum() {
