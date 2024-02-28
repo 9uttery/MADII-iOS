@@ -35,7 +35,7 @@ struct HomePlayJoyListView: View {
                     .madiiFont(font: .madiiBody4, color: .gray500)
                     .padding(.bottom, 8)
                 
-                NavigationLink {
+                Button {
                     
                 } label: {
                     Text("나만의 소확행 앨범 만들기")
@@ -53,15 +53,20 @@ struct HomePlayJoyListView: View {
         .navigationTitle("행복을 재생해요")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { getAlbums() }
-        .navigationBarItems(trailing:
-            Button(action: {
-                // 버튼을 탭했을 때 수행할 작업
-            }) {
-                Image(systemName: "gear")
-                    .foregroundColor(.blue) // 버튼 색상 설정
-                    .imageScale(.large) // 이미지 크기 설정
-            }
-        )
+        .navigationBarItems(trailing: addButton)
+    }
+    
+    private var addButton: some View {
+        Button {
+            
+        } label: {
+            Text("추가")
+                .madiiFont(font: .madiiBody5, color: .darkYellowGreen)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 12)
+                .background(Color.madiiYellowGreen)
+                .cornerRadius(6)
+        }
     }
     
     private func getAlbums() {
@@ -73,8 +78,4 @@ struct HomePlayJoyListView: View {
             }
         }
     }
-}
-
-#Preview {
-    HomePlayJoyListView()
 }
