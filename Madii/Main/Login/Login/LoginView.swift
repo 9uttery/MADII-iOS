@@ -52,6 +52,7 @@ struct LoginView: View {
         .padding(.horizontal, 16)
         .background(OnboardingBackgroundGradient())
         .navigationTitle("")
+        .navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder
