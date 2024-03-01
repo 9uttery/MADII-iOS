@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @AppStorage("isLoggedIn") var isLoggedIn = false
     @State private var selectedDate = Date()
     let weekdays = ["일", "월", "화", "수", "목", "금", "토"]
     @State private var showDatePicker: Bool = false
@@ -58,7 +59,11 @@ struct CalendarView: View {
             Spacer()
             
             NavigationLink {
-                ProfileView()
+                if isLoggedIn {
+                    ProfileView()
+                } else {
+                    GuestProfileView()
+                }
             } label: {
                 Image(systemName: "person.crop.circle")
                     .resizable()

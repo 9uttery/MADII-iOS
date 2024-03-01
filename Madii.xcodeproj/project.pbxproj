@@ -111,6 +111,8 @@
 		51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* MyJoyView.swift */; };
 		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
 		51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */; };
+		BE06499B2B921522000EF015 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06499A2B921522000EF015 /* UserStatView.swift */; };
+		BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06499C2B921570000EF015 /* ReallyLeaveView.swift */; };
 		BE0C3F8A2B81B69A00275FD3 /* RecommendJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */; };
 		BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F8E2B81E77200275FD3 /* ConfettiFrame.swift */; };
 		BE0C3F972B81E77200275FD3 /* PlayParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F8F2B81E77200275FD3 /* PlayParticleView.swift */; };
@@ -144,6 +146,7 @@
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
+		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
 		BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */; };
 		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
@@ -239,6 +242,8 @@
 		51F25E182B1A085200F6CCFE /* MyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJoyView.swift; sourceTree = "<group>"; };
 		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
 		51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyAchievedJoyView.swift; sourceTree = "<group>"; };
+		BE06499A2B921522000EF015 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
+		BE06499C2B921570000EF015 /* ReallyLeaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallyLeaveView.swift; sourceTree = "<group>"; };
 		BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyListView.swift; sourceTree = "<group>"; };
 		BE0C3F8E2B81E77200275FD3 /* ConfettiFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiFrame.swift; sourceTree = "<group>"; };
 		BE0C3F8F2B81E77200275FD3 /* PlayParticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayParticleView.swift; sourceTree = "<group>"; };
@@ -271,6 +276,7 @@
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
+		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BEE9B41D2B8B85CA0077FAC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 				BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */,
 				BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */,
 				BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */,
+				BE98A4042B6627560064CC6F /* RecommendJoyView.swift */,
 			);
 			path = RecommendJoy;
 			sourceTree = "<group>";
@@ -604,7 +611,6 @@
 				510EF90E2B864650000768D7 /* RecommendJoy */,
 				510EF90F2B8649F0000768D7 /* PlayJoy */,
 				BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */,
-				BE98A4042B6627560064CC6F /* RecommendJoyView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -747,6 +753,9 @@
 				BE3986732B635AC100643805 /* LogOutPopUpView.swift */,
 				BE3986752B63604A00643805 /* SignOutView.swift */,
 				BE3986772B63651300643805 /* GuestProfileView.swift */,
+				BEE0FBA62B91BD5A009467AC /* NotificationView.swift */,
+				BE06499A2B921522000EF015 /* UserStatView.swift */,
+				BE06499C2B921570000EF015 /* ReallyLeaveView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -932,6 +941,7 @@
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
+				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */,
@@ -956,6 +966,7 @@
 				512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */,
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
+				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
@@ -965,6 +976,7 @@
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51B6B7AF2B8BDAE600A31FEE /* AddAlbumPopUp.swift in Sources */,
 				51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */,
+				BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */,
 				51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
