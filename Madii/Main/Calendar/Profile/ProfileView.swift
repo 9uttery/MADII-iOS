@@ -15,16 +15,19 @@ struct ProfileView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 18) {
-                NavigationLink { MyProfileView(nickname: name) } label: { userInfoRow }
+                NavigationLink { MyProfileView(url: $url, nickname: name) } label: { userInfoRow }
                     .background(Color.madiiBox)
                     .cornerRadius(20)
                 
                 VStack(spacing: 4) {
-                    NavigationLink { } label: { profileRow(title: "알림") }
+                    NavigationLink { NotificationView() } label: { profileRow(title: "알림") }
+                        .navigationBarTitle("")
                     
                     NavigationLink { NoticeView() } label: { profileRow(title: "공지사항") }
+                        .navigationBarTitle("")
                     
                     NavigationLink { InquiryView() } label: { profileRow(title: "문의하기") }
+                        .navigationBarTitle("")
                 }
                 .padding(.vertical, 4)
                 .background(Color.madiiBox)
@@ -32,8 +35,10 @@ struct ProfileView: View {
                 
                 VStack(spacing: 10) {
                     Button { showLogOutPopUp = true } label: { profileRow(title: "로그아웃") }
+                        .navigationBarTitle("")
                     
                     NavigationLink { SignOutView() } label: { profileRow(title: "회원탈퇴") }
+                        .navigationBarTitle("")
                 }
                 .padding(.vertical, 4)
                 .background(Color.madiiBox)

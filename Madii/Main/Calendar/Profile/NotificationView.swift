@@ -1,29 +1,29 @@
 //
-//  NoticeView.swift
+//  NotificationView.swift
 //  Madii
 //
-//  Created by 정태우 on 1/25/24.
+//  Created by 정태우 on 3/1/24.
 //
 
 import SwiftUI
 
-struct Notice: Identifiable {
+struct Notifications: Identifiable {
     let id = UUID()
     let title: String
-    let content: String
-    let date: String
+    let contents: String
+    let createdAt: String
 }
 
-struct NoticeView: View {
-    @State private var notices: [Notice] = []
+struct NotificationView: View {
+    @State private var notifications: [Notifications] = []
     
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                ForEach(notices) { notice in
+                ForEach(notifications) { notification in
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(notice.title)
+                            Text(notification.title)
                                 .madiiFont(font: .madiiSubTitle, color: .white)
                                 .padding(.bottom, 20)
                             
@@ -31,11 +31,11 @@ struct NoticeView: View {
                         }
                         .padding(.leading, 2)
                         
-                        Text(notice.content)
+                        Text(notification.contents)
                             .madiiFont(font: .madiiBody3, color: .gray400)
                             .padding(.bottom, 12)
                         
-                        Text(notice.date)
+                        Text(notification.createdAt)
                             .madiiFont(font: .madiiBody3, color: .gray700)
                             .padding(.bottom, 12)
                     }
@@ -49,27 +49,25 @@ struct NoticeView: View {
         }
         .padding(.top, 28)
         .padding(.horizontal, 16)
-        .navigationTitle("공지사항")
+        .navigationTitle("알림")
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear { getNotices() }
+        .onAppear { getNotification() }
     }
     
-    private func getNotices() {
-        ProfileAPI.shared.getNotice { isSuccess, notices in
+    private func getNotification() {
+        ProfileAPI.shared.getNotification { isSuccess, notification in
             if isSuccess {
-                self.notices = []
-                for notice in notices {
-                    let newNotice = Notice(title: notice.title, content: notice.contents, date: notice.createdAt)
-                    self.notices.append(newNotice)
+                self.notifications = []
+                for notific in notification {
+                    let newNotice = Notifications(title: notific.title, contents: notific.contents, createdAt: notific.createdAt)
+                    self.notifications.append(newNotice)
                 }
-            } else {
-                print("DEBUG NoticeView isSuccess false")
             }
         }
     }
 }
 
 #Preview {
-    NoticeView()
+    NotificationView()
 }
