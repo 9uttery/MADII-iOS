@@ -19,3 +19,20 @@ struct GetUsersStatResponse: Codable {
     let achievedJoyCount: Int
     let achievementCount: Int
 }
+
+struct GetNotificationListResponse: Codable {
+    let notificationInfos: [GetNotificationResponse]
+}
+
+struct GetNotificationResponse: Codable {
+    let title, contents, createdAt: String
+}
+
+struct GetNoticeResponse: Codable {
+    let notices: [GetNoticeItemResponse]
+}
+
+struct GetNoticeItemResponse: Codable {
+    let id: Int
+    let title, contents, createdAt: String
+}

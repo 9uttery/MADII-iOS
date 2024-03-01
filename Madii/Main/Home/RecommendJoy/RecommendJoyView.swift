@@ -9,32 +9,39 @@ import SwiftUI
 
 struct RecommendJoyView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var nickName: String = "코코"
-    @State var recommendJoy: Joy = Joy(title: "넷플릭스 보면서 귤 까먹기", counts: 1, satisfaction: JoySatisfaction.great, isSaved: true)
+    @State var nickname: String = "코코"
+    @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기")
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("\(nickName)님의 취향저격 소확행")
+            Text("\(nickname)님의 취향저격 소확행")
                 .madiiFont(font: .madiiSubTitle, color: .white)
                 .padding(.top, 28)
                 .padding(.bottom, 68)
             VStack(spacing: 0) {
-                Image("")
-                    .resizable()
-                    .frame(width: 220, height: 220)
+                ZStack {
+                    Color.black
+                        .frame(width: 220, height: 220)
+                        .cornerRadius(90)
+                    
+                    
+                    Image("icon_\(recommendJoy.joyIconNum)")
+                        .resizable()
+                        .frame(width: 118, height: 118)
+                }
                 
-            Text(recommendJoy.title)
+                Text(recommendJoy.contents)
                 .madiiFont(font: .madiiSubTitle, color: .white)
                 .padding(.bottom, 20)
             HStack {
                 Button {
                     
                 } label: {
-                    if recommendJoy.isSaved {
-                        Image("activeSave")
-                    } else {
-                        Image("inActiveSave")
-                    }
+//                    if recommendJoy. {
+//                        Image("activeSave")
+//                    } else {
+//                        Image("inActiveSave")
+//                    }
                     
                 }
                 Button {
@@ -93,21 +100,28 @@ struct RecommendJoyView: View {
                 StyleJoyNextButton(label: "완료", isDisabled: true)
             }
         }
-        .navigationTitle("\(nickName)님의 취향저격 소확행")
+        .navigationTitle("\(nickname)님의 취향저격 소확행")
         .toolbarBackground(Color.clear, for: .navigationBar)
         .padding(.horizontal, 16)
         .background(
-                LinearGradient(
-                stops: [
-                Gradient.Stop(color: Color(red: 0.61, green: 0.42, blue: 1).opacity(0.2), location: 0.00),
-                Gradient.Stop(color: Color(red: 0.5, green: 0.77, blue: 0.91).opacity(0.2), location: 0.48),
-                Gradient.Stop(color: Color(red: 0.81, green: 0.98, blue: 0.32).opacity(0.2), location: 1.00)
-                ],
-                startPoint: UnitPoint(x: 0.5, y: -0.19),
-                endPoint: UnitPoint(x: 0.5, y: 1.5)
-                )
+            LinearGradient(
+            stops: [
+            Gradient.Stop(color: Color(red: 0.61, green: 0.42, blue: 1).opacity(0.2), location: 0.00),
+            Gradient.Stop(color: Color(red: 0.5, green: 0.77, blue: 0.91).opacity(0.2), location: 0.48),
+            Gradient.Stop(color: Color(red: 0.81, green: 0.98, blue: 0.32).opacity(0.2), location: 1.00)
+            ],
+            startPoint: UnitPoint(x: 0.5, y: -0.19),
+            endPoint: UnitPoint(x: 0.5, y: 1.5)
             )
-            .background(Color(red: 0.06, green: 0.06, blue: 0.13))
+        )
+        .background(Color(red: 0.06, green: 0.06, blue: 0.13))
+        .onAppear {
+            ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+                if isSuccess {
+                    nickname = userProfile.nickname
+                }
+            }
+        }
     }
 }
 
