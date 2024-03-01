@@ -44,6 +44,7 @@ struct SplashView: View {
             reissueTokens()
             delaySplashView()
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     private var splashView: some View {
