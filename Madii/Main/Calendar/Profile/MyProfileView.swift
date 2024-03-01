@@ -10,9 +10,10 @@ import SwiftUI
 
 struct MyProfileView: View {
     @State private var image = UIImage(named: "defaultProfile") ?? UIImage()
+    @Environment(\.presentationMode) var presentationMode
     @State private var showImageSheet = false
     @State private var showProfileImageSheet: Bool = false
-    
+    @Binding var url: String
     @State var nickname: String = ""
     @State private var isNicknameVaild: Bool = false
     private var helperMessage: String {
@@ -26,9 +27,17 @@ struct MyProfileView: View {
                     Button {
                         self.showProfileImageSheet = true
                     } label: {
-                        if image == UIImage() {
-                            Image("defaultProfile")
-                                .frame(width: 140, height: 140)
+                        if image == UIImage(named: "defaultProfile") {
+                            AsyncImage(url: URL(string: url)) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 140, height: 140)
+                                    .clipShape(Circle())
+                            } placeholder: {
+                                Image("defaultProfile")
+                                    .resizable()
+                                    .frame(width: 140, height: 140)
+                            }
                         } else {
                             Image(uiImage: image)
                                 .resizable()
@@ -101,7 +110,12 @@ struct MyProfileView: View {
             Spacer()
             
             Button {
-                
+                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
+                    if isSuccess {
+                        print("프로필 수정이 정상적으로 처리되었습니다.")
+                    }
+                }
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 MadiiButton(title: "저장", color: nickname.isEmpty ? .gray : .white)
             }
@@ -146,5 +160,5 @@ struct MyProfileView: View {
 }
 
 #Preview {
-    MyProfileView()
+    MyProfileView(url: .constant(""))
 }
