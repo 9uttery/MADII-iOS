@@ -18,32 +18,34 @@ struct NoticeView: View {
     @State private var notices: [Notice] = []
     
     var body: some View {
-        VStack(spacing: 12) {
-            ForEach(notices) { notice in
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(notice.title)
-                            .madiiFont(font: .madiiSubTitle, color: .white)
-                            .padding(.bottom, 20)
+        ScrollView {
+            VStack(spacing: 12) {
+                ForEach(notices) { notice in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(notice.title)
+                                .madiiFont(font: .madiiSubTitle, color: .white)
+                                .padding(.bottom, 20)
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 2)
                         
-                        Spacer()
+                        Text(notice.content)
+                            .madiiFont(font: .madiiBody3, color: .gray400)
+                            .padding(.bottom, 12)
+                        
+                        Text(notice.date)
+                            .madiiFont(font: .madiiBody3, color: .gray700)
+                            .padding(.bottom, 12)
                     }
-                    .padding(.leading, 2)
-                    
-                    Text(notice.content)
-                        .madiiFont(font: .madiiBody3, color: .gray400)
-                        .padding(.bottom, 12)
-                    
-                    Text(notice.date)
-                        .madiiFont(font: .madiiBody3, color: .gray700)
-                        .padding(.bottom, 12)
+                    .padding(20)
+                    .background(Color.madiiBox)
+                    .cornerRadius(20)
                 }
-                .padding(20)
-                .background(Color.madiiBox)
-                .cornerRadius(20)
+                
+                Spacer()
             }
-            
-            Spacer()
         }
         .padding(.top, 28)
         .padding(.horizontal, 16)
