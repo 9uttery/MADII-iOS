@@ -18,7 +18,7 @@ struct LogOutPopUpView: View {
             Color.black.opacity(0.8).ignoresSafeArea()
                 .onTapGesture { dismissPopUp() }
             
-            PopUp(title: "로그아웃 하시겠어요?", leftButtonTitle: "네", leftButtonAction: logOut, rightButtonTitle: "아니오", rightButtonColor: .white, rightButtonAction: dismissPopUp) { }
+            PopUp(title: "로그아웃하시겠어요?", leftButtonTitle: "네", leftButtonAction: logOut, rightButtonTitle: "아니오", rightButtonColor: .white, rightButtonAction: dismissPopUp) { }
                 .padding(.top, 276)
                 .padding(.horizontal, 36)
         }
