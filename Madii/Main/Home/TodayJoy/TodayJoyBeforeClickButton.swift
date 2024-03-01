@@ -14,6 +14,7 @@ struct TodayJoyBeforeClickButton: View {
     var body: some View {
         Button {
             isClickedToday = true
+            UserDefaults.standard.set(true, forKey: "isClickedToday")
             counter += 1
         } label: {
             ZStack {
