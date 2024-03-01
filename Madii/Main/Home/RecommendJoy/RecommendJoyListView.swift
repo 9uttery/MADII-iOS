@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct RecommendJoyListView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var selectedIdx: Int?
     @Binding var recommendJoys: [GetJoyResponseJoy]
-    @State private var selectedJoy: GetJoyResponseJoy?
+    @Binding var selectedJoy: GetJoyResponseJoy?
+    @State var selectedJoyEllipsis: Joy?
     @Binding var isClicked: [Bool]
+    @State var isActive: Bool = false
     var body: some View {
         VStack(spacing: 12) {
             if recommendJoys.isEmpty {
@@ -37,18 +40,32 @@ struct RecommendJoyListView: View {
                     Button {
                         if selectedIdx == joy.joyId {
                             selectedIdx = nil
+                            selectedJoy = nil
                         } else {
                             selectedIdx = joy.id
+                            selectedJoy = joy
+                        }
+                        if selectedJoy != nil && !recommendJoys.isEmpty {
+                            let isContainedInRecommendJoys = recommendJoys.contains { joy in
+                                joy.joyId == selectedJoy?.joyId
+                            }
+                            
+                            if !isContainedInRecommendJoys {
+                                selectedJoy = nil
+                            }
                         }
                     } label: {
                         HStack(spacing: 0) {
-                            Image("")
-                                .resizable()
-                                .frame(width: 56, height: 56)
-                                .background(Color.black)
-                                .cornerRadius(90)
-                                .padding(.trailing, 15)
-                            
+                            ZStack {
+                                Color.black
+                                    .frame(width: 56, height: 56)
+                                    .cornerRadius(90)
+                                
+                                Image("icon_\(joy.joyIconNum)")
+                                    .resizable()
+                                    .frame(width: 34, height: 34)
+                            }
+                            .padding(.trailing, 15)
                             Text(joy.contents)
                                 .madiiFont(font: .madiiBody3, color: .white)
                                 .multilineTextAlignment(.leading)
@@ -56,7 +73,7 @@ struct RecommendJoyListView: View {
                             Spacer()
                             
                             Button {
-                                selectedJoy = joy
+                                selectedJoyEllipsis = Joy(joyId: joy.joyId, title: joy.contents)
                             } label: {
                                 VStack {
                                     Image(systemName: "ellipsis")
@@ -72,19 +89,33 @@ struct RecommendJoyListView: View {
                         )
                     }
                 }
-//                .sheet(item: $selectedJoy) { item in
-//                    JoyMenuBottomSheet(joy: item, isMine: true) }
             }
+            
             Spacer()
+            
             NavigationLink {
-                
+                RecommendJoyView(recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로"), isActive: $isActive)
             } label: {
-                StyleJoyNextButton(label: "완료", isDisabled: isClicked.contains(true))
+                if selectedJoy != nil {
+                    StyleJoyNextButton(label: "완료", isDisabled: true)
+                } else {
+                    StyleJoyNextButton(label: "완료", isDisabled: false)
+                }
+            }
+            .disabled(selectedJoy != nil ? false : true)
+            .navigationBarTitle("")
+        }
+        .sheet(item: $selectedJoyEllipsis) { _ in
+            JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: false, isFromTodayJoy: true)
+        }
+        .onAppear {
+            if isActive {
+               presentationMode.wrappedValue.dismiss()
             }
         }
     }
 }
 
 #Preview {
-    RecommendJoyListView(recommendJoys: .constant([]), isClicked: .constant(Array(repeating: false, count: 9)))
+    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)))
 }
