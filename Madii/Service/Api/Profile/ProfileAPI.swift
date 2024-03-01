@@ -261,13 +261,39 @@ class ProfileAPI {
                 }
             }
     }
-}
-
-struct GetNoticeResponse: Codable {
-    let notices: [GetNoticeItemResponse]
-}
-
-struct GetNoticeItemResponse: Codable {
-    let id: Int
-    let title, contents, createdAt: String
+    
+    func getNotification(completion: @escaping (_ isSuccess: Bool, _ notices: [GetNotificationResponse]) -> Void) {
+        let url = "\(baseUrl)/notification"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<GetNotificationListResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getNotificaiton): data nil")
+                        completion(false, [])
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getNotificaiton): success")
+                        completion(true, data.notificationInfos)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getNotificaiton): status \(statusCode))")
+                        completion(false, data.notificationInfos)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getNotificaiton): error \(error))")
+                    completion(false, [])
+                }
+            }
+    }
 }
