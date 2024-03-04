@@ -9,6 +9,8 @@ import Combine
 import SwiftUI
 
 struct MadiiTabView: View {
+    @EnvironmentObject var appStatus: AppStatus
+    
     @State var tabIndex: TabIndex = .home
     @State private var isKeyboardVisible = false
     
@@ -31,6 +33,9 @@ struct MadiiTabView: View {
             
             VStack(spacing: 0) {
                 Spacer()
+                
+                // 신고 완료 토스트
+                if appStatus.showReportToast { ReportAlbumToast() }
                 
                 PlaylistBar(updatePlaylistBar: $updatePlaylistBar, showPlaylistBar: $showPlaylistBar)
                 

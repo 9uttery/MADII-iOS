@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AlbumDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appStatus: AppStatus
     
     @State var album: Album
     @State private var joys: [Joy] = Joy.manyAchievedDummy
@@ -137,6 +138,14 @@ struct AlbumDetailView: View {
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
             }
+            
+            // 신고 완료 토스트
+            if appStatus.showReportToast {
+                VStack {
+                    Spacer()
+                    ReportAlbumToast()
+                }
+            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
@@ -149,7 +158,7 @@ struct AlbumDetailView: View {
         }
         .sheet(isPresented: $showReportSheet) {
             GeometryReader { geo in
-                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp)
+                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp, dismissAlbumDetailView: dismissView)
                     .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
             }
