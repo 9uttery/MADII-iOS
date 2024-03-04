@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AlbumDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appStatus: AppStatus
     
     @State var album: Album
     @State private var joys: [Joy] = Joy.manyAchievedDummy
@@ -136,6 +137,14 @@ struct AlbumDetailView: View {
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
+            }
+            
+            // 신고 완료 토스트
+            if appStatus.showReportToast {
+                VStack {
+                    Spacer()
+                    ReportAlbumToast()
+                }
             }
         }
         .navigationTitle("")
