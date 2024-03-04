@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DeleteJoyPopUp: View {
-    let joy: Joy
+    @Binding var joy: Joy?
     @Binding var showDeleteJoyPopUp: Bool
     
     var body: some View {
@@ -28,10 +28,13 @@ struct DeleteJoyPopUp: View {
     }
     
     private func deleteAlbum() {
-        JoyAPI.shared.deleteJoy(joyId: joy.joyId) { isSuccess in
+        JoyAPI.shared.deleteJoy(joyId: joy?.joyId ?? 0) { isSuccess in
             if isSuccess {
                 print("소확행 삭제 성공")
-                dismissPopUp()
+                
+                withoutAnimation {
+                    joy = nil
+                }
             } else {
                 print("소확행 삭제 실패")
             }

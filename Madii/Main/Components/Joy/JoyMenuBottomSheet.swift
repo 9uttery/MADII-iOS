@@ -77,7 +77,7 @@ struct JoyMenuBottomSheet: View {
             SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
         // 소확행 삭제
         .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
-            DeleteJoyPopUp(joy: newJoy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
+            DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
         }
         .presentationDetents([.height(isMine ? 350 : 280)])
     }
