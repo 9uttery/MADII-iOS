@@ -27,7 +27,7 @@ struct ChangeAlbumInfoPopUpView: View {
                             HStack(spacing: 4) {
                                 Text("이름")
                                     .madiiFont(font: .madiiBody2, color: .white)
-                                Text("*필수로 작성해야해요")
+                                Text("*필수")
                                     .madiiFont(font: .madiiBody4, color: .gray600)
                                 Spacer()
                             }
