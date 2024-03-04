@@ -149,7 +149,7 @@ struct AlbumDetailView: View {
         }
         .sheet(isPresented: $showReportSheet) {
             GeometryReader { geo in
-                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp)
+                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp, dismissAlbumDetailView: dismissView)
                     .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
             }

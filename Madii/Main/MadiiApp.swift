@@ -17,6 +17,7 @@ import UserNotifications
 struct MadiiApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var appStatus: AppStatus = AppStatus()
     
     init() {
         // Kakao SDK 초기화
@@ -27,6 +28,7 @@ struct MadiiApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
+                .environmentObject(appStatus)
                 .onOpenURL { url in
                     if AuthApi.isKakaoTalkLoginUrl(url) {
                         _ = AuthController.handleOpenUrl(url: url)

@@ -12,6 +12,7 @@ struct ReportBottomSheet: View {
     
     @Binding var showReportSheet: Bool
     @Binding var showReportPopUp: Bool
+    var dismissAlbumDetailView: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -39,7 +40,9 @@ struct ReportBottomSheet: View {
         .background(Color.madiiPopUp)
         .background(Color.madiiPopUp)
         .transparentFullScreenCover(isPresented: $showReportPopUp) {
-            ReportPopUp(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp) }
+            ReportPopUp(album: album, showReportSheet: $showReportSheet,
+                        showReportPopUp: $showReportPopUp,
+                        dismissAlbumDetailView: dismissAlbumDetailView) }
     }
     
     @ViewBuilder
