@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RecommendView: View {
-    @State var nickName: String = "코코"
+    @State private var brightDotIndex = 0
+    @State var nickname: String
     @State var isClicked: [Bool] = Array(repeating: false, count: 9)
     @State var recommendJoys: [GetJoyResponseJoy] = []
     @State var selectedJoy: GetJoyResponseJoy?
@@ -19,10 +20,28 @@ struct RecommendView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("키워드를 선택해주세요")
-                .madiiFont(font: .madiiBody4, color: .white)
-                .padding(.top, 28)
-                .padding(.bottom, 40)
+            HStack {
+                if clickedNum == 0 {
+                    Text("키워드를 선택해주세요")
+                        .madiiFont(font: .madiiBody4, color: .white)
+                } else {
+                    Circle()
+                        .fill(Color.white)
+                        .opacity(brightDotIndex == 0 ? 1.0 : 0.2)
+                        .frame(width: 8, height: 8)
+                    Circle()
+                        .fill(Color.white)
+                        .opacity(brightDotIndex == 1 ? 1.0 : 0.2)
+                        .frame(width: 8, height: 8)
+                    Circle()
+                        .fill(Color.white)
+                        .opacity(brightDotIndex == 2 ? 1.0 : 0.2)
+                        .frame(width: 8, height: 8)
+                }
+            }
+            .frame(height: 20)
+            .padding(.top, 28)
+            .padding(.bottom, 40)
             VStack(spacing: 12) {
                 HStack {
                     StyleJoyButton(label: "활기찬", isClicked: $isClicked[0], buttonColor: Color.madiiSkyBlue) {
@@ -119,26 +138,34 @@ struct RecommendView: View {
                 }
             }
             .padding(.bottom, 81)
-            RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked)
+            RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum)
         }
-        .onChange(of: clickedNum) { newValue in
+        .onChange(of: clickedNum) { _ in
             HomeAPI.shared.postJoyRecommend(when: when, who: who, which: which) { isSuccess, joyList in
                 if isSuccess {
                     recommendJoys = joyList
-                }
-            }
-            if selectedJoy != nil && !recommendJoys.isEmpty {
-                let isContainedInRecommendJoys = recommendJoys.contains { joy in
-                    joy.joyId == selectedJoy?.joyId
-                }
-                
-                if !isContainedInRecommendJoys {
-                    selectedJoy = nil
+                    
+                    if selectedJoy != nil {
+                        let isContainedInRecommendJoys = recommendJoys.contains { joy in
+                            joy.joyId == selectedJoy?.joyId
+                        }
+                        
+                        if !isContainedInRecommendJoys {
+                            selectedJoy = nil
+                        }
+                    }
                 }
             }
         }
-        .navigationTitle("\(nickName)님의 취향저격 소확행")
+        .onAppear {
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                withAnimation {
+                    brightDotIndex = (brightDotIndex + 1) % 3
+                }
+            }
+        }
         .toolbarBackground(Color.clear, for: .navigationBar)
+        .navigationTitle("\(nickname)님의 취향저격 소확행")
         .padding(.horizontal, 16)
         .background(
             LinearGradient(
@@ -151,10 +178,9 @@ struct RecommendView: View {
                 endPoint: UnitPoint(x: 0.5, y: 1.5)
                 )
             )
-        .background(Color(red: 0.06, green: 0.06, blue: 0.13))
     }
 }
 
 #Preview {
-    RecommendView()
+    RecommendView(nickname: "코코")
 }

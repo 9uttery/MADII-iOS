@@ -145,6 +145,7 @@
 		BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */; };
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
+		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
 		BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */; };
@@ -275,6 +276,7 @@
 		BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
+		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				BEE0FBA62B91BD5A009467AC /* NotificationView.swift */,
 				BE06499A2B921522000EF015 /* UserStatView.swift */,
 				BE06499C2B921570000EF015 /* ReallyLeaveView.swift */,
+				BE619EEB2B95BF76005F7EBA /* EmailSender.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */,
 				511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */,
 				5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */,
+				BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */,
 				BE459A632B7E08A7002E9AB2 /* AlbumDTO.swift in Sources */,
 				5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */,
 				51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */,
@@ -1191,7 +1195,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
@@ -1232,7 +1236,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
