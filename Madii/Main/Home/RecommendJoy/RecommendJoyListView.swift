@@ -15,6 +15,8 @@ struct RecommendJoyListView: View {
     @State var selectedJoyEllipsis: Joy?
     @Binding var isClicked: [Bool]
     @State var isActive: Bool = false
+    @State var nickname: String
+    @Binding var clickedNum: Int
     var body: some View {
         VStack(spacing: 12) {
             if recommendJoys.isEmpty {
@@ -44,15 +46,6 @@ struct RecommendJoyListView: View {
                         } else {
                             selectedIdx = joy.id
                             selectedJoy = joy
-                        }
-                        if selectedJoy != nil && !recommendJoys.isEmpty {
-                            let isContainedInRecommendJoys = recommendJoys.contains { joy in
-                                joy.joyId == selectedJoy?.joyId
-                            }
-                            
-                            if !isContainedInRecommendJoys {
-                                selectedJoy = nil
-                            }
                         }
                     } label: {
                         HStack(spacing: 0) {
@@ -94,7 +87,7 @@ struct RecommendJoyListView: View {
             Spacer()
             
             NavigationLink {
-                RecommendJoyView(recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로"), isActive: $isActive)
+                RecommendJoyView(nickname: nickname, recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로"), isActive: $isActive)
             } label: {
                 if selectedJoy != nil {
                     StyleJoyNextButton(label: "완료", isDisabled: true)
@@ -103,7 +96,6 @@ struct RecommendJoyListView: View {
                 }
             }
             .disabled(selectedJoy != nil ? false : true)
-            .navigationBarTitle("")
         }
         .sheet(item: $selectedJoyEllipsis) { _ in
             JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: false, isFromTodayJoy: true)
@@ -117,5 +109,5 @@ struct RecommendJoyListView: View {
 }
 
 #Preview {
-    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)))
+    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0))
 }
