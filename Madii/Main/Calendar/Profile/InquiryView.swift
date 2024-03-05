@@ -13,13 +13,14 @@ struct InquiryView: View {
     @State private var result: Result<MFMailComposeResult, Error>? = nil
     var body: some View {
         VStack {
-            Button {
-                isShowingMailView.toggle()
-            } label: {
-                Image("MailArrow")
-                    .resizable()
-                    .frame(width: 111, height: 85)
-                    .padding(.bottom, 32)
+            Image("MailArrow")
+                .resizable()
+                .frame(width: 111, height: 85)
+                .padding(.bottom, 32)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.isShowingMailView.toggle()
+                }
             }
             .sheet(isPresented: $isShowingMailView) {
                 MailView(isShowing: $isShowingMailView, result: $result)
