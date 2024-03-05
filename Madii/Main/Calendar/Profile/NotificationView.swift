@@ -18,7 +18,7 @@ struct NotificationView: View {
     @State private var notifications: [Notifications] = []
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 12) {
                 ForEach(notifications) { notification in
                     VStack(alignment: .leading) {
