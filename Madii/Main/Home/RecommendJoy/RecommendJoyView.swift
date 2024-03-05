@@ -10,7 +10,7 @@ import SwiftUI
 struct RecommendJoyView: View {
     @State private var updatePlaylistBar: Bool = false
     @Environment(\.presentationMode) var presentationMode
-    @State var nickname: String = "코코"
+    @State var nickname: String
     @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기")
     @Binding var isActive: Bool
     var body: some View {
@@ -110,5 +110,5 @@ struct RecommendJoyView: View {
 }
 
 #Preview {
-    RecommendJoyView(isActive: .constant(false))
+    RecommendJoyView(nickname: "", isActive: .constant(false))
 }

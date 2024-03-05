@@ -14,11 +14,12 @@ struct HomeRecommendView: View {
     @State private var coreAxis: CGFloat = 0.5
     @State private var addNum1: CGFloat = 0.001
     @State private var radius: CGFloat = 0.8
+    @State private var nickname: String = ""
     
     var body: some View {
         VStack {
             NavigationLink {
-                RecommendView()
+                RecommendView(nickname: nickname)
             } label: {
                 Rectangle()
                     .frame(height: 100)
@@ -43,7 +44,10 @@ struct HomeRecommendView: View {
                         .foregroundStyle(Color.clear)
                         .background { backgroundGradation() }
                         .mask { Rectangle().frame(height: 100).cornerRadius(20) }
-                        .onAppear { addAngle() }
+                        .onAppear {
+                            addAngle()
+                            getUserNickname()
+                        }
                     )
                     .padding(.bottom, 20)
             }
@@ -72,5 +76,13 @@ struct HomeRecommendView: View {
             startPoint: UnitPoint(x: radius * cos(xangle) + coreAxis, y: radius * sin(xangle) + coreAxis),
             endPoint: UnitPoint(x: radius * cos(angle) + coreAxis, y: radius * sin(angle) + coreAxis)
         )
+    }
+    
+    private func getUserNickname() {
+        ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+            if isSuccess {
+                self.nickname = userProfile.nickname
+            }
+        }
     }
 }
