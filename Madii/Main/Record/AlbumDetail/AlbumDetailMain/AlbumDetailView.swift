@@ -20,6 +20,7 @@ struct AlbumDetailView: View {
     @State private var selectedJoy: Joy?
     @State private var joy: Joy = Joy(title: "")
     @State private var showSaveJoyPopUp: Bool = false
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
     
     @State private var showReportSheet: Bool = false
     @State private var showReportPopUp: Bool = false
@@ -133,6 +134,14 @@ struct AlbumDetailView: View {
                 if showSaveJoyPopUp == false { getAlbumInfo() }
             }
             
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                VStack {
+                    Spacer()
+                    AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist)
+                }
+             }
+            
             // 앨범 정보 수정
             if showChangeInfo {
                 ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
@@ -174,6 +183,9 @@ struct AlbumDetailView: View {
                     .presentationDragIndicator(.hidden)
             }
         }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
     
     private func dismissView() {
