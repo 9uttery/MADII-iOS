@@ -150,7 +150,6 @@
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
 		BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */; };
-		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
 		BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */; };
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
@@ -283,7 +282,6 @@
 		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BEE9B41D2B8B85CA0077FAC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
 		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
 		BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumPopUp.swift; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 			children = (
 				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
 				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
-				BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */,
 			);
 			path = PlayJoy;
 			sourceTree = "<group>";
@@ -943,7 +940,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */,
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,

@@ -18,6 +18,7 @@ struct ReportAlbumToast: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 12)
+        .frame(height: 40)
         .background(Color.white)
         .cornerRadius(6)
         .padding(.horizontal, 16)

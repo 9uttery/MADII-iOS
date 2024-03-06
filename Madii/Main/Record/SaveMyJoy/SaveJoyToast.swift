@@ -28,6 +28,7 @@ struct SaveJoyToast: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 12)
+        .frame(height: 40)
         .background(Color.white)
         .cornerRadius(6)
         .padding(.horizontal, 16)
