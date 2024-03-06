@@ -11,7 +11,7 @@ struct Album: Identifiable, Hashable {
     let id: Int
     var backgroundColorNum: Int = 1
     var iconNum: Int = 1
-    let title: String
+    var title: String
     var creator: String = ""
     var description: String = ""
     

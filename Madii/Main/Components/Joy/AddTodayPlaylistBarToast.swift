@@ -1,27 +1,27 @@
 //
-//  SaveJoyToast.swift
+//  AddTodayPlaylistBarToast.swift
 //  Madii
 //
-//  Created by 이안진 on 12/11/23.
+//  Created by 이안진 on 3/6/24.
 //
 
 import SwiftUI
 
-struct SaveJoyToast: View {
-    @Binding var showSaveJoyToAlbumPopUp: Bool
+struct AddTodayPlaylistBarToast: View {
+    @Binding var showTodayPlaylist: Bool
     var transitionEdge: Edge = .bottom
     
     var body: some View {
         HStack {
-            Text("기록되었어요.")
+            Text("오늘의 플레이리스트에 추가되었어요")
                 .madiiFont(font: .madiiBody4, color: .black)
             
             Spacer()
             
             Button {
-                showSaveJoyToAlbumPopUp = true
+                showTodayPlaylist = true
             } label: {
-                Text("앨범 저장")
+                Text("바로가기")
                     .madiiFont(font: .madiiBody4, color: .madiiOrange)
                     .padding(.horizontal, 8)
             }

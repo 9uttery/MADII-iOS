@@ -8,34 +8,46 @@
 import SwiftUI
 
 struct MyJoyView: View {
+    @EnvironmentObject var appStatus: AppStatus
     @Environment(\.dismiss) private var dismiss
     
     @State private var allJoys: [MyJoy] = []
     @State private var selectedJoy: Joy?
 
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
+    
     var body: some View {
-        VStack(spacing: 0) {
-            if allJoys.isEmpty {
-                // 내가 기록한 소확행 없을 때
-                emptyJoyView
-            } else {
-                // 내가 기록한 소확행 있을 때
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ForEach(allJoys) { eachDayJoy in
-                            // 날짜별 소확행 박스
-                            joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                if allJoys.isEmpty {
+                    // 내가 기록한 소확행 없을 때
+                    emptyJoyView
+                } else {
+                    // 내가 기록한 소확행 있을 때
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            ForEach(allJoys) { eachDayJoy in
+                                // 날짜별 소확행 박스
+                                joyBoxByDate(eachDayJoy.date, joys: eachDayJoy.joys)
+                            }
+                            .sheet(item: $selectedJoy, onDismiss: getJoy) { _ in
+                                JoyMenuBottomSheet(joy: $selectedJoy, isMine: true) }
                         }
-                        .sheet(item: $selectedJoy, onDismiss: getJoy) { _ in
-                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: true) }
+                        .padding(.top, 28)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 60)
                     }
-                    .padding(.top, 28)
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 60)
+                    .scrollIndicators(.hidden)
                 }
-                .scrollIndicators(.hidden)
             }
+            
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
         }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
         .navigationTitle("내가 기록한 소확행")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { getJoy() }

@@ -21,7 +21,7 @@ struct HomePlayJoyListView: View {
                             let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
                             
                             NavigationLink {
-                                AlbumDetailView(album: newAlbum)
+                                AlbumDetailView(album: newAlbum, fromPlayJoy: true)
                             } label: {
                                 AlbumRow(album: newAlbum)
                             }

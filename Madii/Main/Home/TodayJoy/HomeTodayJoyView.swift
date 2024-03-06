@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeTodayJoyView: View {
+    @EnvironmentObject var appStatus: AppStatus
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect() // 1분마다 타이머 발생
 
     @State private var todayJoy: Joy = Joy(title: "") /// 오늘의 소확행
@@ -55,12 +56,9 @@ struct HomeTodayJoyView: View {
             
             ParticleView(counter: $counter)
         }
-        .onAppear {
-            getTodayJoy()
-        }
+        .onAppear { getTodayJoy() }
         .onReceive(timer) { _ in
-            updateUserDefaultsIfNeeded()
-        }
+            updateUserDefaultsIfNeeded() }
     }
     
     private func getTodayJoy() {
@@ -79,6 +77,15 @@ struct HomeTodayJoyView: View {
             if isSuccess {
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
                 updatePlaylistBar.toggle()
+                
+                withAnimation {
+                    appStatus.showAddPlaylistToast = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.showAddPlaylistToast = false
+                    }
+                }
             } else {
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
             }

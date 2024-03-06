@@ -12,7 +12,7 @@ struct AlbumDetailView: View {
     @EnvironmentObject var appStatus: AppStatus
     
     @State var album: Album
-    @State private var joys: [Joy] = Joy.manyAchievedDummy
+    @State private var joys: [Joy] = []
     
     @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
@@ -20,12 +20,15 @@ struct AlbumDetailView: View {
     @State private var selectedJoy: Joy?
     @State private var joy: Joy = Joy(title: "")
     @State private var showSaveJoyPopUp: Bool = false
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
     
     @State private var showReportSheet: Bool = false
     @State private var showReportPopUp: Bool = false
     
     @State private var showSettingSheet: Bool = false
     @State private var showChangeInfo: Bool = false
+    
+    var fromPlayJoy: Bool = false
     
     var body: some View {
         ZStack {
@@ -110,8 +113,10 @@ struct AlbumDetailView: View {
                         .background(Color.madiiBox)
                         .cornerRadius(20)
                         
-                        // 다른 소확행 앨범 모음
-                        AlbumDetailOtherAlbumsView(album: album)
+                        // 다른 소확행 앨범 모음 - '행복을 재생해요' 에서만 띄우기
+                        if fromPlayJoy {
+                            AlbumDetailOtherAlbumsView(album: album)
+                        }
                     }
                     .padding(.horizontal, 16)
                 }
@@ -128,6 +133,14 @@ struct AlbumDetailView: View {
                 // 앨범 정보를 수정하는 팝업이 사라지면 앨범정보 새로 부르기
                 if showSaveJoyPopUp == false { getAlbumInfo() }
             }
+            
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                VStack {
+                    Spacer()
+                    AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist)
+                }
+             }
             
             // 앨범 정보 수정
             if showChangeInfo {
@@ -170,6 +183,9 @@ struct AlbumDetailView: View {
                     .presentationDragIndicator(.hidden)
             }
         }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
     
     private func dismissView() {
@@ -211,6 +227,7 @@ struct AlbumDetailView: View {
                 }
                 
                 // 앨범 설명
+                album.title = albumInfo.name
                 album.description = albumInfo.description
                 
                 // 소확행 리스트

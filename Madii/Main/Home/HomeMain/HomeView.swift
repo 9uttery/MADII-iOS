@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var showSaveJoyPopUp: Bool = false
-    
+    @EnvironmentObject var appStatus: AppStatus
     @Binding var updatePlaylistBar: Bool /// 플리바 업데이트
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -32,7 +32,14 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.never)
             }
+            
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
         }
         .navigationTitle("")
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
 }

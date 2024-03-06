@@ -18,128 +18,143 @@ struct RecommendView: View {
     @State var which: [Int] = []
     @State var clickedNum: Int = 0
     
+    @EnvironmentObject var appStatus: AppStatus
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
+    
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                if clickedNum == 0 {
-                    Text("키워드를 선택해주세요")
-                        .madiiFont(font: .madiiBody4, color: .white)
-                } else {
-                    Circle()
-                        .fill(Color.white)
-                        .opacity(brightDotIndex == 0 ? 1.0 : 0.2)
-                        .frame(width: 8, height: 8)
-                    Circle()
-                        .fill(Color.white)
-                        .opacity(brightDotIndex == 1 ? 1.0 : 0.2)
-                        .frame(width: 8, height: 8)
-                    Circle()
-                        .fill(Color.white)
-                        .opacity(brightDotIndex == 2 ? 1.0 : 0.2)
-                        .frame(width: 8, height: 8)
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                HStack {
+                    if clickedNum == 0 {
+                        Text("키워드를 선택해주세요")
+                            .madiiFont(font: .madiiBody4, color: .white)
+                    } else {
+                        Circle()
+                            .fill(Color.white)
+                            .opacity(brightDotIndex == 0 ? 1.0 : 0.2)
+                            .frame(width: 8, height: 8)
+                        Circle()
+                            .fill(Color.white)
+                            .opacity(brightDotIndex == 1 ? 1.0 : 0.2)
+                            .frame(width: 8, height: 8)
+                        Circle()
+                            .fill(Color.white)
+                            .opacity(brightDotIndex == 2 ? 1.0 : 0.2)
+                            .frame(width: 8, height: 8)
+                    }
                 }
+                .frame(height: 20)
+                .padding(.top, 28)
+                .padding(.bottom, 40)
+                
+                VStack(spacing: 12) {
+                    HStack {
+                        StyleJoyButton(label: "활기찬", isClicked: $isClicked[0], buttonColor: Color.madiiSkyBlue) {
+                            if isClicked[0] {
+                                when.append(1)
+                                clickedNum += 1
+                            } else {
+                                when.removeAll { $0 == 1 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "혼자서", isClicked: $isClicked[1], buttonColor: Color.madiiPink) {
+                            if isClicked[1] {
+                                who.append(4)
+                                clickedNum += 1
+                            } else {
+                                who.removeAll { $0 == 4 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "특별한 도전을 할 수 있는", isClicked: $isClicked[2], buttonColor: Color.madiiOrange) {
+                            if isClicked[2] {
+                                which.append(7)
+                                clickedNum += 1
+                            } else {
+                                which.removeAll { $0 == 7 }
+                                clickedNum -= 1
+                            }
+                        }
+                    }
+                    HStack {
+                        StyleJoyButton(label: "지금 바로 할 수 있는", isClicked: $isClicked[3], buttonColor: Color.madiiOrange) {
+                            if isClicked[3] {
+                                which.append(9)
+                                clickedNum += 1
+                            } else {
+                                which.removeAll { $0 == 9 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "울적한", isClicked: $isClicked[4], buttonColor: Color.madiiSkyBlue) {
+                            if isClicked[4] {
+                                when.append(2)
+                                clickedNum += 1
+                            } else {
+                                when.removeAll { $0 == 2 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "다 함께", isClicked: $isClicked[5], buttonColor: Color.madiiPink) {
+                            if isClicked[5] {
+                                who.append(6)
+                                clickedNum += 1
+                            } else {
+                                who.removeAll { $0 == 6 }
+                                clickedNum -= 1
+                            }
+                        }
+                    }
+                    HStack {
+                        StyleJoyButton(label: "여유로운 ", isClicked: $isClicked[6], buttonColor: Color.madiiSkyBlue) {
+                            if isClicked[6] {
+                                when.append(3)
+                                clickedNum += 1
+                            } else {
+                                when.removeAll { $0 == 3 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "일상 속에서 할 수 있는", isClicked: $isClicked[7], buttonColor: Color.madiiOrange) {
+                            if isClicked[7] {
+                                which.append(9)
+                                clickedNum += 1
+                            } else {
+                                which.removeAll { $0 == 9 }
+                                clickedNum -= 1
+                            }
+                        }
+                        
+                        StyleJoyButton(label: "둘이서", isClicked: $isClicked[8], buttonColor: Color.madiiPink) {
+                            if isClicked[8] {
+                                who.append(5)
+                                clickedNum += 1
+                            } else {
+                                who.removeAll { $0 == 5 }
+                                clickedNum -= 1
+                            }
+                        }
+                    }
+                }
+                .padding(.bottom, 81)
+                
+                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum)
             }
-            .frame(height: 20)
-            .padding(.top, 28)
-            .padding(.bottom, 40)
-            VStack(spacing: 12) {
-                HStack {
-                    StyleJoyButton(label: "활기찬", isClicked: $isClicked[0], buttonColor: Color.madiiSkyBlue) {
-                        if isClicked[0] {
-                            when.append(1)
-                            clickedNum += 1
-                        } else {
-                            when.removeAll { $0 == 1 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "혼자서", isClicked: $isClicked[1], buttonColor: Color.madiiPink) {
-                        if isClicked[1] {
-                            who.append(4)
-                            clickedNum += 1
-                        } else {
-                            who.removeAll { $0 == 4 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "특별한 도전을 할 수 있는", isClicked: $isClicked[2], buttonColor: Color.madiiOrange) {
-                        if isClicked[2] {
-                            which.append(7)
-                            clickedNum += 1
-                        } else {
-                            which.removeAll { $0 == 7 }
-                            clickedNum -= 1
-                        }
-                    }
-                }
-                HStack {
-                    StyleJoyButton(label: "지금 바로 할 수 있는", isClicked: $isClicked[3], buttonColor: Color.madiiOrange) {
-                        if isClicked[3] {
-                            which.append(9)
-                            clickedNum += 1
-                        } else {
-                            which.removeAll { $0 == 9 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "울적한", isClicked: $isClicked[4], buttonColor: Color.madiiSkyBlue) {
-                        if isClicked[4] {
-                            when.append(2)
-                            clickedNum += 1
-                        } else {
-                            when.removeAll { $0 == 2 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "다 함께", isClicked: $isClicked[5], buttonColor: Color.madiiPink) {
-                        if isClicked[5] {
-                            who.append(6)
-                            clickedNum += 1
-                        } else {
-                            who.removeAll { $0 == 6 }
-                            clickedNum -= 1
-                        }
-                    }
-                }
-                HStack {
-                    StyleJoyButton(label: "여유로운 ", isClicked: $isClicked[6], buttonColor: Color.madiiSkyBlue) {
-                        if isClicked[6] {
-                            when.append(3)
-                            clickedNum += 1
-                        } else {
-                            when.removeAll { $0 == 3 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "일상 속에서 할 수 있는", isClicked: $isClicked[7], buttonColor: Color.madiiOrange) {
-                        if isClicked[7] {
-                            which.append(9)
-                            clickedNum += 1
-                        } else {
-                            which.removeAll { $0 == 9 }
-                            clickedNum -= 1
-                        }
-                    }
-                    
-                    StyleJoyButton(label: "둘이서", isClicked: $isClicked[8], buttonColor: Color.madiiPink) {
-                        if isClicked[8] {
-                            who.append(5)
-                            clickedNum += 1
-                        } else {
-                            who.removeAll { $0 == 5 }
-                            clickedNum -= 1
-                        }
-                    }
-                }
-            }
-            .padding(.bottom, 81)
-            RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum)
+            .padding(.horizontal, 16)
+            
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
         }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
         .onChange(of: clickedNum) { _ in
             HomeAPI.shared.postJoyRecommend(when: when, who: who, which: which) { isSuccess, joyList in
                 if isSuccess {
@@ -164,9 +179,9 @@ struct RecommendView: View {
                 }
             }
         }
-        .toolbarBackground(Color.clear, for: .navigationBar)
         .navigationTitle("\(nickname)님의 취향저격 소확행")
-        .padding(.horizontal, 16)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.clear, for: .navigationBar)
         .background(
             LinearGradient(
                 stops: [
