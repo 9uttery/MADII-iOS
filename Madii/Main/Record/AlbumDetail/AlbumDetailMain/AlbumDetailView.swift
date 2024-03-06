@@ -12,7 +12,7 @@ struct AlbumDetailView: View {
     @EnvironmentObject var appStatus: AppStatus
     
     @State var album: Album
-    @State private var joys: [Joy] = Joy.manyAchievedDummy
+    @State private var joys: [Joy] = []
     
     @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
@@ -26,6 +26,8 @@ struct AlbumDetailView: View {
     
     @State private var showSettingSheet: Bool = false
     @State private var showChangeInfo: Bool = false
+    
+    var fromPlayJoy: Bool = false
     
     var body: some View {
         ZStack {
@@ -110,8 +112,10 @@ struct AlbumDetailView: View {
                         .background(Color.madiiBox)
                         .cornerRadius(20)
                         
-                        // 다른 소확행 앨범 모음
-                        AlbumDetailOtherAlbumsView(album: album)
+                        // 다른 소확행 앨범 모음 - '행복을 재생해요' 에서만 띄우기
+                        if fromPlayJoy {
+                            AlbumDetailOtherAlbumsView(album: album)
+                        }
                     }
                     .padding(.horizontal, 16)
                 }
