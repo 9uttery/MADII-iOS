@@ -15,6 +15,8 @@ struct TodayPlaylistView: View {
     @State private var showMoveJoyBottomSheet: Bool = false
     
     @State private var showAlert = false
+    
+    @State private var fromPlaylistBar = true
 
     var body: some View {
         GeometryReader { geo in
@@ -92,69 +94,87 @@ struct TodayPlaylistView: View {
             }
             
             ForEach(joys) { joy in
-                JoyRowWithButton(joy: joy) {
-                    // 메뉴 버튼 action
-                    selectedJoy = joy
-                } buttonLabel: {
-                    // 메뉴 버튼 이미지
+                Button {
                     if joy.isAchieved {
-                        // 실천한 경우 -> 실천 해제
-                        Button {
-                            cancelAchievement(id: joy.achievementId)
-                        } label: {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .foregroundStyle(Color.madiiYellowGreen)
-                                .frame(width: 24, height: 24)
-                        }
-                    } else {
-                        if isYesterday {
-                            // 어제 실천하지 않은 경우 -> 오늘로
-                            Button {
-                                moveAchievementToToday(id: joy.achievementId)
-                            } label: {
-                                ZStack {
-                                    Circle()
-                                        .foregroundStyle(Color.madiiPurple)
-                                    
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .frame(width: 13, height: 13)
-                                }
-                                .frame(width: 24, height: 24)
-                            }
+                        fromPlaylistBar = false
+                        selectedJoy = joy
+                    }
+                } label: {
+                    JoyRowWithButton(joy: joy) {
+                        // 메뉴 버튼 action
+                        fromPlaylistBar = true
+                        selectedJoy = joy
+                    } buttonLabel: {
+                        // 메뉴 버튼 이미지
+                        if joy.isAchieved {
+                            // 실천한 경우 -> 실천 해제
+                            achievedButton(joy: joy)
                         } else {
-                            // 오늘 실천하지 않은 경우 -> bottomsheet
-                            Button {
-                                selectedJoy = joy
-                            } label: {
-                                Image(systemName: "checkmark.circle")
-                                    .resizable()
-                                    .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-                                    .frame(width: 28, height: 28)
+                            if isYesterday {
+                                // 어제 실천하지 않은 경우 -> 오늘로
+                                moveToTodayButton(joy: joy)
+                            } else {
+                                // 오늘 실천하지 않은 경우 -> bottomsheet
+                                Button {
+                                    selectedJoy = joy
+                                } label: {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+                                        .frame(width: 28, height: 28)
+                                }
                             }
-                            .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
-                                JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
-                                    .presentationDetents([.height(300)])
-                                .presentationDragIndicator(.hidden) } }
+                        }
+                    }
+                    .padding(.leading, 12)
+                    .padding(.trailing, 16)
+                    .padding(.vertical, 4)
+                    .onLongPressGesture { self.showAlert = true }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("소확행 실행 취소"),
+                              message: Text("\(joy.title)의 실천을 취소할까요?"),
+                              primaryButton: .cancel(Text("취소")),
+                              secondaryButton: .destructive(Text("삭제"),
+                                                            action: { self.deleteAchivement(id: joy.achievementId) }))
                     }
                 }
-                .padding(.leading, 12)
-                .padding(.trailing, 16)
-                .padding(.vertical, 4)
-                .onLongPressGesture { self.showAlert = true }
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("소확행 실행 취소"),
-                          message: Text("\(joy.title)의 실천을 취소할까요?"),
-                          primaryButton: .cancel(Text("취소")),
-                          secondaryButton: .destructive(Text("삭제"),
-                          action: { self.deleteAchivement(id: joy.achievementId) }))
-                }
+            }
+            .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
+                JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: fromPlaylistBar)
+                    .presentationDetents([.height(300)])
+                    .presentationDragIndicator(.hidden)
             }
         }
         .padding(.bottom, 20)
         .background(Color.madiiBox)
         .cornerRadius(20)
+    }
+    
+    private func achievedButton(joy: Joy) -> some View {
+        Button {
+            cancelAchievement(id: joy.achievementId)
+        } label: {
+            Image(systemName: "checkmark.circle.fill")
+                .resizable()
+                .foregroundStyle(Color.madiiYellowGreen)
+                .frame(width: 24, height: 24)
+        }
+    }
+    
+    private func moveToTodayButton(joy: Joy) -> some View {
+        Button {
+            moveAchievementToToday(id: joy.achievementId)
+        } label: {
+            ZStack {
+                Circle()
+                    .foregroundStyle(Color.madiiPurple)
+                
+                Image(systemName: "plus")
+                    .resizable()
+                    .frame(width: 13, height: 13)
+            }
+            .frame(width: 24, height: 24)
+        }
     }
     
     private func getPlaylist() {
