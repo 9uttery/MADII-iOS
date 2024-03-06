@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct JoyMenuBottomSheet: View {
+    @EnvironmentObject var appStatus: AppStatus
+    
     @Binding var joy: Joy?
     var isMine: Bool = false
     var isFromTodayJoy: Bool = false
@@ -34,6 +36,17 @@ struct JoyMenuBottomSheet: View {
                     AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
                         if isSuccess {
                             print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
+                            
+                            withAnimation {
+                                appStatus.showAddPlaylistToast = true
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                withAnimation {
+                                    appStatus.showAddPlaylistToast = false
+                                }
+                            }
+                            
                             joy = nil
                         } else {
                             print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
