@@ -84,6 +84,7 @@
 		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
 		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
 		51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */; };
+		51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -215,6 +216,7 @@
 		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
 		51BEBA412B813F5B008CF3AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsAPI.swift; sourceTree = "<group>"; };
+		51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodayPlaylistBarToast.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
 				519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */,
 				5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */,
+				51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */,
 			);
 			path = Joy;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
+				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */,
