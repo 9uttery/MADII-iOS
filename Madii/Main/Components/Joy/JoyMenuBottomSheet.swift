@@ -53,13 +53,13 @@ struct JoyMenuBottomSheet: View {
                         }
                     }
                 } label: {
-                    bottomSheetRow("오늘의 플레이리스트에 추가하기")
+                    bottomSheetRow("오늘의 플레이리스트에 추가")
                 }
                 
                 Button {
                     showSaveJoyToAlbumPopUp = true
                 } label: {
-                    bottomSheetRow("앨범에 저장하기")
+                    bottomSheetRow("앨범에 저장")
                 }
                 
                 if isFromTodayJoy == false {
