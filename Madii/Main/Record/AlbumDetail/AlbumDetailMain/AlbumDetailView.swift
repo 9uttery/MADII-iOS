@@ -227,6 +227,7 @@ struct AlbumDetailView: View {
                 }
                 
                 // 앨범 설명
+                album.title = albumInfo.name
                 album.description = albumInfo.description
                 
                 // 소확행 리스트
