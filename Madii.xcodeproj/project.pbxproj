@@ -542,8 +542,8 @@
 			children = (
 				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
 				519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */,
-				5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */,
 				51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */,
+				5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */,
 			);
 			path = Joy;
 			sourceTree = "<group>";

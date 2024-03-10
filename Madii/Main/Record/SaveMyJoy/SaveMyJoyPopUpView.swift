@@ -16,6 +16,9 @@ struct SaveMyJoyPopUpView: View {
     @State private var selectedAlbumIds: [Int] = []
     
     var fromAlbumSetting: Bool = false
+    
+    var canEditTitle: Bool = false
+    @State private var newJoyTitle: String = ""
 
     var body: some View {
         ZStack {
@@ -25,7 +28,24 @@ struct SaveMyJoyPopUpView: View {
             PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 
                 VStack(alignment: .leading, spacing: 24) {
-                    SelectAlbumRow(title: joy.title, isSelected: false)
+                    if canEditTitle {
+                        // 소확행 이름 수정 가능
+                        HStack {
+                            TextField("소확행을 적어주세요", text: $newJoyTitle)
+                                .madiiFont(font: .madiiBody3, color: .white)
+                                .multilineTextAlignment(.leading)
+                                .onChange(of: newJoyTitle, perform: { newJoyTitle = String($0.prefix(30)) })
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 16)
+                        .background(Color.madiiOption)
+                        .cornerRadius(4)
+                    } else {
+                        // 소확행 이름 수정 불가능
+                        SelectAlbumRow(title: joy.title, isSelected: false)
+                    }
                     
                     Text("어떤 앨범에 저장할까요?")
                         .madiiFont(font: .madiiSubTitle, color: .white)
@@ -43,9 +63,12 @@ struct SaveMyJoyPopUpView: View {
                     .frame(maxHeight: 248)
                 }
             }
-            .padding(.horizontal, 40)
+            .padding(36)
         }
-        .onAppear { getMyAlbums() }
+        .onAppear {
+            newJoyTitle = joy.title
+            getMyAlbums()
+        }
     }
     
     private func getMyAlbums() {
@@ -113,9 +136,10 @@ struct SaveMyJoyPopUpView: View {
     func saveJoy() {
         // 소확행 저장
         print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
-        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: joy.title, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
+        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: newJoyTitle, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
+                joy.title = newJoyTitle
                 dismissPopUp()
             } else {
                 print("소확행 앨범에 저장 실패")
