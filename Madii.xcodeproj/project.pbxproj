@@ -85,6 +85,7 @@
 		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
 		51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */; };
 		51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */; };
+		51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -217,6 +218,7 @@
 		51BEBA412B813F5B008CF3AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsAPI.swift; sourceTree = "<group>"; };
 		51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodayPlaylistBarToast.swift; sourceTree = "<group>"; };
+		51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentFullScreenCover.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
 				51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */,
 				516455B82B20AE0C0010199B /* DateExtension.swift */,
+				51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1045,6 +1048,7 @@
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
+				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
 				511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */,
 				BE0C3F982B81E77200275FD3 /* ConfettiItem.swift in Sources */,
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
