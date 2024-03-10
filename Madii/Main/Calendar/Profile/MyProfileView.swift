@@ -127,8 +127,9 @@ struct MyProfileView: View {
                     }
                 }
             } label: {
-                MadiiButton(title: "저장", color: nickname.isEmpty ? .gray : .white)
+                MadiiButton(title: "저장", color: nickname.isEmpty || isNicknameVaild == false ? .gray : .white)
             }
+            .disabled(nickname.isEmpty || isNicknameVaild == false)
             .padding(.bottom, 24)
             .padding(.horizontal, 16)
         }
