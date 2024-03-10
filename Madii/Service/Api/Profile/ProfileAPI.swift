@@ -50,6 +50,40 @@ class ProfileAPI {
             }
     }
     
+    // 프로필 등록, 수정 url로
+    func postUsersProfileWithImageUrl(nickname: String, imageUrl: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/profile"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: Any] = [
+            "nickname": nickname,
+            "image": imageUrl
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(postUsersProfile): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(postUsersProfile): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(postUsersProfile): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
     // 프로필 등록, 수정
     func postUsersProfile(nickname: String, image: UIImage, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/users/profile"

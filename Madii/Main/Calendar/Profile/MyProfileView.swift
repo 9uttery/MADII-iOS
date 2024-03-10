@@ -69,6 +69,7 @@ struct MyProfileView: View {
                             }
                             
                             Button {
+                                url = "https://\(Bundle.main.infoDictionary?["DEFAULT_PROFILE_IMAGE_URL"] ?? "nil default profile image url")"
                                 image = UIImage(named: "defaultProfile") ?? UIImage()
                                 showProfileImageSheet = false
                             } label: {
@@ -110,12 +111,21 @@ struct MyProfileView: View {
             Spacer()
             
             Button {
-                ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
-                    if isSuccess {
-                        print("프로필 수정이 정상적으로 처리되었습니다.")
+                if image == UIImage(named: "defaultProfile") {
+                    ProfileAPI.shared.postUsersProfileWithImageUrl(nickname: nickname, imageUrl: url) { isSuccess in
+                        if isSuccess {
+                            print("프로필 수정이 정상적으로 처리되었습니다.")
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                } else {
+                    ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
+                        if isSuccess {
+                            print("프로필 수정이 정상적으로 처리되었습니다.")
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
-                presentationMode.wrappedValue.dismiss()
             } label: {
                 MadiiButton(title: "저장", color: nickname.isEmpty ? .gray : .white)
             }
@@ -126,6 +136,7 @@ struct MyProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear{ checkValidNickname(nickname) }
     }
     
     private func showPhotoLibrary(status: PHAuthorizationStatus) {
@@ -158,8 +169,4 @@ struct MyProfileView: View {
             return Color.madiiOrange
         }
     }
-}
-
-#Preview {
-    MyProfileView(url: .constant(""))
 }
