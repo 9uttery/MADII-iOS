@@ -50,6 +50,7 @@ struct NoticeView: View {
         .padding(.top, 28)
         .padding(.horizontal, 16)
         .navigationTitle("공지사항")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getNotices() }

@@ -85,6 +85,7 @@ struct RecommendJoyView: View {
             })
         }
         .navigationTitle("\(nickname)님의 취향저격 소확행")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.clear, for: .navigationBar)
         .padding(.horizontal, 16)
         .background(
