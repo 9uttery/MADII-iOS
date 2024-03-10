@@ -123,6 +123,7 @@ struct MyProfileView: View {
             .padding(.horizontal, 16)
         }
         .navigationTitle("프로필")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
