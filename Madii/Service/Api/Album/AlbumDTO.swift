@@ -8,6 +8,7 @@
 import Foundation
 
 struct GetAlbumByIdResponse: Codable {
+    let isAlbumOfficial: Bool
     let albumIconNum, albumColorNum: Int
     let isAlbumSaved: Bool?
     let name: String
