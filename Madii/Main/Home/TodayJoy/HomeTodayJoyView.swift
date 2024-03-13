@@ -25,27 +25,32 @@ struct HomeTodayJoyView: View {
                     // 클릭해보세요! 버튼
                     TodayJoyBeforeClickButton(isClickedToday: $isClickedToday, counter: $counter)
                 } else {
-                    JoyRowWithButton(joy: todayJoy) { } buttonLabel: {
-                        Button {
-                            // 소확행 오플리에 추가하기
-                            playJoy()
-                        } label: {
-                            Image("play")
-                                .resizable()
-                                .foregroundColor(.gray300)
-                                .frame(width: 16, height: 18)
+                    Button {
+                        // 소확행 오플리에 추가하기
+                        playJoy()
+                    } label: {
+                        JoyRowWithButton(joy: todayJoy) { } buttonLabel: {
+                            Button {
+                                // 소확행 오플리에 추가하기
+                                playJoy()
+                            } label: {
+                                Image("play")
+                                    .resizable()
+                                    .foregroundColor(.gray300)
+                                    .frame(width: 16, height: 18)
+                            }
+                            
+                            Button {
+                                // 소확행 메뉴 bottom sheet
+                                selectedJoy = todayJoy
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(.gray500)
+                                    .rotationEffect(Angle(degrees: 90))
+                            }
+                            .sheet(item: $selectedJoy) { _ in
+                                JoyMenuBottomSheet(joy: $selectedJoy, isMine: false, isFromTodayJoy: true) }
                         }
-                        
-                        Button {
-                            // 소확행 메뉴 bottom sheet
-                            selectedJoy = todayJoy
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .foregroundColor(.gray500)
-                                .rotationEffect(Angle(degrees: 90))
-                        }
-                        .sheet(item: $selectedJoy) { _ in
-                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: false, isFromTodayJoy: true) }
                     }
                 }
             }
