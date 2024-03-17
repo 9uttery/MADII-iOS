@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ManyAchievedJoyView: View {
+    @EnvironmentObject var appStatus: AppStatus
     @State private var joys: [Joy] = []
     @State private var selectedJoy: Joy?
     
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
+    
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
             if joys.isEmpty {
                 emptyView
             } else {
@@ -47,11 +51,19 @@ struct ManyAchievedJoyView: View {
                     JoyMenuBottomSheet(joy: $selectedJoy, isMine: joy.isMine, isFromTodayJoy: true) }
             }
         }
+            
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+        }
         .navigationTitle("많이 실천한 소확행")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getJoys() }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
     
     private var firstRank: some View {
