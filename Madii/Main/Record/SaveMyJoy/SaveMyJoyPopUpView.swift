@@ -45,13 +45,7 @@ struct SaveMyJoyPopUpView: View {
                         .padding(.vertical, 16)
                         .background(Color.madiiOption)
                         .cornerRadius(4)
-                    }
-//                    else {
-//                        // 소확행 이름 수정 불가능
-//                        SelectAlbumRow(title: joy.title, isSelected: false)
-//                    }
                     
-                    if canEditTitle {
                         Text("어떤 앨범에 저장할까요?")
                             .madiiFont(font: .madiiSubTitle, color: .white)    
                     }
