@@ -57,17 +57,19 @@ struct JoyMenuBottomSheet: View {
                     bottomSheetRow("오늘의 플레이리스트에 추가")
                 }
                 
-                Button {
-                    showSaveJoyToAlbumPopUp = true
-                } label: {
-                    bottomSheetRow("앨범에 저장")
+                if isFromTodayJoy {
+                    Button {
+                        showSaveJoyToAlbumPopUp = true
+                    } label: {
+                        bottomSheetRow("앨범에 저장")
+                    }
                 }
                 
                 if isFromTodayJoy == false {
                     Button {
                         showEditJoyPopUp = true
                     } label: {
-                        bottomSheetRow("수정")
+                        bottomSheetRow("소확행 이름 & 저장 앨범 수정")
                     }
                     
                     if isMine {
@@ -96,7 +98,7 @@ struct JoyMenuBottomSheet: View {
         .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
             DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
         }
-        .presentationDetents([.height(isMine ? 350 : 280)])
+        .presentationDetents([.height(isFromTodayJoy ? 240 : (isMine ? 280 : 240))])
     }
     
     @ViewBuilder

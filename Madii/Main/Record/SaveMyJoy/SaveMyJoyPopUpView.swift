@@ -28,7 +28,7 @@ struct SaveMyJoyPopUpView: View {
             Color.black.opacity(0.8).ignoresSafeArea()
                 .onTapGesture { withoutAnimation { dismissPopUp() } }
 
-            PopUp(title: "소확행 이름", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
+            PopUp(title: canEditTitle ? "소확행 이름" : "어떤 앨범에 저장할까요?", leftButtonTitle: "취소", leftButtonAction: dismissPopUp, rightButtonTitle: "확인", rightButtonColor: .white, rightButtonAction: saveJoy) {
                 
                 VStack(alignment: .leading, spacing: 24) {
                     if canEditTitle {
@@ -45,13 +45,16 @@ struct SaveMyJoyPopUpView: View {
                         .padding(.vertical, 16)
                         .background(Color.madiiOption)
                         .cornerRadius(4)
-                    } else {
-                        // 소확행 이름 수정 불가능
-                        SelectAlbumRow(title: joy.title, isSelected: false)
                     }
+//                    else {
+//                        // 소확행 이름 수정 불가능
+//                        SelectAlbumRow(title: joy.title, isSelected: false)
+//                    }
                     
-                    Text("어떤 앨범에 저장할까요?")
-                        .madiiFont(font: .madiiSubTitle, color: .white)
+                    if canEditTitle {
+                        Text("어떤 앨범에 저장할까요?")
+                            .madiiFont(font: .madiiSubTitle, color: .white)    
+                    }
                     
                     // 앨범 리스트
                     ScrollView(.vertical) {
