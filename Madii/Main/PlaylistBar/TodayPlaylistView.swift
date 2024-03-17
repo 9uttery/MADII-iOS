@@ -126,17 +126,17 @@ struct TodayPlaylistView: View {
                             }
                         }
                     }
-                    .padding(.leading, 12)
-                    .padding(.trailing, 16)
-                    .padding(.vertical, 4)
-                    .onLongPressGesture { self.showAlert = true }
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("소확행 실행 취소"),
-                              message: Text("\(joy.title)의 실천을 취소할까요?"),
-                              primaryButton: .cancel(Text("취소")),
-                              secondaryButton: .destructive(Text("삭제"),
-                                                            action: { self.deleteAchivement(id: joy.achievementId) }))
-                    }
+                }
+                .padding(.leading, 12)
+                .padding(.trailing, 16)
+                .padding(.vertical, 4)
+                .onLongPressGesture { self.showAlert = true }
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("소확행 실행 취소"),
+                          message: Text("\(joy.title)의 실천을 취소할까요?"),
+                          primaryButton: .cancel(Text("취소")),
+                          secondaryButton: .destructive(Text("삭제"),
+                                                        action: { self.deleteAchivement(id: joy.achievementId) }))
                 }
             }
             .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
