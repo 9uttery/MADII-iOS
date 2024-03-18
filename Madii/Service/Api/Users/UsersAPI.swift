@@ -281,12 +281,28 @@ class UsersAPI {
     
     private func saveFCMToken() {
         let token = UserDefaults.standard.value(forKey: "fcmToken") as? String
-        NotificationAPI.shared.postFCMToken(token: token ?? "") { isSuccess in
+        
+        let uuid = getUUID()
+        print("uuid: \(uuid)")
+        
+        NotificationAPI.shared.postFCMToken(token: token ?? "", deviceId: uuid) { isSuccess in
             if isSuccess {
                 print("fcm 토큰 저장 성공")
             } else {
                 print("fcm 토큰 저장 실패")
             }
+        }
+    }
+    
+    private func getUUID() -> String {
+        if let uuid = keychain.get("uuid") {
+            // 키체인에 저장된 값이 있으면
+            return uuid
+        } else {
+            // 키체인에 저장된 값이 없으면
+            let newUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+            self.keychain.set(newUUID, forKey: "uuid")
+            return newUUID
         }
     }
 }

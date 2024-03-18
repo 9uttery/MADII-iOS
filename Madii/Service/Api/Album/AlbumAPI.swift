@@ -90,7 +90,7 @@ class AlbumAPI {
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         
-        let dummy = GetAlbumByIdResponse(albumIconNum: 0, albumColorNum: 0, isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: [])
+        let dummy = GetAlbumByIdResponse(isAlbumOfficial: false, albumIconNum: 0, albumColorNum: 0, isAlbumSaved: false, name: "", nickname: "", description: "", joyInfoList: [])
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<GetAlbumByIdResponse>.self) { response in
                 switch response.result {

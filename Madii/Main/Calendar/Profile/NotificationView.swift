@@ -46,10 +46,11 @@ struct NotificationView: View {
                 
                 Spacer()
             }
+            .padding(.top, 28)
         }
-        .padding(.top, 28)
         .padding(.horizontal, 16)
         .navigationTitle("알림")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getNotification() }

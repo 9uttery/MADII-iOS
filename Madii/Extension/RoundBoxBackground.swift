@@ -26,8 +26,12 @@ struct RoundBoxBackgroundWithTitle: ViewModifier {
     
     func body(content: Content) -> some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text(title)
-                .madiiFont(font: .madiiSubTitle, color: .white)
+            HStack {
+                Text(title)
+                    .madiiFont(font: .madiiSubTitle, color: .white)
+                
+                Spacer()
+            }
             
             content
         }

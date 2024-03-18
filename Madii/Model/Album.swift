@@ -11,9 +11,10 @@ struct Album: Identifiable, Hashable {
     let id: Int
     var backgroundColorNum: Int = 1
     var iconNum: Int = 1
-    let title: String
+    var title: String
     var creator: String = ""
     var description: String = ""
+    var isPublic: Bool = false
     
     static let dummy1: Album = .init(id: 0, title: "기분 좋을 때 할 일", creator: "구떠리",
                                      description: "이 소확행은 기분이 째질 때 츄라이해보면 좋은 소확행이에요.")

@@ -321,6 +321,8 @@ class RecordAPI {
             "afterAlbumIds": afterAlbumIds
         ]
         
+        print("수정수정 \(url), \(headers), \(parameters)")
+        
         let dummy = EditJoyResponse(joyIconNum: 0, contents: "")
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<EditJoyResponse>.self) { response in

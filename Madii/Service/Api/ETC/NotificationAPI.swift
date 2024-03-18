@@ -15,14 +15,15 @@ class NotificationAPI {
     static let shared = NotificationAPI()
     
     // fcm token 등록
-    func postFCMToken(token: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func postFCMToken(token: String, deviceId: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/notification/token"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
         let parameters: [String: String] = [
-            "token": token
+            "token": token,
+            "deviceId": deviceId
         ]
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)

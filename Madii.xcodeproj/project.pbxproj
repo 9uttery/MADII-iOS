@@ -33,6 +33,7 @@
 		513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */; };
 		513484422B8F9CC8008FF3F6 /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
+		513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
 		5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD32B7504D300FD407E /* LoginWithIdView.swift */; };
@@ -83,6 +84,8 @@
 		51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */; };
 		51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA412B813F5B008CF3AD /* ImagePicker.swift */; };
 		51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */; };
+		51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */; };
+		51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */; };
 		51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690DD2B15B9B700F8D705 /* FontExtension.swift */; };
 		51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */; };
 		51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */; };
@@ -96,7 +99,7 @@
 		51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */; };
 		51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D8D3762B188F44001B6793 /* AlbumRow.swift */; };
 		51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */; };
-		51E025A02B26F7EB00F4F41A /* PopUpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */; };
+		51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0259F2B26F7EB00F4F41A /* AppStatus.swift */; };
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
 		51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025B02B28988C00F4F41A /* OnboardingView.swift */; };
 		51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */; };
@@ -149,7 +152,6 @@
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
 		BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */; };
-		BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
 		BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */; };
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
@@ -177,6 +179,7 @@
 		5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyPopUp.swift; sourceTree = "<group>"; };
 		513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlbumToast.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
 		5141CAD32B7504D300FD407E /* LoginWithIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithIdView.swift; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
 		51BEBA412B813F5B008CF3AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		51BEBA432B8158EA008CF3AD /* AchievementsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsAPI.swift; sourceTree = "<group>"; };
+		51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodayPlaylistBarToast.swift; sourceTree = "<group>"; };
+		51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentFullScreenCover.swift; sourceTree = "<group>"; };
 		51D690DD2B15B9B700F8D705 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiFontModifier.swift; sourceTree = "<group>"; };
 		51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -227,7 +232,7 @@
 		51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBoxBackground.swift; sourceTree = "<group>"; };
 		51D8D3762B188F44001B6793 /* AlbumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumRow.swift; sourceTree = "<group>"; };
 		51E0259A2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAlbumInfoPopUpView.swift; sourceTree = "<group>"; };
-		51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpStatus.swift; sourceTree = "<group>"; };
+		51E0259F2B26F7EB00F4F41A /* AppStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatus.swift; sourceTree = "<group>"; };
 		51E025A32B27291900F4F41A /* SaveJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveJoyToast.swift; sourceTree = "<group>"; };
 		51E025B02B28988C00F4F41A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		51E29E5F2B552E6C00A35EBF /* Madii.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Madii.entitlements; sourceTree = "<group>"; };
@@ -281,7 +286,6 @@
 		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BEE9B41D2B8B85CA0077FAC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayJoyToast.swift; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
 		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
 		BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumPopUp.swift; sourceTree = "<group>"; };
@@ -364,7 +368,6 @@
 			children = (
 				BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */,
 				BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */,
-				BEFC6BD02B380E1E00C78A37 /* PlayJoyToast.swift */,
 			);
 			path = PlayJoy;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			children = (
 				510EF9102B8659AC000768D7 /* ReportBottomSheet.swift */,
 				519B014E2B89151D00519B11 /* ReportPopUp.swift */,
+				513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -540,6 +544,7 @@
 			children = (
 				51F25E1B2B1A105100F6CCFE /* JoyRow.swift */,
 				519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */,
+				51BED7A82B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift */,
 				5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */,
 			);
 			path = Joy;
@@ -563,6 +568,7 @@
 				51D8D3632B1768AA001B6793 /* CornerRadius.swift */,
 				51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */,
 				516455B82B20AE0C0010199B /* DateExtension.swift */,
+				51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -656,7 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0C3F8D2B81E77200275FD3 /* ParticleAnimation */,
-				51E0259F2B26F7EB00F4F41A /* PopUpStatus.swift */,
+				51E0259F2B26F7EB00F4F41A /* AppStatus.swift */,
 				51BEBA412B813F5B008CF3AD /* ImagePicker.swift */,
 				5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */,
 			);
@@ -940,11 +946,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEFC6BD12B380E1E00C78A37 /* PlayJoyToast.swift in Sources */,
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
+				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
 				510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */,
@@ -960,7 +966,7 @@
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
-				51E025A02B26F7EB00F4F41A /* PopUpStatus.swift in Sources */,
+				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
 				BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */,
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
@@ -991,6 +997,7 @@
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				BE0C3F9B2B81E77200275FD3 /* Shapes.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
+				513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */,
 				511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				BE459A5D2B762621002E9AB2 /* RecordAPI.swift in Sources */,
@@ -1041,6 +1048,7 @@
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
+				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
 				511DB50E2B66B24C00D2B01D /* IDView.swift in Sources */,
 				BE0C3F982B81E77200275FD3 /* ConfettiItem.swift in Sources */,
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
@@ -1193,9 +1201,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
@@ -1234,9 +1242,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct AlbumDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var appStatus: AppStatus
     
     @State var album: Album
-    @State private var joys: [Joy] = Joy.manyAchievedDummy
+    @State private var joys: [Joy] = []
     
     @State private var isAlbumMine: Bool = true
     @State private var isAlbumSaved: Bool = true
@@ -19,12 +20,15 @@ struct AlbumDetailView: View {
     @State private var selectedJoy: Joy?
     @State private var joy: Joy = Joy(title: "")
     @State private var showSaveJoyPopUp: Bool = false
+    @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
     
     @State private var showReportSheet: Bool = false
     @State private var showReportPopUp: Bool = false
     
     @State private var showSettingSheet: Bool = false
     @State private var showChangeInfo: Bool = false
+    
+    var fromPlayJoy: Bool = false
     
     var body: some View {
         ZStack {
@@ -109,8 +113,10 @@ struct AlbumDetailView: View {
                         .background(Color.madiiBox)
                         .cornerRadius(20)
                         
-                        // 다른 소확행 앨범 모음
-                        AlbumDetailOtherAlbumsView(album: album)
+                        // 다른 소확행 앨범 모음 - '행복을 재생해요' 에서만 띄우기
+                        if fromPlayJoy {
+                            AlbumDetailOtherAlbumsView(album: album)
+                        }
                     }
                     .padding(.horizontal, 16)
                 }
@@ -128,6 +134,14 @@ struct AlbumDetailView: View {
                 if showSaveJoyPopUp == false { getAlbumInfo() }
             }
             
+            // 오플리 추가 안내 토스트
+            if appStatus.showAddPlaylistToast {
+                VStack {
+                    Spacer()
+                    AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist)
+                }
+             }
+            
             // 앨범 정보 수정
             if showChangeInfo {
                 ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
@@ -136,6 +150,14 @@ struct AlbumDetailView: View {
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
                 SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
+            }
+            
+            // 신고 완료 토스트
+            if appStatus.showReportToast {
+                VStack {
+                    Spacer()
+                    ReportAlbumToast()
+                }
             }
         }
         .navigationTitle("")
@@ -149,7 +171,7 @@ struct AlbumDetailView: View {
         }
         .sheet(isPresented: $showReportSheet) {
             GeometryReader { geo in
-                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp)
+                ReportBottomSheet(album: album, showReportSheet: $showReportSheet, showReportPopUp: $showReportPopUp, dismissAlbumDetailView: dismissView)
                     .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
             }
@@ -161,6 +183,9 @@ struct AlbumDetailView: View {
                     .presentationDragIndicator(.hidden)
             }
         }
+        // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
+        .sheet(isPresented: $showTodayPlaylist) {
+            TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
     
     private func dismissView() {
@@ -199,9 +224,11 @@ struct AlbumDetailView: View {
                 } else {
                     // 나의 앨범
                     isAlbumMine = true
+                    album.isPublic = albumInfo.isAlbumOfficial
                 }
                 
                 // 앨범 설명
+                album.title = albumInfo.name
                 album.description = albumInfo.description
                 
                 // 소확행 리스트

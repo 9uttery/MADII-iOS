@@ -48,13 +48,14 @@ struct ProfileView: View {
             }
             .padding(.top, 28)
             .padding(.horizontal, 16)
-            .navigationTitle("마이페이지")
-            .toolbarBackground(Color.madiiBox, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .onAppear { getUser() }
             
             if showLogOutPopUp { LogOutPopUpView(showLogOutPopUp: $showLogOutPopUp) }
         }
+        .navigationTitle("마이페이지")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.madiiBox, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear { getUser() }
     }
     
     private var userInfoRow: some View {

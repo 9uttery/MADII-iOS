@@ -10,31 +10,41 @@ import SwiftUI
 struct TestView: View {
     @State private var draggedOffset = CGSize.zero
     @State private var isActive = false
+    
+    @State private var data = Joy.manyAchievedDummy
 
     var body: some View {
-        VStack {
-            HStack { Spacer() }
-            Spacer()
-            Text("wow")
-                .onTapGesture {
-                    withAnimation {
-                        isActive = true
-                    }
-                }
-            Spacer()
-        }
-        .background(Color.madiiSkyBlue)
-        .transparentFullScreenCover(isPresented: $isActive, content: {
-            VStack {
-                HStack { Spacer() }
-                Spacer()
-                Text("haha")
-                Spacer()
+//        VStack {
+//            HStack { Spacer() }
+//            Spacer()
+//            Text("wow")
+//                .onTapGesture {
+//                    withAnimation {
+//                        isActive = true
+//                    }
+//                }
+//            Spacer()
+//        }
+//        .background(Color.madiiSkyBlue)
+//        .transparentFullScreenCover(isPresented: $isActive, content: {
+//            VStack {
+//                HStack { Spacer() }
+//                Spacer()
+//                Text("haha")
+//                Spacer()
+//            }
+//            .background(Color.madiiPink)
+//            .offset(draggedOffset)
+//            .gesture(swipeDownToDismiss)
+//        })
+        List {
+            ForEach(data) { joy in
+                Text(joy.title)
             }
-            .background(Color.madiiPink)
-            .offset(draggedOffset)
-            .gesture(swipeDownToDismiss)
-        })
+            .onDelete(perform: { indexSet in
+                print(indexSet)
+            })
+        }
     }
 
     var swipeDownToDismiss: some Gesture {
