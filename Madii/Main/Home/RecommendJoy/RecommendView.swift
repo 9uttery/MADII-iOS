@@ -80,7 +80,7 @@ struct RecommendView: View {
                             which.append(9)
                             clickedNum += 1
                         } else {
-                            which.removeAll { $0 == 9 }
+                            which.removeAll { $0 == 8 }
                             clickedNum -= 1
                         }
                     }

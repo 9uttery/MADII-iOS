@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TodayJoyBeforeClickButton: View {
-    @Binding var isClickedToday: Bool
+    @Binding var todayJoyId: Int
     @Binding var counter: Int
-    
+    @Binding var todayJoy: Joy
     var body: some View {
         Button {
-            isClickedToday = true
-            UserDefaults.standard.set(true, forKey: "isClickedToday")
+            todayJoyId = todayJoy.joyId
+            UserDefaults.standard.set(todayJoy.joyId, forKey: "todayJoyId")
             counter += 1
         } label: {
             ZStack {

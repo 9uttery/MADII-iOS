@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct HomeTodayJoyView: View {
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect() // 1분마다 타이머 발생
 
     @State private var todayJoy: Joy = Joy(title: "") /// 오늘의 소확행
-    @State private var isClickedToday: Bool = UserDefaults.standard.bool(forKey: "isClickedToday") /// 클릭 여부
+    @State private var todayJoyId: Int = UserDefaults.standard.integer(forKey: "todayJoyId") /// 클릭 여부
     @State private var counter = 0 /// 파티클 애니메이션 추가
     @State var selectedJoy: Joy? /// 소확행 메뉴 bottom sheet 연결 joy
     
@@ -20,10 +19,7 @@ struct HomeTodayJoyView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
-                if isClickedToday == false {
-                    // 클릭해보세요! 버튼
-                    TodayJoyBeforeClickButton(isClickedToday: $isClickedToday, counter: $counter)
-                } else {
+                if todayJoyId == todayJoy.joyId {
                     JoyRowWithButton(joy: todayJoy) { } buttonLabel: {
                         Button {
                             // 소확행 오플리에 추가하기
@@ -46,6 +42,9 @@ struct HomeTodayJoyView: View {
                         .sheet(item: $selectedJoy) { _ in
                             JoyMenuBottomSheet(joy: $selectedJoy, isMine: false, isFromTodayJoy: true) }
                     }
+                } else {
+                    // 클릭해보세요! 버튼
+                    TodayJoyBeforeClickButton(todayJoyId: $todayJoyId, counter: $counter, todayJoy: $todayJoy)
                 }
             }
             .frame(height: 56)
@@ -57,9 +56,6 @@ struct HomeTodayJoyView: View {
         }
         .onAppear {
             getTodayJoy()
-        }
-        .onReceive(timer) { _ in
-            updateUserDefaultsIfNeeded()
         }
     }
     
@@ -82,17 +78,6 @@ struct HomeTodayJoyView: View {
             } else {
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
             }
-        }
-    }
-    
-    func updateUserDefaultsIfNeeded() {
-        let calendar = Calendar.current
-        let now = Date()
-        let components = calendar.dateComponents(in: TimeZone(identifier: "Asia/Seoul")!, from: now)
-        if components.hour == 1 {
-            // 시간이 1시일 때 UserDefaults 값을 변경합니다.
-            UserDefaults.standard.set(false, forKey: "isClickedToday")
-            isClickedToday = false
         }
     }
 }
