@@ -13,6 +13,8 @@ struct AddAlbumPopUp: View {
     @State private var title: String = ""
     @State private var description: String = ""
     
+    var getAlbums: () -> Void = { }
+    
     var body: some View {
         ZStack(alignment: .center) {
             Color.black.opacity(0.8).ignoresSafeArea()
@@ -69,6 +71,7 @@ struct AddAlbumPopUp: View {
             RecordAPI.shared.postAlbum(name: title, description: description) { isSuccess, _ in
                 if isSuccess {
                     print("앨범 생성 성공")
+                    getAlbums()
                     showAddAlbumPopUp = false
                 } else {
                     print("앨범 생성 실패")

@@ -48,6 +48,7 @@ struct HomePlayJoyListView: View {
                             .madiiFont(font: .madiiBody5, color: .darkYellowGreen)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 20)
+                            .frame(width: 178, height: 44)
                             .background(Color.madiiYellowGreen)
                             .cornerRadius(90)
                     }
@@ -78,6 +79,7 @@ struct HomePlayJoyListView: View {
                 .madiiFont(font: .madiiBody5, color: .darkYellowGreen)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 12)
+                .frame(width: 48, height: 32)
                 .background(Color.madiiYellowGreen)
                 .cornerRadius(6)
         }

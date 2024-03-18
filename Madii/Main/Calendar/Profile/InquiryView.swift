@@ -28,6 +28,7 @@ struct InquiryView: View {
             Text("madii.service.cs@gmail.com로 문의해주세요")
         }
         .navigationTitle("문의하기")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }

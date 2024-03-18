@@ -10,6 +10,7 @@ import SwiftUI
 struct ChangePublicPopUp: View {
     let album: Album
     @Binding var isAlbumPublic: Bool /// true이면 원래 비공개, false이면 원래 공개
+    @Binding var canShowChangePublicPopUp: Bool
     @Binding var showChangePublicPopUp: Bool
     
     var body: some View {
@@ -17,8 +18,36 @@ struct ChangePublicPopUp: View {
             Color.black.opacity(0.8).ignoresSafeArea()
                 .onTapGesture { withoutAnimation { dismiss() } }
             
-            PopUpWithDescription(title: "앨범 전체 공개", description: description(), leftButtonAction: dismiss, rightButtonTitle: isAlbumPublic ? "공개" : "확인", rightButtonAction: changePublic)
-                .padding(.horizontal, 36)
+            VStack(alignment: .leading, spacing: 32) {
+                VStack(alignment: .leading, spacing: 24) {
+                    Text("앨범 전체 공개")
+                        .madiiFont(font: .madiiSubTitle, color: .white)
+                    
+                    Text(description())
+                        .madiiFont(font: .madiiBody3, color: .white)
+                }
+                
+                HStack(spacing: 8) {
+                    if isAlbumPublic {
+                        Button {
+                            dismiss()
+                        } label: {
+                            MadiiButton(title: "취소", size: .small)
+                        }
+                    }
+                        
+                    Button {
+                        changePublic()
+                    } label: {
+                        MadiiButton(title: isAlbumPublic ? "공개" : "확인", color: .white, size: .small)
+                    }
+                }
+            }
+            .padding(.vertical, 24)
+            .padding(.horizontal, 20)
+            .background(Color.madiiPopUp)
+            .cornerRadius(14)
+            .padding(.horizontal, 36)
         }
     }
     
@@ -31,12 +60,9 @@ struct ChangePublicPopUp: View {
     }
     
     private func dismiss() {
-        if isAlbumPublic {
-            
-        } else {
-            isAlbumPublic = true
-        }
         showChangePublicPopUp = false
+        isAlbumPublic = false
+        canShowChangePublicPopUp = true
     }
     
     private func changePublic() {
@@ -45,12 +71,15 @@ struct ChangePublicPopUp: View {
                 if isSuccess {
                     print("앨범 공개 성공")
                     showChangePublicPopUp = false
+                    canShowChangePublicPopUp = true
                 } else {
                     print("앨범 공개 실패")
                 }
             }
         } else {
-            dismiss()
+            showChangePublicPopUp = false
+            isAlbumPublic = true
+            canShowChangePublicPopUp = true
         }
     }
 }

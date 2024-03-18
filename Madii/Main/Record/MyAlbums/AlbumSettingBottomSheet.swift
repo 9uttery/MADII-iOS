@@ -14,6 +14,7 @@ struct AlbumSettingBottomSheet: View {
     @Binding var showChangeInfo: Bool
     @State private var showAddJoyPopUp: Bool = false
     @State private var isAlbumPublic: Bool = false
+    @State private var canShowChangePublicPopUp: Bool = false
     @State private var showChangePublicPopUp: Bool = false
     @State private var showDeleteAlbumPopUp: Bool = false
     
@@ -56,7 +57,9 @@ struct AlbumSettingBottomSheet: View {
                     
                     toggleRow
                         .onChange(of: isAlbumPublic) { _ in
-                            showChangePublicPopUp = true
+                            if canShowChangePublicPopUp {
+                                showChangePublicPopUp = true
+                            }
                         }
                     
                     Button {
@@ -75,11 +78,16 @@ struct AlbumSettingBottomSheet: View {
             AddJoyPopUp(album: album, showAddJoyPopUp: $showAddJoyPopUp) }
         // 앨범 전체 공개 여부
         .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
-            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
+            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, canShowChangePublicPopUp: $canShowChangePublicPopUp, showChangePublicPopUp: $showChangePublicPopUp) }
         // 앨범 삭제
         .transparentFullScreenCover(isPresented: $showDeleteAlbumPopUp) {
             DeleteAlbumPopUp(album: album, showDeleteAlbumPopUp: $showDeleteAlbumPopUp, dismiss: dismiss) }
-        .onAppear { }
+        // 앨범 공개 여부 가져오기
+        .onAppear {
+            isAlbumPublic = album.isPublic
+            canShowChangePublicPopUp = true
+            showChangePublicPopUp = false
+        }
     }
     
     @ViewBuilder

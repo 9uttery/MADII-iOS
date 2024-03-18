@@ -64,6 +64,7 @@ struct GuestProfileView: View {
             Spacer()
         }
         .navigationTitle("마이페이지")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }

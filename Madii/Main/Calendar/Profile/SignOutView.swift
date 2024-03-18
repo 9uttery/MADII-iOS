@@ -34,6 +34,7 @@ struct SignOutView: View {
             }
         )
         .navigationTitle("회원 탈퇴")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }

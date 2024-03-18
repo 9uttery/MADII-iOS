@@ -15,7 +15,7 @@ struct ReportPopUp: View {
     @Binding var showReportPopUp: Bool
     var dismissAlbumDetailView: () -> Void
     
-    private let options: [String] = ["부적절한 표현", "음란성", "개인정보 노출", "특정인 비방", "기타"]
+    private let options: [String] = ["부적절한 표현", "음란성", "개인정보 노출", "특정인 비방"]
     @State private var selectedOption: String = ""
     @State private var etc: String = ""
     
@@ -26,18 +26,53 @@ struct ReportPopUp: View {
                     
             PopUp(title: "신고 이유를 알려주세요", leftButtonTitle: "취소", leftButtonAction: dismiss, rightButtonTitle: "확인", rightButtonColor: selectedOption.isEmpty ? .gray : .white, rightButtonAction: report) {
                 VStack(alignment: .leading, spacing: 24) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        ForEach(0 ..< 5, id: \.self) { index in
-                            Button {
-                                selectedOption = options[index]
-                            } label: {
-                                SelectAlbumRow(title: options[index], isSelected: options[index] == selectedOption)
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 12) {
+                            ForEach(0 ..< 4, id: \.self) { index in
+                                Button {
+                                    if etc.isEmpty {
+                                        if selectedOption == options[index] {
+                                            selectedOption = ""
+                                        } else {
+                                            selectedOption = options[index]
+                                        }
+                                    }
+                                } label: {
+                                    SelectAlbumRow(title: options[index], isSelected: options[index] == selectedOption)
+                                }
                             }
+                            
+                            HStack(spacing: 8) {
+                                Image(systemName: "plus.app")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundStyle(etc.isEmpty ? Color.gray500 : Color.white)
+                                
+                                TextField("기타", text: $etc)
+                                    .madiiFont(font: .madiiBody3, color: .white)
+                                    .multilineTextAlignment(.leading)
+                                    .onChange(of: etc) { _ in
+                                        selectedOption = etc
+                                    }
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 16)
+                            .background(Color.madiiOption)
+                            .cornerRadius(4)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .inset(by: 0.5)
+                                    .stroke(Color.madiiYellowGreen.opacity(etc.isEmpty ? 0.0 : 1.0), lineWidth: 1)
+                            )
                         }
                     }
+                    .scrollIndicators(.never)
                 }
             }
-            .padding(.horizontal, 40)
+            .frame(maxHeight: 500)
+            .padding(40)
         }
     }
     

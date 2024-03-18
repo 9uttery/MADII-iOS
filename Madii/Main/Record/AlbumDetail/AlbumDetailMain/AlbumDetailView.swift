@@ -224,6 +224,7 @@ struct AlbumDetailView: View {
                 } else {
                     // 나의 앨범
                     isAlbumMine = true
+                    album.isPublic = albumInfo.isAlbumOfficial
                 }
                 
                 // 앨범 설명

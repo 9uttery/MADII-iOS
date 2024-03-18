@@ -13,7 +13,7 @@ struct Joy: Identifiable, Equatable {
     var achievementId: Int = 0 /// Server에서 사용하는 실천 Id
     var isAchieved: Bool = false
     var icon: Int = 1 /// Joy의 커버 아이콘 이미지
-    let title: String
+    var title: String
     var counts: Int = 0 /// 수행횟수
     var satisfaction: JoySatisfaction = .bad /// 만족도 1, 2, 3, 4, 5 가능
     var isSaved: Bool = false

@@ -102,7 +102,9 @@ struct RecommendJoyListView: View {
         }
         .onAppear {
             if isActive {
-               presentationMode.wrappedValue.dismiss()
+                withoutAnimation {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
     }
