@@ -68,7 +68,7 @@ struct RecommendView: View {
                                 clickedNum -= 1
                             }
                         }
-                        
+                    }
                         StyleJoyButton(label: "특별한 도전을 할 수 있는", isClicked: $isClicked[2], buttonColor: Color.madiiOrange) {
                             if isClicked[2] {
                                 which.append(7)
@@ -85,7 +85,7 @@ struct RecommendView: View {
                                 which.append(9)
                                 clickedNum += 1
                             } else {
-                                which.removeAll { $0 == 9 }
+                                which.removeAll { $0 == 8 }
                                 clickedNum -= 1
                             }
                         }
