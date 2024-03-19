@@ -56,11 +56,6 @@ struct AlbumSettingBottomSheet: View {
                     }
                     
                     toggleRow
-                        .onChange(of: isAlbumPublic) { _ in
-                            if canShowChangePublicPopUp {
-                                showChangePublicPopUp = true
-                            }
-                        }
                     
                     Button {
                         withoutAnimation { showDeleteAlbumPopUp = true }
@@ -78,7 +73,7 @@ struct AlbumSettingBottomSheet: View {
             AddJoyPopUp(album: album, showAddJoyPopUp: $showAddJoyPopUp) }
         // 앨범 전체 공개 여부
         .transparentFullScreenCover(isPresented: $showChangePublicPopUp) {
-            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, canShowChangePublicPopUp: $canShowChangePublicPopUp, showChangePublicPopUp: $showChangePublicPopUp) }
+            ChangePublicPopUp(album: album, isAlbumPublic: $isAlbumPublic, showChangePublicPopUp: $showChangePublicPopUp) }
         // 앨범 삭제
         .transparentFullScreenCover(isPresented: $showDeleteAlbumPopUp) {
             DeleteAlbumPopUp(album: album, showDeleteAlbumPopUp: $showDeleteAlbumPopUp, dismiss: dismiss) }
@@ -109,8 +104,25 @@ struct AlbumSettingBottomSheet: View {
                 
             Spacer()
             
-            Toggle("", isOn: $isAlbumPublic)
-                .tint(.madiiYellowGreen)
+            Button {
+                withoutAnimation {
+                    showChangePublicPopUp = true
+                }
+            } label: {
+                if isAlbumPublic {
+                    Image(systemName: "checkmark.square.fill")
+                        .frame(width: 22, height: 22)
+                        .foregroundStyle(Color.madiiYellowGreen)
+                        .padding()
+                        .frame(width: 28, height: 28)
+                } else {
+                    Image(systemName: "checkmark.square")
+                        .frame(width: 22, height: 22)
+                        .foregroundStyle(Color.gray500)
+                        .padding()
+                        .frame(width: 28, height: 28)
+                }
+            }
         }
         .padding(.horizontal, 16)
         .frame(height: 50)

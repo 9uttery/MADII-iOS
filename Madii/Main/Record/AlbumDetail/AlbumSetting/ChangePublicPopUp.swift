@@ -10,7 +10,6 @@ import SwiftUI
 struct ChangePublicPopUp: View {
     let album: Album
     @Binding var isAlbumPublic: Bool /// true이면 원래 비공개, false이면 원래 공개
-    @Binding var canShowChangePublicPopUp: Bool
     @Binding var showChangePublicPopUp: Bool
     
     var body: some View {
@@ -28,7 +27,7 @@ struct ChangePublicPopUp: View {
                 }
                 
                 HStack(spacing: 8) {
-                    if isAlbumPublic {
+                    if isAlbumPublic == false {
                         Button {
                             dismiss()
                         } label: {
@@ -39,7 +38,7 @@ struct ChangePublicPopUp: View {
                     Button {
                         changePublic()
                     } label: {
-                        MadiiButton(title: isAlbumPublic ? "공개" : "확인", color: .white, size: .small)
+                        MadiiButton(title: isAlbumPublic ? "확인" : "전체 공개하기", color: .white, size: .small)
                     }
                 }
             }
@@ -53,33 +52,37 @@ struct ChangePublicPopUp: View {
     
     private func description() -> String {
         if isAlbumPublic {
-            return "선택한 앨범을 공개하시겠어요?\n공개 시 다시 비공개로 변경할 수 없어요"
-        } else {
             return "이미 공개된 앨범은 비공개로 변경할 수 없어요"
+        } else {
+            return "선택한 앨범을 공개하시겠어요?\n공개 시 다시 비공개로 변경할 수 없어요"
         }
     }
     
     private func dismiss() {
-        showChangePublicPopUp = false
+        withoutAnimation {
+            showChangePublicPopUp = false
+        }
         isAlbumPublic = false
-        canShowChangePublicPopUp = true
     }
     
     private func changePublic() {
         if isAlbumPublic {
+            withoutAnimation {
+                showChangePublicPopUp = false
+            }
+            isAlbumPublic = true
+        } else {
             AlbumAPI.shared.changePublic(albumId: album.id) { isSuccess in
                 if isSuccess {
                     print("앨범 공개 성공")
-                    showChangePublicPopUp = false
-                    canShowChangePublicPopUp = true
+                    isAlbumPublic = true
+                    withoutAnimation {
+                        showChangePublicPopUp = false
+                    }
                 } else {
                     print("앨범 공개 실패")
                 }
             }
-        } else {
-            showChangePublicPopUp = false
-            isAlbumPublic = true
-            canShowChangePublicPopUp = true
         }
     }
 }
