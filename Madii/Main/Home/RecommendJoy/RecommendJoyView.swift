@@ -20,7 +20,7 @@ struct RecommendJoyView: View {
         VStack(spacing: 0) {
             Text("\(nickname)님을 위한 소확행이에요!")
                 .madiiFont(font: .madiiSubTitle, color: .white)
-                .padding(.top, 28)
+                .padding(.top, 40)
                 .padding(.bottom, 68)
             
             VStack(spacing: 0) {
@@ -39,6 +39,7 @@ struct RecommendJoyView: View {
                 
                 Text(recommendJoy.contents)
                     .madiiFont(font: .madiiSubTitle, color: .white)
+                    .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
             }
             .padding(.top, 40)
