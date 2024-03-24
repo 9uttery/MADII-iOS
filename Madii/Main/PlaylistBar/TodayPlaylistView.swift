@@ -121,7 +121,7 @@ struct TodayPlaylistView: View {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
                                         .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-                                        .frame(width: 28, height: 28)
+                                        .frame(width: 24, height: 24)
                                 }
                             }
                         }
