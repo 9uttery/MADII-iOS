@@ -23,7 +23,7 @@ struct LogOutPopUpView: View {
                 .padding(.horizontal, 36)
         }
         .navigationDestination(isPresented: $showSplash) {
-            SplashView().navigationBarBackButtonHidden()
+            SplashView(fromLogout: true).navigationBarBackButtonHidden()
         }
     }
     
@@ -32,17 +32,25 @@ struct LogOutPopUpView: View {
     }
     
     func logOut() {
+        showSplash = true
+        
         ProfileAPI.shared.logout { isSuccess in
             if isSuccess {
                 print("Success LogOut")
                 
-                // UserDefaults 삭제
-                for key in UserDefaults.standard.dictionaryRepresentation().keys {
-                    UserDefaults.standard.removeObject(forKey: key.description)
+                DispatchQueue.global().async {
+                    // UserDefaults 삭제
+                    for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                        UserDefaults.standard.removeObject(forKey: key.description)
+                    }
+                    
+                    UserDefaults.standard.set(true, forKey: "hasEverLoggedIn")
+                    
+                    // 키체인 삭제
+                    keychain.clear()
+                    
+                    print("삭제 완료")
                 }
-                
-                keychain.clear()
-                showSplash = true
             } else {
                 print("로그아웃 실패")
             }

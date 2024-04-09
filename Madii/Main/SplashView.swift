@@ -17,6 +17,15 @@ struct SplashView: View {
     
     @State private var imageName: String = "LaunchScreen"
     
+    var fromLogout: Bool = false
+    
+    init(fromLogout: Bool = false) {
+        print("isTokenValid \(isTokenVaild)")
+        print("isProfileExist \(isProfileExist)")
+        self.fromLogout = fromLogout
+        print("fromLogtout \(self.fromLogout)")
+    }
+    
     var body: some View {
         NavigationStack {
             if isLoadingFinished == false {
@@ -24,7 +33,7 @@ struct SplashView: View {
                 splashView
             } else if isTokenVaild {
                 // 리프레시 토큰 유효 - main
-                if isProfileExist {
+                if isProfileExist && fromLogout == false {
                     // 프로필 있음 - 메인 화면
                     MadiiTabView()
                 } else {
