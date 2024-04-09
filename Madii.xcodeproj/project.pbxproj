@@ -32,6 +32,8 @@
 		5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */; };
 		513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */; };
 		513484422B8F9CC8008FF3F6 /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */; };
+		51380FA82BBD328D000D9BA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */; };
+		51380FAA2BBD3293000D9BA0 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
@@ -137,7 +139,6 @@
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
 		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
-		BE459A4A2B762563002E9AB2 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE459A492B762563002E9AB2 /* Config.xcconfig */; };
 		BE459A4D2B7625CD002E9AB2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE459A4C2B7625CD002E9AB2 /* KeychainSwift */; };
 		BE459A5C2B762621002E9AB2 /* RecordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A592B762621002E9AB2 /* RecordDto.swift */; };
 		BE459A5D2B762621002E9AB2 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A5A2B762621002E9AB2 /* RecordAPI.swift */; };
@@ -151,7 +152,6 @@
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
-		BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
 		BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */; };
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
@@ -178,6 +178,9 @@
 		5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJoyPopUp.swift; sourceTree = "<group>"; };
 		5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyPopUp.swift; sourceTree = "<group>"; };
 		513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
+		51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		51380FA92BBD3292000D9BA0 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		51380FAB2BBD3334000D9BA0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlbumToast.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
@@ -271,7 +274,6 @@
 		BE3986752B63604A00643805 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		BE3986772B63651300643805 /* GuestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestProfileView.swift; sourceTree = "<group>"; };
 		BE3986792B63790600643805 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
-		BE459A492B762563002E9AB2 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BE459A592B762621002E9AB2 /* RecordDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDto.swift; sourceTree = "<group>"; };
 		BE459A5A2B762621002E9AB2 /* RecordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		BE459A5B2B762621002E9AB2 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -284,8 +286,6 @@
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BEE9B41D2B8B85CA0077FAC9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
 		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
 		BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumPopUp.swift; sourceTree = "<group>"; };
@@ -448,10 +448,10 @@
 			isa = PBXGroup;
 			children = (
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
-				BEE9B41D2B8B85CA0077FAC9 /* Info.plist */,
-				BEE9B41B2B8B85B60077FAC9 /* GoogleService-Info.plist */,
-				BE459A492B762563002E9AB2 /* Config.xcconfig */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
+				51380FAB2BBD3334000D9BA0 /* Info.plist */,
+				51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */,
+				51380FA92BBD3292000D9BA0 /* Config.xcconfig */,
 				51E0259E2B26F7C500F4F41A /* Service */,
 				BE459A572B762621002E9AB2 /* Api */,
 				516455972B1F07080010199B /* Model */,
@@ -906,13 +906,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE9B41F2B8B9A810077FAC9 /* GoogleService-Info.plist in Resources */,
 				51D6C7C22AFCA38500A69B0C /* .swiftlint.yml in Resources */,
+				51380FA82BBD328D000D9BA0 /* GoogleService-Info.plist in Resources */,
 				510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */,
+				51380FAA2BBD3293000D9BA0 /* Config.xcconfig in Resources */,
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
-				BE459A4A2B762563002E9AB2 /* Config.xcconfig in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,7 +1074,7 @@
 /* Begin XCBuildConfiguration section */
 		515EFC972AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
+			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1138,7 +1138,7 @@
 		};
 		515EFC982AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
+			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1195,13 +1195,13 @@
 		};
 		515EFC9A2AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
+			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1221,7 +1221,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1236,13 +1236,13 @@
 		};
 		515EFC9B2AFCA0D200230647 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE459A492B762563002E9AB2 /* Config.xcconfig */;
+			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1262,7 +1262,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

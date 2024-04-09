@@ -110,9 +110,9 @@ struct RecommendJoyView: View {
                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
                 
                 withoutAnimation {
-//                    isActive = true
-//                    presentationMode.wrappedValue.dismiss()
-                    NavigationUtil.popToRootView()
+                    isActive = true
+                    presentationMode.wrappedValue.dismiss()
+//                    NavigationUtil.popToRootView()
                 }
                 
                 withAnimation {
