@@ -34,24 +34,27 @@ struct IDView: View {
     @State private var idType: IdType = .none
     var helperMessage: String {
         switch idType {
-        case .none, .correct, .wrong: "대소문자 영문 및 숫자만 사용 가능해요."
-        case .possible: "사용 가능한 아이디에요"
-        case .impossible: "이미 존재하는 아이디에요"
+//        case .none, .correct, .wrong: "대소문자 영문 및 숫자만 사용 가능해요."
+        case .none, .correct, .wrong: "올바른 이메일 형식으로 작성해 주세요"
+        case .possible: "사용 가능한 이메일이에요"
+        case .impossible: "이미 존재하는 이메일이에요"
         }
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("아이디를 입력해 주세요")
+            Text("이메일을 입력해 주세요")
                 .madiiFont(font: .madiiTitle, color: .white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 10)
                 .padding(.bottom, 14)
                 .padding(.horizontal, 18)
 
-            MadiiTextField(placeHolder: "아이디를 입력하세요",
+            MadiiTextField(placeHolder: "이메일을 입력하세요",
                            text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
                 .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
+                .keyboardType(.emailAddress)
+                .textInputAutocapitalization(.never)
                 .padding(.horizontal, 25)
                 .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
                 .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
@@ -61,7 +64,7 @@ struct IDView: View {
             Button {
                 // id 저장
                 signUpStatus.id = textFieldObserver.searchText
-                print("id 저장 \(textFieldObserver.searchText)")
+                print("email 저장 \(textFieldObserver.searchText)")
                 
                 signUpStatus.count += 1
             } label: {
@@ -76,7 +79,8 @@ struct IDView: View {
 
     private func isValidInput(_ text: String) -> Bool {
         // 정규식을 사용하여 공백 없이 대소문자 영문자 및 숫자만 허용하는지 체크
-        let pattern = "^[a-zA-Z0-9]*$"
+//        let pattern = "^[a-zA-Z0-9]*$"
+        let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return text.range(of: pattern, options: .regularExpression) != nil
     }
     

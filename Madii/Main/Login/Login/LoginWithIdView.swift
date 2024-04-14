@@ -43,11 +43,13 @@ struct LoginWithIdView: View {
     // id 텍스트필드
     private var idTextField: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("아이디")
+            Text("이메일")
                 .madiiFont(font: .madiiTitle, color: .white)
                 .padding(10)
             
-            MadiiTextField(placeHolder: "아이디를 입력해주세요", text: $id)
+            MadiiTextField(placeHolder: "이메일을 입력해주세요", text: $id)
+                .keyboardType(.emailAddress)
+                .textInputAutocapitalization(.never)
                 .padding(.horizontal, 8)
         }
     }

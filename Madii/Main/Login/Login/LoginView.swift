@@ -38,7 +38,7 @@ struct LoginView: View {
                 NavigationLink {
                     LoginWithIdView()
                 } label: {
-                    button(image: "arrow.forward", title: "아이디로 로그인")
+                    button(image: "arrow.forward", title: "이메일로 로그인")
                 }
                 
                 NavigationLink {
