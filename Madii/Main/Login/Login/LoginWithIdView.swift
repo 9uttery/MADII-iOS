@@ -48,6 +48,8 @@ struct LoginWithIdView: View {
                 .padding(10)
             
             MadiiTextField(placeHolder: "이메일을 입력해주세요", text: $id)
+                .keyboardType(.emailAddress)
+                .textInputAutocapitalization(.never)
                 .padding(.horizontal, 8)
         }
     }

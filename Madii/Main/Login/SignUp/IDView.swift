@@ -54,6 +54,7 @@ struct IDView: View {
                            text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
                 .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
                 .keyboardType(.emailAddress)
+                .textInputAutocapitalization(.never)
                 .padding(.horizontal, 25)
                 .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
                 .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
