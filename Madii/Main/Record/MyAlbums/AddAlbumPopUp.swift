@@ -37,6 +37,7 @@ struct AddAlbumPopUp: View {
                             .padding(.vertical, 8)
                             
                             MadiiTextField(placeHolder: "앨범 이름을 적어주세요", text: $title, strokeColor: .clear, limit: 30)
+                                .multilineTextAlignment(.leading)
                         }
                         
                         VStack(alignment: .leading, spacing: 0) {
@@ -49,6 +50,7 @@ struct AddAlbumPopUp: View {
                             .padding(.vertical, 8)
                             
                             MadiiTextField(placeHolder: "앨범에 대한 설명을 적어주세요", text: $description, strokeColor: .clear, limit: 50)
+                                .multilineTextAlignment(.leading)
                         }
                     }
                 }
