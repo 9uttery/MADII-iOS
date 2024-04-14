@@ -115,7 +115,7 @@ struct AlbumDetailView: View {
                         
                         // 다른 소확행 앨범 모음 - '행복을 재생해요' 에서만 띄우기
                         if fromPlayJoy {
-                            AlbumDetailOtherAlbumsView(album: album)
+                            AlbumDetailOtherAlbumsView(album: album, fromPlayJoy: fromPlayJoy)
                         }
                     }
                     .padding(.horizontal, 16)

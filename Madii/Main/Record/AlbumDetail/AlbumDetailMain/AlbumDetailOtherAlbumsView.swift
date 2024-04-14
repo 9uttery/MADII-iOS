@@ -11,11 +11,13 @@ struct AlbumDetailOtherAlbumsView: View {
     let album: Album
     @State private var othersAlbums: [Album] = []
     
+    var fromPlayJoy: Bool = false
+    
     var body: some View {
         VStack(spacing: 12) {
             ForEach(othersAlbums) { album in
                 NavigationLink {
-                    AlbumDetailView(album: album)
+                    AlbumDetailView(album: album, fromPlayJoy: fromPlayJoy)
                 } label: {
                     AlbumRow(album: album)
                 }
