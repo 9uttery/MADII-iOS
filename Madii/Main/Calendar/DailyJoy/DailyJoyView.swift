@@ -73,6 +73,7 @@ struct DailyJoyView: View {
             
             Text(joy.title)
                 .madiiFont(font: .madiiBody3, color: .white)
+                .multilineTextAlignment(.leading)
             
             Spacer()
             
