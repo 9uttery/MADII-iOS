@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct UserStatView: View {
-    @State var nickname: String = "에몽"
-    @State var days: Int = 96
-    @State var joy: Int = 32
-    @State var play: Int = 231
+    @State var nickname: String = "OO"
+    @State var days: Int?
+    @State var joy: Int?
+    @State var play: Int?
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(nickname)님은")
                     .madiiFont(font: .madiiTitle, color: .white)
                     .padding(.bottom, 8)
-                Text("\(days)일 동안 일상 속에서")
+                Text("\(days ?? 0)일 동안 일상 속에서")
                     .madiiFont(font: .madiiTitle, color: .white)
                     .padding(.bottom, 8)
-                Text("\(joy)개의 소학행을")
+                Text("\(joy ?? 0)개의 소확행을")
                     .madiiFont(font: .madiiTitle, color: .white)
                     .padding(.bottom, 8)
                 HStack {
-                    Text("\(play)번 재생해왔어요")
+                    Text("\(play ?? 0)번 재생해왔어요")
                         .madiiFont(font: .madiiTitle, color: .white)
                     Spacer()
                 }
@@ -70,5 +70,5 @@ struct UserStatView: View {
 }
 
 #Preview {
-    UserStatView()
+    UserStatView(nickname: "정태우", days: 24, joy: 113, play: 194)
 }

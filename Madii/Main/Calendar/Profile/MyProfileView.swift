@@ -15,10 +15,11 @@ struct MyProfileView: View {
     @State private var showProfileImageSheet: Bool = false
     @Binding var url: String
     @State var nickname: String = ""
-    @State private var isNicknameVaild: Bool = false
+    @State private var isNicknameVaild: Bool = true
     private var helperMessage: String {
         self.isNicknameVaild ? "사용할 수 있는 닉네임이에요." : "대소문자 영문 및 한글, 숫자만 사용 가능해요."
     }
+    @Binding var name: String
     
     var body: some View {
         VStack {
@@ -97,10 +98,14 @@ struct MyProfileView: View {
                         // ImagePicker(sourceType: .camera, selectedImage: self.$image)
                     }
                     
-                    MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
-                                   strokeColor: self.strokeColor(), limit: 10)
-                    .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
-                    .onChange(of: self.nickname) { self.checkValidNickname($0) }
+                    if name == nickname {
+                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname)
+                    } else {
+                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
+                                       strokeColor: self.strokeColor(), limit: 10)
+                        .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
+                        .onChange(of: self.nickname) { self.checkValidNickname($0) }
+                    }
                 }
                 .padding(.top, 28)
                 .padding(.horizontal, 24)
@@ -137,7 +142,6 @@ struct MyProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear{ checkValidNickname(nickname) }
     }
     
     private func showPhotoLibrary(status: PHAuthorizationStatus) {
