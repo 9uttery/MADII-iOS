@@ -43,6 +43,7 @@ struct AlbumDetailView: View {
                         if isAlbumMine == false {
                             AlbumDetailBookmarkButton(albumId: album.id, isAlbumSaved: $isAlbumSaved)
                                 .offset(x: -18, y: -12)
+                                .onChange(of: isAlbumSaved) { _ in getAlbumInfo() }
                         }
                     }
                     
@@ -64,51 +65,20 @@ struct AlbumDetailView: View {
                         // 소확행 리스트
                         VStack(spacing: 4) {
                             ForEach(joys) { joy in
-                                HStack {
-                                    Button {
-                                        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
-                                            if isSuccess {
-                                                print("DEBUG AlbumDetailView: 오플리에 추가 true")
-                                            } else {
-                                                print("DEBUG AlbumDetailView: 오플리에 추가 false")
-                                            }
-                                        }
-                                    } label: {
-                                        JoyRowWithButton(joy: joy) {
-                                            if isAlbumMine {
-                                                // 나의 앨범: 소확행 메뉴 bottom sheet
-                                                selectedJoy = joy
-                                            } else {
-                                                // 타인의 앨범: 소확행 저장 아이콘
-                                                showSaveJoyPopUp = true
-                                                self.joy = joy
-                                            }
-                                        } buttonLabel: {
-                                            if isAlbumMine {
-                                                // 나의 앨범: 메뉴 버튼 이미지
-                                                Image(systemName: "ellipsis")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 20, height: 20)
-                                                    .foregroundStyle(Color.gray500)
-                                                    .padding(10)
-                                            } else {
-                                                // 타인의 앨범: 북마크 버튼 이미지
-                                                Image(joy.isSaved ? "activeSave" : "inactiveSave")
-                                                    .resizable()
-                                                    .frame(width: 36, height: 36)
-                                            }
-                                        }
-                                    }
-                                    .padding(.leading, 12)
-                                    .padding(.trailing, 16)
-                                    .padding(.vertical, 4)
+                                // 소확행 row
+                                Button {
+                                    playJoy()
+                                } label: {
+                                    albumDetailJoyRow(joy: joy)
                                 }
+                                .padding(.leading, 12)
+                                .padding(.trailing, 16)
+                                .padding(.vertical, 4)
                             }
                         }
-                        .sheet(item: $selectedJoy, onDismiss: getAlbumInfo, content: { _ in
+                        .sheet(item: $selectedJoy, onDismiss: getAlbumInfo) { _ in
                             JoyMenuBottomSheet(joy: $selectedJoy, isMine: true)
-                        })
+                        }
                         .padding(.vertical, 20)
                         .background(Color.madiiBox)
                         .cornerRadius(20)
@@ -188,6 +158,35 @@ struct AlbumDetailView: View {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
     }
     
+    @ViewBuilder
+    private func albumDetailJoyRow(joy: Joy) -> some View {
+        JoyRowWithButton(joy: joy) {
+            if isAlbumMine {
+                // 나의 앨범: 소확행 메뉴 bottom sheet
+                selectedJoy = joy
+            } else {
+                // 타인의 앨범: 소확행 저장 아이콘
+                showSaveJoyPopUp = true
+                self.joy = joy
+            }
+        } buttonLabel: {
+            if isAlbumMine {
+                // 나의 앨범: 메뉴 버튼 이미지
+                Image(systemName: "ellipsis")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(Color.gray500)
+                    .padding(10)
+            } else {
+                // 타인의 앨범: 북마크 버튼 이미지
+                Image(joy.isSaved ? "activeSave" : "inactiveSave")
+                    .resizable()
+                    .frame(width: 36, height: 36)
+            }
+        }
+    }
+    
     private func dismissView() {
         dismiss()
     }
@@ -249,6 +248,27 @@ struct AlbumDetailView: View {
                 print("DEBUG AlbumDetailView: 최근 본 앨범 등록 success")
             } else {
                 print("DEBUG AlbumDetailView: 최근 본 앨범 등록 fail")
+            }
+        }
+    }
+    
+    private func playJoy() {
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
+            if isSuccess {
+                print("DEBUG AlbumDetailView: 오플리에 추가 true")
+                
+                // 오플리 추가 안내 토스트 띄우기
+                withAnimation {
+                    appStatus.showAddPlaylistToast = true
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else {
+                print("DEBUG AlbumDetailView: 오플리에 추가 false")
             }
         }
     }
