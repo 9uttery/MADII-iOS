@@ -43,6 +43,7 @@ struct AlbumDetailView: View {
                         if isAlbumMine == false {
                             AlbumDetailBookmarkButton(albumId: album.id, isAlbumSaved: $isAlbumSaved)
                                 .offset(x: -18, y: -12)
+                                .onChange(of: isAlbumSaved) { _ in getAlbumInfo() }
                         }
                     }
                     
