@@ -70,6 +70,16 @@ struct AlbumDetailView: View {
                                         AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
                                             if isSuccess {
                                                 print("DEBUG AlbumDetailView: 오플리에 추가 true")
+                                                
+                                                withAnimation {
+                                                    appStatus.showAddPlaylistToast = true
+                                                }
+                                                
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                                    withAnimation {
+                                                        appStatus.showAddPlaylistToast = false
+                                                    }
+                                                }
                                             } else {
                                                 print("DEBUG AlbumDetailView: 오플리에 추가 false")
                                             }

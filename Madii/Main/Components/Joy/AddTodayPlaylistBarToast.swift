@@ -22,7 +22,7 @@ struct AddTodayPlaylistBarToast: View {
                 showTodayPlaylist = true
             } label: {
                 Text("바로가기")
-                    .madiiFont(font: .madiiBody4, color: .madiiOrange)
+                    .madiiFont(font: .madiiBody5, color: .madiiOrange)
                     .padding(.horizontal, 8)
             }
         }
