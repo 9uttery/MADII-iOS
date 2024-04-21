@@ -13,11 +13,15 @@ struct RecommendView: View {
     @State var isClicked: [Bool] = Array(repeating: false, count: 9)
     @State var recommendJoys: [GetJoyResponseJoy] = []
     @State var selectedJoy: GetJoyResponseJoy?
+    @State var keywordlabel: [String] = ["활기찬", "혼자서", "특별한 도전을 할 수 있는", "지금 바로 할 수 있는", "울적한", "다 함께", "여유로운", "일상 속에서 할 수 있는", "둘이서"]
+    @State var keywordCategory: [Int] = [0, 1, 2, 2, 0, 1, 0, 2, 1]
+    @State var keywordRemove: [Int] = [1, 4, 7, 8, 2, 6, 3, 9, 5]
+    @State var keywordColor: [Color] = [.madiiSkyBlue, .madiiPink, .madiiOrange, .madiiOrange, .madiiSkyBlue, .madiiPink, .madiiSkyBlue, .madiiOrange, .madiiPink]
     @State var when: [Int] = []
     @State var who: [Int] = []
     @State var which: [Int] = []
     @State var clickedNum: Int = 0
-    
+    @State var reClicked: Bool = false
     @EnvironmentObject var appStatus: AppStatus
     @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
     
@@ -25,22 +29,19 @@ struct RecommendView: View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0) {
                 HStack {
-                    if clickedNum == 0 {
-                        Text("키워드를 선택해주세요")
-                            .madiiFont(font: .madiiBody4, color: .white)
+                    if selectedJoy != nil {
+                        Text("\(nickname)님을 위한 소확행이에요!")
+                            .madiiFont(font: .madiiBody5, color: .gray800)
+                    } else if recommendJoys.isEmpty {
+                        Text("아래에 있는 키워드를 선택하여 나만을 위한 소확행을 찾아보세요")
+                            .madiiFont(font: .madiiBody5, color: .gray800)
                     } else {
-                        Circle()
-                            .fill(Color.white)
-                            .opacity(brightDotIndex == 0 ? 1.0 : 0.2)
-                            .frame(width: 8, height: 8)
-                        Circle()
-                            .fill(Color.white)
-                            .opacity(brightDotIndex == 1 ? 1.0 : 0.2)
-                            .frame(width: 8, height: 8)
-                        Circle()
-                            .fill(Color.white)
-                            .opacity(brightDotIndex == 2 ? 1.0 : 0.2)
-                            .frame(width: 8, height: 8)
+                        ForEach(0..<3) { index in
+                            Circle()
+                                .fill(.gray800)
+                                .opacity(brightDotIndex == index ? 1.0 : 0.2)
+                                .frame(width: 8, height: 8)
+                        }
                     }
                 }
                 .frame(height: 20)
@@ -48,102 +49,39 @@ struct RecommendView: View {
                 .padding(.bottom, 40)
                 
                 VStack(spacing: 12) {
-                    HStack {
-                        StyleJoyButton(label: "활기찬", isClicked: $isClicked[0], buttonColor: Color.madiiSkyBlue) {
-                            if isClicked[0] {
-                                when.append(1)
-                                clickedNum += 1
-                            } else {
-                                when.removeAll { $0 == 1 }
-                                clickedNum -= 1
-                            }
-                        }
-                        
-                        StyleJoyButton(label: "혼자서", isClicked: $isClicked[1], buttonColor: Color.madiiPink) {
-                            if isClicked[1] {
-                                who.append(4)
-                                clickedNum += 1
-                            } else {
-                                who.removeAll { $0 == 4 }
-                                clickedNum -= 1
-                            }
-                        }
-                        StyleJoyButton(label: "특별한 도전을 할 수 있는", isClicked: $isClicked[2], buttonColor: Color.madiiOrange) {
-                            if isClicked[2] {
-                                which.append(7)
-                                clickedNum += 1
-                            } else {
-                                which.removeAll { $0 == 7 }
-                                clickedNum -= 1
-                            }
-                        }
-                    }
-                    HStack {
-                        StyleJoyButton(label: "지금 바로 할 수 있는", isClicked: $isClicked[3], buttonColor: Color.madiiOrange) {
-                            if isClicked[3] {
-                                which.append(9)
-                                clickedNum += 1
-                            } else {
-                                which.removeAll { $0 == 8 }
-                                clickedNum -= 1
-                            }
-                        }
-                        
-                        StyleJoyButton(label: "울적한", isClicked: $isClicked[4], buttonColor: Color.madiiSkyBlue) {
-                            if isClicked[4] {
-                                when.append(2)
-                                clickedNum += 1
-                            } else {
-                                when.removeAll { $0 == 2 }
-                                clickedNum -= 1
-                            }
-                        }
-                        
-                        StyleJoyButton(label: "다 함께", isClicked: $isClicked[5], buttonColor: Color.madiiPink) {
-                            if isClicked[5] {
-                                who.append(6)
-                                clickedNum += 1
-                            } else {
-                                who.removeAll { $0 == 6 }
-                                clickedNum -= 1
-                            }
-                        }
-                    }
-                    HStack {
-                        StyleJoyButton(label: "여유로운 ", isClicked: $isClicked[6], buttonColor: Color.madiiSkyBlue) {
-                            if isClicked[6] {
-                                when.append(3)
-                                clickedNum += 1
-                            } else {
-                                when.removeAll { $0 == 3 }
-                                clickedNum -= 1
-                            }
-                        }
-                        
-                        StyleJoyButton(label: "일상 속에서 할 수 있는", isClicked: $isClicked[7], buttonColor: Color.madiiOrange) {
-                            if isClicked[7] {
-                                which.append(9)
-                                clickedNum += 1
-                            } else {
-                                which.removeAll { $0 == 9 }
-                                clickedNum -= 1
-                            }
-                        }
-                        
-                        StyleJoyButton(label: "둘이서", isClicked: $isClicked[8], buttonColor: Color.madiiPink) {
-                            if isClicked[8] {
-                                who.append(5)
-                                clickedNum += 1
-                            } else {
-                                who.removeAll { $0 == 5 }
-                                clickedNum -= 1
+                    ForEach(0..<3) { rdx in
+                        HStack {
+                            ForEach(0..<3) { cdx in
+                                StyleJoyButton(label: keywordlabel[rdx * 3 + cdx], isClicked: $isClicked[rdx * 3 + cdx], buttonColor: keywordColor[rdx * 3 + cdx]) {
+                                    if isClicked[rdx * 3 + cdx] {
+                                        switch keywordCategory[rdx * 3 + cdx] {
+                                        case 0:
+                                            when.append(keywordRemove[rdx * 3 + cdx])
+                                        case 1:
+                                            who.append(keywordRemove[rdx * 3 + cdx])
+                                        default:
+                                                which.append(keywordRemove[rdx * 3 + cdx])
+                                        }
+                                        clickedNum += 1
+                                    } else {
+                                        switch keywordCategory[rdx * 3 + cdx] {
+                                        case 0:
+                                            when.removeAll { $0 == keywordRemove[rdx * 3 + cdx] }
+                                        case 1:
+                                            who.removeAll { $0 == keywordRemove[rdx * 3 + cdx] }
+                                        default:
+                                                which.removeAll { $0 == keywordRemove[rdx * 3 + cdx] }
+                                        }
+                                        clickedNum += 1
+                                    }
+                                }
                             }
                         }
                     }
                 }
                 .padding(.bottom, 81)
                 
-                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum)
+                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked)
             }
             .padding(.horizontal, 16)
             
@@ -155,21 +93,10 @@ struct RecommendView: View {
         .sheet(isPresented: $showTodayPlaylist) {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
         .onChange(of: clickedNum) { _ in
-            HomeAPI.shared.postJoyRecommend(when: when, who: who, which: which) { isSuccess, joyList in
-                if isSuccess {
-                    recommendJoys = joyList
-                    
-                    if selectedJoy != nil {
-                        let isContainedInRecommendJoys = recommendJoys.contains { joy in
-                            joy.joyId == selectedJoy?.joyId
-                        }
-                        
-                        if !isContainedInRecommendJoys {
-                            selectedJoy = nil
-                        }
-                    }
-                }
-            }
+            getRecommendJoys(when: when, who: who, which: which)
+        }
+        .onChange(of: reClicked) { _ in
+            getRecommendJoys(when: when, who: who, which: which)
         }
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
@@ -192,6 +119,24 @@ struct RecommendView: View {
                 endPoint: UnitPoint(x: 0.5, y: 1.5)
                 )
             )
+    }
+    
+    private func getRecommendJoys(when: [Int], who: [Int], which: [Int]) {
+        HomeAPI.shared.postJoyRecommend(when: when, who: who, which: which) { isSuccess, joyList in
+            if isSuccess {
+                recommendJoys = joyList
+                
+                if selectedJoy != nil {
+                    let isContainedInRecommendJoys = recommendJoys.contains { joy in
+                        joy.joyId == selectedJoy?.joyId
+                    }
+                    
+                    if !isContainedInRecommendJoys {
+                        selectedJoy = nil
+                    }
+                }
+            }
+        }
     }
 }
 

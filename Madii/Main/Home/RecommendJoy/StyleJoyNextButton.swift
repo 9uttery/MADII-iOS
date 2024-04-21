@@ -14,7 +14,7 @@ struct StyleJoyNextButton: View {
 
     var body: some View {
         Text(label)
-            .madiiFont(font: .madiiBody1, color: .black)
+            .madiiFont(font: .madiiBody1, color: isDisabled ? .black : .black.opacity(0.4))
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(.vertical, 18)
             .background(isDisabled ? (color ?? Color.white) : Color.white.opacity(0.4))

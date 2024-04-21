@@ -8,79 +8,131 @@
 import SwiftUI
 
 struct RecommendJoyView: View {
+    @State var rotation: CGFloat = 0.0
     @EnvironmentObject var appStatus: AppStatus
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var updatePlaylistBar: Bool = false
     @State var nickname: String
-    @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기")
-    @Binding var isActive: Bool
-    
+    @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기", isJoySaved: false)
+    @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
+    @State private var isActive: Bool = false
+    @State var updatePlaylistBar: Bool = true
     var body: some View {
-        VStack(spacing: 0) {
-            Text("\(nickname)님을 위한 소확행이에요!")
-                .madiiFont(font: .madiiSubTitle, color: .white)
-                .padding(.top, 40)
-                .padding(.bottom, 68)
+        ZStack {
+            Circle()
+                .foregroundColor(.clear)
+                .frame(width: frameWidth, height: frameWidth)
+                .background(
+                EllipticalGradient(
+                    stops: [
+                        Gradient.Stop(color: .white.opacity(0.21), location: 0.00),
+                        Gradient.Stop(color: .white.opacity(0.03), location: 1.00)
+                        ],
+                        center: UnitPoint(x: 0.5, y: 0.5)
+                    )
+                )
+                .cornerRadius(frameWidth)
+                .opacity(0.6)
+            
+            Circle()
+                .foregroundColor(.clear)
+                .frame(width: frameWidth * 1.44, height: frameWidth * 1.44)
+                .background(
+                    EllipticalGradient(
+                        stops: [
+                            Gradient.Stop(color: .white.opacity(0.18), location: 0.00),
+                            Gradient.Stop(color: .white.opacity(0.03), location: 1.00)
+                        ],
+                        center: UnitPoint(x: 0.5, y: 0.5)
+                    )
+                )
+                .cornerRadius(frameWidth * 1.44)
+                .opacity(0.6)
+            
+            Circle()
+                .foregroundColor(.clear)
+                .frame(width: frameWidth * 1.83, height: frameWidth * 1.83)
+                .background(
+                    EllipticalGradient(
+                    stops: [
+                        Gradient.Stop(color: .white.opacity(0.18), location: 0.00),
+                        Gradient.Stop(color: .white.opacity(0.03), location: 1.00)
+                    ],
+                    center: UnitPoint(x: 0.5, y: 0.5)
+                    )
+                )
+                .cornerRadius(frameWidth * 1.83)
+                .opacity(0.6)
             
             VStack(spacing: 0) {
-                ZStack {
-                    Circle()
-                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                        .frame(width: 220, height: 220)
-                        .background(Color.black)
-                        .cornerRadius(110)
-                    
-                    Image("icon_\(recommendJoy.joyIconNum)")
-                        .resizable()
-                        .frame(width: 118, height: 118)
-                }
-                .padding(.bottom, 42)
+                Spacer()
                 
-                Text(recommendJoy.contents)
+                ZStack {
+                    VStack(spacing: 0) {
+                        ZStack {
+                            Circle()
+                                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                .frame(width: 220, height: 220)
+                                .background(Color.black)
+                                .cornerRadius(110)
+                            
+                            Image("icon_\(recommendJoy.joyIconNum)")
+                                .resizable()
+                                .frame(width: 118, height: 118)
+                        }
+                        .padding(.bottom, 42)
+                        
+                        Text(recommendJoy.contents)
+                            .madiiFont(font: .madiiSubTitle, color: .white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: frameWidth - 130)
+                            .padding(.bottom, 20)
+                    }
+                    .frame(width: frameWidth - 70)
+                    .padding(.top, 40)
+                    .padding(.bottom, 48)
+                    .background(Color.madiiBox)
+                    .cornerRadius(20)
+                    
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .frame(width: 200, height: 200)
+                        .offset(x: 200)
+                        .foregroundStyle(
+                            LinearGradient(
+                                stops: [
+                                    Gradient.Stop(color: .white, location: 0.00),
+                                    Gradient.Stop(color: Color(red: 0.8, green: 0.8, blue: 0.8), location: 0.35),
+                                    Gradient.Stop(color: .white, location: 0.65),
+                                    Gradient.Stop(color: Color(red: 0.8, green: 0.8, blue: 0.8), location: 1.00)
+                                ],
+                                startPoint: UnitPoint(x: 0.5, y: 0),
+                                endPoint: UnitPoint(x: 0.5, y: 1)
+                            )
+                        )
+                        .rotationEffect(.degrees(rotation))
+                        .mask {
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(lineWidth: 3)
+                                .frame(width: frameWidth - 66, height: 396)
+                        }
+                }
+                .padding(.bottom, 31)
+                
+                Text("\(nickname)님을 위한 소확행이에요!")
                     .madiiFont(font: .madiiSubTitle, color: .white)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 20)
-            }
-            .padding(.top, 40)
-            .padding(.horizontal, 50)
-            .padding(.bottom, 48)
-            .background(Color.madiiBox)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .inset(by: 0.5)
-                    .stroke(
-                        LinearGradient(
-                            stops: [
-                                Gradient.Stop(color: .white, location: 0.00),
-                                Gradient.Stop(color: .white.opacity(0.2), location: 0.27),
-                                Gradient.Stop(color: .white, location: 0.51),
-                                Gradient.Stop(color: .white.opacity(0.2), location: 0.77),
-                                Gradient.Stop(color: .white, location: 1.00)
-                            ],
-                        startPoint: UnitPoint(x: 0.5, y: 0),
-                        endPoint: UnitPoint(x: 0.5, y: 1)
-                    ), lineWidth: 1)
-            )
-            .padding(.bottom, 28)
-            Button {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("다시 고르기")
-                    .madiiFont(font: .madiiBody4, color: .white)
-                    .underline()
-            }
-            Spacer()
-    
-            Button {
-                playJoy()
-            } label: {
-                StyleJoyNextButton(label: "오늘의 플레이 리스트에 추가하기", isDisabled: true)
+                    .padding(.bottom, 80)
+                
+                Spacer()
+                
+                NavigationLink(
+                    destination: MadiiTabView(),
+                    isActive: $isActive
+                ) {
+                    EmptyView()
+                }
             }
         }
-        .navigationTitle("\(nickname)님의 취향저격 소확행")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
         .toolbarBackground(Color.clear, for: .navigationBar)
         .padding(.horizontal, 16)
         .background(
@@ -101,19 +153,20 @@ struct RecommendJoyView: View {
                     nickname = userProfile.nickname
                 }
             }
+            playJoy(joyId: recommendJoy.joyId)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isActive = true
+            }
+            withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
+                rotation = 360
+            }
         }
     }
     
-    private func playJoy() {
-        AchievementsAPI.shared.playJoy(joyId: recommendJoy.joyId) { isSuccess in
+    private func playJoy(joyId: Int) {
+        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess in
             if isSuccess {
                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
-                
-                withoutAnimation {
-                    isActive = true
-                    presentationMode.wrappedValue.dismiss()
-//                    NavigationUtil.popToRootView()
-                }
                 
                 withAnimation {
                     appStatus.showAddPlaylistToast = true
@@ -131,5 +184,5 @@ struct RecommendJoyView: View {
 }
 
 #Preview {
-    RecommendJoyView(nickname: "", isActive: .constant(false))
+    RecommendJoyView(nickname: "")
 }
