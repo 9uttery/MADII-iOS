@@ -11,7 +11,7 @@ import KeychainSwift
 
 class AlbumAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = AlbumAPI()
     
     // 앨범 상세 조회

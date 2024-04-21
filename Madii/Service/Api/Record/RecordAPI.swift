@@ -15,7 +15,7 @@ struct GetPlaceholderResponse: Codable {
 
 class RecordAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = RecordAPI()
     
     // (R-레코드) 소확행 기록 placeholder

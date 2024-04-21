@@ -11,7 +11,7 @@ import SwiftUI
 
 class NotificationAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = NotificationAPI()
     
     // fcm token 등록

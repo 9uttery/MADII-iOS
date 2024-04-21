@@ -11,7 +11,7 @@ import KeychainSwift
 
 class HomeAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = HomeAPI()
     
     // (H-홈) 오늘의 소확행 조회
