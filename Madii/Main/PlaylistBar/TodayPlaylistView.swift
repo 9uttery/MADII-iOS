@@ -31,7 +31,8 @@ struct TodayPlaylistView: View {
                     // 내가 기록한 소확행 있을 때
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(0 ..< 2) { index in
+                            joyBoxByToday(allJoys[0].date, joys: allJoys[0].joys)
+                            ForEach(1 ..< 2) { index in
                                 let eachDayJoy = allJoys[index]
                                 if eachDayJoy.joys.isEmpty == false {
                                     // 날짜별 소확행 박스
@@ -79,6 +80,82 @@ struct TodayPlaylistView: View {
             HStack { Spacer() }
         }
         .background(Color.madiiBox)
+    }
+    
+    private func joyBoxByToday(_ date: String, joys: [Joy]) -> some View {
+        VStack {
+            HStack {
+                Text(date)
+                    .madiiFont(font: .madiiSubTitle, color: .white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 20)
+                
+                Spacer()
+            } 
+            
+            List {
+                ForEach(joys) { joy in
+                    Button {
+                        if joy.isAchieved {
+                            fromPlaylistBar = false
+                            selectedJoy = joy
+                        }
+                    } label: {
+                        HStack(spacing: 15) {
+                            // 소확행 커버 이미지
+                            ZStack {
+                                Circle()
+                                    .frame(width: 48, height: 48)
+                                    .foregroundStyle(Color.black)
+                                    .overlay {
+                                        Circle()
+                                            .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                    }
+                                
+                                Image("icon_\(joy.icon)")
+                                    .resizable()
+                                    .frame(width: 26, height: 26)
+                            }
+                            
+                            Text(joy.title)
+                                .madiiFont(font: .madiiBody3, color: .white)
+                                .multilineTextAlignment(.leading)
+                            
+                            Spacer()
+                            
+                            Button {
+                                fromPlaylistBar = true
+                                selectedJoy = joy } label: { if joy.isAchieved {
+                                    // 실천한 경우 -> 실천 해제
+                                    achievedButton(joy: joy)
+                                } else {
+                                    // 오늘 실천하지 않은 경우 -> bottomsheet
+                                    Button {
+                                        selectedJoy = joy
+                                    } label: {
+                                        Image(systemName: "checkmark.circle")
+                                            .resizable()
+                                            .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+                                            .frame(width: 24, height: 24)
+                                    }
+                                } }
+                        }
+                    }
+                    .listRowBackground(Color.madiiBox)
+                    .listRowSeparator(.hidden)
+                }
+                .onDelete { indexSet in
+                    deleteAchivement(id: joys[indexSet.first ?? 0].achievementId)
+                }
+            }
+            .listStyle(.plain)
+            .frame(maxWidth: .infinity)
+            .frame(height: 56 * CGFloat(joys.count))
+            .environment(\.defaultMinListRowHeight, 56)
+            .padding(.bottom, 20)
+        }
+        .background(Color.madiiBox)
+        .cornerRadius(20)
     }
     
     @ViewBuilder
@@ -239,6 +316,10 @@ struct TodayPlaylistView: View {
                 print("DEBUG PlaylistBar deleteJoy: isSuccess false")
             }
         }
+    }
+    
+    func deleteJoy(at offsets: IndexSet) {
+        
     }
 }
 
