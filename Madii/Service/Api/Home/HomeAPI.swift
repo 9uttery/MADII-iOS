@@ -31,7 +31,7 @@ class HomeAPI {
                 case .success(let response):
                     guard let data = response.data else {
                         print("DEBUG(postJoyRecommend): data nil")
-                        completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: ""))
+                        completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false))
                         return
                     }
                     
@@ -48,7 +48,7 @@ class HomeAPI {
                     
                 case .failure(let error):
                     print("DEBUG(postJoyRecommend): error \(error))")
-                    completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: ""))
+                    completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false))
                 }
             }
     }

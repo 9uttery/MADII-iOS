@@ -20,6 +20,7 @@ struct GetJoyResponseJoy: Codable, Identifiable {
     let joyId: Int
     let joyIconNum: Int
     let contents: String
+    let isJoySaved: Bool
 }
 
 struct GetMostAchievedJoyResponse: Codable {
