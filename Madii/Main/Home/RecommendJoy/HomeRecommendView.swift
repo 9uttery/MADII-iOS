@@ -44,13 +44,16 @@ struct HomeRecommendView: View {
                         .foregroundStyle(Color.clear)
                         .background { backgroundGradation() }
                         .mask { Rectangle().frame(height: 100).cornerRadius(20) }
-                        .onAppear {
-                            addAngle()
-                            getUserNickname()
-                        }
                     )
                     .padding(.bottom, 20)
             }
+        }
+        .onAppear {
+            addAngle()
+            getUserNickname()
+        }
+        .onDisappear {
+            deleteAngle()
         }
     }
     
@@ -63,6 +66,19 @@ struct HomeRecommendView: View {
                 
                 xangle += addNum
                 angle += addNum
+            }
+        }
+    }
+    
+    private func deleteAngle() {
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
+            withAnimation(.smooth) {
+                if angle > 360 || angle < 0 {
+                    addNum *= -1
+                }
+                
+                xangle -= addNum
+                angle -= addNum
             }
         }
     }
