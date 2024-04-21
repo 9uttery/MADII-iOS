@@ -13,7 +13,7 @@ import SwiftUI
 
 class UsersAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = UsersAPI()
 
     // 아이디 중복체크

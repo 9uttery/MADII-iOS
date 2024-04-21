@@ -11,7 +11,7 @@ import SwiftUI
 
 class ProfileAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = ProfileAPI()
     
     // 프로필 정보 조회

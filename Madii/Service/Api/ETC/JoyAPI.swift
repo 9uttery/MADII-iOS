@@ -11,7 +11,7 @@ import SwiftUI
 
 class JoyAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = JoyAPI()
     
     // (R-레코드) 소확행 기록

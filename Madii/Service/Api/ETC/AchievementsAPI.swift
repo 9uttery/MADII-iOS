@@ -11,7 +11,7 @@ import SwiftUI
 
 class AchievementsAPI {
     let keychain = KeychainSwift()
-    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")"
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = AchievementsAPI()
     
     // 캘린더 소확행 커버 조회
