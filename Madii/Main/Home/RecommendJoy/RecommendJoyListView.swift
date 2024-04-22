@@ -116,7 +116,7 @@ struct RecommendJoyListView: View {
             Spacer()
             
             NavigationLink {
-                RecommendJoyView(nickname: nickname, recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false))
+                RecommendJoyView(nickname: nickname, recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false), isActive: $isActive)
             } label: {
                 StyleJoyNextButton(label: "오늘의 플레이리스트 추가", isDisabled: selectedJoy != nil ? true : false)
             }
@@ -124,6 +124,11 @@ struct RecommendJoyListView: View {
         }
         .sheet(item: $selectedJoyEllipsis) { _ in
             JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: false, isFromTodayJoy: true)
+        }
+        .onAppear {
+            if isActive {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }

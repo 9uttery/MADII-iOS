@@ -15,8 +15,7 @@ struct RecommendJoyView: View {
     @State var nickname: String
     @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기", isJoySaved: false)
     @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
-    @State private var isActive: Bool = false
-    @State var updatePlaylistBar: Bool = true
+    @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Circle()
@@ -154,8 +153,9 @@ struct RecommendJoyView: View {
                 }
             }
             playJoy(joyId: recommendJoy.joyId)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 isActive = true
+                self.presentationMode.wrappedValue.dismiss()
             }
             withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
                 rotation = 360
@@ -184,5 +184,5 @@ struct RecommendJoyView: View {
 }
 
 #Preview {
-    RecommendJoyView(nickname: "")
+    RecommendJoyView(nickname: "", isActive: .constant(false))
 }
