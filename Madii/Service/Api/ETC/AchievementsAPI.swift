@@ -150,16 +150,16 @@ class AchievementsAPI {
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(postAlbumsJoyByJoyId): success")
+                        print("DEBUG(playJoy): success")
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(postAlbumsJoyByJoyId): status \(statusCode))")
+                        print("DEBUG(playJoy): status \(statusCode))")
                         completion(false)
                     }
                     
                 case .failure(let error):
-                    print("DEBUG(postAlbumsJoyByJoyId): error \(error))")
+                    print("DEBUG(playJoy): error \(error))")
                     completion(false)
                 }
             }
