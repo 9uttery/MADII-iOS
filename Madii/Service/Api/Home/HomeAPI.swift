@@ -15,40 +15,40 @@ class HomeAPI {
     static let shared = HomeAPI()
     
     // (H-홈) 오늘의 소확행 조회
-    func getJoyToday(completion: @escaping (_ isSuccess: Bool, _ todayJoy: GetJoyResponseJoy) -> Void) {
+    func getJoyToday(completion: @escaping (_ isSuccess: Bool, _ todayJoy: GetTodayJoyResponseJoy) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: Date())
-        let url = "\(baseUrl)/joy/today?date=\(date)"
+//        let url = "\(baseUrl)/joy/today?date=\(date)"
+        let url = "\(baseUrl)/joy/today"
         let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+            "Content-Type": "application/json"
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<GetJoyResponseJoy>.self) { response in
+            .responseDecodable(of: BaseResponse<GetTodayJoyResponseJoy>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
-                        print("DEBUG(postJoyRecommend): data nil")
-                        completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false))
+                        print("DEBUG(getJoyToday): data nil")
+                        completion(false, GetTodayJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: ""))
                         return
                     }
                     
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(postJoyRecommend): success")
+                        print("DEBUG(getJoyToday): success")
                         completion(true, data)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(postJoyRecommend): status \(statusCode))")
+                        print("DEBUG(getJoyToday): status \(statusCode))")
                         completion(false, data)
                     }
                     
                 case .failure(let error):
-                    print("DEBUG(postJoyRecommend): error \(error))")
-                    completion(false, GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false))
+                    print("DEBUG(getJoyToday): error \(error))")
+                    completion(false, GetTodayJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: ""))
                 }
             }
     }

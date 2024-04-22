@@ -96,11 +96,13 @@ struct PlaylistBar: View {
         .onChange(of: updatePlaylistBar) { _ in
             if updatePlaylistBar { getPlaylist() }
         }
-        .transparentFullScreenCover(isPresented: $showPlaylist) {
-            TodayPlaylistView(showPlaylist: $showPlaylist)
-                .offset(draggedOffset)
-                .gesture(swipeDownToDismiss)
-        }
+//        .transparentFullScreenCover(isPresented: $showPlaylist) {
+//            TodayPlaylistView(showPlaylist: $showPlaylist)
+//                .offset(draggedOffset)
+//                .gesture(swipeDownToDismiss)
+//        }
+        .sheet(isPresented: $showPlaylist) {
+            TodayPlaylistView(showPlaylist: $showPlaylist) }
     }
     
     private var leftButton: some View {
@@ -140,7 +142,6 @@ struct PlaylistBar: View {
                     let newJoy = Joy(joyId: joy.joyId, achievementId: joy.achievementId, isAchieved: joy.isAchieved, icon: joy.joyIconNum, title: joy.contents, satisfaction: JoySatisfaction.fromServer(joy.satisfaction ?? ""))
                     newJoys.append(newJoy)
                 }
-                
                 todayJoys = MyJoy(date: today.date, joys: newJoys)
                 
                 showPlaylistBar = todayJoys.joys.isEmpty == false // 없으면 안띄우기

@@ -67,7 +67,7 @@ struct AlbumDetailView: View {
                             ForEach(joys) { joy in
                                 // 소확행 row
                                 Button {
-                                    playJoy()
+                                    playJoy(joy: joy)
                                 } label: {
                                     albumDetailJoyRow(joy: joy)
                                 }
@@ -252,7 +252,7 @@ struct AlbumDetailView: View {
         }
     }
     
-    private func playJoy() {
+    private func playJoy(joy: Joy) {
         AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
             if isSuccess {
                 print("DEBUG AlbumDetailView: 오플리에 추가 true")
