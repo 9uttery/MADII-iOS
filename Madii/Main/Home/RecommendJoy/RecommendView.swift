@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecommendView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var brightDotIndex = 0
     @State var nickname: String
     @State var isClicked: [Bool] = Array(repeating: false, count: 9)
@@ -24,6 +25,8 @@ struct RecommendView: View {
     @State var reClicked: Bool = false
     @EnvironmentObject var appStatus: AppStatus
     @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
+    @State var isActive: Bool = false
+    @State var isRecommendJoy: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -81,13 +84,18 @@ struct RecommendView: View {
                 }
                 .padding(.bottom, 81)
                 
-                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked)
+                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy)
             }
             .padding(.horizontal, 16)
             
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+            
+            withAnimation(.easeInOut(duration: 1)) {
+                RecommendJoyView(nickname: nickname, recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false), isActive: $isActive, isRecommendJoy: $isRecommendJoy)
+                    .offset(x: isRecommendJoy ? 0 : UIScreen.main.bounds.width * 2)
+            }
         }
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
@@ -97,6 +105,9 @@ struct RecommendView: View {
         }
         .onChange(of: reClicked) { _ in
             getRecommendJoys(when: when, who: who, which: which)
+        }
+        .onChange(of: isActive) { _ in
+            self.presentationMode.wrappedValue.dismiss()
         }
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
