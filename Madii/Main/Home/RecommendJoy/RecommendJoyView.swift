@@ -16,6 +16,7 @@ struct RecommendJoyView: View {
     @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기", isJoySaved: false)
     @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
     @Binding var isActive: Bool
+    @Binding var isRecommendJoy: Bool
     var body: some View {
         ZStack {
             Circle()
@@ -122,15 +123,10 @@ struct RecommendJoyView: View {
                     .padding(.bottom, 80)
                 
                 Spacer()
-                
-                NavigationLink(
-                    destination: MadiiTabView(),
-                    isActive: $isActive
-                ) {
-                    EmptyView()
-                }
             }
         }
+        .frame(width: UIScreen.main.bounds.width)
+        .clipped()
         .navigationBarHidden(true)
         .toolbarBackground(Color.clear, for: .navigationBar)
         .padding(.horizontal, 16)
@@ -146,6 +142,10 @@ struct RecommendJoyView: View {
             )
         )
         .background(Color(red: 0.06, green: 0.06, blue: 0.13))
+        .onChange(of: isRecommendJoy) { _ in DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                isActive = true
+            }
+        }
         .onAppear {
             ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
                 if isSuccess {
@@ -153,10 +153,6 @@ struct RecommendJoyView: View {
                 }
             }
             playJoy(joyId: recommendJoy.joyId)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                isActive = true
-                self.presentationMode.wrappedValue.dismiss()
-            }
             withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
                 rotation = 360
             }
@@ -184,5 +180,5 @@ struct RecommendJoyView: View {
 }
 
 #Preview {
-    RecommendJoyView(nickname: "", isActive: .constant(false))
+    RecommendJoyView(nickname: "", isActive: .constant(false), isRecommendJoy: .constant(false))
 }
