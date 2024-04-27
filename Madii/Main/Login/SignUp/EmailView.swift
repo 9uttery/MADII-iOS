@@ -29,8 +29,6 @@ struct EmailView: View {
     
     @StateObject private var textFieldObserver = TextFieldObserver()
     private var cancellable: AnyCancellable?
-    
-    @State private var showVerificationCode: Bool = false
 
     enum IdType { case none, correct, wrong, possible, impossible }
     @State private var idType: IdType = .none
@@ -43,41 +41,61 @@ struct EmailView: View {
         }
     }
 
+    @State private var code: String = ""
+    @State private var showVerificationCode: Bool = false
+    enum CodeType { case sending, sended, wrong }
+    @State private var codeType: CodeType = .sending
+    var codeHelperMessage: String {
+        switch codeType {
+        case .sending: "이메일로 인증 번호를 전송하고 있어요"
+        case .sended: ""
+        case .wrong: "인증 번호가 일치하지 않아요"
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            emailField
-            
-            if showVerificationCode {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("인증 번호를 입력해주세요")
-                        .madiiFont(font: .madiiTitle, color: .white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 10)
-                        .padding(.bottom, 14)
-                        .padding(.horizontal, 18)
-                    
-                    MadiiTextField(placeHolder: "인증 번호 6자리",
-                                   text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
-                    .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
-                    .keyboardType(.numberPad)
-                    .textInputAutocapitalization(.never)
-                    .padding(.horizontal, 25)
+            ScrollView {
+                emailField
+                
+                if showVerificationCode {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("인증 번호를 입력해주세요")
+                            .madiiFont(font: .madiiTitle, color: .white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 10)
+                            .padding(.bottom, 14)
+                            .padding(.horizontal, 18)
+                        
+                        ZStack(alignment: .bottomTrailing) {
+                            MadiiTextField(placeHolder: "인증 번호 6자리",
+                                           text: $code, strokeColor: codeStrokeColor(codeType))
+                            .textFieldHelperMessage(codeHelperMessage, color: codeStrokeColor(codeType))
+                            .keyboardType(.numberPad)
+                            .textInputAutocapitalization(.never)
+                            .padding(.horizontal, 25)
+                            
+                            if codeType != .sending {
+                                Button {
+                                    sendCode()
+                                } label: {
+                                    Text("인증 번호 재전송")
+                                        .madiiFont(font: .madiiBody4, color: .gray500)
+                                        .underline()
+                                }
+                                .padding(.horizontal, 25)
+                            }
+                        }
+                    }
+                    .padding(.top, 28)
                 }
-                .padding(.top, 28)
             }
             
             Spacer()
             
             if showVerificationCode == false {
                 Button {
-                    // 인증번호 이메일 전송
-                    UsersAPI.shared.sendVerificationCodeEmail(email: textFieldObserver.searchText) { isSuccess in
-                        if isSuccess {
-                            showVerificationCode = true
-                        } else {
-                            // 이메일 전송 실패
-                        }
-                    }
+                    sendCode()
                 } label: {
                     MadiiButton(title: "본인 인증하기", size: .big)
                         .opacity(idType == .possible ? 1.0 : 0.4)
@@ -91,7 +109,13 @@ struct EmailView: View {
                     signUpStatus.id = textFieldObserver.searchText
                     print("email 저장 \(textFieldObserver.searchText)")
                     
-                    signUpStatus.count += 1
+                    UsersAPI.shared.verifyCode(email: textFieldObserver.searchText, code: code) { isSuccess in
+                        if isSuccess {
+                            signUpStatus.count += 1
+                        } else {
+                            codeType = .wrong
+                        }
+                    }
                 } label: {
                     MadiiButton(title: "다음", size: .big)
                         .opacity(idType == .possible ? 1.0 : 0.4)
@@ -168,6 +192,29 @@ struct EmailView: View {
         case .none, .correct: Color.gray700
         case .wrong, .impossible: Color.madiiOrange
         case .possible: Color.madiiYellowGreen
+        }
+    }
+    
+    private func sendCode() {
+        showVerificationCode = true
+        codeType = .sending
+        
+        // 인증번호 이메일 전송
+        UsersAPI.shared.sendVerificationCodeEmail(email: textFieldObserver.searchText) { isSuccess in
+            if isSuccess {
+                // 이메일 전송 성공
+                codeType = .sended
+            } else {
+                // TODO: 이메일 전송 실패 처리
+            }
+        }
+    }
+    
+    private func codeStrokeColor(_ type: CodeType) -> Color {
+        switch type {
+        case .sending: Color.gray700
+        case .sended: Color.gray700
+        case .wrong: Color.madiiOrange
         }
     }
 }
