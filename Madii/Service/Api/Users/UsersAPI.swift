@@ -49,6 +49,33 @@ class UsersAPI {
             }
     }
     
+    // 회원가입 - 이메일 인증번호 전송
+    func sendVerificationCodeEmail(email: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/mail/sign-up?email=\(email)"
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<SendVerificationCodeResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(sendVerificationCodeEmail): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(sendVerificationCodeEmail): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(sendVerificationCodeEmail): error \(error))")
+                    completion(false)
+                }
+            }
+    }
+    
     // 일반 회원가입
     func signUpWithId(id: String, password: String, agree: Bool, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/sign-up"

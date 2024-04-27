@@ -11,3 +11,7 @@ struct LoginResponse: Codable {
     let accessToken, refreshToken: String
     let agreedMarketing, hasProfile: Bool
 }
+
+struct SendVerificationCodeResponse: Codable {
+    let code: String
+}

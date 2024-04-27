@@ -45,23 +45,25 @@ struct EmailView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("이메일을 입력해 주세요")
-                    .madiiFont(font: .madiiTitle, color: .white)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 10)
-                    .padding(.bottom, 14)
-                    .padding(.horizontal, 18)
-                
-                MadiiTextField(placeHolder: "이메일을 입력하세요",
-                               text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
+            emailField
+            
+            if showVerificationCode {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("인증 번호를 입력해주세요")
+                        .madiiFont(font: .madiiTitle, color: .white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 10)
+                        .padding(.bottom, 14)
+                        .padding(.horizontal, 18)
+                    
+                    MadiiTextField(placeHolder: "인증 번호 6자리",
+                                   text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
                     .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
-                    .keyboardType(.emailAddress)
+                    .keyboardType(.numberPad)
                     .textInputAutocapitalization(.never)
                     .padding(.horizontal, 25)
-                    .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
-                    .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
-                    .disabled(showVerificationCode)
+                }
+                .padding(.top, 28)
             }
             
             Spacer()
@@ -69,7 +71,13 @@ struct EmailView: View {
             if showVerificationCode == false {
                 Button {
                     // 인증번호 이메일 전송
-                    showVerificationCode = true
+                    UsersAPI.shared.sendVerificationCodeEmail(email: textFieldObserver.searchText) { isSuccess in
+                        if isSuccess {
+                            showVerificationCode = true
+                        } else {
+                            // 이메일 전송 실패
+                        }
+                    }
                 } label: {
                     MadiiButton(title: "본인 인증하기", size: .big)
                         .opacity(idType == .possible ? 1.0 : 0.4)
@@ -92,6 +100,27 @@ struct EmailView: View {
                 .padding(.horizontal, 18)
                 .padding(.bottom, 24)
             }
+        }
+    }
+    
+    private var emailField: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("이메일을 입력해 주세요")
+                .madiiFont(font: .madiiTitle, color: .white)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 10)
+                .padding(.bottom, 14)
+                .padding(.horizontal, 18)
+            
+            MadiiTextField(placeHolder: "이메일을 입력하세요",
+                           text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
+                .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
+                .keyboardType(.emailAddress)
+                .textInputAutocapitalization(.never)
+                .padding(.horizontal, 25)
+                .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
+                .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
+                .disabled(showVerificationCode)
         }
     }
 
