@@ -29,12 +29,15 @@ struct EmailView: View {
     
     @StateObject private var textFieldObserver = TextFieldObserver()
     private var cancellable: AnyCancellable?
+    
+    @State private var showVerificationCode: Bool = false
 
     enum IdType { case none, correct, wrong, possible, impossible }
     @State private var idType: IdType = .none
     var helperMessage: String {
         switch idType {
-        case .none, .correct, .wrong: "올바른 이메일 형식이 아니에요"
+        case .none, .correct: ""
+        case .wrong: "올바른 이메일 형식이 아니에요"
         case .possible: "사용할 수 있는 이메일이에요"
         case .impossible: "이미 가입된 계정이에요"
         }
@@ -42,37 +45,53 @@ struct EmailView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("이메일을 입력해 주세요")
-                .madiiFont(font: .madiiTitle, color: .white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 10)
-                .padding(.bottom, 14)
-                .padding(.horizontal, 18)
-
-            MadiiTextField(placeHolder: "이메일을 입력하세요",
-                           text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
-                .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
-                .keyboardType(.emailAddress)
-                .textInputAutocapitalization(.never)
-                .padding(.horizontal, 25)
-                .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
-                .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
+            VStack(alignment: .leading, spacing: 0) {
+                Text("이메일을 입력해 주세요")
+                    .madiiFont(font: .madiiTitle, color: .white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 10)
+                    .padding(.bottom, 14)
+                    .padding(.horizontal, 18)
+                
+                MadiiTextField(placeHolder: "이메일을 입력하세요",
+                               text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
+                    .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
+                    .keyboardType(.emailAddress)
+                    .textInputAutocapitalization(.never)
+                    .padding(.horizontal, 25)
+                    .onChange(of: textFieldObserver.searchText) { checkIdVaild($0) }
+                    .onReceive(textFieldObserver.$debouncedText) { checkIdDuplicated($0) }
+                    .disabled(showVerificationCode)
+            }
             
             Spacer()
             
-            Button {
-                // id 저장
-                signUpStatus.id = textFieldObserver.searchText
-                print("email 저장 \(textFieldObserver.searchText)")
-                
-                signUpStatus.count += 1
-            } label: {
-                MadiiButton(title: "다음", size: .big)
-                    .opacity(idType == .possible ? 1.0 : 0.4)
+            if showVerificationCode == false {
+                Button {
+                    // 인증번호 이메일 전송
+                    showVerificationCode = true
+                } label: {
+                    MadiiButton(title: "본인 인증하기", size: .big)
+                        .opacity(idType == .possible ? 1.0 : 0.4)
+                }
+                .disabled(idType != .possible)
+                .padding(.horizontal, 18)
+                .padding(.bottom, 24)
+            } else {
+                Button {
+                    // id 저장
+                    signUpStatus.id = textFieldObserver.searchText
+                    print("email 저장 \(textFieldObserver.searchText)")
+                    
+                    signUpStatus.count += 1
+                } label: {
+                    MadiiButton(title: "다음", size: .big)
+                        .opacity(idType == .possible ? 1.0 : 0.4)
+                }
+                .disabled(idType != .possible)
+                .padding(.horizontal, 18)
+                .padding(.bottom, 24)
             }
-            .disabled(idType != .possible)
-            .padding(.horizontal, 18)
-            .padding(.bottom, 24)
         }
     }
 
