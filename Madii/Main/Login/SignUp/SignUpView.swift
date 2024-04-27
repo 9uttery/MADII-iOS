@@ -67,7 +67,7 @@ struct SignUpView: View {
                 ServiceTermsView(from: from)
                     .padding(.top, 94)
             } else if signUpStatus.count == 1 {
-                IDView()
+                EmailView()
                     .padding(.top, 94)
             } else if signUpStatus.count == 2 {
                 PasswordView()

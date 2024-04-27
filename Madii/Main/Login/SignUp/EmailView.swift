@@ -1,5 +1,5 @@
 //
-//  IDView.swift
+//  EmailView.swift
 //  Madii
 //
 //  Created by 이안진 on 1/29/24.
@@ -24,7 +24,7 @@ class TextFieldObserver: ObservableObject {
     }
 }
 
-struct IDView: View {
+struct EmailView: View {
     @EnvironmentObject private var signUpStatus: SignUpStatus
     
     @StateObject private var textFieldObserver = TextFieldObserver()
@@ -34,10 +34,9 @@ struct IDView: View {
     @State private var idType: IdType = .none
     var helperMessage: String {
         switch idType {
-//        case .none, .correct, .wrong: "대소문자 영문 및 숫자만 사용 가능해요."
-        case .none, .correct, .wrong: "올바른 이메일 형식으로 작성해 주세요"
-        case .possible: "사용 가능한 이메일이에요"
-        case .impossible: "이미 존재하는 이메일이에요"
+        case .none, .correct, .wrong: "올바른 이메일 형식이 아니에요"
+        case .possible: "사용할 수 있는 이메일이에요"
+        case .impossible: "이미 가입된 계정이에요"
         }
     }
 
@@ -126,5 +125,5 @@ struct IDView: View {
 }
 
 #Preview {
-    IDView()
+    EmailView()
 }
