@@ -9,11 +9,10 @@ import SwiftUI
 
 struct RecommendJoyView: View {
     @State var rotation: CGFloat = 0.0
-    @EnvironmentObject var appStatus: AppStatus
     @Environment(\.presentationMode) var presentationMode
     
     @State var nickname: String
-    @State var recommendJoy: GetJoyResponseJoy = GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 보면서 귤까기", isJoySaved: false)
+    @Binding var selectedJoy: GetJoyResponseJoy?
     @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
     @Binding var isActive: Bool
     @Binding var isRecommendJoy: Bool
@@ -76,13 +75,13 @@ struct RecommendJoyView: View {
                                 .background(Color.black)
                                 .cornerRadius(110)
                             
-                            Image("icon_\(recommendJoy.joyIconNum)")
+                            Image("icon_\(selectedJoy?.joyIconNum ?? 1)")
                                 .resizable()
                                 .frame(width: 118, height: 118)
                         }
                         .padding(.bottom, 42)
                         
-                        Text(recommendJoy.contents)
+                        Text(selectedJoy?.contents ?? "넷플릭스 보면서 귤 까먹기")
                             .madiiFont(font: .madiiSubTitle, color: .white)
                             .multilineTextAlignment(.center)
                             .frame(width: frameWidth - 130)
@@ -127,8 +126,7 @@ struct RecommendJoyView: View {
         }
         .frame(width: UIScreen.main.bounds.width)
         .clipped()
-        .navigationBarHidden(true)
-        .toolbarBackground(Color.clear, for: .navigationBar)
+        .navigationBarHidden(isRecommendJoy ? true : false)
         .padding(.horizontal, 16)
         .background(
             LinearGradient(
@@ -152,33 +150,14 @@ struct RecommendJoyView: View {
                     nickname = userProfile.nickname
                 }
             }
-            playJoy(joyId: recommendJoy.joyId)
             withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
                 rotation = 360
             }
         }
     }
     
-    private func playJoy(joyId: Int) {
-        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess in
-            if isSuccess {
-                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
-                
-                withAnimation {
-                    appStatus.showAddPlaylistToast = true
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    withAnimation {
-                        appStatus.showAddPlaylistToast = false
-                    }
-                }
-            } else {
-                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
-            }
-        }
-    }
 }
 
-#Preview {
-    RecommendJoyView(nickname: "", isActive: .constant(false), isRecommendJoy: .constant(false))
-}
+//#Preview {
+//    RecommendJoyView(nickname: "", selectedJoy: GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false), isActive: .constant(false), isRecommendJoy: .constant(false))
+//}

@@ -93,7 +93,7 @@ struct RecommendView: View {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
             
             withAnimation(.easeInOut(duration: 1)) {
-                RecommendJoyView(nickname: nickname, recommendJoy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false), isActive: $isActive, isRecommendJoy: $isRecommendJoy)
+                RecommendJoyView(nickname: nickname, selectedJoy: $selectedJoy, isActive: $isActive, isRecommendJoy: $isRecommendJoy)
                     .offset(x: isRecommendJoy ? 0 : UIScreen.main.bounds.width * 2)
             }
         }

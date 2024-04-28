@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecommendJoyListView: View {
     @State private var selectedIdx: Int?
+    @EnvironmentObject var appStatus: AppStatus
     @Binding var recommendJoys: [GetJoyResponseJoy]
     @Binding var selectedJoy: GetJoyResponseJoy?
     @State var selectedJoyEllipsis: Joy?
@@ -117,6 +118,7 @@ struct RecommendJoyListView: View {
             
             Button {
                 isRecommendJoy.toggle()
+                playJoy(joyId: selectedJoy!.joyId)
             } label: {
                 StyleJoyNextButton(label: "오늘의 플레이리스트 추가", isDisabled: selectedJoy != nil ? true : false)
             }
@@ -125,6 +127,25 @@ struct RecommendJoyListView: View {
         }
         .sheet(item: $selectedJoyEllipsis) { _ in
             JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: false, isFromTodayJoy: true)
+        }
+    }
+    
+    private func playJoy(joyId: Int) {
+        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess in
+            if isSuccess {
+                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
+                
+                withAnimation {
+                    appStatus.showAddPlaylistToast = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else {
+                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
+            }
         }
     }
 }
