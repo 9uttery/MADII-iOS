@@ -48,7 +48,7 @@ struct RecommendView: View {
                     }
                 }
                 .frame(height: 20)
-                .padding(.top, 28)
+                .padding(.top, 40)
                 .padding(.bottom, 40)
                 
                 VStack(spacing: 12) {
@@ -75,14 +75,14 @@ struct RecommendView: View {
                                         default:
                                                 which.removeAll { $0 == keywordRemove[rdx * 3 + cdx] }
                                         }
-                                        clickedNum += 1
+                                        clickedNum -= 1
                                     }
                                 }
                             }
                         }
                     }
                 }
-                .padding(.bottom, 81)
+                .padding(.bottom, 48)
                 
                 RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy)
             }

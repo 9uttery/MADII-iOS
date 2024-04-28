@@ -79,6 +79,7 @@ struct RecommendJoyListView: View {
                                     .frame(width: 34, height: 34)
                             }
                             .padding(.trailing, 15)
+                            
                             Text(joy.contents)
                                 .madiiFont(font: .madiiBody3, color: .white)
                                 .multilineTextAlignment(.leading)
@@ -112,6 +113,10 @@ struct RecommendJoyListView: View {
                         .madiiFont(font: .madiiBody4, color: .white)
                         .underline()
                 }
+            } else {
+                Text("")
+                    .madiiFont(font: .madiiBody4, color: .white)
+                    .underline()
             }
             
             Spacer()
