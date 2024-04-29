@@ -129,7 +129,7 @@ struct EmailView: View {
     
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("이메일을 입력해 주세요")
+            Text("이메일을 입력해주세요")
                 .madiiFont(font: .madiiTitle, color: .white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 10)
