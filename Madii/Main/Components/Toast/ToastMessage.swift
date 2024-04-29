@@ -22,7 +22,6 @@ struct ToastMessage: View {
         .frame(height: 40)
         .background(Color.white)
         .cornerRadius(6)
-        .padding(.horizontal, 16)
         .offset(y: -20)
         .transition(.move(edge: transitionEdge))
     }

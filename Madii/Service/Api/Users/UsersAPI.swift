@@ -122,7 +122,7 @@ class UsersAPI {
                 switch response.result {
                 case .success(let response):
                     print("DEBUG(sign-up) success \(response.message)")
-                    self.loginWithId(id: id, password: password) { isSuccess, response in
+                    self.loginWithId(id: id, password: password) { isSuccess, _, response in
                         if isSuccess {
                             print("DEBUG(sign-up) login success")
                             completion(true, response)
@@ -150,7 +150,7 @@ class UsersAPI {
     }
     
     // 일반 로그인
-    func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
+    func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ loginError: LoginError?, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/login/normal"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
@@ -160,17 +160,24 @@ class UsersAPI {
             "password": hashedPassword
         ]
         
+        let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
+                    if response.code == "U001" {
+                        completion(false, .nonexistence, dummy)
+                    } else if response.code == "U002" {
+                        completion(false, .wrongPassword, dummy)
+                    }
+                        
                     guard let data = response.data else {
                         print("DEBUG(login with id): data nil")
                         return
                     }
                     
                     let accessToken = data.accessToken
-                    let refreshToken = data.refreshToken
+                    let refreshToken = data.refreshToken 
                     
                     print("DEBUG(login with id) access token: \(accessToken)")
                     print("DEBUG(login with id) refresh token: \(refreshToken)")
@@ -180,11 +187,11 @@ class UsersAPI {
                     
                     self.saveFCMToken()
                     
-                    completion(true, data)
+                    completion(true, nil, data)
                     
                 case .failure(let error):
                     print("DEBUG(login with id) error: \(error)")
-                    completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
+                    completion(false, nil, dummy)
                 }
             }
     }

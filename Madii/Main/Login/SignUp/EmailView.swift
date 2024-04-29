@@ -96,6 +96,7 @@ struct EmailView: View {
             
             if showSendedEmailToast {
                 ToastMessage(title: "이메일로 인증 번호가 전송되었어요")
+                    .padding(.horizontal, 18)
             }
             
             if showVerificationCode == false {
@@ -211,7 +212,7 @@ struct EmailView: View {
                 codeType = .sended
                 
                 withAnimation { showSendedEmailToast = true }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     withAnimation { showSendedEmailToast = false }
                 }
             } else {

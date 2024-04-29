@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum LoginError {
+    case nonexistence, wrongPassword
+}
+
 struct LoginWithIdView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
     
@@ -15,6 +19,8 @@ struct LoginWithIdView: View {
     var isTextFieldAllFilled: Bool { id.isEmpty == false && password.isEmpty == false }
     
     @State private var showMainView: Bool = false
+    
+    @State private var loginError: LoginError?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -25,16 +31,27 @@ struct LoginWithIdView: View {
             }
             .scrollIndicators(.never)
             
-            Button {
-                // 로그인
-                login()
-            } label: {
-                MadiiButton(title: "다음", size: .big)
-                    .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
+            VStack(spacing: 0) {
+                if let error = loginError {
+                    switch error {
+                    case .nonexistence:
+                        ToastMessage(title: "존재하지 않는 계정이에요. 이메일을 다시 확인해주세요.")
+                    case .wrongPassword:
+                        ToastMessage(title: "비밀번호가 일치하지 않아요. 다시 확인해주세요.")
+                    }
+                }
+                
+                Button {
+                    // 로그인
+                    login()
+                } label: {
+                    MadiiButton(title: "다음", size: .big)
+                        .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
+                }
+                .disabled(isTextFieldAllFilled == false)
+                .navigationDestination(isPresented: $showMainView) {
+                    MadiiTabView().navigationBarBackButtonHidden() }
             }
-            .disabled(isTextFieldAllFilled == false)
-            .navigationDestination(isPresented: $showMainView) {
-                MadiiTabView().navigationBarBackButtonHidden() }
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 24)
@@ -68,7 +85,7 @@ struct LoginWithIdView: View {
     
     // 로그인
     private func login() {
-        UsersAPI.shared.loginWithId(id: id, password: password) { isSuccess, response in
+        UsersAPI.shared.loginWithId(id: id, password: password) { isSuccess, error, response in
             if isSuccess {
                 // api 통신 성공
                 if response.hasProfile {
@@ -80,6 +97,11 @@ struct LoginWithIdView: View {
                     print("DEBUG(LoginWithIdView): login() hasProfile false")
                 }
             } else {
+                withAnimation { loginError = error }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    withAnimation { loginError = nil }
+                }
+                
                 // api 통신 실패 || 계정 정보 없음
                 print("DEBUG(LoginWithIdView): login() isSuccess false")
             }
