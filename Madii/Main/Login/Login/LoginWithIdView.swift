@@ -35,9 +35,9 @@ struct LoginWithIdView: View {
                 if let error = loginError {
                     switch error {
                     case .nonexistence:
-                        ToastMessage(title: "존재하지 않는 계정이에요. 이메일을 다시 확인해주세요.")
+                        ToastMessage(title: "존재하지 않는 계정이에요. 이메일을 다시 확인해주세요.", color: .orange)
                     case .wrongPassword:
-                        ToastMessage(title: "비밀번호가 일치하지 않아요. 다시 확인해주세요.")
+                        ToastMessage(title: "비밀번호가 일치하지 않아요. 다시 확인해주세요.", color: .orange)
                     }
                 }
                 
