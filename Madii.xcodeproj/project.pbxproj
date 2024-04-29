@@ -35,6 +35,7 @@
 		51380FA82BBD328D000D9BA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */; };
 		51380FAA2BBD3293000D9BA0 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */; };
 		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
+		513D3B342BDFB1AC0060EB72 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */; };
 		513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
 		5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */; };
@@ -182,6 +183,7 @@
 		51380FA92BBD3292000D9BA0 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		51380FAB2BBD3334000D9BA0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlbumToast.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginButton.swift; sourceTree = "<group>"; };
@@ -395,6 +397,14 @@
 				5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		513D3B322BDFB1A20060EB72 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		5141CAF72B7693F500FD407E /* Users */ = {
@@ -648,6 +658,7 @@
 		51D8D3752B188F35001B6793 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				513D3B322BDFB1A20060EB72 /* Toast */,
 				514C36AD2B5107CF001A55D1 /* TextField */,
 				51F25E092B19B3D800F6CCFE /* Button */,
 				51F25E042B19AE7100F6CCFE /* PopUp */,
@@ -1026,6 +1037,7 @@
 				519C97EE2B604912004F1AFF /* JoyMenuBottomSheet.swift in Sources */,
 				BE459A662B7E24BC002E9AB2 /* ProfileAPI.swift in Sources */,
 				BE3986782B63651300643805 /* GuestProfileView.swift in Sources */,
+				513D3B342BDFB1AC0060EB72 /* ToastMessage.swift in Sources */,
 				51F25E112B19D5FD00F6CCFE /* SelectAlbumRow.swift in Sources */,
 				51F25E132B19DC9800F6CCFE /* SaveMyJoyView.swift in Sources */,
 				51D8D36F2B1770E7001B6793 /* RecordView.swift in Sources */,
