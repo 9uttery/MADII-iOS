@@ -32,7 +32,7 @@ struct PasswordView: View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("비밀번호를 입력해 주세요")
+                    Text("비밀번호를 입력해주세요")
                         .madiiFont(font: .madiiTitle, color: .white)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 10)
@@ -47,7 +47,7 @@ struct PasswordView: View {
                     .padding(.bottom, 28)
                     
                     if showCheckPassword {
-                        Text("다시 한 번 비밀번호를 입력해 주세요")
+                        Text("다시 한 번 비밀번호를 입력해주세요")
                             .madiiFont(font: .madiiTitle, color: .white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 10)

@@ -43,6 +43,7 @@ struct EmailView: View {
 
     @State private var code: String = ""
     @State private var showVerificationCode: Bool = false
+    @State private var showSendedEmailToast: Bool = false /// 이메일 전송 완료 안내 토스트
     enum CodeType { case sending, sended, wrong }
     @State private var codeType: CodeType = .sending
     var codeHelperMessage: String {
@@ -93,6 +94,11 @@ struct EmailView: View {
             
             Spacer()
             
+            if showSendedEmailToast {
+                ToastMessage(title: "이메일로 인증 번호가 전송되었어요")
+                    .padding(.horizontal, 18)
+            }
+            
             if showVerificationCode == false {
                 Button {
                     sendCode()
@@ -129,7 +135,7 @@ struct EmailView: View {
     
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("이메일을 입력해 주세요")
+            Text("이메일을 입력해주세요")
                 .madiiFont(font: .madiiTitle, color: .white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 10)
@@ -204,6 +210,11 @@ struct EmailView: View {
             if isSuccess {
                 // 이메일 전송 성공
                 codeType = .sended
+                
+                withAnimation { showSendedEmailToast = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    withAnimation { showSendedEmailToast = false }
+                }
             } else {
                 // TODO: 이메일 전송 실패 처리
             }

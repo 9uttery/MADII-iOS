@@ -32,6 +32,7 @@ struct TodayPlaylistView: View {
                     ScrollView {
                         VStack(spacing: 20) {
                             joyBoxByToday(allJoys[0].date, joys: allJoys[0].joys)
+                            
                             ForEach(1 ..< 2) { index in
                                 let eachDayJoy = allJoys[index]
                                 if eachDayJoy.joys.isEmpty == false {
@@ -52,13 +53,13 @@ struct TodayPlaylistView: View {
             .onAppear {
                 getPlaylist()
             }
-            .sheet(isPresented: $showMoveJoyBottomSheet) {
-                GeometryReader { geo in
-                    PlaylistBarMoveToTodayBottmSheet()
-                        .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
-                        .presentationDragIndicator(.hidden)
-                }
-            }
+//            .sheet(isPresented: $showMoveJoyBottomSheet) {
+//                GeometryReader { geo in
+//                    PlaylistBarMoveToTodayBottmSheet()
+//                        .presentationDetents([.height(160 + geo.safeAreaInsets.bottom)])
+//                        .presentationDragIndicator(.hidden)
+//                }
+//            }
         }
     }
     
@@ -123,22 +124,49 @@ struct TodayPlaylistView: View {
                             
                             Spacer()
                             
-                            Button {
-                                fromPlaylistBar = true
-                                selectedJoy = joy } label: { if joy.isAchieved {
-                                    // 실천한 경우 -> 실천 해제
-                                    achievedButton(joy: joy)
-                                } else {
-                                    // 오늘 실천하지 않은 경우 -> bottomsheet
-                                    Button {
-                                        selectedJoy = joy
-                                    } label: {
-                                        Image(systemName: "checkmark.circle")
-                                            .resizable()
-                                            .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-                                            .frame(width: 24, height: 24)
-                                    }
-                                } }
+//                            Button {
+//                                fromPlaylistBar = true
+//                                selectedJoy = joy
+//                            } label: {
+//                                if joy.isAchieved {
+//                                    // 실천한 경우 -> 실천 해제
+//                                    achievedButton(joy: joy)
+//                                } else {
+//                                    // 오늘 실천하지 않은 경우 -> bottomsheet
+//                                    Button {
+//                                        selectedJoy = joy
+//                                    } label: {
+//                                        Image(systemName: "checkmark.circle")
+//                                            .resizable()
+//                                            .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+//                                            .frame(width: 24, height: 24)
+//                                    }
+//                                }
+//                            }
+                            
+                            if joy.isAchieved {
+                                // 실천한 경우 -> 실천 해제
+                                Button {
+                                    fromPlaylistBar = true
+                                    cancelAchievement(id: joy.achievementId)
+                                } label: {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .resizable()
+                                        .foregroundStyle(Color.madiiYellowGreen)
+                                        .frame(width: 24, height: 24)
+                                }
+                            } else {
+                                // 오늘 실천하지 않은 경우 -> bottomsheet
+                                Button {
+                                    fromPlaylistBar = true
+                                    selectedJoy = joy
+                                } label: {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
+                                        .frame(width: 24, height: 24)
+                                }
+                            }
                         }
                     }
                     .listRowBackground(Color.madiiBox)
@@ -153,6 +181,11 @@ struct TodayPlaylistView: View {
             .frame(height: 56 * CGFloat(joys.count))
             .environment(\.defaultMinListRowHeight, 56)
             .padding(.bottom, 20)
+            .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
+                JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: fromPlaylistBar)
+                    .presentationDetents([.height(300)])
+                    .presentationDragIndicator(.hidden)
+            }
         }
         .background(Color.madiiBox)
         .cornerRadius(20)
