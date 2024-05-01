@@ -13,6 +13,12 @@ struct GetJoyResponse: Codable {
     let joyList: [GetJoyResponseJoy]
 }
 
+struct GetMyJoyResponse: Codable {
+    let createdAt: String
+    let size: Int
+    let joyList: [GetMyJoyResponseJoy]
+}
+
 struct GetTodayJoyResponseJoy: Codable, Identifiable {
     var id: Int {
         return joyId
@@ -23,13 +29,18 @@ struct GetTodayJoyResponseJoy: Codable, Identifiable {
 }
 
 struct GetJoyResponseJoy: Codable, Identifiable {
-    var id: Int {
-        return joyId
-    }
+    var id: Int { return joyId }
     let joyId: Int
     let joyIconNum: Int
     let contents: String
     let isJoySaved: Bool
+}
+
+struct GetMyJoyResponseJoy: Codable, Identifiable {
+    var id: Int { return joyId }
+    let joyId: Int
+    let joyIconNum: Int
+    let contents: String
 }
 
 struct GetMostAchievedJoyResponse: Codable {
