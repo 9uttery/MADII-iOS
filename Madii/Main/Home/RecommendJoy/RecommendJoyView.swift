@@ -100,9 +100,7 @@ struct RecommendJoyView: View {
                             LinearGradient(
                                 stops: [
                                     Gradient.Stop(color: .white, location: 0.00),
-                                    Gradient.Stop(color: Color(red: 0.8, green: 0.8, blue: 0.8), location: 0.35),
-                                    Gradient.Stop(color: .white, location: 0.65),
-                                    Gradient.Stop(color: Color(red: 0.8, green: 0.8, blue: 0.8), location: 1.00)
+                                    Gradient.Stop(color: Color(red: 0.33, green: 0.33, blue: 0.33), location: 1.00)
                                 ],
                                 startPoint: UnitPoint(x: 0.5, y: 0),
                                 endPoint: UnitPoint(x: 0.5, y: 1)
