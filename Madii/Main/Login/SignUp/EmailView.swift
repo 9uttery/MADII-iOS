@@ -48,9 +48,9 @@ struct EmailView: View {
     @State private var codeType: CodeType = .sending
     var codeHelperMessage: String {
         switch codeType {
-        case .sending: "이메일로 인증 번호를 전송하고 있어요"
+        case .sending: "이메일로 인증번호를 전송하고 있어요"
         case .sended: ""
-        case .wrong: "인증 번호가 일치하지 않아요"
+        case .wrong: "인증번호가 일치하지 않아요"
         }
     }
     
@@ -61,7 +61,7 @@ struct EmailView: View {
                 
                 if showVerificationCode {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("인증 번호를 입력해주세요")
+                        Text("인증번호를 입력해주세요")
                             .madiiFont(font: .madiiTitle, color: .white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 10)
@@ -69,7 +69,7 @@ struct EmailView: View {
                             .padding(.horizontal, 18)
                         
                         ZStack(alignment: .bottomTrailing) {
-                            MadiiTextField(placeHolder: "인증 번호 6자리",
+                            MadiiTextField(placeHolder: "인증번호 6자리",
                                            text: $code, strokeColor: codeStrokeColor(codeType))
                             .textFieldHelperMessage(codeHelperMessage, color: codeStrokeColor(codeType))
                             .keyboardType(.numberPad)
@@ -80,7 +80,7 @@ struct EmailView: View {
                                 Button {
                                     sendCode()
                                 } label: {
-                                    Text("인증 번호 재전송")
+                                    Text("인증번호 재전송")
                                         .madiiFont(font: .madiiBody4, color: .gray500)
                                         .underline()
                                 }
@@ -95,7 +95,7 @@ struct EmailView: View {
             Spacer()
             
             if showSendedEmailToast {
-                ToastMessage(title: "이메일로 인증 번호가 전송되었어요")
+                ToastMessage(title: "이메일로 인증번호가 전송되었어요")
                     .padding(.horizontal, 18)
             }
             
@@ -142,7 +142,7 @@ struct EmailView: View {
                 .padding(.bottom, 14)
                 .padding(.horizontal, 18)
             
-            MadiiTextField(placeHolder: "이메일을 입력하세요",
+            MadiiTextField(placeHolder: "ex) maddi@happy.com",
                            text: $textFieldObserver.searchText, strokeColor: strokeColor(idType))
                 .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
                 .keyboardType(.emailAddress)
