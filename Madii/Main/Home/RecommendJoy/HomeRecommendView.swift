@@ -86,8 +86,8 @@ struct HomeRecommendView: View {
     private func backgroundGradation() -> LinearGradient {
         LinearGradient(
             stops: [
-                Gradient.Stop(color: Color(red: 0.61, green: 0.42, blue: 1).opacity(0.8), location: 0.12),
-                Gradient.Stop(color: Color(red: 0.39, green: 0.82, blue: 0.91).opacity(0.8), location: 0.76)
+                Gradient.Stop(color: Color(red: 0.61, green: 0.42, blue: 1), location: 0.12),
+                Gradient.Stop(color: Color(red: 0.49, green: 0.59, blue: 0.97), location: 0.76)
             ],
             startPoint: UnitPoint(x: radius * cos(xangle) + coreAxis, y: radius * sin(xangle) + coreAxis),
             endPoint: UnitPoint(x: radius * cos(angle) + coreAxis, y: radius * sin(angle) + coreAxis)
