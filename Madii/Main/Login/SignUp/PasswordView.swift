@@ -16,6 +16,8 @@ struct PasswordView: View {
     var helperMessage: String {
         if isValidPassword {
             return "사용할 수 있는 비밀번호예요"
+        } else if password.isEmpty {
+            return ""
         } else {
             return "영문 대소문자, 숫자 및 특수문자 !, _, *, @만 사용할 수 있어요"
         }
@@ -25,7 +27,7 @@ struct PasswordView: View {
     @State private var reenteredPassword: String = ""
     var isPasswordSame: Bool { password == reenteredPassword }
     var reenterHelperMessage: String {
-        isPasswordSame ? "비밀번호가 일치해요" : "비밀번호가 일치하지 않아요"
+        isPasswordSame ? "비밀번호가 일치해요" : (reenteredPassword.isEmpty ? "" : "비밀번호가 일치하지 않아요")
     }
     
     var body: some View {
