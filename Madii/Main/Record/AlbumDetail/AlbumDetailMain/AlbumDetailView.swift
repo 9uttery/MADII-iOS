@@ -129,6 +129,15 @@ struct AlbumDetailView: View {
                     ReportAlbumToast()
                 }
             }
+            
+            // 앨범 저장 토스트
+            if appStatus.showSaveAlbumToast {
+                VStack {
+                    Spacer()
+                    ToastMessage(title: "레코드에 앨범이 저장되었어요")
+                        .padding(.horizontal, 16)
+                }
+            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
