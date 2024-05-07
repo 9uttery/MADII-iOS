@@ -56,7 +56,7 @@ struct PasswordView: View {
                             .padding(.bottom, 14)
                             .padding(.horizontal, 18)
                         
-                        MadiiTextField(isSecureField: true, placeHolder: "",
+                        MadiiTextField(isSecureField: true, placeHolder: "비밀번호 확인",
                                        text: $reenteredPassword, strokeColor: reenteredStrokeColor())
                         .textFieldHelperMessage(reenterHelperMessage, color: reenteredStrokeColor())
                         .padding(.horizontal, 25)
