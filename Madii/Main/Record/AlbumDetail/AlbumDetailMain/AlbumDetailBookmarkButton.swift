@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AlbumDetailBookmarkButton: View {
+    @EnvironmentObject var appStatus: AppStatus
+    
     let albumId: Int
     @Binding var isAlbumSaved: Bool
     
@@ -53,8 +55,22 @@ struct AlbumDetailBookmarkButton: View {
             if isSuccess {
                 print("DEBUG AlbumDetailBookmarkButton save: isSuccess true")
                 isAlbumSaved = true
+                showSaveAlbumToast() // 앨범 저장 토스트 띄우기
             } else {
                 print("DEBUG AlbumDetailBookmarkButton save: isSuccess true")
+            }
+        }
+    }
+    
+    // 앨범 저장 토스트 띄우기
+    private func showSaveAlbumToast() {
+        withAnimation {
+            appStatus.showSaveAlbumToast = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            withAnimation {
+                appStatus.showSaveAlbumToast = false
             }
         }
     }
