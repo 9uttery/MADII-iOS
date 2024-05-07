@@ -28,8 +28,8 @@ struct StyleJoyButton: View {
                         .foregroundColor(.gray)
                 }
             }
-            .padding(.vertical, 8)
-            .padding(.horizontal, isClicked ? 12 : 16)
+            .padding(.vertical, 10)
+            .padding(.horizontal, isClicked ? 14 : 18)
             .background(isClicked ? Color.white : buttonColor.opacity(0.3))
             .cornerRadius(90)
         }

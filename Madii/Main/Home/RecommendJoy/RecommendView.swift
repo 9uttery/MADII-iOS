@@ -48,12 +48,12 @@ struct RecommendView: View {
                     }
                 }
                 .frame(height: 20)
-                .padding(.top, 40)
+                .padding(.top, 60)
                 .padding(.bottom, 40)
                 
                 VStack(spacing: 12) {
                     ForEach(0..<3) { rdx in
-                        HStack {
+                        HStack(spacing: 8) {
                             ForEach(0..<3) { cdx in
                                 StyleJoyButton(label: keywordlabel[rdx * 3 + cdx], isClicked: $isClicked[rdx * 3 + cdx], buttonColor: keywordColor[rdx * 3 + cdx]) {
                                     if isClicked[rdx * 3 + cdx] {

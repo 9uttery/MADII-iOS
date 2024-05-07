@@ -57,6 +57,7 @@ struct RecommendJoyListView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width - 40, height: 96)
                 }
+                .padding(.bottom, 4)
             } else {
                 ForEach(recommendJoys) { joy in
                     Button {
@@ -103,6 +104,7 @@ struct RecommendJoyListView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width - 40, height: 96)
                 }
+                .padding(.bottom, 4)
             }
             
             if !recommendJoys.isEmpty {
@@ -131,7 +133,7 @@ struct RecommendJoyListView: View {
             .disabled(selectedJoy != nil ? false : true)
         }
         .sheet(item: $selectedJoyEllipsis) { _ in
-            JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: false, isFromTodayJoy: true)
+            JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: true, isFromTodayJoy: true, isAddTodayJoy: false)
         }
     }
     

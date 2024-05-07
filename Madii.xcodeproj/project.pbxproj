@@ -217,6 +217,7 @@
 		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
 		519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyMenuBottomSheet.swift; sourceTree = "<group>"; };
+		51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		51B6B7AE2B8BDAE600A31FEE /* AddAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumPopUp.swift; sourceTree = "<group>"; };
 		51BEBA3B2B7E816B008CF3AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		51BEBA3F2B813DA8008CF3AD /* FileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAPI.swift; sourceTree = "<group>"; };
@@ -461,6 +462,7 @@
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51380FAB2BBD3334000D9BA0 /* Info.plist */,
 				51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */,
+				51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */,
 				51380FA92BBD3292000D9BA0 /* Config.xcconfig */,
 				51E0259E2B26F7C500F4F41A /* Service */,
 				BE459A572B762621002E9AB2 /* Api */,
@@ -1233,7 +1235,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1274,7 +1276,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
