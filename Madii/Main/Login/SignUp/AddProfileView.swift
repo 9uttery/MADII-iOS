@@ -23,7 +23,7 @@ struct AddProfileView: View {
     @State private var nickname: String = ""
     @State private var isNicknameVaild: Bool = false
     private var helperMessage: String {
-        self.isNicknameVaild ? "사용할 수 있는 닉네임이에요" : (nickname.isEmpty ? "" : "특수문자는 사용할 수 없어요")
+        self.isNicknameVaild ? "사용할 수 있는 닉네임이에요." : "대소문자 영문 및 한글, 숫자만 사용 가능해요."
     }
     
     @State private var showCompleteSignUpView: Bool = false
@@ -105,7 +105,7 @@ struct AddProfileView: View {
                         // ImagePicker(sourceType: .camera, selectedImage: self.$image)
                     }
                     
-                    MadiiTextField(placeHolder: "닉네임 (1-10자, 한글/영문/숫자 사용 가능)", text: self.$nickname,
+                    MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
                                    strokeColor: self.strokeColor(), limit: 10)
                     .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
                     .onChange(of: self.nickname) { self.checkValidNickname($0) }
@@ -172,8 +172,7 @@ struct AddProfileView: View {
     }
 
     private func checkValidNickname(_ nickname: String) {
-//        let nicknameRegEx = "^[가-힣a-zA-Z0-9]*$"
-        let nicknameRegEx = "^[\\p{L}\\p{N}]{1,}$"
+        let nicknameRegEx = "^[가-힣a-zA-Z0-9]*$"
         let nicknamePred = NSPredicate(format: "SELF MATCHES %@", nicknameRegEx)
         self.isNicknameVaild = nicknamePred.evaluate(with: nickname)
         if nickname.isEmpty { self.isNicknameVaild = false }

@@ -91,7 +91,7 @@ class RecordAPI {
     }
     
     // (R-레코드) 내가 기록한 소확행 조회
-    func getJoy(completion: @escaping (_ isSuccess: Bool, _ joyList: [GetMyJoyResponse]) -> Void) {
+    func getJoy(completion: @escaping (_ isSuccess: Bool, _ joyList: [GetJoyResponse]) -> Void) {
         let url = "\(baseUrl)/joy"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -99,7 +99,7 @@ class RecordAPI {
         ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<[GetMyJoyResponse]>.self) { response in
+            .responseDecodable(of: BaseResponse<[GetJoyResponse]>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {

@@ -13,7 +13,7 @@ struct SaveJoyToast: View {
     
     var body: some View {
         HStack {
-            Text("기록되었어요")
+            Text("기록되었어요.")
                 .madiiFont(font: .madiiBody4, color: .black)
             
             Spacer()

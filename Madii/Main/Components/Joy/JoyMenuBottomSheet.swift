@@ -13,7 +13,6 @@ struct JoyMenuBottomSheet: View {
     @Binding var joy: Joy?
     var isMine: Bool = false
     var isFromTodayJoy: Bool = false
-    var isAddTodayJoy: Bool = true
     
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToAlbumPopUp: Bool = false
@@ -34,30 +33,28 @@ struct JoyMenuBottomSheet: View {
             .background(Color.madiiOption)
             
             VStack(alignment: .leading, spacing: 0) {
-                if isAddTodayJoy {
-                    Button {
-                        AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
-                            if isSuccess {
-                                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
-                                
-                                withAnimation {
-                                    appStatus.showAddPlaylistToast = true
-                                }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    withAnimation {
-                                        appStatus.showAddPlaylistToast = false
-                                    }
-                                }
-                                
-                                joy = nil
-                            } else {
-                                print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
+                Button {
+                    AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
+                        if isSuccess {
+                            print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
+                            
+                            withAnimation {
+                                appStatus.showAddPlaylistToast = true
                             }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                withAnimation {
+                                    appStatus.showAddPlaylistToast = false
+                                }
+                            }
+                            
+                            joy = nil
+                        } else {
+                            print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
                         }
-                    } label: {
-                        bottomSheetRow("오늘의 플레이리스트에 추가")
                     }
+                } label: {
+                    bottomSheetRow("오늘의 플레이리스트에 추가")
                 }
                 
                 if isFromTodayJoy {
@@ -72,7 +69,7 @@ struct JoyMenuBottomSheet: View {
                     Button {
                         showEditJoyPopUp = true
                     } label: {
-                        bottomSheetRow("소확행 이름 · 저장 앨범 수정")
+                        bottomSheetRow("소확행 이름 & 저장 앨범 수정")
                     }
                     
                     if isMine {
@@ -101,7 +98,7 @@ struct JoyMenuBottomSheet: View {
         .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
             DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
         }
-        .presentationDetents([.height(isAddTodayJoy ? (isFromTodayJoy ? 240 : (isMine ? 280 : 240)) : 155)])
+        .presentationDetents([.height(isFromTodayJoy ? 240 : (isMine ? 280 : 240))])
     }
     
     @ViewBuilder
