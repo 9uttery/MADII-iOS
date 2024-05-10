@@ -241,22 +241,22 @@ class ProfileAPI {
         ]
         
         AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
                 switch response.result {
                 case .success(let response):
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(getUsersStat): success")
+                        print("DEBUG(deleteUsersProfile): success")
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(getUsersStat): status \(statusCode))")
+                        print("DEBUG(deleteUsersProfile): status \(statusCode) \(response.message)")
                         completion(false)
                     }
                     
                 case .failure(let error):
-                    print("DEBUG(getUsersStat): error \(error))")
+                    print("DEBUG(deleteUsersProfile): error \(error))")
                     completion(false)
                 }
             }

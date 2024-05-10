@@ -127,7 +127,7 @@ struct RecommendJoyListView: View {
                 isRecommendJoy.toggle()
                 playJoy(joyId: selectedJoy!.joyId)
             } label: {
-                StyleJoyNextButton(label: "오늘의 플레이리스트 추가", isDisabled: selectedJoy != nil ? true : false)
+                StyleJoyNextButton(label: "오늘의 플레이리스트에 추가", isDisabled: selectedJoy != nil ? true : false)
             }
             .frame(width: UIScreen.main.bounds.width - 40, height: 96)
             .disabled(selectedJoy != nil ? false : true)
