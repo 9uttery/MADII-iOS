@@ -67,7 +67,7 @@ struct CalendarView: View {
             } label: {
                 Image(systemName: "person.crop.circle")
                     .resizable()
-                    .frame(width: 22, height: 22)
+                    .frame(width: 30, height: 30)
                     .foregroundStyle(Color.gray500)
             }
         }
