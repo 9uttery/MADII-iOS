@@ -20,6 +20,7 @@ struct RecommendJoyListView: View {
     @State private var xOffset: CGFloat = 0
     @State private var showTodayPlaylist: Bool = false
     @Binding var isRecommendJoy: Bool
+    @Binding var albumNames: String
     
     var body: some View {
         VStack(spacing: 12) {
@@ -138,7 +139,7 @@ struct RecommendJoyListView: View {
     }
     
     private func playJoy(joyId: Int) {
-        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess in
+        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
                 
@@ -150,6 +151,16 @@ struct RecommendJoyListView: View {
                         appStatus.showAddPlaylistToast = false
                     }
                 }
+            } else if appStatus.isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate.toggle()
+                }
+                print("DEBUG HomeTodayJoyView playJoy: isSuccess false and isDuplicate true")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.isDuplicate = false
+                    }
+                }
             } else {
                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
             }
@@ -158,5 +169,5 @@ struct RecommendJoyListView: View {
 }
 
 #Preview {
-    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0), reClicked: .constant(false), isRecommendJoy: .constant(false))
+    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0), reClicked: .constant(false), isRecommendJoy: .constant(false), albumNames: .constant(""))
 }
