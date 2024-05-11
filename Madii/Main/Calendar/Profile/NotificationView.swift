@@ -20,28 +20,33 @@ struct NotificationView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 12) {
-                ForEach(notifications) { notification in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(notification.title)
-                                .madiiFont(font: .madiiSubTitle, color: .white)
-                                .padding(.bottom, 20)
+                if notifications.isEmpty {
+                    Image("EmptyNotice")
+                        .padding(.top, 130)
+                } else {
+                    ForEach(notifications) { notification in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(notification.title)
+                                    .madiiFont(font: .madiiSubTitle, color: .white)
+                                    .padding(.bottom, 20)
+                                
+                                Spacer()
+                            }
+                            .padding(.leading, 2)
                             
-                            Spacer()
+                            Text(notification.contents)
+                                .madiiFont(font: .madiiBody3, color: .gray400)
+                                .padding(.bottom, 12)
+                            
+                            Text(notification.createdAt)
+                                .madiiFont(font: .madiiBody3, color: .gray700)
+                                .padding(.bottom, 12)
                         }
-                        .padding(.leading, 2)
-                        
-                        Text(notification.contents)
-                            .madiiFont(font: .madiiBody3, color: .gray400)
-                            .padding(.bottom, 12)
-                        
-                        Text(notification.createdAt)
-                            .madiiFont(font: .madiiBody3, color: .gray700)
-                            .padding(.bottom, 12)
+                        .padding(20)
+                        .background(Color.madiiBox)
+                        .cornerRadius(20)
                     }
-                    .padding(20)
-                    .background(Color.madiiBox)
-                    .cornerRadius(20)
                 }
                 
                 Spacer()
