@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodayPlaylistView: View {
     @Binding var showPlaylist: Bool
-    @State private var allJoys: [MyJoy] = MyJoy.dummys
+    @State private var allJoys: [MyJoy] = []
     @State private var showEmptyView: Bool = false
     @State private var selectedJoy: Joy?
     @State private var showMoveJoyBottomSheet: Bool = false
@@ -124,26 +124,6 @@ struct TodayPlaylistView: View {
                             
                             Spacer()
                             
-//                            Button {
-//                                fromPlaylistBar = true
-//                                selectedJoy = joy
-//                            } label: {
-//                                if joy.isAchieved {
-//                                    // 실천한 경우 -> 실천 해제
-//                                    achievedButton(joy: joy)
-//                                } else {
-//                                    // 오늘 실천하지 않은 경우 -> bottomsheet
-//                                    Button {
-//                                        selectedJoy = joy
-//                                    } label: {
-//                                        Image(systemName: "checkmark.circle")
-//                                            .resizable()
-//                                            .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-//                                            .frame(width: 24, height: 24)
-//                                    }
-//                                }
-//                            }
-                            
                             if joy.isAchieved {
                                 // 실천한 경우 -> 실천 해제
                                 Button {
@@ -171,9 +151,16 @@ struct TodayPlaylistView: View {
                     }
                     .listRowBackground(Color.madiiBox)
                     .listRowSeparator(.hidden)
-                }
-                .onDelete { indexSet in
-                    deleteAchivement(id: joys[indexSet.first ?? 0].achievementId)
+                    .swipeActions(edge: .trailing) {
+                        Button {
+                            withAnimation {
+                                deleteAchivement(id: joy.achievementId)
+                            }
+                        } label: {
+                            Label("Trash", systemImage: "trash")
+                        }
+                        .tint(Color(red: 1.0, green: 0.231, blue: 0.188))
+                    }
                 }
             }
             .listStyle(.plain)
