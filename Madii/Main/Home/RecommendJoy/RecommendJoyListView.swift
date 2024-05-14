@@ -111,6 +111,8 @@ struct RecommendJoyListView: View {
             if !recommendJoys.isEmpty {
                 Button {
                     reClicked.toggle()
+                    selectedJoy = nil
+                    selectedIdx = nil
                 } label: {
                     Text("다시 고르기")
                         .madiiFont(font: .madiiBody4, color: .white)
