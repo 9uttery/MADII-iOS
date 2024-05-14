@@ -12,6 +12,7 @@ struct RecommendJoyListView: View {
     @EnvironmentObject var appStatus: AppStatus
     @Binding var recommendJoys: [GetJoyResponseJoy]
     @Binding var selectedJoy: GetJoyResponseJoy?
+    @State var showSaveJoyToAlbumPopUp: Bool = false
     @State var selectedJoyEllipsis: Joy?
     @Binding var isClicked: [Bool]
     @State var nickname: String
@@ -20,6 +21,7 @@ struct RecommendJoyListView: View {
     @State private var xOffset: CGFloat = 0
     @State private var showTodayPlaylist: Bool = false
     @Binding var isRecommendJoy: Bool
+    @State private var newJoy: Joy = Joy(title: "")
     
     var body: some View {
         VStack(spacing: 12) {
@@ -88,6 +90,7 @@ struct RecommendJoyListView: View {
                             Spacer()
                             
                             Button {
+                                showSaveJoyToAlbumPopUp.toggle()
                                 selectedJoyEllipsis = Joy(joyId: joy.joyId, title: joy.contents)
                             } label: {
                                 Image(joy.isJoySaved == true ? "activeSave" : "inactiveSave")
@@ -134,9 +137,11 @@ struct RecommendJoyListView: View {
             .frame(width: UIScreen.main.bounds.width - 40, height: 96)
             .disabled(selectedJoy != nil ? false : true)
         }
-        .sheet(item: $selectedJoyEllipsis) { _ in
-            JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: true, isFromTodayJoy: true, isAddTodayJoy: false)
-        }
+        .onChange(of: selectedJoyEllipsis) { newValue in
+            newJoy = selectedJoyEllipsis ?? Joy(title: "넷플릭스 먹으면서 귤 보기")
+                }
+        .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
     }
     
     private func playJoy(joyId: Int) {
@@ -152,7 +157,7 @@ struct RecommendJoyListView: View {
                         appStatus.showAddPlaylistToast = false
                     }
                 }
-            } else if appStatus.isDuplicate {
+            } else if isDuplicate {
                 withAnimation {
                     appStatus.isDuplicate.toggle()
                 }
