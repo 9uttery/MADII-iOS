@@ -88,15 +88,8 @@ struct RecommendView: View {
             }
             .padding(.horizontal, 16)
             
-            // 오플리 추가 안내 토스트
-            if appStatus.showAddPlaylistToast {
-                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
-            
-            if appStatus.isDuplicate {
-                JoyDuplicateToast() }
-            
             if appStatus.showSaveJoyToast {
-                SaveAlbumJoyToast()
+                SaveAlbumJoyToast(yOffset: -85)
             }
             
             withAnimation(.easeInOut(duration: 1)) {
