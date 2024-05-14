@@ -87,7 +87,7 @@ struct RecommendJoyView: View {
                             .frame(width: frameWidth - 130)
                             .padding(.bottom, 20)
                     }
-                    .frame(width: frameWidth - 70)
+                    .frame(width: frameWidth - 70, height: 308)
                     .padding(.top, 40)
                     .padding(.bottom, 48)
                     .background(Color.madiiBox)

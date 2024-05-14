@@ -19,7 +19,7 @@ struct JoyMenuBottomSheet: View {
     @State private var showSaveJoyToAlbumPopUp: Bool = false
     @State private var showEditJoyPopUp: Bool = false /// 수정하기 팝업
     @State private var showDeleteJoyPopUp: Bool = false
-    
+    @State var albumNames: String = ""
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -36,7 +36,7 @@ struct JoyMenuBottomSheet: View {
             VStack(alignment: .leading, spacing: 0) {
                 if isAddTodayJoy {
                     Button {
-                        AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
+                        AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess, isDuplicate in
                             if isSuccess {
                                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
                                 
@@ -51,6 +51,16 @@ struct JoyMenuBottomSheet: View {
                                 }
                                 
                                 joy = nil
+                            } else if isDuplicate {
+                                withAnimation {
+                                    appStatus.isDuplicate.toggle()
+                                }
+                                print("DEBUG HomeTodayJoyView playJoy: isSuccess false and isDuplicate true")
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    withAnimation {
+                                        appStatus.isDuplicate = false
+                                    }
+                                }
                             } else {
                                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
                             }
@@ -93,10 +103,10 @@ struct JoyMenuBottomSheet: View {
         .onAppear { newJoy = joy ?? Joy(title: "") }
         // 나만의 소확행 앨범에 저장 팝업
         .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
-            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, albumNames: $albumNames) }
         // 소확행 수정
         .transparentFullScreenCover(isPresented: $showEditJoyPopUp) {
-            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showEditJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, canEditTitle: true) }
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showEditJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, canEditTitle: true, albumNames: $albumNames) }
         // 소확행 삭제
         .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
             DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)

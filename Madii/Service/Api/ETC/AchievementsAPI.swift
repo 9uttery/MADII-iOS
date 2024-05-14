@@ -133,7 +133,7 @@ class AchievementsAPI {
     }
     
     // 소확행 오플리에 추가하기
-    func playJoy(joyId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func playJoy(joyId: Int, completion: @escaping (_ isSuccess: Bool, _ isDuplicate: Bool) -> Void) {
         let url = "\(baseUrl)/achievements"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -151,16 +151,16 @@ class AchievementsAPI {
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
                         print("DEBUG(playJoy): success")
-                        completion(true)
+                        completion(true, false)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(playJoy): status \(statusCode))")
-                        completion(false)
+                        print("DEBUG(playJoy): status \(statusCode)")
+                        completion(false, true)
                     }
                     
                 case .failure(let error):
                     print("DEBUG(playJoy): error \(error))")
-                    completion(false)
+                    completion(false, false)
                 }
             }
     }

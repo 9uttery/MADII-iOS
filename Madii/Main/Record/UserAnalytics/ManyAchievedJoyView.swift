@@ -55,6 +55,9 @@ struct ManyAchievedJoyView: View {
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+            
+            if appStatus.isDuplicate {
+                JoyDuplicateToast() }
         }
         .navigationTitle("많이 실천한 소확행")
         .navigationBarTitleDisplayMode(.inline)

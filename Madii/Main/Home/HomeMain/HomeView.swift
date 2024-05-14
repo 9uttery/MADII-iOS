@@ -36,6 +36,9 @@ struct HomeView: View {
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+            
+            if appStatus.isDuplicate {
+                JoyDuplicateToast() }
         }
         .navigationTitle("")
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet

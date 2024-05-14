@@ -27,6 +27,7 @@ struct AlbumDetailView: View {
     
     @State private var showSettingSheet: Bool = false
     @State private var showChangeInfo: Bool = false
+    @State var albumNames: String = ""
     
     var fromPlayJoy: Bool = false
     
@@ -112,6 +113,22 @@ struct AlbumDetailView: View {
                 }
              }
             
+            // 오플리 중복 안내 토스트
+            if appStatus.isDuplicate {
+                VStack {
+                    Spacer()
+                    JoyDuplicateToast()
+                }
+            }
+            
+            // 소확행 앨범에 저장 안내토스트
+            if appStatus.showSaveJoyToast {
+                VStack {
+                    Spacer()
+                    SaveAlbumJoyToast(albumName: albumNames)
+                }
+            }
+            
             // 앨범 정보 수정
             if showChangeInfo {
                 ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
@@ -119,7 +136,7 @@ struct AlbumDetailView: View {
             
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
+                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, albumNames: $albumNames)
             }
             
             // 신고 완료 토스트
@@ -262,7 +279,7 @@ struct AlbumDetailView: View {
     }
     
     private func playJoy(joy: Joy) {
-        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG AlbumDetailView: 오플리에 추가 true")
                 
@@ -274,6 +291,16 @@ struct AlbumDetailView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
                         appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else if isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate.toggle()
+                }
+                print("DEBUG AlbumDetailView playJoy: isSuccess false and isDuplicate true")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.isDuplicate = false
                     }
                 }
             } else {

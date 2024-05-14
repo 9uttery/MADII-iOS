@@ -15,6 +15,7 @@ struct RecordView: View {
     @State private var showSaveJoyPopUp: Bool = false
     
     @State private var showAddAlbumPopUp: Bool = false
+    @State var albumNames: String = ""
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -47,7 +48,7 @@ struct RecordView: View {
             }
             // 나만의 소확행 앨범에 저장 팝업
             .transparentFullScreenCover(isPresented: $showSaveJoyPopUp) {
-                SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: .constant(true), showSaveJoyPopUpFromRecordMain: $showSaveJoyPopUp) }
+                SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: .constant(true), showSaveJoyPopUpFromRecordMain: $showSaveJoyPopUp, albumNames: $albumNames) }
             
             // 소확행 기록 완료 토스트메시지
             if showSaveJoyToast { SaveJoyToast(showSaveJoyToAlbumPopUp: $showSaveJoyPopUp) }
