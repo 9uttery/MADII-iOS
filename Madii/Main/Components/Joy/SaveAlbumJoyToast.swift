@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SaveAlbumJoyToast: View {
     var transitionEdge: Edge = .bottom
+    var yOffset: Int = -20
     
     var body: some View {
         HStack {
@@ -24,7 +25,7 @@ struct SaveAlbumJoyToast: View {
         .background(Color.white)
         .cornerRadius(6)
         .padding(.horizontal, 16)
-        .offset(y: -20)
+        .offset(y: CGFloat(yOffset))
         .transition(.move(edge: transitionEdge))
     }
 }
