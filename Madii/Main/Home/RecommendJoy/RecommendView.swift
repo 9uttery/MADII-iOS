@@ -27,7 +27,6 @@ struct RecommendView: View {
     @State private var showTodayPlaylist: Bool = false /// 오플리 sheet 열기
     @State var isActive: Bool = false
     @State var isRecommendJoy: Bool = false
-    @State var albumNames: String = ""
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -85,7 +84,7 @@ struct RecommendView: View {
                 }
                 .padding(.bottom, 48)
                 
-                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy, albumNames: $albumNames)
+                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy)
             }
             .padding(.horizontal, 16)
             
@@ -97,7 +96,7 @@ struct RecommendView: View {
                 JoyDuplicateToast() }
             
             if appStatus.showSaveJoyToast {
-                SaveAlbumJoyToast(albumName: albumNames)
+                SaveAlbumJoyToast()
             }
             
             withAnimation(.easeInOut(duration: 1)) {

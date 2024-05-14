@@ -19,7 +19,6 @@ struct JoyMenuBottomSheet: View {
     @State private var showSaveJoyToAlbumPopUp: Bool = false
     @State private var showEditJoyPopUp: Bool = false /// 수정하기 팝업
     @State private var showDeleteJoyPopUp: Bool = false
-    @State var albumNames: String = ""
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -103,10 +102,10 @@ struct JoyMenuBottomSheet: View {
         .onAppear { newJoy = joy ?? Joy(title: "") }
         // 나만의 소확행 앨범에 저장 팝업
         .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
-            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, albumNames: $albumNames) }
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
         // 소확행 수정
         .transparentFullScreenCover(isPresented: $showEditJoyPopUp) {
-            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showEditJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, canEditTitle: true, albumNames: $albumNames) }
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showEditJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, canEditTitle: true) }
         // 소확행 삭제
         .transparentFullScreenCover(isPresented: $showDeleteJoyPopUp) {
             DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)

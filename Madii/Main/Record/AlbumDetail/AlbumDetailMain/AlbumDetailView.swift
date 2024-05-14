@@ -27,7 +27,6 @@ struct AlbumDetailView: View {
     
     @State private var showSettingSheet: Bool = false
     @State private var showChangeInfo: Bool = false
-    @State var albumNames: String = ""
     
     var fromPlayJoy: Bool = false
     
@@ -125,7 +124,7 @@ struct AlbumDetailView: View {
             if appStatus.showSaveJoyToast {
                 VStack {
                     Spacer()
-                    SaveAlbumJoyToast(albumName: albumNames)
+                    SaveAlbumJoyToast()
                 }
             }
             
@@ -136,7 +135,7 @@ struct AlbumDetailView: View {
             
             // 소확행을 앨범에 저장하는 팝업
             if showSaveJoyPopUp {
-                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true, albumNames: $albumNames)
+                SaveMyJoyPopUpView(joy: $joy, showSaveJoyToAlbumPopUp: $showSaveJoyPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true)
             }
             
             // 신고 완료 토스트

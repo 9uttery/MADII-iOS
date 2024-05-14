@@ -20,7 +20,6 @@ struct RecommendJoyListView: View {
     @State private var xOffset: CGFloat = 0
     @State private var showTodayPlaylist: Bool = false
     @Binding var isRecommendJoy: Bool
-    @Binding var albumNames: String
     
     var body: some View {
         VStack(spacing: 12) {
@@ -171,5 +170,5 @@ struct RecommendJoyListView: View {
 }
 
 #Preview {
-    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0), reClicked: .constant(false), isRecommendJoy: .constant(false), albumNames: .constant(""))
+    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0), reClicked: .constant(false), isRecommendJoy: .constant(false))
 }

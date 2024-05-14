@@ -9,11 +9,10 @@ import SwiftUI
 
 struct SaveAlbumJoyToast: View {
     var transitionEdge: Edge = .bottom
-    var albumName: String
     
     var body: some View {
         HStack {
-            Text("소확행이 \(albumName)에 저장되었어요")
+            Text("소확행이 앨범에 저장되었어요")
                 .madiiFont(font: .madiiBody4, color: .black)
             
             Spacer()

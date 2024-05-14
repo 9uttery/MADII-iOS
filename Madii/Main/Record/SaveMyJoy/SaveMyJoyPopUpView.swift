@@ -23,7 +23,6 @@ struct SaveMyJoyPopUpView: View {
     
     var canEditTitle: Bool = false
     @State private var newJoyTitle: String = ""
-    @Binding var albumNames: String
 
     var body: some View {
         ZStack {
@@ -70,7 +69,6 @@ struct SaveMyJoyPopUpView: View {
         .onAppear {
             newJoyTitle = joy.title
             getMyAlbums()
-            albumNames = ""
         }
         .transparentFullScreenCover(isPresented: $showCreateAlbumPopUp) {
             AddAlbumPopUp(showAddAlbumPopUp: $showCreateAlbumPopUp, getAlbums: selectNewAlbum) }
@@ -169,13 +167,6 @@ struct SaveMyJoyPopUpView: View {
                 joy.title = newJoyTitle
                 print(selectedAlbumIds)
                 if !selectedAlbumIds.isEmpty {
-                    for album in albums where selectedAlbumIds.contains(album.id) {
-                        if !albumNames.isEmpty {
-                            albumNames += ", "
-                        }
-                        albumNames += album.title
-                    }
-                    print(albumNames)
                     appStatus.showSaveJoyToast = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         withAnimation {
