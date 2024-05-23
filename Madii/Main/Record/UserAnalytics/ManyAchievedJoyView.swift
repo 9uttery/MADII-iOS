@@ -25,6 +25,7 @@ struct ManyAchievedJoyView: View {
                         // 1등
                         Button {
                             selectedJoy = joys[0]
+                            AnalyticsManager.shared.logEvent(name: "많이실천한소확행뷰_가장많이실천한소확행클릭")
                         } label: {
                             firstRank
                         }
@@ -67,6 +68,7 @@ struct ManyAchievedJoyView: View {
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
+        .analyticsScreen(name: "많이 실천한 소확행뷰")
     }
     
     private var firstRank: some View {
@@ -111,6 +113,7 @@ struct ManyAchievedJoyView: View {
     private func joyRow(index: Int, joy: Joy) -> some View {
         Button {
             selectedJoy = joy
+            AnalyticsManager.shared.logEvent(name: "많이실천한소확행뷰_많이실천한소확행\(joy.rank)위클릭")
         } label: {
             HStack(spacing: 15) {
                 // 순위
@@ -183,6 +186,6 @@ struct ManyAchievedJoyView: View {
     }
 }
 
-#Preview {
-    ManyAchievedJoyView()
-}
+//#Preview {
+//    ManyAchievedJoyView()
+//}
