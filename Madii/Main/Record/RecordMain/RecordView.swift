@@ -56,6 +56,7 @@ struct RecordView: View {
             if showAddAlbumPopUp { AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }
         }
         .navigationTitle("")
+        .analyticsScreen(name: "레코드뷰")
     }
     
     var navigationBar: some View {
