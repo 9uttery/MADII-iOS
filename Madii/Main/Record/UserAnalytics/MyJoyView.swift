@@ -56,6 +56,7 @@ struct MyJoyView: View {
         .onAppear { getJoy() }
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .analyticsScreen(name: "내가 기록한 소확행뷰")
     }
     
     private var emptyJoyView: some View {
