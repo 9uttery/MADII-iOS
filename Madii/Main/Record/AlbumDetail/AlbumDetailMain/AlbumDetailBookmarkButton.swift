@@ -16,6 +16,8 @@ struct AlbumDetailBookmarkButton: View {
     var body: some View {
         Button {
             bookmarkButtonAction()
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_앨범저장클릭")
+
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "bookmark.fill")
