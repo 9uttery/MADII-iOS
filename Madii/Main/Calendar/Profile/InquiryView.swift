@@ -31,6 +31,7 @@ struct InquiryView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .analyticsScreen(name: "문의하기뷰")
     }
 }
 
