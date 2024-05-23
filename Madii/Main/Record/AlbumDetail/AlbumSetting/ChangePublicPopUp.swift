@@ -30,6 +30,7 @@ struct ChangePublicPopUp: View {
                     if isAlbumPublic == false {
                         Button {
                             dismiss()
+                            AnalyticsManager.shared.logEvent(name: "공개여부설정팝업_취소클릭")
                         } label: {
                             MadiiButton(title: "취소", size: .small)
                         }
@@ -37,6 +38,7 @@ struct ChangePublicPopUp: View {
                         
                     Button {
                         changePublic()
+                        AnalyticsManager.shared.logEvent(name: "공개여부설정팝업_전체공개하기클릭")
                     } label: {
                         MadiiButton(title: isAlbumPublic ? "확인" : "전체 공개하기", color: .white, size: .small)
                     }
