@@ -17,6 +17,7 @@ struct SelectDateHeader: View {
                 // 한 달 전
                 Button {
                     changeMonth(add: -1)
+                    AnalyticsManager.shared.logEvent(name: "캘린더뷰_한달전클릭")
                 } label: {
                     changeMonthButton(image: "arrow.left.circle.fill")
                 }
@@ -26,6 +27,7 @@ struct SelectDateHeader: View {
                 // 월, 년 표시
                 Button {
                     showDatePicker.toggle()
+                    AnalyticsManager.shared.logEvent(name: "캘린더뷰_월년클릭")
                 } label: {
                     VStack {
                         Text("\(selectedDate.month)월")
@@ -40,6 +42,7 @@ struct SelectDateHeader: View {
                 // 한 달 후
                 Button {
                     changeMonth(add: 1)
+                    AnalyticsManager.shared.logEvent(name: "캘린더뷰_한달후클릭")
                 } label: {
                     changeMonthButton(image: "arrow.right.circle.fill")
                 }
