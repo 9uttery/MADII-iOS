@@ -81,6 +81,7 @@ struct OnboardingView: View {
             MadiiTabView().navigationBarBackButtonHidden() }
         .navigationDestination(isPresented: $showLoginView) {
             LoginView().navigationBarBackButtonHidden() }
+        .analyticsScreen(name: "온보딩뷰")
     }
     
     // 페이지 위치 점 세개
@@ -89,6 +90,7 @@ struct OnboardingView: View {
             if selectedPage > 0 {
                 Button {
                     selectedPage -= 1
+                    AnalyticsManager.shared.logEvent(name: "온보딩뷰_뒤로가기클릭")
                 } label: {
                     Image(systemName: "chevron.left")
                         .frame(width: 10, height: 16)
@@ -126,6 +128,7 @@ struct OnboardingView: View {
     var nextButton: some View {
         Button {
             showNextPage()
+            AnalyticsManager.shared.logEvent(name: "온보딩뷰_다음클릭")
         } label: {
             MadiiButton(title: "다음")
                 .padding(.top, 40)
@@ -137,6 +140,7 @@ struct OnboardingView: View {
     var showMainButton: some View {
         Button {
             showMainView = true
+            AnalyticsManager.shared.logEvent(name: "온보딩뷰_회원가입없이둘러보기클릭")
         } label: {
             Text("회원가입 없이 둘러보기")
                 .madiiFont(font: .madiiBody2, color: .white)
