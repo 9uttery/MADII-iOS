@@ -27,6 +27,7 @@ struct MyProfileView: View {
                 VStack(spacing: 24) {
                     Button {
                         self.showProfileImageSheet = true
+                        AnalyticsManager.shared.logEvent(name: "프로필뷰_프로필이미지클릭")
                     } label: {
                         if image == UIImage(named: "defaultProfile") {
                             AsyncImage(url: URL(string: url)) { image in
@@ -73,6 +74,7 @@ struct MyProfileView: View {
                                 url = "https://\(Bundle.main.infoDictionary?["DEFAULT_PROFILE_IMAGE_URL"] ?? "nil default profile image url")"
                                 image = UIImage(named: "defaultProfile") ?? UIImage()
                                 showProfileImageSheet = false
+                                AnalyticsManager.shared.logEvent(name: "프로필뷰_현재사진삭제클릭")
                             } label: {
                                 HStack {
                                     Text("현재 사진 삭제")
@@ -131,6 +133,7 @@ struct MyProfileView: View {
                         }
                     }
                 }
+                AnalyticsManager.shared.logEvent(name: "프로필뷰_저장클릭")
             } label: {
                 MadiiButton(title: "저장", color: nickname.isEmpty || isNicknameVaild == false ? .gray : .white)
             }
@@ -142,6 +145,7 @@ struct MyProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .analyticsScreen(name: "프로필뷰")
     }
     
     private func showPhotoLibrary(status: PHAuthorizationStatus) {
