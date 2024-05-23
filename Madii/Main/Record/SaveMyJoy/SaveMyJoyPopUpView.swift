@@ -179,5 +179,6 @@ struct SaveMyJoyPopUpView: View {
                 print("소확행 앨범에 저장 실패")
             }
         }
+        AnalyticsManager.shared.logEvent(name: "소확행내앨범에저장하기클릭")
     }
 }
