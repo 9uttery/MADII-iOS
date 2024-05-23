@@ -46,10 +46,12 @@ struct ReallyLeaveView: View {
                             print("회원탈퇴에 성공하였습니다.")
                         }
                     }
+                    AnalyticsManager.shared.logEvent(name: "탈퇴뷰_회원탈퇴클릭")
                 })
                 
                 Button {
                     presentationMode.wrappedValue.dismiss()
+                    AnalyticsManager.shared.logEvent(name: "탈퇴뷰_탈퇴안함클릭")
                 } label: {
                     StyleJoyNextButton(label: "아니요, 탈퇴 안 할래요", isDisabled: true, color: .madiiYellowGreen)
                         .cornerRadius(6)
