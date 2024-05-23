@@ -20,6 +20,7 @@ struct AddTodayPlaylistBarToast: View {
             
             Button {
                 showTodayPlaylist = true
+                AnalyticsManager.shared.logEvent(name: "오플리추가토스트_오플리바바로가기클릭")
             } label: {
                 Text("바로가기")
                     .madiiFont(font: .madiiBody5, color: .madiiOrange)
