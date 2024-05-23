@@ -51,6 +51,7 @@ struct AddJoyPopUp: View {
             .padding(36)
         }
         .onAppear { getMyAlbums() }
+        .analyticsScreen(name: "소확행추가팝업")
     }
     
     var myAlbums: some View {
