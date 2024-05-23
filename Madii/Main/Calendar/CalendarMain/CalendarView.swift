@@ -49,6 +49,7 @@ struct CalendarView: View {
             .scrollIndicators(.hidden)
         }
         .navigationTitle("")
+        .analyticsScreen(name: "캘린더뷰")
     }
     
     var title: some View {
