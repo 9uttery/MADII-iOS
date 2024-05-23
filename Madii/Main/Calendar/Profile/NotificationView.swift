@@ -59,6 +59,7 @@ struct NotificationView: View {
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getNotification() }
+        .analyticsScreen(name: "알림뷰")
     }
     
     private func getNotification() {

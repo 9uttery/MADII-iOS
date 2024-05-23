@@ -53,6 +53,7 @@ struct TodayPlaylistView: View {
             .onAppear {
                 getPlaylist()
             }
+            .analyticsScreen(name: "오늘의플레이리스트뷰")
 //            .sheet(isPresented: $showMoveJoyBottomSheet) {
 //                GeometryReader { geo in
 //                    PlaylistBarMoveToTodayBottmSheet()
@@ -101,6 +102,7 @@ struct TodayPlaylistView: View {
                             fromPlaylistBar = false
                             selectedJoy = joy
                         }
+                        AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행실천클릭")
                     } label: {
                         HStack(spacing: 15) {
                             // 소확행 커버 이미지
@@ -118,9 +120,11 @@ struct TodayPlaylistView: View {
                                     .frame(width: 26, height: 26)
                             }
                             
-                            Text(joy.title)
+                            Text(joy.title.split(separator: "").joined(separator: "\u{200B}"))
                                 .madiiFont(font: .madiiBody3, color: .white)
                                 .multilineTextAlignment(.leading)
+                                .truncationMode(.head)
+                                .fixedSize(horizontal: false, vertical: true)
                             
                             Spacer()
                             
@@ -129,6 +133,7 @@ struct TodayPlaylistView: View {
                                 Button {
                                     fromPlaylistBar = true
                                     cancelAchievement(id: joy.achievementId)
+                                    AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행실천해제클릭")
                                 } label: {
                                     Image(systemName: "checkmark.circle.fill")
                                         .resizable()
@@ -140,6 +145,7 @@ struct TodayPlaylistView: View {
                                 Button {
                                     fromPlaylistBar = true
                                     selectedJoy = joy
+                                    AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행실천클릭")
                                 } label: {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
@@ -156,6 +162,7 @@ struct TodayPlaylistView: View {
                             withAnimation {
                                 deleteAchivement(id: joy.achievementId)
                             }
+                            AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행삭제클릭")
                         } label: {
                             Label("Trash", systemImage: "trash")
                         }
@@ -196,6 +203,7 @@ struct TodayPlaylistView: View {
                         fromPlaylistBar = false
                         selectedJoy = joy
                     }
+                    AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_2~3일전추가한소확행클릭")
                 } label: {
                     JoyRowWithButton(joy: joy) {
                         // 메뉴 버튼 action
@@ -250,6 +258,7 @@ struct TodayPlaylistView: View {
     private func achievedButton(joy: Joy) -> some View {
         Button {
             cancelAchievement(id: joy.achievementId)
+            AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_소확행실천취소클릭")
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .resizable()
@@ -261,6 +270,7 @@ struct TodayPlaylistView: View {
     private func moveToTodayButton(joy: Joy) -> some View {
         Button {
             moveAchievementToToday(id: joy.achievementId)
+            AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_어제실천못한소확행오늘로이동클릭")
         } label: {
             ZStack {
                 Circle()
@@ -338,9 +348,6 @@ struct TodayPlaylistView: View {
         }
     }
     
-    func deleteJoy(at offsets: IndexSet) {
-        
-    }
 }
 
 #Preview {

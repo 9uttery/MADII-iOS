@@ -25,6 +25,7 @@ struct TodayPlaylistNavigationBar: View {
                 
                 Button {
                     showPlaylist = false
+                    AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘의플레이리스트내리기클릭")
                 } label: {
                     Image(systemName: "chevron.down")
                 }.padding(.leading, 20)

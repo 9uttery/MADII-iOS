@@ -70,6 +70,7 @@ struct RecommendJoyListView: View {
                             selectedIdx = joy.id
                             selectedJoy = joy
                         }
+                        AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_추천소확행클릭")
                     } label: {
                         HStack(spacing: 0) {
                             ZStack {
@@ -115,6 +116,7 @@ struct RecommendJoyListView: View {
                     reClicked.toggle()
                     selectedJoy = nil
                     selectedIdx = nil
+                    AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_다시고르기클릭")
                 } label: {
                     Text("다시 고르기")
                         .madiiFont(font: .madiiBody4, color: .white)
@@ -129,6 +131,7 @@ struct RecommendJoyListView: View {
             Spacer()
             
             Button {
+                AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_오플리에추가클릭")
                 isRecommendJoy.toggle()
                 playJoy(joyId: selectedJoy!.joyId)
             } label: {
@@ -137,7 +140,7 @@ struct RecommendJoyListView: View {
             .frame(width: UIScreen.main.bounds.width - 40, height: 96)
             .disabled(selectedJoy != nil ? false : true)
         }
-        .onChange(of: selectedJoyEllipsis) { newValue in
+        .onChange(of: selectedJoyEllipsis) { _ in
             newJoy = selectedJoyEllipsis ?? Joy(title: "넷플릭스 먹으면서 귤 보기")
                 }
         .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {

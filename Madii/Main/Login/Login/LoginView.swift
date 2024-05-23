@@ -53,6 +53,7 @@ struct LoginView: View {
         .background(OnboardingBackgroundGradient())
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
+        .analyticsScreen(name: "로그인뷰")
     }
     
     @ViewBuilder

@@ -14,6 +14,7 @@ struct TabBarButton: View {
     var body: some View {
         Button {
             selectedTabIndex = tabIndex
+            AnalyticsManager.shared.logEvent(name: "탭바_\(tabIndex)클릭")
         } label: {
             VStack(spacing: 4) {
                 Image(imageName())

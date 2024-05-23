@@ -25,6 +25,7 @@ struct MyAlbumsView: View {
                 // 새로운 앨범 추가 버튼
                 Button {
                     showAddAlbumPopUp = true
+                    AnalyticsManager.shared.logEvent(name: "레코드뷰_앨범추가클릭")
                 } label: {
                     ZStack {
                         Rectangle()
@@ -74,6 +75,6 @@ struct MyAlbumsView: View {
     }
 }
 
-#Preview {
-    MadiiTabView()
-}
+//#Preview {
+//    MadiiTabView()
+//}

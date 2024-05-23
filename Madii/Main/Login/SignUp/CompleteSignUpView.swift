@@ -32,6 +32,7 @@ struct CompleteSignUpView: View {
             
             Button {
                 showMainView = true
+                AnalyticsManager.shared.logEvent(name: "회원가입완료뷰_시작하기클릭")
             } label: {
                 MadiiButton(title: "시작하기", color: .yellowGreen)
             }
@@ -42,6 +43,7 @@ struct CompleteSignUpView: View {
         }
         .padding(.horizontal, 16)
         .background(OnboardingBackgroundGradient())
+        .analyticsScreen(name: "회원가입완료뷰")
     }
 }
 

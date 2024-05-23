@@ -68,6 +68,7 @@ struct AlbumDetailView: View {
                                 // 소확행 row
                                 Button {
                                     playJoy(joy: joy)
+                                    AnalyticsManager.shared.logEvent(name: "앨범상세뷰_소확행클릭오플리추가")
                                 } label: {
                                     albumDetailJoyRow(joy: joy)
                                 }
@@ -181,6 +182,7 @@ struct AlbumDetailView: View {
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
+        .analyticsScreen(name: "앨범상세뷰")
     }
     
     @ViewBuilder
@@ -225,6 +227,7 @@ struct AlbumDetailView: View {
                 // 다른 사람 앨범이면 신고
                 showReportSheet = true
             }
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_ellipsis클릭")
         } label: {
             Image(systemName: "ellipsis")
                 .resizable()
@@ -294,9 +297,10 @@ struct AlbumDetailView: View {
                 }
             } else if isDuplicate {
                 withAnimation {
-                    appStatus.isDuplicate.toggle()
+                    appStatus.isDuplicate = true
                 }
                 print("DEBUG AlbumDetailView playJoy: isSuccess false and isDuplicate true")
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
                         appStatus.isDuplicate = false

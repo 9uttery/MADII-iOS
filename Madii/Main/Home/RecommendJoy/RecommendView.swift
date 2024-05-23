@@ -77,6 +77,7 @@ struct RecommendView: View {
                                         }
                                         clickedNum -= 1
                                     }
+                                    AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_키워드클릭")
                                 }
                             }
                         }
@@ -130,6 +131,7 @@ struct RecommendView: View {
                 endPoint: UnitPoint(x: 0.5, y: 1.5)
                 )
             )
+        .analyticsScreen(name: "취향저격 소확행뷰")
     }
     
     private func getRecommendJoys(when: [Int], who: [Int], which: [Int]) {
