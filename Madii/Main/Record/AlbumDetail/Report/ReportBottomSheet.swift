@@ -30,6 +30,7 @@ struct ReportBottomSheet: View {
             VStack(alignment: .leading, spacing: 0) {
                 Button {
                     showReportPopUp = true
+                    AnalyticsManager.shared.logEvent(name: "신고바텀시트_신고클릭")
                 } label: {
                     bottomSheetRow("신고")
                 }
