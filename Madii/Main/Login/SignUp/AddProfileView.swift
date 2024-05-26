@@ -135,6 +135,7 @@ struct AddProfileView: View {
                 CompleteSignUpView().navigationBarBackButtonHidden()
             }
         }
+        .onTapGesture { hideKeyboard() }
         .analyticsScreen(name: "프로필추가뷰")
     }
     

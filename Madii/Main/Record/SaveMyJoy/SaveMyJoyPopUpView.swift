@@ -66,6 +66,7 @@ struct SaveMyJoyPopUpView: View {
             }
             .padding(36)
         }
+        .onTapGesture { hideKeyboard() }
         .onAppear {
             newJoyTitle = joy.title
             getMyAlbums()

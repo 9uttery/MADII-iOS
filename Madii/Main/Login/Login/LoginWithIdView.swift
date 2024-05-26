@@ -56,6 +56,7 @@ struct LoginWithIdView: View {
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 24)
+        .onTapGesture { hideKeyboard() }
         .analyticsScreen(name: "이메일로 로그인뷰")
     }
     
