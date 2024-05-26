@@ -134,6 +134,7 @@ struct EmailView: View {
                 .padding(.bottom, 24)
             }
         }
+        .onTapGesture { hideKeyboard() }
         .analyticsScreen(name: "회원가입이메일뷰")
     }
     
