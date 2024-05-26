@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TodayPlaylistView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Binding var showPlaylist: Bool
     @State private var allJoys: [MyJoy] = []
     @State private var showEmptyView: Bool = false
@@ -52,6 +53,19 @@ struct TodayPlaylistView: View {
             .ignoresSafeArea()
             .onAppear {
                 getPlaylist()
+            }
+            .onChange(of: scenePhase) { newScenePhase in
+                switch newScenePhase {
+                case .active:
+                    print("App is active")
+                    getPlaylist()
+                case .inactive:
+                    print("App is inactive")
+                case .background:
+                    print("App is in background")
+                @unknown default:
+                    break
+                }
             }
             .analyticsScreen(name: "오늘의플레이리스트뷰")
 //            .sheet(isPresented: $showMoveJoyBottomSheet) {
