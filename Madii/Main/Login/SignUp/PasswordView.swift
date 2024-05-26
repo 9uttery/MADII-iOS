@@ -74,6 +74,7 @@ struct PasswordView: View {
                 .padding(.horizontal, 18)
                 .padding(.bottom, 24)
         }
+        .onTapGesture { hideKeyboard() }
         .analyticsScreen(name: "회원가입비밀번호뷰")
     }
     
