@@ -481,7 +481,6 @@
 				51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */,
 				51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */,
 				51380FA92BBD3292000D9BA0 /* Config.xcconfig */,
-				BEB11DD12BFDB22A008D38D7 /* GoogleAnalytics */,
 				51E0259E2B26F7C500F4F41A /* Service */,
 				BE459A572B762621002E9AB2 /* Api */,
 				516455972B1F07080010199B /* Model */,
@@ -694,6 +693,7 @@
 		51E0259E2B26F7C500F4F41A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BEB11DD12BFDB22A008D38D7 /* GoogleAnalytics */,
 				BE0C3F8D2B81E77200275FD3 /* ParticleAnimation */,
 				51E0259F2B26F7EB00F4F41A /* AppStatus.swift */,
 				51BEBA412B813F5B008CF3AD /* ImagePicker.swift */,
