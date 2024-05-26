@@ -75,6 +75,7 @@ struct ReportPopUp: View {
             .frame(maxHeight: 500)
             .padding(40)
         }
+        .onTapGesture { hideKeyboard() }
     }
     
     private func dismiss() {
