@@ -39,6 +39,7 @@ struct SaveMyJoyView: View {
             .cornerRadius(6)
         }
         .roundBackground()
+        .onTapGesture { hideKeyboard() }
         .onAppear { getPlaceholder() }
     }
     
