@@ -100,14 +100,9 @@ struct MyProfileView: View {
                         // ImagePicker(sourceType: .camera, selectedImage: self.$image)
                     }
                     
-                    if name == nickname {
-                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname)
-                    } else {
-                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
-                                       strokeColor: self.strokeColor(), limit: 10)
-                        .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
+                    MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname, strokeColor: self.strokeColor(), limit: 10)
+                        .textFieldHelperMessage(name == nickname ? "" : self.helperMessage, color: self.strokeColor())
                         .onChange(of: self.nickname) { self.checkValidNickname($0) }
-                    }
                 }
                 .padding(.top, 28)
                 .padding(.horizontal, 24)
@@ -145,6 +140,7 @@ struct MyProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onTapGesture { hideKeyboard() }
         .analyticsScreen(name: "프로필뷰")
     }
     
@@ -172,6 +168,8 @@ struct MyProfileView: View {
     private func strokeColor() -> Color {
         if self.nickname.isEmpty {
             return Color.gray500
+        } else if self.name == self.nickname {
+            return Color.clear
         } else if self.isNicknameVaild {
             return Color.madiiYellowGreen
         } else {
