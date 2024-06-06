@@ -73,6 +73,7 @@
 		519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E32B8936230017023E /* FirebaseAnalyticsSwift */; };
 		519DF2E62B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E52B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		519DF2E82B8936230017023E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E72B8936230017023E /* FirebaseAppCheck */; };
+		51AAB9132BE3E10E00F930B7 /* FindPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AAB9122BE3E10E00F930B7 /* FindPasswordView.swift */; };
 		51B6B7772B89A89E00A31FEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7762B89A89E00A31FEE /* FirebaseAnalytics */; };
 		51B6B7792B89A89E00A31FEE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7782B89A89E00A31FEE /* FirebaseAnalyticsOnDeviceConversion */; };
 		51B6B77B2B89A89F00A31FEE /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B77A2B89A89F00A31FEE /* FirebaseAnalyticsSwift */; };
@@ -225,6 +226,7 @@
 		519C97E82B5E6714004F1AFF /* UserAnalyticsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnalyticsContent.swift; sourceTree = "<group>"; };
 		519C97EA2B602E27004F1AFF /* LatestViewedAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewedAlbumView.swift; sourceTree = "<group>"; };
 		519C97ED2B604912004F1AFF /* JoyMenuBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyMenuBottomSheet.swift; sourceTree = "<group>"; };
+		51AAB9122BE3E10E00F930B7 /* FindPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordView.swift; sourceTree = "<group>"; };
 		51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		51B6B7AE2B8BDAE600A31FEE /* AddAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumPopUp.swift; sourceTree = "<group>"; };
 		51BEBA3B2B7E816B008CF3AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */,
 				5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */,
 				5141CAD32B7504D300FD407E /* LoginWithIdView.swift */,
+				51AAB9122BE3E10E00F930B7 /* FindPasswordView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1058,6 +1061,7 @@
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */,
+				51AAB9132BE3E10E00F930B7 /* FindPasswordView.swift in Sources */,
 				BE2BFC1A2B36B5D6006282F2 /* HomeRecommendView.swift in Sources */,
 				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				BE459A612B7E089E002E9AB2 /* AlbumAPI.swift in Sources */,
