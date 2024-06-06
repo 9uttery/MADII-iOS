@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeTodayJoyView: View {
+    @EnvironmentObject var appStatus: AppStatus
 
     @State private var todayJoy: Joy = Joy(title: "") /// 오늘의 소확행
     @AppStorage("todayJoyId") var todayJoyId = 0
@@ -28,6 +29,7 @@ struct HomeTodayJoyView: View {
                             Button {
                                 // 소확행 오플리에 추가하기
                                 playJoy()
+                                AnalyticsManager.shared.logEvent(name: "오늘의소확행뷰_오플리에추가하기클릭")
                             } label: {
                                 Image("play")
                                     .resizable()
@@ -38,6 +40,7 @@ struct HomeTodayJoyView: View {
                             Button {
                                 // 소확행 메뉴 bottom sheet
                                 selectedJoy = todayJoy
+                                AnalyticsManager.shared.logEvent(name: "프로필추가뷰_ellipsis클릭")
                             } label: {
                                 Image(systemName: "ellipsis")
                                     .foregroundColor(.gray500)
@@ -77,12 +80,28 @@ struct HomeTodayJoyView: View {
     }
     
     private func playJoy() {
-        AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId) { isSuccess in
+        AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId) { isSuccess, isDuplicate in
             if isSuccess {
+                appStatus.showAddPlaylistToast.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.showAddPlaylistToast = false
+                    }
+                }
                 print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
                 updatePlaylistBar.toggle()
+            } else if isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate.toggle()
+                    print("DEBUG HomeTodayJoyView playJoy: isSuccess false and isDuplicate true")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        withAnimation {
+                            appStatus.isDuplicate = false
+                        }
+                    }
+                }
             } else {
-                print("DEBUG HomeTodayJoyView playJoy: isSuccess true")
+                print("DEBUG HomeTodayJoyView playJoy: isSuccess false")
             }
         }
     }

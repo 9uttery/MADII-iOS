@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct AlbumDetailBookmarkButton: View {
+    @EnvironmentObject var appStatus: AppStatus
+    
     let albumId: Int
     @Binding var isAlbumSaved: Bool
     
     var body: some View {
         Button {
             bookmarkButtonAction()
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_앨범저장클릭")
+
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "bookmark.fill")
@@ -53,8 +57,22 @@ struct AlbumDetailBookmarkButton: View {
             if isSuccess {
                 print("DEBUG AlbumDetailBookmarkButton save: isSuccess true")
                 isAlbumSaved = true
+                showSaveAlbumToast() // 앨범 저장 토스트 띄우기
             } else {
                 print("DEBUG AlbumDetailBookmarkButton save: isSuccess true")
+            }
+        }
+    }
+    
+    // 앨범 저장 토스트 띄우기
+    private func showSaveAlbumToast() {
+        withAnimation {
+            appStatus.showSaveAlbumToast = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            withAnimation {
+                appStatus.showSaveAlbumToast = false
             }
         }
     }

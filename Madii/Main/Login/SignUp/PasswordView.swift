@@ -56,7 +56,7 @@ struct PasswordView: View {
                             .padding(.bottom, 14)
                             .padding(.horizontal, 18)
                         
-                        MadiiTextField(isSecureField: true, placeHolder: "",
+                        MadiiTextField(isSecureField: true, placeHolder: "비밀번호 확인",
                                        text: $reenteredPassword, strokeColor: reenteredStrokeColor())
                         .textFieldHelperMessage(reenterHelperMessage, color: reenteredStrokeColor())
                         .padding(.horizontal, 25)
@@ -74,6 +74,8 @@ struct PasswordView: View {
                 .padding(.horizontal, 18)
                 .padding(.bottom, 24)
         }
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "회원가입비밀번호뷰")
     }
     
     // 다음 버튼
@@ -83,6 +85,7 @@ struct PasswordView: View {
                 withAnimation {
                     showCheckPassword = true
                 }
+                AnalyticsManager.shared.logEvent(name: "비밀번호뷰_첫번째다음클릭")
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isValidPassword ? 1.0 : 0.4)
@@ -91,6 +94,7 @@ struct PasswordView: View {
         } else {
             Button {
                 signUp()
+                AnalyticsManager.shared.logEvent(name: "비밀번호뷰_두번째다음클릭")
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isValidPassword && isPasswordSame ? 1.0 : 0.4)

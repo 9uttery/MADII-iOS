@@ -18,27 +18,47 @@ struct ProfileView: View {
                 NavigationLink { MyProfileView(url: $url, nickname: name, name: $name) } label: { userInfoRow }
                     .background(Color.madiiBox)
                     .cornerRadius(20)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.shared.logEvent(name: "마이페이지뷰_프로필클릭")
+                    })
                 
                 VStack(spacing: 4) {
                     NavigationLink { NotificationView() } label: { profileRow(title: "알림") }
                         .navigationBarTitle("")
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.shared.logEvent(name: "마이페이지뷰_알림클릭")
+                        })
                     
                     NavigationLink { NoticeView() } label: { profileRow(title: "공지사항") }
                         .navigationBarTitle("")
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.shared.logEvent(name: "마이페이지뷰_공지사항클릭")
+                        })
                     
                     NavigationLink { InquiryView() } label: { profileRow(title: "문의하기") }
                         .navigationBarTitle("")
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.shared.logEvent(name: "마이페이지뷰_문의하기클릭")
+                        })
                 }
                 .padding(.vertical, 4)
                 .background(Color.madiiBox)
                 .cornerRadius(20)
                 
                 VStack(spacing: 10) {
-                    Button { showLogOutPopUp = true } label: { profileRow(title: "로그아웃") }
+                    Button {
+                        showLogOutPopUp = true
+                        AnalyticsManager.shared.logEvent(name: "마이페이지뷰_로그아웃클릭")
+                    } label: {
+                        profileRow(title: "로그아웃")
+                    }
                         .navigationBarTitle("")
                     
                     NavigationLink { SignOutView() } label: { profileRow(title: "회원탈퇴") }
                         .navigationBarTitle("")
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.shared.logEvent(name: "마이페이지뷰_회원탈퇴클릭")
+                        })
                 }
                 .padding(.vertical, 4)
                 .background(Color.madiiBox)
@@ -56,6 +76,7 @@ struct ProfileView: View {
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getUser() }
+        .analyticsScreen(name: "마이페이지뷰")
     }
     
     private var userInfoRow: some View {

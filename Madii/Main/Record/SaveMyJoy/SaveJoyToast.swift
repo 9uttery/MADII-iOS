@@ -20,6 +20,7 @@ struct SaveJoyToast: View {
             
             Button {
                 showSaveJoyToAlbumPopUp = true
+                AnalyticsManager.shared.logEvent(name: "소확행기록하기토스트_앨범저장클릭")
             } label: {
                 Text("앨범 저장")
                     .madiiFont(font: .madiiBody4, color: .madiiOrange)

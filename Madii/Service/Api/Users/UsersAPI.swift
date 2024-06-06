@@ -318,7 +318,7 @@ class UsersAPI {
             "agreesMarketing": agree
         ]
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<String?>.self) { response in
                 switch response.result {
                 case .success(let response):

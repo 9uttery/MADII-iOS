@@ -40,6 +40,7 @@ struct JoySatisfactionBottomSheet: View {
                                 } else {
                                     putSatisfaction()
                                 }
+                                AnalyticsManager.shared.logEvent(name: "소확행만족도조사바텀시트_\(satisfaction)클릭")
                             } label: {
                                 satisfactionIcon(of: satisfaction)
                             }

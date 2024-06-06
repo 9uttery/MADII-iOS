@@ -55,6 +55,7 @@ struct PopUpWithNameDescription: View {
             }
         }
           .padding(20)
+          .onTapGesture { hideKeyboard() }
     }
     
     func rightButtonColor() -> ButtonColor {

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}
+
 struct RecommendJoyView: View {
     @State var rotation: CGFloat = 0.0
     @Environment(\.presentationMode) var presentationMode
@@ -16,6 +21,7 @@ struct RecommendJoyView: View {
     @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
     @Binding var isActive: Bool
     @Binding var isRecommendJoy: Bool
+    @State private var joyTextHeight: CGFloat = 0
     var body: some View {
         ZStack {
             Circle()
@@ -86,6 +92,9 @@ struct RecommendJoyView: View {
                             .multilineTextAlignment(.center)
                             .frame(width: frameWidth - 130)
                             .padding(.bottom, 20)
+                            .readSize { new in
+                                joyTextHeight = new.height
+                            }
                     }
                     .frame(width: frameWidth - 70)
                     .padding(.top, 40)
@@ -110,7 +119,7 @@ struct RecommendJoyView: View {
                         .mask {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .stroke(lineWidth: 3)
-                                .frame(width: frameWidth - 66, height: 396)
+                                .frame(width: frameWidth - 66, height:  354 + joyTextHeight)
                         }
                 }
                 .padding(.bottom, 31)
@@ -152,10 +161,19 @@ struct RecommendJoyView: View {
                 rotation = 360
             }
         }
+        .analyticsScreen(name: "취향저격 오플리 추가뷰")
     }
     
 }
 
-//#Preview {
-//    RecommendJoyView(nickname: "", selectedJoy: GetJoyResponseJoy(joyId: 0, joyIconNum: 1, contents: "넷플릭스 헬로", isJoySaved: false), isActive: .constant(false), isRecommendJoy: .constant(false))
-//}
+extension View {
+  func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+    background(
+      GeometryReader { geometryProxy in
+        Color.clear
+          .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+      }
+    )
+    .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
+  }
+}

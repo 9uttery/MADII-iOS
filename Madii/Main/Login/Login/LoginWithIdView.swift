@@ -44,6 +44,7 @@ struct LoginWithIdView: View {
                 Button {
                     // 로그인
                     login()
+                    AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_로그인클릭")
                 } label: {
                     MadiiButton(title: "다음", size: .big)
                         .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
@@ -55,6 +56,8 @@ struct LoginWithIdView: View {
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 24)
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "이메일로 로그인뷰")
     }
     
     // id 텍스트필드

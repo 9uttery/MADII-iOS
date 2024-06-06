@@ -77,6 +77,7 @@ struct RecommendView: View {
                                         }
                                         clickedNum -= 1
                                     }
+                                    AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_키워드클릭")
                                 }
                             }
                         }
@@ -88,9 +89,9 @@ struct RecommendView: View {
             }
             .padding(.horizontal, 16)
             
-            // 오플리 추가 안내 토스트
-            if appStatus.showAddPlaylistToast {
-                AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+            if appStatus.showSaveJoyToast {
+                SaveAlbumJoyToast(yOffset: -85)
+            }
             
             withAnimation(.easeInOut(duration: 1)) {
                 RecommendJoyView(nickname: nickname, selectedJoy: $selectedJoy, isActive: $isActive, isRecommendJoy: $isRecommendJoy)
@@ -130,6 +131,7 @@ struct RecommendView: View {
                 endPoint: UnitPoint(x: 0.5, y: 1.5)
                 )
             )
+        .analyticsScreen(name: "취향저격 소확행뷰")
     }
     
     private func getRecommendJoys(when: [Int], who: [Int], which: [Int]) {

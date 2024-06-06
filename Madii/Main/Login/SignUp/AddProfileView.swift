@@ -43,6 +43,7 @@ struct AddProfileView: View {
                     
                     Button {
                         self.showProfileImageSheet = true
+                        AnalyticsManager.shared.logEvent(name: "프로필추가뷰_프로필이미지수정클릭")
                     } label: {
                         if image == UIImage() {
                             Image("defaultProfile")
@@ -67,6 +68,7 @@ struct AddProfileView: View {
                                 } else {
                                     showPhotoLibrary(status: status)
                                 }
+                                AnalyticsManager.shared.logEvent(name: "프로필추가뷰_라이브러리에서선택클릭")
                             } label: {
                                 HStack {
                                     Text("라이브러리에서 선택")
@@ -80,6 +82,7 @@ struct AddProfileView: View {
                             Button {
                                 image = UIImage(named: "defaultProfile") ?? UIImage()
                                 showProfileImageSheet = false
+                                AnalyticsManager.shared.logEvent(name: "프로필추가뷰_현재사진삭제클릭")
                             } label: {
                                 HStack {
                                     Text("현재 사진 삭제")
@@ -120,6 +123,7 @@ struct AddProfileView: View {
             Button {
                 // 프로필 등록
                 postProfile()
+                AnalyticsManager.shared.logEvent(name: "프로필추가뷰_완료클릭")
             } label: {
                 MadiiButton(title: "완료", size: .big)
                     .opacity(self.isNicknameVaild ? 1.0 : 0.4)
@@ -131,6 +135,8 @@ struct AddProfileView: View {
                 CompleteSignUpView().navigationBarBackButtonHidden()
             }
         }
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "프로필추가뷰")
     }
     
     private func postProfile() {

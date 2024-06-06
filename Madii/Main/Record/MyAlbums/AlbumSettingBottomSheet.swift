@@ -45,12 +45,14 @@ struct AlbumSettingBottomSheet: View {
                     Button {
                         showAlbumSettingSheet = false
                         showChangeInfo = true
+                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_앨범이름・설명수정클릭")
                     } label: {
                         albumRow(title: "앨범 이름・설명 수정")
                     }
                     
                     Button {
                         showAddJoyPopUp = true
+                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_소확행추가클릭")
                     } label: {
                         albumRow(title: "소확행 추가")
                     }
@@ -59,6 +61,7 @@ struct AlbumSettingBottomSheet: View {
                     
                     Button {
                         withoutAnimation { showDeleteAlbumPopUp = true }
+                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_삭제클릭")
                     } label: {
                         albumRow(title: "삭제")
                     }
@@ -83,6 +86,7 @@ struct AlbumSettingBottomSheet: View {
             canShowChangePublicPopUp = true
             showChangePublicPopUp = false
         }
+        .analyticsScreen(name: "앨범설정바텀시트")
     }
     
     @ViewBuilder
@@ -107,6 +111,7 @@ struct AlbumSettingBottomSheet: View {
             Button {
                 withoutAnimation {
                     showChangePublicPopUp = true
+                    AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_전체공개여부설정클릭")
                 }
             } label: {
                 if isAlbumPublic {

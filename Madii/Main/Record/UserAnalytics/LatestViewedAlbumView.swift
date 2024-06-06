@@ -39,6 +39,7 @@ struct LatestViewedAlbumView: View {
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear { getAlbums() }
+        .analyticsScreen(name: "최근 본 앨범뷰")
     }
     
     private var emptyView: some View {

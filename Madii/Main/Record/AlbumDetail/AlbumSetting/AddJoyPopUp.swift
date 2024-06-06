@@ -50,7 +50,9 @@ struct AddJoyPopUp: View {
             }
             .padding(36)
         }
+        .onTapGesture { hideKeyboard() }
         .onAppear { getMyAlbums() }
+        .analyticsScreen(name: "소확행추가팝업")
     }
     
     var myAlbums: some View {

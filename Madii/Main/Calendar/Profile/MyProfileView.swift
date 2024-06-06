@@ -27,6 +27,7 @@ struct MyProfileView: View {
                 VStack(spacing: 24) {
                     Button {
                         self.showProfileImageSheet = true
+                        AnalyticsManager.shared.logEvent(name: "프로필뷰_프로필이미지클릭")
                     } label: {
                         if image == UIImage(named: "defaultProfile") {
                             AsyncImage(url: URL(string: url)) { image in
@@ -73,6 +74,7 @@ struct MyProfileView: View {
                                 url = "https://\(Bundle.main.infoDictionary?["DEFAULT_PROFILE_IMAGE_URL"] ?? "nil default profile image url")"
                                 image = UIImage(named: "defaultProfile") ?? UIImage()
                                 showProfileImageSheet = false
+                                AnalyticsManager.shared.logEvent(name: "프로필뷰_현재사진삭제클릭")
                             } label: {
                                 HStack {
                                     Text("현재 사진 삭제")
@@ -98,14 +100,9 @@ struct MyProfileView: View {
                         // ImagePicker(sourceType: .camera, selectedImage: self.$image)
                     }
                     
-                    if name == nickname {
-                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname)
-                    } else {
-                        MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname,
-                                       strokeColor: self.strokeColor(), limit: 10)
-                        .textFieldHelperMessage(self.helperMessage, color: self.strokeColor())
+                    MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname, strokeColor: self.strokeColor(), limit: 10)
+                        .textFieldHelperMessage(name == nickname ? "" : self.helperMessage, color: self.strokeColor())
                         .onChange(of: self.nickname) { self.checkValidNickname($0) }
-                    }
                 }
                 .padding(.top, 28)
                 .padding(.horizontal, 24)
@@ -131,6 +128,7 @@ struct MyProfileView: View {
                         }
                     }
                 }
+                AnalyticsManager.shared.logEvent(name: "프로필뷰_저장클릭")
             } label: {
                 MadiiButton(title: "저장", color: nickname.isEmpty || isNicknameVaild == false ? .gray : .white)
             }
@@ -142,6 +140,8 @@ struct MyProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "프로필뷰")
     }
     
     private func showPhotoLibrary(status: PHAuthorizationStatus) {
@@ -168,6 +168,8 @@ struct MyProfileView: View {
     private func strokeColor() -> Color {
         if self.nickname.isEmpty {
             return Color.gray500
+        } else if self.name == self.nickname {
+            return Color.clear
         } else if self.isNicknameVaild {
             return Color.madiiYellowGreen
         } else {

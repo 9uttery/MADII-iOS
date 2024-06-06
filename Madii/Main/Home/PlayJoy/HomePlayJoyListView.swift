@@ -43,6 +43,7 @@ struct HomePlayJoyListView: View {
                         withoutAnimation {
                             showAddAlbumPopUp = true
                         }
+                        AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_나만의소확행앨범만들기클릭")
                     } label: {
                         Text("나만의 소확행 앨범 만들기")
                             .madiiFont(font: .madiiBody5, color: .darkYellowGreen)
@@ -67,12 +68,14 @@ struct HomePlayJoyListView: View {
         .navigationBarItems(trailing: addButton)
         .transparentFullScreenCover(isPresented: $showAddAlbumPopUp) {
             AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }
+        .analyticsScreen(name: "행복을 재생해요뷰")
     }
     
     private var addButton: some View {
         Button {
             withoutAnimation {
                 showAddAlbumPopUp = true
+                AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_추가클릭")
             }
         } label: {
             Text("추가")

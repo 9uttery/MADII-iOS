@@ -79,6 +79,7 @@ struct EmailView: View {
                             if codeType != .sending {
                                 Button {
                                     sendCode()
+                                    AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_인증번호재전송클릭")
                                 } label: {
                                     Text("인증번호 재전송")
                                         .madiiFont(font: .madiiBody4, color: .gray500)
@@ -102,6 +103,7 @@ struct EmailView: View {
             if showVerificationCode == false {
                 Button {
                     sendCode()
+                    AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_본인인증하기클릭")
                 } label: {
                     MadiiButton(title: "본인 인증하기", size: .big)
                         .opacity(idType == .possible ? 1.0 : 0.4)
@@ -122,6 +124,7 @@ struct EmailView: View {
                             codeType = .wrong
                         }
                     }
+                    AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_다음클릭")
                 } label: {
                     MadiiButton(title: "다음", size: .big)
                         .opacity(idType == .possible ? 1.0 : 0.4)
@@ -131,6 +134,8 @@ struct EmailView: View {
                 .padding(.bottom, 24)
             }
         }
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "회원가입이메일뷰")
     }
     
     private var emailField: some View {

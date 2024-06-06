@@ -27,6 +27,7 @@ struct ServiceTermsView: View {
                 
             Button {
                 status = status.map { _ in !allTermsAgreed }
+                AnalyticsManager.shared.logEvent(name: "서비스이용약관뷰_전체동의클릭")
             } label: {
                 HStack(spacing: 8) {
                     Image(systemName: allTermsAgreed ? "checkmark.circle.fill" : "checkmark.circle")
@@ -62,6 +63,7 @@ struct ServiceTermsView: View {
                 } else {
                     signUpStatus.count = 3
                 }
+                AnalyticsManager.shared.logEvent(name: "서비스이용약관뷰_다음클릭")
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(essentialTermsAgreed ? 1.0 : 0.4)
@@ -70,6 +72,7 @@ struct ServiceTermsView: View {
             .padding(.bottom, 24)
         }
         .padding(.horizontal, 18)
+        .analyticsScreen(name: "서비스이용약관뷰")
     }
     
     @ViewBuilder
@@ -77,6 +80,7 @@ struct ServiceTermsView: View {
         HStack {
             Button {
                 status[index].toggle()
+                AnalyticsManager.shared.logEvent(name: "서비스이용약관뷰_\(options[index])클릭")
             } label: {
                 HStack(spacing: 8) {
                     Image(systemName: "checkmark")
@@ -97,6 +101,7 @@ struct ServiceTermsView: View {
                     if let url = URL(string: urls[index]) {
                         UIApplication.shared.open(url)
                     }
+                    AnalyticsManager.shared.logEvent(name: "서비스이용약관뷰_\(options[index])보기클릭")
                 } label: {
                     Text("보기")
                         .madiiFont(font: .madiiBody4, color: .gray500)

@@ -37,6 +37,7 @@ struct ReportPopUp: View {
                                             selectedOption = options[index]
                                         }
                                     }
+                                    AnalyticsManager.shared.logEvent(name: "신고팝업_\(options[index])의이유클릭")
                                 } label: {
                                     SelectAlbumRow(title: options[index], isSelected: options[index] == selectedOption)
                                 }
@@ -74,6 +75,7 @@ struct ReportPopUp: View {
             .frame(maxHeight: 500)
             .padding(40)
         }
+        .onTapGesture { hideKeyboard() }
     }
     
     private func dismiss() {
