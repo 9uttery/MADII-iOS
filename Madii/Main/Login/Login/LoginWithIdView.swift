@@ -26,7 +26,7 @@ struct LoginWithIdView: View {
         VStack(alignment: .leading, spacing: 20) {
             ScrollView {
                 idTextField
-                    .padding(.top, 44)
+                    .padding(.top, 34)
                 passwordTextField
             }
             .scrollIndicators(.never)
@@ -40,6 +40,15 @@ struct LoginWithIdView: View {
                         ToastMessage(title: "비밀번호가 일치하지 않아요. 다시 확인해주세요.", color: .orange)
                     }
                 }
+                
+                NavigationLink {
+                    FindPasswordView()
+                } label: {
+                    Text("비밀번호 찾기")
+                        .madiiFont(font: .madiiBody3, color: .gray500)
+                        .underline()
+                }
+                .padding(.bottom, 20)
                 
                 Button {
                     // 로그인

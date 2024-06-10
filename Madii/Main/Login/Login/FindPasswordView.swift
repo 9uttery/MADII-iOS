@@ -102,6 +102,7 @@ struct FindPasswordView: View {
             }
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, 24)
         .navigationTitle("비밀번호 찾기")
         .navigationBarTitleDisplayMode(.inline)
     }
