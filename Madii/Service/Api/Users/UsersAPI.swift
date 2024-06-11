@@ -50,8 +50,8 @@ class UsersAPI {
     }
     
     // 회원가입 - 이메일 인증번호 전송
-    func sendVerificationCodeEmail(email: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/mail/sign-up?email=\(email)"
+    func sendVerificationCodeEmail(email: String, forSignUp: Bool = true, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/mail/\(forSignUp ? "sign-up" : "password-reset")?email=\(email)"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
