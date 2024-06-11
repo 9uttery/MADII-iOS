@@ -78,7 +78,7 @@ struct FindPasswordView: View {
                 .disabled(codeType == .wrong)
                 .onChange(of: code) { _ in codeType = .sended }
                 .navigationDestination(isPresented: $showResetPasswordView) {
-                    Text("비밀번호 재설정")
+                    ResetPasswordView()
                 }
             }
         }
