@@ -90,26 +90,21 @@ struct FindPasswordView: View {
     
     // email 텍스트필드
     private var emailTextField: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("이메일을 입력해주세요")
-                .madiiFont(font: .madiiTitle, color: .white)
-                .padding(10)
-
-            MadiiTextField(placeHolder: "ex) maddi@happy.com",
-                           text: $email,
-                           strokeColor: helperMessage.isEmpty ? .gray700 : .madiiOrange)
-                .textFieldHelperMessage(helperMessage,
-                                        color: helperMessage.isEmpty ? .gray700 : .madiiOrange)
-                .keyboardType(.emailAddress)
-                .textInputAutocapitalization(.never)
-                .padding(.horizontal, 8)
-                .disabled(showVerificationCode)
-                .onChange(of: email) { _ in
-                    if helperMessage.isEmpty  == false {
-                        helperMessage = ""
-                    }
+        MadiiTextField(placeHolder: "ex) maddi@happy.com",
+                       text: $email,
+                       strokeColor: helperMessage.isEmpty ? .gray700 : .madiiOrange)
+            .textFieldLabel("이메일을 입력해주세요")
+            .textFieldHelperMessage(helperMessage,
+                                    color: helperMessage.isEmpty ? .gray700 : .madiiOrange)
+            .keyboardType(.emailAddress)
+            .textInputAutocapitalization(.never)
+            .padding(.horizontal, 8)
+            .disabled(showVerificationCode)
+            .onChange(of: email) { _ in
+                if helperMessage.isEmpty  == false {
+                    helperMessage = ""
                 }
-        }
+            }
     }
     
     private var codeTextField: some View {
