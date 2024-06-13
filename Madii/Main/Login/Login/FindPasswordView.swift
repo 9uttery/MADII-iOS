@@ -47,16 +47,14 @@ struct FindPasswordView: View {
             }
             
             // TODO: CS 문의하기 버튼
-            /*
-            Button {
-                
+            NavigationLink {
+                InquiryView()
             } label: {
                 Text("CS 문의하기")
                     .madiiFont(font: .madiiBody3, color: .gray500)
                     .underline()
             }
             .padding(.bottom, 20)
-             */
             
             if showVerificationCode == false {
                 // 본인 인증하기 버튼
