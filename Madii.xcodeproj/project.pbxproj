@@ -61,6 +61,8 @@
 		51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */; };
 		51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */; };
 		51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */; };
+		519027DD2C184609008414A2 /* TextFieldLabelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519027DC2C184609008414A2 /* TextFieldLabelViewModifier.swift */; };
+		519027DF2C184703008414A2 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519027DE2C184703008414A2 /* ResetPasswordView.swift */; };
 		519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B014E2B89151D00519B11 /* ReportPopUp.swift */; };
 		519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B01532B89216B00519B11 /* DeleteAlbumPopUp.swift */; };
 		519B01562B8924C400519B11 /* ChangePublicPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519B01552B8924C400519B11 /* ChangePublicPopUp.swift */; };
@@ -219,6 +221,8 @@
 		51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailCoverView.swift; sourceTree = "<group>"; };
 		51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailBookmarkButton.swift; sourceTree = "<group>"; };
 		51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistView.swift; sourceTree = "<group>"; };
+		519027DC2C184609008414A2 /* TextFieldLabelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelViewModifier.swift; sourceTree = "<group>"; };
+		519027DE2C184703008414A2 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		519B014E2B89151D00519B11 /* ReportPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUp.swift; sourceTree = "<group>"; };
 		519B01532B89216B00519B11 /* DeleteAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumPopUp.swift; sourceTree = "<group>"; };
 		519B01552B8924C400519B11 /* ChangePublicPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePublicPopUp.swift; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 				5141CAD12B74FD3400FD407E /* KakaoLoginButton.swift */,
 				5141CAD32B7504D300FD407E /* LoginWithIdView.swift */,
 				51AAB9122BE3E10E00F930B7 /* FindPasswordView.swift */,
+				519027DE2C184703008414A2 /* ResetPasswordView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 			children = (
 				514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */,
 				514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */,
+				519027DC2C184609008414A2 /* TextFieldLabelViewModifier.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -1034,6 +1040,7 @@
 				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
+				519027DF2C184703008414A2 /* ResetPasswordView.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				519B01562B8924C400519B11 /* ChangePublicPopUp.swift in Sources */,
@@ -1052,6 +1059,7 @@
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
 				BE0C3F9B2B81E77200275FD3 /* Shapes.swift in Sources */,
+				519027DD2C184609008414A2 /* TextFieldLabelViewModifier.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */,
 				511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */,

@@ -28,105 +28,141 @@ struct FindPasswordView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            emailTextField
-                .padding(.top, 34)
-            
-            if showVerificationCode {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("인증번호를 입력해주세요")
-                        .madiiFont(font: .madiiTitle, color: .white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 10)
-                        .padding(.bottom, 14)
+            ScrollView {
+                VStack(spacing: 0) {
+                    emailTextField
                     
-                    ZStack(alignment: .bottomTrailing) {
-                        MadiiTextField(placeHolder: "인증번호 6자리",
-                                       text: $code, strokeColor: codeStrokeColor(codeType))
-                        .textFieldHelperMessage(codeHelperMessage, color: codeStrokeColor(codeType))
-                        .keyboardType(.numberPad)
-                        .textInputAutocapitalization(.never)
-                        .padding(.horizontal, 8)
-                        
-                        if codeType != .sending {
-                            Button {
-                                sendCode()
-                            } label: {
-                                Text("인증번호 재전송")
-                                    .madiiFont(font: .madiiBody4, color: .gray500)
-                                    .underline()
-                            }
-                            .padding(.horizontal, 25)
-                        }
+                    if showVerificationCode {
+                        codeTextField
                     }
                 }
-                .padding(.top, 28)
+                .padding(.vertical, 34)
             }
             
             Spacer()
             
-            if showVerificationCode == false {
-                Button {
-                    
-                } label: {
-                    Text("CS 문의하기")
-                        .madiiFont(font: .madiiBody3, color: .gray500)
-                        .underline()
-                }
-                .padding(.bottom, 20)
-            }
-            
+            // 이메일 전송 완료 토스트 메시지
             if showSendedEmailToast {
                 ToastMessage(title: "이메일로 인증번호가 전송되었어요")
             }
             
+            // TODO: CS 문의하기 버튼
+            NavigationLink {
+                InquiryView()
+            } label: {
+                Text("CS 문의하기")
+                    .madiiFont(font: .madiiBody3, color: .gray500)
+                    .underline()
+            }
+            .padding(.bottom, 20)
+            
             if showVerificationCode == false {
+                // 본인 인증하기 버튼
                 Button {
-                    showVerificationCode = true
-                    sendCode()
+                    verificate()
                 } label: {
-                    MadiiButton(title: "본인 인증하기", size: .big)
-                        .opacity(true ? 1.0 : 0.4)
+                    MadiiButton(title: "본인 인증하기", color: .white, size: .big)
+                        .opacity(email.isEmpty ? 0.4 : 1.0)
+                        .disabled(email.isEmpty)
                 }
             } else {
+                // 인증번호 확인 버튼
                 Button {
-                    codeType = .wrong
-                    // 인증번호가 맞으면
-                    showResetPasswordView = true
+                    verifyCode()
                 } label: {
                     MadiiButton(title: "다음", size: .big)
                         .opacity(codeType != .wrong ? 1.0 : 0.4)
                 }
+                .disabled(codeType == .wrong)
+                .onChange(of: code) { _ in codeType = .sended }
                 .navigationDestination(isPresented: $showResetPasswordView) {
-                    Text("비밀번호 재설정")
+                    ResetPasswordView(email: email)
                 }
             }
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, 24)
         .navigationTitle("비밀번호 찾기")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     // email 텍스트필드
     private var emailTextField: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("이메일을 입력해주세요")
+        MadiiTextField(placeHolder: "ex) maddi@happy.com",
+                       text: $email,
+                       strokeColor: helperMessage.isEmpty ? .gray700 : .madiiOrange)
+            .textFieldLabel("이메일을 입력해주세요")
+            .textFieldHelperMessage(helperMessage,
+                                    color: helperMessage.isEmpty ? .gray700 : .madiiOrange)
+            .keyboardType(.emailAddress)
+            .textInputAutocapitalization(.never)
+            .padding(.horizontal, 8)
+            .disabled(showVerificationCode)
+            .onChange(of: email) { _ in
+                if helperMessage.isEmpty  == false {
+                    helperMessage = ""
+                }
+            }
+    }
+    
+    private var codeTextField: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("인증번호를 입력해주세요")
                 .madiiFont(font: .madiiTitle, color: .white)
-                .padding(10)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
+                .padding(.bottom, 14)
             
-            MadiiTextField(placeHolder: "ex) maddi@happy.com", text: $email)
-//                .textFieldHelperMessage(helperMessage, color: strokeColor(idType))
-                .keyboardType(.emailAddress)
+            ZStack(alignment: .bottomTrailing) {
+                MadiiTextField(placeHolder: "인증번호 6자리",
+                               text: $code, strokeColor: codeStrokeColor(codeType))
+                .textFieldHelperMessage(codeHelperMessage, color: codeStrokeColor(codeType))
+                .keyboardType(.numberPad)
                 .textInputAutocapitalization(.never)
                 .padding(.horizontal, 8)
+                
+                if codeType != .sending {
+                    Button {
+                        withAnimation {
+                            verificate()
+                        }
+                    } label: {
+                        Text("인증번호 재전송")
+                            .madiiFont(font: .madiiBody4, color: .gray500)
+                            .underline()
+                    }
+                    .padding(.horizontal, 25)
+                }
+            }
+        }
+        .padding(.top, 28)
+    }
+}
+
+// methods
+extension FindPasswordView {
+    // 본인 인증하기
+    private func verificate() {
+        hideKeyboard()
+        
+        UsersAPI.shared.getIdCheck(id: email) { isSuccess, canUseID in
+            if isSuccess {
+                // canUseID == false 면, 아이디 있음 "존재"
+                if canUseID == false {
+                    showVerificationCode = true
+                    codeType = .sending
+                    sendCode()
+                } else { // canUseID == true 면, 아이디 없음
+                    showVerificationCode = false
+                    helperMessage = "존재하지 않는 계정이에요. 이메일을 다시 확인해주세요."
+                }
+            }
         }
     }
     
     private func sendCode() {
-        showVerificationCode = true
-        codeType = .sending
-        
         // 인증번호 이메일 전송
-        UsersAPI.shared.sendVerificationCodeEmail(email: "") { isSuccess in
+        UsersAPI.shared.sendVerificationCodeEmail(email: email, forSignUp: false) { isSuccess in
             if isSuccess {
                 // 이메일 전송 성공
                 codeType = .sended
@@ -136,7 +172,7 @@ struct FindPasswordView: View {
                     withAnimation { showSendedEmailToast = false }
                 }
             } else {
-                // TODO: 이메일 전송 실패 처리
+                // 이메일 전송 실패 처리
             }
         }
     }
@@ -146,6 +182,18 @@ struct FindPasswordView: View {
         case .sending: Color.gray700
         case .sended: Color.gray700
         case .wrong: Color.madiiOrange
+        }
+    }
+    
+    // 인증 번호 확인하기
+    private func verifyCode() {
+        UsersAPI.shared.verifyCode(email: email, code: code) { isSuccess in
+            if isSuccess {
+                // 인증번호가 맞으면
+                showResetPasswordView = true
+            } else {
+                codeType = .wrong
+            }
         }
     }
 }
