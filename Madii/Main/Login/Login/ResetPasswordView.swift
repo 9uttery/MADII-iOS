@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
+    let email: String
+    
     @State private var password: String = ""
     @State private var isValidPassword: Bool = false
     var helperMessage: String {
@@ -84,7 +86,7 @@ struct ResetPasswordView: View {
         } else {
             Button {
                 // 비밀번호 재설정, 완료 시 로그인 화면으로
-                UsersAPI.shared.resetPassword(password: password) { isSuccess in
+                UsersAPI.shared.resetPassword(email: email, password: password) { isSuccess in
                     if isSuccess {
                         showLoginView = true
                     }
@@ -124,8 +126,4 @@ struct ResetPasswordView: View {
             return Color.madiiOrange
         }
     }
-}
-
-#Preview {
-    ResetPasswordView()
 }

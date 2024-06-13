@@ -368,7 +368,7 @@ class UsersAPI {
     }
     
     // 비밀번호 재설정
-    func resetPassword(password: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func resetPassword(email: String, password: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/users/password-reset"
         let headers: HTTPHeaders = [
 //            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
@@ -377,6 +377,7 @@ class UsersAPI {
         
         guard let hashedPassword = hashPassword(password: password) else { return }
         let parameters: [String: Any] = [
+            "email": email,
             "password": hashedPassword
         ]
         
