@@ -87,11 +87,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("APNS token: \(deviceToken)")
+        AnalyticsManager.shared.logEvent(name: "백그라운드_푸시알림클릭")
         Messaging.messaging().apnsToken = deviceToken
     }
     
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        AnalyticsManager.shared.logEvent(name: "포그라운ㄷ_푸시알림클릭")
         completionHandler([.list, .banner])
     }
 }
