@@ -159,6 +159,7 @@
 		BE9A01AE2BF49F0800F52458 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE9A01AD2BF49F0800F52458 /* FirebaseAnalyticsSwift */; };
 		BE9A01B02BF49F0800F52458 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = BE9A01AF2BF49F0800F52458 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		BE9A01B22BF49F0800F52458 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = BE9A01B12BF49F0800F52458 /* FirebaseAppCheck */; };
+		BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA371832C0C1568002CCA31 /* HapticManager.swift */; };
 		BEB11DD32BFDB249008D38D7 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB11DD22BFDB249008D38D7 /* AnalyticsManager.swift */; };
 		BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0FBA62B91BD5A009467AC /* NotificationView.swift */; };
 		BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */; };
@@ -298,6 +299,7 @@
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyDuplicateToast.swift; sourceTree = "<group>"; };
 		BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAlbumJoyToast.swift; sourceTree = "<group>"; };
+		BEA371832C0C1568002CCA31 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		BEB11DD22BFDB249008D38D7 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		BEE0FBA62B91BD5A009467AC /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		BEFC6BD22B3813F100C78A37 /* StyleJoyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyButton.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		51E0259E2B26F7C500F4F41A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BEA371822C0C1551002CCA31 /* Haptic */,
 				BEB11DD12BFDB22A008D38D7 /* GoogleAnalytics */,
 				BE0C3F8D2B81E77200275FD3 /* ParticleAnimation */,
 				51E0259F2B26F7EB00F4F41A /* AppStatus.swift */,
@@ -860,6 +863,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BEA371822C0C1551002CCA31 /* Haptic */ = {
+			isa = PBXGroup;
+			children = (
+				BEA371832C0C1568002CCA31 /* HapticManager.swift */,
+			);
+			path = Haptic;
+			sourceTree = "<group>";
+		};
 		BEB11DD12BFDB22A008D38D7 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1000,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
+				BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
@@ -1260,7 +1272,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DEVELOPMENT_TEAM = 9S44MNK86W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
@@ -1301,7 +1313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
-				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DEVELOPMENT_TEAM = 9S44MNK86W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Madii/Info.plist;
