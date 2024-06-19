@@ -88,7 +88,7 @@ struct FindPasswordView: View {
     
     // email 텍스트필드
     private var emailTextField: some View {
-        MadiiTextField(placeHolder: "ex) maddi@happy.com",
+        MadiiTextField(placeHolder: "ex) madii@happy.com",
                        text: $email,
                        strokeColor: helperMessage.isEmpty ? .gray700 : .madiiOrange)
             .textFieldLabel("이메일을 입력해주세요")
