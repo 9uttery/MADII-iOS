@@ -47,6 +47,9 @@ struct HomeRecommendView: View {
                     )
                     .padding(.bottom, 20)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                AnalyticsManager.shared.logEvent(name: "홈뷰_나만의취향저격소확행클릭")
+            })
         }
         .onAppear {
             addAngle()
