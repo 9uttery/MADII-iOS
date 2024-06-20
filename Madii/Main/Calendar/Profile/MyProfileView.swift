@@ -60,6 +60,7 @@ struct MyProfileView: View {
                                 } else {
                                     showPhotoLibrary(status: status)
                                 }
+                                AnalyticsManager.shared.logEvent(name: "프로필뷰_라이브러리에서선택클릭")
                             } label: {
                                 HStack {
                                     Text("라이브러리에서 선택")
