@@ -44,6 +44,7 @@ struct ReportBottomSheet: View {
             ReportPopUp(album: album, showReportSheet: $showReportSheet,
                         showReportPopUp: $showReportPopUp,
                         dismissAlbumDetailView: dismissAlbumDetailView) }
+        .analyticsScreen(name: "신고바텀시트")
     }
     
     @ViewBuilder
