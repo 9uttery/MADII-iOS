@@ -108,6 +108,7 @@ struct PlaylistBar: View {
 //        }
         .sheet(isPresented: $showPlaylist) {
             TodayPlaylistView(showPlaylist: $showPlaylist) }
+        .analyticsScreen(name: "플리바")
     }
     
     private var leftButton: some View {
