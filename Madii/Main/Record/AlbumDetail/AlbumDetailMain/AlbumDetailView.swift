@@ -191,10 +191,12 @@ struct AlbumDetailView: View {
             if isAlbumMine {
                 // 나의 앨범: 소확행 메뉴 bottom sheet
                 selectedJoy = joy
+                AnalyticsManager.shared.logEvent(name: "앨범상세뷰_내앨범소확행ellipsis클릭")
             } else {
                 // 타인의 앨범: 소확행 저장 아이콘
                 showSaveJoyPopUp = true
                 self.joy = joy
+                AnalyticsManager.shared.logEvent(name: "앨범상세뷰_타인앨범저장클릭")
             }
         } buttonLabel: {
             if isAlbumMine {
@@ -227,7 +229,7 @@ struct AlbumDetailView: View {
                 // 다른 사람 앨범이면 신고
                 showReportSheet = true
             }
-            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_ellipsis클릭")
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_내비게이션바ellipsis클릭")
         } label: {
             Image(systemName: "ellipsis")
                 .resizable()
