@@ -73,6 +73,7 @@ struct AddJoyPopUp: View {
         withoutAnimation {
             showAddJoyPopUp = false
         }
+        AnalyticsManager.shared.logEvent(name: "소확행추가팝업_취소클릭")
     }
     
     private func getMyAlbums() {
@@ -109,6 +110,7 @@ struct AddJoyPopUp: View {
                     print("앨범 설정 소확행 추가에서 postJoy 실패")
                 }
             }
+            AnalyticsManager.shared.logEvent(name: "소확행추가팝업_저장클릭")
         }
     }
 }
