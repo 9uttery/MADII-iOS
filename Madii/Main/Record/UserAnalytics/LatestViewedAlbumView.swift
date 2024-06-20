@@ -23,6 +23,9 @@ struct LatestViewedAlbumView: View {
                             } label: {
                                 AlbumRow(album: album)
                             }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AnalyticsManager.shared.logEvent(name: "최근본앨범뷰_최근본앨범클릭")
+                            })
                         }
                     }
                     .padding(.leading, 8)

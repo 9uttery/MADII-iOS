@@ -57,6 +57,7 @@ struct CalendarDays: View {
                 .simultaneousGesture(TapGesture().onEnded {
                     selectedDate = date
                     print(selectedDate)
+                    AnalyticsManager.shared.logEvent(name: "캘린더뷰_달력날짜클릭")
                 })
             }
         }

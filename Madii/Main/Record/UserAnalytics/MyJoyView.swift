@@ -91,6 +91,7 @@ struct MyJoyView: View {
                 JoyRowWithButton(joy: joy) {
                     // 메뉴 버튼 action
                     selectedJoy = joy
+                    AnalyticsManager.shared.logEvent(name: "내가기록한소확행뷰_소확행ellipsis클릭")
                 } buttonLabel: {
                     // 메뉴 버튼 이미지
                     Image(systemName: "ellipsis")
