@@ -29,7 +29,7 @@ struct HomeTodayJoyView: View {
                             Button {
                                 // 소확행 오플리에 추가하기
                                 playJoy()
-                                AnalyticsManager.shared.logEvent(name: "오늘의소확행뷰_오플리에추가하기클릭")
+                                AnalyticsManager.shared.logEvent(name: "홈뷰_오플리에추가하기클릭")
                             } label: {
                                 Image("play")
                                     .resizable()
@@ -40,7 +40,7 @@ struct HomeTodayJoyView: View {
                             Button {
                                 // 소확행 메뉴 bottom sheet
                                 selectedJoy = todayJoy
-                                AnalyticsManager.shared.logEvent(name: "프로필추가뷰_ellipsis클릭")
+                                AnalyticsManager.shared.logEvent(name: "홈뷰_오플리ellipsis클릭")
                             } label: {
                                 Image(systemName: "ellipsis")
                                     .foregroundColor(.gray500)
