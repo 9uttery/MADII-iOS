@@ -93,6 +93,7 @@ struct RecommendJoyListView: View {
                             Button {
                                 showSaveJoyToAlbumPopUp.toggle()
                                 selectedJoyEllipsis = Joy(joyId: joy.joyId, title: joy.contents)
+                                AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_추천소확행앨범저장클릭")
                             } label: {
                                 Image(joy.isJoySaved == true ? "activeSave" : "inactiveSave")
                                     .resizable()
