@@ -76,6 +76,7 @@ struct ReportPopUp: View {
             .padding(40)
         }
         .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "신고팝업")
     }
     
     private func dismiss() {

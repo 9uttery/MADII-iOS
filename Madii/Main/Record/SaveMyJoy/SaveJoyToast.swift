@@ -35,5 +35,6 @@ struct SaveJoyToast: View {
         .padding(.horizontal, 16)
         .offset(y: -20)
         .transition(.move(edge: transitionEdge))
+        .analyticsScreen(name: "소확행기록하기토스트")
     }
 }
