@@ -19,7 +19,6 @@ struct JoyMenuBottomSheet: View {
     @State private var showSaveJoyToAlbumPopUp: Bool = false
     @State private var showEditJoyPopUp: Bool = false /// 수정하기 팝업
     @State private var showDeleteJoyPopUp: Bool = false
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -36,7 +35,7 @@ struct JoyMenuBottomSheet: View {
             VStack(alignment: .leading, spacing: 0) {
                 if isAddTodayJoy {
                     Button {
-                        AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess in
+                        AchievementsAPI.shared.playJoy(joyId: joy?.joyId ?? 0) { isSuccess, isDuplicate in
                             if isSuccess {
                                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
                                 
@@ -51,6 +50,17 @@ struct JoyMenuBottomSheet: View {
                                 }
                                 
                                 joy = nil
+                            } else if isDuplicate {
+                                withAnimation {
+                                    appStatus.isDuplicate.toggle()
+                                }
+                                print("DEBUG HomeTodayJoyView playJoy: isSuccess false and isDuplicate true")
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    withAnimation {
+                                        appStatus.isDuplicate = false
+                                    }
+                                }
+                                AnalyticsManager.shared.logEvent(name: "소확행바텀시트_오플리추가클릭")
                             } else {
                                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
                             }
@@ -63,6 +73,7 @@ struct JoyMenuBottomSheet: View {
                 if isFromTodayJoy {
                     Button {
                         showSaveJoyToAlbumPopUp = true
+                        AnalyticsManager.shared.logEvent(name: "소확행바텀시트_앨범저장클릭")
                     } label: {
                         bottomSheetRow("앨범에 저장")
                     }
@@ -71,6 +82,7 @@ struct JoyMenuBottomSheet: View {
                 if isFromTodayJoy == false {
                     Button {
                         showEditJoyPopUp = true
+                        AnalyticsManager.shared.logEvent(name: "소확행바텀시트_소확행이름·저장앨범수정클릭")
                     } label: {
                         bottomSheetRow("소확행 이름 · 저장 앨범 수정")
                     }
@@ -80,6 +92,7 @@ struct JoyMenuBottomSheet: View {
                             withoutAnimation {
                                 showDeleteJoyPopUp = true
                             }
+                            AnalyticsManager.shared.logEvent(name: "소확행바텀시트_삭제클릭")
                         } label: {
                             bottomSheetRow("삭제")
                         }
@@ -102,6 +115,7 @@ struct JoyMenuBottomSheet: View {
             DeleteJoyPopUp(joy: $joy, showDeleteJoyPopUp: $showDeleteJoyPopUp)
         }
         .presentationDetents([.height(isAddTodayJoy ? (isFromTodayJoy ? 240 : (isMine ? 280 : 240)) : 155)])
+        .analyticsScreen(name: "소확행바텀시트")
     }
     
     @ViewBuilder
@@ -114,8 +128,10 @@ struct JoyMenuBottomSheet: View {
         .frame(height: 50)
         .padding(.horizontal, 16)
     }
+    
+    
 }
 
-#Preview {
-    MyJoyView()
-}
+//#Preview {
+//    MyJoyView()
+//}

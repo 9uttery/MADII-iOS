@@ -44,6 +44,9 @@ struct MyJoyView: View {
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
+            
+            if appStatus.isDuplicate {
+                JoyDuplicateToast() }
         }
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
@@ -53,6 +56,7 @@ struct MyJoyView: View {
         .onAppear { getJoy() }
         .toolbarBackground(Color.madiiBox, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .analyticsScreen(name: "내가 기록한 소확행뷰")
     }
     
     private var emptyJoyView: some View {

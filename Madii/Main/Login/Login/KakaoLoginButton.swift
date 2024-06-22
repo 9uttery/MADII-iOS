@@ -20,6 +20,7 @@ struct KakaoLoginButton: View {
     var body: some View {
         Button {
             kakaoLogin()
+            AnalyticsManager.shared.logEvent(name: "로그인뷰_카카오로그인클릭")
         } label: {
             HStack {
                 Image("kakaoLogin")

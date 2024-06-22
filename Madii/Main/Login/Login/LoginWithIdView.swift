@@ -26,7 +26,7 @@ struct LoginWithIdView: View {
         VStack(alignment: .leading, spacing: 20) {
             ScrollView {
                 idTextField
-                    .padding(.top, 44)
+                    .padding(.top, 34)
                 passwordTextField
             }
             .scrollIndicators(.never)
@@ -41,9 +41,19 @@ struct LoginWithIdView: View {
                     }
                 }
                 
+                NavigationLink {
+                    FindPasswordView()
+                } label: {
+                    Text("비밀번호 찾기")
+                        .madiiFont(font: .madiiBody3, color: .gray500)
+                        .underline()
+                }
+                .padding(.bottom, 20)
+                
                 Button {
                     // 로그인
                     login()
+                    AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_로그인클릭")
                 } label: {
                     MadiiButton(title: "다음", size: .big)
                         .opacity(isTextFieldAllFilled ? 1.0 : 0.4)
@@ -55,6 +65,9 @@ struct LoginWithIdView: View {
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 24)
+        .onTapGesture { hideKeyboard() }
+        .navigationTitle("")
+        .analyticsScreen(name: "이메일로 로그인뷰")
     }
     
     // id 텍스트필드

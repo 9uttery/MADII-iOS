@@ -16,6 +16,8 @@ struct TodayJoyBeforeClickButton: View {
             todayJoyId = todayJoy.joyId
             UserDefaults.standard.set(todayJoy.joyId, forKey: "todayJoyId")
             counter += 1
+            AnalyticsManager.shared.logEvent(name: "오늘의소확행뷰_클릭해보세요!클릭")
+            HapticManager.instance.notification(type: .success)
         } label: {
             ZStack {
                 HStack {

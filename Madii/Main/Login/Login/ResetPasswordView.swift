@@ -1,15 +1,14 @@
 //
-//  PasswordView.swift
+//  ResetPasswordView.swift
 //  Madii
 //
-//  Created by 이안진 on 1/29/24.
+//  Created by Anjin on 6/11/24.
 //
 
 import SwiftUI
 
-struct PasswordView: View {
-    @AppStorage("hasEverLoggedIn") var hasEverLoggedIn = false
-    @EnvironmentObject private var signUpStatus: SignUpStatus
+struct ResetPasswordView: View {
+    let email: String
     
     @State private var password: String = ""
     @State private var isValidPassword: Bool = false
@@ -30,52 +29,46 @@ struct PasswordView: View {
         isPasswordSame ? "비밀번호가 일치해요" : (reenteredPassword.isEmpty ? "" : "비밀번호가 일치하지 않아요")
     }
     
+    @State private var showLoginView: Bool = false
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
             ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("비밀번호를 입력해주세요")
-                        .madiiFont(font: .madiiTitle, color: .white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 10)
-                        .padding(.bottom, 14)
-                        .padding(.horizontal, 18)
-                    
-                    MadiiTextField(isSecureField: true, placeHolder: "비밀번호 (8자 이상, 영문/숫자/!, _, *, @ 사용 가능)",
-                                   text: $password, strokeColor: strokeColor())
+                VStack(spacing: 28) {
+                    MadiiTextField(isSecureField: true,
+                                   placeHolder: "비밀번호 (8자 이상, 영문/숫자/!, _, *, @ 사용 가능)",
+                                   text: $password,
+                                   strokeColor: strokeColor())
                     .textFieldHelperMessage(helperMessage, color: strokeColor())
+                    .textFieldLabel("비밀번호를 입력해주세요")
                     .padding(.horizontal, 25)
                     .onChange(of: password) { checkValidPassword($0) }
-                    .padding(.bottom, 28)
                     
                     if showCheckPassword {
-                        Text("다시 한번 비밀번호를 입력해주세요")
-                            .madiiFont(font: .madiiTitle, color: .white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 10)
-                            .padding(.bottom, 14)
-                            .padding(.horizontal, 18)
-                        
-                        MadiiTextField(isSecureField: true, placeHolder: "비밀번호 확인",
-                                       text: $reenteredPassword, strokeColor: reenteredStrokeColor())
+                        MadiiTextField(isSecureField: true,
+                                       placeHolder: "비밀번호 확인",
+                                       text: $reenteredPassword,
+                                       strokeColor: reenteredStrokeColor())
                         .textFieldHelperMessage(reenterHelperMessage, color: reenteredStrokeColor())
+                        .textFieldLabel("다시 한번 비밀번호를 입력해주세요")
                         .padding(.horizontal, 25)
                     }
                 }
-                .padding(.top, 34)
-                .padding(.bottom, 24)
+                .padding(.vertical, 34)
             }
-            .scrollIndicators(.never)
-            .padding(.top, 60)
             
             Spacer()
             
+            // 다음, 완료 버튼
             nextButton
                 .padding(.horizontal, 18)
                 .padding(.bottom, 24)
+                .navigationDestination(isPresented: $showLoginView) {
+                    LoginView()
+                }
         }
         .onTapGesture { hideKeyboard() }
-        .analyticsScreen(name: "회원가입비밀번호뷰")
+        .navigationTitle("비밀번호 재설정")
     }
     
     // 다음 버튼
@@ -85,7 +78,6 @@ struct PasswordView: View {
                 withAnimation {
                     showCheckPassword = true
                 }
-                AnalyticsManager.shared.logEvent(name: "비밀번호뷰_첫번째다음클릭")
             } label: {
                 MadiiButton(title: "다음", size: .big)
                     .opacity(isValidPassword ? 1.0 : 0.4)
@@ -93,27 +85,17 @@ struct PasswordView: View {
             .disabled(isValidPassword == false)
         } else {
             Button {
-                signUp()
-                AnalyticsManager.shared.logEvent(name: "비밀번호뷰_두번째다음클릭")
+                // 비밀번호 재설정, 완료 시 로그인 화면으로
+                UsersAPI.shared.resetPassword(email: email, password: password) { isSuccess in
+                    if isSuccess {
+                        showLoginView = true
+                    }
+                }
             } label: {
-                MadiiButton(title: "다음", size: .big)
+                MadiiButton(title: "완료", size: .big)
                     .opacity(isValidPassword && isPasswordSame ? 1.0 : 0.4)
             }
             .disabled((isValidPassword == false) || (isPasswordSame == false))
-        }
-    }
-    
-    private func signUp() {
-        // 일반 회원가입
-        UsersAPI.shared.signUpWithId(id: signUpStatus.id, password: password,
-                                     agree: signUpStatus.marketingAgreed) { isSuccess, _ in
-            if isSuccess {
-                print("DEBUG PasswordView: signup isSuccess true")
-                hasEverLoggedIn = true
-                signUpStatus.count += 1
-            } else {
-                print("DEBUG PasswordView: signup isSuccess false")
-            }
         }
     }
     
@@ -144,8 +126,4 @@ struct PasswordView: View {
             return Color.madiiOrange
         }
     }
-}
-
-#Preview {
-    PasswordView()
 }

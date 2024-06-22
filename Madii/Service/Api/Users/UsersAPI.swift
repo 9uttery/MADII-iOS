@@ -50,8 +50,8 @@ class UsersAPI {
     }
     
     // 회원가입 - 이메일 인증번호 전송
-    func sendVerificationCodeEmail(email: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/mail/sign-up?email=\(email)"
+    func sendVerificationCodeEmail(email: String, forSignUp: Bool = true, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/mail/\(forSignUp ? "sign-up" : "password-reset")?email=\(email)"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -318,7 +318,7 @@ class UsersAPI {
             "agreesMarketing": agree
         ]
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<String?>.self) { response in
                 switch response.result {
                 case .success(let response):
@@ -365,5 +365,47 @@ class UsersAPI {
             self.keychain.set(newUUID, forKey: "uuid")
             return newUUID
         }
+    }
+    
+    // 비밀번호 재설정
+    func resetPassword(email: String, password: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/users/password-reset"
+        let headers: HTTPHeaders = [
+//            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")",
+            "Content-Type": "application/json"
+        ]
+        
+        guard let hashedPassword = hashPassword(password: password) else { return }
+        let parameters: [String: Any] = [
+            "email": email,
+            "password": hashedPassword
+        ]
+        
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    let statusCode = response.status
+                    
+                    switch statusCode {
+                    case 200:
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(resetPassword): success")
+                        completion(true)
+                    case 405:
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(resetPassword): status \(statusCode)) 사용자의 일반 로그인 정보가 없음")
+                        completion(false)
+                    default:
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(resetPassword): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(resetPassword) error: \(error)")
+                    completion(false)
+                }
+            }
     }
 }

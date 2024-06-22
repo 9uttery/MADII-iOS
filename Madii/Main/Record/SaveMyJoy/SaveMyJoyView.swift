@@ -15,7 +15,7 @@ struct SaveMyJoyView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("나만의 소확행을 기록해 보세요")
+            Text("나만의 소확행을 기록해보세요")
                 .madiiFont(font: .madiiSubTitle, color: .white)
             
             HStack(spacing: 12) {
@@ -25,6 +25,7 @@ struct SaveMyJoyView: View {
                 
                 Button {
                     saveJoy()
+                    AnalyticsManager.shared.logEvent(name: "나만의소확행을기록해보세요뷰_저장클릭")
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()
@@ -38,6 +39,7 @@ struct SaveMyJoyView: View {
             .cornerRadius(6)
         }
         .roundBackground()
+        .onTapGesture { hideKeyboard() }
         .onAppear { getPlaceholder() }
     }
     

@@ -40,6 +40,7 @@ struct PlaylistBar: View {
                             // 실천한 경우 -> 실천 해제
                             Button {
                                 cancelAchievement(id: joy.achievementId)
+                                AnalyticsManager.shared.logEvent(name: "플리바_플리바실천해제클릭")
                             } label: {
                                 Image(systemName: "checkmark.circle.fill")
                                     .frame(width: 24, height: 24)
@@ -51,6 +52,7 @@ struct PlaylistBar: View {
                             // 실천하지 않은 경우 -> bottomsheet
                             Button {
                                 selectedJoy = joy
+                                AnalyticsManager.shared.logEvent(name: "플리바_플리바실천클릭")
                             } label: {
                                 Image(systemName: "checkmark.circle")
                                     .frame(width: 24, height: 24)
@@ -67,7 +69,10 @@ struct PlaylistBar: View {
                     }
                     
                     Button {
-                        withAnimation { showPlaylist = true }
+                        withAnimation {
+                            showPlaylist = true
+                            AnalyticsManager.shared.logEvent(name: "플리바_오플리띄우기클릭")
+                        }
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .frame(width: 18, height: 18)
@@ -109,6 +114,7 @@ struct PlaylistBar: View {
         Button {
             if isLeftButtonActive {
                 selectedJoyIndex -= 1
+                AnalyticsManager.shared.logEvent(name: "플리바_플리왼쪽클릭")
             }
         } label: {
             Image(isLeftButtonActive ? "pl_left_active" : "pl_left")
@@ -122,6 +128,7 @@ struct PlaylistBar: View {
         Button {
             if selectedJoyIndex < (todayJoys.joys.count - 1) {
                 selectedJoyIndex += 1
+                AnalyticsManager.shared.logEvent(name: "플리바_플리오른쪽클릭")
             }
         } label: {
             Image(selectedJoyIndex < (todayJoys.joys.count - 1) ? "pl_right_active" : "pl_right")

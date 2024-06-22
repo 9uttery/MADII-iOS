@@ -68,6 +68,7 @@ struct AlbumDetailView: View {
                                 // 소확행 row
                                 Button {
                                     playJoy(joy: joy)
+                                    AnalyticsManager.shared.logEvent(name: "앨범상세뷰_소확행클릭오플리추가")
                                 } label: {
                                     albumDetailJoyRow(joy: joy)
                                 }
@@ -112,6 +113,22 @@ struct AlbumDetailView: View {
                 }
              }
             
+            // 오플리 중복 안내 토스트
+            if appStatus.isDuplicate {
+                VStack {
+                    Spacer()
+                    JoyDuplicateToast()
+                }
+            }
+            
+            // 소확행 앨범에 저장 안내토스트
+            if appStatus.showSaveJoyToast {
+                VStack {
+                    Spacer()
+                    SaveAlbumJoyToast()
+                }
+            }
+            
             // 앨범 정보 수정
             if showChangeInfo {
                 ChangeAlbumInfoPopUpView(album: album, showChangeInfo: $showChangeInfo)
@@ -127,6 +144,15 @@ struct AlbumDetailView: View {
                 VStack {
                     Spacer()
                     ReportAlbumToast()
+                }
+            }
+            
+            // 앨범 저장 토스트
+            if appStatus.showSaveAlbumToast {
+                VStack {
+                    Spacer()
+                    ToastMessage(title: "레코드에 앨범이 저장되었어요")
+                        .padding(.horizontal, 16)
                 }
             }
         }
@@ -156,6 +182,7 @@ struct AlbumDetailView: View {
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
+        .analyticsScreen(name: "앨범상세뷰")
     }
     
     @ViewBuilder
@@ -200,6 +227,7 @@ struct AlbumDetailView: View {
                 // 다른 사람 앨범이면 신고
                 showReportSheet = true
             }
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_ellipsis클릭")
         } label: {
             Image(systemName: "ellipsis")
                 .resizable()
@@ -253,7 +281,7 @@ struct AlbumDetailView: View {
     }
     
     private func playJoy(joy: Joy) {
-        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess in
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG AlbumDetailView: 오플리에 추가 true")
                 
@@ -265,6 +293,17 @@ struct AlbumDetailView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
                         appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else if isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate = true
+                }
+                print("DEBUG AlbumDetailView playJoy: isSuccess false and isDuplicate true")
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.isDuplicate = false
                     }
                 }
             } else {

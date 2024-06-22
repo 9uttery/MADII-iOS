@@ -60,6 +60,7 @@ struct AddAlbumPopUp: View {
             .padding(.horizontal, 36)
             .padding(.vertical, 36)
         }
+        .onTapGesture { hideKeyboard() }
     }
     
     private func dismiss() {

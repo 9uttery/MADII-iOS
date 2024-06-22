@@ -56,6 +56,8 @@ struct RecordView: View {
             if showAddAlbumPopUp { AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }
         }
         .navigationTitle("")
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "레코드뷰")
     }
     
     var navigationBar: some View {

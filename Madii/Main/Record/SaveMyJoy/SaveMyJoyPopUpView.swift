@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SaveMyJoyPopUpView: View {
+    @EnvironmentObject var appStatus: AppStatus
     @Binding var joy: Joy
     @Binding var showSaveJoyToAlbumPopUp: Bool /// 현재 팝업 show 여부
     @Binding var showSaveJoyPopUpFromRecordMain: Bool /// 레코드 메인화면에 넘어오는지
@@ -65,6 +66,7 @@ struct SaveMyJoyPopUpView: View {
             }
             .padding(36)
         }
+        .onTapGesture { hideKeyboard() }
         .onAppear {
             newJoyTitle = joy.title
             getMyAlbums()
@@ -164,10 +166,20 @@ struct SaveMyJoyPopUpView: View {
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
                 joy.title = newJoyTitle
+                print(selectedAlbumIds)
+                if !selectedAlbumIds.isEmpty {
+                    appStatus.showSaveJoyToast = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        withAnimation {
+                            appStatus.showSaveJoyToast = false
+                        }
+                    }
+                }
                 dismissPopUp()
             } else {
                 print("소확행 앨범에 저장 실패")
             }
         }
+        AnalyticsManager.shared.logEvent(name: "소확행내앨범에저장하기클릭")
     }
 }

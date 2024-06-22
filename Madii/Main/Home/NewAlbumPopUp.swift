@@ -70,6 +70,8 @@ struct NewAlbumPopUp: View {
             .padding(.horizontal, 37)
             .padding(.top, 160)
         }
+        .onTapGesture { hideKeyboard() }
+        .analyticsScreen(name: "새앨범팝업")
     }
 
     var createAlbumButton: some View {

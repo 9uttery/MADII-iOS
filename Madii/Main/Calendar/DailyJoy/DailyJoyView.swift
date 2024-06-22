@@ -18,6 +18,7 @@ struct DailyJoyView: View {
                 ForEach(joys) { joy in
                     Button {
                         selectedJoy = joy
+                        AnalyticsManager.shared.logEvent(name: "캘린더데일리소확행뷰_소확행클릭으로다시만족도조사")
                     } label: {
                         joyRow(joy)
                     }
@@ -35,6 +36,7 @@ struct DailyJoyView: View {
         .onAppear { getJoys() }
         .navigationTitle("\(date.year != Date().year ? "\(date.year)년 " : "")\(date.twoDigitMonth)월 \(date.twoDigitDay)일 소확행")
         .navigationBarTitleDisplayMode(.inline)
+        .analyticsScreen(name: "캘린더데일리소확행뷰")
     }
     
     private func getJoys() {

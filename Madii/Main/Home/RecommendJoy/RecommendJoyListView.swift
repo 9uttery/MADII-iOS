@@ -12,6 +12,7 @@ struct RecommendJoyListView: View {
     @EnvironmentObject var appStatus: AppStatus
     @Binding var recommendJoys: [GetJoyResponseJoy]
     @Binding var selectedJoy: GetJoyResponseJoy?
+    @State var showSaveJoyToAlbumPopUp: Bool = false
     @State var selectedJoyEllipsis: Joy?
     @Binding var isClicked: [Bool]
     @State var nickname: String
@@ -20,6 +21,7 @@ struct RecommendJoyListView: View {
     @State private var xOffset: CGFloat = 0
     @State private var showTodayPlaylist: Bool = false
     @Binding var isRecommendJoy: Bool
+    @State private var newJoy: Joy = Joy(title: "")
     
     var body: some View {
         VStack(spacing: 12) {
@@ -68,6 +70,7 @@ struct RecommendJoyListView: View {
                             selectedIdx = joy.id
                             selectedJoy = joy
                         }
+                        AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_추천소확행클릭")
                     } label: {
                         HStack(spacing: 0) {
                             ZStack {
@@ -88,6 +91,7 @@ struct RecommendJoyListView: View {
                             Spacer()
                             
                             Button {
+                                showSaveJoyToAlbumPopUp.toggle()
                                 selectedJoyEllipsis = Joy(joyId: joy.joyId, title: joy.contents)
                             } label: {
                                 Image(joy.isJoySaved == true ? "activeSave" : "inactiveSave")
@@ -110,6 +114,9 @@ struct RecommendJoyListView: View {
             if !recommendJoys.isEmpty {
                 Button {
                     reClicked.toggle()
+                    selectedJoy = nil
+                    selectedIdx = nil
+                    AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_다시고르기클릭")
                 } label: {
                     Text("다시 고르기")
                         .madiiFont(font: .madiiBody4, color: .white)
@@ -124,21 +131,24 @@ struct RecommendJoyListView: View {
             Spacer()
             
             Button {
+                AnalyticsManager.shared.logEvent(name: "취향저격소확행뷰_오플리에추가클릭")
                 isRecommendJoy.toggle()
                 playJoy(joyId: selectedJoy!.joyId)
             } label: {
-                StyleJoyNextButton(label: "오늘의 플레이리스트 추가", isDisabled: selectedJoy != nil ? true : false)
+                StyleJoyNextButton(label: "오늘의 플레이리스트에 추가", isDisabled: selectedJoy != nil ? true : false)
             }
             .frame(width: UIScreen.main.bounds.width - 40, height: 96)
             .disabled(selectedJoy != nil ? false : true)
         }
-        .sheet(item: $selectedJoyEllipsis) { _ in
-            JoyMenuBottomSheet(joy: $selectedJoyEllipsis, isMine: true, isFromTodayJoy: true, isAddTodayJoy: false)
-        }
+        .onChange(of: selectedJoyEllipsis) { _ in
+            newJoy = selectedJoyEllipsis ?? Joy(title: "넷플릭스 먹으면서 귤 보기")
+                }
+        .transparentFullScreenCover(isPresented: $showSaveJoyToAlbumPopUp) {
+            SaveMyJoyPopUpView(joy: $newJoy, showSaveJoyToAlbumPopUp: $showSaveJoyToAlbumPopUp, showSaveJoyPopUpFromRecordMain: .constant(false), fromAlbumSetting: true) }
     }
     
     private func playJoy(joyId: Int) {
-        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess in
+        AchievementsAPI.shared.playJoy(joyId: joyId) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 true")
                 
@@ -148,6 +158,16 @@ struct RecommendJoyListView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
                         appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else if isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate.toggle()
+                }
+                print("DEBUG HomeTodayJoyView playJoy: isSuccess false and isDuplicate true")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.isDuplicate = false
                     }
                 }
             } else {

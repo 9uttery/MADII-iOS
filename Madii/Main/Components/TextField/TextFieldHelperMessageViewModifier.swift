@@ -25,4 +25,8 @@ extension View {
     func textFieldHelperMessage(_ text: String, color: Color) -> some View {
         modifier(TextFieldHelperMessageViewModifier(text: text, color: color))
     }
+    
+    func hideKeyboard() {
+      UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
