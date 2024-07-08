@@ -61,7 +61,6 @@ struct CalendarDays: View {
                 })
             }
         }
-        .padding(.horizontal, 26)
         .onAppear { getJoyIcons() }
         .onChange(of: selectedDate) {
             getJoyIcons()
