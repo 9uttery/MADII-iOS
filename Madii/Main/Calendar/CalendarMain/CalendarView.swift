@@ -26,10 +26,13 @@ struct CalendarView: View {
                         .padding(.top, 20)
                         
                         // 요일 header
-                        weekdaysHeader.padding(.bottom, 12)
+                        weekdaysHeader
+                            .padding(.horizontal, 9)
+                            .padding(.bottom, 12)
                         
                         // 일 (캘린더 일자)
                         CalendarDays(selectedDate: $selectedDate)
+                            .padding(.horizontal, 10)
                         
                         Spacer()
                     }
@@ -45,6 +48,7 @@ struct CalendarView: View {
                             .offset(y: 130)
                     }
                 }
+                .padding(.horizontal, 16)
             }
             .scrollIndicators(.hidden)
         }
@@ -68,7 +72,7 @@ struct CalendarView: View {
             } label: {
                 Image(systemName: "person.crop.circle")
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 24, height: 24)
                     .foregroundStyle(Color.gray500)
             }
             .simultaneousGesture(TapGesture().onEnded {
@@ -91,7 +95,6 @@ struct CalendarView: View {
                 }
             }
         }
-        .padding(.horizontal, 26)
     }
 }
 
