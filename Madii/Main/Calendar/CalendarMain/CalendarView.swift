@@ -27,7 +27,7 @@ struct CalendarView: View {
                         
                         // 요일 header
                         weekdaysHeader
-                            .padding(.horizontal, 9)
+                            .padding(.horizontal, 24)
                             .padding(.bottom, 12)
                         
                         // 일 (캘린더 일자)
@@ -88,7 +88,7 @@ struct CalendarView: View {
             ForEach(weekdays, id: \.self) { weekday in
                 Text(weekday)
                     .madiiFont(font: .madiiBody3, color: .gray700)
-                    .frame(width: 42, height: 42)
+                    .frame(height: 42)
                 
                 if weekday != weekdays.last {
                     Spacer()
