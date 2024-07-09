@@ -49,6 +49,9 @@ struct MyAlbumsView: View {
                     } label: {
                         AlbumRowWithRightView(album: album) { }
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.shared.logEvent(name: "레코드뷰_내소확행앨범클릭")
+                    })
                 }
             }
             .onAppear { getAlbums() }

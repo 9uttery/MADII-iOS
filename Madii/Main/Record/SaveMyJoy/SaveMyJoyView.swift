@@ -25,7 +25,7 @@ struct SaveMyJoyView: View {
                 
                 Button {
                     saveJoy()
-                    AnalyticsManager.shared.logEvent(name: "나만의소확행을기록해보세요뷰_저장클릭")
+                    AnalyticsManager.shared.logEvent(name: "레코드뷰_저장클릭")
                 } label: {
                     Image(myNewJoy.isEmpty ? "inactiveSave" : "activeSave")
                         .resizable()

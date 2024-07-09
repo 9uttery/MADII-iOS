@@ -93,7 +93,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // Foreground(앱 켜진 상태)에서도 알림 오는 설정
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        AnalyticsManager.shared.logEvent(name: "포그라운ㄷ_푸시알림클릭")
+        AnalyticsManager.shared.logEvent(name: "포그라운드_푸시알림클릭")
         completionHandler([.list, .banner])
     }
 }

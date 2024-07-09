@@ -73,6 +73,7 @@ struct SaveMyJoyPopUpView: View {
         }
         .transparentFullScreenCover(isPresented: $showCreateAlbumPopUp) {
             AddAlbumPopUp(showAddAlbumPopUp: $showCreateAlbumPopUp, getAlbums: selectNewAlbum) }
+        .analyticsScreen(name: "앨범저장팝업뷰")
     }
     
     private func getMyAlbums() {
@@ -180,6 +181,6 @@ struct SaveMyJoyPopUpView: View {
                 print("소확행 앨범에 저장 실패")
             }
         }
-        AnalyticsManager.shared.logEvent(name: "소확행내앨범에저장하기클릭")
+        AnalyticsManager.shared.logEvent(name: "앨범저장팝업뷰_소확행내앨범에저장하기클릭")
     }
 }

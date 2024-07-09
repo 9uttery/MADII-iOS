@@ -24,6 +24,10 @@ struct HomePlayJoyView: View {
                 }
                 .padding(.bottom, 21.5)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                AnalyticsManager.shared.logEvent(name: "홈뷰_행복을재생해요클릭")
+            })
+            
             VStack(spacing: 12) {
                 ForEach(playAlbums) { album in
                     let newAlbum = Album(id: album.albumId, backgroundColorNum: album.albumColorNum, iconNum: album.joyIconNum, title: album.name)
@@ -33,6 +37,9 @@ struct HomePlayJoyView: View {
                     } label: {
                         AlbumRow(album: newAlbum)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.shared.logEvent(name: "홈뷰_행복을재생해요리스트클릭")
+                    })
                 }
             }
         }

@@ -71,6 +71,9 @@ struct CalendarView: View {
                     .frame(width: 30, height: 30)
                     .foregroundStyle(Color.gray500)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                AnalyticsManager.shared.logEvent(name: "캘린더뷰_프로필클릭")
+            })
         }
         .padding(.horizontal, 22)
         .padding(.vertical, 12)

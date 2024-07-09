@@ -29,6 +29,9 @@ struct UserAnalyticsView: View {
                 } label: {
                     analyticsBox(title: content.title, image: content.image, color: content.imageColor)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.shared.logEvent(name: "레코드뷰_\(content.title)클릭")
+                })
             }
         }
     }

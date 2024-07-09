@@ -74,6 +74,7 @@ struct JoySatisfactionBottomSheet: View {
             selectedSatisfaction = joy.satisfaction
             if fromPlaylistBar { selectedSatisfaction = nil }
         }
+        .analyticsScreen(name: "소확행만족도조사바텀시트")
     }
     
     private func putSatisfaction() {

@@ -73,6 +73,7 @@ struct ReallyLeaveView: View {
             endPoint: UnitPoint(x: 0.5, y: 1)
             )
         )
+        .analyticsScreen(name: "탈퇴뷰")
     }
 }
 
