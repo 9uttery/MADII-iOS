@@ -14,7 +14,7 @@ struct MadiiTabView: View {
     @State var tabIndex: TabIndex = .home
     @State private var isKeyboardVisible = false
     
-    @State private var showPlaylistBar: Bool = false
+    @State private var showPlaylistBar: Bool = true
     @State private var updatePlaylistBar: Bool = false
 
     var body: some View {
@@ -26,7 +26,7 @@ struct MadiiTabView: View {
                 case .calendar: CalendarView()
                 }
             }
-            .padding(.bottom, isKeyboardVisible ? 0 : (showPlaylistBar ? 120 : 60))
+            .padding(.bottom, isKeyboardVisible ? 0 : 120)
             .onReceive(Publishers.keyboardHeight) { keyboardHeight in
                 self.isKeyboardVisible = keyboardHeight > 0
             }
@@ -43,6 +43,13 @@ struct MadiiTabView: View {
                     .frame(height: 60)
             }
             .ignoresSafeArea(.keyboard)
+        }
+        .onChange(of: tabIndex) { newValue in
+            if newValue == .calendar {
+                showPlaylistBar = false
+            } else {
+                showPlaylistBar = true
+            }
         }
     }
 }

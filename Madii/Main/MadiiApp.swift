@@ -96,4 +96,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         AnalyticsManager.shared.logEvent(name: "포그라운드_푸시알림클릭")
         completionHandler([.list, .banner])
     }
+    
+    // 백그라운드에서 푸시 알림을 탭했을 때 호출
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        AnalyticsManager.shared.logEvent(name: "백그라운드_푸시알림클릭")
+        completionHandler()
+    }
 }

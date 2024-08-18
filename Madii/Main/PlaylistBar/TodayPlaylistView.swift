@@ -32,15 +32,20 @@ struct TodayPlaylistView: View {
                     // 내가 기록한 소확행 있을 때
                     ScrollView {
                         VStack(spacing: 20) {
-                            joyBoxByToday(allJoys[0].date, joys: allJoys[0].joys)
                             
-                            ForEach(1 ..< 2) { index in
+                            ForEach(0 ..< 2) { index in
                                 let eachDayJoy = allJoys[index]
                                 if eachDayJoy.joys.isEmpty == false {
-                                    // 날짜별 소확행 박스
-                                    joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
+                                    joyBoxByToday(eachDayJoy.date, joys: eachDayJoy.joys)
                                 }
                             }
+//                            ForEach(1 ..< 2) { index in
+//                                let eachDayJoy = allJoys[index]
+//                                if eachDayJoy.joys.isEmpty == false {
+//                                    // 날짜별 소확행 박스
+//                                    joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
+//                                }
+//                            }
                         }
                         .padding(.top, 28)
                         .padding(.bottom, 60)
@@ -149,9 +154,8 @@ struct TodayPlaylistView: View {
                                     cancelAchievement(id: joy.achievementId)
                                     AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행실천해제클릭")
                                 } label: {
-                                    Image(systemName: "checkmark.circle.fill")
+                                    Image(joy.satisfaction.imageName)
                                         .resizable()
-                                        .foregroundStyle(Color.madiiYellowGreen)
                                         .frame(width: 24, height: 24)
                                 }
                             } else {
@@ -382,7 +386,6 @@ struct TodayPlaylistView: View {
             }
         }
     }
-    
 }
 
 #Preview {

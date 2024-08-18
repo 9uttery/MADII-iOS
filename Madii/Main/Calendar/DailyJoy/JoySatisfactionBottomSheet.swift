@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct JoySatisfactionBottomSheet: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     let joy: Joy
     var fromPlaylistBar: Bool = false
     private let satisfactions = JoySatisfaction.allCases
@@ -35,12 +37,15 @@ struct JoySatisfactionBottomSheet: View {
                         ForEach(satisfactions, id: \.self) { satisfaction in
                             Button {
                                 selectedSatisfaction = satisfaction
-                                if fromPlaylistBar {
-                                    postSatisfaction()
-                                } else {
-                                    putSatisfaction()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    presentationMode.wrappedValue.dismiss()
+                                    if fromPlaylistBar {
+                                        postSatisfaction()
+                                    } else {
+                                        putSatisfaction()
+                                    }
+                                    AnalyticsManager.shared.logEvent(name: "소확행만족도조사바텀시트_\(satisfaction)클릭")
                                 }
-                                AnalyticsManager.shared.logEvent(name: "소확행만족도조사바텀시트_\(satisfaction)클릭")
                             } label: {
                                 satisfactionIcon(of: satisfaction)
                             }
