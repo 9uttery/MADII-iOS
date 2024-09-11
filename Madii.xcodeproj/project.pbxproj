@@ -28,6 +28,12 @@
 		511DB50E2B66B24C00D2B01D /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50D2B66B24C00D2B01D /* EmailView.swift */; };
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
 		512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AE7F92B769F8200926DE6 /* UsersDTO.swift */; };
+		512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9612C9210FD0085B64D /* APIEndpoint.swift */; };
+		512ED9642C9211580085B64D /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9632C9211580085B64D /* NetworkLogger.swift */; };
+		512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9652C92117A0085B64D /* NetworkConstants.swift */; };
+		512ED9682C9211F80085B64D /* APIPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9672C9211F80085B64D /* APIPaths.swift */; };
+		512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9692C9212110085B64D /* APIHeaderType.swift */; };
+		512ED96C2C9212260085B64D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED96B2C9212260085B64D /* NetworkError.swift */; };
 		5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */; };
 		5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */; };
 		513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */; };
@@ -188,6 +194,12 @@
 		511DB50D2B66B24C00D2B01D /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		511DB50F2B66C49100D2B01D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		512AE7F92B769F8200926DE6 /* UsersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDTO.swift; sourceTree = "<group>"; };
+		512ED9612C9210FD0085B64D /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		512ED9632C9211580085B64D /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		512ED9652C92117A0085B64D /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		512ED9672C9211F80085B64D /* APIPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPaths.swift; sourceTree = "<group>"; };
+		512ED9692C9212110085B64D /* APIHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeaderType.swift; sourceTree = "<group>"; };
+		512ED96B2C9212260085B64D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJoyPopUp.swift; sourceTree = "<group>"; };
 		5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyPopUp.swift; sourceTree = "<group>"; };
@@ -426,6 +438,28 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		512ED95F2C9210380085B64D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BE459A572B762621002E9AB2 /* API */,
+				512ED9602C9210830085B64D /* Networking */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		512ED9602C9210830085B64D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				512ED9672C9211F80085B64D /* APIPaths.swift */,
+				512ED9692C9212110085B64D /* APIHeaderType.swift */,
+				512ED9612C9210FD0085B64D /* APIEndpoint.swift */,
+				512ED9652C92117A0085B64D /* NetworkConstants.swift */,
+				512ED9632C9211580085B64D /* NetworkLogger.swift */,
+				512ED96B2C9212260085B64D /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		513D3B322BDFB1A20060EB72 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,7 +529,7 @@
 				51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */,
 				51380FA92BBD3292000D9BA0 /* Config.xcconfig */,
 				51E0259E2B26F7C500F4F41A /* Service */,
-				BE459A572B762621002E9AB2 /* Api */,
+				512ED95F2C9210380085B64D /* Network */,
 				516455972B1F07080010199B /* Model */,
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
@@ -817,7 +851,7 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		BE459A572B762621002E9AB2 /* Api */ = {
+		BE459A572B762621002E9AB2 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				BE459A692B7E28A9002E9AB2 /* Home */,
@@ -828,8 +862,7 @@
 				51BEBA3E2B813D8F008CF3AD /* ETC */,
 				BE459A5B2B762621002E9AB2 /* BaseResponse.swift */,
 			);
-			name = Api;
-			path = Service/Api;
+			path = API;
 			sourceTree = "<group>";
 		};
 		BE459A582B762621002E9AB2 /* Record */ = {
@@ -1028,6 +1061,7 @@
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
+				512ED9682C9211F80085B64D /* APIPaths.swift in Sources */,
 				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
@@ -1046,6 +1080,7 @@
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
 				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
+				512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */,
 				BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */,
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
@@ -1119,6 +1154,7 @@
 				BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */,
 				BE459A5E2B762621002E9AB2 /* BaseResponse.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
+				512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */,
 				BEB11DD32BFDB249008D38D7 /* AnalyticsManager.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
 				BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */,
@@ -1131,7 +1167,9 @@
 				519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */,
 				BE0C3F9A2B81E77200275FD3 /* ConfettiCenterVM.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
+				512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
+				512ED96C2C9212260085B64D /* NetworkError.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
 				511DB50E2B66B24C00D2B01D /* EmailView.swift in Sources */,
@@ -1146,6 +1184,7 @@
 				5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */,
 				BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */,
 				BE459A632B7E08A7002E9AB2 /* AlbumDTO.swift in Sources */,
+				512ED9642C9211580085B64D /* NetworkLogger.swift in Sources */,
 				5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */,
 				51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */,
 				510B7BC02B3BEB5400CB7ADA /* LoginView.swift in Sources */,
