@@ -9,13 +9,6 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-struct RecordAPIs {
-    static func getMyJoyPlaceholder() -> APIEndpoint<GetPlaceholderResponse> {
-        let path = APIPaths.placeholders
-        return APIEndpoint(method: .get, path: path)
-    }
-}
-
 class RecordAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"

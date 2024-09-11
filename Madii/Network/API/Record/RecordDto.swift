@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct GetPlaceholderResponse: Codable {
-    let contents: String
-}
-
 struct GetJoyResponse: Codable {
     let createdAt: String
     let size: Int

@@ -34,6 +34,8 @@
 		512ED9682C9211F80085B64D /* APIPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9672C9211F80085B64D /* APIPaths.swift */; };
 		512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9692C9212110085B64D /* APIHeaderType.swift */; };
 		512ED96C2C9212260085B64D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED96B2C9212260085B64D /* NetworkError.swift */; };
+		512ED96F2C9213C50085B64D /* PlaceholderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */; };
+		512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9702C9213E60085B64D /* PlaceholderDTO.swift */; };
 		5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */; };
 		5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */; };
 		513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */; };
@@ -200,6 +202,8 @@
 		512ED9672C9211F80085B64D /* APIPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPaths.swift; sourceTree = "<group>"; };
 		512ED9692C9212110085B64D /* APIHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeaderType.swift; sourceTree = "<group>"; };
 		512ED96B2C9212260085B64D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderAPI.swift; sourceTree = "<group>"; };
+		512ED9702C9213E60085B64D /* PlaceholderDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderDTO.swift; sourceTree = "<group>"; };
 		5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJoyPopUp.swift; sourceTree = "<group>"; };
 		5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyPopUp.swift; sourceTree = "<group>"; };
@@ -458,6 +462,15 @@
 				512ED96B2C9212260085B64D /* NetworkError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		512ED96D2C9213B80085B64D /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */,
+				512ED9702C9213E60085B64D /* PlaceholderDTO.swift */,
+			);
+			path = Placeholder;
 			sourceTree = "<group>";
 		};
 		513D3B322BDFB1A20060EB72 /* Toast */ = {
@@ -854,6 +867,7 @@
 		BE459A572B762621002E9AB2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				512ED96D2C9213B80085B64D /* Placeholder */,
 				BE459A692B7E28A9002E9AB2 /* Home */,
 				BE459A642B7E24AF002E9AB2 /* Profile */,
 				BE459A5F2B7E088C002E9AB2 /* Album */,
@@ -1077,6 +1091,7 @@
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
+				512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */,
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
 				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
@@ -1091,6 +1106,7 @@
 				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
+				512ED96F2C9213C50085B64D /* PlaceholderAPI.swift in Sources */,
 				519027DF2C184703008414A2 /* ResetPasswordView.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
