@@ -14,7 +14,7 @@ class RecordAPI {
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = RecordAPI()
     
-    // (R-레코드) 소확행 기록 placeholder
+    // (R-레코드) 소확행 기록 placeholder -> 이전 완료 🔥
     func getPlaceholder(completion: @escaping (_ isSuccess: Bool, _ placeholder: String) -> Void) {
         let url = "\(baseUrl)/placeholders"
         let headers: HTTPHeaders = [
