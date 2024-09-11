@@ -17,8 +17,8 @@ struct APIEndpoint<Response: Codable> {
     var headerType: APIHeaderType = .withAuth
     
     func request(completion: @escaping (Result<Response, NetworkError>) -> Void) {
-        let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)/\(path.rawValue)"
-        var headers: HTTPHeaders = headerType.headers
+        let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path.rawValue)"
+        let headers: HTTPHeaders = headerType.headers
         
         AF.request(url, method: method, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<ResponseDTO>.self) { response in
@@ -29,7 +29,7 @@ struct APIEndpoint<Response: Codable> {
                 
                 validateStatusCode(status) { validate in
                     switch validate {
-                    case .success(_):
+                    case .success:
                         switch response.result {
                         case .success(let response):
                             guard let data = response.data else {
@@ -67,6 +67,6 @@ struct APIEndpoint<Response: Codable> {
     }
     
     private func printLog(_ issue: String) {
-        NetworkLogger.debugLog(method: method, path: "/v\(urlVersion)/\(path.rawValue)", issue: issue)
+        NetworkLogger.debugLog(method: method, path: "/v\(urlVersion)\(path.rawValue)", issue: issue)
     }
 }
