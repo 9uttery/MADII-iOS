@@ -44,7 +44,8 @@ struct SaveMyJoyView: View {
     }
     
     private func getPlaceholder() {
-        let endpoint = RecordAPIs.getMyJoyPlaceholder()
+        // 임시로 적용해둔 Network 사용
+        let endpoint = PlaceholderAPI.getMyJoyPlaceholder()
         
         endpoint.request { result in
             switch result {
@@ -55,6 +56,7 @@ struct SaveMyJoyView: View {
             }
         }
         
+        // 이전 사용
 //        RecordAPI.shared.getPlaceholder { isSuccess, placeholder in
 //            if isSuccess {
 //                self.placeholder = placeholder

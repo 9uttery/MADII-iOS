@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import KeychainSwift
 
 enum APIHeaderType {
     case withoutAuth
