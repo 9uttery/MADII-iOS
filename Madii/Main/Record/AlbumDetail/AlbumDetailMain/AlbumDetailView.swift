@@ -78,7 +78,11 @@ struct AlbumDetailView: View {
                             }
                         }
                         .sheet(item: $selectedJoy, onDismiss: getAlbumInfo) { _ in
-                            JoyMenuBottomSheet(joy: $selectedJoy, isMine: true)
+                            if isAlbumMine {
+                                JoyMenuBottomSheet(joy: $selectedJoy, isMine: true)
+                            } else {
+                                JoyMenuBottomSheet(joy: $selectedJoy, isMine: false)
+                            }
                         }
                         .padding(.vertical, 20)
                         .background(Color.madiiBox)
@@ -188,31 +192,15 @@ struct AlbumDetailView: View {
     @ViewBuilder
     private func albumDetailJoyRow(joy: Joy) -> some View {
         JoyRowWithButton(joy: joy) {
-            if isAlbumMine {
-                // 나의 앨범: 소확행 메뉴 bottom sheet
-                selectedJoy = joy
-                AnalyticsManager.shared.logEvent(name: "앨범상세뷰_내앨범소확행ellipsis클릭")
-            } else {
-                // 타인의 앨범: 소확행 저장 아이콘
-                showSaveJoyPopUp = true
-                self.joy = joy
-                AnalyticsManager.shared.logEvent(name: "앨범상세뷰_타인앨범저장클릭")
-            }
+            selectedJoy = joy
+            AnalyticsManager.shared.logEvent(name: "앨범상세뷰_ellipsis클릭")
         } buttonLabel: {
-            if isAlbumMine {
-                // 나의 앨범: 메뉴 버튼 이미지
-                Image(systemName: "ellipsis")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
-                    .foregroundStyle(Color.gray500)
-                    .padding(10)
-            } else {
-                // 타인의 앨범: 북마크 버튼 이미지
-                Image(joy.isSaved ? "activeSave" : "inactiveSave")
-                    .resizable()
-                    .frame(width: 36, height: 36)
-            }
+            Image(systemName: "ellipsis")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 20, height: 20)
+                .foregroundStyle(Color.gray500)
+                .padding(10)
         }
     }
     

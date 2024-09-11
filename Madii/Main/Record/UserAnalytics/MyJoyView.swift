@@ -45,6 +45,13 @@ struct MyJoyView: View {
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
             
+            // 오플리 중복 안내 토스트
+            if appStatus.isDuplicate {
+                VStack {
+                    Spacer()
+                    JoyDuplicateToast()
+                }
+            }
             if appStatus.isDuplicate {
                 JoyDuplicateToast() }
         }
@@ -88,22 +95,27 @@ struct MyJoyView: View {
                 .padding(.vertical, 20)
             
             ForEach(joys) { joy in
-                JoyRowWithButton(joy: joy) {
-                    // 메뉴 버튼 action
-                    selectedJoy = joy
-                    AnalyticsManager.shared.logEvent(name: "내가기록한소확행뷰_소확행ellipsis클릭")
-                } buttonLabel: {
-                    // 메뉴 버튼 이미지
-                    Image(systemName: "ellipsis")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundStyle(Color.gray500)
-                        .padding(10)
+                Button {
+                    playJoy(joy: joy)
+                    AnalyticsManager.shared.logEvent(name: "내가기록한소확행뷰_소확행클릭오플리추가")
+                } label: {
+                    JoyRowWithButton(joy: joy) {
+                        // 메뉴 버튼 action
+                        selectedJoy = joy
+                        AnalyticsManager.shared.logEvent(name: "내가기록한소확행뷰_소확행ellipsis클릭")
+                    } buttonLabel: {
+                        // 메뉴 버튼 이미지
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(Color.gray500)
+                            .padding(10)
+                    }
+                    .padding(.leading, 12)
+                    .padding(.trailing, 16)
+                    .padding(.vertical, 4)
                 }
-                .padding(.leading, 12)
-                .padding(.trailing, 16)
-                .padding(.vertical, 4)
             }
         }
         .padding(.bottom, 20)
@@ -127,6 +139,38 @@ struct MyJoyView: View {
                 }
             } else {
                 print("DEBUG MyJoyView: isSuccess false")
+            }
+        }
+    }
+    
+    private func playJoy(joy: Joy) {
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess, isDuplicate in
+            if isSuccess {
+                print("DEBUG AlbumDetailView: 오플리에 추가 true")
+                
+                // 오플리 추가 안내 토스트 띄우기
+                withAnimation {
+                    appStatus.showAddPlaylistToast = true
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.showAddPlaylistToast = false
+                    }
+                }
+            } else if isDuplicate {
+                withAnimation {
+                    appStatus.isDuplicate = true
+                }
+                print("DEBUG AlbumDetailView playJoy: isSuccess false and isDuplicate true")
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        appStatus.isDuplicate = false
+                    }
+                }
+            } else {
+                print("DEBUG AlbumDetailView: 오플리에 추가 false")
             }
         }
     }

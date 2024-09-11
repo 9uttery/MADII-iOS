@@ -43,6 +43,7 @@
 		5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAD52B7525C900FD407E /* PlaylistBar.swift */; };
 		5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAFA2B76944C00FD407E /* UsersAPI.swift */; };
 		514644BB2B83968C001D6FB8 /* JoyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514644BA2B83968C001D6FB8 /* JoyAPI.swift */; };
+		5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147449C2C723CD4000F22DB /* CurrentVersionView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
@@ -203,6 +204,7 @@
 		5141CAD52B7525C900FD407E /* PlaylistBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBar.swift; sourceTree = "<group>"; };
 		5141CAFA2B76944C00FD407E /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		514644BA2B83968C001D6FB8 /* JoyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyAPI.swift; sourceTree = "<group>"; };
+		5147449C2C723CD4000F22DB /* CurrentVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVersionView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -810,6 +812,7 @@
 				BE06499A2B921522000EF015 /* UserStatView.swift */,
 				BE06499C2B921570000EF015 /* ReallyLeaveView.swift */,
 				BE619EEB2B95BF76005F7EBA /* EmailSender.swift */,
+				5147449C2C723CD4000F22DB /* CurrentVersionView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 			files = (
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
 				BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */,
+				5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
@@ -1282,7 +1286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1302,7 +1306,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1323,7 +1327,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1343,7 +1347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

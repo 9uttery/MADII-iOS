@@ -32,15 +32,20 @@ struct TodayPlaylistView: View {
                     // 내가 기록한 소확행 있을 때
                     ScrollView {
                         VStack(spacing: 20) {
-                            joyBoxByToday(allJoys[0].date, joys: allJoys[0].joys)
                             
-                            ForEach(1 ..< 2) { index in
+                            ForEach(0 ..< 2) { index in
                                 let eachDayJoy = allJoys[index]
                                 if eachDayJoy.joys.isEmpty == false {
-                                    // 날짜별 소확행 박스
-                                    joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
+                                    joyBoxByToday(eachDayJoy.date, joys: eachDayJoy.joys)
                                 }
                             }
+//                            ForEach(1 ..< 2) { index in
+//                                let eachDayJoy = allJoys[index]
+//                                if eachDayJoy.joys.isEmpty == false {
+//                                    // 날짜별 소확행 박스
+//                                    joyBoxByDate(eachDayJoy.date, isYesterday: index == 1, joys: eachDayJoy.joys)
+//                                }
+//                            }
                         }
                         .padding(.top, 28)
                         .padding(.bottom, 60)
@@ -149,9 +154,8 @@ struct TodayPlaylistView: View {
                                     cancelAchievement(id: joy.achievementId)
                                     AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행실천해제클릭")
                                 } label: {
-                                    Image(systemName: "checkmark.circle.fill")
+                                    Image(joy.satisfaction.imageName)
                                         .resizable()
-                                        .foregroundStyle(Color.madiiYellowGreen)
                                         .frame(width: 24, height: 24)
                                 }
                             } else {
@@ -211,53 +215,74 @@ struct TodayPlaylistView: View {
                 Spacer()
             }
             
-            ForEach(joys) { joy in
-                Button {
+            List {
+                ForEach(joys) { joy in
                     if joy.isAchieved {
-                        fromPlaylistBar = false
-                        selectedJoy = joy
-                    }
-                    AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_2~3일전추가한소확행클릭")
-                } label: {
-                    JoyRowWithButton(joy: joy) {
-                        // 메뉴 버튼 action
-                        fromPlaylistBar = true
-                        selectedJoy = joy
-                    } buttonLabel: {
-                        // 메뉴 버튼 이미지
-                        if joy.isAchieved {
-                            // 실천한 경우 -> 실천 해제
-                            achievedButton(joy: joy)
-                        } else {
-                            if isYesterday {
+                        Button {
+                            fromPlaylistBar = false
+                            selectedJoy = joy
+                            AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_2~3일전추가한소확행클릭")
+                        } label: {
+                            JoyRowWithButton(joy: joy) {
+                                // 메뉴 버튼 action
+                                fromPlaylistBar = true
+                                selectedJoy = joy
+                            } buttonLabel: {
+                                // 실천한 경우 -> 실천 해제
+                                achievedButton(joy: joy)
+                            }
+                        }
+                        .onLongPressGesture { self.showAlert = true }
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("소확행 실행 취소"),
+                                  message: Text("\(joy.title)의 실천을 취소할까요?"),
+                                  primaryButton: .cancel(Text("취소")),
+                                  secondaryButton: .destructive(Text("삭제"),
+                                                                action: { self.deleteAchivement(id: joy.achievementId) }))
+                        }
+                        .listRowBackground(Color.madiiBox)
+                        .listRowSeparator(.hidden)
+                    } else {
+                        Button {
+                            AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_실천하지않은소확행오늘로클릭")
+                        } label: {
+                            JoyRowWithButton(joy: joy) {
+                                // 메뉴 버튼 action
+                                fromPlaylistBar = true
+                                selectedJoy = joy
+                            } buttonLabel: {
                                 // 어제 실천하지 않은 경우 -> 오늘로
                                 moveToTodayButton(joy: joy)
-                            } else {
-                                // 오늘 실천하지 않은 경우 -> bottomsheet
-                                Button {
-                                    selectedJoy = joy
-                                } label: {
-                                    Image(systemName: "checkmark.circle")
-                                        .resizable()
-                                        .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
-                                        .frame(width: 24, height: 24)
-                                }
                             }
+                        }
+                        .onLongPressGesture { self.showAlert = true }
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("소확행 실행 취소"),
+                                  message: Text("\(joy.title)의 실천을 취소할까요?"),
+                                  primaryButton: .cancel(Text("취소")),
+                                  secondaryButton: .destructive(Text("삭제"),
+                                                                action: { self.deleteAchivement(id: joy.achievementId) }))
+                        }
+                        .listRowBackground(Color.madiiBox)
+                        .listRowSeparator(.hidden)
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                withAnimation {
+                                    deleteAchivement(id: joy.achievementId)
+                                }
+                                AnalyticsManager.shared.logEvent(name: "오늘의플레이리스트뷰_오늘추가한소확행삭제클릭")
+                            } label: {
+                                Label("Trash", systemImage: "trash")
+                            }
+                            .tint(Color(red: 1.0, green: 0.231, blue: 0.188))
                         }
                     }
                 }
-                .padding(.leading, 12)
-                .padding(.trailing, 16)
-                .padding(.vertical, 4)
-                .onLongPressGesture { self.showAlert = true }
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("소확행 실행 취소"),
-                          message: Text("\(joy.title)의 실천을 취소할까요?"),
-                          primaryButton: .cancel(Text("취소")),
-                          secondaryButton: .destructive(Text("삭제"),
-                                                        action: { self.deleteAchivement(id: joy.achievementId) }))
-                }
             }
+            .listStyle(.plain)
+            .frame(maxWidth: .infinity)
+            .frame(height: 56 * CGFloat(joys.count))
+            .environment(\.defaultMinListRowHeight, 56)
             .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
                 JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: fromPlaylistBar)
                     .presentationDetents([.height(300)])
@@ -361,7 +386,6 @@ struct TodayPlaylistView: View {
             }
         }
     }
-    
 }
 
 #Preview {
