@@ -9,16 +9,12 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-struct GetPlaceholderResponse: Codable {
-    let contents: String
-}
-
 class RecordAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
     static let shared = RecordAPI()
     
-    // (R-레코드) 소확행 기록 placeholder
+    // (R-레코드) 소확행 기록 placeholder -> 이전 완료 🔥
     func getPlaceholder(completion: @escaping (_ isSuccess: Bool, _ placeholder: String) -> Void) {
         let url = "\(baseUrl)/placeholders"
         let headers: HTTPHeaders = [
@@ -28,6 +24,7 @@ class RecordAPI {
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<GetPlaceholderResponse>.self) { response in
+                
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
@@ -351,9 +348,4 @@ class RecordAPI {
                 }
             }
     }
-}
-
-struct EditJoyResponse: Codable {
-    let joyIconNum: Int
-    let contents: String
 }

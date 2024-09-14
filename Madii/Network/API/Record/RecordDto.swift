@@ -89,3 +89,8 @@ struct GetRecentAlbumResponse: Codable {
     let albumId, joyIconNum, albumColorNum: Int
     let name: String
 }
+
+struct EditJoyResponse: Codable {
+    let joyIconNum: Int
+    let contents: String
+}

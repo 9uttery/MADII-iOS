@@ -44,13 +44,26 @@ struct SaveMyJoyView: View {
     }
     
     private func getPlaceholder() {
-        RecordAPI.shared.getPlaceholder { isSuccess, placeholder in
-            if isSuccess {
-                self.placeholder = placeholder
-            } else {
-                print("DEBUG SaveMyJoyView: isSuccess false")
+        // 임시로 적용해둔 Network 사용
+        let endpoint = PlaceholderAPI.getMyJoyPlaceholder()
+        
+        endpoint.request { result in
+            switch result {
+            case .success(let data):
+                self.placeholder = data.contents
+            case .failure(_):
+                print("DEBUG \(#function): result false")
             }
         }
+        
+        // 이전 사용
+//        RecordAPI.shared.getPlaceholder { isSuccess, placeholder in
+//            if isSuccess {
+//                self.placeholder = placeholder
+//            } else {
+//                print("DEBUG SaveMyJoyView: isSuccess false")
+//            }
+//        }
     }
     
     private func saveJoy() {
