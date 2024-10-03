@@ -80,7 +80,7 @@ struct HomeTodayJoyView: View {
     }
     
     private func playJoy() {
-        AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId) { isSuccess, isDuplicate in
+        AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId ?? 0) { isSuccess, isDuplicate in
             if isSuccess {
                 appStatus.showAddPlaylistToast.toggle()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {

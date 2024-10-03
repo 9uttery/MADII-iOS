@@ -77,7 +77,7 @@ struct SaveMyJoyPopUpView: View {
     }
     
     private func getMyAlbums() {
-        AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId) { isSuccess, albumList in
+        AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId ?? 0) { isSuccess, albumList in
             if isSuccess {
                 albums = []
                 beforeAlbumIds = []
@@ -97,7 +97,7 @@ struct SaveMyJoyPopUpView: View {
     }
     
     private func selectNewAlbum() {
-        AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId) { isSuccess, albumList in
+        AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joy.joyId ?? 0) { isSuccess, albumList in
             if isSuccess {
                 albums = []
                 beforeAlbumIds = []
@@ -163,7 +163,7 @@ struct SaveMyJoyPopUpView: View {
     func saveJoy() {
         // 소확행 저장
         print("hoho \(beforeAlbumIds), \(selectedAlbumIds)")
-        RecordAPI.shared.editJoy(joyId: joy.joyId, contents: newJoyTitle, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
+        RecordAPI.shared.editJoy(joyId: joy.joyId ?? 0, contents: newJoyTitle, beforeAlbumIds: beforeAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, _ in
             if isSuccess {
                 print("소확행 앨범에 저장 성공")
                 joy.title = newJoyTitle

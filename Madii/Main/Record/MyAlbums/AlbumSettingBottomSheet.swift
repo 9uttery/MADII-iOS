@@ -12,6 +12,7 @@ struct AlbumSettingBottomSheet: View {
     @Binding var showAlbumSettingSheet: Bool
     
     @Binding var showChangeInfo: Bool
+    @Binding var isAlbumEditMode: Bool
     @State private var showAddJoyPopUp: Bool = false
     @State private var isAlbumPublic: Bool = false
     @State private var canShowChangePublicPopUp: Bool = false
@@ -44,20 +45,11 @@ struct AlbumSettingBottomSheet: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Button {
                         showAlbumSettingSheet = false
-                        showChangeInfo = true
-                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_앨범이름・설명수정클릭")
+                        isAlbumEditMode = true
+                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_앨범 편집클릭")
                     } label: {
-                        albumRow(title: "앨범 이름・설명 수정")
+                        albumRow(title: "앨범 편집")
                     }
-                    
-                    Button {
-                        showAddJoyPopUp = true
-                        AnalyticsManager.shared.logEvent(name: "앨범설정바텀시트_소확행추가클릭")
-                    } label: {
-                        albumRow(title: "소확행 추가")
-                    }
-                    
-                    toggleRow
                     
                     Button {
                         withoutAnimation { showDeleteAlbumPopUp = true }
@@ -65,6 +57,9 @@ struct AlbumSettingBottomSheet: View {
                     } label: {
                         albumRow(title: "삭제")
                     }
+                    
+                    toggleRow
+                    
                 }
                 
                 Spacer()
@@ -103,7 +98,7 @@ struct AlbumSettingBottomSheet: View {
     
     private var toggleRow: some View {
         HStack {
-            Text("전체 공개 여부 설정")
+            Text("전체 공개")
                 .madiiFont(font: .madiiBody3, color: .white)
                 
             Spacer()

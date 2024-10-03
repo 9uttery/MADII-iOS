@@ -28,3 +28,17 @@ struct GetAlbumsCreatedByMeResponse: Codable {
     let albumId: Int
     let name: String
 }
+
+struct JoyResponse: Encodable {
+    var joyId: Int?
+    var contents: String
+    var joyOrder: Int
+    
+    func toDictionary() -> [String: Any] {
+        return [
+            "joyId": joyId ?? NSNull(), // nil인 경우 NSNull()으로 처리
+            "contents": contents,
+            "joyOrder": joyOrder
+        ]
+    }
+}

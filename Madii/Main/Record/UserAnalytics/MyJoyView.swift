@@ -144,7 +144,7 @@ struct MyJoyView: View {
     }
     
     private func playJoy(joy: Joy) {
-        AchievementsAPI.shared.playJoy(joyId: joy.joyId) { isSuccess, isDuplicate in
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId ?? 0) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG AlbumDetailView: 오플리에 추가 true")
                 

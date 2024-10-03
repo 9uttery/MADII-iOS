@@ -82,9 +82,9 @@ struct JoyMenuBottomSheet: View {
                 if isFromTodayJoy == false {
                     Button {
                         showEditJoyPopUp = true
-                        AnalyticsManager.shared.logEvent(name: "소확행바텀시트_소확행이름·저장앨범수정클릭")
+                        AnalyticsManager.shared.logEvent(name: "소확행바텀시트_앨범저장클릭")
                     } label: {
-                        bottomSheetRow("소확행 이름 · 저장 앨범 수정")
+                        bottomSheetRow("앨범 저장")
                     }
                     
                     if isMine {

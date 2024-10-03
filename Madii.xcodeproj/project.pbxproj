@@ -163,6 +163,7 @@
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
+		BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */; };
 		BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */; };
@@ -320,6 +321,7 @@
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
+		BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumPopUp.swift; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyDuplicateToast.swift; sourceTree = "<group>"; };
 		BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAlbumJoyToast.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */,
 				519B01552B8924C400519B11 /* ChangePublicPopUp.swift */,
 				519B01532B89216B00519B11 /* DeleteAlbumPopUp.swift */,
+				BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */,
 			);
 			path = AlbumSetting;
 			sourceTree = "<group>";
@@ -1191,6 +1194,7 @@
 				511DB50E2B66B24C00D2B01D /* EmailView.swift in Sources */,
 				BE0C3F982B81E77200275FD3 /* ConfettiItem.swift in Sources */,
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
+				BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 
 struct Joy: Identifiable, Equatable {
     let id = UUID()
-    var joyId: Int = 0 /// DB에서 사용하는 Joy id
+    var joyId: Int? = 0 /// DB에서 사용하는 Joy id
     var achievementId: Int = 0 /// Server에서 사용하는 실천 Id
     var isAchieved: Bool = false
     var icon: Int = 0 /// Joy의 커버 아이콘 이미지
@@ -19,6 +19,11 @@ struct Joy: Identifiable, Equatable {
     var isSaved: Bool = false
     var isMine: Bool = false
     var rank: Int = 0
+    var joyOrder: Int = 0
+    
+    func toJoyResponse() -> JoyResponse {
+        return JoyResponse(joyId: joyId, contents: title, joyOrder: joyOrder)
+    }
 }
 
 enum JoySatisfaction: CaseIterable {
