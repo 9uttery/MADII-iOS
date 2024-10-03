@@ -381,4 +381,45 @@ class AlbumAPI {
                 }
             }
     }
+    
+    func putAlbumsAll(albumId: Int, name: String, description: String, joys: [JoyResponse], deletedJoyIds: [Int], completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\(baseUrl)/albums/\(albumId)/all"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let joyDictionaries = joys.map { $0.toDictionary() }
+        
+        let parameters: [String: Any] = [
+            "name": name,
+            "description": description,
+            "joys": joyDictionaries,
+            "deletedJoyIds": deletedJoyIds
+        ]
+        print("DEBUG(parameters): \(parameters)")
+        
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(putAlbumsAll): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(putAlbumsAll): status \(statusCode))")
+                        print("조이딕셔너리화한 겁니다 여러분들\(joyDictionaries)")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(putAlbumsAll): error \(error))")
+                    completion(false)
+                }
+            }
+    }
 }
