@@ -16,3 +16,7 @@ opt_in_rules:
 
     # Imports should be sorted
     - sorted_imports
+    
+type_body_length:
+  warning: 500
+  error: 600
