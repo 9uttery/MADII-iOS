@@ -13,7 +13,7 @@ struct TodayJoyBeforeClickButton: View {
     @Binding var todayJoy: Joy
     var body: some View {
         Button {
-            todayJoyId = todayJoy.joyId
+            todayJoyId = todayJoy.joyId ?? 0
             UserDefaults.standard.set(todayJoy.joyId, forKey: "todayJoyId")
             counter += 1
             AnalyticsManager.shared.logEvent(name: "홈뷰_클릭해보세요!클릭")
