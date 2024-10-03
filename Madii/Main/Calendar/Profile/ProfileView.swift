@@ -64,6 +64,9 @@ struct ProfileView: View {
                 .background(Color.madiiBox)
                 .cornerRadius(20)
                 
+                // 현재 버전
+                CurrentVersionView() 
+                
                 Spacer()
             }
             .padding(.top, 28)
