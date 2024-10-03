@@ -22,9 +22,12 @@ struct PlaylistBar: View {
     @State private var selectedJoy: Joy?
     
     @State private var textTimer: Timer?
+    @State private var todayTimer: Timer?
     @State private var startTime: Date?
     @State private var textWidth: CGFloat = 1
     @State private var xOffset: CGFloat = 0
+    @State private var firstOffset: CGFloat = 0
+    @State private var secondOffset: CGFloat = 260
     @State private var direction: CGFloat = -1
     @State private var isPaused: Bool = false
     @State private var joy: Joy = Joy(joyId: 0, achievementId: 0, isAchieved: false, icon: 1, title: "", counts: 0, satisfaction: .bad, isSaved: false, isMine: false, rank: 0)
@@ -34,17 +37,31 @@ struct PlaylistBar: View {
             if showPlaylistBar {
                 ZStack {
                     HStack {
-                        Text(todayJoys.joys.isEmpty == false ? joy.title : "오늘의 플레이리스트를 담아보세요!")
-                            .madiiFont(font: .madiiBody1, color: .white)
-                            .offset(x: xOffset)
-                            .clipShape(HalfClipShape())
-                            .readSize { new in
-                                textWidth = new.width
-                                print(textWidth)
+                        ZStack {
+                            if !todayJoys.joys.isEmpty {
+                                Text(joy.title)
+                                    .madiiFont(font: .madiiBody1, color: .white)
+                                    .offset(x: xOffset)
+                                    .readSize { new in
+                                        textWidth = new.width
+                                        print(textWidth)
+                                    }
+                            } else {
+                                Group {
+                                    Text("오늘의 플레이리스트를 담아보세요")
+                                        .madiiFont(font: .madiiBody1, color: .white)
+                                        .offset(x: firstOffset)
+                                    
+                                    Text("오늘의 플레이리스트를 담아보세요")
+                                        .madiiFont(font: .madiiBody1, color: .white)
+                                        .offset(x: secondOffset)
+                                }
                             }
-                        
+                        }
                         Spacer()
                     }
+                    .clipShape(HalfClipShape())
+                    
                     HStack {
                         Spacer()
                         HStack(spacing: 12) {
@@ -60,10 +77,10 @@ struct PlaylistBar: View {
                                 } label: {
                                     Image(systemName: "checkmark.circle.fill")
                                         .resizable()
-                                        .frame(width: 24, height: 24)
+                                        .frame(width: 28, height: 28)
                                         .foregroundStyle(Color.madiiYellowGreen)
                                         .padding()
-                                        .frame(width: 28, height: 28)
+                                        .frame(width: 32, height: 32)
                                 }
                             } else {
                                 // 실천하지 않은 경우 -> bottomsheet
@@ -75,10 +92,10 @@ struct PlaylistBar: View {
                                 } label: {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
-                                        .frame(width: 24, height: 24)
+                                        .frame(width: 28, height: 28)
                                         .foregroundStyle(Color(red: 0.37, green: 0.37, blue: 0.37))
                                         .padding()
-                                        .frame(width: 28, height: 28)
+                                        .frame(width: 32, height: 32)
                                 }
                                 .sheet(item: $selectedJoy, onDismiss: getPlaylist) { joy in
                                     JoySatisfactionBottomSheet(joy: joy, fromPlaylistBar: true)
@@ -86,20 +103,6 @@ struct PlaylistBar: View {
                                     .presentationDragIndicator(.hidden) } }
                             
                             rightButton
-                            
-                            Button {
-                                withAnimation {
-                                    showPlaylist = true
-                                    AnalyticsManager.shared.logEvent(name: "플리바_오플리띄우기클릭")
-                                }
-                            } label: {
-                                Image(systemName: "line.3.horizontal")
-                                    .frame(width: 18, height: 18)
-                                    .foregroundStyle(Color.gray500)
-                                    .padding()
-                                    .frame(width: 22, height: 22)
-                                    .padding(.leading, 9.5)
-                            }
                         }
                     }
                 }
@@ -113,11 +116,13 @@ struct PlaylistBar: View {
                 .background(Color.black)
             }
         }
-        .frame(height: 60)
+        .frame(height: showPlaylistBar ? 60 : 0)
         .onAppear {
             getPlaylist()
             stopTimer()
             xOffset = 0
+            firstOffset = 0
+            secondOffset = 0
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 startTimer()
             }
@@ -137,6 +142,15 @@ struct PlaylistBar: View {
         }
         .onTapGesture {
             showPlaylist = true
+        }
+        .onChange(of: joy) { _ in
+            stopTimer()
+            xOffset = 0
+            firstOffset = 0
+            secondOffset = 260
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                startTimer()
+            }
         }
         .sheet(isPresented: $showPlaylist) {
             TodayPlaylistView(showPlaylist: $showPlaylist)
@@ -241,21 +255,35 @@ struct PlaylistBar: View {
     }
     
     private func startTimer() {
-        if textWidth < UIScreen.main.bounds.width - 185 {
-            stopTimer()
-            return
-        }
-        if textTimer == nil {
-            textTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-                if (textWidth + xOffset <= UIScreen.main.bounds.width - 185 && direction == -1) || (xOffset >= 0 && direction == 1) {
-                    stopTimer()
-                    direction *= -1
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.startTimer()
+        if !todayJoys.joys.isEmpty {
+            if textWidth < UIScreen.main.bounds.width - 185 {
+                stopTimer()
+                return
+            } else if textTimer == nil {
+                textTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+                    if (textWidth + xOffset <= UIScreen.main.bounds.width - 185 && direction == -1) || (xOffset >= 0 && direction == 1) {
+                        stopTimer()
+                        direction *= -1
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.startTimer()
+                        }
+                    } else {
+                        withAnimation {
+                            xOffset += direction
+                        }
                     }
+                }
+            }
+        } else {
+            todayTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+                if firstOffset <  -230 {
+                    firstOffset = secondOffset + 260
+                } else if secondOffset < -230 {
+                    secondOffset = firstOffset + 260
                 } else {
                     withAnimation {
-                        xOffset += direction
+                        firstOffset -= 1.5
+                        secondOffset -= 1.5
                     }
                 }
             }
@@ -265,6 +293,8 @@ struct PlaylistBar: View {
     private func stopTimer() {
         textTimer?.invalidate()
         textTimer = nil
+        todayTimer?.invalidate()
+        todayTimer = nil
     }
 }
 
