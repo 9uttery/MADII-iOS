@@ -16,11 +16,13 @@ struct APIEndpoint<Response: Codable> {
     var path: String
     var headerType: APIHeaderType = .withAuth
     
+    var body: [String: Any]?
+    
     func request(completion: @escaping (Result<Response, NetworkError>) -> Void) {
         let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path)"
         let headers: HTTPHeaders = headerType.headers
         
-        AF.request(url, method: method, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: method, parameters: body, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<ResponseDTO>.self) { response in
                 guard let status = response.response?.statusCode else {
                     printLog("APIEndpoints에서 statusCode가 nil")
