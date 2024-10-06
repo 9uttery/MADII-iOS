@@ -272,39 +272,6 @@ class RecordAPI {
             }
     }
     
-    // 소확행 저장
-    func saveJoy(joyId: Int, albumIds: [Int], completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/albums/\(joyId)"
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
-        ]
-        let parameters: [String: Any] = [
-            "albumIds": albumIds
-        ]
-        
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<Bool?>.self) { response in
-                switch response.result {
-                case .success(let response):
-                    let statusCode = response.status
-                    if statusCode == 200 {
-                        // status 200으로 -> isSuccess: true
-                        print("DEBUG(saveJoy): success")
-                        completion(true)
-                    } else {
-                        // status 200 아님 -> isSuccess: false
-                        print("DEBUG(saveJoy): status \(statusCode))")
-                        completion(false)
-                    }
-                    
-                case .failure(let error):
-                    print("DEBUG(saveJoy): error \(error))")
-                    completion(false)
-                }
-            }
-    }
-    
     // 소확행 수정
     func editJoy(joyId: Int, contents: String, beforeAlbumIds: [Int], afterAlbumIds: [Int], completion: @escaping (_ isSuccess: Bool, _ response: EditJoyResponse) -> Void) {
         let url = "\(baseUrl)/joy/\(joyId)"
