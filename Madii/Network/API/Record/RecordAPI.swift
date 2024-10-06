@@ -232,7 +232,8 @@ class RecordAPI {
             }
     }
     
-    // 새로운 앨범 생성
+    // 새로운 앨범 생성 -> 이전 완료 🔥
+    /*
     func postAlbum(name: String, description: String, completion: @escaping (_ isSuccess: Bool, _ albumList: [PostAlbumResponse]) -> Void) {
         let url = "\(baseUrl)/albums"
         let headers: HTTPHeaders = [
@@ -271,6 +272,7 @@ class RecordAPI {
                 }
             }
     }
+     */
     
     // 소확행 수정
     func editJoy(joyId: Int, contents: String, beforeAlbumIds: [Int], afterAlbumIds: [Int], completion: @escaping (_ isSuccess: Bool, _ response: EditJoyResponse) -> Void) {
