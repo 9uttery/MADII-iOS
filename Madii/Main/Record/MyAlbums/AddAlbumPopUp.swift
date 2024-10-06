@@ -71,15 +71,29 @@ struct AddAlbumPopUp: View {
     
     private func addAlbum() {
         if title.isEmpty == false {
-            RecordAPI.shared.postAlbum(name: title, description: description) { isSuccess, _ in
-                if isSuccess {
+            // 임시로 적용해둔 Network 사용
+            let endpoint = AlbumsAPI.postNewAlbum(name: title, description: description)
+            endpoint.request { result in
+                switch result {
+                case .success(let data):
                     print("앨범 생성 성공")
                     getAlbums()
                     showAddAlbumPopUp = false
-                } else {
+                case .failure(let failure):
                     print("앨범 생성 실패")
                 }
             }
+            
+            // 이전 사용
+//            RecordAPI.shared.postAlbum(name: title, description: description) { isSuccess, _ in
+//                if isSuccess {
+//                    print("앨범 생성 성공")
+//                    getAlbums()
+//                    showAddAlbumPopUp = false
+//                } else {
+//                    print("앨범 생성 실패")
+//                }
+//            }
         }
     }
 }

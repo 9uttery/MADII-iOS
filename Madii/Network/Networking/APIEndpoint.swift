@@ -13,14 +13,16 @@ struct APIEndpoint<Response: Codable> {
     
     var method: HTTPMethod
     var urlVersion: Int = 1
-    var path: APIPaths
+    var path: String
     var headerType: APIHeaderType = .withAuth
     
+    var body: [String: Any]?
+    
     func request(completion: @escaping (Result<Response, NetworkError>) -> Void) {
-        let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path.rawValue)"
+        let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path)"
         let headers: HTTPHeaders = headerType.headers
         
-        AF.request(url, method: method, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: method, parameters: body, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<ResponseDTO>.self) { response in
                 guard let status = response.response?.statusCode else {
                     printLog("APIEndpoints에서 statusCode가 nil")
@@ -41,7 +43,7 @@ struct APIEndpoint<Response: Codable> {
                             // let code = response.code
                             
                             // 성공
-                            NetworkLogger.succeessLog(method: method, path: "/v\(urlVersion)/\(path.rawValue)")
+                            NetworkLogger.succeessLog(method: method, path: "/v\(urlVersion)\(path)")
                             completion(.success(data))
                             
                         case .failure(let error):
@@ -67,6 +69,6 @@ struct APIEndpoint<Response: Codable> {
     }
     
     private func printLog(_ issue: String) {
-        NetworkLogger.debugLog(method: method, path: "/v\(urlVersion)\(path.rawValue)", issue: issue)
+        NetworkLogger.debugLog(method: method, path: "/v\(urlVersion)\(path)", issue: issue)
     }
 }

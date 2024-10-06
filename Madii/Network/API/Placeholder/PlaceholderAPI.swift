@@ -8,7 +8,7 @@
 import Foundation
 
 struct PlaceholderAPI {
-    static var path = APIPaths.placeholders
+    static var path = APIPaths.placeholders.rawValue
     
     static func getMyJoyPlaceholder() -> APIEndpoint<GetPlaceholderResponse> {
         return APIEndpoint(method: .get, path: path)
