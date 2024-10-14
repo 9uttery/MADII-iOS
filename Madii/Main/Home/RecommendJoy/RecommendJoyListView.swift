@@ -15,7 +15,6 @@ struct RecommendJoyListView: View {
     @State var showSaveJoyToAlbumPopUp: Bool = false
     @State var selectedJoyEllipsis: Joy?
     @Binding var isClicked: [Bool]
-    @State var nickname: String
     @Binding var clickedNum: Int
     @Binding var reClicked: Bool
     @State private var xOffset: CGFloat = 0
@@ -178,6 +177,3 @@ struct RecommendJoyListView: View {
     }
 }
 
-#Preview {
-    RecommendJoyListView(recommendJoys: .constant([]), selectedJoy: .constant(nil), isClicked: .constant(Array(repeating: false, count: 9)), nickname: "코코", clickedNum: .constant(0), reClicked: .constant(false), isRecommendJoy: .constant(false))
-}

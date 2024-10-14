@@ -53,6 +53,20 @@ struct ManyAchievedJoyView: View {
             }
         }
             
+            NavigationLink(
+                destination: RecommendView(),
+                isActive: $appStatus.isNaviRecommend
+            ) {
+                EmptyView() // 자동으로 화면 전환을 트리거하는 빈 뷰
+            }
+            
+            NavigationLink(
+                destination: HomePlayJoyListView(),
+                isActive: $appStatus.isNaviPlayJoy
+            ) {
+                EmptyView() // 자동으로 화면 전환을 트리거하는 빈 뷰
+            }
+            
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }

@@ -42,7 +42,6 @@
 		513484422B8F9CC8008FF3F6 /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */; };
 		51380FA82BBD328D000D9BA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */; };
 		51380FAA2BBD3293000D9BA0 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */; };
-		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		513D3B342BDFB1AC0060EB72 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */; };
 		513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
@@ -215,7 +214,6 @@
 		51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51380FA92BBD3292000D9BA0 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		51380FAB2BBD3334000D9BA0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlbumToast.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
@@ -697,7 +695,6 @@
 				51D8D3692B177048001B6793 /* TabView */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
 				51BEBA3B2B7E816B008CF3AD /* SplashView.swift */,
-				5138980F2B4A714F00AFA327 /* TestView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1085,7 +1082,6 @@
 				BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */,
 				5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
-				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
 				512ED9682C9211F80085B64D /* APIPaths.swift in Sources */,
 				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,

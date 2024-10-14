@@ -48,8 +48,6 @@ struct JoyMenuBottomSheet: View {
                                         appStatus.showAddPlaylistToast = false
                                     }
                                 }
-                                
-                                joy = nil
                             } else if isDuplicate {
                                 withAnimation {
                                     appStatus.isDuplicate.toggle()
@@ -65,6 +63,7 @@ struct JoyMenuBottomSheet: View {
                                 print("DEBUG JoyMenuBottomSheet: 오플리에 추가 false")
                             }
                         }
+                        joy = nil
                     } label: {
                         bottomSheetRow("오늘의 플레이리스트에 추가")
                     }

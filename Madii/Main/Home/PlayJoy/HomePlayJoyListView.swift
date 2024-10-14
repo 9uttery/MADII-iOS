@@ -67,7 +67,10 @@ struct HomePlayJoyListView: View {
         }
         .navigationTitle("행복을 재생해요")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear { getAlbums() }
+        .onAppear {
+            getAlbums()
+            appStatus.isNaviPlayJoy = false
+        }
         .navigationBarItems(trailing: addButton)
         .transparentFullScreenCover(isPresented: $showAddAlbumPopUp) {
             AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }

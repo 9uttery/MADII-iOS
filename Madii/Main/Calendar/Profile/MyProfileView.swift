@@ -17,7 +17,7 @@ struct MyProfileView: View {
     @State var nickname: String = ""
     @State private var isNicknameVaild: Bool = true
     private var helperMessage: String {
-        self.isNicknameVaild ? "사용할 수 있는 닉네임이에요." : "대소문자 영문 및 한글, 숫자만 사용 가능해요."
+        self.isNicknameVaild ? "사용할 수 있는 닉네임이에요" : "대소문자 영문 및 한글, 숫자만 사용 가능해요"
     }
     @Binding var name: String
     
