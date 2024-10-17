@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
+    @StateObject var appStatus = AppStatus()
     
     @State private var newJoy: Joy = Joy(title: "")
     @State private var showSaveJoyToast: Bool = false

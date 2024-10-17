@@ -93,7 +93,7 @@ struct TodayPlaylistView: View {
                 
                 Button {
                     showPlaylist = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         appStatus.isNaviRecommend = true
                     }
                 } label: {
@@ -117,7 +117,7 @@ struct TodayPlaylistView: View {
                 
                 Button {
                     showPlaylist = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         appStatus.isNaviPlayJoy = true
                     }
                 } label: {

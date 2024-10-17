@@ -45,6 +45,20 @@ struct MadiiTabView: View {
                     .frame(height: 60)
             }
             .ignoresSafeArea(.keyboard)
+            
+            NavigationLink(
+                destination: RecommendView(),
+                isActive: $appStatus.isNaviRecommend
+            ) {
+                EmptyView() // 자동으로 화면 전환을 트리거하는 빈 뷰
+            }
+            
+            NavigationLink(
+                destination: HomePlayJoyListView(),
+                isActive: $appStatus.isNaviPlayJoy
+            ) {
+                EmptyView() // 자동으로 화면 전환을 트리거하는 빈 뷰
+            }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onChange(of: tabIndex) { newValue in
