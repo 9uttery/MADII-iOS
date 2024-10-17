@@ -115,6 +115,8 @@ struct RecommendView: View {
                     brightDotIndex = (brightDotIndex + 1) % 3
                 }
             }
+        }
+        .onDisappear {
             appStatus.isNaviRecommend = false
         }
         .navigationTitle("\(appStatus.nickname)님의 취향저격 소확행")

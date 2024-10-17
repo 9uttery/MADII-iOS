@@ -69,6 +69,8 @@ struct HomePlayJoyListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             getAlbums()
+        }
+        .onDisappear {
             appStatus.isNaviPlayJoy = false
         }
         .navigationBarItems(trailing: addButton)
