@@ -46,6 +46,7 @@ struct MadiiTabView: View {
             }
             .ignoresSafeArea(.keyboard)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onChange(of: tabIndex) { newValue in
             if newValue == .calendar {
                 showPlaylistBar = false
