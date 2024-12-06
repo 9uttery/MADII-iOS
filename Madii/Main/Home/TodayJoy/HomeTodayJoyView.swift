@@ -56,7 +56,7 @@ struct HomeTodayJoyView: View {
                 }
             }
             .frame(height: 56)
-            .roundBackground("오늘의 소확행")
+            .roundBackground("오늘의 소확행 선물")
             .padding(.top, 14)
             .padding(.bottom, 16)
             
