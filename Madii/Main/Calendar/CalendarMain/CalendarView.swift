@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     @AppStorage("isLoggedIn") var isLoggedIn = false
     @State private var selectedDate = Date()
+    @State private var clickedDate = Date()
     let weekdays = ["일", "월", "화", "수", "목", "금", "토"]
     @State private var showDatePicker: Bool = false
     
@@ -31,7 +32,7 @@ struct CalendarView: View {
                             .padding(.bottom, 12)
                         
                         // 일 (캘린더 일자)
-                        CalendarDays(selectedDate: $selectedDate)
+                        CalendarDays(selectedDate: $selectedDate, clickedDate: $clickedDate)
                             .padding(.horizontal, 10)
                         
                         Spacer()
@@ -40,7 +41,7 @@ struct CalendarView: View {
                     .padding(.bottom, 40)
                     
                     if showDatePicker {
-                        DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
+                        DatePicker("Select a date", selection: $clickedDate, displayedComponents: .date)
                             .datePickerStyle(.wheel)
                             .labelsHidden()
                             .background(Color(red: 0.13, green: 0.13, blue: 0.13))
@@ -53,7 +54,11 @@ struct CalendarView: View {
             .scrollIndicators(.hidden)
         }
         .navigationTitle("")
+        .onChange(of: clickedDate) { date in
+            selectedDate = date
+        }
         .analyticsScreen(name: "캘린더뷰")
+        
     }
     
     var title: some View {
