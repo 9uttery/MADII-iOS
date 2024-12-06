@@ -309,6 +309,10 @@ struct AlbumDetailView: View {
                                 .madiiFont(font: .madiiBody3, color: .white)
                                 .frame(maxWidth: .infinity)
                                 .focused($isTextFieldFocused)
+                                .onSubmit {
+                                    self.joys.append(Joy(joyId: nil, title: addJoyName))
+                                    addJoyName = ""
+                                }
                             
                             if isTextFieldFocused {
                                 Rectangle()
