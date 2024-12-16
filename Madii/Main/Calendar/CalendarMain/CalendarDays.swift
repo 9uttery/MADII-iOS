@@ -63,7 +63,7 @@ struct CalendarDays: View {
             }
         }
         .onAppear { getJoyIcons() }
-        .onChange(of: clickedDate) {
+        .onChange(of: selectedDate) {
             getJoyIcons()
             print($0)
         }
