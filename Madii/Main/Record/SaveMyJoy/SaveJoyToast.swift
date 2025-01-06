@@ -13,19 +13,21 @@ struct SaveJoyToast: View {
     
     var body: some View {
         HStack {
-            Text("기록되었어요")
+            Text("내가 기록한 소확행에 저장되었어요")
                 .madiiFont(font: .madiiBody4, color: .black)
             
             Spacer()
             
-            Button {
-                showSaveJoyToAlbumPopUp = true
-                AnalyticsManager.shared.logEvent(name: "소확행기록하기토스트_앨범저장클릭")
+            NavigationLink {
+                MyJoyView()
             } label: {
-                Text("앨범 저장")
+                Text("바로가기")
                     .madiiFont(font: .madiiBody4, color: .madiiOrange)
                     .padding(.horizontal, 8)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                AnalyticsManager.shared.logEvent(name: "소확행기록하기토스트_앨범저장클릭")
+            })
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 12)

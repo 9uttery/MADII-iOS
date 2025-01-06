@@ -28,6 +28,14 @@
 		511DB50E2B66B24C00D2B01D /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50D2B66B24C00D2B01D /* EmailView.swift */; };
 		511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511DB50F2B66C49100D2B01D /* PasswordView.swift */; };
 		512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AE7F92B769F8200926DE6 /* UsersDTO.swift */; };
+		512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9612C9210FD0085B64D /* APIEndpoint.swift */; };
+		512ED9642C9211580085B64D /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9632C9211580085B64D /* NetworkLogger.swift */; };
+		512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9652C92117A0085B64D /* NetworkConstants.swift */; };
+		512ED9682C9211F80085B64D /* APIPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9672C9211F80085B64D /* APIPaths.swift */; };
+		512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9692C9212110085B64D /* APIHeaderType.swift */; };
+		512ED96C2C9212260085B64D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED96B2C9212260085B64D /* NetworkError.swift */; };
+		512ED96F2C9213C50085B64D /* PlaceholderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */; };
+		512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512ED9702C9213E60085B64D /* PlaceholderDTO.swift */; };
 		5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */; };
 		5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */; };
 		513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */; };
@@ -155,6 +163,7 @@
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
+		BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */; };
 		BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */; };
@@ -188,6 +197,14 @@
 		511DB50D2B66B24C00D2B01D /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		511DB50F2B66C49100D2B01D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		512AE7F92B769F8200926DE6 /* UsersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDTO.swift; sourceTree = "<group>"; };
+		512ED9612C9210FD0085B64D /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		512ED9632C9211580085B64D /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		512ED9652C92117A0085B64D /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		512ED9672C9211F80085B64D /* APIPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPaths.swift; sourceTree = "<group>"; };
+		512ED9692C9212110085B64D /* APIHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeaderType.swift; sourceTree = "<group>"; };
+		512ED96B2C9212260085B64D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderAPI.swift; sourceTree = "<group>"; };
+		512ED9702C9213E60085B64D /* PlaceholderDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderDTO.swift; sourceTree = "<group>"; };
 		5134843B2B8CD6DA008FF3F6 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJoyPopUp.swift; sourceTree = "<group>"; };
 		5134843F2B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyPopUp.swift; sourceTree = "<group>"; };
@@ -304,6 +321,7 @@
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
+		BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumPopUp.swift; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyDuplicateToast.swift; sourceTree = "<group>"; };
 		BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAlbumJoyToast.swift; sourceTree = "<group>"; };
@@ -426,6 +444,37 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		512ED95F2C9210380085B64D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BE459A572B762621002E9AB2 /* API */,
+				512ED9602C9210830085B64D /* Networking */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		512ED9602C9210830085B64D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				512ED9672C9211F80085B64D /* APIPaths.swift */,
+				512ED9692C9212110085B64D /* APIHeaderType.swift */,
+				512ED9612C9210FD0085B64D /* APIEndpoint.swift */,
+				512ED9652C92117A0085B64D /* NetworkConstants.swift */,
+				512ED9632C9211580085B64D /* NetworkLogger.swift */,
+				512ED96B2C9212260085B64D /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		512ED96D2C9213B80085B64D /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				512ED96E2C9213C50085B64D /* PlaceholderAPI.swift */,
+				512ED9702C9213E60085B64D /* PlaceholderDTO.swift */,
+			);
+			path = Placeholder;
+			sourceTree = "<group>";
+		};
 		513D3B322BDFB1A20060EB72 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,7 +544,7 @@
 				51AAB9302BE5EE6A00F930B7 /* PrivacyInfo.xcprivacy */,
 				51380FA92BBD3292000D9BA0 /* Config.xcconfig */,
 				51E0259E2B26F7C500F4F41A /* Service */,
-				BE459A572B762621002E9AB2 /* Api */,
+				512ED95F2C9210380085B64D /* Network */,
 				516455972B1F07080010199B /* Model */,
 				51D8D3602B17613C001B6793 /* Main */,
 				51D690D92B15B94F00F8D705 /* Extension */,
@@ -577,6 +626,7 @@
 				5134843D2B8D07DE008FF3F6 /* AddJoyPopUp.swift */,
 				519B01552B8924C400519B11 /* ChangePublicPopUp.swift */,
 				519B01532B89216B00519B11 /* DeleteAlbumPopUp.swift */,
+				BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */,
 			);
 			path = AlbumSetting;
 			sourceTree = "<group>";
@@ -817,9 +867,10 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		BE459A572B762621002E9AB2 /* Api */ = {
+		BE459A572B762621002E9AB2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				512ED96D2C9213B80085B64D /* Placeholder */,
 				BE459A692B7E28A9002E9AB2 /* Home */,
 				BE459A642B7E24AF002E9AB2 /* Profile */,
 				BE459A5F2B7E088C002E9AB2 /* Album */,
@@ -828,8 +879,7 @@
 				51BEBA3E2B813D8F008CF3AD /* ETC */,
 				BE459A5B2B762621002E9AB2 /* BaseResponse.swift */,
 			);
-			name = Api;
-			path = Service/Api;
+			path = API;
 			sourceTree = "<group>";
 		};
 		BE459A582B762621002E9AB2 /* Record */ = {
@@ -1028,6 +1078,7 @@
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
 				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
+				512ED9682C9211F80085B64D /* APIPaths.swift in Sources */,
 				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
@@ -1043,9 +1094,11 @@
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
+				512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */,
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
 				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
+				512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */,
 				BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */,
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
@@ -1056,6 +1109,7 @@
 				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
 				51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */,
 				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
+				512ED96F2C9213C50085B64D /* PlaceholderAPI.swift in Sources */,
 				519027DF2C184703008414A2 /* ResetPasswordView.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
@@ -1119,6 +1173,7 @@
 				BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */,
 				BE459A5E2B762621002E9AB2 /* BaseResponse.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
+				512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */,
 				BEB11DD32BFDB249008D38D7 /* AnalyticsManager.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
 				BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */,
@@ -1131,12 +1186,15 @@
 				519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */,
 				BE0C3F9A2B81E77200275FD3 /* ConfettiCenterVM.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
+				512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
+				512ED96C2C9212260085B64D /* NetworkError.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
 				511DB50E2B66B24C00D2B01D /* EmailView.swift in Sources */,
 				BE0C3F982B81E77200275FD3 /* ConfettiItem.swift in Sources */,
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
+				BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
@@ -1146,6 +1204,7 @@
 				5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */,
 				BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */,
 				BE459A632B7E08A7002E9AB2 /* AlbumDTO.swift in Sources */,
+				512ED9642C9211580085B64D /* NetworkLogger.swift in Sources */,
 				5134843E2B8D07DE008FF3F6 /* AddJoyPopUp.swift in Sources */,
 				51E0259B2B26EB1E00F4F41A /* ChangeAlbumInfoPopUpView.swift in Sources */,
 				510B7BC02B3BEB5400CB7ADA /* LoginView.swift in Sources */,
@@ -1286,7 +1345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1306,7 +1365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1327,7 +1386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1347,7 +1406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

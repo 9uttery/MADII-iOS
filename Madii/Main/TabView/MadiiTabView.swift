@@ -26,7 +26,7 @@ struct MadiiTabView: View {
                 case .calendar: CalendarView()
                 }
             }
-            .padding(.bottom, isKeyboardVisible ? 0 : 120)
+            .padding(.bottom, showPlaylistBar ? 120 : 60)
             .onReceive(Publishers.keyboardHeight) { keyboardHeight in
                 self.isKeyboardVisible = keyboardHeight > 0
             }
@@ -37,7 +37,9 @@ struct MadiiTabView: View {
                 // 신고 완료 토스트
                 if appStatus.showReportToast { ReportAlbumToast() }
                 
-                PlaylistBar(updatePlaylistBar: $updatePlaylistBar, showPlaylistBar: $showPlaylistBar)
+                if showPlaylistBar {
+                    PlaylistBar(updatePlaylistBar: $updatePlaylistBar, showPlaylistBar: $showPlaylistBar)
+                }
                 
                 MadiiTabBar(tabIndex: $tabIndex)
                     .frame(height: 60)
@@ -67,7 +69,7 @@ extension Publishers {
     }
 }
 
-private extension Notification {
+extension Notification {
     var keyboardHeight: CGFloat {
         return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
     }
