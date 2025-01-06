@@ -18,7 +18,7 @@ struct APIEndpoint<Response: Codable> {
     
     var body: [String: Any]?
     
-    func request(completion: @escaping (Result<Response, NetworkError>) -> Void) {
+    func request(completion: @escaping (Result<Response?, NetworkError>) -> Void) {
         let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path)"
         let headers: HTTPHeaders = headerType.headers
         
@@ -35,8 +35,14 @@ struct APIEndpoint<Response: Codable> {
                         switch response.result {
                         case .success(let response):
                             guard let data = response.data else {
-                                printLog("Decoding한 data가 nil")
-                                return completion(.failure(NetworkError.invalid))
+                                NetworkLogger
+                                    .succeessLog(
+                                        method: method,
+                                        path: "/v\(urlVersion)\(path)",
+                                        state: "decoding한 data가 nil"
+                                    )
+                                completion(.success(nil))
+                                return
                             }
                             
                             // 에러코드 핸들링

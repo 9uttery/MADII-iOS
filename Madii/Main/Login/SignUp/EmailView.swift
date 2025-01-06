@@ -211,8 +211,12 @@ struct EmailView: View {
         codeType = .sending
         
         // 인증번호 이메일 전송
-        UsersAPI.shared.sendVerificationCodeEmail(email: textFieldObserver.searchText) { isSuccess in
-            if isSuccess {
+        let endpoint = AuthAPI().signUp
+            .sendVerificationCodeToEmail(email: textFieldObserver.searchText)
+        
+        endpoint.request { request in
+            switch request {
+            case .success:
                 // 이메일 전송 성공
                 codeType = .sended
                 
@@ -220,8 +224,9 @@ struct EmailView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     withAnimation { showSendedEmailToast = false }
                 }
-            } else {
-                // TODO: 이메일 전송 실패 처리
+            case .failure:
+                // 이메일 전송 실패 처리
+                print("DEBUG \(#function): result false")
             }
         }
     }

@@ -9,11 +9,11 @@ import Alamofire
 import Foundation
 
 struct NetworkLogger {
-    static func succeessLog(method: HTTPMethod, path: String) {
+    static func succeessLog(method: HTTPMethod, path: String, state: String = "성공") {
         print("\n🍀🌼 NETWORK Success START 🌼🍀")
         print("🌼🌼 method: \(method.rawValue)")
         print("🌼🌼 path: \(path)")
-        print("🌼🌼 상태: 성공")
+        print("🌼🌼 상태: \(state)")
         print("🍀🌼 NETWORK Success END 🌼🍀\n")
     }
     

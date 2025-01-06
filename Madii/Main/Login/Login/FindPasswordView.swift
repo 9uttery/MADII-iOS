@@ -149,7 +149,9 @@ extension FindPasswordView {
             if isSuccess {
                 // canUseID == false 면, 아이디 있음 "존재"
                 if canUseID == false {
-                    showVerificationCode = true
+                    withAnimation {
+                        showVerificationCode = true
+                    }
                     codeType = .sending
                     sendCode()
                 } else { // canUseID == true 면, 아이디 없음
@@ -161,9 +163,15 @@ extension FindPasswordView {
     }
     
     private func sendCode() {
-        // 인증번호 이메일 전송
-        UsersAPI.shared.sendVerificationCodeEmail(email: email, forSignUp: false) { isSuccess in
-            if isSuccess {
+        let endpoint = AuthAPI().signUp
+            .sendVerificationCodeToEmail(
+                email: email,
+                forSignUp: false
+            )
+        
+        endpoint.request { request in
+            switch request {
+            case .success:
                 // 이메일 전송 성공
                 codeType = .sended
                 
@@ -171,8 +179,9 @@ extension FindPasswordView {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     withAnimation { showSendedEmailToast = false }
                 }
-            } else {
+            case .failure:
                 // 이메일 전송 실패 처리
+                print("DEBUG \(#function): result false")
             }
         }
     }

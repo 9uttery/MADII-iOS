@@ -53,6 +53,7 @@
 		5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147449C2C723CD4000F22DB /* CurrentVersionView.swift */; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
+		5157B8D42D2BF73800013F61 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D32D2BF73800013F61 /* AuthDTO.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -225,6 +226,7 @@
 		5147449C2C723CD4000F22DB /* CurrentVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVersionView.swift; sourceTree = "<group>"; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
+		5157B8D32D2BF73800013F61 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -518,6 +520,14 @@
 				519027DC2C184609008414A2 /* TextFieldLabelViewModifier.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		5157B8D22D2BF72400013F61 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5157B8D32D2BF73800013F61 /* AuthDTO.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		515EFC822AFCA0D000230647 = {
@@ -874,6 +884,7 @@
 		BE459A572B762621002E9AB2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				5157B8D22D2BF72400013F61 /* Auth */,
 				512ED96D2C9213B80085B64D /* Placeholder */,
 				BE459A692B7E28A9002E9AB2 /* Home */,
 				BE459A642B7E24AF002E9AB2 /* Profile */,
@@ -1099,6 +1110,7 @@
 				519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */,
 				51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
+				5157B8D42D2BF73800013F61 /* AuthDTO.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
 				512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */,

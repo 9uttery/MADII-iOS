@@ -50,8 +50,9 @@ struct SaveMyJoyView: View {
         endpoint.request { result in
             switch result {
             case .success(let data):
+                guard let data else { return }
                 self.placeholder = data.contents
-            case .failure(_):
+            case .failure:
                 print("DEBUG \(#function): result false")
             }
         }

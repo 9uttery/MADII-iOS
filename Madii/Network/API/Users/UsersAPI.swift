@@ -11,6 +11,17 @@ import Foundation
 import KeychainSwift
 import SwiftUI
 
+struct AuthAPI {
+    let signUp = SignUpAPI()
+}
+
+struct SignUpAPI {
+    // 회원가입 - 이메일 인증번호 전송
+    func sendVerificationCodeToEmail(email: String, forSignUp: Bool = true) -> APIEndpoint<GetSendVerificationCodeResponse> {
+        let path = "/mail/\(forSignUp ? "sign-up" : "password-reset")?email=\(email)"
+        return APIEndpoint(method: .get, path: path, headerType: .withoutAuth)
+    }
+    
 class UsersAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
@@ -45,33 +56,6 @@ class UsersAPI {
                 case .failure(let error):
                     print("DEBUG(getIdCheck): error \(error))")
                     completion(false, false)
-                }
-            }
-    }
-    
-    // 회원가입 - 이메일 인증번호 전송
-    func sendVerificationCodeEmail(email: String, forSignUp: Bool = true, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/mail/\(forSignUp ? "sign-up" : "password-reset")?email=\(email)"
-        let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<SendVerificationCodeResponse>.self) { response in
-                switch response.result {
-                case .success(let response):
-                    let statusCode = response.status
-                    if statusCode == 200 {
-                        // status 200으로 -> isSuccess: true
-                        print("DEBUG(sendVerificationCodeEmail): success")
-                        completion(true)
-                    } else {
-                        // status 200 아님 -> isSuccess: false
-                        print("DEBUG(sendVerificationCodeEmail): status \(statusCode))")
-                        completion(false)
-                    }
-                    
-                case .failure(let error):
-                    print("DEBUG(sendVerificationCodeEmail): error \(error))")
-                    completion(false)
                 }
             }
     }
