@@ -51,8 +51,14 @@
 		5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAFA2B76944C00FD407E /* UsersAPI.swift */; };
 		514644BB2B83968C001D6FB8 /* JoyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514644BA2B83968C001D6FB8 /* JoyAPI.swift */; };
 		5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147449C2C723CD4000F22DB /* CurrentVersionView.swift */; };
+		5148F28E2D19264C00B074C5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514CFC372D1854E9009882EF /* WidgetKit.framework */; };
+		5148F28F2D19264C00B074C5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514CFC392D1854E9009882EF /* SwiftUI.framework */; };
+		5148F29A2D19264E00B074C5 /* MadiiWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
+		514D2A592D2BBCFC00604B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514D2A542D2BBCFC00604B9D /* Assets.xcassets */; };
+		514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */; };
+		514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -182,6 +188,30 @@
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5148F2982D19264E00B074C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5148F28C2D19264C00B074C5;
+			remoteInfo = MadiiWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		514CFC4A2D1854EA009882EF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5148F29A2D19264E00B074C5 /* MadiiWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
@@ -223,8 +253,15 @@
 		5141CAFA2B76944C00FD407E /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		514644BA2B83968C001D6FB8 /* JoyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyAPI.swift; sourceTree = "<group>"; };
 		5147449C2C723CD4000F22DB /* CurrentVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVersionView.swift; sourceTree = "<group>"; };
+		5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MadiiWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
+		514CFC372D1854E9009882EF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		514CFC392D1854E9009882EF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		514D2A542D2BBCFC00604B9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		514D2A552D2BBCFC00604B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiWidget.swift; sourceTree = "<group>"; };
+		514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiWidgetBundle.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -338,6 +375,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5148F28A2D19264C00B074C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5148F28F2D19264C00B074C5 /* SwiftUI.framework in Frameworks */,
+				5148F28E2D19264C00B074C5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC882AFCA0D100230647 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,12 +566,24 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		514D2A582D2BBCFC00604B9D /* MadiiWidget */ = {
+			isa = PBXGroup;
+			children = (
+				514D2A542D2BBCFC00604B9D /* Assets.xcassets */,
+				514D2A552D2BBCFC00604B9D /* Info.plist */,
+				514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */,
+				514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */,
+			);
+			path = MadiiWidget;
+			sourceTree = "<group>";
+		};
 		515EFC822AFCA0D000230647 = {
 			isa = PBXGroup;
 			children = (
-				515EFC8D2AFCA0D100230647 /* Madii */,
 				51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */,
 				515EFC9C2AFCA0E500230647 /* .gitignore */,
+				515EFC8D2AFCA0D100230647 /* Madii */,
+				514D2A582D2BBCFC00604B9D /* MadiiWidget */,
 				515EFC8C2AFCA0D100230647 /* Products */,
 				BE9A01B42BF4A40500F52458 /* Frameworks */,
 			);
@@ -535,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				515EFC8B2AFCA0D100230647 /* Madii.app */,
+				5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -927,6 +986,8 @@
 		BE9A01B42BF4A40500F52458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				514CFC372D1854E9009882EF /* WidgetKit.framework */,
+				514CFC392D1854E9009882EF /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -950,6 +1011,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5148F29C2D19264E00B074C5 /* Build configuration list for PBXNativeTarget "MadiiWidgetExtension" */;
+			buildPhases = (
+				5148F2892D19264C00B074C5 /* Sources */,
+				5148F28A2D19264C00B074C5 /* Frameworks */,
+				5148F28B2D19264C00B074C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MadiiWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = MadiiWidgetExtension;
+			productReference = 5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		515EFC8A2AFCA0D100230647 /* Madii */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 515EFC992AFCA0D200230647 /* Build configuration list for PBXNativeTarget "Madii" */;
@@ -958,10 +1038,12 @@
 				515EFC872AFCA0D100230647 /* Sources */,
 				515EFC882AFCA0D100230647 /* Frameworks */,
 				515EFC892AFCA0D100230647 /* Resources */,
+				514CFC4A2D1854EA009882EF /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5148F2992D19264E00B074C5 /* PBXTargetDependency */,
 			);
 			name = Madii;
 			packageProductDependencies = (
@@ -1002,9 +1084,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					5148F28C2D19264C00B074C5 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					515EFC8A2AFCA0D100230647 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -1029,11 +1114,20 @@
 			projectRoot = "";
 			targets = (
 				515EFC8A2AFCA0D100230647 /* Madii */,
+				5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5148F28B2D19264C00B074C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514D2A592D2BBCFC00604B9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC892AFCA0D100230647 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1074,6 +1168,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5148F2892D19264C00B074C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */,
+				514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC872AFCA0D100230647 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1223,7 +1326,73 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5148F2992D19264E00B074C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */;
+			targetProxy = 5148F2982D19264E00B074C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5148F29D2D19264E00B074C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5148F29E2D19264E00B074C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		515EFC972AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
@@ -1430,6 +1599,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5148F29C2D19264E00B074C5 /* Build configuration list for PBXNativeTarget "MadiiWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5148F29D2D19264E00B074C5 /* Debug */,
+				5148F29E2D19264E00B074C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		515EFC862AFCA0D000230647 /* Build configuration list for PBXProject "Madii" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
