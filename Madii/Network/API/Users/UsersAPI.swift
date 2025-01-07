@@ -23,6 +23,12 @@ struct SignUpAPI {
         return APIEndpoint(method: .get, path: path, headerType: .withoutAuth)
     }
     
+    // 회원가입 - 입력한 인증번호 인증
+    func verifyCode(email: String, code: String) -> APIEndpoint<EmptyResponse?> {
+        let path = APIPaths.mail.rawValue + "/verify?email=\(email)&code=\(code)"
+        return APIEndpoint(method: .get, path: path, headerType: .withoutAuth)
+    }
+    
     // 일반 회원가입
     func sighUpWithEmail(info: PostSignUpRequest) -> APIEndpoint<PostSignUpResponse> {
         let path = APIPaths.users.rawValue + "/sign-up"
@@ -76,33 +82,6 @@ class UsersAPI {
                 case .failure(let error):
                     print("DEBUG(getIdCheck): error \(error))")
                     completion(false, false)
-                }
-            }
-    }
-    
-    // 회원가입 - 입력한 인증번호 인증
-    func verifyCode(email: String, code: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
-        let url = "\(baseUrl)/mail/verify?email=\(email)&code=\(code)"
-        let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<String?>.self) { response in
-                switch response.result {
-                case .success(let response):
-                    let statusCode = response.status
-                    if statusCode == 200 {
-                        // status 200으로 -> isSuccess: true
-                        print("DEBUG(verifyCode): success")
-                        completion(true)
-                    } else {
-                        // status 200 아님 -> isSuccess: false
-                        print("DEBUG(verifyCode): status \(statusCode))")
-                        completion(false)
-                    }
-                    
-                case .failure(let error):
-                    print("DEBUG(verifyCode): error \(error))")
-                    completion(false)
                 }
             }
     }
