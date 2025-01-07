@@ -105,14 +105,23 @@ struct PasswordView: View {
     
     private func signUp() {
         // 일반 회원가입
-        UsersAPI.shared.signUpWithId(id: signUpStatus.id, password: password,
-                                     agree: signUpStatus.marketingAgreed) { isSuccess, _ in
-            if isSuccess {
-                print("DEBUG PasswordView: signup isSuccess true")
+        let endpoint = AuthAPI()
+            .signUp
+            .sighUpWithEmail(
+                info: PostSignUpRequest(
+                    email: signUpStatus.id,
+                    password: password,
+                    agree: signUpStatus.marketingAgreed
+                )
+            )
+        
+        endpoint.request { result in
+            switch result {
+            case .success:
                 hasEverLoggedIn = true
                 signUpStatus.count += 1
-            } else {
-                print("DEBUG PasswordView: signup isSuccess false")
+            case .failure(let error):
+                print("DEBUG \(#function): result failure \(error)")
             }
         }
     }

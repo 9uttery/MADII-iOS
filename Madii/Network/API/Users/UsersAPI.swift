@@ -18,10 +18,30 @@ struct AuthAPI {
 struct SignUpAPI {
     // 회원가입 - 이메일 인증번호 전송
     func sendVerificationCodeToEmail(email: String, forSignUp: Bool = true) -> APIEndpoint<GetSendVerificationCodeResponse> {
-        let path = "/mail/\(forSignUp ? "sign-up" : "password-reset")?email=\(email)"
+        let type = forSignUp ? "sign-up" : "password-reset"
+        let path = APIPaths.mail.rawValue + "/\(type)?email=\(email)"
         return APIEndpoint(method: .get, path: path, headerType: .withoutAuth)
     }
     
+    // 일반 회원가입
+    func sighUpWithEmail(info: PostSignUpRequest) -> APIEndpoint<PostSignUpResponse> {
+        let path = APIPaths.users.rawValue + "/sign-up"
+        
+        let encodedPassword = EncodingService().encodingPassword(info.password)
+        let parameters: [String: Any] = [
+            "loginId": info.email,
+            "password": encodedPassword ?? "",
+            "agreesMarketing": info.agree
+        ]
+        
+        return APIEndpoint(
+            method: .post,
+            path: path,
+            headerType: .withoutAuth,
+            body: parameters
+        )
+    }
+}
 class UsersAPI {
     let keychain = KeychainSwift()
     let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1"
@@ -87,58 +107,12 @@ class UsersAPI {
             }
     }
     
-    // 일반 회원가입
-    func signUpWithId(id: String, password: String, agree: Bool, completion: @escaping (_ isSuccess: Bool, _ response: LoginResponse) -> Void) {
-        let url = "\(baseUrl)/users/sign-up"
-        let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        
-        guard let hashedPassword = hashPassword(password: password) else { return }
-        let parameters: [String: Any] = [
-            "loginId": id,
-            "password": hashedPassword,
-            "agreesMarketing": agree
-        ]
-        
-        let dummy = LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false)
-        
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<LoginResponse>.self) { response in
-                switch response.result {
-                case .success(let response):
-                    print("DEBUG(sign-up) success \(response.message)")
-                    self.loginWithId(id: id, password: password) { isSuccess, _, response in
-                        if isSuccess {
-                            print("DEBUG(sign-up) login success")
-                            completion(true, response)
-                        } else {
-                            print("DEBUG(sign-up) login fail")
-                            completion(false, response)
-                        }
-                    }
-                case .failure(let error):
-                    print("DEBUG(sign-up) error: \(error)")
-                    completion(false, dummy)
-                }
-            }
-    }
-
-    func hashPassword(password: String) -> String? {
-        guard let data = password.data(using: .utf8) else {
-            return nil
-        }
-        
-        let hashed = SHA256.hash(data: data)
-        let hashedString = hashed.compactMap { String(format: "%02x", $0) }.joined()
-        
-        return hashedString
-    }
-    
     // 일반 로그인
     func loginWithId(id: String, password: String, completion: @escaping (_ isSuccess: Bool, _ loginError: LoginError?, _ response: LoginResponse) -> Void) {
         let url = "\(baseUrl)/users/login/normal"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
-        guard let hashedPassword = hashPassword(password: password) else { return }
+        guard let hashedPassword = EncodingService().encodingPassword(password) else { return }
         let parameters: [String: Any] = [
             "loginId": id,
             "password": hashedPassword
@@ -359,7 +333,7 @@ class UsersAPI {
             "Content-Type": "application/json"
         ]
         
-        guard let hashedPassword = hashPassword(password: password) else { return }
+        guard let hashedPassword = EncodingService().encodingPassword(password) else { return }
         let parameters: [String: Any] = [
             "email": email,
             "password": hashedPassword

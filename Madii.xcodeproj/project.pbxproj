@@ -54,6 +54,7 @@
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		5157B8D42D2BF73800013F61 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D32D2BF73800013F61 /* AuthDTO.swift */; };
+		5157B8D82D2CC4B000013F61 /* EncodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D72D2CC4B000013F61 /* EncodingService.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -227,6 +228,7 @@
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		5157B8D32D2BF73800013F61 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		5157B8D72D2CC4B000013F61 /* EncodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingService.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				5157B8D32D2BF73800013F61 /* AuthDTO.swift */,
+				5157B8D72D2CC4B000013F61 /* EncodingService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1130,6 +1133,7 @@
 				5134843C2B8CD6DA008FF3F6 /* NavigationUtil.swift in Sources */,
 				512ED96F2C9213C50085B64D /* PlaceholderAPI.swift in Sources */,
 				519027DF2C184703008414A2 /* ResetPasswordView.swift in Sources */,
+				5157B8D82D2CC4B000013F61 /* EncodingService.swift in Sources */,
 				510EF9042B863958000768D7 /* PlaylistBarMoveToTodayBottmSheet.swift in Sources */,
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				519B01562B8924C400519B11 /* ChangePublicPopUp.swift in Sources */,

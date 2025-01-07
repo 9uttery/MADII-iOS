@@ -196,11 +196,14 @@ extension FindPasswordView {
     
     // 인증 번호 확인하기
     private func verifyCode() {
-        UsersAPI.shared.verifyCode(email: email, code: code) { isSuccess in
-            if isSuccess {
+        let endpoint = AuthAPI().signUp.verifyCode(email: email, code: code)
+        
+        endpoint.request { result in
+            switch result {
+            case .success:
                 // 인증번호가 맞으면
                 showResetPasswordView = true
-            } else {
+            case .failure:
                 codeType = .wrong
             }
         }

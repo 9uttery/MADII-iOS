@@ -12,4 +12,6 @@ enum APIPaths: String {
     case albums = "/albums"
     case record = "/record"
     case placeholders = "/placeholders"
+    case users = "/users"
+    case mail = "/mail"
 }

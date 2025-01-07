@@ -117,13 +117,21 @@ struct EmailView: View {
                     signUpStatus.id = textFieldObserver.searchText
                     print("email 저장 \(textFieldObserver.searchText)")
                     
-                    UsersAPI.shared.verifyCode(email: textFieldObserver.searchText, code: code) { isSuccess in
-                        if isSuccess {
+                    // 인증코드 인증 확인
+                    let endpoint = AuthAPI()
+                        .signUp
+                        .verifyCode(email: textFieldObserver.searchText, code: code)
+                    
+                    endpoint.request { result in
+                        switch result {
+                        case .success:
+                            // 인증번호가 맞으면
                             signUpStatus.count += 1
-                        } else {
+                        case .failure:
                             codeType = .wrong
                         }
                     }
+                    
                     AnalyticsManager.shared.logEvent(name: "이메일로로그인뷰_다음클릭")
                 } label: {
                     MadiiButton(title: "다음", size: .big)
