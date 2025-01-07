@@ -26,6 +26,7 @@ struct HomePlayJoyListView: View {
                                 AlbumRow(album: newAlbum)
                             }
                             .simultaneousGesture(TapGesture().onEnded {
+                                AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_앨범클릭")
                                 AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_\(album.name)클릭")
                             })
                         }
