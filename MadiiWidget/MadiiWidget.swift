@@ -33,113 +33,24 @@ struct MadiiWidgetEntryView: View {
     var entry: Provider.Entry
     
     var body: some View {
-        ZStack {
-            ZStack {
-                Image("particle_rectangle")
-                    .resizable()
-                    .frame(width: 14, height: 14)
-                    .position(x: 14, y: 14)
-                    .colorMultiply(Color(red: 0.61, green: 0.42, blue: 1))
-                
-                Circle()
-                    .frame(width: 6, height: 6)
-                    .position(x: 32, y: 10)
-                    .foregroundStyle(Color(red: 0.81, green: 0.98, blue: 0.32))
-                
-//                Image("particle_rectangle")
-//                    .resizable()
-//                    .frame(width: 14, height: 14)
-//                    .rotationEffect(Angle(degrees: 100))
-//                    .position(x: 110, y: 14)
-//                    .colorMultiply(Color(red: 0.81, green: 0.98, blue: 0.32))
-//                
-//                Circle()
-//                    .frame(width: 6, height: 6)
-//                    .position(x: 96, y: 14)
-//                    .foregroundStyle(Color(red: 1, green: 0.49, blue: 0.31))
-//                
-//                Circle()
-//                    .frame(width: 6, height: 6)
-//                    .position(x: 120, y: 30)
-//                    .foregroundStyle(Color(red: 0.61, green: 0.42, blue: 1))
-                
-//                Image("particle_rectangle")
-//                    .resizable()
-//                    .frame(width: 14, height: 14)
-//                    .rotationEffect(Angle(degrees: 180))
-//                    .position(x: 14, y: 100)
-//                    .colorMultiply(Color(red: 1, green: 0.49, blue: 0.31))
-//                    .blur(radius: 1)
-//                
-//                Image("particle_rectangle")
-//                    .resizable()
-//                    .frame(width: 8, height: 20)
-//                    .rotationEffect(Angle(degrees: 270))
-//                    .position(x: 100, y: 110)
-//                    .colorMultiply(Color(red: 0.49, green: 0.59, blue: 0.97))
-//                    .blur(radius: 1)
-            }
-            
-            VStack(spacing: 6) {
-                VStack(spacing: 0) {
-//                    Text("MADII가 알려주는")
-//                        .font(.caption)
-////                        .fontWeight(.semibold)
-//                        .foregroundStyle(Color.white)
-                    
-                    Text("🍀 오늘의 소확행 🍀")
-                        .font(.caption)
-                        .fontWeight(.heavy).bold()
-                        .foregroundStyle(Color.white)
-                }
-                
-                Text(entry.todayJoy)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .bold()
-                    .foregroundStyle(Color.white)
-            }
-            .padding(4)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack(alignment: .leading, spacing: 4) {
+            Text("오늘의 소확행 선물")
+                .foregroundColor(Color(red: 0.81, green: 0.98, blue: 0.32))
+
+            Text("작은 새해 목표 세우기 위젯은 29자까지 가능할 듯함")
         }
+        .frame(maxWidth: .infinity)
         .background {
             LinearGradient(
-            stops: [
-            Gradient.Stop(color: Color(red: 0.49, green: 0.59, blue: 0.97), location: 0.00),
-            Gradient.Stop(color: Color(red: 0.61, green: 0.42, blue: 1), location: 1.00),
-            ],
-            startPoint: UnitPoint(x: 0.5, y: 0),
-            endPoint: UnitPoint(x: 0.5, y: 1)
+                stops: [
+                    Gradient.Stop(color: Color(red: 0.06, green: 0.07, blue: 0.11), location: 0.12),
+                    Gradient.Stop(color: Color(red: 0.25, green: 0.27, blue: 0.52), location: 0.62),
+                    Gradient.Stop(color: Color(red: 0.42, green: 0.44, blue: 0.68), location: 1.00)
+                ],
+                startPoint: UnitPoint(x: 0.5, y: 0),
+                endPoint: UnitPoint(x: 0.5, y: 1.27)
             )
         }
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-}
-
-struct CurvedShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        // 시작점 (왼쪽 상단 -> 왼쪽 하단)
-        path.move(to: CGPoint(x: 0, y: rect.height))
-        
-        // 곡선 그리기 (좌->우)
-        path.addQuadCurve(
-            to: CGPoint(x: rect.width, y: rect.height), // 끝점 (오른쪽 하단)
-            control: CGPoint(x: rect.width / 2, y: rect.height * 0.5) // 곡선 제어점
-        )
-        
-        // 하단 선 연결 (우->좌)
-        path.addLine(to: CGPoint(x: rect.width, y: 0))
-        
-        // 곡선 그리기 (좌->우)
-        path.addQuadCurve(
-            to: CGPoint(x: 0, y: 0), // 끝점 (오른쪽 하단)
-            control: CGPoint(x: rect.width / 2, y: -rect.height * 0.5) // 곡선 제어점
-        )
-        
-        path.closeSubpath()
-        return path
     }
 }
 
@@ -156,9 +67,10 @@ struct MadiiWidget: Widget {
                     .background(Color.black)
             }
         }
-        .configurationDisplayName("오늘의 소확행 🍀")
+        .configurationDisplayName("오늘의 소확행 선물 🍀")
         .description("오늘의 소확행을 확인할 수 있어요")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .contentMarginsDisabled()
+        .supportedFamilies([.systemSmall])
     }
 }
 
@@ -170,18 +82,6 @@ struct MyWidgetPreviews: PreviewProvider {
             MadiiWidgetEntryView(entry: TodayJoyEntry())
                 .containerBackground(.black, for: .widget)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-        }
-        
-        if #available(iOS 17.0, *) {
-            MadiiWidgetEntryView(entry: TodayJoyEntry())
-                .containerBackground(.black, for: .widget)
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-        }
-        
-        if #available(iOS 17.0, *) {
-            MadiiWidgetEntryView(entry: TodayJoyEntry())
-                .containerBackground(.black, for: .widget)
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
 }
