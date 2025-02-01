@@ -29,17 +29,28 @@ struct TodayJoyEntry: TimelineEntry {
     let todayJoy: String = "넷플릭스 보면서 귤까먹기"
 }
 
+import MadiiDesignSystem
+
 struct MadiiWidgetEntryView: View {
     var entry: Provider.Entry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("오늘의 소확행 선물")
-                .foregroundColor(Color(red: 0.81, green: 0.98, blue: 0.32))
-
-            Text("작은 새해 목표 세우기 위젯은 29자까지 가능할 듯함")
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("오늘의 소확행 선물")
+                    .madiiFont(font: .madiiBody5, color: .green)
+                    .foregroundColor(Color(red: 0.81, green: 0.98, blue: 0.32))
+                
+                Text("작은 새해 목표 세우기 위젯은 29자까지 가능할 듯함인데")
+                    .madiiFont(font: .madiiBody1, color: .white)
+            }
+            
+            Spacer(minLength: 0)
+            
+            Image("widget_logo")
         }
         .frame(maxWidth: .infinity)
+        .padding(16)
         .background {
             LinearGradient(
                 stops: [
