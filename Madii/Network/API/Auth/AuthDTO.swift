@@ -24,3 +24,9 @@ struct PostSignUpResponse: Codable {
     let accessToken, refreshToken: String
     let agreedMarketing, hasProfile: Bool
 }
+
+// 응답 - 로그인
+struct PostLoginResponse: Codable {
+    let accessToken, refreshToken: String
+    let agreedMarketing, hasProfile: Bool
+}

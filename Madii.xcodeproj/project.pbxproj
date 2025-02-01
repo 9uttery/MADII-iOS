@@ -55,6 +55,8 @@
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
 		5157B8D42D2BF73800013F61 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D32D2BF73800013F61 /* AuthDTO.swift */; };
 		5157B8D82D2CC4B000013F61 /* EncodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D72D2CC4B000013F61 /* EncodingService.swift */; };
+		5157B8DA2D2CC8C900013F61 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8D92D2CC8C900013F61 /* AuthAPI.swift */; };
+		5157B8DC2D2CC8DC00013F61 /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157B8DB2D2CC8DC00013F61 /* SignUpAPI.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -229,6 +231,8 @@
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
 		5157B8D32D2BF73800013F61 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		5157B8D72D2CC4B000013F61 /* EncodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingService.swift; sourceTree = "<group>"; };
+		5157B8D92D2CC8C900013F61 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		5157B8DB2D2CC8DC00013F61 /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -527,6 +531,8 @@
 		5157B8D22D2BF72400013F61 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				5157B8D92D2CC8C900013F61 /* AuthAPI.swift */,
+				5157B8DB2D2CC8DC00013F61 /* SignUpAPI.swift */,
 				5157B8D32D2BF73800013F61 /* AuthDTO.swift */,
 				5157B8D72D2CC4B000013F61 /* EncodingService.swift */,
 			);
@@ -1118,6 +1124,7 @@
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
 				512ED9712C9213E60085B64D /* PlaceholderDTO.swift in Sources */,
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
+				5157B8DC2D2CC8DC00013F61 /* SignUpAPI.swift in Sources */,
 				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
 				512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */,
@@ -1160,6 +1167,7 @@
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */,
 				BE459A5D2B762621002E9AB2 /* RecordAPI.swift in Sources */,
+				5157B8DA2D2CC8C900013F61 /* AuthAPI.swift in Sources */,
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */,
