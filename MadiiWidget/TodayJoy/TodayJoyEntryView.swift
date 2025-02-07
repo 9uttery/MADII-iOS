@@ -1,6 +1,6 @@
 //
 //  TodayJoyEntryView.swift
-//  MadiiDesignSystem
+//  MadiiWidget
 //
 //  Created by Anjin on 2/1/25.
 //
