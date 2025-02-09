@@ -19,7 +19,7 @@ struct TodayJoyEntry: TimelineEntry {
     
     init() {
         self.date = .now
-        self.todayJoy = "넷플릭스 보면서 귤 까먹기"
+        self.todayJoy = "마디와 함께 소확행 즐기기"
     }
 }
 
@@ -49,7 +49,7 @@ struct TodayJoyProvider: TimelineProvider {
                 todayJoyText = response.contents
             case .failure(let error):
                 print("네트워크 요청 실패: \(error)")
-                todayJoyText = "데이터를 가져오지 못했습니다."
+                todayJoyText = "마디와 함께 행복한 하루 보내기"
             }
             
             let entry = TodayJoyEntry(date: currentDate, todayJoy: todayJoyText)
