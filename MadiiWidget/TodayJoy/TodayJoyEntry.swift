@@ -64,10 +64,10 @@ struct TodayJoyProvider: TimelineProvider {
         let seoulTimeZone = TimeZone(identifier: "Asia/Seoul")!
         let now = Date()
         
-        // 현재 날짜를 서울 시간 기준으로 변환한 후, 시, 분, 초를 아침 10시로 설정
+        // 현재 날짜를 서울 시간 기준으로 변환한 후, 시, 분, 초를 0시 1분 0초로 설정
         var comps = calendar.dateComponents(in: seoulTimeZone, from: now)
-        comps.hour = 10
-        comps.minute = 0
+        comps.hour = 0
+        comps.minute = 1
         comps.second = 0
         
         guard let today10AM = calendar.date(from: comps) else {
