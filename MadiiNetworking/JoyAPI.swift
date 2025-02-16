@@ -18,7 +18,7 @@ public struct JoyAPI {
             return .failure(error)
         }
         
-        let dummy1 = GetTodayJoyResponseDTO(joyId: 0, joyIconNum: 0, contents: "dummy")
+        let dummy1 = GetTodayJoyResponseDTO(joyId: 0, joyIconNum: 0, contents: "오늘 하루 감사 일기 쓰기")
         
         do {
             // URLSession의 async API를 사용하여 데이터를 가져옵니다.
@@ -28,7 +28,7 @@ public struct JoyAPI {
             return .success(responseObject.data ?? dummy1)
             
         } catch {
-            let dummy = GetTodayJoyResponseDTO(joyId: 0, joyIconNum: 0, contents: "\(error)")
+            let dummy = GetTodayJoyResponseDTO(joyId: 0, joyIconNum: 0, contents: "일기 쓰면서 하루를 마무리하기")
             print("이거링 \(error)")
             return .success(dummy)
         }

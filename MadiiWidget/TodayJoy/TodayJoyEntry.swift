@@ -19,7 +19,7 @@ struct TodayJoyEntry: TimelineEntry {
     
     init() {
         self.date = .now
-        self.todayJoy = "넷플릭스 보면서 귤 까먹기"
+        self.todayJoy = "마디와 함께 소확행 즐기기"
     }
 }
 
@@ -49,7 +49,7 @@ struct TodayJoyProvider: TimelineProvider {
                 todayJoyText = response.contents
             case .failure(let error):
                 print("네트워크 요청 실패: \(error)")
-                todayJoyText = "데이터를 가져오지 못했습니다."
+                todayJoyText = "마디와 함께 행복한 하루 보내기"
             }
             
             let entry = TodayJoyEntry(date: currentDate, todayJoy: todayJoyText)
@@ -64,10 +64,10 @@ struct TodayJoyProvider: TimelineProvider {
         let seoulTimeZone = TimeZone(identifier: "Asia/Seoul")!
         let now = Date()
         
-        // 현재 날짜를 서울 시간 기준으로 변환한 후, 시, 분, 초를 아침 10시로 설정
+        // 현재 날짜를 서울 시간 기준으로 변환한 후, 시, 분, 초를 0시 1분 0초로 설정
         var comps = calendar.dateComponents(in: seoulTimeZone, from: now)
-        comps.hour = 10
-        comps.minute = 0
+        comps.hour = 0
+        comps.minute = 1
         comps.second = 0
         
         guard let today10AM = calendar.date(from: comps) else {
