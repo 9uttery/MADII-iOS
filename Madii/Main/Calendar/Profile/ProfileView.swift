@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State var name: String = ""
+    @EnvironmentObject var appStatus: AppStatus
     @State var url: String = ""
     @State var showLogOutPopUp: Bool = false
     
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 18) {
-                NavigationLink { MyProfileView(url: $url, nickname: name, name: $name) } label: { userInfoRow }
+                NavigationLink { MyProfileView(url: $url, nickname: appStatus.nickname, name: $appStatus.nickname) } label: { userInfoRow }
                     .background(Color.madiiBox)
                     .cornerRadius(20)
                     .simultaneousGesture(TapGesture().onEnded {
@@ -95,7 +95,7 @@ struct ProfileView: View {
                     .frame(width: 40, height: 40)
             }
 
-            Text(name)
+            Text(appStatus.nickname)
                 .madiiFont(font: .madiiSubTitle, color: .white)
             Spacer()
             Image(systemName: "chevron.right")
@@ -123,7 +123,7 @@ struct ProfileView: View {
     private func getUser() {
         ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
             if isSuccess {
-                name = userProfile.nickname
+                appStatus.nickname = userProfile.nickname
                 url = userProfile.image
             } else {
                 print("DEBUG ProfileView isSuccess false")

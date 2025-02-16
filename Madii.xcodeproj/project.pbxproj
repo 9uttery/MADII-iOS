@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51004BE72D4E092D0073742B /* JoyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51004BE62D4E092D0073742B /* JoyAPI.swift */; };
+		51004BEF2D4E099E0073742B /* MadiiNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */; };
+		51004BF42D4E09FA0073742B /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 51004BF32D4E09FA0073742B /* KeychainSwift */; };
+		51004BF72D4E0A340073742B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 51004BF62D4E0A340073742B /* Alamofire */; };
+		51004BFA2D4E0B030073742B /* TodayJoyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51004BF82D4E0B030073742B /* TodayJoyEntry.swift */; };
+		51004BFC2D4E0BBC0073742B /* TodayJoyEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51004BFB2D4E0BBC0073742B /* TodayJoyEntryView.swift */; };
+		51004BFD2D4E0F910073742B /* JoyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51004BE62D4E092D0073742B /* JoyAPI.swift */; };
+		51004BFF2D4E13550073742B /* NetworkingConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51004BFE2D4E13550073742B /* NetworkingConfig.xcconfig */; };
 		510718A52B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */; };
 		510718A72B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */; };
 		510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510743F02B6CD62A00787F54 /* AddProfileView.swift */; };
@@ -42,7 +50,6 @@
 		513484422B8F9CC8008FF3F6 /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513484412B8F9CC7008FF3F6 /* NotificationAPI.swift */; };
 		51380FA82BBD328D000D9BA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */; };
 		51380FAA2BBD3293000D9BA0 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */; };
-		513898102B4A714F00AFA327 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138980F2B4A714F00AFA327 /* TestView.swift */; };
 		513D3B342BDFB1AC0060EB72 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */; };
 		513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */; };
 		5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */; };
@@ -52,8 +59,14 @@
 		5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141CAFA2B76944C00FD407E /* UsersAPI.swift */; };
 		514644BB2B83968C001D6FB8 /* JoyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514644BA2B83968C001D6FB8 /* JoyAPI.swift */; };
 		5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147449C2C723CD4000F22DB /* CurrentVersionView.swift */; };
+		5148F28E2D19264C00B074C5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514CFC372D1854E9009882EF /* WidgetKit.framework */; };
+		5148F28F2D19264C00B074C5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514CFC392D1854E9009882EF /* SwiftUI.framework */; };
+		5148F29A2D19264E00B074C5 /* MadiiWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */; };
 		514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */; };
+		514D2A592D2BBCFC00604B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514D2A542D2BBCFC00604B9D /* Assets.xcassets */; };
+		514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */; };
+		514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */; };
 		515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515EFC8E2AFCA0D100230647 /* MadiiApp.swift */; };
 		515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC922AFCA0D200230647 /* Assets.xcassets */; };
 		515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515EFC952AFCA0D200230647 /* Preview Assets.xcassets */; };
@@ -66,6 +79,9 @@
 		516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455BE2B21B72E0010199B /* DailyJoyView.swift */; };
 		516455C12B22FB540010199B /* MadiiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C02B22FB540010199B /* MadiiSlider.swift */; };
 		516455C32B22FFEA0010199B /* Joy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516455C22B22FFEA0010199B /* Joy.swift */; };
+		517C196E2CB2CF4300148504 /* AlbumsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517C196D2CB2CF4300148504 /* AlbumsAPI.swift */; };
+		517C19702CB2CF5F00148504 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517C196F2CB2CF5F00148504 /* EmptyResponse.swift */; };
+		517C19722CB2CF9D00148504 /* AlbumsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517C19712CB2CF9D00148504 /* AlbumsDTO.swift */; };
 		51811E882B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E872B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift */; };
 		51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */; };
 		51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */; };
@@ -118,6 +134,22 @@
 		51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025A32B27291900F4F41A /* SaveJoyToast.swift */; };
 		51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E025B02B28988C00F4F41A /* OnboardingView.swift */; };
 		51E29E612B552FBA00A35EBF /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */; };
+		51E861F82D4DE25B0033F0AB /* MadiiDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */; };
+		51E861F92D4DE25B0033F0AB /* MadiiDesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51E862092D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 51E862082D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf */; };
+		51E8620B2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 51E8620A2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf */; };
+		51E8620C2D4DE7BD0033F0AB /* MadiiDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */; };
+		51E862132D4DE94B0033F0AB /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
+		51E862152D4DE9840033F0AB /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
+		51E862182D4DEC830033F0AB /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
+		51E8622D2D4E04A60033F0AB /* MadiiNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */; };
+		51E8622E2D4E04A60033F0AB /* MadiiNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51ECD7912D56380700664663 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7902D56380700664663 /* BaseResponse.swift */; };
+		51ECD7922D56380700664663 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7902D56380700664663 /* BaseResponse.swift */; };
+		51ECD7942D56381F00664663 /* GetTodayJoyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7932D56381F00664663 /* GetTodayJoyResponseDTO.swift */; };
+		51ECD7952D56381F00664663 /* GetTodayJoyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7932D56381F00664663 /* GetTodayJoyResponseDTO.swift */; };
+		51ECD7972D56383400664663 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7962D56383400664663 /* NetworkConfig.swift */; };
+		51ECD7982D56383400664663 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7962D56383400664663 /* NetworkConfig.swift */; };
 		51F25E062B19AE7E00F6CCFE /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E052B19AE7E00F6CCFE /* PopUp.swift */; };
 		51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */; };
 		51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */; };
@@ -180,7 +212,75 @@
 		BEFC6BD72B381C4D00C78A37 /* NewAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		51004BF12D4E099E0073742B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E862262D4E04A60033F0AB;
+			remoteInfo = MadiiNetworking;
+		};
+		5148F2982D19264E00B074C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5148F28C2D19264C00B074C5;
+			remoteInfo = MadiiWidgetExtension;
+		};
+		51E861F62D4DE25B0033F0AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E861E22D4DE25A0033F0AB;
+			remoteInfo = MadiiDesignSystem;
+		};
+		51E8620E2D4DE7BD0033F0AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E861E22D4DE25A0033F0AB;
+			remoteInfo = MadiiDesignSystem;
+		};
+		51E8622B2D4E04A60033F0AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 515EFC832AFCA0D000230647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E862262D4E04A60033F0AB;
+			remoteInfo = MadiiNetworking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		514CFC4A2D1854EA009882EF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5148F29A2D19264E00B074C5 /* MadiiWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E861FA2D4DE25B0033F0AB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				51E861F92D4DE25B0033F0AB /* MadiiDesignSystem.framework in Embed Frameworks */,
+				51E8622E2D4E04A60033F0AB /* MadiiNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		51004BE62D4E092D0073742B /* JoyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyAPI.swift; sourceTree = "<group>"; };
+		51004BF82D4E0B030073742B /* TodayJoyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoyEntry.swift; sourceTree = "<group>"; };
+		51004BFB2D4E0BBC0073742B /* TodayJoyEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoyEntryView.swift; sourceTree = "<group>"; };
+		51004BFE2D4E13550073742B /* NetworkingConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = NetworkingConfig.xcconfig; sourceTree = "<group>"; };
 		510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		510743F02B6CD62A00787F54 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
@@ -212,7 +312,6 @@
 		51380FA72BBD328D000D9BA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51380FA92BBD3292000D9BA0 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		51380FAB2BBD3334000D9BA0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5138980F2B4A714F00AFA327 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		513D3B332BDFB1AC0060EB72 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		513DC1282B9604CE009D4D31 /* ReportAlbumToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlbumToast.swift; sourceTree = "<group>"; };
 		5141CACD2B7120C700FD407E /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
@@ -222,8 +321,15 @@
 		5141CAFA2B76944C00FD407E /* UsersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		514644BA2B83968C001D6FB8 /* JoyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyAPI.swift; sourceTree = "<group>"; };
 		5147449C2C723CD4000F22DB /* CurrentVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVersionView.swift; sourceTree = "<group>"; };
+		5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MadiiWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		514C36AE2B510CD8001A55D1 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
 		514C36B02B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelperMessageViewModifier.swift; sourceTree = "<group>"; };
+		514CFC372D1854E9009882EF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		514CFC392D1854E9009882EF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		514D2A542D2BBCFC00604B9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		514D2A552D2BBCFC00604B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiWidget.swift; sourceTree = "<group>"; };
+		514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiWidgetBundle.swift; sourceTree = "<group>"; };
 		515EFC8B2AFCA0D100230647 /* Madii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Madii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515EFC8E2AFCA0D100230647 /* MadiiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiApp.swift; sourceTree = "<group>"; };
 		515EFC922AFCA0D200230647 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +343,9 @@
 		516455BE2B21B72E0010199B /* DailyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJoyView.swift; sourceTree = "<group>"; };
 		516455C02B22FB540010199B /* MadiiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiSlider.swift; sourceTree = "<group>"; };
 		516455C22B22FFEA0010199B /* Joy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joy.swift; sourceTree = "<group>"; };
+		517C196D2CB2CF4300148504 /* AlbumsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsAPI.swift; sourceTree = "<group>"; };
+		517C196F2CB2CF5F00148504 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
+		517C19712CB2CF9D00148504 /* AlbumsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsDTO.swift; sourceTree = "<group>"; };
 		51811E872B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailOtherAlbumsView.swift; sourceTree = "<group>"; };
 		51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailCoverView.swift; sourceTree = "<group>"; };
 		51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailBookmarkButton.swift; sourceTree = "<group>"; };
@@ -277,6 +386,17 @@
 		51E025B02B28988C00F4F41A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		51E29E5F2B552E6C00A35EBF /* Madii.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Madii.entitlements; sourceTree = "<group>"; };
 		51E29E602B552FBA00A35EBF /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
+		51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MadiiDesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E862082D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		51E8620A2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
+		51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+MadiiFont.swift"; sourceTree = "<group>"; };
+		51E862142D4DE9840033F0AB /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
+		51E862172D4DEC830033F0AB /* Color+madiiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+madiiColor.swift"; sourceTree = "<group>"; };
+		51E862272D4E04A60033F0AB /* MadiiNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MadiiNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E862402D4E052A0033F0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51ECD7902D56380700664663 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		51ECD7932D56381F00664663 /* GetTodayJoyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayJoyResponseDTO.swift; sourceTree = "<group>"; };
+		51ECD7962D56383400664663 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		51F25E052B19AE7E00F6CCFE /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		51F25E072B19B37B00F6CCFE /* PopUpWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWithDescription.swift; sourceTree = "<group>"; };
 		51F25E0A2B19B3E900F6CCFE /* MadiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiButton.swift; sourceTree = "<group>"; };
@@ -334,6 +454,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5148F28A2D19264C00B074C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5148F28F2D19264C00B074C5 /* SwiftUI.framework in Frameworks */,
+				51004BEF2D4E099E0073742B /* MadiiNetworking.framework in Frameworks */,
+				5148F28E2D19264C00B074C5 /* WidgetKit.framework in Frameworks */,
+				51E8620C2D4DE7BD0033F0AB /* MadiiDesignSystem.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC882AFCA0D100230647 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +481,7 @@
 				519DF2E62B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				510B7BCB2B3BED7B00CB7ADA /* KakaoSDKCommon in Frameworks */,
 				BE9A01AE2BF49F0800F52458 /* FirebaseAnalyticsSwift in Frameworks */,
+				51E861F82D4DE25B0033F0AB /* MadiiDesignSystem.framework in Frameworks */,
 				510B7BC52B3BED7B00CB7ADA /* KakaoSDKAuth in Frameworks */,
 				510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */,
 				519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */,
@@ -360,9 +492,26 @@
 				510B7BD52B3BED7B00CB7ADA /* KakaoSDKTalk in Frameworks */,
 				519DF2E82B8936230017023E /* FirebaseAppCheck in Frameworks */,
 				51B6B77B2B89A89F00A31FEE /* FirebaseAnalyticsSwift in Frameworks */,
+				51E8622D2D4E04A60033F0AB /* MadiiNetworking.framework in Frameworks */,
 				51B6B79D2B89A89F00A31FEE /* FirebaseInstallations in Frameworks */,
 				51B6B7772B89A89E00A31FEE /* FirebaseAnalytics in Frameworks */,
 				51B6B7A12B89A89F00A31FEE /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E861E02D4DE25A0033F0AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E862242D4E04A60033F0AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51004BF42D4E09FA0073742B /* KeychainSwift in Frameworks */,
+				51004BF72D4E0A340073742B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +611,7 @@
 				512ED9652C92117A0085B64D /* NetworkConstants.swift */,
 				512ED9632C9211580085B64D /* NetworkLogger.swift */,
 				512ED96B2C9212260085B64D /* NetworkError.swift */,
+				517C196F2CB2CF5F00148504 /* EmptyResponse.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -515,12 +665,25 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		514D2A582D2BBCFC00604B9D /* MadiiWidget */ = {
+			isa = PBXGroup;
+			children = (
+				51E8621A2D4DFA870033F0AB /* Widget */,
+				51E8621B2D4DFA970033F0AB /* TodayJoy */,
+				51E862192D4DF71C0033F0AB /* Resources */,
+			);
+			path = MadiiWidget;
+			sourceTree = "<group>";
+		};
 		515EFC822AFCA0D000230647 = {
 			isa = PBXGroup;
 			children = (
-				515EFC8D2AFCA0D100230647 /* Madii */,
 				51D6C7C12AFCA38500A69B0C /* .swiftlint.yml */,
 				515EFC9C2AFCA0E500230647 /* .gitignore */,
+				515EFC8D2AFCA0D100230647 /* Madii */,
+				514D2A582D2BBCFC00604B9D /* MadiiWidget */,
+				51E862042D4DE2710033F0AB /* MadiiDesignSystem */,
+				51E862342D4E04AE0033F0AB /* MadiiNetworking */,
 				515EFC8C2AFCA0D100230647 /* Products */,
 				BE9A01B42BF4A40500F52458 /* Frameworks */,
 			);
@@ -530,6 +693,9 @@
 			isa = PBXGroup;
 			children = (
 				515EFC8B2AFCA0D100230647 /* Madii.app */,
+				5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */,
+				51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */,
+				51E862272D4E04A60033F0AB /* MadiiNetworking.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -690,7 +856,6 @@
 				51D8D3692B177048001B6793 /* TabView */,
 				515EFC8E2AFCA0D100230647 /* MadiiApp.swift */,
 				51BEBA3B2B7E816B008CF3AD /* SplashView.swift */,
-				5138980F2B4A714F00AFA327 /* TestView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -782,6 +947,90 @@
 				51E025B02B28988C00F4F41A /* OnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		51E862042D4DE2710033F0AB /* MadiiDesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				51E862162D4DEC380033F0AB /* Color */,
+				51E862112D4DE93B0033F0AB /* Font */,
+			);
+			path = MadiiDesignSystem;
+			sourceTree = "<group>";
+		};
+		51E862072D4DE7400033F0AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				51E862082D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf */,
+				51E8620A2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		51E862112D4DE93B0033F0AB /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */,
+				51E862142D4DE9840033F0AB /* View+madiiFont.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		51E862162D4DEC380033F0AB /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				51E862172D4DEC830033F0AB /* Color+madiiColor.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		51E862192D4DF71C0033F0AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				514D2A552D2BBCFC00604B9D /* Info.plist */,
+				514D2A542D2BBCFC00604B9D /* Assets.xcassets */,
+				51E862072D4DE7400033F0AB /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		51E8621A2D4DFA870033F0AB /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				514D2A562D2BBCFC00604B9D /* MadiiWidget.swift */,
+				514D2A572D2BBCFC00604B9D /* MadiiWidgetBundle.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		51E8621B2D4DFA970033F0AB /* TodayJoy */ = {
+			isa = PBXGroup;
+			children = (
+				51004BF82D4E0B030073742B /* TodayJoyEntry.swift */,
+				51004BFB2D4E0BBC0073742B /* TodayJoyEntryView.swift */,
+			);
+			path = TodayJoy;
+			sourceTree = "<group>";
+		};
+		51E862342D4E04AE0033F0AB /* MadiiNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				51E862402D4E052A0033F0AB /* Info.plist */,
+				51004BFE2D4E13550073742B /* NetworkingConfig.xcconfig */,
+				51ECD7992D56384D00664663 /* Networking */,
+				51ECD7932D56381F00664663 /* GetTodayJoyResponseDTO.swift */,
+				51004BE62D4E092D0073742B /* JoyAPI.swift */,
+			);
+			path = MadiiNetworking;
+			sourceTree = "<group>";
+		};
+		51ECD7992D56384D00664663 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				51ECD7902D56380700664663 /* BaseResponse.swift */,
+				51ECD7962D56383400664663 /* NetworkConfig.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		51F25E042B19AE7100F6CCFE /* PopUp */ = {
@@ -896,6 +1145,8 @@
 			children = (
 				BE459A602B7E089E002E9AB2 /* AlbumAPI.swift */,
 				BE459A622B7E08A7002E9AB2 /* AlbumDTO.swift */,
+				517C196D2CB2CF4300148504 /* AlbumsAPI.swift */,
+				517C19712CB2CF9D00148504 /* AlbumsDTO.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -921,6 +1172,8 @@
 		BE9A01B42BF4A40500F52458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				514CFC372D1854E9009882EF /* WidgetKit.framework */,
+				514CFC392D1854E9009882EF /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -943,7 +1196,45 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		51E861DE2D4DE25A0033F0AB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E862222D4E04A60033F0AB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5148F29C2D19264E00B074C5 /* Build configuration list for PBXNativeTarget "MadiiWidgetExtension" */;
+			buildPhases = (
+				5148F2892D19264C00B074C5 /* Sources */,
+				5148F28A2D19264C00B074C5 /* Frameworks */,
+				5148F28B2D19264C00B074C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				51E8620F2D4DE7BD0033F0AB /* PBXTargetDependency */,
+				51004BF22D4E099E0073742B /* PBXTargetDependency */,
+			);
+			name = MadiiWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = MadiiWidgetExtension;
+			productReference = 5148F28D2D19264C00B074C5 /* MadiiWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		515EFC8A2AFCA0D100230647 /* Madii */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 515EFC992AFCA0D200230647 /* Build configuration list for PBXNativeTarget "Madii" */;
@@ -952,10 +1243,15 @@
 				515EFC872AFCA0D100230647 /* Sources */,
 				515EFC882AFCA0D100230647 /* Frameworks */,
 				515EFC892AFCA0D100230647 /* Resources */,
+				514CFC4A2D1854EA009882EF /* Embed Foundation Extensions */,
+				51E861FA2D4DE25B0033F0AB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5148F2992D19264E00B074C5 /* PBXTargetDependency */,
+				51E861F72D4DE25B0033F0AB /* PBXTargetDependency */,
+				51E8622C2D4E04A60033F0AB /* PBXTargetDependency */,
 			);
 			name = Madii;
 			packageProductDependencies = (
@@ -989,6 +1285,48 @@
 			productReference = 515EFC8B2AFCA0D100230647 /* Madii.app */;
 			productType = "com.apple.product-type.application";
 		};
+		51E861E22D4DE25A0033F0AB /* MadiiDesignSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51E862002D4DE25B0033F0AB /* Build configuration list for PBXNativeTarget "MadiiDesignSystem" */;
+			buildPhases = (
+				51E861DE2D4DE25A0033F0AB /* Headers */,
+				51E861DF2D4DE25A0033F0AB /* Sources */,
+				51E861E02D4DE25A0033F0AB /* Frameworks */,
+				51E861E12D4DE25A0033F0AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MadiiDesignSystem;
+			packageProductDependencies = (
+			);
+			productName = MadiiDesignSystem;
+			productReference = 51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		51E862262D4E04A60033F0AB /* MadiiNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51E862302D4E04A60033F0AB /* Build configuration list for PBXNativeTarget "MadiiNetworking" */;
+			buildPhases = (
+				51E862222D4E04A60033F0AB /* Headers */,
+				51E862232D4E04A60033F0AB /* Sources */,
+				51E862242D4E04A60033F0AB /* Frameworks */,
+				51E862252D4E04A60033F0AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MadiiNetworking;
+			packageProductDependencies = (
+				51004BF32D4E09FA0073742B /* KeychainSwift */,
+				51004BF62D4E0A340073742B /* Alamofire */,
+			);
+			productName = MadiiNetworking;
+			productReference = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -996,11 +1334,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					5148F28C2D19264C00B074C5 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					515EFC8A2AFCA0D100230647 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					51E861E22D4DE25A0033F0AB = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					51E862262D4E04A60033F0AB = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -1017,17 +1364,31 @@
 				510B7BC12B3BED7B00CB7ADA /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				51004BF52D4E0A340073742B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 515EFC8C2AFCA0D100230647 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				515EFC8A2AFCA0D100230647 /* Madii */,
+				5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */,
+				51E861E22D4DE25A0033F0AB /* MadiiDesignSystem */,
+				51E862262D4E04A60033F0AB /* MadiiNetworking */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5148F28B2D19264C00B074C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514D2A592D2BBCFC00604B9D /* Assets.xcassets in Resources */,
+				51E8620B2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf in Resources */,
+				51E862092D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC892AFCA0D100230647 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1040,6 +1401,21 @@
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E861E12D4DE25A0033F0AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E862252D4E04A60033F0AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51004BFF2D4E13550073742B /* NetworkingConfig.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1444,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5148F2892D19264C00B074C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51004BFD2D4E0F910073742B /* JoyAPI.swift in Sources */,
+				514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */,
+				514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */,
+				51ECD7922D56380700664663 /* BaseResponse.swift in Sources */,
+				51004BFC2D4E0BBC0073742B /* TodayJoyEntryView.swift in Sources */,
+				51ECD7942D56381F00664663 /* GetTodayJoyResponseDTO.swift in Sources */,
+				51ECD7982D56383400664663 /* NetworkConfig.swift in Sources */,
+				51004BFA2D4E0B030073742B /* TodayJoyEntry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		515EFC872AFCA0D100230647 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1076,12 +1467,13 @@
 				BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */,
 				5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
-				513898102B4A714F00AFA327 /* TestView.swift in Sources */,
 				BEE0FBA72B91BD5A009467AC /* NotificationView.swift in Sources */,
 				512ED9682C9211F80085B64D /* APIPaths.swift in Sources */,
 				51BED7A92B98BC2000E95F87 /* AddTodayPlaylistBarToast.swift in Sources */,
+				517C19702CB2CF5F00148504 /* EmptyResponse.swift in Sources */,
 				519C97E92B5E6714004F1AFF /* UserAnalyticsContent.swift in Sources */,
 				51E025A42B27291900F4F41A /* SaveJoyToast.swift in Sources */,
+				517C19722CB2CF9D00148504 /* AlbumsDTO.swift in Sources */,
 				510EF9092B8639F6000768D7 /* TodayPlaylistNavigationBar.swift in Sources */,
 				BEFC6BD32B3813F100C78A37 /* StyleJoyButton.swift in Sources */,
 				51D8D36C2B177098001B6793 /* HomeView.swift in Sources */,
@@ -1124,6 +1516,7 @@
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				51811E882B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift in Sources */,
 				513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */,
+				517C196E2CB2CF4300148504 /* AlbumsAPI.swift in Sources */,
 				BE0C3F972B81E77200275FD3 /* PlayParticleView.swift in Sources */,
 				5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
@@ -1213,9 +1606,122 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51E861DF2D4DE25A0033F0AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E862152D4DE9840033F0AB /* View+madiiFont.swift in Sources */,
+				51E862182D4DEC830033F0AB /* Color+madiiColor.swift in Sources */,
+				51E862132D4DE94B0033F0AB /* Font+MadiiFont.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E862232D4E04A60033F0AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51004BE72D4E092D0073742B /* JoyAPI.swift in Sources */,
+				51ECD7912D56380700664663 /* BaseResponse.swift in Sources */,
+				51ECD7972D56383400664663 /* NetworkConfig.swift in Sources */,
+				51ECD7952D56381F00664663 /* GetTodayJoyResponseDTO.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		51004BF22D4E099E0073742B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E862262D4E04A60033F0AB /* MadiiNetworking */;
+			targetProxy = 51004BF12D4E099E0073742B /* PBXContainerItemProxy */;
+		};
+		5148F2992D19264E00B074C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5148F28C2D19264C00B074C5 /* MadiiWidgetExtension */;
+			targetProxy = 5148F2982D19264E00B074C5 /* PBXContainerItemProxy */;
+		};
+		51E861F72D4DE25B0033F0AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E861E22D4DE25A0033F0AB /* MadiiDesignSystem */;
+			targetProxy = 51E861F62D4DE25B0033F0AB /* PBXContainerItemProxy */;
+		};
+		51E8620F2D4DE7BD0033F0AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E861E22D4DE25A0033F0AB /* MadiiDesignSystem */;
+			targetProxy = 51E8620E2D4DE7BD0033F0AB /* PBXContainerItemProxy */;
+		};
+		51E8622C2D4E04A60033F0AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E862262D4E04A60033F0AB /* MadiiNetworking */;
+			targetProxy = 51E8622B2D4E04A60033F0AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5148F29D2D19264E00B074C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiWidget/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5148F29E2D19264E00B074C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiWidget/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		515EFC972AFCA0D200230647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 51380FA92BBD3292000D9BA0 /* Config.xcconfig */;
@@ -1345,7 +1851,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1365,7 +1871,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1386,7 +1892,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
@@ -1406,7 +1912,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1419,9 +1925,186 @@
 			};
 			name = Release;
 		};
+		51E861FB2D4DE25B0033F0AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiDesignSystem;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		51E861FC2D4DE25B0033F0AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiDesignSystem;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		51E862312D4E04A60033F0AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51004BFE2D4E13550073742B /* NetworkingConfig.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiNetworking/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiNetworking;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		51E862322D4E04A60033F0AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51004BFE2D4E13550073742B /* NetworkingConfig.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99KH3TLG9V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MadiiNetworking/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9uttery.Madii.MadiiNetworking;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5148F29C2D19264E00B074C5 /* Build configuration list for PBXNativeTarget "MadiiWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5148F29D2D19264E00B074C5 /* Debug */,
+				5148F29E2D19264E00B074C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		515EFC862AFCA0D000230647 /* Build configuration list for PBXProject "Madii" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1440,9 +2123,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		51E862002D4DE25B0033F0AB /* Build configuration list for PBXNativeTarget "MadiiDesignSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E861FB2D4DE25B0033F0AB /* Debug */,
+				51E861FC2D4DE25B0033F0AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51E862302D4E04A60033F0AB /* Build configuration list for PBXNativeTarget "MadiiNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E862312D4E04A60033F0AB /* Debug */,
+				51E862322D4E04A60033F0AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		51004BF52D4E0A340073742B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 		510B7BC12B3BED7B00CB7ADA /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -1470,6 +2179,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		51004BF32D4E09FA0073742B /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		51004BF62D4E0A340073742B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51004BF52D4E0A340073742B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		510B7BC22B3BED7B00CB7ADA /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 510B7BC12B3BED7B00CB7ADA /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;

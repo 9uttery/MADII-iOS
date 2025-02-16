@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodayPlaylistView: View {
     @Environment(\.scenePhase) private var scenePhase
+    @EnvironmentObject var appStatus: AppStatus
     @Binding var showPlaylist: Bool
     @State private var allJoys: [MyJoy] = []
     @State private var showEmptyView: Bool = false
@@ -17,7 +18,6 @@ struct TodayPlaylistView: View {
     
     @State private var showAlert = false
     @State private var fromPlaylistBar = true
-    @State private var nickname = ""
 
     var body: some View {
         GeometryReader { geo in
@@ -51,7 +51,6 @@ struct TodayPlaylistView: View {
             .ignoresSafeArea()
             .onAppear {
                 getPlaylist()
-                getUserNickname()
             }
             .onChange(of: scenePhase) { newScenePhase in
                 switch newScenePhase {
@@ -92,8 +91,11 @@ struct TodayPlaylistView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.bottom, 20)
                 
-                NavigationLink {
-                    RecommendView(nickname: nickname)
+                Button {
+                    showPlaylist = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        appStatus.isNaviRecommend = true
+                    }
                 } label: {
                     HStack {
                         Text("나만의 맞춤형 소확행 찾기")
@@ -113,8 +115,11 @@ struct TodayPlaylistView: View {
                 .cornerRadius(12)
                 .padding(.bottom, 16)
                 
-                NavigationLink {
-                    HomePlayJoyView()
+                Button {
+                    showPlaylist = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        appStatus.isNaviPlayJoy = true
+                    }
                 } label: {
                     HStack {
                         Text("다른 사람들의 소확행 구경하기")
@@ -295,16 +300,8 @@ struct TodayPlaylistView: View {
             }
         }
     }
-    
-    private func getUserNickname() {
-        ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
-            if isSuccess {
-                self.nickname = userProfile.nickname
-            }
-        }
-    }
 }
 
-#Preview {
-    TodayPlaylistView(showPlaylist: .constant(true))
-}
+//#Preview {
+//    TodayPlaylistView(showPlaylist: .constant(true))
+//}

@@ -124,7 +124,14 @@ struct PlaylistBar: View {
             firstOffset = 0
             secondOffset = 0
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                startTimer()
+                if textWidth >= UIScreen.main.bounds.width - 185 || todayJoys.joys.isEmpty {
+                    startTimer()
+                } else {
+                    stopTimer()
+                    xOffset = 0
+                    firstOffset = 0
+                    secondOffset = 260
+                }
             }
         }
         .onDisappear {
@@ -149,7 +156,14 @@ struct PlaylistBar: View {
             firstOffset = 0
             secondOffset = 260
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                startTimer()
+                if textWidth >= UIScreen.main.bounds.width - 185 || todayJoys.joys.isEmpty  {
+                    startTimer()
+                } else {
+                    stopTimer()
+                    xOffset = 0
+                    firstOffset = 0
+                    secondOffset = 260
+                }
             }
         }
         .sheet(isPresented: $showPlaylist) {

@@ -26,6 +26,7 @@ struct HomePlayJoyListView: View {
                                 AlbumRow(album: newAlbum)
                             }
                             .simultaneousGesture(TapGesture().onEnded {
+                                AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_앨범클릭")
                                 AnalyticsManager.shared.logEvent(name: "행복을재생해요뷰_\(album.name)클릭")
                             })
                         }
@@ -67,7 +68,12 @@ struct HomePlayJoyListView: View {
         }
         .navigationTitle("행복을 재생해요")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear { getAlbums() }
+        .onAppear {
+            getAlbums()
+        }
+        .onDisappear {
+            appStatus.isNaviPlayJoy = false
+        }
         .navigationBarItems(trailing: addButton)
         .transparentFullScreenCover(isPresented: $showAddAlbumPopUp) {
             AddAlbumPopUp(showAddAlbumPopUp: $showAddAlbumPopUp) }

@@ -44,6 +44,17 @@ struct HomeView: View {
         // 오늘의 소확행 오플리에 추가 후, 바로가기에서 sheet
         .sheet(isPresented: $showTodayPlaylist) {
             TodayPlaylistView(showPlaylist: $showTodayPlaylist) }
+        .onAppear {
+            getUserNickname()
+        }
         .analyticsScreen(name: "홈뷰")
+    }
+    
+    private func getUserNickname() {
+        ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+            if isSuccess {
+                appStatus.nickname = userProfile.nickname
+            }
+        }
     }
 }

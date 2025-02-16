@@ -15,8 +15,7 @@ struct SizePreferenceKey: PreferenceKey {
 struct RecommendJoyView: View {
     @State var rotation: CGFloat = 0.0
     @Environment(\.presentationMode) var presentationMode
-    
-    @State var nickname: String
+    @EnvironmentObject var appStatus: AppStatus
     @Binding var selectedJoy: GetJoyResponseJoy?
     @State private var frameWidth: CGFloat = UIScreen.main.bounds.width
     @Binding var isActive: Bool
@@ -124,7 +123,7 @@ struct RecommendJoyView: View {
                 }
                 .padding(.bottom, 31)
                 
-                Text("\(nickname)님을 위한 소확행이에요!")
+                Text("\(appStatus.nickname)님을 위한 소확행이에요!")
                     .madiiFont(font: .madiiSubTitle, color: .white)
                     .padding(.bottom, 80)
                 
@@ -152,11 +151,6 @@ struct RecommendJoyView: View {
             }
         }
         .onAppear {
-            ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
-                if isSuccess {
-                    nickname = userProfile.nickname
-                }
-            }
             withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
                 rotation = 360
             }

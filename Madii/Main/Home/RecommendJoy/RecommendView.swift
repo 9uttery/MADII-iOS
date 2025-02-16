@@ -10,7 +10,6 @@ import SwiftUI
 struct RecommendView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var brightDotIndex = 0
-    @State var nickname: String
     @State var isClicked: [Bool] = Array(repeating: false, count: 9)
     @State var recommendJoys: [GetJoyResponseJoy] = []
     @State var selectedJoy: GetJoyResponseJoy?
@@ -33,7 +32,7 @@ struct RecommendView: View {
             VStack(spacing: 0) {
                 HStack {
                     if selectedJoy != nil {
-                        Text("\(nickname)님을 위한 소확행이에요!")
+                        Text("\(appStatus.nickname)님을 위한 소확행이에요!")
                             .madiiFont(font: .madiiBody5, color: .gray800)
                     } else if recommendJoys.isEmpty {
                         Text("아래에 있는 키워드를 선택하여 나만을 위한 소확행을 찾아보세요")
@@ -85,7 +84,7 @@ struct RecommendView: View {
                 }
                 .padding(.bottom, 48)
                 
-                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, nickname: nickname, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy)
+                RecommendJoyListView(recommendJoys: $recommendJoys, selectedJoy: $selectedJoy, isClicked: $isClicked, clickedNum: $clickedNum, reClicked: $reClicked, isRecommendJoy: $isRecommendJoy)
             }
             .padding(.horizontal, 16)
             
@@ -94,7 +93,7 @@ struct RecommendView: View {
             }
             
             withAnimation(.easeInOut(duration: 1)) {
-                RecommendJoyView(nickname: nickname, selectedJoy: $selectedJoy, isActive: $isActive, isRecommendJoy: $isRecommendJoy)
+                RecommendJoyView(selectedJoy: $selectedJoy, isActive: $isActive, isRecommendJoy: $isRecommendJoy)
                     .offset(x: isRecommendJoy ? 0 : UIScreen.main.bounds.width * 2)
             }
         }
@@ -117,7 +116,10 @@ struct RecommendView: View {
                 }
             }
         }
-        .navigationTitle("\(nickname)님의 취향저격 소확행")
+        .onDisappear {
+            appStatus.isNaviRecommend = false
+        }
+        .navigationTitle("\(appStatus.nickname)님의 취향저격 소확행")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.clear, for: .navigationBar)
         .background(
@@ -151,8 +153,4 @@ struct RecommendView: View {
             }
         }
     }
-}
-
-#Preview {
-    RecommendView(nickname: "코코")
 }

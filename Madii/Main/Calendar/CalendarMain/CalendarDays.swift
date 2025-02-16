@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarDays: View {
     let today = Date()
     @Binding var selectedDate: Date
+    @Binding var clickedDate: Date
     @State private var showDailyJoyView: Bool = false
     
     @State private var joyIcons: [String: [Int]] = [:]
@@ -55,8 +56,8 @@ struct CalendarDays: View {
                     
                 }
                 .simultaneousGesture(TapGesture().onEnded {
-                    selectedDate = date
-                    print(selectedDate)
+                    clickedDate = date
+                    print("\(clickedDate)일을 눌렀는데용 ㅎㅎ")
                     AnalyticsManager.shared.logEvent(name: "캘린더뷰_달력날짜클릭")
                 })
             }
@@ -116,7 +117,7 @@ struct CalendarDays: View {
     }
     
     func backgroundColor(at date: Date) -> Color {
-        if date.isSameDay(as: selectedDate) {
+        if date.isSameDay(as: clickedDate) {
             // 선택된 날짜가
             if date.isSameDay(as: today) {
                 // 오늘이면 하얀색
@@ -133,7 +134,7 @@ struct CalendarDays: View {
     
     func borderColor(at date: Date) -> Color {
         // 오늘이고 선택되지 않았을 때
-        if date.isSameDay(as: today) && date.isSameDay(as: selectedDate) == false {
+        if date.isSameDay(as: today) && date.isSameDay(as: clickedDate) == false {
             return Color.madiiOrange
         } else {
             return Color.clear

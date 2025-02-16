@@ -52,7 +52,6 @@ struct ManyAchievedJoyView: View {
                     JoyMenuBottomSheet(joy: $selectedJoy, isMine: joy.isMine, isFromTodayJoy: true) }
             }
         }
-            
             // 오플리 추가 안내 토스트
             if appStatus.showAddPlaylistToast {
                 AddTodayPlaylistBarToast(showTodayPlaylist: $showTodayPlaylist) }
