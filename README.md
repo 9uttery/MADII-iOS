@@ -47,17 +47,127 @@
 
 <br><br>
 
+
 ## 📝 목차
 
-**1. [🌟 주요 기능](#-주요-기능)**
+**1. [🔥 기술적인 고민과 문제 해결](#-기술적인-고민과-문제-해결)**
+
+**2. [🌟 주요 기능](#-주요-기능)**
 
 **3. [💻 Git/Code Convention](#-Git/Code-Convention)**
 
-**4. [🔋 Team: 9uttery(구떠리)](#-Team:-9uttery(구떠리))**
+**4. [🔋 Team 9uttery(구떠리)](#-Team-9uttery(구떠리))**
 
-<br>
+<br><br>
 
-<!-- 서비스 소개 -->
+
+## 🔥 기술적인 고민과 문제 해결
+
+<details>
+  <summary><h3>🔖 1년이 넘은 코드, 그리고 앞둔 대규모 업데이트. 우리는 어떻게 대응해야 할까? (현재 진행중)</h3></summary>
+
+  **상황**
+  > - 곧 대규모 업데이트를 앞두고 있다. 기능의 변화는 작지만, UI가 전부 변경될 예정이다.
+  > - (원인) 프로젝트를 시작하던 당시, 기능의 확장과 코드의 유지보수를 고려하지 못했다. (iOS 개발자들이 개발을 시작한 지 얼마 되지 않기도 했고..) 
+  
+  **문제**
+  - (아래 코드는 일부 생략된 코드입니다만.. 이 짧은 코드 안에서도 보이는 문제들을 모두 가져와봤습니다)
+  - View 하나가 가지는 책임이 너무 많다.
+  - 특정 API의 변경이 필요할 땐, API를 사용하는 곳을 전부 찾아야 한다.
+  - View가 서버에서 받은 데이터를 디코딩하기 위한 DTO를 직접 사용한다.
+  - 사실 이 기능 그대로 화면만 바뀐다고 하더라도, 처음부터 새로 쓰는 것이 나을 정도로 가독성이 나쁘고 명확한 관심사 분리가 되어 있지 않다
+    ```swift
+    struct HomePlayJoyView: View {
+        @State var playAlbums: [GetAlbumsResponse] = []  // 🚨 API에서 받아오는 DTO로 View에서 활용하고 있다
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                NavigationLink {
+                    // 🚨 View가 화면 전환 로직을 가지고 있다 + 화면 생성도 한다
+                    // 🚨 그래서 일부 View는 View가 필요한 것들을 상위 View가 주입해주기도 한다
+                    HomePlayJoyListView()
+                } label: {
+                    HStack {
+                        Text("행복을 재생해요")
+                            .madiiFont(font: .madiiSubTitle, color: .white)
+                        Spacer()
+                        Image("chevronRight")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                    }
+                    .padding(.bottom, 21.5)
+                }
+                .simultaneousGesture(TapGesture().onEnded {
+                    // 🚨 GA도 View가 한다.. -> 하지만 이건 어떻게 분리할지 고민중이다
+                    AnalyticsManager.shared.logEvent(name: "홈뷰_행복을재생해요클릭")
+                })
+            }
+            .onAppear {
+                // 🚨 View가 API도 요청한다 ㅎㅎ..
+                // 🚨 심지어 API를 싱글톤으로 생성했다.. -> 이건 네트워킹 리팩토링을 통해 변경할 얘정!
+                HomeAPI.shared.getAllAlbums(albumId: nil, size: 5) { isSuccess, allAlbum in
+                    if isSuccess {
+                        playAlbums = allAlbum.content
+                    }
+                }
+            }
+        }
+    }
+    ```
+  
+  **해결(진행중)**
+  > 대규모 업데이트와 함께 추후에 변경될 모든 가능성을 고려해 명확한 관심사 분리가 필요하다<br>
+  - Presentation - Domain - Data 레이어로 프로젝트 아키텍처 재설계 !!!
+  - Repository 패턴을 도입해 서버에서 받아온 데이터를 iOS에서 활용하기 위한 변환 구현 (DTO를 View에서 쓰지 말자)
+  - 조립이 용이한 설계를 도와줄 수 있는 것이 뭐가 있을까.. TCA를 도입해보자! -> 현재 iOS 팀원 모두 공부중
+
+
+  **느낀점**
+  > 코드를 그냥 다시 쓰는 게 더 편하겠다는 생각이 들 정도로 까마득했다. 하지만 결국 모두 유지보수를 위한 일이고, 직접 코드를 보면서 명확한 문제를 파악하는 것이 중요하다고 생각한다. 디자인이 끝날 때까지 한 달 반의 시간이 주어졌다. 마디를 새단장하기 위한 모든 준비를 마치고, 기쁜 마음으로 디자인을 맞이하러 갈 수 있도록 달려보자 🔥
+
+</details>
+
+
+### 🔖 위젯을 개발하다보니 모듈을 분리하게 되었다!
+**상황**
+- 
+
+
+**문제**
+
+**해결**
+
+**느낀점**
+
+
+### 🔖 네트워킹 리팩토링 - API 코드를 40줄에서 8줄로 만드는 마법
+
+<!--
+<details>
+  <summary><h3>🔖 네트워킹 리팩토링 - API 코드를 40줄에서 8줄로 만드는 마법</h3></summary>
+
+  이 부분은 토글을 클릭했을 때 보입니다.
+
+  추가로 여러 줄도 작성할 수 있습니다.
+  - 목록1
+  - 목록2
+
+</details>
+
+<details>
+  <summary><h3>🔖 위젯을 개발하다보니 모듈을 분리하게 되었다!</h3></summary>
+
+  이 부분은 토글을 클릭했을 때 보입니다.
+
+  추가로 여러 줄도 작성할 수 있습니다.
+  - 목록1
+  - 목록2
+
+</details>
+-->
+<br><br>
+
+
 ## 🌟 주요 기능
 
 **1. 소확행을 매일 추천받고, 다른 사람들의 소확행을 탐색하고**
@@ -72,47 +182,9 @@
 
 ![image](https://github.com/user-attachments/assets/4f8fb49e-2edf-43cf-b0ff-9c1537ec9091)
 
+<br><br>
 
-<br>
 
-<!-- 문제 해결 
-## 🔥 고민과 문제 해결
-
-<details>
-  <summary>Networking Refactoring</summary>
-
-  이 부분은 토글을 클릭했을 때 보입니다.
-
-  추가로 여러 줄도 작성할 수 있습니다.
-  - 목록1
-  - 목록2
-
-</details>
-
-<details>
-  <summary>Networking Refactoring</summary>
-
-  이 부분은 토글을 클릭했을 때 보입니다.
-
-  추가로 여러 줄도 작성할 수 있습니다.
-  - 목록1
-  - 목록2
-
-</details>
-
-<details>
-  <summary>Networking Refactoring</summary>
-
-  이 부분은 토글을 클릭했을 때 보입니다.
-
-  추가로 여러 줄도 작성할 수 있습니다.
-  - 목록1
-  - 목록2
-
-</details>
-
-<br>
--->
 <!-- 깃/브랜치 전략 -->
 ## 💻 Git/Code Convention
 
@@ -131,7 +203,7 @@ SwiftLint를 사용해 Swift Code Convention을 준수할 수 있도록 했습�
     - property, method: `lowerCamelCase`
 <br>
 
-### 🐬 Git Flow
+### 🔖 Git Flow
 **📌 Issue & Pull Request**
 
 이슈 생성 -> PR
@@ -145,10 +217,11 @@ QA 중 발견된 버그 수정 사항에 대해 Release 브랜치에서 수정 �
 
 <img src="https://www.gitkraken.com/wp-content/uploads/2021/03/git-flow-4.svg" height=500 >
 
-<br>
+<br><br>
+
 
 <!-- 팀 소개 -->
-## 🔋 Team: 9uttery(구떠리)
+## 🔋 Team 9uttery(구떠리)
 
 ### 🔖 Team Blog
 [🔗 9uttery Team Blog](https://9uttery.tistory.com/)
@@ -166,7 +239,6 @@ QA 중 발견된 버그 수정 사항에 대해 Release 브랜치에서 수정 �
 |:-:|:-:|:-:|:-:|:-:|
 | <img src="https://github.com/user-attachments/assets/e00bfcf8-7819-4984-ac39-a611674ac69e" width="100"> | <img src="https://github.com/user-attachments/assets/6ebf0de6-a254-46c7-b20c-e4ab0e8a2fc0" width="100"> | <img src="https://github.com/user-attachments/assets/07c50c0f-ab00-4d4b-87e1-ac2e3bba1d61" alt="도요" width="100"> | <img src="https://github.com/user-attachments/assets/904ae712-9c54-4bfb-9686-83dec301ed99" width="100"> | <img src="https://github.com/user-attachments/assets/540a8a56-5b52-49b9-a270-5a6322a3a876" width="100"> |
 | **서비스 기획**<br>프로젝트 운영(PM) | **서비스 기획**<br>MVP 테스트 | **서비스 기획**<br>UX writing | **서비스 기획**<br>SNS 운영 | **프로덕트 디자인**<br>SNS 콘텐츠 디자인 |
-
 <br>
 
 ### 🔖 협업 방식
