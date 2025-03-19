@@ -2,29 +2,73 @@
 
 ![p 1](https://github.com/user-attachments/assets/6dc5d226-1366-471a-84cb-33d8ec781631)
 
+### 🎈 일상의 행복을 발견하는 기록 서비스
+
+바쁜 일상 속에서 일보다 삶이 우선시 되고, 스스로를 돌보는 일을 미루고 있진 않으신가요?<br>
+모두가 그저 지나쳐버리는 '나'라는 사람의 일상 속에서,<br>
+나만이라도 잠시 멈춰 서서 일상을 들여다보고 작은 것이라도 무엇이 나를 행복하게 만드는지 생각해 보면 어떨까요?<br>
+<br>
+마디는 매일 **새로운 소확행을 추천** 받고, 다른 사람들의 **소확행을 탐색**하며, 나의 **소확행을 기록**하는 서비스입니다.<br>
+
+
 [🔗 **앱스토어 바로가기**](https://apps.apple.com/kr/app/madii/id6478498142)
 
-일에 지나치게 몰입해서 일과 삶의 균형이 무너진 사람들의 균형을 되찾아주자.<br>
-삶의 영역에 사소하게라도 몰입할 수 있는 순간을 마련하자!
 
-`Swift` `SwiftUI`
+### 🌟 업데이트 히스토리
 
-프로젝트 기간: 2024. 08. - 진행중
+- 현재 최신 버전: `v1.4.0` - 2025. 02. 16. - 위젯 기능 추가
+- <details>
+  <summary>이전 버전 기록</summary>
+
+  - `v1.3.1` - 2024. 12. 07.
+  - `v1.3.0` - 2024. 11. 06.
+  - `v1.2.0` - 2024. 08. 19.
+  - `v1.1.3` - 2024. 06. 22.
+  - `v1.1.2` - 2024. 06. 19.
+  - `v1.1.1` - 2024. 05. 04. - 정식 출시 🎉 (홍보 시작)
+  - `v1.1.0` - 2024. 04. 30.
+  - `v1.0.1` - 2024. 04. 16.
+  - `v1.0.0` - 2024. 03. 25. - 출시
+
+</details>
+
+
+### 📆 프로젝트 진행 기간
+
+- 전체 기간: 2023. 08. - 진행중<br>
+- 개발 기간: 2024. 11. - 진행중
+
+
+### ⚙️ 기술 스택
+- SwiftUI, WidgetKit
+- Alamofire
+- Multi-Target
+- SwiftLint
+
+<br><br>
+
+## 📝 목차
+
+**1. [🌟 주요 기능](#-주요-기능)**
+
+**3. [💻 Git/Code Convention](#-Git/Code-Convention)**
+
+**4. [🔋 Team: 9uttery(구떠리)](#-Team:-9uttery(구떠리))**
 
 <br>
 
 <!-- 서비스 소개 -->
-## 💫 서비스 핵심 기능
+## 🌟 주요 기능
 
-**1. 탐색하고**
+**1. 소확행을 매일 추천받고, 다른 사람들의 소확행을 탐색하고**
 
 ![image](https://github.com/user-attachments/assets/5ec1015b-5e16-427a-9cf2-d5434214add0)
 
-**2. 기록하고**
+**2. 내가 실천한 소확행을 기록하고**
 
 ![image](https://github.com/user-attachments/assets/a573c443-a915-43fe-a407-8061fbd6bb64)
 
-**3. 모아보고**
+**3. 그동안 실천한 소확행을 모아보고**
 
 ![image](https://github.com/user-attachments/assets/4f8fb49e-2edf-43cf-b0ff-9c1537ec9091)
 
@@ -106,7 +150,11 @@ QA 중 발견된 버그 수정 사항에 대해 Release 브랜치에서 수정 �
 <!-- 팀 소개 -->
 ## 🔋 Team: 9uttery(구떠리)
 
-### R&R
+### 🔖 Team Blog
+[🔗 9uttery Team Blog](https://9uttery.tistory.com/)
+<br>
+
+### 🔖 R&R
 
 | 이오 \| 이안진 | 래우 \| 정태우 | 민슨 \| 김민근 | 하노 \| 한호정 |
 |:-:|:-:|:-:|:-:|
@@ -121,16 +169,12 @@ QA 중 발견된 버그 수정 사항에 대해 Release 브랜치에서 수정 �
 
 <br>
 
-### Team Blog
-[🔗 9uttery Team Blog](https://9uttery.tistory.com/)
+### 🔖 협업 방식
+![image](https://github.com/user-attachments/assets/0f3b96fa-e2e8-4174-ba28-837407203f6f)
 
-<br>
+<img src="https://github.com/user-attachments/assets/63fa8eb6-e19f-47ae-9497-75954b0ec499" width="400">
 
-### 협업 방식
-
-
-
-
+<br><br><br><br><br>
 
 
 
