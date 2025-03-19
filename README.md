@@ -63,12 +63,153 @@
 
 ## 🔥 기술적인 고민과 문제 해결
 
+### 🔖 네트워킹 리팩토링 - API 코드를 40줄에서 8줄로 만드는 마법
+
+**상황**
+- Alamofire를 사용
+- 각각의 API 요청 메서드 내에서 AF.request를 호출하고, 응답을 받아 처리
+- 큰 도메인(User, Album, ...)단위로 API를 모아 두는 객체 내에 각각의 API 요청 메서드를 나열해서 사용
+  - ex, AlbumAPI에서 baseURL/albums/ 로 시작하는 모든 API를 관리한다
+  - 각각의 API 객체들이 baseURL, Keychain 을 모두 개별적으로 생성하고 가져와서 사용한다
+  - 각각의 API 내부에 싱글톤을 활용해 여러 곳(특히 View)에서 호출하는 방식이다
+
+**문제**
+- 중복 코드 증가
+  - 모든 API 요청마다 AF.request를 생성하고, status code에 대한 대응을 각각 처리한다
+  - `"DEBUG(getAlbumsCreatedByMe): data nil"` 디버깅을 위한 코드를 함수명만 바꿔서 매번 처리한다
+    -> 이건 하드코딩의 문제이기도 하다! 함수명을 제대로 바꿔주지 않았을 때(실제로 존재한다..), 디버깅하며 어디서 생긴 오류인지 알 수 파악할 수 없다
+- 싱글톤 패턴을 사용하고 있어 의존성을 끊고, 외부에서 주입하기 어렵다. (물론 테스트하기도 어렵다 - 테스트를 하고 있진 않지만..)
+- 하드코딩된 URL과, URL 버전관리, 인증 토큰 값
+- (심지어 파일 길이를 벗어난다는 린트도 뜬다..)
+  <img width="622" alt="image" src="https://github.com/user-attachments/assets/d9a7e6b5-a5ab-4b3c-aba5-52254462c85e" />
+- 모든 이유들로 인한 디버깅의 어려움
+```swift
+// 🚨 기존 API 호출 코드
+// 🚨 각각의 API 객체들이 모두 외부 라이브러리를 가져다가 사용중
+import Alamofire
+import Foundation
+import KeychainSwift
+
+class AlbumAPI {
+    let keychain = KeychainSwift()  // 🚨 각각의 API들이 모두 키체인 객체를 새로 생성해서 가진다
+    let baseUrl = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v1" // 🚨 각각의 API를 고려하지 않은 url 버전 관리
+    static let shared = AlbumAPI() // 🚨 공유할 데이터가 없음에도 싱글톤으로 활용중 -> 어떤 방식이 결국 더 좋은 방식일지 고민중..
+
+    // 앨범 상세 조회
+    func getAlbumsCreatedByMe(completion: @escaping (_ isSuccess: Bool, _ albumList: [GetAlbumsCreatedByMeResponse]) -> Void) {
+        let url = "\(baseUrl)/albums/created"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let dummy = GetAlbumsCreatedByMeResponse(albumId: 0, name: "")
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<[GetAlbumsCreatedByMeResponse]>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        // 🚨 디버깅을 위해 print를 쓰고 있고, 내부에 함수명을 직접 쓰고 있어서 내용을 틀리면 정확한 위치를 파악하기 어려움
+                        print("DEBUG(getAlbumsCreatedByMe): data nil")
+                        completion(false, [dummy])
+                        return
+                    }
+
+                    // 🚨 모든 API가 각자 statusCode를 관리
+                    // 🚨 개별적인 에러가 아닌, 공통 에러도 각자 관리
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(getAlbumsCreatedByMe): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(getAlbumsCreatedByMe): status \(statusCode))")
+                        completion(false, data)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(getAlbumsCreatedByMe): error \(error))")
+                    completion(false, [dummy])
+                }
+            }
+    }
+}
+```
+
+**해결**
+- 공통 API 로직을 분리하고, APIEndpoint 구조체 도입
+- API 요청과 관련된 로직을 캡슐화하고, 모든 API 요청이 공통된 방식을 따르도록 했다
+```swift
+import Alamofire  // 🍀 이제 여기서만 Alamofire를 호출해서 사용한다
+import Foundation
+
+struct APIEndpoint<Response: Codable> {
+    typealias ResponseDTO = Response  // 🍀 받아오는 DTO를 설정한다
+    
+    var method: HTTPMethod
+    var urlVersion: Int = 1  // 🍀 기본 url version을 설정하고, 추후 변경이 필요하면 개별적으로 설정할 수 있도록 한다
+    var path: String
+    var headerType: APIHeaderType = .withAuth
+    
+    var body: [String: Any]?
+    
+    func request(completion: @escaping (Result<Response, NetworkError>) -> Void) {
+        let url = "https://\(NetworkConstants.baseUrl)/v\(urlVersion)\(path)"  // 🍀 상수로 쓰이는 값들은 Constants로 설정해 관리한다
+        let headers: HTTPHeaders = headerType.headers
+        
+        AF.request(url, method: method, parameters: body, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<ResponseDTO>.self) { response in
+                guard let status = response.response?.statusCode else {
+                    // 🍀 Logger를 구현해 하드코딩하지 않고도 정확한 위치를 파악할 수 있도록 한다
+                    NetworkLogger.debugLog(method: method, path: "/v\(urlVersion)\(path)", issue: "APIEndpoints에서 statusCode가 nil")
+                    return completion(.failure(NetworkError.invalid))
+                }
+
+                // 🍀 공통된 에러 핸들링을 관리
+                validateStatusCode(status) { validate in
+                    switch validate {
+                    case .success:
+                        switch response.result {
+                        case .success(let response):
+                            guard let data = response.data else {
+                                printLog("Decoding한 data가 nil")
+                                return completion(.failure(NetworkError.invalid))
+                            }
+                      ...
+```
+- 각각의 요청에 필요한 정보만 입력해 활용한다
+```swift
+import Foundation
+
+struct AlbumsAPI {
+    static var path = APIPaths.albums.rawValue
+    
+    /// 새로운 앨범 생성
+    static func postNewAlbum(name: String, description: String) -> APIEndpoint<[PostNewAlbumResponse]> {
+        let body: [String: Any] = [
+            "name": name,
+            "description": description
+        ]
+        
+        return APIEndpoint(method: .post, path: path, body: body)
+    }
+}
+```
+- 🚨 그러나 여전히 path 관리와 개별 에러핸들링에 완벽한 대응은 아닌 것 같다. 많은 레퍼런스를 참고해 활용하고, '모야' 라이브러리 활용법도 참고해보자!
+
+**느낀점**
+> 이전에 전혀 유지보수를 고려하지 않았다는 점을 뼈저리게 느낀다. API를 추가할 때마다 복사-붙여넣기로 사용했고, 그로 인한 오류가 많이 존재한다. API별 에러 핸들링이 어렵고, 가독성이 제로다..
+> 확장성과 유지보수 고려를 뼈저리게 느꼈으니, 앞으로 잘 생각하는 습관을 길러야겠다. (1년 후엔 또 어떻게 생각할지 모르겠지만!ㅎㅎ)
+
+
+<!--
 <details>
   <summary><h3>🔖 1년이 넘은 코드, 그리고 앞둔 대규모 업데이트. 우리는 어떻게 대응해야 할까? (현재 진행중)</h3></summary>
 
   **상황**
-  > - 곧 대규모 업데이트를 앞두고 있다. 기능의 변화는 작지만, UI가 전부 변경될 예정이다.
-  > - (원인) 프로젝트를 시작하던 당시, 기능의 확장과 코드의 유지보수를 고려하지 못했다. (iOS 개발자들이 개발을 시작한 지 얼마 되지 않기도 했고..) 
+  - 곧 대규모 업데이트를 앞두고 있다. 기능의 변화는 작지만, UI가 전부 변경될 예정이다.
+  - (원인) 프로젝트를 시작하던 당시, 기능의 확장과 코드의 유지보수를 고려하지 못했다. (iOS 개발자들이 개발을 시작한 지 얼마 되지 않기도 했고..) 
   
   **문제**
   - (아래 코드는 일부 생략된 코드입니다만.. 이 짧은 코드 안에서도 보이는 문제들을 모두 가져와봤습니다)
@@ -129,20 +270,21 @@
 
 
 ### 🔖 위젯을 개발하다보니 모듈을 분리하게 되었다!
-**상황**
-- 
 
+**상황**
+- 오늘의 소확행 위젯을 개발하게 되었다.
+- Widget은 새로운 Target을 생성해서 개발하게 된다.
 
 **문제**
+- 새로운 타겟으로 생성했기 때문에, App Target에서 사용하던 DesignSystem, Networking, 등등 공유 리소스를 사용할 수 없었다.
+  (사용하려면 App Target을 import 할 수 있겠으나, 
 
 **해결**
+
 
 **느낀점**
 
 
-### 🔖 네트워킹 리팩토링 - API 코드를 40줄에서 8줄로 만드는 마법
-
-<!--
 <details>
   <summary><h3>🔖 네트워킹 리팩토링 - API 코드를 40줄에서 8줄로 만드는 마법</h3></summary>
 
