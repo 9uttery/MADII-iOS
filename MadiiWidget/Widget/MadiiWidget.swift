@@ -24,7 +24,7 @@ struct MadiiWidget: Widget {
         .configurationDisplayName("오늘의 소확행 선물 🍀")
         .description("오늘의 소확행을 확인할 수 있어요")
         .contentMarginsDisabled()
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .accessoryRectangular])
     }
 }
 
