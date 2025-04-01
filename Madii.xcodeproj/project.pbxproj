@@ -1359,11 +1359,11 @@
 			};
 			buildConfigurationList = 515EFC862AFCA0D000230647 /* Build configuration list for PBXProject "Madii" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ko,
 			);
 			mainGroup = 515EFC822AFCA0D000230647;
 			packageReferences = (
