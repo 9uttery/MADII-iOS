@@ -161,6 +161,8 @@
 		51F25E192B1A085200F6CCFE /* MyJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E182B1A085200F6CCFE /* MyJoyView.swift */; };
 		51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1B2B1A105100F6CCFE /* JoyRow.swift */; };
 		51F25E1E2B1A118800F6CCFE /* ManyAchievedJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */; };
+		51F8F5C72D9BE89A00DD2E3D /* TodayJoySystemSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8F5C62D9BE89A00DD2E3D /* TodayJoySystemSmallView.swift */; };
+		51F8F5C92D9BE8F800DD2E3D /* TodayJoyAccessoryRectangularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8F5C82D9BE8F800DD2E3D /* TodayJoyAccessoryRectangularView.swift */; };
 		BE06499B2B921522000EF015 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06499A2B921522000EF015 /* UserStatView.swift */; };
 		BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06499C2B921570000EF015 /* ReallyLeaveView.swift */; };
 		BE0C3F8A2B81B69A00275FD3 /* RecommendJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */; };
@@ -408,6 +410,8 @@
 		51F25E182B1A085200F6CCFE /* MyJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJoyView.swift; sourceTree = "<group>"; };
 		51F25E1B2B1A105100F6CCFE /* JoyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyRow.swift; sourceTree = "<group>"; };
 		51F25E1D2B1A118800F6CCFE /* ManyAchievedJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyAchievedJoyView.swift; sourceTree = "<group>"; };
+		51F8F5C62D9BE89A00DD2E3D /* TodayJoySystemSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoySystemSmallView.swift; sourceTree = "<group>"; };
+		51F8F5C82D9BE8F800DD2E3D /* TodayJoyAccessoryRectangularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayJoyAccessoryRectangularView.swift; sourceTree = "<group>"; };
 		BE06499A2B921522000EF015 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		BE06499C2B921570000EF015 /* ReallyLeaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallyLeaveView.swift; sourceTree = "<group>"; };
 		BE0C3F892B81B69A00275FD3 /* RecommendJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyListView.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,8 @@
 			children = (
 				51004BF82D4E0B030073742B /* TodayJoyEntry.swift */,
 				51004BFB2D4E0BBC0073742B /* TodayJoyEntryView.swift */,
+				51F8F5C62D9BE89A00DD2E3D /* TodayJoySystemSmallView.swift */,
+				51F8F5C82D9BE8F800DD2E3D /* TodayJoyAccessoryRectangularView.swift */,
 			);
 			path = TodayJoy;
 			sourceTree = "<group>";
@@ -1451,9 +1457,11 @@
 				51004BFD2D4E0F910073742B /* JoyAPI.swift in Sources */,
 				514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */,
 				514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */,
+				51F8F5C72D9BE89A00DD2E3D /* TodayJoySystemSmallView.swift in Sources */,
 				51ECD7922D56380700664663 /* BaseResponse.swift in Sources */,
 				51004BFC2D4E0BBC0073742B /* TodayJoyEntryView.swift in Sources */,
 				51ECD7942D56381F00664663 /* GetTodayJoyResponseDTO.swift in Sources */,
+				51F8F5C92D9BE8F800DD2E3D /* TodayJoyAccessoryRectangularView.swift in Sources */,
 				51ECD7982D56383400664663 /* NetworkConfig.swift in Sources */,
 				51004BFA2D4E0B030073742B /* TodayJoyEntry.swift in Sources */,
 			);
