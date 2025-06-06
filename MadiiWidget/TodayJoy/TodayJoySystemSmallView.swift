@@ -5,7 +5,6 @@
 //  Created by Anjin on 4/1/25.
 //
 
-import MadiiDesignSystem
 import SwiftUI
 
 struct TodayJoySystemSmallView: View {

@@ -139,9 +139,6 @@
 		51E862092D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 51E862082D4DE77A0033F0AB /* SpoqaHanSansNeo-Bold.otf */; };
 		51E8620B2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 51E8620A2D4DE78C0033F0AB /* SpoqaHanSansNeo-Regular.otf */; };
 		51E8620C2D4DE7BD0033F0AB /* MadiiDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E861E32D4DE25A0033F0AB /* MadiiDesignSystem.framework */; };
-		51E862132D4DE94B0033F0AB /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
-		51E862152D4DE9840033F0AB /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
-		51E862182D4DEC830033F0AB /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
 		51E8622D2D4E04A60033F0AB /* MadiiNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */; };
 		51E8622E2D4E04A60033F0AB /* MadiiNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51E862272D4E04A60033F0AB /* MadiiNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51ECD7912D56380700664663 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECD7902D56380700664663 /* BaseResponse.swift */; };
@@ -198,6 +195,10 @@
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
 		BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */; };
+		BE8BAE102DF2BB5A00E3B84C /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
+		BE8BAE112DF2BB6C00E3B84C /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
+		BE8BAE122DF2BBA400E3B84C /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
+		BE8BAE192DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */; };
 		BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE98A4042B6627560064CC6F /* RecommendJoyView.swift */; };
 		BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */; };
 		BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */; };
@@ -446,6 +447,8 @@
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumPopUp.swift; sourceTree = "<group>"; };
+		BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
+		BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
 		BE9A01A52BEE741300F52458 /* JoyDuplicateToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyDuplicateToast.swift; sourceTree = "<group>"; };
 		BE9A01A72BEF402100F52458 /* SaveAlbumJoyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAlbumJoyToast.swift; sourceTree = "<group>"; };
@@ -842,6 +845,7 @@
 			children = (
 				510718A42B15BEBC008DFF05 /* SpoqaHanSansNeo-Bold.otf */,
 				510718A62B15BEC5008DFF05 /* SpoqaHanSansNeo-Regular.otf */,
+				BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */,
 				51D690DD2B15B9B700F8D705 /* FontExtension.swift */,
 				51D690E02B15BB9800F8D705 /* MadiiFontModifier.swift */,
 			);
@@ -956,8 +960,7 @@
 		51E862042D4DE2710033F0AB /* MadiiDesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				51E862162D4DEC380033F0AB /* Color */,
-				51E862112D4DE93B0033F0AB /* Font */,
+				BE8BAE132DF2BC5B00E3B84C /* Font */,
 			);
 			path = MadiiDesignSystem;
 			sourceTree = "<group>";
@@ -991,9 +994,11 @@
 		51E862192D4DF71C0033F0AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51E862112D4DE93B0033F0AB /* Font */,
 				514D2A552D2BBCFC00604B9D /* Info.plist */,
 				514D2A542D2BBCFC00604B9D /* Assets.xcassets */,
 				51E862072D4DE7400033F0AB /* Fonts */,
+				51E862162D4DEC380033F0AB /* Color */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1173,6 +1178,14 @@
 				BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		BE8BAE132DF2BC5B00E3B84C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		BE9A01B42BF4A40500F52458 /* Frameworks */ = {
@@ -1407,6 +1420,7 @@
 				515EFC962AFCA0D200230647 /* Preview Assets.xcassets in Resources */,
 				515EFC9D2AFCA0E500230647 /* .gitignore in Resources */,
 				515EFC932AFCA0D200230647 /* Assets.xcassets in Resources */,
+				BE8BAE192DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1454,6 +1468,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE8BAE112DF2BB6C00E3B84C /* View+madiiFont.swift in Sources */,
+				BE8BAE122DF2BBA400E3B84C /* Font+MadiiFont.swift in Sources */,
+				BE8BAE102DF2BB5A00E3B84C /* Color+madiiColor.swift in Sources */,
 				51004BFD2D4E0F910073742B /* JoyAPI.swift in Sources */,
 				514D2A5B2D2BBCFC00604B9D /* MadiiWidget.swift in Sources */,
 				514D2A5C2D2BBCFC00604B9D /* MadiiWidgetBundle.swift in Sources */,
@@ -1618,9 +1635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51E862152D4DE9840033F0AB /* View+madiiFont.swift in Sources */,
-				51E862182D4DEC830033F0AB /* Color+madiiColor.swift in Sources */,
-				51E862132D4DE94B0033F0AB /* Font+MadiiFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
