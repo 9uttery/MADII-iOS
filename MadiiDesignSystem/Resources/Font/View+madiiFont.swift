@@ -5,7 +5,6 @@
 //  Created by 정태우 on 6/6/25.
 //
 
-
 import SwiftUI
 
 enum MadiiFontType {
@@ -17,10 +16,9 @@ enum MadiiFontType {
     case body3
     case caption
     
-    
     var fontName: SpoqaHanSansNeoWeight {
         switch self {
-        case .title1, .title2, subTitle, .body1: return .bold
+        case .title1, .title2, .subTitle, .body1: return .bold
         case .body2, .body3, .caption: return .medium
         }
     }
@@ -50,13 +48,13 @@ enum SpoqaHanSansNeoWeight: String {
 }
 
 extension View {
-    /// 뷰에 comfieFont 메소드를 활용하여 폰트를 지정합니다.
-    func madiiFont(_ type: ComfieFontType) -> some View {
+    /// 뷰에 madiiFont 메소드를 활용하여 폰트를 지정합니다.
+    func madiiFont(_ type: MadiiFontType) -> some View {
         let font = UIFont(name: type.fontName.rawValue, size: type.fontSize) ?? UIFont.systemFont(ofSize: type.fontSize)
         let calculatedLineHeight = type.fontSize * (type.lineHeight / 100)
         let lineSpacing = max(0, calculatedLineHeight - font.lineHeight)
         let verticalPadding = max(0, lineSpacing / 2)
-
+        
         return self
             .font(Font(font))
             .lineSpacing(lineSpacing)

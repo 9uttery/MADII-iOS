@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Name=PlayCircle, Size=40px.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Name=PlayCircle, Size=40px-2.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Name=PlayCircle, Size=40px-3.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
