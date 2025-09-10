@@ -32,6 +32,13 @@ struct ReviewView: View {
                     .cornerRadius(8)
             }
             .padding(.vertical, 12)
+            if tabNum == 0 {
+                FeelingReviewView()
+            } else if tabNum == 1 {
+                // TODO: 만족도 조사 뷰 만들어야됨
+            } else {
+                DiaryReviewView()
+            }
         }
         .navigationTitle("\(Date().toKoreanString())")
         .padding(.horizontal, 20)

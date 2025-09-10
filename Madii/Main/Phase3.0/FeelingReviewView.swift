@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MadiiDesignSystem
 
 struct FeelingReviewView: View {
     @State var todayJoys: [Joy] = [Joy(title: "아침에 일어나서 환기시키기"), Joy(title: "하루를 즐겁게 시작하기"), Joy(title: "가족들과 맛있는 저녁 먹기")]
@@ -76,6 +77,11 @@ struct FeelingReviewView: View {
             .padding(.bottom, 16)
             
             Text("*최대 2개까지 고를 수 있어요")
+                .madiiFont(font: .madiiCaption, color: .madiiAlternative)
+                
+            Spacer()
+            
+            MadiiDesignSystem.MadiiButton(title: "다음", color: .violet)
         }
         .animation(.easeInOut, value: clickedNum)
     }

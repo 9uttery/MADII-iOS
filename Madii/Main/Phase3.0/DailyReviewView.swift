@@ -29,6 +29,8 @@ struct DailyReviewView: View {
             .background(.madiiGreen10)
             .cornerRadius(8)
             .padding(.bottom, 12)
+            .opacity(isHeaderVisible ? 1 : 0)
+            .offset(y: isHeaderVisible ? 0 : 20)
             
             Text("오늘도 행복한 순간들이 함께 했네요!\n행복을 따라, 오늘을 정리해봐요.")
                 .madiiFont(font: .madiiBody1, color: .gray100.opacity(0.97))
@@ -53,11 +55,6 @@ struct DailyReviewView: View {
                     .padding(.leading, 26)
                     .background(.madiiElevated)
                     .cornerRadius(20)
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 12)
-                    .opacity(visibleJoys[index] ? 1 : 0)
-                    .offset(y: visibleJoys[index] ? 0 : 20)
-                    .animation(.easeOut(duration: 0.5), value: visibleJoys[index])
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(
@@ -73,6 +70,11 @@ struct DailyReviewView: View {
                                 lineWidth: 1
                             )
                     )
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 12)
+                    .opacity(visibleJoys[index] ? 1 : 0)
+                    .offset(y: visibleJoys[index] ? 0 : 20)
+                    .animation(.easeOut(duration: 0.5), value: visibleJoys[index])
                 }
             }
             
@@ -101,7 +103,7 @@ struct DailyReviewView: View {
 
                 // joy 항목들 하나씩 1초 간격으로 올라오면서 등장
                 for index in todayJoys.indices {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1 + Double(index + 1)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(index + 1)) {
                         withAnimation(.easeOut(duration: 0.5)) {
                             visibleJoys[index] = true
                         }
