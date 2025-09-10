@@ -34,6 +34,7 @@ public struct MadiiButton: View {
         } label: {
             Text(title)
                 .madiiFont(font())
+                .frame(maxWidth: .infinity)
                 .foregroundStyle(foregroundColor())
                 .padding(.vertical, verticalPadding())
                 .padding(.horizontal, horizontalPadding())

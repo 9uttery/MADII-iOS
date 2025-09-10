@@ -8,7 +8,11 @@
 import SwiftUI
 
 public struct MadiiTabNavigation: View {
-    public let tabTitle: String = "탐색"
+    public let tabTitle: String
+    
+    public init(tabTitle: String) {
+        self.tabTitle = tabTitle
+    }
     
     public var body: some View {
         HStack {
@@ -21,8 +25,4 @@ public struct MadiiTabNavigation: View {
             Spacer()
         }
     }
-}
-
-#Preview {
-    MadiiTabNavigation()
 }

@@ -1,0 +1,88 @@
+//
+//  CompleteReviewView.swift
+//  Madii
+//
+//  Created by 정태우 on 8/14/25.
+//
+
+import SwiftUI
+import MadiiDesignSystem
+
+struct CompleteReviewView: View {
+    @State var nickname: String = "코코"
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack(spacing: 4) {
+                Image("home_selected")
+                    .resizable()
+                    .frame(width: 12.6, height: 12.36)
+                
+                Text("\(Date().year)년 \(Date().toKoreanString())")
+                    .madiiFont(font: .madiiCaption, color: .madiiGreen100)
+                    .padding(.vertical, 4.5)
+            }
+            .padding(.horizontal, 8)
+            .background(.madiiGreen10)
+            .cornerRadius(8)
+            .padding(.bottom, 12)
+            
+            Text("오늘의 행복이 기록되었어요!")
+                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .padding(.bottom, 28)
+            
+            VStack(spacing: 20) {
+                Image("CoverA")
+                    .resizable()
+                    .frame(width: 232, height: 232)
+                    .cornerRadius(28)
+                
+                Text("\(nickname)님의 행복")
+                    .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
+            }
+            .padding(.vertical, 28)
+            .padding(.horizontal, 24)
+            .background(
+                LinearGradient(
+                    gradient: Gradient(stops: [
+                        .init(color: Color(red: 0xFF/255, green: 0xFF/255, blue: 0xFF/255).opacity(0.08), location: 0.0), // #FFFFFF
+                                 .init(color: Color(red: 0x28/255, green: 0xD0/255, blue: 0xED/255).opacity(0.08), location: 1.0)  // #28D0ED
+                             ]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+            .cornerRadius(32)
+            .overlay(
+                RoundedRectangle(cornerRadius: 32)
+                    .stroke(
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color.white.opacity(0.1), location: 0.0),
+                                .init(color: Color(red: 0x3D/255, green: 0xC2/255, blue: 0xFF/255).opacity(0.1), location: 0.33),
+                                .init(color: Color(red: 0xD4/255, green: 0x78/255, blue: 0xFF/255).opacity(0.1), location: 0.68),
+                                .init(color: Color.white.opacity(0.1), location: 1.0)
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            )
+            .padding(.bottom, 28)
+            
+            Text("*저장된 기록은 수정이 불가능해요.")
+                .madiiFont(font: .caption, color: .madiiAlternative)
+            
+            Spacer()
+            
+            MadiiDesignSystem.MadiiButton(title: "다음", color: .violet)
+                .padding(.horizontal, 20)
+        }
+        .navigationTitle("오늘 하루 돌아보기")
+    }
+}
+
+#Preview {
+    CompleteReviewView()
+}

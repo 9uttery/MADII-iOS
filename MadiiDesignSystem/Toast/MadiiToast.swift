@@ -7,21 +7,30 @@
 
 import SwiftUI
 
-enum ToastType {
+public enum ToastType {
     case complete, error
 }
 
-struct MadiiToast: View {
-    let type: ToastType
-    let title: String
-    @Binding var isShowToast: Bool
+public struct MadiiToast: View {
+    public let type: ToastType
+    public let title: String
+    @Binding public var isShowToast: Bool
     
-    var body: some View {
+    public init(type: ToastType = .complete, title: String, isShowToast: Binding<Bool>) {
+        self.type = type
+        self.title = title
+        self._isShowToast = isShowToast
+    }
+    
+    public var body: some View {
         HStack(spacing: 12) {
             Image(type == .complete ? "checkFillLime" : "exclamationCircle")
                 .resizable()
                 .frame(width: 28, height: 28)
+            
             Text(title)
+                .madiiFont(.body3)
+                .foregroundStyle(.madiiElevated)
         }
         .padding(.vertical, 12)
         .padding(.leading, 20)
@@ -32,5 +41,5 @@ struct MadiiToast: View {
 }
 
 #Preview {
-    MadiiToast(type: .complete, title: "toastMessage", isShowToast: .constant(false))
+    MadiiToast(type: .complete, title: "안녕하세요 시발", isShowToast: .constant(false))
 }
