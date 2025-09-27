@@ -9,13 +9,13 @@ import SwiftUI
 
 struct RecommendButton: View {
     let title: String
-    var action: (() -> Void)?
+    var action: ((Bool) -> Void)?
     @State var isClicked: Bool = false
     
     var body: some View {
         Button {
             isClicked.toggle()
-            action?()
+            action?(isClicked)
         } label: {
             Text(title)
                 .madiiFont(font: .madiiBody2, color: isClicked ? .madiiContrast : .madiiStrong)
@@ -28,5 +28,5 @@ struct RecommendButton: View {
 }
 
 #Preview {
-    RecommendButton(title: "화창한 날씨", action: {})
+    RecommendButton(title: "화창한 날씨", action: {_ in })
 }

@@ -5,10 +5,11 @@
 //  Created by 정태우 on 8/30/25.
 //
 
-import SwiftUI
 import MadiiDesignSystem
+import SwiftUI
 
 struct CompleteRecommendJoyView: View {
+    @Binding var joy: Joy
     @State var nickname: String = "코코"
     @State var joyName: String = "소확행 이름"
     @State var isShowToast: Bool = false
@@ -53,8 +54,19 @@ struct CompleteRecommendJoyView: View {
         }
         .navigationBarBackButtonHidden()
     }
+    
+    func playJoy() {
+        AchievementsAPI.shared.playJoy(joyId: joy.joyId ?? 0) { isSuccess, isDuplicated in
+            if isSuccess {
+                if isDuplicated {
+                    
+                } else {
+                    
+                }
+            } else {
+                
+            }
+        }
+    }
 }
 
-#Preview {
-    CompleteRecommendJoyView()
-}

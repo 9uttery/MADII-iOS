@@ -5,8 +5,8 @@
 //  Created by 정태우 on 8/14/25.
 //
 
-import SwiftUI
 import MadiiDesignSystem
+import SwiftUI
 
 struct CompleteReviewView: View {
     @State var nickname: String = "코코"

@@ -52,8 +52,8 @@ struct TodayPlaylistView: View {
             .onAppear {
                 getPlaylist()
             }
-            .onChange(of: scenePhase) { newScenePhase in
-                switch newScenePhase {
+            .onChange(of: scenePhase) {
+                switch scenePhase {
                 case .active:
                     print("App is active")
                     getPlaylist()

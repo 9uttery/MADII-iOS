@@ -52,7 +52,7 @@ struct AlbumDetailView: View {
                             if isAlbumMine == false {
                                 AlbumDetailBookmarkButton(albumId: album.id, isAlbumSaved: $isAlbumSaved)
                                     .offset(x: -18, y: -12)
-                                    .onChange(of: isAlbumSaved) { _ in getAlbumInfo() }
+                                    .onChange(of: isAlbumSaved) { getAlbumInfo() }
                             }
                         }
                         
@@ -67,22 +67,22 @@ struct AlbumDetailView: View {
                 }
                 .scrollIndicators(.hidden)
                 .refreshable { getAlbumInfo() }
-                .onChange(of: showSaveJoyPopUp) { _ in
+                .onChange(of: showSaveJoyPopUp) {
                     // 소확행을 앨범에 저장하는 팝업이 사라지면 앨범정보 새로 부르기
                     if showSaveJoyPopUp == false { getAlbumInfo() }
                 }
-                .onChange(of: isAlbumEditMode) { _ in
+                .onChange(of: isAlbumEditMode) {
                     // 앨범 정보를 수정하는 팝업이 사라지면 앨범정보 새로 부르기
                     if isAlbumEditMode == false { getAlbumInfo() }
                 }
-                .onChange(of: isTextFieldFocused) { _ in
+                .onChange(of: isTextFieldFocused) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.16) {
                         withAnimation {
                             proxy.scrollTo(1, anchor: .bottom)
                         }
                     }
                 }
-                .onChange(of: showChangeInfo) { _ in
+                .onChange(of: showChangeInfo) {
                     // 앨범 정보를 수정하는 팝업이 사라지면 앨범정보 새로 부르기
                     if showSaveJoyPopUp == false { getAlbumInfo() }
                 }
@@ -153,10 +153,10 @@ struct AlbumDetailView: View {
             getAlbumInfo()
             postRecentAlbum()
         }
-        .onChange(of: isClose) { _ in
+        .onChange(of: isClose) {
             presentationMode.wrappedValue.dismiss()
         }
-        .onChange(of: isAlbumEditMode) { _ in
+        .onChange(of: isAlbumEditMode) {
             if isAlbumEditMode {
                 albumTitle = album.title
                 albumDescription = album.description
@@ -164,10 +164,7 @@ struct AlbumDetailView: View {
                 for (index, joy) in joys.enumerated() {
                     joys[index].joyOrder = index + 1
                 }
-                print(joys)
                 joyResponses = joys.map { $0.toJoyResponse() }
-                print("안녕하세요 조이리스판스입니다\(joyResponses)")
-                print("deleteIds입니다\(deletedJoyIds)")
                 putAlbumsAll()
                 getAlbumInfo()
             }

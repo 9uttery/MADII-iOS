@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeCalendarView: View {
     @Binding var isMonthly: Bool
-    let currentDate = Date()
+    @State private var currentDate = Date()
+    @State private var selectedDay = Date()
     var days: [Date] {
         getMonthDates(for: currentDate)
     }
@@ -20,9 +21,29 @@ struct HomeCalendarView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 0) {
+            HStack(spacing: 4) {
+                Button {
+                    if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) {
+                        currentDate = prevMonth
+                    }
+                } label: {
+                    Image("arrowBack")
+                        .resizable()
+                        .frame(width: 24, height: 23)
+                }
+                
                 Text("\(currentDate.month)월")
                     .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                
+                Button {
+                    if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) {
+                        currentDate = nextMonth
+                    }
+                } label: {
+                    Image("arrowForward")
+                        .resizable()
+                        .frame(width: 24, height: 23)
+                }
                 
                 Spacer()
                 
@@ -153,5 +174,15 @@ struct HomeCalendarView: View {
 
         // 총 칸수를 7로 나눠 올림 → 주 수
         return Int(ceil(Double(totalCells) / 7.0))
+    }
+    
+    func getCalendarEmoji() {
+        AchievementsAPI.shared.getJoyIconsForMonth(date: currentDate) { isSuccess, joyIcons in
+            if isSuccess {
+                print("Debug CalendarEmoji: isSuccess true")
+            } else {
+                print("Debug CalendarEmoji: isSuccess true")
+            }
+        }
     }
 }

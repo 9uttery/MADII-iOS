@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Joy: Identifiable, Equatable {
     let id = UUID()
@@ -20,10 +21,17 @@ struct Joy: Identifiable, Equatable {
     var isMine: Bool = false
     var rank: Int = 0
     var joyOrder: Int = 0
+    var selectedEmotions: [Emotion] = []
     
     func toJoyResponse() -> JoyResponse {
         return JoyResponse(joyId: joyId, contents: title, joyOrder: joyOrder)
     }
+}
+
+struct Emotion: Identifiable, Hashable {
+    var id = UUID()
+    var title: String
+    var color: Color
 }
 
 enum JoySatisfaction: CaseIterable {
@@ -85,4 +93,10 @@ struct MyJoy: Identifiable {
                                   MyJoy(date: "2023.12.24", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")]),
                                   MyJoy(date: "2023.12.23", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기")]),
                                   MyJoy(date: "2023.12.22", joys: [Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기"), Joy(title: "넷플릭스 보면서 귤 까먹기")])]
+}
+
+extension Emotion {
+    static let emotionList: [Emotion] = [
+        Emotion(title: "기쁨", color: .madiiPink), Emotion(title: "즐거움", color: .madiiPink), Emotion(title: "여유로움", color: .madiiPink), Emotion(title: "상쾌함", color: .madiiPink), Emotion(title: "자유로움", color: .madiiPink),  Emotion(title: "사랑", color: .madiiRedOrange), Emotion(title: "친밀감", color: .madiiRedOrange), Emotion(title: "따뜻함", color: .madiiRedOrange), Emotion(title: "감동", color: .madiiRedOrange), Emotion(title: "고마움", color: .madiiRedOrange), Emotion(title: "추억", color: .madiiRedOrange), Emotion(title: "만족감", color: .madiiCyan), Emotion(title: "성취감", color: .madiiCyan), Emotion(title: "호기심", color: .madiiCyan), Emotion(title: "몰입감", color: .madiiCyan), Emotion(title: "기대감", color: .madiiCyan)
+    ]
 }

@@ -50,7 +50,7 @@ struct ExplorationView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 24)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("행복을 재생해요")
                         .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                         .padding(.top, 24)
@@ -62,7 +62,7 @@ struct ExplorationView: View {
                             
                         } label: {
                             HStack(spacing: 12) {
-                                Image("CoverA")
+                                Image("Cover\(album.backgroundColorNum)")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .cornerRadius(12)
@@ -113,6 +113,30 @@ struct ExplorationView: View {
                         )
                 )
                 .padding(.horizontal, 20)
+            }
+        }
+        .onAppear {
+            getAllAlbums()
+        }
+    }
+    
+    func getAllAlbums() {
+        HomeAPI.shared.getAllAlbums(albumId: nil, size: 6) { isSuccess, allAlbums in
+            if isSuccess {
+                print("DEBUG getAllAlbums: get isSuccess true")
+                self.albums = allAlbums.content.map { dto in
+                    Album(
+                        id: dto.albumId,
+                        backgroundColorNum: dto.albumColorNum,
+                        iconNum: dto.joyIconNum,
+                        title: dto.name,
+                        creator: dto.nickname ?? "",
+                        description: "",
+                        isPublic: false
+                    )
+                }
+            } else {
+                print("DEBUG getAllAlbums:  isSuccess false")
             }
         }
     }

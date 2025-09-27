@@ -9,11 +9,27 @@ import SwiftUI
 
 struct MadiiAlbumListView: View {
     @State private var albums: [Album] = Album.dummy10
+    @State private var isSelect: Bool = false
     
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "arrow.left")
+                Button {
+                    
+                } label: {
+                    if isSelect {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                    } else {
+                        Text("취소")
+                            .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                            .background(.madiiContrast)
+                            .cornerRadius(10)
+                    }
+                }
                 
                 Spacer()
                 
@@ -25,14 +41,24 @@ struct MadiiAlbumListView: View {
                 Button {
                     
                 } label: {
-                    Text("선택")
-                        .madiiFont(font: .madiiBody3, color: .white)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                        .background(.madiiBox)
-                        .cornerRadius(10)
+                    if isSelect {
+                        Text("삭제")
+                            .madiiFont(font: .madiiBody3, color: .madiiStrong)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                            .background(.madiiNegative)
+                            .cornerRadius(10)
+                    } else {
+                        Text("선택")
+                            .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                            .background(.madiiBox)
+                            .cornerRadius(10)
+                    }
                 }
             }
+            .padding(.horizontal, 20)
             
             ScrollView {
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0, alignment: .top), count: 2), spacing: 24) {
@@ -58,18 +84,42 @@ struct MadiiAlbumListView: View {
                             // 라우터 처리
                         } label: {
                             VStack(alignment: .leading, spacing: 12) {
-                                Image("CoverA")
-                                //                            Image("\(album.iconNum)")
+                                Image("Cover\(album.backgroundColorNum)")
                                     .frame(width: 152, height: 152)
                                     .cornerRadius(32)
                                 
                                 Text(album.title)
                                     .madiiFont(font: .madiiBody3, color: .white)
                                     .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: 152, alignment: .leading)
                             }
                         }
                     }
                 }
+            }
+        }
+        .onAppear {
+            getAllAlbums()
+        }
+    }
+    
+    func getAllAlbums() {
+        HomeAPI.shared.getAllAlbums(albumId: nil, size: 999) { isSuccess, allAlbums in
+            if isSuccess {
+                print("DEBUG getAllAlbums: get isSuccess true")
+                self.albums = allAlbums.content.map { dto in
+                    Album(
+                        id: dto.albumId,
+                        backgroundColorNum: dto.albumColorNum,
+                        iconNum: dto.joyIconNum,
+                        title: dto.name,
+                        creator: dto.nickname ?? "",
+                        description: "",
+                        isPublic: false
+                    )
+                }
+            } else {
+                print("DEBUG getAllAlbums:  isSuccess false")
             }
         }
     }
