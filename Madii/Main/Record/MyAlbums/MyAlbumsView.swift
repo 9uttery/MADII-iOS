@@ -77,7 +77,3 @@ struct MyAlbumsView: View {
         }
     }
 }
-
-//#Preview {
-//    MadiiTabView()
-//}

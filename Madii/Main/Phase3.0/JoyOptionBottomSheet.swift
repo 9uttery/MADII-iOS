@@ -63,7 +63,3 @@ struct JoyOptionBottomSheet: View {
         }
     }
 }
-//
-//#Preview {
-//    JoyOptionBottomSheet(joyId: .constant(0), showJoyOptionBottomSheet: .c)
-//}

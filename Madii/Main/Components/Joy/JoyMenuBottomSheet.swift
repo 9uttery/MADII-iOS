@@ -127,10 +127,4 @@ struct JoyMenuBottomSheet: View {
         .frame(height: 50)
         .padding(.horizontal, 16)
     }
-    
-    
 }
-
-//#Preview {
-//    MyJoyView()
-//}

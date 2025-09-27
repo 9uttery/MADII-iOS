@@ -118,7 +118,7 @@ struct RecommendJoyView: View {
                         .mask {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .stroke(lineWidth: 3)
-                                .frame(width: frameWidth - 66, height:  354 + joyTextHeight)
+                                .frame(width: frameWidth - 66, height: 354 + joyTextHeight)
                         }
                 }
                 .padding(.bottom, 31)

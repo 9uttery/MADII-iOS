@@ -91,9 +91,9 @@ struct AddNewAlbumBottomSheet: View {
             .request { result in
                 switch result {
                 case .success(let data):
-                    print("앨범 생성 성공")
+                    print("앨범 생성 성공 \(data)")
                 case .failure(let failure):
-                    print("앨범 생성 실패")
+                    print("앨범 생성 실패 \(failure)")
             }
         }
     }

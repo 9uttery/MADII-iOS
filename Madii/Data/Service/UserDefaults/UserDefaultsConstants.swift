@@ -9,7 +9,7 @@ import Foundation
 
 struct UserDefaultsConstants {
     enum Keys: String, CaseIterable {
-        case hasEverOnboarded = "hasEverOnboarded"
+        case hasEverOnboarded
         
         var defaultValue: Any {
             switch self {

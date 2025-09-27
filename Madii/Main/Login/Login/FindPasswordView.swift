@@ -74,7 +74,7 @@ struct FindPasswordView: View {
                         .opacity(codeType != .wrong ? 1.0 : 0.4)
                 }
                 .disabled(codeType == .wrong)
-                .onChange(of: code) { _ in codeType = .sended }
+                .onChange(of: code) { _, _ in codeType = .sended }
                 .navigationDestination(isPresented: $showResetPasswordView) {
                     ResetPasswordView(email: email)
                 }

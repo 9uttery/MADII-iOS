@@ -97,6 +97,21 @@ struct MyJoy: Identifiable {
 
 extension Emotion {
     static let emotionList: [Emotion] = [
-        Emotion(title: "기쁨", color: .madiiPink), Emotion(title: "즐거움", color: .madiiPink), Emotion(title: "여유로움", color: .madiiPink), Emotion(title: "상쾌함", color: .madiiPink), Emotion(title: "자유로움", color: .madiiPink),  Emotion(title: "사랑", color: .madiiRedOrange), Emotion(title: "친밀감", color: .madiiRedOrange), Emotion(title: "따뜻함", color: .madiiRedOrange), Emotion(title: "감동", color: .madiiRedOrange), Emotion(title: "고마움", color: .madiiRedOrange), Emotion(title: "추억", color: .madiiRedOrange), Emotion(title: "만족감", color: .madiiCyan), Emotion(title: "성취감", color: .madiiCyan), Emotion(title: "호기심", color: .madiiCyan), Emotion(title: "몰입감", color: .madiiCyan), Emotion(title: "기대감", color: .madiiCyan)
+        Emotion(title: "기쁨", color: .madiiPink),
+        Emotion(title: "즐거움", color: .madiiPink),
+        Emotion(title: "여유로움", color: .madiiPink),
+        Emotion(title: "상쾌함", color: .madiiPink),
+        Emotion(title: "자유로움", color: .madiiPink),
+        Emotion(title: "사랑", color: .madiiRedOrange),
+        Emotion(title: "친밀감", color: .madiiRedOrange),
+        Emotion(title: "따뜻함", color: .madiiRedOrange),
+        Emotion(title: "감동", color: .madiiRedOrange),
+        Emotion(title: "고마움", color: .madiiRedOrange),
+        Emotion(title: "추억", color: .madiiRedOrange),
+        Emotion(title: "만족감", color: .madiiCyan),
+        Emotion(title: "성취감", color: .madiiCyan),
+        Emotion(title: "호기심", color: .madiiCyan),
+        Emotion(title: "몰입감", color: .madiiCyan),
+        Emotion(title: "기대감", color: .madiiCyan)
     ]
 }

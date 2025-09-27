@@ -37,7 +37,7 @@ struct MadiiApp_P3: App {
     }
 }
 
-//@main
+// @main
 struct MadiiApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate

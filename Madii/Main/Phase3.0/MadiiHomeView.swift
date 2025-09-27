@@ -18,7 +18,7 @@ struct MadiiHomeView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 0) {
-                MadiiHomeNavigation() {
+                MadiiHomeNavigation {
                     
                 }
                 .padding(.bottom, 12)

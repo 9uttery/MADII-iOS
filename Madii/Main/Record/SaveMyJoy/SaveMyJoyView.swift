@@ -51,7 +51,7 @@ struct SaveMyJoyView: View {
             switch result {
             case .success(let data):
                 self.placeholder = data.contents
-            case .failure(_):
+            case .failure:
                 print("DEBUG \(#function): result false")
             }
         }

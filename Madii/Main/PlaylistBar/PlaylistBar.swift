@@ -137,26 +137,26 @@ struct PlaylistBar: View {
         .onDisappear {
             stopTimer()
         }
-        .onChange(of: showPlaylist) { _ in
+        .onChange(of: showPlaylist) { _, _ in
             // 오플리 사라지면 플리바 새로고침
             if showPlaylist == false { getPlaylist() }
         }
-        .onChange(of: selectedJoyIndex) { _ in
+        .onChange(of: selectedJoyIndex) { _, _ in
             joy = todayJoys.joys[selectedJoyIndex]
         }
-        .onChange(of: updatePlaylistBar) { _ in
+        .onChange(of: updatePlaylistBar) { _, _ in
             if updatePlaylistBar { getPlaylist() }
         }
         .onTapGesture {
             showPlaylist = true
         }
-        .onChange(of: joy) { _ in
+        .onChange(of: joy) { _, _ in
             stopTimer()
             xOffset = 0
             firstOffset = 0
             secondOffset = 260
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                if textWidth >= UIScreen.main.bounds.width - 185 || todayJoys.joys.isEmpty  {
+                if textWidth >= UIScreen.main.bounds.width - 185 || todayJoys.joys.isEmpty {
                     startTimer()
                 } else {
                     stopTimer()

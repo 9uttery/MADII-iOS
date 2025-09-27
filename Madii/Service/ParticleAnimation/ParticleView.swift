@@ -24,7 +24,7 @@ struct ParticleView: View {
             }
         }
         .onAppear { firstAppear = true }
-        .onChange(of: counter) { _ in
+        .onChange(of: counter) { _, _ in
             if firstAppear {
                 for idx in 0...confettiVM.repetitions {
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiVM.repetitionInterval * Double(idx)) {
