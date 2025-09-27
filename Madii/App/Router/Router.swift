@@ -12,8 +12,9 @@ class Router {
     private let onboardingRepository: OnboardingRepository
     private let container: DIContainer
     
-    var path: [Route] = []       // navigation stack view
-    var fullScreenRoute: Route?  // full screen view
+    var path: [Route] = []        // navigation stack view
+    var fullScreenRoute: Route?   // full screen view
+    var selectedTab: MadiiTab_P3 = .home  // Tab view
     
     // 앱 실행 시, 2초간 로딩 화면 종료 여부
     var isLoadingViewFinished: Bool = false
@@ -49,6 +50,19 @@ class Router {
             container.makeView(.login)
         } else { // 메인 화면
             container.makeView(.tab)
+        }
+    }
+    
+    @MainActor
+    @ViewBuilder
+    func tabRootView() -> some View {
+        switch selectedTab {
+        case .home:
+            container.makeView(.home)
+        case .exploration:
+            container.makeView(.exploration)
+        case .archiving:
+            container.makeView(.archiving)
         }
     }
 }

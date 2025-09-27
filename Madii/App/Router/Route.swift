@@ -14,4 +14,9 @@ enum Route: Hashable, Identifiable {
     case onboarding
     case login
     case tab
+    
+    // Tab
+    case home
+    case exploration
+    case archiving
 }

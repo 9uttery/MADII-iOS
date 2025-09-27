@@ -515,6 +515,9 @@
 				Router/Router.swift,
 				"Router/Router+navigate.swift",
 				Router/RoutingView.swift,
+				Tab/MadiiTab_P3.swift,
+				Tab/MadiiTabBar_P3.swift,
+				Tab/MadiiTabView_P3.swift,
 			);
 			target = 515EFC8A2AFCA0D100230647 /* Madii */;
 		};
