@@ -521,11 +521,36 @@
 			);
 			target = 515EFC8A2AFCA0D100230647 /* Madii */;
 		};
+		51B2F02D2E87BABF003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"1-Onboarding/OnboardingView_P3.swift",
+				"1-Onboarding/SplashView_P3.swift",
+				"2-Auth/LoginView_P3.swift",
+				"3-Home/DailyReview/DailyReviewView_P3.swift",
+				"3-Home/Home/HomeView_P3.swift",
+				"3-Home/Home/HomeViewModel_P3.swift",
+				"4-Exploration/ExplorationView_P3.swift",
+				"5-Archiving/ArchivingView_P3.swift",
+				"5-Archiving/ArchivingViewModel_P3.swift",
+				"6-MyPage/MyPageView_P3.swift",
+			);
+			target = 515EFC8A2AFCA0D100230647 /* Madii */;
+		};
+		51B2F0382E87BB57003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/UINavigationController+.swift",
+			);
+			target = 515EFC8A2AFCA0D100230647 /* Madii */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		518DC0B02E4889C900646CC6 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (518DC0B52E4889EA00646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
 		518DC0CC2E488A7800646CC6 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (518DC0D12E488A7900646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = App; sourceTree = "<group>"; };
+		51B2F0292E87BA7D003E66C4 /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (51B2F02D2E87BABF003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
+		51B2F0332E87BB39003E66C4 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (51B2F0382E87BB57003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,6 +805,8 @@
 			children = (
 				518DC0CC2E488A7800646CC6 /* App */,
 				518DC0B02E4889C900646CC6 /* Data */,
+				51B2F0292E87BA7D003E66C4 /* Presentation */,
+				51B2F0332E87BB39003E66C4 /* Resources */,
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51380FAB2BBD3334000D9BA0 /* Info.plist */,

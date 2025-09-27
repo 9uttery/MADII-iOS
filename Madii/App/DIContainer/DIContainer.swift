@@ -23,4 +23,13 @@ final class DIContainer {
     private lazy var onboardingRepository: OnboardingRepository = {
         OnboardingRepository(userDefaults: userDefaultsService)
     }()
+    
+    // MARK: - Presentation(ViewModel)
+    func homeViewModel() -> HomeViewModel_P3 {
+        return HomeViewModel_P3(router: router)
+    }
+    
+    func archivingViewModel() -> ArchivingViewModel_P3 {
+        return ArchivingViewModel_P3(router: router)
+    }
 }

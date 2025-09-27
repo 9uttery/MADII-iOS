@@ -19,4 +19,12 @@ enum Route: Hashable, Identifiable {
     case home
     case exploration
     case archiving
+    
+    // Home
+    case dailyReview
+    
+    // Exploration
+    
+    // Archiving
+    case myPage
 }
