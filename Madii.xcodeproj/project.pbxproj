@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -370,6 +370,7 @@
 		51811E892B852CE600E2D2DB /* AlbumDetailCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailCoverView.swift; sourceTree = "<group>"; };
 		51811E8B2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailBookmarkButton.swift; sourceTree = "<group>"; };
 		51811E8D2B853D5D00E2D2DB /* TodayPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPlaylistView.swift; sourceTree = "<group>"; };
+		518DC0DA2E48912E00646CC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		519027DC2C184609008414A2 /* TextFieldLabelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelViewModifier.swift; sourceTree = "<group>"; };
 		519027DE2C184703008414A2 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		519B014E2B89151D00519B11 /* ReportPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUp.swift; sourceTree = "<group>"; };
@@ -480,7 +481,6 @@
 		BE821E5E2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiHomeNavigation.swift; sourceTree = "<group>"; };
 		BE821E682E13882600952D3F /* MadiiTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabNavigation.swift; sourceTree = "<group>"; };
-		BE821E6C2E13895B00952D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE821E6F2E138AB200952D3F /* MadiiToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiToast.swift; sourceTree = "<group>"; };
 		BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
 		BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
@@ -494,6 +494,36 @@
 		BEFC6BD42B38157100C78A37 /* StyleJoyNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleJoyNextButton.swift; sourceTree = "<group>"; };
 		BEFC6BD62B381C4D00C78A37 /* NewAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		518DC0B52E4889EA00646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Repository/OnboardingRepository.swift,
+				Service/UserDefaults/UserDefaultsConstants.swift,
+				Service/UserDefaults/UserDefaultsError.swift,
+				Service/UserDefaults/UserDefaultsService.swift,
+			);
+			target = 515EFC8A2AFCA0D100230647 /* Madii */;
+		};
+		518DC0D12E488A7900646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DIContainer/DIContainer.swift,
+				"DIContainer/DIContainer+makeView.swift",
+				Router/Route.swift,
+				Router/Router.swift,
+				"Router/Router+navigate.swift",
+				Router/RoutingView.swift,
+			);
+			target = 515EFC8A2AFCA0D100230647 /* Madii */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		518DC0B02E4889C900646CC6 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (518DC0B52E4889EA00646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		518DC0CC2E488A7800646CC6 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (518DC0D12E488A7900646CC6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = App; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5148F28A2D19264C00B074C5 /* Frameworks */ = {
@@ -745,6 +775,8 @@
 		515EFC8D2AFCA0D100230647 /* Madii */ = {
 			isa = PBXGroup;
 			children = (
+				518DC0CC2E488A7800646CC6 /* App */,
+				518DC0B02E4889C900646CC6 /* Data */,
 				51E29E5F2B552E6C00A35EBF /* Madii.entitlements */,
 				515EFC922AFCA0D200230647 /* Assets.xcassets */,
 				51380FAB2BBD3334000D9BA0 /* Info.plist */,
@@ -1275,7 +1307,7 @@
 				BE3059BF2E4439A6005A7A20 /* Textfield */,
 				BE8BAE132DF2BC5B00E3B84C /* Font */,
 				BE821E5B2E13796600952D3F /* Fonts */,
-				BE821E6C2E13895B00952D3F /* Info.plist */,
+				518DC0DA2E48912E00646CC6 /* Info.plist */,
 				BE690CA12E24F9F900D077B6 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -2015,7 +2047,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2056,7 +2088,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
