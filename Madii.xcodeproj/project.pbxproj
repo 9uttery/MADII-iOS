@@ -203,6 +203,16 @@
 		BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */; };
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
+		BE5B43D62E80D37B004BFCC1 /* JoyOptionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */; };
+		BE5B43D82E80D68D004BFCC1 /* EditJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */; };
+		BE5B43DA2E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */; };
+		BE5B43DE2E83E87A004BFCC1 /* ArchivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */; };
+		BE5B43E62E868518004BFCC1 /* AlbumOptionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */; };
+		BE5B43E82E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */; };
+		BE5B43EA2E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */; };
+		BE5B43EE2E87AA25004BFCC1 /* DailySummaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43ED2E87AA25004BFCC1 /* DailySummaryAPI.swift */; };
+		BE5B43F02E87AA31004BFCC1 /* DailySummaryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */; };
+		BE5B43F22E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */; };
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
 		BE6728782E4DB1C90083A449 /* DiaryReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */; };
 		BE67287A2E4DB7E10083A449 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6728792E4DB7E10083A449 /* PhotoPicker.swift */; };
@@ -220,6 +230,7 @@
 		BE821E652E1383A600952D3F /* MadiiHomeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */; };
 		BE821E692E13882600952D3F /* MadiiTabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E682E13882600952D3F /* MadiiTabNavigation.swift */; };
 		BE821E702E138AB200952D3F /* MadiiToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E6F2E138AB200952D3F /* MadiiToast.swift */; };
+		BE83AC352E7D379C00C47386 /* SatisfactionReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */; };
 		BE8BAE102DF2BB5A00E3B84C /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
 		BE8BAE112DF2BB6C00E3B84C /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
 		BE8BAE122DF2BBA400E3B84C /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
@@ -481,6 +492,16 @@
 		BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
+		BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyOptionBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJoyBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivingView.swift; sourceTree = "<group>"; };
+		BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumOptionBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumBottomSheet.swift; sourceTree = "<group>"; };
+		BE5B43ED2E87AA25004BFCC1 /* DailySummaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryAPI.swift; sourceTree = "<group>"; };
+		BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryDTO.swift; sourceTree = "<group>"; };
+		BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameJoyBottomSheet.swift; sourceTree = "<group>"; };
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryReviewView.swift; sourceTree = "<group>"; };
 		BE6728792E4DB7E10083A449 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
@@ -498,6 +519,7 @@
 		BE821E682E13882600952D3F /* MadiiTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabNavigation.swift; sourceTree = "<group>"; };
 		BE821E6C2E13895B00952D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE821E6F2E138AB200952D3F /* MadiiToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiToast.swift; sourceTree = "<group>"; };
+		BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatisfactionReviewView.swift; sourceTree = "<group>"; };
 		BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
 		BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
@@ -1193,6 +1215,7 @@
 		BE459A572B762621002E9AB2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BE5B43EB2E87A9EE004BFCC1 /* DailySummary */,
 				512ED96D2C9213B80085B64D /* Placeholder */,
 				BE459A692B7E28A9002E9AB2 /* Home */,
 				BE459A642B7E24AF002E9AB2 /* Profile */,
@@ -1243,6 +1266,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		BE5B43EB2E87A9EE004BFCC1 /* DailySummary */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B43ED2E87AA25004BFCC1 /* DailySummaryAPI.swift */,
+				BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */,
+			);
+			path = DailySummary;
+			sourceTree = "<group>";
+		};
 		BE7839BA2E2DF14000B95D6C /* Phase3.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1255,6 +1287,7 @@
 				BE3059CE2E4730C2005A7A20 /* DailyReviewView.swift */,
 				BE3059D62E48670C005A7A20 /* ReviewView.swift */,
 				BE3059D82E486A14005A7A20 /* FeelingReviewView.swift */,
+				BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */,
 				BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */,
 				BE6728792E4DB7E10083A449 /* PhotoPicker.swift */,
 				BE67287B2E4DBB5A0083A449 /* CompleteReviewView.swift */,
@@ -1263,6 +1296,14 @@
 				BE3CFF032E616E3A00287FA4 /* RecommendButton.swift */,
 				BE3CFF052E62AD6500287FA4 /* GradientBorder.swift */,
 				BE3CFF072E62B01400287FA4 /* CompleteRecommendJoyView.swift */,
+				BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */,
+				BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */,
+				BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */,
+				BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */,
+				BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */,
+				BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */,
+				BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */,
+				BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */,
 			);
 			path = Phase3.0;
 			sourceTree = "<group>";
@@ -1644,6 +1685,7 @@
 				BEFC6BD52B38157100C78A37 /* StyleJoyNextButton.swift in Sources */,
 				BE3986762B63604A00643805 /* SignOutView.swift in Sources */,
 				519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */,
+				BE5B43F02E87AA31004BFCC1 /* DailySummaryDTO.swift in Sources */,
 				51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */,
 				BE3CFF082E62B01400287FA4 /* CompleteRecommendJoyView.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
@@ -1662,6 +1704,7 @@
 				BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */,
 				BE67287A2E4DB7E10083A449 /* PhotoPicker.swift in Sources */,
 				512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */,
+				BE83AC352E7D379C00C47386 /* SatisfactionReviewView.swift in Sources */,
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
@@ -1680,6 +1723,7 @@
 				BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */,
 				51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
+				BE5B43D82E80D68D004BFCC1 /* EditJoyBottomSheet.swift in Sources */,
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				51811E882B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift in Sources */,
 				BE3059CF2E4730C2005A7A20 /* DailyReviewView.swift in Sources */,
@@ -1687,6 +1731,7 @@
 				517C196E2CB2CF4300148504 /* AlbumsAPI.swift in Sources */,
 				BE0C3F972B81E77200275FD3 /* PlayParticleView.swift in Sources */,
 				BE3CFF022E61651B00287FA4 /* RecommendJoyView3.swift in Sources */,
+				BE5B43E82E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift in Sources */,
 				5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
@@ -1694,11 +1739,13 @@
 				519027DD2C184609008414A2 /* TextFieldLabelViewModifier.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */,
+				BE5B43D62E80D37B004BFCC1 /* JoyOptionBottomSheet.swift in Sources */,
 				511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */,
 				BE459A5D2B762621002E9AB2 /* RecordAPI.swift in Sources */,
 				BE2BFC182B36B479006282F2 /* HomeTodayJoyView.swift in Sources */,
+				BE5B43EE2E87AA25004BFCC1 /* DailySummaryAPI.swift in Sources */,
 				51F25E082B19B37B00F6CCFE /* PopUpWithDescription.swift in Sources */,
 				BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */,
 				51AAB9132BE3E10E00F930B7 /* FindPasswordView.swift in Sources */,
@@ -1719,6 +1766,7 @@
 				BE7839C42E2F21F700B95D6C /* AlbumDetailsView.swift in Sources */,
 				BE7839BC2E2DF15B00B95D6C /* MadiiAlbumListView.swift in Sources */,
 				51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */,
+				BE5B43DE2E83E87A004BFCC1 /* ArchivingView.swift in Sources */,
 				510EF9112B8659AC000768D7 /* ReportBottomSheet.swift in Sources */,
 				5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
@@ -1752,10 +1800,12 @@
 				BE3986702B6272F900643805 /* NoticeView.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */,
+				BE5B43DA2E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift in Sources */,
 				BE0C3F9A2B81E77200275FD3 /* ConfettiCenterVM.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
+				BE5B43EA2E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift in Sources */,
 				512ED96C2C9212260085B64D /* NetworkError.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
@@ -1764,6 +1814,8 @@
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
 				BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */,
 				BE67287E2E4DC71C0083A449 /* ExplorationView.swift in Sources */,
+				BE5B43F22E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift in Sources */,
+				BE5B43E62E868518004BFCC1 /* AlbumOptionBottomSheet.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
@@ -1853,7 +1905,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1884,7 +1936,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = MadiiWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2047,7 +2099,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2088,7 +2140,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2125,7 +2177,7 @@
 				INFOPLIST_FILE = MadiiDesignSystem/Resources/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2170,7 +2222,7 @@
 				INFOPLIST_FILE = MadiiDesignSystem/Resources/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2213,7 +2265,7 @@
 				INFOPLIST_FILE = MadiiNetworking/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2256,7 +2308,7 @@
 				INFOPLIST_FILE = MadiiNetworking/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
