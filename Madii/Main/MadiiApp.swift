@@ -14,6 +14,30 @@ import SwiftUI
 import UserNotifications
 
 @main
+struct MadiiApp_P3: App {
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    private var container: DIContainer { delegate.container }
+    
+    init() {
+        // Kakao SDK 초기화
+        let kakaoNativeAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
+        KakaoSDK.initSDK(appKey: kakaoNativeAppKey as! String)
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            RoutingView(container: container)
+                .onOpenURL { url in
+                    if AuthApi.isKakaoTalkLoginUrl(url) {
+                        _ = AuthController.handleOpenUrl(url: url)
+                    }
+                }
+        }
+    }
+}
+
+//@main
 struct MadiiApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -39,6 +63,8 @@ struct MadiiApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    let container = DIContainer()
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         
