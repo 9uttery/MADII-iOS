@@ -5,10 +5,11 @@
 //  Created by 정태우 on 8/14/25.
 //
 
-import SwiftUI
 import MadiiDesignSystem
+import SwiftUI
 
 struct DiaryReviewView: View {
+    @Binding var tabNum: Int
     @State var diary: String = ""
     @State var isClickedImageButton: Bool = false
     @State var selectedImage: [UIImage] = []
@@ -86,9 +87,11 @@ struct DiaryReviewView: View {
         .sheet(isPresented: $isClickedImageButton) {
             PhotoPicker(selectedImages: $selectedImage, maxSelectionLimit: 5)
         }
+        .navigationTitle(Date().toKoreanString())
+        .padding(.horizontal, 20)
     }
 }
 
 #Preview {
-    DiaryReviewView()
+    DiaryReviewView(tabNum: .constant(0))
 }

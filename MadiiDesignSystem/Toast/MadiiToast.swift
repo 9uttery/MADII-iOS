@@ -41,5 +41,5 @@ public struct MadiiToast: View {
 }
 
 #Preview {
-    MadiiToast(type: .complete, title: "안녕하세요 시발", isShowToast: .constant(false))
+    MadiiToast(type: .complete, title: "안녕하세요", isShowToast: .constant(false))
 }

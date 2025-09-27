@@ -5,13 +5,14 @@
 //  Created by 정태우 on 8/10/25.
 //
 
-import SwiftUI
 import MadiiDesignSystem
+import SwiftUI
 
 struct FeelingReviewView: View {
-    @State var todayJoys: [Joy] = [Joy(title: "아침에 일어나서 환기시키기"), Joy(title: "하루를 즐겁게 시작하기"), Joy(title: "가족들과 맛있는 저녁 먹기")]
+    @Binding var tabNum: Int
+    @Binding var todayJoys: [Joy]
     @State var clickedNum: Int = 0
-    @State var emotions: [String] = ["기쁨", "즐거움", "여유로움", "상쾌함", "자유로움", "사랑", "친밀감", "따뜻함", "감동", "고마움", "추억", "만족감", "성취감", "호기심", "몰입감", "기대감"]
+    @State var emotions: [Emotion] = Emotion.emotionList
     
     var body: some View {
         VStack(spacing: 0) {
@@ -33,6 +34,23 @@ struct FeelingReviewView: View {
                                 
                                 Text(todayJoys[index].title)
                                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                                    .layoutPriority(0)
+                                
+                                Spacer()
+                                
+                                HStack(spacing: 4) {
+                                    ForEach(todayJoys[index].selectedEmotions) { emotion in
+                                        Text(emotion.title)
+                                            .madiiFont(font: .madiiCaption, color: emotion.color)
+                                            .padding(.vertical, 4.5)
+                                            .padding(.horizontal, 8)
+                                            .background(emotion.color.opacity(0.08))
+                                            .cornerRadius(8)
+                                    }
+                                }
+                                .padding(.trailing, 22)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, 19)
@@ -65,13 +83,20 @@ struct FeelingReviewView: View {
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 12) {
                 ForEach(emotions, id: \.self) { emotion in
-                    Text(emotion)
-                        .madiiFont(font: .madiiBody3, color: .madiiNormal)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 6)
-                        .background(.madiiContrast)
-                        .cornerRadius(10)
+                    Button {
+                        toggleEmotion(emotion, for: clickedNum)
+                    } label: {
+                        Text(emotion.title)
+                            .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 6)
+                            .background(
+                                todayJoys[clickedNum].selectedEmotions.contains(emotion)
+                                    ? .madiiViolet : .madiiContrast
+                            )
+                            .cornerRadius(10)
+                    }
                 }
             }
             .padding(.bottom, 16)
@@ -81,12 +106,30 @@ struct FeelingReviewView: View {
                 
             Spacer()
             
-            MadiiDesignSystem.MadiiButton(title: "다음", color: .violet)
+            MadiiDesignSystem.MadiiButton(title: "다음", color: .violet) {
+                tabNum = 1
+            }
         }
         .animation(.easeInOut, value: clickedNum)
+    }
+    
+    func toggleEmotion(_ emotion: Emotion, for joyIndex: Int) {
+        // 이미 선택되어 있으면 제거
+        if let existingIndex = todayJoys[joyIndex].selectedEmotions.firstIndex(of: emotion) {
+            todayJoys[joyIndex].selectedEmotions.remove(at: existingIndex)
+        }
+        // 새로 선택할 때
+        else {
+            if todayJoys[joyIndex].selectedEmotions.count >= 2 {
+                // 가장 먼저 선택한 걸 제거 (0번째)
+                todayJoys[joyIndex].selectedEmotions.removeFirst()
+            }
+            // 새 선택 추가
+            todayJoys[joyIndex].selectedEmotions.append(emotion)
+        }
     }
 }
 
 #Preview {
-    FeelingReviewView()
+    FeelingReviewView(tabNum: .constant(0), todayJoys: .constant([]))
 }
