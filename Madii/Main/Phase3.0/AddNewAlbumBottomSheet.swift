@@ -5,9 +5,11 @@
 //  Created by 정태우 on 7/21/25.
 //
 
+import MadiiDesignSystem
 import SwiftUI
 
 struct AddNewAlbumBottomSheet: View {
+    @Binding var showAddNewAlbumBottomSheet: Bool
     @State var title: String = ""
     @State var describe: String = ""
     
@@ -30,6 +32,7 @@ struct AddNewAlbumBottomSheet: View {
             }
             .padding(12)
             .background(.madiiBox)
+            .cornerRadius(12)
             .padding(.bottom, 12)
             
             Text("*필수로 작성해야 해요")
@@ -44,13 +47,15 @@ struct AddNewAlbumBottomSheet: View {
                 .madiiFont(font: .madiiBody2, color: .madiiNormal) // body2, Normal
                 .frame(maxWidth: .infinity)
                 .frame(height: 52)
-                .padding(12)
+                .padding(.vertical, 4)
+                .padding(.horizontal, 7)
                 .scrollContentBackground(.hidden)
                 .background(.madiiBox)
+                .cornerRadius(12)
                 .overlay(
                     Group {
                         if describe.isEmpty {
-                            Text("안녕하세요")
+                            Text("앨범 소개글을 작성해주세요")
                                 .madiiFont(font: .madiiBody2, color: .madiiAlternative) // body2, Alternative
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(12)
@@ -68,15 +73,32 @@ struct AddNewAlbumBottomSheet: View {
                 .padding(.bottom, 40)
             
             HStack(spacing: 10) {
-                MadiiButton(title: "취소")
+                MadiiDesignSystem.MadiiButton(title: "취소", color: .neutral) {
+                    showAddNewAlbumBottomSheet = false
+                }
                     .frame(width: 82)
                 
-                MadiiButton(title: "생성")
+                MadiiDesignSystem.MadiiButton(title: "생성", color: .mainColor) {
+                    postNewAlbum()
+                }
+                    .disabled(title.isEmpty)
+            }
+        }
+    }
+    
+    func postNewAlbum() {
+        AlbumsAPI.postNewAlbum(name: title, description: describe)
+            .request { result in
+                switch result {
+                case .success(let data):
+                    print("앨범 생성 성공")
+                case .failure(let failure):
+                    print("앨범 생성 실패")
             }
         }
     }
 }
 
 #Preview {
-    AddNewAlbumBottomSheet()
+    AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: .constant(true), title: "안녕하세요")
 }
