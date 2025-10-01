@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SatisfactionReviewView: View {
     @Binding var tabNum: Int
+    @Binding var satisfaction: Int
     
     var body: some View {
         VStack {
@@ -28,5 +29,5 @@ struct SatisfactionReviewView: View {
 }
 
 #Preview {
-    SatisfactionReviewView(tabNum: .constant(0))
+    SatisfactionReviewView(tabNum: .constant(0), satisfaction: .constant(0))
 }

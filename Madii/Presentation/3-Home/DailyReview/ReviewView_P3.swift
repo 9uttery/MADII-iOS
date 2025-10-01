@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct ReviewView: View {
+struct ReviewView_P3: View {
+    @Environment(Router.self) var router
     @State var tabNum: Int = 0
     @State var diaryContent: String = ""
     @State var date: Date = Date()
+    @State var satisfaction: Int = 0
     @State var savingJoys: [Joy] = [Joy(title: "안녕kaklsdjfalkdjflaksdjfalksdfjalskdjfalskdfjalksdfjalksdfjalksdfdf"), Joy(title: "안녕하세요"), Joy(title: "안녕안녕하세용")]
     
     var body: some View {
         VStack(alignment: .leading) {
+            MadiiNavigationBar_P3(title: date.toKoreanString())
+            
             HStack(spacing: 8) {
                 Rectangle()
                     .frame(maxWidth: .infinity)
@@ -39,9 +43,9 @@ struct ReviewView: View {
             if tabNum == 0 {
                 FeelingReviewView(tabNum: $tabNum, todayJoys: $savingJoys)
             } else if tabNum == 1 {
-                SatisfactionReviewView(tabNum: $tabNum)
+                SatisfactionReviewView(tabNum: $tabNum, satisfaction: $satisfaction)
             } else {
-                DiaryReviewView(tabNum: $tabNum)
+                DiaryReviewView(tabNum: $tabNum, date: $date, satisfaction: $satisfaction, savingJoys: $savingJoys)
             }
         }
         .navigationTitle("\(Date().toKoreanString())")
@@ -79,5 +83,5 @@ struct ReviewView: View {
 }
 
 #Preview {
-    ReviewView()
+    ReviewView_P3()
 }

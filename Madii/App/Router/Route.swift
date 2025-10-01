@@ -21,7 +21,10 @@ enum Route: Hashable, Identifiable {
     case archiving
     
     // Home
-    case dailyReview
+    case dailyReview(todayJoys: [Joy], visibleJoys: [Bool])
+    case albumList
+    case albumDetail(albumId: Int)
+    case review(savingJoys: [Joy])
     
     // Exploration
     

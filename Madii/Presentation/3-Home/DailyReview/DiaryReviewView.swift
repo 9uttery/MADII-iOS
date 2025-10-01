@@ -9,10 +9,14 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct DiaryReviewView: View {
+    @Environment(Router.self) var router
     @Binding var tabNum: Int
-    @State var diary: String = ""
+    @Binding var date: Date
+    @Binding var satisfaction: Int
+    @Binding var savingJoys: [Joy]
+    @State var diaryContent: String = ""
     @State var isClickedImageButton: Bool = false
-    @State var selectedImage: [UIImage] = []
+    @State var selectedImages: [UIImage] = []
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,13 +30,13 @@ struct DiaryReviewView: View {
                 .padding(.bottom, 40)
             
             VStack(alignment: .trailing) {
-                TextEditor(text: $diary)
+                TextEditor(text: $diaryContent)
                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
                     .frame(height: 182)
                     .scrollContentBackground(.hidden)
                     .overlay(
                         Group {
-                            if diary.isEmpty {
+                            if diaryContent.isEmpty {
                                 Text("오늘 마음에 남는 순간을 들려주세요")
                                     .madiiFont(font: .madiiBody2, color: .madiiAlternative)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -56,7 +60,7 @@ struct DiaryReviewView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    ForEach(Array(selectedImage.enumerated()), id: \.element) { index, image in
+                    ForEach(Array(selectedImages.enumerated()), id: \.element) { index, image in
                         ZStack(alignment: .topTrailing) {
                             Image(uiImage: image)
                                 .resizable()
@@ -65,7 +69,7 @@ struct DiaryReviewView: View {
                                 .cornerRadius(20)
                             
                             Button {
-                                selectedImage.remove(at: index)
+                                selectedImages.remove(at: index)
                             } label: {
                                 Image("closeFill")
                                     .resizable()
@@ -81,17 +85,30 @@ struct DiaryReviewView: View {
             Spacer()
             
             MadiiDesignSystem.MadiiButton(title: "완료", color: .violet) {
-                
+                clickCompleteButton()
+                router.pop(times: 2)
             }
         }
         .sheet(isPresented: $isClickedImageButton) {
-            PhotoPicker(selectedImages: $selectedImage, maxSelectionLimit: 5)
+            PhotoPicker(selectedImages: $selectedImages, maxSelectionLimit: 3)
         }
         .navigationTitle(Date().toKoreanString())
         .padding(.horizontal, 20)
     }
-}
-
-#Preview {
-    DiaryReviewView(tabNum: .constant(0))
+    
+    private func clickCompleteButton() {
+        let savingJoysDTO: [SavingJoysRequestDTO] = savingJoys.map { joy in
+            SavingJoysRequestDTO(
+                joyId: joy.joyId ?? 0,
+                emotion: joy.selectedEmotions.map { $0.title }
+            )
+        }
+        DailySummaryAPI.shared.postDailySummary(date: date, satisfaction: satisfaction, diaryContent: diaryContent, savingJoys: savingJoysDTO, images: selectedImages) { isSuccess, postDailySummary in
+            if isSuccess {
+                
+            } else {
+                
+            }
+        }
+    }
 }

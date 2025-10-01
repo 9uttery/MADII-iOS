@@ -92,8 +92,9 @@ struct FeelingReviewView: View {
                             .padding(.vertical, 4)
                             .padding(.horizontal, 6)
                             .background(
-                                todayJoys[clickedNum].selectedEmotions.contains(emotion)
-                                    ? .madiiViolet : .madiiContrast
+                                (todayJoys.indices.contains(clickedNum) &&
+                                 todayJoys[clickedNum].selectedEmotions.contains(emotion))
+                                ? .madiiViolet : .madiiContrast
                             )
                             .cornerRadius(10)
                     }
@@ -128,8 +129,4 @@ struct FeelingReviewView: View {
             todayJoys[joyIndex].selectedEmotions.append(emotion)
         }
     }
-}
-
-#Preview {
-    FeelingReviewView(tabNum: .constant(0), todayJoys: .constant([]))
 }

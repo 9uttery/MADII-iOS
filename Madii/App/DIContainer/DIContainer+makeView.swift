@@ -27,10 +27,16 @@ extension DIContainer {
             ExplorationView_P3()
         case .archiving:
             ArchivingView_P3(viewModel: archivingViewModel())
-        case .dailyReview:
-            DailyReviewView_P3()
+        case let .dailyReview(todayJoys, visibleJoys):
+            DailyReviewView_P3(todayJoys: .constant(todayJoys), visibleJoys: .constant(visibleJoys))
         case .myPage:
             MyPageView_P3()
+        case .albumList:
+            AlbumListView_P3(viewModel: albumListViewModel())
+        case let .albumDetail(albumId):
+            AlbumDetailView_P3(viewModel: albumDetailViewModel(albumId: albumId))
+        case let .review(savingJoys):
+            ReviewView_P3(savingJoys: savingJoys)
         }
     }
 }

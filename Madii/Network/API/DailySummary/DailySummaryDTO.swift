@@ -33,3 +33,17 @@ struct JoyAchievementsInfosDTO: Codable {
     let conetnets: String
     let isachieved: Bool
 }
+
+struct SavingJoysRequestDTO: Codable {
+    let joyId: Int
+    let emotion: [String]
+}
+
+struct PostDailySummary: Codable {
+    let dailySummaryId: Int
+    let satisfaction: Int
+    let createdDate: String
+    let savingJoys: [SavingJoysRequestDTO]
+    let attachedImages: [String]
+    let diaryContent: String
+}

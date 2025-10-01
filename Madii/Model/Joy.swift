@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Joy: Identifiable, Equatable {
+struct Joy: Identifiable, Equatable, Hashable {
     let id = UUID()
     var joyId: Int? = 0 /// DB에서 사용하는 Joy id
     var achievementId: Int = 0 /// Server에서 사용하는 실천 Id

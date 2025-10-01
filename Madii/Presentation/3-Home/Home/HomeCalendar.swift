@@ -11,11 +11,13 @@ import SwiftUI
 struct HomeCalendar: View {
     @Binding var isMonthly: Bool
     @State var type: TextFieldType = .basic
-    @State var todayJoyTitle: String = ""
+    @State var joyTitle: String = ""
+    @State var joys: [Joy] = []
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         VStack {
-            HomeCalendarView(isMonthly: $isMonthly)
+            HomeCalendarView(isMonthly: $isMonthly, selectedDay: $selectedDate)
             
             Rectangle()
                 .frame(maxWidth: .infinity)
@@ -24,13 +26,17 @@ struct HomeCalendar: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 32)
             
-            Text("오늘, \(Date().toKoreanString())")
+            Text("\(selectedDate.isSameDay(as: Date()) ? "오늘" : "") \(selectedDate.toKoreanString())")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
             
-            MadiiDesignSystem.MadiiTextField(type: $type, text: $todayJoyTitle, isPlus: true, placeholder: "오늘의 행복을 담아보세요")
+            if selectedDate.isSameDay(as: Date()) {
+                MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 담아보세요") {
+                    postJoy()
+                }
                 .padding(.horizontal, 16)
+            }
         }
         .padding(.vertical, 20)
         .background(.madiiElevated)
@@ -51,6 +57,22 @@ struct HomeCalendar: View {
                     lineWidth: 1
                 )
         )
+    }
+    
+    private func postJoy() {
+        JoyAPI.shared.postJoy(contents: joyTitle) { isSuccess, joyContents in
+            if isSuccess {
+                print("Debug postJoy: isSuccess true")
+                print("postJoy: \(joyContents)")
+                joyTitle = ""
+            } else {
+                print("Debug postJoy: isSuccess true")
+            }
+        }
+    }
+    
+    private func getJoy() {
+        
     }
 }
 

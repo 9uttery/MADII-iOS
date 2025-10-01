@@ -175,12 +175,6 @@
 		BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */; };
 		BE3059BE2E422BA1005A7A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE690CA12E24F9F900D077B6 /* Assets.xcassets */; };
 		BE3059C12E4439B2005A7A20 /* MadiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059C02E4439B2005A7A20 /* MadiiTextField.swift */; };
-		BE3059C52E4483CB005A7A20 /* MadiiHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059C42E4483CB005A7A20 /* MadiiHomeView.swift */; };
-		BE3059C72E448B17005A7A20 /* HomeCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059C62E448B17005A7A20 /* HomeCalendar.swift */; };
-		BE3059CB2E448FC3005A7A20 /* HomeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059CA2E448FC3005A7A20 /* HomeCalendarView.swift */; };
-		BE3059CF2E4730C2005A7A20 /* DailyReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059CE2E4730C2005A7A20 /* DailyReviewView.swift */; };
-		BE3059D72E48670C005A7A20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059D62E48670C005A7A20 /* ReviewView.swift */; };
-		BE3059D92E486A14005A7A20 /* FeelingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3059D82E486A14005A7A20 /* FeelingReviewView.swift */; };
 		BE39866C2B62680600643805 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866B2B62680600643805 /* ProfileView.swift */; };
 		BE39866E2B62696100643805 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866D2B62696100643805 /* MyProfileView.swift */; };
 		BE3986702B6272F900643805 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39866F2B6272F900643805 /* NoticeView.swift */; };
@@ -189,10 +183,6 @@
 		BE3986762B63604A00643805 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986752B63604A00643805 /* SignOutView.swift */; };
 		BE3986782B63651300643805 /* GuestProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986772B63651300643805 /* GuestProfileView.swift */; };
 		BE39867A2B63790600643805 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3986792B63790600643805 /* RecommendView.swift */; };
-		BE3CFF022E61651B00287FA4 /* RecommendJoyView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CFF012E61651B00287FA4 /* RecommendJoyView3.swift */; };
-		BE3CFF042E616E3A00287FA4 /* RecommendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CFF032E616E3A00287FA4 /* RecommendButton.swift */; };
-		BE3CFF062E62AD6500287FA4 /* GradientBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CFF052E62AD6500287FA4 /* GradientBorder.swift */; };
-		BE3CFF082E62B01400287FA4 /* CompleteRecommendJoyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CFF072E62B01400287FA4 /* CompleteRecommendJoyView.swift */; };
 		BE459A4D2B7625CD002E9AB2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE459A4C2B7625CD002E9AB2 /* KeychainSwift */; };
 		BE459A5C2B762621002E9AB2 /* RecordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A592B762621002E9AB2 /* RecordDto.swift */; };
 		BE459A5D2B762621002E9AB2 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A5A2B762621002E9AB2 /* RecordAPI.swift */; };
@@ -203,26 +193,11 @@
 		BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */; };
 		BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */; };
 		BE459A6D2B7E28BF002E9AB2 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */; };
-		BE5B43D62E80D37B004BFCC1 /* JoyOptionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */; };
-		BE5B43D82E80D68D004BFCC1 /* EditJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */; };
-		BE5B43DA2E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */; };
-		BE5B43DE2E83E87A004BFCC1 /* ArchivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */; };
-		BE5B43E62E868518004BFCC1 /* AlbumOptionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */; };
-		BE5B43E82E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */; };
-		BE5B43EA2E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */; };
 		BE5B43EE2E87AA25004BFCC1 /* DailySummaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43ED2E87AA25004BFCC1 /* DailySummaryAPI.swift */; };
 		BE5B43F02E87AA31004BFCC1 /* DailySummaryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */; };
-		BE5B43F22E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */; };
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
-		BE6728782E4DB1C90083A449 /* DiaryReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */; };
-		BE67287A2E4DB7E10083A449 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6728792E4DB7E10083A449 /* PhotoPicker.swift */; };
-		BE67287C2E4DBB5A0083A449 /* CompleteReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67287B2E4DBB5A0083A449 /* CompleteReviewView.swift */; };
-		BE67287E2E4DC71C0083A449 /* ExplorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67287D2E4DC71C0083A449 /* ExplorationView.swift */; };
 		BE690CA22E24F9F900D077B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE690CA12E24F9F900D077B6 /* Assets.xcassets */; };
 		BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */; };
-		BE7839BC2E2DF15B00B95D6C /* MadiiAlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7839BB2E2DF15B00B95D6C /* MadiiAlbumListView.swift */; };
-		BE7839C02E2E05E200B95D6C /* AddNewAlbumBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7839BF2E2E05E100B95D6C /* AddNewAlbumBottomSheet.swift */; };
-		BE7839C42E2F21F700B95D6C /* AlbumDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7839C32E2F21F700B95D6C /* AlbumDetailsView.swift */; };
 		BE821E542E05448400952D3F /* MadiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E532E05448400952D3F /* MadiiButton.swift */; };
 		BE821E5D2E13796600952D3F /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE821E592E13796600952D3F /* SpoqaHanSansNeo-Bold.otf */; };
 		BE821E5F2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE821E5E2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf */; };
@@ -230,7 +205,6 @@
 		BE821E652E1383A600952D3F /* MadiiHomeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */; };
 		BE821E692E13882600952D3F /* MadiiTabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E682E13882600952D3F /* MadiiTabNavigation.swift */; };
 		BE821E702E138AB200952D3F /* MadiiToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E6F2E138AB200952D3F /* MadiiToast.swift */; };
-		BE83AC352E7D379C00C47386 /* SatisfactionReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */; };
 		BE8BAE102DF2BB5A00E3B84C /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
 		BE8BAE112DF2BB6C00E3B84C /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
 		BE8BAE122DF2BBA400E3B84C /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
@@ -466,12 +440,6 @@
 		BE2BFC1B2B36B618006282F2 /* HomePlayJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyView.swift; sourceTree = "<group>"; };
 		BE2BFC1D2B36B9D4006282F2 /* HomePlayJoyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayJoyListView.swift; sourceTree = "<group>"; };
 		BE3059C02E4439B2005A7A20 /* MadiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTextField.swift; sourceTree = "<group>"; };
-		BE3059C42E4483CB005A7A20 /* MadiiHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiHomeView.swift; sourceTree = "<group>"; };
-		BE3059C62E448B17005A7A20 /* HomeCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendar.swift; sourceTree = "<group>"; };
-		BE3059CA2E448FC3005A7A20 /* HomeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarView.swift; sourceTree = "<group>"; };
-		BE3059CE2E4730C2005A7A20 /* DailyReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReviewView.swift; sourceTree = "<group>"; };
-		BE3059D62E48670C005A7A20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
-		BE3059D82E486A14005A7A20 /* FeelingReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingReviewView.swift; sourceTree = "<group>"; };
 		BE39866B2B62680600643805 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BE39866D2B62696100643805 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		BE39866F2B6272F900643805 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -480,10 +448,6 @@
 		BE3986752B63604A00643805 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		BE3986772B63651300643805 /* GuestProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestProfileView.swift; sourceTree = "<group>"; };
 		BE3986792B63790600643805 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
-		BE3CFF012E61651B00287FA4 /* RecommendJoyView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView3.swift; sourceTree = "<group>"; };
-		BE3CFF032E616E3A00287FA4 /* RecommendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendButton.swift; sourceTree = "<group>"; };
-		BE3CFF052E62AD6500287FA4 /* GradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBorder.swift; sourceTree = "<group>"; };
-		BE3CFF072E62B01400287FA4 /* CompleteRecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRecommendJoyView.swift; sourceTree = "<group>"; };
 		BE459A592B762621002E9AB2 /* RecordDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDto.swift; sourceTree = "<group>"; };
 		BE459A5A2B762621002E9AB2 /* RecordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		BE459A5B2B762621002E9AB2 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -493,33 +457,17 @@
 		BE459A672B7E24C8002E9AB2 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		BE459A6A2B7E28B3002E9AB2 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BE459A6C2B7E28BF002E9AB2 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
-		BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyOptionBottomSheet.swift; sourceTree = "<group>"; };
-		BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJoyBottomSheet.swift; sourceTree = "<group>"; };
-		BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJoyBottomSheet.swift; sourceTree = "<group>"; };
-		BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivingView.swift; sourceTree = "<group>"; };
-		BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumOptionBottomSheet.swift; sourceTree = "<group>"; };
-		BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlbumBottomSheet.swift; sourceTree = "<group>"; };
-		BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumBottomSheet.swift; sourceTree = "<group>"; };
 		BE5B43ED2E87AA25004BFCC1 /* DailySummaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryAPI.swift; sourceTree = "<group>"; };
 		BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryDTO.swift; sourceTree = "<group>"; };
-		BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameJoyBottomSheet.swift; sourceTree = "<group>"; };
 		BE619EEB2B95BF76005F7EBA /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
-		BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryReviewView.swift; sourceTree = "<group>"; };
-		BE6728792E4DB7E10083A449 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
-		BE67287B2E4DBB5A0083A449 /* CompleteReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteReviewView.swift; sourceTree = "<group>"; };
-		BE67287D2E4DC71C0083A449 /* ExplorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationView.swift; sourceTree = "<group>"; };
 		BE690CA12E24F9F900D077B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseEditAlbumPopUp.swift; sourceTree = "<group>"; };
-		BE7839BB2E2DF15B00B95D6C /* MadiiAlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiAlbumListView.swift; sourceTree = "<group>"; };
-		BE7839BF2E2E05E100B95D6C /* AddNewAlbumBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAlbumBottomSheet.swift; sourceTree = "<group>"; };
-		BE7839C32E2F21F700B95D6C /* AlbumDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsView.swift; sourceTree = "<group>"; };
 		BE821E532E05448400952D3F /* MadiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiButton.swift; sourceTree = "<group>"; };
 		BE821E592E13796600952D3F /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		BE821E5E2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiHomeNavigation.swift; sourceTree = "<group>"; };
 		BE821E682E13882600952D3F /* MadiiTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabNavigation.swift; sourceTree = "<group>"; };
 		BE821E6F2E138AB200952D3F /* MadiiToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiToast.swift; sourceTree = "<group>"; };
-		BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatisfactionReviewView.swift; sourceTree = "<group>"; };
 		BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
 		BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
@@ -565,11 +513,36 @@
 				"1-Onboarding/OnboardingView_P3.swift",
 				"1-Onboarding/SplashView_P3.swift",
 				"2-Auth/LoginView_P3.swift",
+				"3-Home/DailyReview/CompleteReviewView.swift",
 				"3-Home/DailyReview/DailyReviewView_P3.swift",
+				"3-Home/DailyReview/DiaryReviewView.swift",
+				"3-Home/DailyReview/FeelingReviewView.swift",
+				"3-Home/DailyReview/ReviewView_P3.swift",
+				"3-Home/DailyReview/ReviewViewModel_P3.swift",
+				"3-Home/DailyReview/SatisfactionReviewView.swift",
+				"3-Home/Home/AddNewAlbumBottomSheet.swift",
+				"3-Home/Home/AlbumDetailView_P3.swift",
+				"3-Home/Home/AlbumDetailViewModel_P3.swift",
+				"3-Home/Home/AlbumListView_P3.swift",
+				"3-Home/Home/AlbumListViewModel_P3.swift",
+				"3-Home/Home/AlbumOptionBottomSheet.swift",
+				"3-Home/Home/CloseEditAlbumBottomSheet.swift",
+				"3-Home/Home/DeleteAlbumBottomSheet.swift",
+				"3-Home/Home/DeleteJoyBottomSheet.swift",
+				"3-Home/Home/EditJoyBottomSheet.swift",
+				"3-Home/Home/HomeCalendar.swift",
+				"3-Home/Home/HomeCalendarView.swift",
 				"3-Home/Home/HomeView_P3.swift",
 				"3-Home/Home/HomeViewModel_P3.swift",
+				"3-Home/Home/JoyOptionBottomSheet.swift",
+				"3-Home/Home/RenameJoyBottomSheet.swift",
+				"4-Exploration/CompleteRecommendJoyView.swift",
 				"4-Exploration/ExplorationView_P3.swift",
+				"4-Exploration/ExplorationView.swift",
+				"4-Exploration/RecommendButton.swift",
+				"4-Exploration/RecommendJoyView3.swift",
 				"5-Archiving/ArchivingView_P3.swift",
+				"5-Archiving/ArchivingView.swift",
 				"5-Archiving/ArchivingViewModel_P3.swift",
 				"6-MyPage/MyPageView_P3.swift",
 			);
@@ -578,6 +551,9 @@
 		51B2F0382E87BB57003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Extensions/GradientBorder.swift,
+				Extensions/MadiiNavigationBar_P3.swift,
+				Extensions/PhotoPicker.swift,
 				"Extensions/UINavigationController+.swift",
 			);
 			target = 515EFC8A2AFCA0D100230647 /* Madii */;
@@ -990,7 +966,6 @@
 		51D8D3602B17613C001B6793 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BE7839BA2E2DF14000B95D6C /* Phase3.0 */,
 				51D8D3752B188F35001B6793 /* Components */,
 				51E025AE2B28986200F4F41A /* Login */,
 				51D8D36A2B177085001B6793 /* Home */,
@@ -1335,39 +1310,6 @@
 				BE5B43EF2E87AA31004BFCC1 /* DailySummaryDTO.swift */,
 			);
 			path = DailySummary;
-			sourceTree = "<group>";
-		};
-		BE7839BA2E2DF14000B95D6C /* Phase3.0 */ = {
-			isa = PBXGroup;
-			children = (
-				BE7839BB2E2DF15B00B95D6C /* MadiiAlbumListView.swift */,
-				BE7839BF2E2E05E100B95D6C /* AddNewAlbumBottomSheet.swift */,
-				BE7839C32E2F21F700B95D6C /* AlbumDetailsView.swift */,
-				BE3059C42E4483CB005A7A20 /* MadiiHomeView.swift */,
-				BE3059C62E448B17005A7A20 /* HomeCalendar.swift */,
-				BE3059CA2E448FC3005A7A20 /* HomeCalendarView.swift */,
-				BE3059CE2E4730C2005A7A20 /* DailyReviewView.swift */,
-				BE3059D62E48670C005A7A20 /* ReviewView.swift */,
-				BE3059D82E486A14005A7A20 /* FeelingReviewView.swift */,
-				BE83AC342E7D379C00C47386 /* SatisfactionReviewView.swift */,
-				BE6728772E4DB1C90083A449 /* DiaryReviewView.swift */,
-				BE6728792E4DB7E10083A449 /* PhotoPicker.swift */,
-				BE67287B2E4DBB5A0083A449 /* CompleteReviewView.swift */,
-				BE67287D2E4DC71C0083A449 /* ExplorationView.swift */,
-				BE3CFF012E61651B00287FA4 /* RecommendJoyView3.swift */,
-				BE3CFF032E616E3A00287FA4 /* RecommendButton.swift */,
-				BE3CFF052E62AD6500287FA4 /* GradientBorder.swift */,
-				BE3CFF072E62B01400287FA4 /* CompleteRecommendJoyView.swift */,
-				BE5B43D52E80D37B004BFCC1 /* JoyOptionBottomSheet.swift */,
-				BE5B43D72E80D68D004BFCC1 /* EditJoyBottomSheet.swift */,
-				BE5B43D92E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift */,
-				BE5B43DD2E83E87A004BFCC1 /* ArchivingView.swift */,
-				BE5B43E52E868518004BFCC1 /* AlbumOptionBottomSheet.swift */,
-				BE5B43E72E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift */,
-				BE5B43E92E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift */,
-				BE5B43F12E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift */,
-			);
-			path = Phase3.0;
 			sourceTree = "<group>";
 		};
 		BE821E522E05446500952D3F /* Button */ = {
@@ -1728,7 +1670,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				51811E8E2B853D5D00E2D2DB /* TodayPlaylistView.swift in Sources */,
-				BE67287C2E4DBB5A0083A449 /* CompleteReviewView.swift in Sources */,
 				BEA371842C0C1568002CCA31 /* HapticManager.swift in Sources */,
 				5147449D2C723CD4000F22DB /* CurrentVersionView.swift in Sources */,
 				510EF90D2B864112000768D7 /* TodayJoyBeforeClickButton.swift in Sources */,
@@ -1749,7 +1690,6 @@
 				519B510D2B5820F700778E21 /* JoySatisfactionBottomSheet.swift in Sources */,
 				BE5B43F02E87AA31004BFCC1 /* DailySummaryDTO.swift in Sources */,
 				51BEBA402B813DA8008CF3AD /* FileAPI.swift in Sources */,
-				BE3CFF082E62B01400287FA4 /* CompleteRecommendJoyView.swift in Sources */,
 				5119CB312B1DEE1E00D8EE74 /* MyAlbumsView.swift in Sources */,
 				51D8D3742B187E17001B6793 /* RoundBoxBackground.swift in Sources */,
 				5119CB352B1DF63E00D8EE74 /* AlbumSettingBottomSheetRow.swift in Sources */,
@@ -1757,16 +1697,12 @@
 				519B01542B89216B00519B11 /* DeleteAlbumPopUp.swift in Sources */,
 				51E025A02B26F7EB00F4F41A /* AppStatus.swift in Sources */,
 				514C36AF2B510CD8001A55D1 /* MadiiTextField.swift in Sources */,
-				BE7839C02E2E05E200B95D6C /* AddNewAlbumBottomSheet.swift in Sources */,
-				BE6728782E4DB1C90083A449 /* DiaryReviewView.swift in Sources */,
 				512ED9662C92117A0085B64D /* NetworkConstants.swift in Sources */,
 				BE459A682B7E24C8002E9AB2 /* ProfileDTO.swift in Sources */,
 				51F25E0B2B19B3E900F6CCFE /* MadiiButton.swift in Sources */,
 				51D8D3772B188F44001B6793 /* AlbumRow.swift in Sources */,
 				BE2BFC1E2B36B9D4006282F2 /* HomePlayJoyListView.swift in Sources */,
-				BE67287A2E4DB7E10083A449 /* PhotoPicker.swift in Sources */,
 				512AE7FA2B769F8200926DE6 /* UsersDTO.swift in Sources */,
-				BE83AC352E7D379C00C47386 /* SatisfactionReviewView.swift in Sources */,
 				510F94342B66D00E00457205 /* SignUpView.swift in Sources */,
 				51D690E12B15BB9800F8D705 /* MadiiFontModifier.swift in Sources */,
 				BE06499B2B921522000EF015 /* UserStatView.swift in Sources */,
@@ -1778,22 +1714,17 @@
 				516455C12B22FB540010199B /* MadiiSlider.swift in Sources */,
 				519B01562B8924C400519B11 /* ChangePublicPopUp.swift in Sources */,
 				BE2BFC1C2B36B618006282F2 /* HomePlayJoyView.swift in Sources */,
-				BE3CFF042E616E3A00287FA4 /* RecommendButton.swift in Sources */,
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51B6B7AF2B8BDAE600A31FEE /* AddAlbumPopUp.swift in Sources */,
 				51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */,
 				BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */,
 				51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,
-				BE5B43D82E80D68D004BFCC1 /* EditJoyBottomSheet.swift in Sources */,
 				5141CAD42B7504D300FD407E /* LoginWithIdView.swift in Sources */,
 				51811E882B851F9E00E2D2DB /* AlbumDetailOtherAlbumsView.swift in Sources */,
-				BE3059CF2E4730C2005A7A20 /* DailyReviewView.swift in Sources */,
 				513484402B8F7A3D008FF3F6 /* DeleteJoyPopUp.swift in Sources */,
 				517C196E2CB2CF4300148504 /* AlbumsAPI.swift in Sources */,
 				BE0C3F972B81E77200275FD3 /* PlayParticleView.swift in Sources */,
-				BE3CFF022E61651B00287FA4 /* RecommendJoyView3.swift in Sources */,
-				BE5B43E82E86873D004BFCC1 /* DeleteAlbumBottomSheet.swift in Sources */,
 				5141CAFB2B76944C00FD407E /* UsersAPI.swift in Sources */,
 				516455BF2B21B72E0010199B /* DailyJoyView.swift in Sources */,
 				519C97EB2B602E27004F1AFF /* LatestViewedAlbumView.swift in Sources */,
@@ -1801,7 +1732,6 @@
 				519027DD2C184609008414A2 /* TextFieldLabelViewModifier.swift in Sources */,
 				51F25E1C2B1A105100F6CCFE /* JoyRow.swift in Sources */,
 				513DC1292B9604CE009D4D31 /* ReportAlbumToast.swift in Sources */,
-				BE5B43D62E80D37B004BFCC1 /* JoyOptionBottomSheet.swift in Sources */,
 				511DB50C2B66A35000D2B01D /* ServiceTermsView.swift in Sources */,
 				516455992B1F07150010199B /* Album.swift in Sources */,
 				BE9A01A82BEF402100F52458 /* SaveAlbumJoyToast.swift in Sources */,
@@ -1812,12 +1742,10 @@
 				BE0C3F962B81E77200275FD3 /* ConfettiFrame.swift in Sources */,
 				51AAB9132BE3E10E00F930B7 /* FindPasswordView.swift in Sources */,
 				BE2BFC1A2B36B5D6006282F2 /* HomeRecommendView.swift in Sources */,
-				BE3059CB2E448FC3005A7A20 /* HomeCalendarView.swift in Sources */,
 				5141CAD22B74FD3400FD407E /* KakaoLoginButton.swift in Sources */,
 				BE459A612B7E089E002E9AB2 /* AlbumAPI.swift in Sources */,
 				BE459A6B2B7E28B3002E9AB2 /* HomeAPI.swift in Sources */,
 				51BEBA442B8158EA008CF3AD /* AchievementsAPI.swift in Sources */,
-				BE3CFF062E62AD6500287FA4 /* GradientBorder.swift in Sources */,
 				51D8D3662B176FC5001B6793 /* MadiiTabBar.swift in Sources */,
 				BE0C3F8A2B81B69A00275FD3 /* RecommendJoyListView.swift in Sources */,
 				BE0C3F992B81E77200275FD3 /* ConfettiType.swift in Sources */,
@@ -1825,10 +1753,7 @@
 				BE3986742B635AC100643805 /* LogOutPopUpView.swift in Sources */,
 				514C36B12B51211E001A55D1 /* TextFieldHelperMessageViewModifier.swift in Sources */,
 				513484422B8F9CC8008FF3F6 /* NotificationAPI.swift in Sources */,
-				BE7839C42E2F21F700B95D6C /* AlbumDetailsView.swift in Sources */,
-				BE7839BC2E2DF15B00B95D6C /* MadiiAlbumListView.swift in Sources */,
 				51811E8C2B852F4E00E2D2DB /* AlbumDetailBookmarkButton.swift in Sources */,
-				BE5B43DE2E83E87A004BFCC1 /* ArchivingView.swift in Sources */,
 				510EF9112B8659AC000768D7 /* ReportBottomSheet.swift in Sources */,
 				5141CACE2B7120C700FD407E /* CompleteSignUpView.swift in Sources */,
 				516455C32B22FFEA0010199B /* Joy.swift in Sources */,
@@ -1849,11 +1774,9 @@
 				BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */,
 				BE459A5E2B762621002E9AB2 /* BaseResponse.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
-				BE3059D72E48670C005A7A20 /* ReviewView.swift in Sources */,
 				512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */,
 				BEB11DD32BFDB249008D38D7 /* AnalyticsManager.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
-				BE3059D92E486A14005A7A20 /* FeelingReviewView.swift in Sources */,
 				BE9A01A62BEE741300F52458 /* JoyDuplicateToast.swift in Sources */,
 				51D8D3622B176161001B6793 /* MadiiTabView.swift in Sources */,
 				516455B72B20A99D0010199B /* SelectDateHeader.swift in Sources */,
@@ -1862,12 +1785,10 @@
 				BE3986702B6272F900643805 /* NoticeView.swift in Sources */,
 				51D8D3722B177111001B6793 /* CalendarView.swift in Sources */,
 				519B014F2B89151D00519B11 /* ReportPopUp.swift in Sources */,
-				BE5B43DA2E80D69F004BFCC1 /* DeleteJoyBottomSheet.swift in Sources */,
 				BE0C3F9A2B81E77200275FD3 /* ConfettiCenterVM.swift in Sources */,
 				51D690DE2B15B9B700F8D705 /* FontExtension.swift in Sources */,
 				512ED9622C9210FD0085B64D /* APIEndpoint.swift in Sources */,
 				51F25E152B19FE2100F6CCFE /* UserAnalyticsView.swift in Sources */,
-				BE5B43EA2E868821004BFCC1 /* CloseEditAlbumBottomSheet.swift in Sources */,
 				512ED96C2C9212260085B64D /* NetworkError.swift in Sources */,
 				516455B92B20AE0C0010199B /* DateExtension.swift in Sources */,
 				51BED7AB2B9D6D8200E95F87 /* TransparentFullScreenCover.swift in Sources */,
@@ -1875,18 +1796,13 @@
 				BE0C3F982B81E77200275FD3 /* ConfettiItem.swift in Sources */,
 				510743F12B6CD62A00787F54 /* AddProfileView.swift in Sources */,
 				BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */,
-				BE67287E2E4DC71C0083A449 /* ExplorationView.swift in Sources */,
-				BE5B43F22E87C0EE004BFCC1 /* RenameJoyBottomSheet.swift in Sources */,
-				BE5B43E62E868518004BFCC1 /* AlbumOptionBottomSheet.swift in Sources */,
 				51D8D3682B177020001B6793 /* TabBarButton.swift in Sources */,
 				51811E8A2B852CE600E2D2DB /* AlbumDetailCoverView.swift in Sources */,
 				51F25E0D2B19BD6500F6CCFE /* PopUpWithNameDescription.swift in Sources */,
 				515EFC8F2AFCA0D100230647 /* MadiiApp.swift in Sources */,
 				BE98A4052B6627560064CC6F /* RecommendJoyView.swift in Sources */,
 				511DB5102B66C49100D2B01D /* PasswordView.swift in Sources */,
-				BE3059C52E4483CB005A7A20 /* MadiiHomeView.swift in Sources */,
 				5141CAD62B7525C900FD407E /* PlaylistBar.swift in Sources */,
-				BE3059C72E448B17005A7A20 /* HomeCalendar.swift in Sources */,
 				BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */,
 				BE459A632B7E08A7002E9AB2 /* AlbumDTO.swift in Sources */,
 				512ED9642C9211580085B64D /* NetworkLogger.swift in Sources */,

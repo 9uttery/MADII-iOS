@@ -13,10 +13,10 @@ extension Router {
         self.path.append(route)
     }
     
-    func pop() {
-        if self.path.isEmpty == false {
-            self.path.removeLast()
-        }
+    func pop(times: Int = 1) {
+        guard times > 0, !path.isEmpty else { return }
+        let removeCount = min(times, path.count)
+        path.removeLast(removeCount)
     }
     
     func popToRoot() {

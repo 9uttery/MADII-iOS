@@ -18,26 +18,33 @@ public struct MadiiTextField: View {
     @State public var originType: TextFieldType = .basic
     public let placeholder: String
     @FocusState private var isTextFieldFocused: Bool
+    public let action: (() -> Void)?
     
     public init(
         type: Binding<TextFieldType> = .constant(.basic),
         text: Binding<String>,
         isPlus: Bool = false,
-        placeholder: String
+        placeholder: String,
+        action: (() -> Void)? = nil
     ) {
         self._type = type
         self._text = text
         self.isPlus = isPlus
         self.placeholder = placeholder
+        self.action = action
     }
     
     public var body: some View {
         HStack(spacing: 8) {
             if isPlus {
-                Image("plusSquare")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundStyle(text.isEmpty ? .secondary : Color.madiiNeutral)
+                Button {
+                    action?()
+                } label: {
+                    Image("plusSquare")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundStyle(text.isEmpty ? .secondary : Color.madiiNeutral)
+                }
             }
             
             TextField("", text: $text)
@@ -58,8 +65,8 @@ public struct MadiiTextField: View {
         .onAppear {
             originType = type
         }
-        .onChange(of: isTextFieldFocused) { newValue in
-            if newValue {
+        .onChange(of: isTextFieldFocused) {
+            if isTextFieldFocused {
                 type = .active
             } else {
                 type = originType

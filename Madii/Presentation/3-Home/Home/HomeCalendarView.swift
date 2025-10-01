@@ -10,7 +10,8 @@ import SwiftUI
 struct HomeCalendarView: View {
     @Binding var isMonthly: Bool
     @State private var currentDate = Date()
-    @State private var selectedDay = Date()
+    @Binding var selectedDay: Date
+    
     var days: [Date] {
         getMonthDates(for: currentDate)
     }
@@ -25,6 +26,7 @@ struct HomeCalendarView: View {
                 Button {
                     if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) {
                         currentDate = prevMonth
+                        updateSelectedDay(for: prevMonth)
                     }
                 } label: {
                     Image("arrowBack")
@@ -38,6 +40,7 @@ struct HomeCalendarView: View {
                 Button {
                     if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) {
                         currentDate = nextMonth
+                        updateSelectedDay(for: nextMonth)
                     }
                 } label: {
                     Image("arrowForward")
@@ -83,18 +86,26 @@ struct HomeCalendarView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
                     ForEach(days, id: \.self) { date in
-                        Text(dateString(date))
-                            .madiiFont(
-                                font: .madiiBody1,
-                                color: Calendar.current.isDateInToday(date) ? .madiiContrast : Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .month) ? .primary : .secondary
-                            )
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 36)
-                            .background(Calendar.current.isDateInToday(date)
-                                        ? .madiiGreen100
-                                        : .clear)
-                            .cornerRadius(8)
-                            .padding(.horizontal, 6)
+                        Button {
+                            selectedDay = date
+                        } label: {
+                            Text(dateString(date))
+                                .madiiFont(
+                                    font: .madiiBody1,
+                                    color: Calendar.current.isDateInToday(date) ? .madiiContrast : Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .month) ? .primary : .secondary
+                                )
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 36)
+                                .background(Calendar.current.isDateInToday(date)
+                                            ? .madiiGreen100
+                                            : .clear)
+                                .cornerRadius(8)
+                                .padding(.horizontal, 5)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(selectedDay.isSameDay(as: date) ? Color.madiiGreen100 : .clear, lineWidth: 1)
+                                )
+                        }
                     }
                 }
                 .offset(y: isMonthly ? 0 : CGFloat(numberOfWeeksInMonth(for: currentDate) - 1) * 24 - CGFloat(weekIndex) * 48)
@@ -176,8 +187,26 @@ struct HomeCalendarView: View {
         return Int(ceil(Double(totalCells) / 7.0))
     }
     
+    func updateSelectedDay(for newMonth: Date) {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: selectedDay)
+
+        // 이번 달의 마지막 날짜 구하기
+        let range = calendar.range(of: .day, in: .month, for: newMonth)!
+        let maxDay = range.count
+        let newDay = min(day, maxDay)
+
+        if let adjustedDate = calendar.date(from: DateComponents(
+            year: calendar.component(.year, from: newMonth),
+            month: calendar.component(.month, from: newMonth),
+            day: newDay
+        )) {
+            selectedDay = adjustedDate
+        }
+    }
+    
     func getCalendarEmoji() {
-        AchievementsAPI.shared.getJoyIconsForMonth(date: currentDate) { isSuccess, joyIcons in
+        AchievementsAPI.shared.getJoyIconsForMonth(date: selectedDay) { isSuccess, joyIcons in
             if isSuccess {
                 print("Debug CalendarEmoji: isSuccess true")
             } else {

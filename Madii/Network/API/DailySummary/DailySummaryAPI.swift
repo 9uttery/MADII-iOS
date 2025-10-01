@@ -5,6 +5,7 @@
 //  Created by 정태우 on 9/27/25.
 //
 
+import PhotosUI
 import Alamofire
 import CryptoKit
 import Foundation
@@ -54,7 +55,7 @@ class DailySummaryAPI {
         let month: String = date.month.count < 2 ? "0\(date.month)" : date.month
         let day: String = date.day.count < 2 ? "0\(date.day)" : date.day
         let dateString: String = "\(date.year)-\(month)-\(day)"
-        let url = "\(baseUrl) /achievements?date=\(dateString)&isFinished=\(isFinished)"
+        let url = "\(baseUrl)/achievements?date=\(dateString)&isFinished=\(isFinished)"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -83,5 +84,58 @@ class DailySummaryAPI {
                     completion(false, GetAchievementByDateDTO(date: "", joyAchievementInfos: []))
                 }
             }
+    }
+    
+    // 오늘 하루 돌아보기 생성
+    func postDailySummary(date: Date, satisfaction: Int, diaryContent: String, savingJoys: [SavingJoysRequestDTO], images: [UIImage], completion:  @escaping (_ isSuccess: Bool, _ dailySummary: PostDailySummary) -> Void) {
+        let month: String = date.month.count < 2 ? "0\(date.month)" : date.month
+        let day: String = date.day.count < 2 ? "0\(date.day)" : date.day
+        let dateString: String = "\(date.year)-\(month)-\(day)"
+        let url = "\(baseUrl)/daily-summary"
+        
+        let savingJoysDTO = savingJoys.map { joy in
+            [
+                "joyId": joy.joyId,
+                "emotions": joy.emotion
+            ] as [String : Any]
+        }
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            if let dateData = dateString.data(using: .utf8) {
+                multipartFormData.append(dateData, withName: "date")
+            }
+            if let satData = String(satisfaction).data(using: .utf8) {
+                multipartFormData.append(satData, withName: "satisfaction")
+            }
+            if let diaryData = diaryContent.data(using: .utf8) {
+                multipartFormData.append(diaryData, withName: "diaryContent")
+            }
+            
+            // 2) savingJoys: JSON 데이터로 직렬화해서 하나의 파트로 보냄
+            if let sjData = try? JSONSerialization.data(withJSONObject: savingJoysDTO, options: []) {
+                multipartFormData.append(sjData, withName: "savingJoys", mimeType: "application/json")
+            }
+            
+            for (index, image) in images.enumerated() {
+                if let imageData = image.jpegData(compressionQuality: 0.8) {
+                    let filename = "image_\(index)_\(UUID().uuidString).jpg"
+                    
+                    multipartFormData.append(imageData,
+                                             withName: "images",
+                                             fileName: filename,
+                                             mimeType: "image/jpeg")
+                }
+            }
+        }, to: url, method: .post, headers: nil)
+        .validate()
+        .responseDecodable(of: PostDailySummary.self) { response in
+            switch response.result {
+            case .success(let dailySummary):
+                DispatchQueue.main.async { completion(true, dailySummary) }
+            case .failure(let error):
+                print("❌ upload failed:", error)
+                DispatchQueue.main.async { completion(false, PostDailySummary(dailySummaryId: 0, satisfaction: 0, createdDate: "", savingJoys: [], attachedImages: [], diaryContent: "")) }
+            }
+        }
     }
 }
