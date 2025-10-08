@@ -98,6 +98,7 @@
 		519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E32B8936230017023E /* FirebaseAnalyticsSwift */; };
 		519DF2E62B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E52B8936230017023E /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		519DF2E82B8936230017023E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 519DF2E72B8936230017023E /* FirebaseAppCheck */; };
+		51A8F5972E964CC9003CB105 /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */; };
 		51AAB9132BE3E10E00F930B7 /* FindPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AAB9122BE3E10E00F930B7 /* FindPasswordView.swift */; };
 		51B6B7772B89A89E00A31FEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7762B89A89E00A31FEE /* FirebaseAnalytics */; };
 		51B6B7792B89A89E00A31FEE /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 51B6B7782B89A89E00A31FEE /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -510,6 +511,8 @@
 		51B2F02D2E87BABF003E66C4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"1-Onboarding/OnboardingCard_P3.swift",
+				"1-Onboarding/OnboardingStep.swift",
 				"1-Onboarding/OnboardingView_P3.swift",
 				"1-Onboarding/SplashView_P3.swift",
 				"2-Auth/LoginView_P3.swift",
@@ -1717,6 +1720,7 @@
 				516455962B1EFE140010199B /* AlbumDetailView.swift in Sources */,
 				51B6B7AF2B8BDAE600A31FEE /* AddAlbumPopUp.swift in Sources */,
 				51BEBA422B813F5B008CF3AD /* ImagePicker.swift in Sources */,
+				51A8F5972E964CC9003CB105 /* View+madiiFont.swift in Sources */,
 				BE06499D2B921570000EF015 /* ReallyLeaveView.swift in Sources */,
 				51BEBA3C2B7E816B008CF3AD /* SplashView.swift in Sources */,
 				51E025B12B28988C00F4F41A /* OnboardingView.swift in Sources */,

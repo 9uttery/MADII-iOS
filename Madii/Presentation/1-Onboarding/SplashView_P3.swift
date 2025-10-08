@@ -32,7 +32,7 @@ struct SplashView_P3: View {
                 )
         }
         .task {
-            try? await Task.sleep(for: .seconds(0.7))
+            try? await Task.sleep(for: .seconds(0.6))
             animateImage = true
         }
     }
