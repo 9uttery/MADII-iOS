@@ -515,6 +515,8 @@
 				"1-Onboarding/OnboardingStep.swift",
 				"1-Onboarding/OnboardingView_P3.swift",
 				"1-Onboarding/SplashView_P3.swift",
+				"2-Auth/AppleLoginButton_P3.swift",
+				"2-Auth/KakaoLoginButton_P3.swift",
 				"2-Auth/LoginView_P3.swift",
 				"3-Home/DailyReview/CompleteReviewView.swift",
 				"3-Home/DailyReview/DailyReviewView_P3.swift",
