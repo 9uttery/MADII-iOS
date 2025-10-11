@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AlbumListView_P3: View {
     @State private var viewModel: AlbumListViewModel_P3
+    @State var showDeleteAlbumsBottomSheet: Bool = false
     
     init(viewModel: AlbumListViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -43,7 +44,7 @@ struct AlbumListView_P3: View {
                 
                 Button {
                     viewModel.isSelect
-                        ? viewModel.action(.deleteAlbums)
+                        ? showDeleteAlbumsBottomSheet = true
                         : viewModel.action(.toggleSelect)
                 } label: {
                     if viewModel.isSelect {
@@ -126,6 +127,9 @@ struct AlbumListView_P3: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $showDeleteAlbumsBottomSheet) {
+            DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, albums: $viewModel.selectedAlbums)
         }
     }
 }

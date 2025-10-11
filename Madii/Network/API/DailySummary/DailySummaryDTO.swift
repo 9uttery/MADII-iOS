@@ -27,10 +27,10 @@ struct GetAchievementByDateDTO: Codable {
 }
 
 struct JoyAchievementsInfosDTO: Codable {
-    let joyID: Int
+    let joyId: Int
     let achievementId: Int
     let joyIconNum: Int
-    let conetnets: String
+    let contents: String
     let isachieved: Bool
 }
 

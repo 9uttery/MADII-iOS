@@ -23,7 +23,7 @@ class DailySummaryAPI {
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: BaseResponse<GetDailySummaryDTO>.self) { response in
+            .responseDecodable(of: BaseResponse<GetDailySummaryDTO?>.self) { response in
                 switch response.result {
                 case .success(let response):
                     guard let data = response.data else {
@@ -36,11 +36,11 @@ class DailySummaryAPI {
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
                         print("DEBUG(getIdCheck): success")
-                        completion(true, data)
+                        completion(true, data!)
                     } else {
                         // status 200 아님 -> isSuccess: false
                         print("DEBUG(getIdCheck): status \(statusCode))")
-                        completion(false, data)
+                        completion(false, data!)
                     }
                     
                 case .failure(let error):

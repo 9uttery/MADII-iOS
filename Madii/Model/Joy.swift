@@ -32,6 +32,24 @@ struct Emotion: Identifiable, Hashable {
     var id = UUID()
     var title: String
     var color: Color
+    
+    init(title: String) {
+        self.title = title
+        self.color = Emotion.color(for: title)
+    }
+    
+    init(title: String, color: Color) { // 새 생성자
+        self.title = title
+        self.color = color
+    }
+    
+    private static func color(for title: String) -> Color {
+        if let matched = emotionList.first(where: { $0.title == title }) {
+            return matched.color
+        } else {
+            return .madiiCyan
+        }
+    }
 }
 
 enum JoySatisfaction: CaseIterable {
