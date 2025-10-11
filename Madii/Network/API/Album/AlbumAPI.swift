@@ -422,4 +422,38 @@ class AlbumAPI {
                 }
             }
     }
+    
+    func deleteAlbums(albumId: [Int], completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let queryParameters = albumId.map { "albumIds=\($0)" }
+
+        let queryString = queryParameters.joined(separator: "&")
+        
+        let url = "\("https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")")/v1/albums/\(queryString)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        AF.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<String?>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(deleteAlbums): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(deleteAlbums): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(deleteAlbums): error \(error))")
+                    completion(false)
+                }
+            }
+    }
 }

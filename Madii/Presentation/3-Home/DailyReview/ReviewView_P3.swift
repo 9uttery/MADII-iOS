@@ -61,11 +61,11 @@ struct ReviewView_P3: View {
                 print("debug getAchievementByDate: isSuccess true")
                 savingJoys = dailySummary.joyAchievementInfos.map { dto in
                     Joy(
-                        joyId: dto.joyID,                // DB에서 사용하는 Joy id
+                        joyId: dto.joyId,
                         achievementId: dto.achievementId,
                         isAchieved: dto.isachieved,
                         icon: dto.joyIconNum,
-                        title: dto.conetnets,
+                        title: dto.contents,
                         counts: 0,
                         satisfaction: .bad,
                         isSaved: false,

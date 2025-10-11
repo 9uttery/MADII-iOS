@@ -233,7 +233,7 @@ class AchievementsAPI {
     }
     
     // 오플리에서 소확행 삭제
-    func deleteJoy(achievementId: Int, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func deleteJoy(achievementId: Int, completion: @escaping (_ isSuccess: Bool, _ todayJoys: [JoyAchievementsInfosResponse]) -> Void) {
         let url = "\(baseUrl)/achievements?achievementId=\(achievementId)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -244,27 +244,32 @@ class AchievementsAPI {
             .responseDecodable(of: BaseResponse<GetPlaylistResponse>.self) { response in
                 switch response.result {
                 case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(get joy icons for day): data nil")
+                        completion(false, [])
+                        return
+                    }
                     
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
                         print("DEBUG(deleteBookmarksByAlbumId): success")
-                        completion(true)
+                        completion(true, data.todayJoyPlayList.joyAchievementInfos)
                     } else {
                         // status 200 아님 -> isSuccess: false
                         print("DEBUG(deleteBookmarksByAlbumId): status \(statusCode))")
-                        completion(false)
+                        completion(false, data.todayJoyPlayList.joyAchievementInfos)
                     }
                     
                 case .failure(let error):
                     print("DEBUG(deleteBookmarksByAlbumId): error \(error))")
-                    completion(false)
+                    completion(false, [])
                 }
             }
     }
     
     // 소확행 실천 완료 만족도 입력
-    func postJoySatisfaction(achievementId: Int, satisfacton: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+    func postJoySatisfaction(achievementId: Int, satisfacton: String?, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let url = "\(baseUrl)/achievements/finish"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",

@@ -535,6 +535,7 @@
 				"3-Home/Home/HomeView_P3.swift",
 				"3-Home/Home/HomeViewModel_P3.swift",
 				"3-Home/Home/JoyOptionBottomSheet.swift",
+				"3-Home/Home/JoyRowView.swift",
 				"3-Home/Home/RenameJoyBottomSheet.swift",
 				"4-Exploration/CompleteRecommendJoyView.swift",
 				"4-Exploration/ExplorationView_P3.swift",
@@ -554,6 +555,7 @@
 				Extensions/GradientBorder.swift,
 				Extensions/MadiiNavigationBar_P3.swift,
 				Extensions/PhotoPicker.swift,
+				Extensions/SwipeButton.swift,
 				"Extensions/UINavigationController+.swift",
 			);
 			target = 515EFC8A2AFCA0D100230647 /* Madii */;
