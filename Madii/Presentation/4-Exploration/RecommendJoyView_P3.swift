@@ -8,7 +8,8 @@
 import MadiiDesignSystem
 import SwiftUI
 
-struct RecommendJoyView3: View {
+struct RecommendJoyView_P3: View {
+    @Environment(Router.self) var router
     @State var who: [Int] = []
     @State var when: [Int] = []
     @State var which: [Int] = []
@@ -17,6 +18,8 @@ struct RecommendJoyView3: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            MadiiNavigationBar_P3(title: "취향저격 소확행")
+            
             Text("키워드를 선택해 나만을 위한 소확행을 찾아보세요")
                 .madiiFont(font: .madiiBody3, color: .madiiNeutral)
                 .padding(.vertical, 20)
@@ -160,11 +163,12 @@ struct RecommendJoyView3: View {
                     HStack(spacing: 12) {
                         Circle()
                             .frame(width: 12, height: 12)
-                            .foregroundStyle(.madiiDisabled)
+                            .foregroundStyle(recommendJoys[0].joyIconNum.intToColor)
                         
                         Text(recommendJoys[0].contents)
                             .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                            .frame(maxWidth: .infinity)
+                            .lineSpacing(9.6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
                     }
                     .padding(.vertical, 19)
@@ -208,11 +212,12 @@ struct RecommendJoyView3: View {
                     HStack(spacing: 12) {
                         Circle()
                             .frame(width: 12, height: 12)
-                            .foregroundStyle(.madiiDisabled)
+                            .foregroundStyle(recommendJoys[1].joyIconNum.intToColor)
                         
                         Text(recommendJoys[1].contents)
                             .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                            .frame(maxWidth: .infinity)
+                            .lineSpacing(9.6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
                     }
                     .padding(.vertical, 19)
@@ -256,11 +261,12 @@ struct RecommendJoyView3: View {
                     HStack(spacing: 12) {
                         Circle()
                             .frame(width: 12, height: 12)
-                            .foregroundStyle(.madiiDisabled)
+                            .foregroundStyle(recommendJoys[2].joyIconNum.intToColor)
                         
                         Text(recommendJoys[2].contents)
                             .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                            .frame(maxWidth: .infinity)
+                            .lineSpacing(9.6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
                     }
                     .padding(.vertical, 19)
@@ -288,11 +294,11 @@ struct RecommendJoyView3: View {
             
             MadiiDesignSystem.MadiiButton(title: selectedJoy == nil ? "완료" : "오늘의 플레이리스트에 추가", color: .violet) {
                 playJoy()
+                router.push(.completeRecommend(joy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false)))
             }
                 .disabled(selectedJoy == nil)
         }
         .padding(.horizontal, 20)
-        .navigationTitle("취향저격 소확행")
         .background(
             LinearGradient(
                 gradient: Gradient(stops: [
@@ -339,5 +345,5 @@ struct RecommendJoyView3: View {
 }
 
 #Preview {
-    RecommendJoyView3()
+    RecommendJoyView_P3()
 }

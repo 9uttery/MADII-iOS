@@ -18,6 +18,9 @@ struct GetDailySummaryDTO: Codable {
 
 struct JoyDTO: Codable {
     let joyId: Int
+    let contents: String
+    let joyIconNum: Int
+    let joyColorNum: Int
     let emotions: [String]
 }
 
@@ -31,7 +34,7 @@ struct JoyAchievementsInfosDTO: Codable {
     let achievementId: Int
     let joyIconNum: Int
     let contents: String
-    let isachieved: Bool
+    let isAchieved: Bool
 }
 
 struct SavingJoysRequestDTO: Codable {
@@ -44,6 +47,15 @@ struct PostDailySummary: Codable {
     let satisfaction: Int
     let createdDate: String
     let savingJoys: [SavingJoysRequestDTO]
+    let attachedImages: [String]
+    let diaryContent: String
+}
+
+struct PostDailySummaryListDTO: Codable {
+    let dailySummaryId: Int
+    let satisfaction: Int
+    let createdDate: String
+    let savingJoys: [JoyDTO]
     let attachedImages: [String]
     let diaryContent: String
 }

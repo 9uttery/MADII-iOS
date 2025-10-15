@@ -10,6 +10,7 @@ import SwiftUI
 struct RoutingView: View {
     private let container: DIContainer
     @Bindable private var router: Router
+    @StateObject var appStatus: AppStatus = AppStatus()
     
     init(container: DIContainer) {
         self.container = container
@@ -35,6 +36,7 @@ struct RoutingView: View {
             container.makeView(route)
         }
         .environment(router)
+        .environmentObject(appStatus) 
     }
     
     private func finishLoadingView() {

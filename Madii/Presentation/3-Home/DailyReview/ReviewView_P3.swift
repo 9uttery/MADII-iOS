@@ -12,12 +12,12 @@ struct ReviewView_P3: View {
     @State var tabNum: Int = 0
     @State var diaryContent: String = ""
     @State var date: Date = Date()
-    @State var satisfaction: Int = 0
+    @State var satisfaction: Int = 5
     @State var savingJoys: [Joy] = [Joy(title: "안녕kaklsdjfalkdjflaksdjfalksdfjalskdjfalskdfjalksdfjalksdfjalksdfdf"), Joy(title: "안녕하세요"), Joy(title: "안녕안녕하세용")]
     
     var body: some View {
         VStack(alignment: .leading) {
-            MadiiNavigationBar_P3(title: date.toKoreanString())
+            MadiiNavigationBar_P3(title: date.toKoreanString(), popNum: 2)
             
             HStack(spacing: 8) {
                 Rectangle()
@@ -48,7 +48,6 @@ struct ReviewView_P3: View {
                 DiaryReviewView(tabNum: $tabNum, date: $date, satisfaction: $satisfaction, savingJoys: $savingJoys)
             }
         }
-        .navigationTitle("\(Date().toKoreanString())")
         .padding(.horizontal, 20)
         .onAppear {
             getAchievementByDate()
@@ -63,7 +62,7 @@ struct ReviewView_P3: View {
                     Joy(
                         joyId: dto.joyId,
                         achievementId: dto.achievementId,
-                        isAchieved: dto.isachieved,
+                        isAchieved: dto.isAchieved,
                         icon: dto.joyIconNum,
                         title: dto.contents,
                         counts: 0,

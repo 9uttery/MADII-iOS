@@ -127,9 +127,32 @@ struct AlbumListView_P3: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
+            .onChange(of: showDeleteAlbumsBottomSheet) {
+                viewModel.action(.loadAlbums)
+            }
+            .onChange(of: viewModel.showNewAlbumBottomSheet) {
+                viewModel.action(.loadAlbums)
+            }
+            .onAppear {
+                viewModel.action(.loadAlbums)
+            }
         }
         .sheet(isPresented: $showDeleteAlbumsBottomSheet) {
-            DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, albums: $viewModel.selectedAlbums)
+            GeometryReader { geo in
+                DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, albums: $viewModel.selectedAlbums)
+                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
+        }
+        .sheet(isPresented: $viewModel.showNewAlbumBottomSheet) {
+            GeometryReader { geo in
+                AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $viewModel.showNewAlbumBottomSheet)
+                    .presentationDetents([.height(503)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
         }
     }
 }

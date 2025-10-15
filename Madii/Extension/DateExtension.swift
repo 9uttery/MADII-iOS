@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Date {
     var day: String {
@@ -46,5 +47,19 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
+    }
+    
+    static let ymdFormatter: DateFormatter = {
+        let date = DateFormatter()
+        date.dateFormat = "yyyy-MM-dd"
+        date.locale = Locale(identifier: "en_US_POSIX")
+        return date
+    }()
+    
+    func toKoreanString(format: String = "M월 d일") -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
 }

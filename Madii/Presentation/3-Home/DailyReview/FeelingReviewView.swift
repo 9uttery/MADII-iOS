@@ -34,6 +34,7 @@ struct FeelingReviewView: View {
                                 
                                 Text(todayJoys[index].title)
                                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                    .lineSpacing(9.6)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .layoutPriority(0)
@@ -43,7 +44,7 @@ struct FeelingReviewView: View {
                                 HStack(spacing: 4) {
                                     ForEach(todayJoys[index].selectedEmotions) { emotion in
                                         Text(emotion.title)
-                                            .madiiFont(font: .madiiCaption, color: emotion.color)
+                                            .madiiFont(font: .caption, color: emotion.color)
                                             .padding(.vertical, 4.5)
                                             .padding(.horizontal, 8)
                                             .background(emotion.color.opacity(0.08))
@@ -78,6 +79,7 @@ struct FeelingReviewView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
             .frame(height: todayJoys.count > 3 ? 248 : 216)
             .padding(.bottom, todayJoys.count > 3 ? 40: 72)
             
@@ -103,7 +105,7 @@ struct FeelingReviewView: View {
             .padding(.bottom, 16)
             
             Text("*최대 2개까지 고를 수 있어요")
-                .madiiFont(font: .madiiCaption, color: .madiiAlternative)
+                .madiiFont(font: .caption, color: .madiiAlternative)
                 
             Spacer()
             
@@ -115,12 +117,9 @@ struct FeelingReviewView: View {
     }
     
     func toggleEmotion(_ emotion: Emotion, for joyIndex: Int) {
-        // 이미 선택되어 있으면 제거
         if let existingIndex = todayJoys[joyIndex].selectedEmotions.firstIndex(of: emotion) {
             todayJoys[joyIndex].selectedEmotions.remove(at: existingIndex)
-        }
-        // 새로 선택할 때
-        else {
+        } else {
             if todayJoys[joyIndex].selectedEmotions.count >= 2 {
                 // 가장 먼저 선택한 걸 제거 (0번째)
                 todayJoys[joyIndex].selectedEmotions.removeFirst()

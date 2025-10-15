@@ -27,6 +27,9 @@ enum Route: Hashable, Identifiable {
     case review(savingJoys: [Joy])
     
     // Exploration
+    case recommend
+    case completeRecommend(joy: GetJoyResponseJoy)
+    case allAlbumList
     
     // Archiving
     case myPage

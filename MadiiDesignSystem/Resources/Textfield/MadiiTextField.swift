@@ -56,7 +56,13 @@ public struct MadiiTextField: View {
                 .madiiFont(.body2)
                 .foregroundStyle(.madiiNeutral)
                 .frame(maxWidth: .infinity)
+                .frame(height: 26)
                 .focused($isTextFieldFocused)
+                .onSubmit {
+                    if isPlus {
+                        action?()
+                    }
+                }
         }
         .padding(12)
         .background(.madiiGray30)

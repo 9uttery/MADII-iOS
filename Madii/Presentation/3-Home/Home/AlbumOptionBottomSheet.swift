@@ -11,50 +11,65 @@ struct AlbumOptionBottomSheet: View {
     @Binding var album: Album
     @State var isOpen: Bool = false
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(album.title)
-                .madiiFont(font: .title2, color: .madiiNormal)
-                .padding(.top, 40)
-                .padding(.bottom, 10)
+        VStack {
+            Rectangle()
+                .frame(width: 100, height: 5)
+                .foregroundStyle(.madiiContrast)
+                .cornerRadius(2.5)
+                .padding(.top, 16)
             
-            Text(album.description)
-                .madiiFont(font: .madiiBody3, color: .madiiAlternative)
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, 40)
-            
-            Button {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(album.title)
+                    .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                    .padding(.top, 40)
+                    .padding(.bottom, 10)
                 
-            } label: {
-                Text("앨범 편집")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
-            }
-            .padding(.bottom, 28)
-            
-            Button {
-                
-            } label: {
-                Text("삭제")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
-            }
-            .padding(.bottom, 28)
-            
-            HStack {
-                Text("전체 공개")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
-                
-                Spacer()
+                Text(album.description)
+                    .madiiFont(font: .madiiBody3, color: .madiiAlternative)
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom, 40)
                 
                 Button {
-                    isOpen.toggle()
+                    
                 } label: {
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(isOpen ? .madiiLime : .madiiAlternative)
+                    Text("앨범 편집")
+                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                }
+                .padding(.bottom, 28)
+                
+                Button {
+                    
+                } label: {
+                    Text("삭제하기")
+                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                }
+                .padding(.bottom, 28)
+                
+                HStack {
+                    Text("전체 공개")
+                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                    
+                    Spacer()
+                    
+                    Button {
+                        if !isOpen {
+                            isOpen.toggle()
+                        }
+                    } label: {
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(isOpen ? .madiiLime : .madiiAlternative)
+                    }
                 }
             }
+            .padding(.bottom, 40)
         }
         .padding(.horizontal, 20)
+        .background(.madiiElevated)
+        .cornerRadius(40)
+        .padding(.horizontal, 20)
+        .background(.clear)
     }
 }
 

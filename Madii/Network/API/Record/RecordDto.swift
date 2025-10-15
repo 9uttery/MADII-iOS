@@ -28,7 +28,7 @@ struct GetTodayJoyResponseJoy: Codable, Identifiable {
     let contents: String
 }
 
-struct GetJoyResponseJoy: Codable, Identifiable, Equatable {
+struct GetJoyResponseJoy: Codable, Identifiable, Equatable, Hashable {
     var id: Int { return joyId }
     let joyId: Int
     let joyIconNum: Int

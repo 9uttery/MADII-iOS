@@ -17,7 +17,23 @@ struct SatisfactionReviewView: View {
             Text("오늘 하루 얼마나 만족하셨나요?")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
             
-            Image("")
+            Image("satisfaction\(satisfaction.intToSatisfaction)")
+                .resizable()
+                .frame(width: (satisfaction % 2) == 0 ? 20 : 60, height: (satisfaction % 2) == 0 ? 20 : 60)
+                .padding(.vertical, (satisfaction % 2) == 0 ? 60 : 40)
+            
+            SatisfactionSlider(value: $satisfaction)
+                .padding(.bottom, 12)
+            
+            HStack {
+                Text("힘든 하루였어요")
+                    .madiiFont(font: .caption, color: .madiiAlternative)
+                
+                Spacer()
+                
+                Text("행복이 가득했어요")
+                    .madiiFont(font: .caption, color: .madiiAlternative)
+            }
             
             Spacer()
             
@@ -25,6 +41,7 @@ struct SatisfactionReviewView: View {
                 tabNum = 2
             }
         }
+        .animation(.easeIn, value: satisfaction)
     }
 }
 

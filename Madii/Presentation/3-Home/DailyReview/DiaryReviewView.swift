@@ -32,6 +32,8 @@ struct DiaryReviewView: View {
             VStack(alignment: .trailing) {
                 TextEditor(text: $diaryContent)
                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .lineSpacing(9.6)
+                    .frame(maxWidth: .infinity)
                     .frame(height: 182)
                     .scrollContentBackground(.hidden)
                     .overlay(
@@ -39,7 +41,9 @@ struct DiaryReviewView: View {
                             if diaryContent.isEmpty {
                                 Text("오늘 마음에 남는 순간을 들려주세요")
                                     .madiiFont(font: .madiiBody2, color: .madiiAlternative)
+                                    .lineSpacing(25.6)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, 4)
                             }
                         }, alignment: .topLeading
                     )
@@ -81,6 +85,7 @@ struct DiaryReviewView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
             
             Spacer()
             
@@ -94,6 +99,10 @@ struct DiaryReviewView: View {
         }
         .navigationTitle(Date().toKoreanString())
         .padding(.horizontal, 20)
+        .onAppear {
+            UITextView.appearance().textContainerInset =
+                UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
     
     private func clickCompleteButton() {
@@ -103,6 +112,7 @@ struct DiaryReviewView: View {
                 emotion: joy.selectedEmotions.map { $0.title }
             )
         }
+        
         DailySummaryAPI.shared.postDailySummary(date: date, satisfaction: satisfaction, diaryContent: diaryContent, savingJoys: savingJoysDTO, images: selectedImages) { isSuccess, postDailySummary in
             if isSuccess {
                 

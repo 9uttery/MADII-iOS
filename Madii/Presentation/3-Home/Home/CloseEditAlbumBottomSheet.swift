@@ -14,8 +14,14 @@ struct CloseEditAlbumBottomSheet: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Rectangle()
+                .frame(width: 100, height: 5)
+                .foregroundStyle(.madiiContrast)
+                .cornerRadius(2.5)
+                .padding(.top, 16)
+            
             Text("앨범 편집 종료")
-                .madiiFont(font: .title2, color: .madiiStrong)
+                .madiiFont(font: .madiiTitle, color: .madiiStrong)
                 .padding(.top, 40)
                 .padding(.bottom, 24)
             

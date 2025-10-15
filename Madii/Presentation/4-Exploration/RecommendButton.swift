@@ -19,6 +19,7 @@ struct RecommendButton: View {
         } label: {
             Text(title)
                 .madiiFont(font: .madiiBody2, color: isClicked ? .madiiContrast : .madiiStrong)
+                .lineSpacing(9.6)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 20)
                 .background(isClicked ? .madiiGreen100 : .gray100.opacity(0.35))

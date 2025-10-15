@@ -9,7 +9,7 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct CompleteReviewView: View {
-    @State var nickname: String = "코코"
+    @EnvironmentObject var appStatus: AppStatus
     var body: some View {
         VStack {
             Spacer()
@@ -19,7 +19,7 @@ struct CompleteReviewView: View {
                     .frame(width: 12.6, height: 12.36)
                 
                 Text("\(Date().year)년 \(Date().toKoreanString())")
-                    .madiiFont(font: .madiiCaption, color: .madiiGreen100)
+                    .madiiFont(font: .caption, color: .madiiGreen100)
                     .padding(.vertical, 4.5)
             }
             .padding(.horizontal, 8)
@@ -37,7 +37,7 @@ struct CompleteReviewView: View {
                     .frame(width: 232, height: 232)
                     .cornerRadius(28)
                 
-                Text("\(nickname)님의 행복")
+                Text("\(appStatus.nickname)님의 행복")
                     .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
             }
             .padding(.vertical, 28)

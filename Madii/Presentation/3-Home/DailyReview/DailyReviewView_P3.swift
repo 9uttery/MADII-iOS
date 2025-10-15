@@ -11,9 +11,9 @@ struct DailyReviewView_P3: View {
     @Environment(Router.self) var router
     
     @State var date: Date = Date()
-    @Binding var todayJoys: [Joy]
+    @State var todayJoys: [Joy] = []
     @State var isHeaderVisible = false
-    @Binding var visibleJoys: [Bool]
+    @State var visibleJoys: [Bool] = []
     
     var body: some View {
         VStack(spacing: 0) {
@@ -27,7 +27,7 @@ struct DailyReviewView_P3: View {
                     .frame(width: 12.6, height: 12.36)
                 
                 Text(Date().toKoreanString())
-                    .madiiFont(font: .madiiCaption, color: .madiiGreen100)
+                    .madiiFont(font: .caption, color: .madiiGreen100)
                     .padding(.vertical, 4.5)
             }
             .padding(.horizontal, 8)
@@ -54,6 +54,7 @@ struct DailyReviewView_P3: View {
 
                         Text(todayJoys[index].title)
                             .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .lineSpacing(9.6)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 19)
@@ -97,7 +98,6 @@ struct DailyReviewView_P3: View {
         )
         .onAppear {
             isHeaderVisible = false
-
             // 헤더 텍스트 1초 뒤 등장
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation(.easeOut(duration: 0.5)) {
@@ -112,11 +112,13 @@ struct DailyReviewView_P3: View {
                         }
                     }
                 }
+
+                let lastAnimationDelay = Double(todayJoys.count) + 1.0 // 헤더 + joy 등장 총 시간
+                DispatchQueue.main.asyncAfter(deadline: .now() + lastAnimationDelay + 0.5) {
+                    router.push(.review(savingJoys: todayJoys))
+                }
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                router.push(.review(savingJoys: todayJoys))
-            }
         }
     }
 }
