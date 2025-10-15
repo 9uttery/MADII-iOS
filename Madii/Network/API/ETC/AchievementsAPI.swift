@@ -335,6 +335,45 @@ class AchievementsAPI {
             }
     }
     
+    // 특정 날짜의 플레이리스트에 소확행 추가하기 (그플리)
+    func postAchievemenets(joyId: Int, date: Date, completion: @escaping (_ isSuccess: Bool, _ joyList: JoyPlaylistResponse) -> Void) {
+        let url = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v2/achievements"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: Any] = [
+            "joyId": joyId,
+            "date": date.serverDateFormat
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<JoyPlaylistResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(get joy icons for day): data nil")
+                        completion(false, JoyPlaylistResponse(date: "", joyAchievementInfos: []))
+                        return
+                    }
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(playJoy): success")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(playJoy): status \(statusCode)")
+                        completion(false, JoyPlaylistResponse(date: "", joyAchievementInfos: []))
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(playJoy): error \(error))")
+                    completion(false, JoyPlaylistResponse(date: "", joyAchievementInfos: []))
+                }
+            }
+    }
+    
     func countDates(date: Date) -> Int {
         let calendar = Calendar.current
         let monthRange = calendar.range(of: .day, in: .month, for: date)!

@@ -9,51 +9,106 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct HomeView_P3: View {
+    @Environment(Router.self) var router
+    @EnvironmentObject var appStatus: AppStatus
     @State private var viewModel: HomeViewModel_P3
-    
+    @AppStorage("todayJoyId") var todayJoyId: Int = 0
+    @State var isOhadol: Bool = false
+    @State var canOhadol: Bool = false
+    @State var selectedDate: Date = Date()
+    @State var showTodayJoyOptionBottomSheet: Bool = false
+    @State var showSaveAlbumBottomSheet: Bool = false
+    @State var showAddNewAlbumBottomSheet: Bool = false
+    @State var isDeleted: Bool = false
+    @State private var isFinishedGetJoy: Bool = false
+
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 0) {
-                MadiiHomeNavigation {
-                    viewModel.action(.showAlbumList)
-                }
+        ZStack(alignment: .bottom) {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    MadiiHomeNavigation {
+                        viewModel.action(.showAlbumList)
+                    }
                     .padding(.bottom, 12)
-                
-                if viewModel.isTodayJoy {
-                    todayJoyCard
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                } else {
-                    todayJoyPlaceholder
-                        .transition(.move(edge: .top).combined(with: .opacity))
+                    
+                    if isFinishedGetJoy {
+                        if viewModel.todayJoy.joyId == todayJoyId {
+                            todayJoyCard
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        } else {
+                            todayJoyPlaceholder
+                                .transition(.move(edge: .top).combined(with: .opacity))
+                        }
+                    }
+                    
+                    if !isOhadol && canOhadol {
+                        Button {
+                            viewModel.action(.showDailyReview)
+                        } label: {
+                            Text("\(selectedDate < Date() ? "" : "오늘 ")하루 돌아보기")
+                                .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
+                                .padding(.vertical, 16)
+                                .frame(maxWidth: .infinity)
+                                .background(.madiiGreen100)
+                                .cornerRadius(20)
+                        }
+                        .padding(.bottom, 16)
+                    }
+                    
+                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $selectedDate, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
                 }
-                
-                Button {
-                    viewModel.action(.showDailyReview)
-                } label: {
-                    Text("오늘 하루 돌아보기")
-                        .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
-                        .padding(.vertical, 16)
-                        .frame(maxWidth: .infinity)
-                        .background(.madiiGreen100)
-                        .cornerRadius(20)
-                }
-                .padding(.bottom, 16)
-                
-                HomeCalendar(isMonthly: $viewModel.isMonthly)
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
+            .scrollIndicators(.hidden)
+            
+            if viewModel.isPlayJoy {
+                MadiiDesignSystem.MadiiToast(title: "오늘의 플레이리스트에 추가되었어요", isShowToast: $viewModel.isPlayJoy)
+            }
+            
+            if viewModel.isDuplicated {
+                MadiiDesignSystem.MadiiToast(type: .error, title: "이미 플레이리스트에 있어요", isShowToast: $viewModel.isDuplicated)
+            }
+            
+            if isDeleted {
+                MadiiDesignSystem.MadiiToast(title: "행복 기록이 삭제되었어요", isShowToast: $isDeleted)
+            }
+        }
+        .onAppear {
+            getUserNickname()
+            getTodayJoy()
         }
         .animation(.easeInOut, value: viewModel.isMonthly)
-        .animation(.easeInOut, value: viewModel.isTodayJoy)
+        .sheet(isPresented: $showTodayJoyOptionBottomSheet) {
+            GeometryReader { geo in
+                TodayJoyOptionBottomSheet(joyId: Binding(
+                    get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
+                    set: { viewModel.todayJoy.joyId = $0 }
+                ), joyTitle: $viewModel.todayJoy.title, showTodayJoyOptionBottomSheet: $showTodayJoyOptionBottomSheet, showSaveAlbumBottomSheet: $showSaveAlbumBottomSheet, isDuplicated: $viewModel.isDuplicated, isPlayJoy: $viewModel.isPlayJoy)
+                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
+        }
+        .sheet(isPresented: $showSaveAlbumBottomSheet) {
+            GeometryReader { geo in
+                EditJoyBottomSheet(showEditJoyBottomSheet: $showSaveAlbumBottomSheet, joyId: Binding(
+                    get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
+                    set: { viewModel.todayJoy.joyId = $0 }
+                ), joyTitle: $viewModel.todayJoy.title, showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
+                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
+        }
     }
     
     private var todayJoyCard: some View {
         HStack(spacing: 16) {
-            Image("Cover1")
+            Image("CoverA")
                 .resizable()
                 .frame(width: 100, height: 100)
                 .cornerRadius(32)
@@ -65,7 +120,7 @@ struct HomeView_P3: View {
                         .frame(width: 12.6, height: 12.36)
                     
                     Text("오늘의 소확행 선물")
-                        .madiiFont(font: .madiiCaption, color: .madiiGreen100)
+                        .madiiFont(font: .caption, color: .madiiGreen100)
                         .padding(.vertical, 4.5)
                 }
                 .padding(.horizontal, 8)
@@ -74,6 +129,7 @@ struct HomeView_P3: View {
                 
                 Text(viewModel.todayJoy.title)
                     .madiiFont(font: .madiiBody2, color: .madiiGray100)
+                    .lineSpacing(9.6)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack(spacing: 8) {
@@ -86,7 +142,7 @@ struct HomeView_P3: View {
                     }
                     
                     Button {
-                        
+                        showTodayJoyOptionBottomSheet = true
                     } label: {
                         Image("ellipsis")
                             .resizable()
@@ -128,5 +184,25 @@ struct HomeView_P3: View {
                 .cornerRadius(40)
         )
         .padding(.bottom, 24)
+    }
+    
+    private func getUserNickname() {
+        ProfileAPI.shared.getUsersProfile { isSuccess, userProfile in
+            if isSuccess {
+                appStatus.nickname = userProfile.nickname
+            }
+        }
+    }
+    
+    private func getTodayJoy() {
+        HomeAPI.shared.getJoyToday { isSuccess, todayJoy in
+            if isSuccess {
+                print("DEBUG HomeTodayJoyView getTodayJoy isSuccess true, \(todayJoy)")
+                viewModel.todayJoy = Joy(joyId: todayJoy.joyId, icon: todayJoy.joyIconNum, title: todayJoy.contents)
+                isFinishedGetJoy = true
+            } else {
+                print("DEBUG HomeTodayJoyView getTodayJoy isSuccess false")
+            }
+        }
     }
 }

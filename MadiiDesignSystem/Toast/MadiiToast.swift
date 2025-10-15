@@ -37,6 +37,16 @@ public struct MadiiToast: View {
         .padding(.trailing, 28)
         .background(.madiiStrong)
         .cornerRadius(16)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isShowToast = false
+            }
+        }
+        .onChange(of: isShowToast) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isShowToast = false
+            }
+        }
     }
 }
 

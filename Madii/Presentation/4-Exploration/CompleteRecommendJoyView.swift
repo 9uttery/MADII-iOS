@@ -9,16 +9,18 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct CompleteRecommendJoyView: View {
-    @Binding var joy: Joy
-    @State var nickname: String = "코코"
-    @State var joyName: String = "소확행 이름"
-    @State var isShowToast: Bool = false
+    @Environment(Router.self) var router
+    @Binding var joy: GetJoyResponseJoy
+    @EnvironmentObject var appStatus: AppStatus
+    @State var isShowToast: Bool = true
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("\(nickname)님을 위한\n소확행이에요!")
-                .madiiFont(font: .title, color: .madiiNormal)
+            Text("\(appStatus.nickname)님을 위한\n소확행이에요!")
+                .madiiFont(font: .madiiTitle, color: .madiiNormal)
                 .padding(.top, 96)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
             
             VStack(spacing: 20) {
                 Image("CoverA")
@@ -26,7 +28,7 @@ struct CompleteRecommendJoyView: View {
                     .frame(width: 265, height: 232)
                     .cornerRadius(28)
                 
-                Text(joyName)
+                Text(joy.contents)
                     .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
             }
             .padding(.vertical, 28)
@@ -49,23 +51,27 @@ struct CompleteRecommendJoyView: View {
                 .madiiFont(font: .madiiBody3, color: .madiiNormal)
             
             Spacer()
+                .frame(maxWidth: .infinity)
             
-            MadiiDesignSystem.MadiiToast(type: .complete, title: "오늘의 플레이리스트에 추가했어요", isShowToast: $isShowToast)
-        }
-        .navigationBarBackButtonHidden()
-    }
-    
-    func playJoy() {
-        AchievementsAPI.shared.playJoy(joyId: joy.joyId ?? 0) { isSuccess, isDuplicated in
-            if isSuccess {
-                if isDuplicated {
-                    
-                } else {
-                    
-                }
-            } else {
-                
+            if isShowToast {
+                MadiiDesignSystem.MadiiToast(type: .complete, title: "오늘의 플레이리스트에 추가했어요", isShowToast: $isShowToast)
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                router.pop(times: 2)
+            }
+        }
+        .background(
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: Color(red: 14/255, green: 21/255, blue: 44/255), location: 0.0),
+                    .init(color: Color(red: 54/255, green: 33/255, blue: 96/255), location: 1.0)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+        .navigationBarBackButtonHidden()
     }
 }

@@ -428,13 +428,14 @@ class AlbumAPI {
 
         let queryString = queryParameters.joined(separator: "&")
         
-        let url = "\("https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")")/v1/albums/\(queryString)"
+        let url = "\("https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")")/v2/albums?\(queryString)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
+        print(url)
         
-        AF.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<String?>.self) { response in
                 switch response.result {
                 case .success(let response):
@@ -446,7 +447,7 @@ class AlbumAPI {
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false
-                        print("DEBUG(deleteAlbums): status \(statusCode))")
+                        print("DEBUG(deleteAlbums): status \(statusCode)")
                         completion(false)
                     }
                     

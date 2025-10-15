@@ -199,6 +199,7 @@
 		BE619EEC2B95BF76005F7EBA /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE619EEB2B95BF76005F7EBA /* EmailSender.swift */; };
 		BE690CA22E24F9F900D077B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE690CA12E24F9F900D077B6 /* Assets.xcassets */; };
 		BE7234462C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7234452C86CA4300FBDF3F /* CloseEditAlbumPopUp.swift */; };
+		BE8030862E9A9B6F00B10EA0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BE8030852E9A9B6F00B10EA0 /* Kingfisher */; };
 		BE821E542E05448400952D3F /* MadiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E532E05448400952D3F /* MadiiButton.swift */; };
 		BE821E5D2E13796600952D3F /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE821E592E13796600952D3F /* SpoqaHanSansNeo-Bold.otf */; };
 		BE821E5F2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE821E5E2E137B9800952D3F /* SpoqaHanSansNeo-Medium.otf */; };
@@ -206,6 +207,7 @@
 		BE821E652E1383A600952D3F /* MadiiHomeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */; };
 		BE821E692E13882600952D3F /* MadiiTabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E682E13882600952D3F /* MadiiTabNavigation.swift */; };
 		BE821E702E138AB200952D3F /* MadiiToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE821E6F2E138AB200952D3F /* MadiiToast.swift */; };
+		BE8833FE2E9CCAE3000EBD76 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8833FD2E9CCAE3000EBD76 /* IntExtension.swift */; };
 		BE8BAE102DF2BB5A00E3B84C /* Color+madiiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862172D4DEC830033F0AB /* Color+madiiColor.swift */; };
 		BE8BAE112DF2BB6C00E3B84C /* View+madiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862142D4DE9840033F0AB /* View+madiiFont.swift */; };
 		BE8BAE122DF2BBA400E3B84C /* Font+MadiiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E862122D4DE94B0033F0AB /* Font+MadiiFont.swift */; };
@@ -469,6 +471,7 @@
 		BE821E642E1383A600952D3F /* MadiiHomeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiHomeNavigation.swift; sourceTree = "<group>"; };
 		BE821E682E13882600952D3F /* MadiiTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiTabNavigation.swift; sourceTree = "<group>"; };
 		BE821E6F2E138AB200952D3F /* MadiiToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadiiToast.swift; sourceTree = "<group>"; };
+		BE8833FD2E9CCAE3000EBD76 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		BE8BAE162DF2BCBD00E3B84C /* View+madiiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+madiiFont.swift"; sourceTree = "<group>"; };
 		BE8BAE182DF2C56900E3B84C /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		BE98A4042B6627560064CC6F /* RecommendJoyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendJoyView.swift; sourceTree = "<group>"; };
@@ -525,28 +528,35 @@
 				"3-Home/DailyReview/ReviewView_P3.swift",
 				"3-Home/DailyReview/ReviewViewModel_P3.swift",
 				"3-Home/DailyReview/SatisfactionReviewView.swift",
-				"3-Home/Home/AddNewAlbumBottomSheet.swift",
+				"3-Home/DailyReview/SatisfactionSlider.swift",
+				"3-Home/Home/AlbumDetailJoyRowView.swift",
 				"3-Home/Home/AlbumDetailView_P3.swift",
 				"3-Home/Home/AlbumDetailViewModel_P3.swift",
 				"3-Home/Home/AlbumListView_P3.swift",
 				"3-Home/Home/AlbumListViewModel_P3.swift",
-				"3-Home/Home/AlbumOptionBottomSheet.swift",
-				"3-Home/Home/CloseEditAlbumBottomSheet.swift",
-				"3-Home/Home/DeleteAlbumBottomSheet.swift",
-				"3-Home/Home/DeleteJoyBottomSheet.swift",
-				"3-Home/Home/EditJoyBottomSheet.swift",
+				"3-Home/Home/BottomSheet/AddNewAlbumBottomSheet.swift",
+				"3-Home/Home/BottomSheet/AlbumChangePublicBottomSheet.swift",
+				"3-Home/Home/BottomSheet/AlbumOptionBottomSheet.swift",
+				"3-Home/Home/BottomSheet/CloseEditAlbumBottomSheet.swift",
+				"3-Home/Home/BottomSheet/DeleteAlbumBottomSheet.swift",
+				"3-Home/Home/BottomSheet/DeleteJoyBottomSheet.swift",
+				"3-Home/Home/BottomSheet/EditJoyBottomSheet.swift",
+				"3-Home/Home/BottomSheet/JoyEllipsisBottomSheet.swift",
+				"3-Home/Home/BottomSheet/JoyOptionBottomSheet.swift",
+				"3-Home/Home/BottomSheet/RenameJoyBottomSheet.swift",
+				"3-Home/Home/BottomSheet/ReportAlbumBottomSheet.swift",
+				"3-Home/Home/BottomSheet/ReportReasonBottomSheet.swift",
+				"3-Home/Home/BottomSheet/TodayJoyOptionBottomSheet.swift",
 				"3-Home/Home/HomeCalendar.swift",
 				"3-Home/Home/HomeCalendarView.swift",
 				"3-Home/Home/HomeView_P3.swift",
 				"3-Home/Home/HomeViewModel_P3.swift",
-				"3-Home/Home/JoyOptionBottomSheet.swift",
 				"3-Home/Home/JoyRowView.swift",
-				"3-Home/Home/RenameJoyBottomSheet.swift",
+				"4-Exploration/AllAlbumListView_P3.swift",
 				"4-Exploration/CompleteRecommendJoyView.swift",
 				"4-Exploration/ExplorationView_P3.swift",
-				"4-Exploration/ExplorationView.swift",
 				"4-Exploration/RecommendButton.swift",
-				"4-Exploration/RecommendJoyView3.swift",
+				"4-Exploration/RecommendJoyView_P3.swift",
 				"5-Archiving/ArchivingView_P3.swift",
 				"5-Archiving/ArchivingView.swift",
 				"5-Archiving/ArchivingViewModel_P3.swift",
@@ -606,6 +616,7 @@
 				510B7BC52B3BED7B00CB7ADA /* KakaoSDKAuth in Frameworks */,
 				510B7BD92B3BED7B00CB7ADA /* KakaoSDKUser in Frameworks */,
 				519DF2E42B8936230017023E /* FirebaseAnalyticsSwift in Frameworks */,
+				BE8030862E9A9B6F00B10EA0 /* Kingfisher in Frameworks */,
 				51B6B7852B89A89F00A31FEE /* FirebaseAuthCombine-Community in Frameworks */,
 				BE9A01AC2BF49F0800F52458 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				51B6B77D2B89A89F00A31FEE /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -954,6 +965,7 @@
 				51D8D3732B187E17001B6793 /* RoundBoxBackground.swift */,
 				516455B82B20AE0C0010199B /* DateExtension.swift */,
 				51BED7AA2B9D6D8200E95F87 /* TransparentFullScreenCover.swift */,
+				BE8833FD2E9CCAE3000EBD76 /* IntExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1484,6 +1496,7 @@
 				BE9A01AD2BF49F0800F52458 /* FirebaseAnalyticsSwift */,
 				BE9A01AF2BF49F0800F52458 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				BE9A01B12BF49F0800F52458 /* FirebaseAppCheck */,
+				BE8030852E9A9B6F00B10EA0 /* Kingfisher */,
 			);
 			productName = Madii;
 			productReference = 515EFC8B2AFCA0D100230647 /* Madii.app */;
@@ -1570,6 +1583,7 @@
 				BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				519DF2DE2B8936230017023E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				51004BF52D4E0A340073742B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BE8030842E9A9B6F00B10EA0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 515EFC8C2AFCA0D100230647 /* Products */;
 			projectDirPath = "";
@@ -1782,6 +1796,7 @@
 				BE0C3F9C2B81E77200275FD3 /* ConfettiContainer.swift in Sources */,
 				BE459A5E2B762621002E9AB2 /* BaseResponse.swift in Sources */,
 				51F25E0F2B19CF1700F6CCFE /* SaveMyJoyPopUpView.swift in Sources */,
+				BE8833FE2E9CCAE3000EBD76 /* IntExtension.swift in Sources */,
 				512ED96A2C9212110085B64D /* APIHeaderType.swift in Sources */,
 				BEB11DD32BFDB249008D38D7 /* AnalyticsManager.swift in Sources */,
 				5119CB332B1DF3B400D8EE74 /* AlbumSettingBottomSheet.swift in Sources */,
@@ -2402,6 +2417,14 @@
 				minimumVersion = 21.0.0;
 			};
 		};
+		BE8030842E9A9B6F00B10EA0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2514,6 +2537,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BE459A4B2B7625CD002E9AB2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		BE8030852E9A9B6F00B10EA0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE8030842E9A9B6F00B10EA0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		BE9A01A92BF49F0800F52458 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

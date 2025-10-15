@@ -83,6 +83,45 @@ class JoyAPI {
                 }
             }
     }
+    
+    func postJoy(contents: String, joyColorNum: Int, completion: @escaping (_ isSuccess: Bool, _ joyContent: PostJoyResponse) -> Void) {
+        let url = "https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")/v2/joy"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        let parameters: [String: Any] = [
+            "contents": contents,
+            "joyColorNum": joyColorNum
+        ]
+        
+        let dummy = PostJoyResponse(joyId: 0, joyIconNum: 0, contents: "")
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<PostJoyResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(postJoy): data nil")
+                        completion(false, dummy)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(postJoy): success\(data)")
+                        completion(true, data)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(postJoy): status \(statusCode))")
+                        completion(false, data)
+                    }
+                case .failure(let error):
+                    print("DEBUG(postJoy): error \(error))")
+                    completion(false, dummy)
+                }
+            }
+    }
 }
 
 struct PostJoyResponse: Codable {

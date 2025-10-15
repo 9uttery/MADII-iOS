@@ -11,10 +11,11 @@ struct MadiiNavigationBar_P3: View {
     @Environment(Router.self) var router
     
     @State var title: String = ""
+    @State var popNum: Int = 1
     var body: some View {
         HStack {
             Button {
-                router.pop()
+                router.pop(times: popNum)
             } label: {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.madiiAlternative)

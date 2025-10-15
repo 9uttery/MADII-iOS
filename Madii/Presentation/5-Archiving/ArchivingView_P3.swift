@@ -15,18 +15,35 @@ struct ArchivingView_P3: View {
     }
     
     var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
-            Text("ArchivingView_P3_아카이브화면")
-            
-            Button {
-                viewModel.action(.showMyPage)
-            } label: {
-                Text("마이페이지 이동")
-                    .foregroundStyle(Color.blue)
+        VStack {
+            HStack {
+                Text("아카이빙")
+                    .madiiFont(font: .madiiTitle, color: .madiiAlternative)
+                
+                Spacer()
+                
+                Button {
+                    viewModel.action(.showMyPage)
+                } label: {
+                    Image("myPage")
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                }
             }
+            .padding(.vertical, 10)
+            
+            Spacer()
+            
+            Image("archivingClover")
+                .resizable()
+                .frame(width: 120, height: 120)
+            
+            Text("새로운 기능이 곧\n업데이트될 예정이에요!")
+                .madiiFont(font: .madiiSubTitle, color: .madiiNeutral)
+                .multilineTextAlignment(.center)
             
             Spacer()
         }
+        .padding(.horizontal, 20)
     }
 }

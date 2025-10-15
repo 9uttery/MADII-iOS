@@ -65,7 +65,7 @@ class AlbumListViewModel_P3 {
                         Album(
                             id: dto.albumId,
                             backgroundColorNum: dto.albumColorNum,
-                            iconNum: dto.joyIconNum,
+                            iconNum: dto.albumColorNum,
                             title: dto.name,
                             creator: dto.nickname ?? "",
                             description: "",

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ellipsis 1.png",
+      "filename" : "lineMenu.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ellipsis2.png",
+      "filename" : "lineMenu2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ellipsis3.png",
+      "filename" : "lineMenu3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -5,6 +5,7 @@
 //  Created by 정태우 on 8/7/25.
 //
 
+import Kingfisher
 import MadiiDesignSystem
 import SwiftUI
 
@@ -12,11 +13,32 @@ struct HomeCalendar: View {
     @Binding var isMonthly: Bool
     @State var type: TextFieldType = .basic
     @State var joyTitle: String = ""
-    @State var joys: [Joy] = [Joy(title: "안녕kaklsdjfalkdjflaksdjfalksdfjalskdjfalskdfjalksdfjalksdfjalksdfdf", selectedEmotions: [Emotion(title: "기쁨")]), Joy(title: "안녕하세요"), Joy(title: "안녕안녕하세용")]
-    @State var selectedDate: Date = Date()
+    @Binding var joys: [Joy]
+    @Binding var selectedDate: Date
     @State var showRenameJoyBottomSheet: Bool = false
     @State var editJoyId: Int = 0
+    @Binding var isOhadol: Bool
+    @Binding var finishedJoys: [Joy]
+    @Binding var canOhadol: Bool
+    @State var satisfaction: Int = 0
+    @State var diary: String = ""
+    @State var images: [String] = []
+    @Binding var isDeleted: Bool
     
+    var prefixText: String {
+        if selectedDate.isSameDay(as: Date()) {
+            return "오늘, "
+        } else if let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()),
+                  Calendar.current.isDate(selectedDate, inSameDayAs: tomorrow) {
+            return "내일, "
+        } else if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()),
+                  Calendar.current.isDate(selectedDate, inSameDayAs: yesterday) {
+            return "어제, "
+        } else {
+            return ""
+        }
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -29,70 +51,187 @@ struct HomeCalendar: View {
                     .padding(.horizontal, 16)
                     .padding(.bottom, 32)
                 
-                Text("\(selectedDate.isSameDay(as: Date()) ? "오늘" : "") \(selectedDate.toKoreanString())")
+                Text("\(prefixText)\(selectedDate.toKoreanString())")
                     .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 16)
                 
-                if selectedDate.isSameDay(as: Date()) {
+                if selectedDate.isSameDay(as: Date()) && !isOhadol {
                     MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 담아보세요") {
                         postJoy()
+                        joyTitle = ""
+                    }
+                    .padding(.horizontal, 16)
+                } else if !selectedDate.isSameDay(as: Date()) && selectedDate < Date() {
+                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "잊고 지나갔던 행복을 기록해보세요") {
+                        postJoy()
+                        joyTitle = ""
+                    }
+                    .padding(.horizontal, 16)
+                } else if !selectedDate.isSameDay(as: Date()) && selectedDate > Date() {
+                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "마음 속 행복을 기록해보세요") {
+                        postJoy()
+                        joyTitle = ""
                     }
                     .padding(.horizontal, 16)
                 }
-                List {
+                
+                if isOhadol {
                     ForEach(joys) { joy in
-                        JoyRowView(
-                            joy: joy,
-                            selectedDate: selectedDate,
-                            onDelete: { deleteJoy(achievementId: joy.achievementId) },
-                            onEdit: {
-                                editJoyId = joy.joyId!
-                                showRenameJoyBottomSheet = true
-                            },
-                            onPlayToggle: {
-                                if joy.isAchieved {
-                                    cancelJoy(achievementId: joy.achievementId)
-                                } else {
-                                    playJoy(achievementId: joy.achievementId)
+                        HStack(spacing: 12) {
+                            Circle()
+                                .frame(width: 12, height: 12)
+                                .foregroundStyle(.madiiGreen100)
+                            
+                            Text(joy.title)
+                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                .lineSpacing(9.6)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .layoutPriority(0)
+                            
+                            Spacer()
+                            
+                            HStack(spacing: 4) {
+                                ForEach(joy.selectedEmotions) { emotion in
+                                    Text(emotion.title)
+                                        .madiiFont(font: .caption, color: emotion.color)
+                                        .padding(.vertical, 4.5)
+                                        .padding(.horizontal, 8)
+                                        .background(emotion.color.opacity(0.08))
+                                        .cornerRadius(8)
                                 }
                             }
-                        )
+                            .padding(.trailing, 22)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 19)
+                        .padding(.leading, 26)
+                        .background(.madiiElevated)
                     }
+                } else {
+                    List {
+                        ForEach(joys) { joy in
+                            JoyRowView(
+                                joy: joy,
+                                selectedDate: selectedDate,
+                                onDelete: {
+                                    deleteJoy(achievementId: joy.achievementId)
+                                    isDeleted = true
+                                },
+                                onEdit: {
+                                    editJoyId = joy.joyId!
+                                    showRenameJoyBottomSheet = true
+                                },
+                                onPlayToggle: {
+                                    if joy.isAchieved {
+                                        cancelJoy(achievementId: joy.achievementId)
+                                    } else {
+                                        playJoy(achievementId: joy.achievementId)
+                                    }
+                                }
+                            )
+                        }
+                    }
+                    .listStyle(.plain)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56 * CGFloat(joys.count))
+                    .environment(\.defaultMinListRowHeight, 40)
+                    .background(Color.madiiElevated)
+                    .padding(.vertical, 16)
                 }
-                .listStyle(.plain)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56 * CGFloat(joys.count))
-                .environment(\.defaultMinListRowHeight, 40)
-                .background(Color.madiiElevated)
-                .padding(.top, 16)
             }
-            .padding(.vertical, 20)
-            .background(.madiiElevated)
-            .cornerRadius(40)
-            .overlay(
-                RoundedRectangle(cornerRadius: 40)
-                    .stroke(
-                        LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color.white.opacity(0.1), location: 0.0),
-                                .init(color: Color(red: 0x3D/255, green: 0xC2/255, blue: 0xFF/255).opacity(0.1), location: 0.33),
-                                .init(color: Color(red: 0xD4/255, green: 0x78/255, blue: 0xFF/255).opacity(0.1), location: 0.68),
-                                .init(color: Color.white.opacity(0.1), location: 1.0)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
-            )
+            .madiiBorderContainerStyle(paddingHorizontal: 0)
+            .padding(.bottom, 16)
+            
+            if isOhadol {
+                VStack(alignment: .leading, spacing: 24) {
+                    Text("하루 만족도")
+                        .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                    
+                    HStack {
+                        Image("satisfaction1")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .opacity(satisfaction == 1 || satisfaction == 2 ? 1 : 0.2)
+                        
+                        Spacer()
+                        
+                        Image("satisfaction2")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .opacity(satisfaction == 3 || satisfaction == 4 ? 1 : 0.2)
+                        
+                        Spacer()
+                        
+                        Image("satisfaction3")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .opacity(satisfaction == 5 ? 1 : 0.2)
+                        
+                        Spacer()
+                        
+                        Image("satisfaction4")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .opacity(satisfaction == 6 || satisfaction == 7 ? 1 : 0.2)
+                        
+                        Spacer()
+                        
+                        Image("satisfaction5")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .opacity(satisfaction == 8 || satisfaction == 9 ? 1 : 0.2)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .madiiBorderContainerStyle()
+                .padding(.bottom, 16)
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("하루 일기")
+                        .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                        .padding(.bottom, 4)
+                    
+                    Text(diary)
+                        .madiiFont(font: .madiiBody2, color: .gray100.opacity(0.74))
+                        .lineSpacing(9.6)
+                        .multilineTextAlignment(.leading)
+                    
+                    HStack(spacing: 8) {
+                        ForEach(images, id: \.self) { image in
+                            KFImage(URL(string: image))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: (UIScreen.main.bounds.width - 116) / 3, height: (UIScreen.main.bounds.width - 116) / 3)
+                                .clipped()
+                                .cornerRadius(16)
+                        }
+                    }
+                    .padding(.horizontal, 12)
+                }
+                .madiiBorderContainerStyle()
+                .padding(.bottom, 16)
+            }
             
             Spacer()
                 .frame(height: 100)
         }
+        .scrollIndicators(.hidden)
         .sheet(isPresented: $showRenameJoyBottomSheet) {
-            RenameJoyBottomSheet(joyId: editJoyId)
+            GeometryReader { geo in
+                RenameJoyBottomSheet(showRenameJoyBottomSheet: $showRenameJoyBottomSheet, joyId: editJoyId)
+                    .presentationDetents([.height(304 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
+        }
+        .onAppear {
+            getJoy()
+        }
+        .onChange(of: selectedDate) {
+            getJoy()
         }
     }
     
@@ -100,10 +239,23 @@ struct HomeCalendar: View {
         JoyAPI.shared.postJoy(contents: joyTitle) { isSuccess, joyContents in
             if isSuccess {
                 print("Debug postJoy: isSuccess true")
-                print("postJoy: \(joyContents)")
-                joyTitle = ""
+                AchievementsAPI.shared.postAchievemenets(joyId: joyContents.joyId, date: selectedDate) { isSuccess, joyList in
+                    if isSuccess {
+                        joys = joyList.joyAchievementInfos.map { dto in
+                            Joy(
+                                joyId: dto.joyId,
+                                achievementId: dto.achievementId,
+                                isAchieved: dto.isAchieved,
+                                icon: dto.joyIconNum,
+                                title: dto.contents
+                            )
+                        }
+                    } else {
+                        print("Debug postAchievements: isSuccess false")
+                    }
+                }
             } else {
-                print("Debug postJoy: isSuccess true")
+                print("Debug postJoy: isSuccess false")
             }
         }
     }
@@ -111,29 +263,56 @@ struct HomeCalendar: View {
     private func getJoy() {
         DailySummaryAPI.shared.getDailySummary(date: selectedDate) { isSuccess, dailySummary in
             if isSuccess {
+                joys.removeAll()
                 joys = dailySummary.savingJoys.map { dto in
                     Joy(
                         joyId: dto.joyId,
-                        title: "", 
+                        title: dto.contents,
                         selectedEmotions: dto.emotions.map { Emotion(title: $0) }
                     )
                 }
+                satisfaction = dailySummary.satisfaction
+                diary = dailySummary.diaryContent
+                images = dailySummary.attachedImages
+                isOhadol = true
             } else {
-                DailySummaryAPI.shared.getAchievementByDate(date: selectedDate, isFinished: false) { isSuccess, playList in
+                DailySummaryAPI.shared.getAchievementByDate(date: Date(), isFinished: true) { isSuccess, playList in
                     if isSuccess {
-                        joys = playList.joyAchievementInfos.map { dto in
+                        canOhadol = !playList.joyAchievementInfos.isEmpty
+                        self.finishedJoys = playList.joyAchievementInfos.map { dto in
                             Joy(
                                 joyId: dto.joyId,
                                 achievementId: dto.achievementId,
-                                isAchieved: dto.isachieved,
+                                isAchieved: dto.isAchieved,
                                 icon: dto.joyIconNum,
                                 title: dto.contents
                             )
                         }
+                        print("안녕하세요\(finishedJoys)")
                     } else {
                         print("Debug getAchievementByDate: isSuccess false")
                     }
                 }
+                DailySummaryAPI.shared.getAchievementByDate(date: selectedDate) { isSuccess, playList in
+                    if isSuccess {
+                        joys.removeAll()
+                        joys = playList.joyAchievementInfos.map { dto in
+                            Joy(
+                                joyId: dto.joyId,
+                                achievementId: dto.achievementId,
+                                isAchieved: dto.isAchieved,
+                                icon: dto.joyIconNum,
+                                title: dto.contents
+                            )
+                        }
+                        print("안녕히가세요\(joys)")
+                    } else {
+                        joys = []
+                        print("Debug getAchievementByDate: isSuccess false")
+                    }
+                }
+                
+                isOhadol = false
             }
         }
     }
@@ -143,6 +322,7 @@ struct HomeCalendar: View {
             if isSuccess {
                 print("Debug postJoySatisfaction: isSuccess true")
                 getJoy()
+                canOhadol = true
             } else {
                 print("Debug postJoySatisfaction: isSuccess false")
             }
@@ -150,6 +330,7 @@ struct HomeCalendar: View {
     }
     
     private func cancelJoy(achievementId: Int) {
+        print(achievementId)
         AchievementsAPI.shared.cancelAchievement(achievementId: achievementId) { isSuccess in
             if isSuccess {
                 print("Debug cancelAchievement: isSuccess true")
@@ -161,30 +342,13 @@ struct HomeCalendar: View {
     }
     
     private func deleteJoy(achievementId: Int) {
-        AchievementsAPI.shared.deleteJoy(achievementId: achievementId) { isSuccess, joyList in
+        AchievementsAPI.shared.deleteJoy(achievementId: achievementId) { isSuccess, _ in
             if isSuccess {
                 print("Debug cancelAchievement: isSuccess true")
-                joys = joyList.map { dto in
-                    Joy(
-                        joyId: dto.joyId,
-                        achievementId: dto.achievementId,
-                        isAchieved: dto.isAchieved,
-                        icon: dto.joyIconNum,
-                        title: dto.contents
-                    )
-                }
+                getJoy()
             } else {
                 print("Debug cancelAchievement: isSuccess false")
             }
         }
-    }
-}
-
-extension Date {
-    func toKoreanString(format: String = "M월 d일") -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = format
-        return formatter.string(from: self)
     }
 }

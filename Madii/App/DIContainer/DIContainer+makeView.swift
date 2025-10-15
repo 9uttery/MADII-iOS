@@ -28,7 +28,7 @@ extension DIContainer {
         case .archiving:
             ArchivingView_P3(viewModel: archivingViewModel())
         case let .dailyReview(todayJoys, visibleJoys):
-            DailyReviewView_P3(todayJoys: .constant(todayJoys), visibleJoys: .constant(visibleJoys))
+            DailyReviewView_P3(todayJoys: todayJoys, visibleJoys: visibleJoys)
         case .myPage:
             MyPageView_P3()
         case .albumList:
@@ -37,6 +37,12 @@ extension DIContainer {
             AlbumDetailView_P3(viewModel: albumDetailViewModel(albumId: albumId))
         case let .review(savingJoys):
             ReviewView_P3(savingJoys: savingJoys)
+        case .recommend:
+            RecommendJoyView_P3()
+        case let .completeRecommend(joy):
+            CompleteRecommendJoyView(joy: .constant(joy))
+        case .allAlbumList:
+            AllAlbumListView_P3()
         }
     }
 }
