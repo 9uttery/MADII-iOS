@@ -19,6 +19,7 @@ extension DIContainer {
             OnboardingView_P3()
         case .login:
             LoginView_P3()
+                .environment(loginViewModel())
         case .tab:
             MadiiTabView_P3()
         case .home:

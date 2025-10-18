@@ -25,6 +25,10 @@ final class DIContainer {
     }()
     
     // MARK: - Presentation(ViewModel)
+    func loginViewModel() -> LoginViewModel {
+        return LoginViewModel(router: router)
+    }
+    
     func homeViewModel() -> HomeViewModel_P3 {
         return HomeViewModel_P3(router: router)
     }
