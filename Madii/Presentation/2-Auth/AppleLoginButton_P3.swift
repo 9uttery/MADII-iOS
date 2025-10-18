@@ -13,7 +13,7 @@ struct AppleLoginButton_P3: View {
     var body: some View {
         Button {
             // TODO: 애플 로그인 구현
-            router.isLoggedIn = true
+//            router.isLoggedIn = true
         } label: {
             ZStack {
                 Color.black

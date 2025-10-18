@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LoginView_P3: View {
-    @Environment(Router.self) var router
-    
     var body: some View {
         ZStack {
             LoginBackground()
