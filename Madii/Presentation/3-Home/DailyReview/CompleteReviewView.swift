@@ -9,10 +9,14 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct CompleteReviewView: View {
+    @Environment(Router.self) var router
     @EnvironmentObject var appStatus: AppStatus
     var body: some View {
         VStack {
+            MadiiNavigationBar_P3(title: "오늘 하루 돌아보기", popNum: 3)
+            
             Spacer()
+            
             HStack(spacing: 4) {
                 Image("home_selected")
                     .resizable()
@@ -27,7 +31,7 @@ struct CompleteReviewView: View {
             .cornerRadius(8)
             .padding(.bottom, 12)
             
-            Text("오늘의 행복이 기록되었어요!")
+            Text("오늘의 행복이 저장되었어요!")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .padding(.bottom, 28)
             
@@ -71,15 +75,16 @@ struct CompleteReviewView: View {
             )
             .padding(.bottom, 28)
             
-            Text("*저장된 기록은 수정이 불가능해요.")
+            Text("저장 후에는 수정이 어려워요")
                 .madiiFont(font: .caption, color: .madiiAlternative)
             
             Spacer()
             
-            MadiiDesignSystem.MadiiButton(title: "다음", color: .violet)
+            MadiiDesignSystem.MadiiButton(title: "홈으로 가기", color: .violet) {
+                router.pop(times: 3)
+            }
                 .padding(.horizontal, 20)
         }
-        .navigationTitle("오늘 하루 돌아보기")
     }
 }
 

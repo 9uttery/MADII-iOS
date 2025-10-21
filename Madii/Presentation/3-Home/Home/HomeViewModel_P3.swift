@@ -35,7 +35,7 @@ class HomeViewModel_P3 {
     func action(_ action: Action) {
         switch action {
         case .showDailyReview:
-            showDailyReviewView()
+            showDailyReviewView(date)
         case .loadTodayJoy:
             getTodayJoy()
         case .playJoy:
@@ -45,8 +45,8 @@ class HomeViewModel_P3 {
         }
     }
     
-    private func showDailyReviewView() {
-        router.push(.dailyReview(todayJoys: finishedJoys, visibleJoys: Array(repeating: false, count: finishedJoys.count)))
+    private func showDailyReviewView(date: Date) {
+        router.push(.dailyReview(todayJoys: finishedJoys, visibleJoys: Array(repeating: false, count: finishedJoys.count), date: date))
     }
     
     private func showAlbumListView() {

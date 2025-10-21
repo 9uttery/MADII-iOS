@@ -27,22 +27,24 @@ extension DIContainer {
             ExplorationView_P3()
         case .archiving:
             ArchivingView_P3(viewModel: archivingViewModel())
-        case let .dailyReview(todayJoys, visibleJoys):
-            DailyReviewView_P3(todayJoys: todayJoys, visibleJoys: visibleJoys)
+        case let .dailyReview(todayJoys, visibleJoys, date):
+            DailyReviewView_P3(date: date, todayJoys: todayJoys, visibleJoys: visibleJoys)
         case .myPage:
             MyPageView_P3()
         case .albumList:
             AlbumListView_P3(viewModel: albumListViewModel())
         case let .albumDetail(albumId):
             AlbumDetailView_P3(viewModel: albumDetailViewModel(albumId: albumId))
-        case let .review(savingJoys):
-            ReviewView_P3(savingJoys: savingJoys)
+        case let .review(savingJoys, date):
+            ReviewView_P3(date: date, savingJoys: savingJoys)
         case .recommend:
             RecommendJoyView_P3()
         case let .completeRecommend(joy):
             CompleteRecommendJoyView(joy: .constant(joy))
         case .allAlbumList:
             AllAlbumListView_P3()
+        case .completeOhadol:
+            CompleteReviewView()
         }
     }
 }

@@ -89,7 +89,7 @@ struct HomeCalendar: View {
                                 .lineSpacing(9.6)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
-                                .layoutPriority(0)
+                                .layoutPriority(-1)
                             
                             Spacer()
                             
@@ -101,12 +101,16 @@ struct HomeCalendar: View {
                                         .padding(.horizontal, 8)
                                         .background(emotion.color.opacity(0.08))
                                         .cornerRadius(8)
+                                        .lineLimit(1)
+                                        .layoutPriority(1)
+
                                 }
                             }
                             .padding(.trailing, 22)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, 19)
+                        .frame(height: 40)
+                        .padding(.top, 16)
                         .padding(.leading, 26)
                         .background(.madiiElevated)
                     }
@@ -139,7 +143,7 @@ struct HomeCalendar: View {
                     .frame(height: 56 * CGFloat(joys.count))
                     .environment(\.defaultMinListRowHeight, 40)
                     .background(Color.madiiElevated)
-                    .padding(.vertical, 16)
+                    .padding(.top, joys.isEmpty ? 0 : 16)
                 }
             }
             .madiiBorderContainerStyle(paddingHorizontal: 0)
@@ -215,6 +219,17 @@ struct HomeCalendar: View {
                 .padding(.bottom, 16)
             }
             
+            if isOhadol || !canOhadol {
+                Text("오늘 하루 돌아보기")
+                    .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                    .padding(.vertical, 16)
+                    .frame(maxWidth: .infinity)
+                    .background(.madiiContrast)
+                    .cornerRadius(20)
+                    .opacity(0.4)
+                    .padding(.bottom, 16)
+            }
+            
             Spacer()
                 .frame(height: 100)
         }
@@ -276,7 +291,7 @@ struct HomeCalendar: View {
                 images = dailySummary.attachedImages
                 isOhadol = true
             } else {
-                DailySummaryAPI.shared.getAchievementByDate(date: Date(), isFinished: true) { isSuccess, playList in
+                DailySummaryAPI.shared.getAchievementByDate(date: selectedDate, isFinished: true) { isSuccess, playList in
                     if isSuccess {
                         canOhadol = !playList.joyAchievementInfos.isEmpty
                         self.finishedJoys = playList.joyAchievementInfos.map { dto in
