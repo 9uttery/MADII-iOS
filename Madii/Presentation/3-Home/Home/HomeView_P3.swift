@@ -115,7 +115,7 @@ struct HomeView_P3: View {
     
     private var todayJoyCard: some View {
         HStack(spacing: 16) {
-            Image("CoverA")
+            Image("Cover\(viewModel.todayJoy.icon % 8 + 1)")
                 .resizable()
                 .frame(width: 100, height: 100)
                 .cornerRadius(32)
