@@ -82,7 +82,7 @@ struct HomeCalendar: View {
                         HStack(spacing: 12) {
                             Circle()
                                 .frame(width: 12, height: 12)
-                                .foregroundStyle(.madiiGreen100)
+                                .foregroundStyle((joy.icon % 6 + 1).intToColor)
                             
                             Text(joy.title)
                                 .madiiFont(font: .madiiBody2, color: .madiiNormal)

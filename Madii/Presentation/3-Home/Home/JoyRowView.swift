@@ -18,7 +18,7 @@ struct JoyRowView: View {
         HStack(spacing: 12) {
             Circle()
                 .frame(width: 7, height: 7)
-                .foregroundStyle(.madiiCyan)
+                .foregroundStyle((joy.icon % 6 + 1).intToColor)
                 .padding(.leading, 4)
 
             Text(joy.title)
