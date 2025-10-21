@@ -74,6 +74,7 @@ class HomeViewModel_P3 {
                 }
             } else {
                 print("debug playJoy: isSuccess false")
+                self.isDuplicated = true
             }
         }
     }
