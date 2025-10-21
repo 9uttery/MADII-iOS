@@ -65,13 +65,15 @@ class HomeViewModel_P3 {
         AchievementsAPI.shared.playJoy(joyId: todayJoy.joyId ?? 0) { isSuccess, isDuplicate in
             if isSuccess {
                 print("DEBUG playJoy success")
-                self.getJoy()
-                self.isPlayJoy = true
-            } else if isDuplicate {
-                print("DEBUG playJoy duplicate")
-                self.isDuplicated = true
+                if isDuplicate {
+                    print("DEBUG playJoy duplicate")
+                    self.isDuplicated = true
+                } else {
+                    self.getJoy()
+                    self.isPlayJoy = true
+                }
             } else {
-                print("DEBUG playJoy fail")
+                print("debug playJoy: isSuccess false")
             }
         }
     }

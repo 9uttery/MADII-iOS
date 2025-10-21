@@ -220,7 +220,7 @@ private extension AlbumDetailView_P3 {
         HStack(spacing: 12) {
             Circle()
                 .foregroundStyle(joy.joyIconNum.intToColor)
-                .frame(width: 10, height: 10)
+                .frame(width: 12, height: 12)
             
             Text(joy.contents)
                 .madiiFont(font: .madiiBody2, color: .madiiNormal)
