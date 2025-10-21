@@ -14,6 +14,11 @@ struct FeelingReviewView: View {
     @State var clickedNum: Int = 0
     @State var emotions: [Emotion] = Emotion.emotionList
     
+    // 🔹 “다음” 버튼 활성화 여부
+    private var isNextButtonDisabled: Bool {
+        todayJoys.contains { $0.selectedEmotions.isEmpty }
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("행복 속 어떤 감정을 느끼셨나요?")
@@ -37,7 +42,7 @@ struct FeelingReviewView: View {
                                     .lineSpacing(9.6)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
-                                    .layoutPriority(0)
+                                    .layoutPriority(-1)
                                 
                                 Spacer()
                                 
@@ -49,6 +54,8 @@ struct FeelingReviewView: View {
                                             .padding(.horizontal, 8)
                                             .background(emotion.color.opacity(0.08))
                                             .cornerRadius(8)
+                                            .lineLimit(1)
+                                            .layoutPriority(1)
                                     }
                                 }
                                 .padding(.trailing, 22)
@@ -81,7 +88,7 @@ struct FeelingReviewView: View {
             }
             .scrollIndicators(.hidden)
             .frame(height: todayJoys.count > 3 ? 248 : 216)
-            .padding(.bottom, todayJoys.count > 3 ? 40: 72)
+            .padding(.bottom, todayJoys.count > 3 ? 40 : 72)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 12) {
                 ForEach(emotions, id: \.self) { emotion in
@@ -100,11 +107,17 @@ struct FeelingReviewView: View {
                             )
                             .cornerRadius(10)
                     }
+                    // 🔹 2개 이상 선택된 경우는 선택 비활성화
+                    .disabled(
+                        todayJoys.indices.contains(clickedNum) &&
+                        todayJoys[clickedNum].selectedEmotions.count >= 2 &&
+                        !todayJoys[clickedNum].selectedEmotions.contains(emotion)
+                    )
                 }
             }
             .padding(.bottom, 16)
             
-            Text("*최대 2개까지 고를 수 있어요")
+            Text("감정은 최대 2개까지 선택할 수 있어요")
                 .madiiFont(font: .caption, color: .madiiAlternative)
                 
             Spacer()
@@ -112,19 +125,20 @@ struct FeelingReviewView: View {
             MadiiDesignSystem.MadiiButton(title: "다음", color: .violet) {
                 tabNum = 1
             }
+            .disabled(isNextButtonDisabled)
+            .opacity(isNextButtonDisabled ? 0.4 : 1.0)
         }
         .animation(.easeInOut, value: clickedNum)
+        .animation(.easeInOut, value: todayJoys)
     }
     
     func toggleEmotion(_ emotion: Emotion, for joyIndex: Int) {
+        guard todayJoys.indices.contains(joyIndex) else { return }
+        
         if let existingIndex = todayJoys[joyIndex].selectedEmotions.firstIndex(of: emotion) {
             todayJoys[joyIndex].selectedEmotions.remove(at: existingIndex)
-        } else {
-            if todayJoys[joyIndex].selectedEmotions.count >= 2 {
-                // 가장 먼저 선택한 걸 제거 (0번째)
-                todayJoys[joyIndex].selectedEmotions.removeFirst()
-            }
-            // 새 선택 추가
+        } else if todayJoys[joyIndex].selectedEmotions.count < 2 {
+            // 2개 미만일 때만 추가
             todayJoys[joyIndex].selectedEmotions.append(emotion)
         }
     }

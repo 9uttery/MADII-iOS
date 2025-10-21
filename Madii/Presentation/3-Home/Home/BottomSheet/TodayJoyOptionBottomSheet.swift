@@ -45,7 +45,7 @@ struct TodayJoyOptionBottomSheet: View {
                     .madiiFont(font: .madiiBody1, color: .madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.bottom, 28)
+            .padding(.bottom, 40)
         }
         .padding(.horizontal, 20)
         .background(.madiiElevated)

@@ -17,6 +17,7 @@ struct DiaryReviewView: View {
     @State var diaryContent: String = ""
     @State var isClickedImageButton: Bool = false
     @State var selectedImages: [UIImage] = []
+    @State private var selectedAssetIdentifiers: [String] = []
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,7 +26,7 @@ struct DiaryReviewView: View {
                 .padding(.top, 12)
                 .padding(.bottom, 4)
             
-            Text("꼭 적지 않아도 괜찮아요")
+            Text("꼭 기록하지 않아도 괜찮아요")
                 .madiiFont(font: .caption, color: .gray100.opacity(0.43))
                 .padding(.bottom, 40)
             
@@ -39,7 +40,7 @@ struct DiaryReviewView: View {
                     .overlay(
                         Group {
                             if diaryContent.isEmpty {
-                                Text("오늘 마음에 남는 순간을 들려주세요")
+                                Text("오늘의 마음을 짧게 남겨보세요")
                                     .madiiFont(font: .madiiBody2, color: .madiiAlternative)
                                     .lineSpacing(25.6)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,8 +79,8 @@ struct DiaryReviewView: View {
                                 Image("closeFill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
+                                    .padding(8)
                             }
-                            .offset(x: -8, y: 8)
                         }
                         .padding(.top, 5)
                     }
@@ -89,16 +90,17 @@ struct DiaryReviewView: View {
             
             Spacer()
             
-            MadiiDesignSystem.MadiiButton(title: "완료", color: .violet) {
+            MadiiDesignSystem.MadiiButton(title: "저장하기", color: .violet) {
                 clickCompleteButton()
-                router.pop(times: 2)
+                router.push(.completeOhadol)
             }
         }
         .sheet(isPresented: $isClickedImageButton) {
-            PhotoPicker(selectedImages: $selectedImages, maxSelectionLimit: 3)
+            PhotoPicker(
+                selectedImages: $selectedImages,
+                maxSelectionLimit: 3
+            )
         }
-        .navigationTitle(Date().toKoreanString())
-        .padding(.horizontal, 20)
         .onAppear {
             UITextView.appearance().textContainerInset =
                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

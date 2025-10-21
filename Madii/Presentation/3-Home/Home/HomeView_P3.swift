@@ -47,9 +47,9 @@ struct HomeView_P3: View {
                     
                     if !isOhadol && canOhadol {
                         Button {
-                            viewModel.action(.showDailyReview)
+                            router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: selectedDate))
                         } label: {
-                            Text("\(selectedDate < Date() ? "" : "오늘 ")하루 돌아보기")
+                            Text("\(selectedDate < Date() && !selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
                                 .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
                                 .padding(.vertical, 16)
                                 .frame(maxWidth: .infinity)
@@ -67,14 +67,17 @@ struct HomeView_P3: View {
             
             if viewModel.isPlayJoy {
                 MadiiDesignSystem.MadiiToast(title: "오늘의 플레이리스트에 추가되었어요", isShowToast: $viewModel.isPlayJoy)
+                    .padding(.bottom, 100)
             }
             
             if viewModel.isDuplicated {
                 MadiiDesignSystem.MadiiToast(type: .error, title: "이미 플레이리스트에 있어요", isShowToast: $viewModel.isDuplicated)
+                    .padding(.bottom, 100)
             }
             
             if isDeleted {
                 MadiiDesignSystem.MadiiToast(title: "행복 기록이 삭제되었어요", isShowToast: $isDeleted)
+                    .padding(.bottom, 100)
             }
         }
         .onAppear {
@@ -83,15 +86,13 @@ struct HomeView_P3: View {
         }
         .animation(.easeInOut, value: viewModel.isMonthly)
         .sheet(isPresented: $showTodayJoyOptionBottomSheet) {
-            GeometryReader { geo in
-                TodayJoyOptionBottomSheet(joyId: Binding(
-                    get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
-                    set: { viewModel.todayJoy.joyId = $0 }
-                ), joyTitle: $viewModel.todayJoy.title, showTodayJoyOptionBottomSheet: $showTodayJoyOptionBottomSheet, showSaveAlbumBottomSheet: $showSaveAlbumBottomSheet, isDuplicated: $viewModel.isDuplicated, isPlayJoy: $viewModel.isPlayJoy)
-                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
-                    .presentationDragIndicator(.hidden)
-                    .presentationBackground(.clear)
-            }
+            TodayJoyOptionBottomSheet(joyId: Binding(
+                get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
+                set: { viewModel.todayJoy.joyId = $0 }
+            ), joyTitle: $viewModel.todayJoy.title, showTodayJoyOptionBottomSheet: $showTodayJoyOptionBottomSheet, showSaveAlbumBottomSheet: $showSaveAlbumBottomSheet, isDuplicated: $viewModel.isDuplicated, isPlayJoy: $viewModel.isPlayJoy)
+                .presentationDetents([.height(251)])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
         }
         .sheet(isPresented: $showSaveAlbumBottomSheet) {
             GeometryReader { geo in
@@ -99,10 +100,16 @@ struct HomeView_P3: View {
                     get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
                     set: { viewModel.todayJoy.joyId = $0 }
                 ), joyTitle: $viewModel.todayJoy.title, showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
-                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+                    .presentationDetents([.height(608 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)
             }
+        }
+        .sheet(isPresented: $showAddNewAlbumBottomSheet) {
+            AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
+                .presentationDetents([.height(503)])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
         }
     }
     
@@ -160,29 +167,32 @@ struct HomeView_P3: View {
     }
     
     private var todayJoyPlaceholder: some View {
-        VStack(spacing: 6) {
-            Image("todayClover")
-            
-            Button {
-                withAnimation(.easeInOut(duration: 0.4)) {
-                    viewModel.action(.loadTodayJoy)
-                }
-            } label: {
-                Text("클릭해 보세요!")
-                    .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
-                    .padding(.vertical, 16)
-                    .frame(width: UIScreen.main.bounds.width - 80)
-                    .background(.gray100.opacity(0.52))
-                    .cornerRadius(20)
-            }
-        }
-        .padding(20)
-        .background(
+        
+        ZStack {
             Image("todayJoy")
                 .resizable()
                 .scaledToFill()
                 .cornerRadius(40)
-        )
+                .clipped()
+            
+            VStack(spacing: 6) {
+                Image("todayClover")
+                
+                Button {
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        viewModel.action(.loadTodayJoy)
+                    }
+                } label: {
+                    Text("클릭해 보세요!")
+                        .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
+                        .padding(.vertical, 16)
+                        .frame(width: UIScreen.main.bounds.width - 80)
+                        .background(.gray100.opacity(0.52))
+                        .cornerRadius(20)
+                }
+            }
+            .padding(20)
+        }
         .padding(.bottom, 24)
     }
     

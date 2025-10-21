@@ -32,12 +32,13 @@ struct AlbumListView_P3: View {
                         Image("arrowBack")
                             .resizable()
                             .frame(width: 24, height: 24)
+                            .opacity(0.43)
                     }
                 }
                 
                 Spacer()
                 
-                Text("소확행 앨범")
+                Text("행복 앨범")
                     .madiiFont(font: .madiiSubTitle, color: .white.opacity(0.97))
                 
                 Spacer()
@@ -55,7 +56,7 @@ struct AlbumListView_P3: View {
                             .background(viewModel.selectedAlbums.isEmpty ? .madiiContrast : .madiiNegative)
                             .cornerRadius(10)
                     } else {
-                        Text("선택")
+                        Text("편집")
                             .madiiFont(font: .madiiBody3, color: .madiiNormal)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 12)
@@ -68,22 +69,24 @@ struct AlbumListView_P3: View {
             
             ScrollView {
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0, alignment: .top), count: 2), spacing: 24) {
-                    
                     if !viewModel.isSelect {
                         VStack(alignment: .leading, spacing: 12) {
                             Button {
                                 viewModel.action(.createAlbum)
                             } label: {
-                                Image("plus")
-                                    .foregroundStyle(.darkYellowGreen)
+                                Image("plusStroke")
+                                    .resizable()
+                                    .foregroundStyle(.madiiGreen100)
                                     .frame(width: 48, height: 48)
                                     .padding(52)
-                                    .background(.madiiBox)
+                                    .background(.gray100.opacity(0.08))
                                     .cornerRadius(32)
                             }
                             
                             Text("새로운 앨범")
-                                .madiiFont(font: .madiiBody3, color: .madiiLime)
+                                .madiiFont(font: .madiiBody4, color: .madiiGreen100)
+                                .frame(height: 22, alignment: .center)
+                                .padding(.horizontal, 8)
                         }
                         .frame(height: 186)
                     }
@@ -99,6 +102,7 @@ struct AlbumListView_P3: View {
                             VStack(alignment: .leading, spacing: 12) {
                                 ZStack(alignment: .topTrailing) {
                                     Image("Cover\(album.backgroundColorNum)")
+                                        .resizable()
                                         .frame(width: 152, height: 152)
                                         .cornerRadius(32)
                                     
@@ -121,6 +125,7 @@ struct AlbumListView_P3: View {
                                     .madiiFont(font: .madiiBody3, color: .white)
                                     .multilineTextAlignment(.leading)
                                     .frame(maxWidth: 152, alignment: .leading)
+                                    .padding(.horizontal, 8)
                             }
                             .opacity(!viewModel.isSelect || viewModel.selectedAlbums.contains(album) ? 1.0 : 0.4)
                         }

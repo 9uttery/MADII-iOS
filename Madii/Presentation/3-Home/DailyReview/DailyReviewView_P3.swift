@@ -10,15 +10,16 @@ import SwiftUI
 struct DailyReviewView_P3: View {
     @Environment(Router.self) var router
     
-    @State var date: Date = Date()
+    @State var date: Date
     @State var todayJoys: [Joy] = []
     @State var isHeaderVisible = false
     @State var visibleJoys: [Bool] = []
+    @State var isActive = true
     
     var body: some View {
         VStack(spacing: 0) {
             MadiiNavigationBar_P3(title: "오늘 하루 돌아보기")
-            
+
             Spacer()
             
             HStack(spacing: 4) {
@@ -43,7 +44,7 @@ struct DailyReviewView_P3: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 60)
                 .opacity(isHeaderVisible ? 1 : 0)
-                .offset(y: isHeaderVisible ? 0 : 20)  // 아래에서 위로 올라오는 효과
+                .offset(y: isHeaderVisible ? 0 : 20)
 
             ForEach(todayJoys.indices, id: \.self) { index in
                 if visibleJoys[index] {
@@ -97,28 +98,33 @@ struct DailyReviewView_P3: View {
             )
         )
         .onAppear {
+            isActive = true // 화면 들어올 때 활성화
+
             isHeaderVisible = false
-            // 헤더 텍스트 1초 뒤 등장
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                guard isActive else { return } // 👈 화면 나갔으면 중단
                 withAnimation(.easeOut(duration: 0.5)) {
                     isHeaderVisible = true
                 }
 
-                // joy 항목들 하나씩 1초 간격으로 올라오면서 등장
                 for index in todayJoys.indices {
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(index + 1)) {
+                        guard isActive else { return }
                         withAnimation(.easeOut(duration: 0.5)) {
                             visibleJoys[index] = true
                         }
                     }
                 }
 
-                let lastAnimationDelay = Double(todayJoys.count) + 1.0 // 헤더 + joy 등장 총 시간
+                let lastAnimationDelay = Double(todayJoys.count) + 1.0
                 DispatchQueue.main.asyncAfter(deadline: .now() + lastAnimationDelay + 0.5) {
-                    router.push(.review(savingJoys: todayJoys))
+                    guard isActive else { return }
+                    router.push(.review(savingJoys: todayJoys, date: date))
                 }
             }
-            
+        }
+        .onDisappear {
+            isActive = false
         }
     }
 }

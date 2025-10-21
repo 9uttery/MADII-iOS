@@ -14,7 +14,7 @@ struct HomeCalendarView: View {
     @State var satisfactions: [SatisfactionDate] = []
 
     var days: [Date] { getMonthDates(for: currentDate) }
-    var weekIndex: Int { currentWeekIndex(in: days, today: currentDate) }
+    var weekIndex: Int { currentWeekIndex(in: days, today: selectedDay) }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -35,9 +35,10 @@ struct HomeCalendarView: View {
                     updateSelectedDay(for: prevMonth)
                 }
             } label: {
-                Image("arrowBack")
+                Image("caretLeft")
                     .resizable()
-                    .frame(width: 24, height: 23)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.madiiAlternative)
             }
             
             Text("\(currentDate.month)월")
@@ -49,9 +50,10 @@ struct HomeCalendarView: View {
                     updateSelectedDay(for: nextMonth)
                 }
             } label: {
-                Image("arrowForward")
+                Image("caretRight")
                     .resizable()
-                    .frame(width: 24, height: 23)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.madiiAlternative)
             }
             
             Spacer()
@@ -101,8 +103,8 @@ struct HomeCalendarView: View {
                     }
                 }
             }
-            .offset(y: isMonthly ? 0 : CGFloat(numberOfWeeksInMonth(for: currentDate) - 1) * 24 - CGFloat(weekIndex) * 48)
-            .frame(height: CGFloat(isMonthly ? numberOfWeeksInMonth(for: currentDate) * 36 + (numberOfWeeksInMonth(for: currentDate) - 1) * 12 + 20 : 56))
+            .offset(y: isMonthly ? 0 : CGFloat(numberOfWeeksInMonth(for: selectedDay) - 1) * 24 - CGFloat(weekIndex) * 48)
+            .frame(height: CGFloat(isMonthly ? numberOfWeeksInMonth(for: selectedDay) * 36 + (numberOfWeeksInMonth(for: selectedDay) - 1) * 12 + 20 : 56))
             .clipped()
             .contentShape(Rectangle())
         }

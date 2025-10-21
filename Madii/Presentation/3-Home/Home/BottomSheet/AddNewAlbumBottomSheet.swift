@@ -20,19 +20,20 @@ struct AddNewAlbumBottomSheet: View {
                 .foregroundStyle(.madiiContrast)
                 .cornerRadius(2.5)
                 .padding(.top, 16)
+                .padding(.bottom, 40)
             
             VStack(alignment: .leading, spacing: 0) {
-                Text("새로운 앨범")
-                    .madiiFont(font: .madiiTitle, color: .white) // title2, white
+                Text("어떤 앨범인가요?")
+                    .madiiFont(font: .madiiTitle, color: .white)
                     .padding(.bottom, 16)
                 
-                Text("앨범명")
+                Text("앨범명을 작성해주세요")
                     .madiiFont(font: .madiiBody2, color: .madiiNeutral)
                     .lineSpacing(9.6)
                     .padding(.bottom, 4)
                 
                 HStack {
-                    TextField("앨범명을 작성해주세요", text: $title)
+                    TextField("앨범명", text: $title)
                         .madiiFont(font: .madiiBody2, color: .madiiNormal)
                         .lineSpacing(9.6)
                     
@@ -49,7 +50,7 @@ struct AddNewAlbumBottomSheet: View {
                     .madiiFont(font: .caption, color: .madiiNeutral)
                     .padding(.bottom, 40)
                 
-                Text("설명")
+                Text("앨범 소개")
                     .madiiFont(font: .madiiBody2, color: .white)
                     .lineSpacing(9.6)
                     .padding(.bottom, 4)
@@ -79,7 +80,7 @@ struct AddNewAlbumBottomSheet: View {
                     .overlay(
                         Group {
                             Text("\(describe.count)/30")
-                                .madiiFont(font: .madiiBody2, color: .gray400)
+                                .madiiFont(font: .madiiBody2, color: .madiiAlternative)
                                 .lineSpacing(9.6)
                                 .padding(12)
                         }, alignment: .bottomTrailing

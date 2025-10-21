@@ -11,13 +11,28 @@ struct ReviewView_P3: View {
     @Environment(Router.self) var router
     @State var tabNum: Int = 0
     @State var diaryContent: String = ""
-    @State var date: Date = Date()
+    @State var date: Date
     @State var satisfaction: Int = 5
     @State var savingJoys: [Joy] = [Joy(title: "안녕kaklsdjfalkdjflaksdjfalksdfjalskdjfalskdfjalksdfjalksdfjalksdfdf"), Joy(title: "안녕하세요"), Joy(title: "안녕안녕하세용")]
+    @State var showCancelDailyReviewBottomSheet: Bool = false
+    @State var cancelDailyReview: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
-            MadiiNavigationBar_P3(title: date.toKoreanString(), popNum: 2)
+            HStack {
+                Button {
+                    showCancelDailyReviewBottomSheet = true
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.madiiAlternative)
+                }
+                Spacer()
+                Text(date.toKoreanString())
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+            }
+            .padding()
             
             HStack(spacing: 8) {
                 Rectangle()
@@ -50,7 +65,20 @@ struct ReviewView_P3: View {
         }
         .padding(.horizontal, 20)
         .onAppear {
-            getAchievementByDate()
+//            getAchievementByDate()
+        }
+        .onChange(of: cancelDailyReview) {
+            if cancelDailyReview {
+                router.pop(times: 2)
+            }
+        }
+        .sheet(isPresented: $showCancelDailyReviewBottomSheet) {
+            GeometryReader { geo in
+                CancelDailyReviewBottomSheet(showCancelDailyReviewBottomSheet: $showCancelDailyReviewBottomSheet, cancelDailyReview: $cancelDailyReview)
+                    .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationBackground(.clear)
+            }
         }
     }
     
@@ -79,8 +107,4 @@ struct ReviewView_P3: View {
             }
         }
     }
-}
-
-#Preview {
-    ReviewView_P3()
 }
