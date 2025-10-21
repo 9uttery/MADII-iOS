@@ -108,7 +108,3 @@ struct ReviewView_P3: View {
         }
     }
 }
-
-#Preview {
-    ReviewView_P3()
-}
