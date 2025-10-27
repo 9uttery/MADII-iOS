@@ -14,6 +14,9 @@ disabled_rules: # Default Rules에서 비활성화할 규칙
     
     # 
     - type_name
+    
+    # 복잡도
+    - cyclomatic_complexity
 
 opt_in_rules:
 

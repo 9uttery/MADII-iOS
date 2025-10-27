@@ -34,4 +34,9 @@ enum Route: Hashable, Identifiable {
     
     // Archiving
     case myPage
+    case profile
+    case notification
+    case notice
+    case inquiry
+    case signOut
 }

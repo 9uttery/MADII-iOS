@@ -13,6 +13,7 @@ extension DIContainer {
     @ViewBuilder
     func makeView(_ route: Route) -> some View {
         switch route {
+        // 초기 화면
         case .splash:
             SplashView_P3()
         case .onboarding:
@@ -22,6 +23,8 @@ extension DIContainer {
                 .environment(loginViewModel())
         case .tab:
             MadiiTabView_P3()
+            
+        // 홈
         case .home:
             HomeView_P3(viewModel: homeViewModel())
         case .exploration:
@@ -30,8 +33,7 @@ extension DIContainer {
             ArchivingView_P3(viewModel: archivingViewModel())
         case let .dailyReview(todayJoys, visibleJoys, date):
             DailyReviewView_P3(date: date, todayJoys: todayJoys, visibleJoys: visibleJoys)
-        case .myPage:
-            MyPageView_P3()
+        
         case .albumList:
             AlbumListView_P3(viewModel: albumListViewModel())
         case let .albumDetail(albumId):
@@ -46,6 +48,20 @@ extension DIContainer {
             AllAlbumListView_P3()
         case .completeOhadol:
             CompleteReviewView()
+            
+        // 마이페이지
+        case .myPage:
+            MyPageView_P3()
+        case .profile:
+            EmptyView()
+        case .notification:
+            NotificationView_P3()
+        case .notice:
+            NoticeView_P3()
+        case .inquiry:
+            InquiryView_P3()
+        case .signOut:
+            EmptyView()
         }
     }
 }
