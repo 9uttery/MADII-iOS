@@ -22,8 +22,17 @@ struct MadiiTabBar_P3: View {
                         Button {
                             router.selectedTab = tab
                         } label: {
-                            Text(tab.title)
-                                .frame(width: 60, height: 44)
+                            VStack(spacing: 4) {
+                                let isSelected = router.selectedTab == tab
+                                Image(isSelected ? tab.selectedIcon : tab.unselectedIcon)
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text(tab.title)
+                                    .madiiFont(.caption).bold()
+                                    .foregroundStyle(isSelected ? Color.madiiGreen100 : Color.white.opacity(0.28))
+                            }
+                            .frame(width: 48)
                         }
                     }
                     
