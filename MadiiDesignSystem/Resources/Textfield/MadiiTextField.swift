@@ -38,6 +38,7 @@ public struct MadiiTextField: View {
         HStack(spacing: 8) {
             if isPlus {
                 Button {
+                    isTextFieldFocused = false
                     action?()
                 } label: {
                     Image("plusSquare")

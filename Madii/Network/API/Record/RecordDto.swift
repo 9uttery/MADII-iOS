@@ -89,3 +89,7 @@ struct EditJoyResponse: Codable {
     let joyIconNum: Int
     let contents: String
 }
+
+struct EditJoyTitleResponse: Codable {
+    let contents: String
+}

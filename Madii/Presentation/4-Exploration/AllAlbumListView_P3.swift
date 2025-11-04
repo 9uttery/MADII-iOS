@@ -41,13 +41,14 @@ struct AllAlbumListView_P3: View {
                 
             }
             .padding(.horizontal, 20)
+            .frame(height: 64)
             .padding(.bottom, 12)
             
-            ScrollView() {
+            ScrollView {
                 VStack(spacing: 24) {
                     ForEach(playAlbums) { album in
                         Button {
-                            router.push(.albumDetail(albumId: album.albumId))
+                            router.push(.albumDetail(albumId: album.albumId, popNum: 1))
                         } label: {
                             HStack(spacing: 12) {
                                 Image("Cover\(album.albumColorNum % 8 + 1)")
@@ -72,6 +73,7 @@ struct AllAlbumListView_P3: View {
                     VStack(spacing: 0) {
                         Text("마지막이에요!\n나만의 소확행 앨범을 만들어보세요")
                             .madiiFont(font: .madiiBody3, color: .madiiNeutral)
+                            .multilineTextAlignment(.center)
                             .padding(.top, 28)
                             .padding(.bottom, 16)
                         
@@ -100,7 +102,7 @@ struct AllAlbumListView_P3: View {
         }
         .sheet(isPresented: $showAddNewAlbumBottomSheet) {
             GeometryReader { geo in
-                AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
+                AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet, album: .constant(Album(id: 0, title: "")))
                     .presentationDetents([.height(503)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)

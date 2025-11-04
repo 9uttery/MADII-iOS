@@ -25,14 +25,24 @@ struct HomeCalendarView: View {
         .onAppear {
             getCalendarEmojiList()
         }
+        .onChange(of: selectedDay) {
+            getCalendarEmojiList()
+        }
     }
 
     private var calendarHeader: some View {
         HStack(spacing: 4) {
             Button {
-                if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) {
-                    currentDate = prevMonth
-                    updateSelectedDay(for: prevMonth)
+                if isMonthly {
+                    if let prevMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) {
+                        currentDate = prevMonth
+                        updateSelectedDay(for: prevMonth)
+                    }
+                } else {
+                    if let prevWeek = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDay) {
+                        currentDate = prevWeek
+                        selectedDay = prevWeek
+                    }
                 }
             } label: {
                 Image("caretLeft")
@@ -45,9 +55,16 @@ struct HomeCalendarView: View {
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
             
             Button {
-                if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) {
-                    currentDate = nextMonth
-                    updateSelectedDay(for: nextMonth)
+                if isMonthly {
+                    if let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) {
+                        currentDate = nextMonth
+                        updateSelectedDay(for: nextMonth)
+                    }
+                } else {
+                    if let nextWeek = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: selectedDay) {
+                        currentDate = nextWeek
+                        selectedDay = nextWeek
+                    }
                 }
             } label: {
                 Image("caretRight")
@@ -98,6 +115,12 @@ struct HomeCalendarView: View {
                 ForEach(days, id: \.self) { date in
                     Button {
                         selectedDay = date
+                        let calendar = Calendar.current
+                        if !calendar.isDate(date, equalTo: currentDate, toGranularity: .month) {
+                            withAnimation {
+                                currentDate = date
+                            }
+                        }
                     } label: {
                         dayCell(for: date)
                     }
@@ -130,7 +153,6 @@ struct HomeCalendarView: View {
                 .frame(height: 36)
                 .background(selectedDay.isSameDay(as: date) ? Color.madiiGreen100 : .clear)
                 .cornerRadius(8)
-                .padding(.horizontal, 5)
                 .overlay(
                     Circle()
                         .stroke(
@@ -211,6 +233,7 @@ struct HomeCalendarView: View {
             selectedDay = adjustedDate
         }
     }
+    
     func getCalendarEmojiList() {
         DailySummaryAPI.shared.getDailySummaryList(date: selectedDay) { isSuccess, dailySummary in
             if isSuccess {

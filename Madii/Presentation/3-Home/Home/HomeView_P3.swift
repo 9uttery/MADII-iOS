@@ -13,6 +13,7 @@ struct HomeView_P3: View {
     @EnvironmentObject var appStatus: AppStatus
     @State private var viewModel: HomeViewModel_P3
     @AppStorage("todayJoyId") var todayJoyId: Int = 0
+    @State var album: Album = Album(id: 0, title: "")
     @State var isOhadol: Bool = false
     @State var canOhadol: Bool = false
     @State var selectedDate: Date = Date()
@@ -21,6 +22,7 @@ struct HomeView_P3: View {
     @State var showAddNewAlbumBottomSheet: Bool = false
     @State var isDeleted: Bool = false
     @State private var isFinishedGetJoy: Bool = false
+    @State private var isSuccessEditJoy: Bool = false
 
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -59,7 +61,7 @@ struct HomeView_P3: View {
                         .padding(.bottom, 16)
                     }
                     
-                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $selectedDate, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
+                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
                 }
                 .padding(.horizontal, 20)
             }
@@ -77,6 +79,11 @@ struct HomeView_P3: View {
             
             if isDeleted {
                 MadiiDesignSystem.MadiiToast(title: "행복 기록이 삭제되었어요", isShowToast: $isDeleted)
+                    .padding(.bottom, 100)
+            }
+            
+            if isSuccessEditJoy {
+                MadiiDesignSystem.MadiiToast(title: "행복이 수정되었어요", isShowToast: $isSuccessEditJoy)
                     .padding(.bottom, 100)
             }
         }
@@ -99,17 +106,11 @@ struct HomeView_P3: View {
                 EditJoyBottomSheet(showEditJoyBottomSheet: $showSaveAlbumBottomSheet, joyId: Binding(
                     get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
                     set: { viewModel.todayJoy.joyId = $0 }
-                ), joyTitle: $viewModel.todayJoy.title, showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
+                ), joyTitle: $viewModel.todayJoy.title)
                     .presentationDetents([.height(608 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)
             }
-        }
-        .sheet(isPresented: $showAddNewAlbumBottomSheet) {
-            AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
-                .presentationDetents([.height(503)])
-                .presentationDragIndicator(.hidden)
-                .presentationBackground(.clear)
         }
     }
     
@@ -171,7 +172,7 @@ struct HomeView_P3: View {
         ZStack {
             Image("todayJoy")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .cornerRadius(40)
                 .clipped()
             

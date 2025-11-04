@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DeleteAlbumBottomSheet: View {
     @Binding var showDeleteAlbumBottomSheet: Bool
+    @Binding var isDismiss: Bool
     @Binding var albums: [Album]
     
     var body: some View {
@@ -57,13 +58,10 @@ struct DeleteAlbumBottomSheet: View {
             if isSuccess {
                 print("Debug deleteAlbumsByAlbumId: isSuccess true")
                 showDeleteAlbumBottomSheet = false
+                isDismiss = true
             } else {
                 print("Debug deleteAlbumsByAlbumId: isSuccess false")
             }
         }
     }
-}
-
-#Preview {
-    DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: .constant(true), albums: .constant([]))
 }

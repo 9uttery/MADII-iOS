@@ -57,10 +57,11 @@ struct ExplorationView_P3: View {
                         .padding(.top, 24)
                         .padding(.leading, 16)
                         .padding(.bottom, 32)
+                        .padding(.horizontal, 8)
                     
                     ForEach(albums, id: \.self) { album in
                         Button {
-                            router.push(.albumDetail(albumId: album.id))
+                            router.push(.albumDetail(albumId: album.id, popNum : 1))
                         } label: {
                             HStack(spacing: 12) {
                                 Image("Cover\(album.backgroundColorNum)")

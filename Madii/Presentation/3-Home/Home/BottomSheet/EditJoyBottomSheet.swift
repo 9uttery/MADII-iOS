@@ -9,10 +9,12 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct EditJoyBottomSheet: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var showEditJoyBottomSheet: Bool
     @Binding var joyId: Int
     @Binding var joyTitle: String
-    @Binding var showAddNewAlbumBottomSheet: Bool
+    @State var showAddNewAlbumBottomSheet: Bool = false
+    @State var album: Album = Album(id: 0, title: "")
     @State var albums: [Album] = []
     @State private var selectedAlbumIds: [Int] = []
     @State private var originalAlbumIds: [Int] = []
@@ -27,7 +29,7 @@ struct EditJoyBottomSheet: View {
                 
                 Text(joyTitle)
                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                    .lineSpacing(9.6)
+                    .frame(height: 26)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(12)
                     .background(.madiiGray30)
@@ -39,10 +41,10 @@ struct EditJoyBottomSheet: View {
                     .padding(.bottom, 16)
                 
                 Button {
-                    showEditJoyBottomSheet = false
-                     showAddNewAlbumBottomSheet = true
+                    showAddNewAlbumBottomSheet = true
                 } label: {
                     MadiiDesignSystem.MadiiTextField(text: $newAlbumTitlte, isPlus: true, placeholder: "새로운 앨범")
+                        .disabled(true)
                         .frame(height: 50)
                 }
                 .padding(.bottom, 16)
@@ -59,7 +61,7 @@ struct EditJoyBottomSheet: View {
                             } label: {
                                 Text(album.title)
                                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                                    .lineSpacing(9.6)
+                                    .frame(height: 26)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(12)
                                     .background(.madiiGray30)
@@ -68,7 +70,7 @@ struct EditJoyBottomSheet: View {
                             }
                         }
                     }
-                    .padding(.vertical, 1)
+                    .padding(1)
                 }
                 .frame(height: 160)
                 .scrollIndicators(.hidden)
@@ -76,13 +78,15 @@ struct EditJoyBottomSheet: View {
             .padding(.vertical, 40)
             
             HStack(spacing: 10) {
-                MadiiDesignSystem.MadiiButton(title: "취소", color: .neutral) {
+                MadiiDesignSystem.MadiiButton(title: "닫기", color: .neutral) {
                     showEditJoyBottomSheet = false
+                    dismiss()
                 }
                 .frame(width: 82)
                 
-                MadiiDesignSystem.MadiiButton(title: "수정", color: .mainColor) {
+                MadiiDesignSystem.MadiiButton(title: "저장하기", color: .mainColor) {
                     editJoy()
+                    dismiss()
                 }
             }
             .padding(.bottom, 40)
@@ -96,6 +100,21 @@ struct EditJoyBottomSheet: View {
             getAllAlbums()
             getSavedAlbumsIdByJoy()
         }
+        .onChange(of: album) {
+            selectedAlbumIds.append(album.id)
+            getAllAlbums()
+            getSavedAlbumsIdByJoy()
+        }
+        .sheet(isPresented: $showAddNewAlbumBottomSheet) {
+            AddNewAlbumBottomSheet(
+                showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet,
+                album: $album
+            )
+                .presentationDetents([.height(503)])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
+        }
+        .dismissKeyboardOnTap() 
     }
     
     func getAllAlbums() {
@@ -116,12 +135,13 @@ struct EditJoyBottomSheet: View {
         AlbumAPI.shared.getAlbumsWithJoySavedInfo(joyId: joyId) { isSuccess, albumList in
             if isSuccess {
                 print("debug getAlbumsWithJoySavedInfo: isSuccess true")
-                selectedAlbumIds = albumList.compactMap { dto in
+                let serverIds = albumList.compactMap { dto in
                     dto.isSaved ? dto.albumId : nil
                 }
                 originalAlbumIds = albumList.compactMap { dto in
                     dto.isSaved ? dto.albumId : nil
                 }
+                selectedAlbumIds = Array(Set(selectedAlbumIds + serverIds))
             } else {
                 print("debug getAlbumsWithJoySavedInfo: isSuccess false")
             }

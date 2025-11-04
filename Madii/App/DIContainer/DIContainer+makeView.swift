@@ -36,8 +36,8 @@ extension DIContainer {
         
         case .albumList:
             AlbumListView_P3(viewModel: albumListViewModel())
-        case let .albumDetail(albumId):
-            AlbumDetailView_P3(viewModel: albumDetailViewModel(albumId: albumId))
+        case let .albumDetail(albumId, popNum):
+            AlbumDetailView_P3(viewModel: albumDetailViewModel(albumId: albumId, popNum: popNum))
         case let .review(savingJoys, date):
             ReviewView_P3(date: date, savingJoys: savingJoys)
         case .recommend:

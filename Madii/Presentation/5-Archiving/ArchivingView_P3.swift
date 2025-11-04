@@ -17,7 +17,7 @@ struct ArchivingView_P3: View {
     var body: some View {
         VStack {
             HStack {
-                Text("아카이빙")
+                Text("아카이브")
                     .madiiFont(font: .madiiTitle, color: .madiiAlternative)
                 
                 Spacer()

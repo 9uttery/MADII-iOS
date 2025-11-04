@@ -37,8 +37,8 @@ final class DIContainer {
         return AlbumListViewModel_P3(router: router)
     }
     
-    func albumDetailViewModel(albumId: Int) -> AlbumDetailViewModel_P3 {
-        return AlbumDetailViewModel_P3(router: router, albumId: albumId)
+    func albumDetailViewModel(albumId: Int, popNum: Int) -> AlbumDetailViewModel_P3 {
+        return AlbumDetailViewModel_P3(router: router, albumId: albumId, popNum: popNum)
     }
     
     func reviewViewModel(joys: [Joy]) -> ReviewViewModel_P3 {

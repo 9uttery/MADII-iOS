@@ -33,12 +33,12 @@ struct DeleteJoyBottomSheet: View {
                 .padding(.bottom, 40)
             
             HStack(spacing: 10) {
-                MadiiDesignSystem.MadiiButton(title: "취소", color: .neutral) {
+                MadiiDesignSystem.MadiiButton(title: "닫기", color: .neutral) {
                     showDeleteJoyBottomSheet = false
                 }
                 .frame(width: 82)
                 
-                MadiiDesignSystem.MadiiButton(title: "삭제", color: .mainColor) {
+                MadiiDesignSystem.MadiiButton(title: "삭제하기", color: .mainColor) {
                     deleteJoy()
                 }
             }

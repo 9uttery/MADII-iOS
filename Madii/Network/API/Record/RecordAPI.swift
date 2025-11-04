@@ -317,4 +317,43 @@ class RecordAPI {
                 }
             }
     }
+    
+    func editJoy(joyId: Int, contents: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        let url = "\("https://\(Bundle.main.infoDictionary?["BASE_URL"] ?? "nil baseUrl")")/v2/joy/\(joyId)"
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        print(joyId)
+        let parameters: [String: Any] = [
+            "contents": contents
+        ]
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<EditJoyTitleResponse>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(editJoy): data nil")
+                        completion(false)
+                        return
+                    }
+                    
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        // status 200으로 -> isSuccess: true
+                        print("DEBUG(editJoy): success")
+                        completion(true)
+                    } else {
+                        // status 200 아님 -> isSuccess: false
+                        print("DEBUG(editJoy): status \(statusCode))")
+                        completion(false)
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG(editJoy): error \(error))")
+                    completion(false)
+                }
+            }
+    }
 }

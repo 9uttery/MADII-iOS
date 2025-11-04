@@ -17,6 +17,8 @@ struct HomeCalendar: View {
     @Binding var selectedDate: Date
     @State var showRenameJoyBottomSheet: Bool = false
     @State var editJoyId: Int = 0
+    @State var editJoyTitle: String = ""
+    @Binding var isSuccessEditJoy: Bool
     @Binding var isOhadol: Bool
     @Binding var finishedJoys: [Joy]
     @Binding var canOhadol: Bool
@@ -126,6 +128,7 @@ struct HomeCalendar: View {
                                 },
                                 onEdit: {
                                     editJoyId = joy.joyId!
+                                    editJoyTitle = joy.title
                                     showRenameJoyBottomSheet = true
                                 },
                                 onPlayToggle: {
@@ -194,12 +197,13 @@ struct HomeCalendar: View {
                 .padding(.bottom, 16)
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("하루 일기")
+                    Text("하루 기록")
                         .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                         .padding(.bottom, 4)
                     
                     Text(diary)
                         .madiiFont(font: .madiiBody2, color: .gray100.opacity(0.74))
+                        .frame(maxWidth: .infinity)
                         .lineSpacing(9.6)
                         .multilineTextAlignment(.leading)
                     
@@ -220,7 +224,7 @@ struct HomeCalendar: View {
             }
             
             if isOhadol || !canOhadol {
-                Text("오늘 하루 돌아보기")
+                Text(selectedDate < Date() && !selectedDate.isSameDay(as: Date()) ? "하루 돌아보기" : "오늘 하루 돌아보기")
                     .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
@@ -235,12 +239,10 @@ struct HomeCalendar: View {
         }
         .scrollIndicators(.hidden)
         .sheet(isPresented: $showRenameJoyBottomSheet) {
-            GeometryReader { geo in
-                RenameJoyBottomSheet(showRenameJoyBottomSheet: $showRenameJoyBottomSheet, joyId: editJoyId)
-                    .presentationDetents([.height(304 + geo.safeAreaInsets.bottom)])
-                    .presentationDragIndicator(.hidden)
-                    .presentationBackground(.clear)
-            }
+            RenameJoyBottomSheet(showRenameJoyBottomSheet: $showRenameJoyBottomSheet, newJoyTitle: $editJoyTitle, isSuccessEditJoy: $isSuccessEditJoy, joyId: $editJoyId)
+                .presentationDetents([.height(304)])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
         }
         .onAppear {
             getJoy()
@@ -248,6 +250,10 @@ struct HomeCalendar: View {
         .onChange(of: selectedDate) {
             getJoy()
         }
+        .onChange(of: isSuccessEditJoy) {
+            getJoy()
+        }
+        .dismissKeyboardOnTap() 
     }
     
     private func postJoy() {
@@ -333,7 +339,7 @@ struct HomeCalendar: View {
     }
     
     private func playJoy(achievementId: Int) {
-        AchievementsAPI.shared.postJoySatisfaction(achievementId: achievementId, satisfacton: nil) { isSuccess in
+        AchievementsAPI.shared.postJoySatisfaction(date: selectedDate, achievementId: achievementId, satisfacton: nil) { isSuccess in
             if isSuccess {
                 print("Debug postJoySatisfaction: isSuccess true")
                 getJoy()

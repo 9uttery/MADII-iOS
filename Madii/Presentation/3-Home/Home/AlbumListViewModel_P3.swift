@@ -84,7 +84,7 @@ class AlbumListViewModel_P3 {
     }
     
     private func showAlbumDetail(_ album: Album) {
-        router.push(.albumDetail(albumId: album.id))
+        router.push(.albumDetail(albumId: album.id, popNum: 1))
     }
     
     private func popView() {
@@ -97,6 +97,7 @@ class AlbumListViewModel_P3 {
                 if isSuccess {
                     print("Debug deleteAlbumsByAlbumId: isSuccess true")
                     self.getAllAlbums()
+                    self.isSelect = false
                 } else {
                     print("Debug deleteAlbumsByAlbumId: isSuccess false")
                 }
