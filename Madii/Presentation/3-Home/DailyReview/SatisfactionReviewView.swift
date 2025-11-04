@@ -19,8 +19,8 @@ struct SatisfactionReviewView: View {
             
             Image("satisfaction\(satisfaction.intToSatisfaction)")
                 .resizable()
-                .frame(width: (satisfaction % 2) == 0 ? 20 : 60, height: (satisfaction % 2) == 0 ? 20 : 60)
-                .padding(.vertical, (satisfaction % 2) == 0 ? 60 : 40)
+                .frame(width: 60, height: 60)
+                .padding(.vertical, 40)
             
             SatisfactionSlider(value: $satisfaction)
                 .padding(.bottom, 12)

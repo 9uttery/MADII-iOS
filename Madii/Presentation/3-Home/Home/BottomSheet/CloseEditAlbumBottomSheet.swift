@@ -31,12 +31,12 @@ struct CloseEditAlbumBottomSheet: View {
                 .padding(.bottom, 40)
             
             HStack(spacing: 10) {
-                MadiiDesignSystem.MadiiButton(title: "취소", color: .neutral) {
+                MadiiDesignSystem.MadiiButton(title: "닫기", color: .neutral) {
                     isShowCloseEditAlbumBottomSheet = false
                 }
                 .frame(width: 82)
                 
-                MadiiDesignSystem.MadiiButton(title: "종료", color: .mainColor) {
+                MadiiDesignSystem.MadiiButton(title: "계속하기", color: .mainColor) {
                     isEdit = false
                 }
             }

@@ -131,20 +131,24 @@ class DailySummaryAPI {
     }
     
     func getDailySummaryList(date: Date, completion: @escaping (_ isSuccess: Bool, _ dailySummary: [PostDailySummaryListDTO]) -> Void) {
-        
         let calendar = Calendar.current
+        
         let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
+        var startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfMonth))!
         let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
-
-        let startDateString = startOfMonth.serverDateFormat
-        let endDateString = endOfMonth.serverDateFormat
+        var endOfWeek = calendar.date(byAdding: .day, value: 6, to: calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: endOfMonth))!)!
+        
+        // 포맷
+        let startDateString = startOfWeek.serverDateFormat
+        let endDateString = endOfWeek.serverDateFormat
+        
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
         ]
+        
         let url = "\(baseUrl)/daily-summary/list?startDate=\(startDateString)&endDate=\(endDateString)"
-        
-        
+        print(url)
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<[PostDailySummaryListDTO]>.self) { response in
                 switch response.result {
@@ -154,18 +158,14 @@ class DailySummaryAPI {
                         completion(false, [])
                         return
                     }
-                    
                     let statusCode = response.status
                     if statusCode == 200 {
-                        // status 200으로 -> isSuccess: true
                         print("DEBUG(getDailySummaryList): success")
                         completion(true, data)
                     } else {
-                        // status 200 아님 -> isSuccess: false
                         print("DEBUG(getDailySummaryList): status \(statusCode))")
                         completion(false, data)
                     }
-                    
                 case .failure(let error):
                     print("DEBUG(getDailySummaryList): error \(error))")
                     completion(false, [])

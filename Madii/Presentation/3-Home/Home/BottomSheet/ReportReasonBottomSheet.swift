@@ -68,6 +68,7 @@ struct ReportReasonBottomSheet: View {
         .cornerRadius(40)
         .padding(.horizontal, 20)
         .background(.clear)
+        .dismissKeyboardOnTap() 
         .onChange(of: reportReason) {
             selectedOption = reportReason
         }

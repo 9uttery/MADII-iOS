@@ -105,6 +105,7 @@ struct DiaryReviewView: View {
             UITextView.appearance().textContainerInset =
                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
+        .dismissKeyboardOnTap() 
     }
     
     private func clickCompleteButton() {
@@ -121,6 +122,21 @@ struct DiaryReviewView: View {
             } else {
                 
             }
+        }
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder),
+                   to: nil, from: nil, for: nil)
+    }
+}
+
+extension View {
+    func dismissKeyboardOnTap() -> some View {
+        self.onTapGesture {
+            UIApplication.shared.endEditing()
         }
     }
 }

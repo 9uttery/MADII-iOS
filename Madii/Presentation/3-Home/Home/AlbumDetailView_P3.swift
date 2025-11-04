@@ -9,15 +9,15 @@ import MadiiDesignSystem
 import SwiftUI
 
 struct AlbumDetailView_P3: View {
+    @Environment(Router.self) var router
     @State private var viewModel: AlbumDetailViewModel_P3
     @State private var selectedJoyId: Int = 0
     @State private var selectedJoyTitle: String = ""
     @State private var showJoyOptionBottomSheet = false
-    @State private var showEditJoyBottomSheeet = false
+    @State private var showEditJoyBottomSheet = false
     @State private var showDeleteJoyBottomSheet = false
     @State private var isDuplicated = false
     @State private var isPlayJoy = false
-    @State private var showAddNewAlbumBottomSheet = false
     @State private var showJoyEllipsisBottomSheet = false
     @State private var showAlbumSavedBottomSheet = false
     @State private var showReportAlbumBottomSheet = false
@@ -27,6 +27,7 @@ struct AlbumDetailView_P3: View {
     @State private var showAlbumChangePublicBottomSheet = false
     @State private var showDeleteAlbumBottomSheet = false
     @State private var tempJoyIdCounter: Int = -1
+    @State private var isDismiss: Bool = false
 
     init(viewModel: AlbumDetailViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -41,20 +42,32 @@ struct AlbumDetailView_P3: View {
             }
             toastLayer
         }
+        .dismissKeyboardOnTap() 
         .onAppear(perform: onAppear)
         .onAppear {
             print(viewModel.albumCoverId)
         }
         .onChange(of: showJoyOptionBottomSheet) { viewModel.action(.loadAlbum) }
-        .onChange(of: showEditJoyBottomSheeet) { viewModel.action(.loadAlbum) }
+        .onChange(of: showEditJoyBottomSheet) {
+            viewModel.action(.loadAlbum)
+            print("\(Date())안녕 \(showEditJoyBottomSheet)")
+        }
+        .onChange(of: isDismiss) {
+            if isDismiss {
+                router.pop()
+            }
+        }
+        .onChange(of: viewModel.albumId) {
+            viewModel.action(.loadAlbum)
+        }
         .onChange(of: showDeleteJoyBottomSheet) { viewModel.action(.loadAlbum) }
         .onChange(of: showAlbumChangePublicBottomSheet) { viewModel.action(.loadAlbum) }
         .sheet(isPresented: $showJoyOptionBottomSheet) { joyOptionSheet }
-        .sheet(isPresented: $showEditJoyBottomSheeet) { editJoySheet }
+        .sheet(isPresented: $showEditJoyBottomSheet) { editJoySheet }
         .sheet(isPresented: $showDeleteJoyBottomSheet) { deleteJoySheet }
-        .sheet(isPresented: $showAddNewAlbumBottomSheet) { addNewAlbumSheet }
         .sheet(isPresented: $showJoyEllipsisBottomSheet) { joyEllipsisSheet }
         .sheet(isPresented: $showReportAlbumBottomSheet) { reportAlbumSheet }
+        .sheet(isPresented: $showAlbumSavedBottomSheet) { editJoySheet }
         .sheet(isPresented: $showReportReasonBottomSheet) { reportReasonSheet }
         .sheet(isPresented: $showAlbumOptionBottomSheet) { albumOptionSheet }
         .sheet(isPresented: $showAlbumChangePublicBottomSheet) { albumChangePublicSheet }
@@ -65,7 +78,7 @@ struct AlbumDetailView_P3: View {
 private extension AlbumDetailView_P3 {
     var header: some View {
         HStack(spacing: 12) {
-            Button { viewModel.action(.popView) } label: {
+            Button { router.pop(times: viewModel.popNum) } label: {
                 Image("arrowBack")
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -108,12 +121,13 @@ private extension AlbumDetailView_P3 {
             }
         }
         .padding(.horizontal, 20)
+        .frame(height: 64)
     }
     
     var content: some View {
-        VStack {
+        VStack(spacing: 0) {
             albumImage
-            albumInfo
+            albumInfo.padding(.horizontal, 4)
             joysSection
             otherAlbumsSection
         }
@@ -212,7 +226,6 @@ private extension AlbumDetailView_P3 {
             .padding(.horizontal, 16)
             .background(.madiiElevated)
             .cornerRadius(32)
-            .padding(.bottom, 40)
         }
     }
     
@@ -275,20 +288,24 @@ private extension AlbumDetailView_P3 {
             Text("나를 위한 행복 앨범 모음")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 20)
+                .padding(.bottom, 4)
             
             VStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.albums) { album in
-                    HStack(spacing: 12) {
-                        Image("Cover\(album.backgroundColorNum)")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .cornerRadius(12)
-                        
-                        Text(album.title)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                            .lineSpacing(9.6)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    Button {
+                        router.push(.albumDetail(albumId: album.id, popNum: viewModel.popNum + 1))
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image("Cover\(album.backgroundColorNum)")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .cornerRadius(12)
+                            
+                            Text(album.title)
+                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                .lineSpacing(9.6)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
             }
@@ -297,6 +314,7 @@ private extension AlbumDetailView_P3 {
             .background(.madiiBox)
             .cornerRadius(40)
         }
+        .padding(.top, 40)
     }
 }
 
@@ -322,12 +340,12 @@ private extension AlbumDetailView_P3 {
                 joyId: $selectedJoyId,
                 joyTitle: $selectedJoyTitle,
                 showJoyOptionBottomSheet: $showJoyOptionBottomSheet,
-                showEditJoyBottomSheeet: $showEditJoyBottomSheeet,
+                showEditJoyBottomSheeet: $showEditJoyBottomSheet,
                 showDeleteJoyBottomSheet: $showDeleteJoyBottomSheet,
                 isDuplicated: $isDuplicated,
                 isPlayJoy: $isPlayJoy
             )
-            .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
+            .presentationDetents([.height(313 + geo.safeAreaInsets.bottom)])
             .presentationDragIndicator(.hidden)
             .presentationBackground(.clear)
         }
@@ -336,10 +354,9 @@ private extension AlbumDetailView_P3 {
     var editJoySheet: some View {
         GeometryReader { geo in
             EditJoyBottomSheet(
-                showEditJoyBottomSheet: $showEditJoyBottomSheeet,
+                showEditJoyBottomSheet: $showEditJoyBottomSheet,
                 joyId: $selectedJoyId,
-                joyTitle: $selectedJoyTitle,
-                showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet
+                joyTitle: $selectedJoyTitle
             )
             .presentationDetents([.height(564 + geo.safeAreaInsets.bottom)])
             .presentationDragIndicator(.hidden)
@@ -351,15 +368,6 @@ private extension AlbumDetailView_P3 {
         GeometryReader { geo in
             DeleteJoyBottomSheet(showDeleteJoyBottomSheet: $showDeleteJoyBottomSheet, joyId: $selectedJoyId)
                 .presentationDetents([.height(280 + geo.safeAreaInsets.bottom)])
-                .presentationDragIndicator(.hidden)
-                .presentationBackground(.clear)
-        }
-    }
-    
-    var addNewAlbumSheet: some View {
-        GeometryReader { geo in
-            AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet)
-                .presentationDetents([.height(503)])
                 .presentationDragIndicator(.hidden)
                 .presentationBackground(.clear)
         }
@@ -408,21 +416,19 @@ private extension AlbumDetailView_P3 {
     }
     
     var albumOptionSheet: some View {
-        GeometryReader { geo in
-            AlbumOptionBottomSheet(
-                isPublic: $viewModel.isPublic,
-                albumTitle: $viewModel.albumTitle,
-                albumDescription: $viewModel.albumDescription,
-                showAlbumOptionBottomSheet: $showAlbumOptionBottomSheet,
-                isEdit: $viewModel.isEdit,
-                joyTitle: $viewModel.joyTitle,
-                showDeleteAlbumBottomSheet: $showDeleteAlbumBottomSheet,
-                showAlbumChangePublicBottomSheet: $showAlbumChangePublicBottomSheet
-            )
-            .presentationDetents([.height(339 + geo.safeAreaInsets.bottom)])
-            .presentationDragIndicator(.hidden)
-            .presentationBackground(.clear)
-        }
+        AlbumOptionBottomSheet(
+            isPublic: $viewModel.isPublic,
+            albumTitle: $viewModel.albumTitle,
+            albumDescription: $viewModel.albumDescription,
+            showAlbumOptionBottomSheet: $showAlbumOptionBottomSheet,
+            isEdit: $viewModel.isEdit,
+            joyTitle: $viewModel.joyTitle,
+            showDeleteAlbumBottomSheet: $showDeleteAlbumBottomSheet,
+            showAlbumChangePublicBottomSheet: $showAlbumChangePublicBottomSheet
+        )
+        .presentationDetents([.height(339)])
+        .presentationDragIndicator(.hidden)
+        .presentationBackground(.clear)
     }
     
     var albumChangePublicSheet: some View {
@@ -438,7 +444,7 @@ private extension AlbumDetailView_P3 {
         GeometryReader { geo in
             // DeleteAlbumBottomSheet이 albums: Binding<[Album]>를 원하면 .constant로 전달
             DeleteAlbumBottomSheet(
-                showDeleteAlbumBottomSheet: $showDeleteAlbumBottomSheet,
+                showDeleteAlbumBottomSheet: $showDeleteAlbumBottomSheet, isDismiss: $isDismiss,
                 albums: .constant([Album(id: viewModel.albumId, title: viewModel.albumTitle)])
             )
             .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])

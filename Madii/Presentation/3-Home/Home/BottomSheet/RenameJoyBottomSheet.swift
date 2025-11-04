@@ -10,8 +10,9 @@ import SwiftUI
 
 struct RenameJoyBottomSheet: View {
     @Binding var showRenameJoyBottomSheet: Bool
-    @State var newJoyTitle: String = ""
-    @State var joyId: Int = 0
+    @Binding var newJoyTitle: String
+    @Binding var isSuccessEditJoy: Bool
+    @Binding var joyId: Int
     
     var body: some View {
         VStack {
@@ -33,7 +34,9 @@ struct RenameJoyBottomSheet: View {
                 .cornerRadius(12)
                 .padding(.bottom, 40)
                 
-            MadiiDesignSystem.MadiiButton(title: "완료", color: .mainColor)
+            MadiiDesignSystem.MadiiButton(title: "완료", color: .mainColor) {
+                editJoyTitle()
+            }
                 .padding(.bottom, 40)
         }
         .padding(.horizontal, 20)
@@ -41,5 +44,18 @@ struct RenameJoyBottomSheet: View {
         .cornerRadius(40)
         .padding(.horizontal, 20)
         .background(.clear)
+        .dismissKeyboardOnTap() 
+    }
+    
+    func editJoyTitle() {
+        RecordAPI.shared.editJoy(joyId: joyId, contents: newJoyTitle) { isSuccess in
+            if isSuccess {
+                print("debug editJoy: isSuccess true")
+                showRenameJoyBottomSheet = false
+                isSuccessEditJoy = true
+            } else {
+                print("debug editJoy: isSuccess false")
+            }
+        }
     }
 }

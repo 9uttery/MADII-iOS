@@ -14,6 +14,7 @@ class AlbumDetailViewModel_P3 {
     
     // 상태
     var albumId: Int
+    var popNum: Int = 1
     var albumTitle: String = ""
     var albumDescription: String = ""
     var albumCoverId: Int = 1
@@ -32,9 +33,10 @@ class AlbumDetailViewModel_P3 {
     var deleteIds: [Int] = []
     var newJoyId: Int = 0
     
-    init(router: Router, albumId: Int) {
+    init(router: Router, albumId: Int, popNum: Int = 1) {
         self.router = router
         self.albumId = albumId
+        self.popNum = popNum
     }
     
     enum Action {

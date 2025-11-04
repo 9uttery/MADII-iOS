@@ -41,7 +41,7 @@ struct JoyEllipsisBottomSheet: View {
                 showJoyEllipsisBottomSheet = false
                 showAlbumSavedBottomSheet = true
             } label: {
-                Text("앨범 저장")
+                Text("앨범에 저장하기")
                     .madiiFont(font: .madiiBody1, color: .madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

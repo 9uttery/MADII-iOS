@@ -10,6 +10,7 @@ import SwiftUI
 struct AlbumListView_P3: View {
     @State private var viewModel: AlbumListViewModel_P3
     @State var showDeleteAlbumsBottomSheet: Bool = false
+    @State var isDismiss: Bool = false
     
     init(viewModel: AlbumListViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -44,6 +45,7 @@ struct AlbumListView_P3: View {
                 Spacer()
                 
                 Button {
+                    viewModel.selectedAlbums = []
                     viewModel.isSelect
                         ? showDeleteAlbumsBottomSheet = true
                         : viewModel.action(.toggleSelect)
@@ -66,6 +68,7 @@ struct AlbumListView_P3: View {
                 }
             }
             .padding(.horizontal, 20)
+            .frame(height: 64)
             
             ScrollView {
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0, alignment: .top), count: 2), spacing: 24) {
@@ -139,13 +142,18 @@ struct AlbumListView_P3: View {
             .onChange(of: viewModel.showNewAlbumBottomSheet) {
                 viewModel.action(.loadAlbums)
             }
+            .onChange(of: isDismiss) {
+                if isDismiss {
+                    viewModel.isSelect = false
+                }
+            }
             .onAppear {
                 viewModel.action(.loadAlbums)
             }
         }
         .sheet(isPresented: $showDeleteAlbumsBottomSheet) {
             GeometryReader { geo in
-                DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, albums: $viewModel.selectedAlbums)
+                DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, isDismiss: $isDismiss, albums: $viewModel.selectedAlbums)
                     .presentationDetents([.height(306 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)
@@ -153,7 +161,7 @@ struct AlbumListView_P3: View {
         }
         .sheet(isPresented: $viewModel.showNewAlbumBottomSheet) {
             GeometryReader { geo in
-                AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $viewModel.showNewAlbumBottomSheet)
+                AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $viewModel.showNewAlbumBottomSheet, album: .constant(Album(id: 0, title: "")))
                     .presentationDetents([.height(503)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)

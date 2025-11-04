@@ -23,7 +23,7 @@ enum Route: Hashable, Identifiable {
     // Home
     case dailyReview(todayJoys: [Joy], visibleJoys: [Bool], date: Date)
     case albumList
-    case albumDetail(albumId: Int)
+    case albumDetail(albumId: Int, popNum: Int)
     case review(savingJoys: [Joy], date: Date)
     case completeOhadol
     

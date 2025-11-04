@@ -54,7 +54,7 @@ struct CompleteRecommendJoyView: View {
                 .frame(maxWidth: .infinity)
             
             if isShowToast {
-                MadiiDesignSystem.MadiiToast(type: .complete, title: "오늘의 플레이리스트에 추가했어요", isShowToast: $isShowToast)
+                MadiiDesignSystem.MadiiToast(type: .complete, title: "오늘의 플레이리스트에 추가되었어요", isShowToast: $isShowToast)
             }
         }
         .onAppear {

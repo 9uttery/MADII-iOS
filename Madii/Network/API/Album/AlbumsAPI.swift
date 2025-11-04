@@ -19,6 +19,4 @@ struct AlbumsAPI {
         
         return APIEndpoint(method: .post, path: path, body: body)
     }
-    
-    
 }

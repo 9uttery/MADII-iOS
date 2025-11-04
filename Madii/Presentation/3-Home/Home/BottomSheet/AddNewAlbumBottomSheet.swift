@@ -12,6 +12,7 @@ struct AddNewAlbumBottomSheet: View {
     @Binding var showAddNewAlbumBottomSheet: Bool
     @State var title: String = ""
     @State var describe: String = ""
+    @Binding var album: Album
     
     var body: some View {
         VStack {
@@ -35,7 +36,12 @@ struct AddNewAlbumBottomSheet: View {
                 HStack {
                     TextField("앨범명", text: $title)
                         .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                        .lineSpacing(9.6)
+                        .frame(height: 26)
+                        .onChange(of: title) {
+                            if title.count > 30 {
+                                title = String(title.prefix(30))
+                            }
+                        }
                     
                     Text("\(title.count)/30")
                         .madiiFont(font: .madiiBody2, color: .madiiAlternative)
@@ -106,6 +112,7 @@ struct AddNewAlbumBottomSheet: View {
         .cornerRadius(40)
         .padding(.horizontal, 20)
         .background(.clear)
+        .dismissKeyboardOnTap() 
     }
     
     func postNewAlbum() {
@@ -114,14 +121,11 @@ struct AddNewAlbumBottomSheet: View {
                 switch result {
                 case .success(let data):
                     print("앨범 생성 성공 \(data)")
+                    album = Album(id: data.first?.albumId ?? 0, title: data.first?.name ?? "")
                     showAddNewAlbumBottomSheet = false
                 case .failure(let failure):
                     print("앨범 생성 실패 \(failure)")
             }
         }
     }
-}
-
-#Preview {
-    AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: .constant(true), title: "안녕하세요")
 }

@@ -39,12 +39,11 @@ struct FeelingReviewView: View {
                                 
                                 Text(todayJoys[index].title)
                                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                                    .lineSpacing(9.6)
+                                    .frame(height: 26)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .layoutPriority(-1)
-                                
-                                Spacer()
                                 
                                 HStack(spacing: 4) {
                                     ForEach(todayJoys[index].selectedEmotions) { emotion in
@@ -58,7 +57,7 @@ struct FeelingReviewView: View {
                                             .layoutPriority(1)
                                     }
                                 }
-                                .padding(.trailing, 22)
+                                .padding(.trailing, 12)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, 19)
@@ -90,16 +89,17 @@ struct FeelingReviewView: View {
             .frame(height: todayJoys.count > 3 ? 248 : 216)
             .padding(.bottom, todayJoys.count > 3 ? 40 : 72)
             
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 12) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
                 ForEach(emotions, id: \.self) { emotion in
                     Button {
                         toggleEmotion(emotion, for: clickedNum)
                     } label: {
                         Text(emotion.title)
                             .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                            .frame(height: 22)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 4)
-                            .padding(.horizontal, 6)
+                            .padding(.horizontal, 9)
                             .background(
                                 (todayJoys.indices.contains(clickedNum) &&
                                  todayJoys[clickedNum].selectedEmotions.contains(emotion))
@@ -107,7 +107,6 @@ struct FeelingReviewView: View {
                             )
                             .cornerRadius(10)
                     }
-                    // 🔹 2개 이상 선택된 경우는 선택 비활성화
                     .disabled(
                         todayJoys.indices.contains(clickedNum) &&
                         todayJoys[clickedNum].selectedEmotions.count >= 2 &&
