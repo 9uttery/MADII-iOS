@@ -50,7 +50,6 @@ struct HomeTodayJoyView: View {
                                 JoyMenuBottomSheet(joy: $selectedJoy, isMine: false, isFromTodayJoy: true) }
                         }
                     } else {
-                        // 클릭해보세요! 버튼
                         TodayJoyBeforeClickButton(todayJoyId: $todayJoyId, counter: $counter, todayJoy: $todayJoy)
                     }
                 }

@@ -60,7 +60,7 @@ struct HomeCalendar: View {
                     .padding(.bottom, 16)
                 
                 if selectedDate.isSameDay(as: Date()) && !isOhadol {
-                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 담아보세요") {
+                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 기록해보세요") {
                         postJoy()
                         joyTitle = ""
                     }
@@ -203,7 +203,7 @@ struct HomeCalendar: View {
                     
                     Text(diary)
                         .madiiFont(font: .madiiBody2, color: .gray100.opacity(0.74))
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(9.6)
                         .multilineTextAlignment(.leading)
                     
@@ -218,12 +218,13 @@ struct HomeCalendar: View {
                         }
                     }
                     .padding(.horizontal, 12)
+                    .padding(.bottom, 8)
                 }
                 .madiiBorderContainerStyle()
                 .padding(.bottom, 16)
             }
             
-            if isOhadol || !canOhadol {
+            if !isOhadol && !canOhadol {
                 Text(selectedDate < Date() && !selectedDate.isSameDay(as: Date()) ? "하루 돌아보기" : "오늘 하루 돌아보기")
                     .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                     .padding(.vertical, 16)

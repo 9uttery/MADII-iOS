@@ -7,13 +7,25 @@
 
 import SwiftUI
 
+enum DayItem: Hashable {
+    case empty
+    case date(Date)
+}
+
 struct HomeCalendarView: View {
     @Binding var isMonthly: Bool
     @State private var currentDate = Date()
     @Binding var selectedDay: Date
     @State var satisfactions: [SatisfactionDate] = []
 
-    var days: [Date] { getMonthDates(for: currentDate) }
+    var days: [DayItem] {
+        if isMonthly {
+            return getMonthDates(for: currentDate)
+        } else {
+            return getWeekDates(for: selectedDay)
+        }
+    }
+    
     var weekIndex: Int { currentWeekIndex(in: days, today: selectedDay) }
 
     var body: some View {
@@ -97,7 +109,7 @@ struct HomeCalendarView: View {
     private var calendarBody: some View {
         VStack(spacing: 0) {
             let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]
-            let todayWeekdayIndex = Calendar.current.component(.weekday, from: Date()) - 1
+            let todayWeekdayIndex = Calendar.current.component(.weekday, from: selectedDay) - 1
             
             HStack {
                 ForEach(daysOfWeek, id: \.self) { day in
@@ -112,22 +124,32 @@ struct HomeCalendarView: View {
             }
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
-                ForEach(days, id: \.self) { date in
-                    Button {
-                        selectedDay = date
-                        let calendar = Calendar.current
-                        if !calendar.isDate(date, equalTo: currentDate, toGranularity: .month) {
-                            withAnimation {
-                                currentDate = date
+                ForEach(days, id: \.self) { item in
+                    switch item {
+                    case .empty:
+                        Color.clear
+                            .frame(height: 36)
+
+                    case .date(let date):
+                        Button {
+                            selectedDay = date
+                            if isMonthly {
+                                let calendar = Calendar.current
+                                if !calendar.isDate(date, equalTo: currentDate, toGranularity: .month) {
+                                    withAnimation {
+                                        currentDate = date
+                                    }
+                                }
                             }
+                        } label: {
+                            dayCell(for: date)
                         }
-                    } label: {
-                        dayCell(for: date)
                     }
                 }
             }
-            .offset(y: isMonthly ? 0 : CGFloat(numberOfWeeksInMonth(for: selectedDay) - 1) * 24 - CGFloat(weekIndex) * 48)
-            .frame(height: CGFloat(isMonthly ? numberOfWeeksInMonth(for: selectedDay) * 36 + (numberOfWeeksInMonth(for: selectedDay) - 1) * 12 + 20 : 56))
+            .frame(height: CGFloat(
+                isMonthly ? numberOfWeeksInMonth(for: selectedDay) * 36 + (numberOfWeeksInMonth(for: selectedDay) - 1) * 12 + 16 : 56)
+            )
             .clipped()
             .contentShape(Rectangle())
         }
@@ -150,7 +172,7 @@ struct HomeCalendarView: View {
                     color: selectedDay.isSameDay(as: date) ? .madiiContrast : (isToday ? .madiiNormal : !isToday ? .madiiAlternative : (isCurrentMonth ? .primary : .secondary))
                 )
                 .frame(maxWidth: .infinity)
-                .frame(height: 36)
+                .frame(width: 36, height: 36)
                 .background(selectedDay.isSameDay(as: date) ? Color.madiiGreen100 : .clear)
                 .cornerRadius(8)
                 .overlay(
@@ -163,49 +185,58 @@ struct HomeCalendarView: View {
                 )
         }
     }
-
-    func getMonthDates(for date: Date) -> [Date] {
+    
+    func getMonthDates(for date: Date) -> [DayItem] {
         var calendar = Calendar.current
         calendar.locale = Locale(identifier: "ko_KR")
+
         let range = calendar.range(of: .day, in: .month, for: date)!
         let firstOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
-        let firstWeekday = calendar.component(.weekday, from: firstOfMonth)
-        var dates: [Date] = []
 
-        for offset in -(firstWeekday - 1)..<range.count {
-            if let date = calendar.date(byAdding: .day, value: offset, to: firstOfMonth) {
-                dates.append(date)
+        // 이번 달 1일의 요일
+        let weekday = calendar.component(.weekday, from: firstOfMonth) // 1 = 일요일
+        
+        var items: [DayItem] = []
+
+        // 앞 빈칸 채우기
+        for _ in 0..<(weekday - 1) {
+            items.append(.empty)
+        }
+
+        // 이번 달 날짜
+        for day in range {
+            if let dayDate = calendar.date(byAdding: .day, value: day - 1, to: firstOfMonth) {
+                items.append(.date(dayDate))
             }
         }
 
-        let totalCells = numberOfWeeksInMonth(for: date) * 7
-        let remaining = totalCells - dates.count
-
-        if remaining > 0 {
-            let nextMonth = calendar.date(byAdding: .month, value: 1, to: firstOfMonth)!
-            for day in 0..<remaining {
-                if let nextDate = calendar.date(byAdding: .day, value: day, to: nextMonth) {
-                    dates.append(nextDate)
-                }
-            }
-        }
-
-        return dates
+        return items
     }
 
     func dateString(_ date: Date) -> String {
         String(Calendar.current.component(.day, from: date))
     }
 
-    func currentWeekIndex(in monthDates: [Date], today: Date) -> Int {
-        let weeks = stride(from: 0, to: monthDates.count, by: 7).map {
-            Array(monthDates[$0..<min($0+7, monthDates.count)])
+    func currentWeekIndex(in items: [DayItem], today: Date) -> Int {
+        // 7개씩 끊어서 week 배열 생성
+        let weeks = stride(from: 0, to: items.count, by: 7).map {
+            Array(items[$0..<min($0 + 7, items.count)])
         }
+
+        let calendar = Calendar.current
+
         for (index, week) in weeks.enumerated() {
-            if week.contains(where: { Calendar.current.isDate($0, inSameDayAs: today) }) {
+            // 해당 주에 today's date가 포함되는지 확인
+            if week.contains(where: { item in
+                if case let .date(date) = item {
+                    return calendar.isDate(date, inSameDayAs: today)
+                }
+                return false
+            }) {
                 return index
             }
         }
+
         return 0
     }
 
@@ -246,6 +277,19 @@ struct HomeCalendarView: View {
                 print("Debug getDailySummaryList: isSuccess false")
             }
         }
+    }
+    
+    func getWeekDates(for date: Date) -> [DayItem] {
+        let calendar = Calendar.current
+        let weekInterval = calendar.dateInterval(of: .weekOfMonth, for: date)!
+
+        var items: [DayItem] = []
+        for index in 0..<7 {
+            if let date = calendar.date(byAdding: .day, value: index, to: weekInterval.start) {
+                items.append(.date(date))
+            }
+        }
+        return items
     }
 }
 

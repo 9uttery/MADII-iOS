@@ -191,6 +191,7 @@ struct HomeView_P3: View {
                         .background(.gray100.opacity(0.52))
                         .cornerRadius(20)
                 }
+                .padding(20)
             }
             .padding(20)
         }

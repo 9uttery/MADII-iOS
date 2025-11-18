@@ -36,8 +36,9 @@ struct CloseEditAlbumBottomSheet: View {
                 }
                 .frame(width: 82)
                 
-                MadiiDesignSystem.MadiiButton(title: "계속하기", color: .mainColor) {
+                MadiiDesignSystem.MadiiButton(title: "종료하기", color: .mainColor) {
                     isEdit = false
+                    isShowCloseEditAlbumBottomSheet = false
                 }
             }
         }

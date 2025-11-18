@@ -81,7 +81,7 @@ struct AlbumListView_P3: View {
                                     .resizable()
                                     .foregroundStyle(.madiiGreen100)
                                     .frame(width: 48, height: 48)
-                                    .padding(52)
+                                    .padding(UIScreen.main.bounds.width / 4 - 37)
                                     .background(.gray100.opacity(0.08))
                                     .cornerRadius(32)
                             }
@@ -91,7 +91,7 @@ struct AlbumListView_P3: View {
                                 .frame(height: 22, alignment: .center)
                                 .padding(.horizontal, 8)
                         }
-                        .frame(height: 186)
+                        .frame(height: UIScreen.main.bounds.width / 2 + 8)
                     }
                     
                     ForEach(viewModel.albums) { album in
@@ -106,7 +106,7 @@ struct AlbumListView_P3: View {
                                 ZStack(alignment: .topTrailing) {
                                     Image("Cover\(album.backgroundColorNum)")
                                         .resizable()
-                                        .frame(width: 152, height: 152)
+                                        .frame(width: (UIScreen.main.bounds.width - 52) / 2, height: (UIScreen.main.bounds.width - 52) / 2)
                                         .cornerRadius(32)
                                     
                                     if viewModel.isSelect {

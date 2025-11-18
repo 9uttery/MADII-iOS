@@ -37,12 +37,12 @@ struct CancelDailyReviewBottomSheet: View {
             HStack(spacing: 10) {
                 MadiiDesignSystem.MadiiButton(title: "닫기", color: .neutral) {
                     showCancelDailyReviewBottomSheet = false
-                    cancelDailyReview = true
                 }
                 .frame(width: 82)
                 
-                MadiiDesignSystem.MadiiButton(title: "계속하기", color: .mainColor) {
+                MadiiDesignSystem.MadiiButton(title: "종료하기", color: .mainColor) {
                     showCancelDailyReviewBottomSheet = false
+                    cancelDailyReview = true
                 }
             }
             .padding(.bottom, 40)
