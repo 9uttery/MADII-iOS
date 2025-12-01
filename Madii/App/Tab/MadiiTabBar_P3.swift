@@ -38,7 +38,7 @@ struct MadiiTabBar_P3: View {
                     
                     Spacer()
                 }
-                .frame(width: geo.size.width, height: 84)
+                .frame(width: geo.size.width, height: 86)
                 .background {
                     Color.madiiGray25
                         .clipShape(

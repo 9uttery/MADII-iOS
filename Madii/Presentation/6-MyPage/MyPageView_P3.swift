@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyPageView_P3: View {
     @Environment(Router.self) var router
+    @State private var showLogoutSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -45,16 +46,45 @@ struct MyPageView_P3: View {
                     .clipShape(RoundedRectangle(cornerRadius: 32))
                     
                     VStack(spacing: 4) {
-                        row("로그아웃 - 구현중!")
+                        Button {
+                            withAnimation {
+                                showLogoutSheet = true
+                            }
+                        } label: {
+                            row("로그아웃")
+                        }
+                        
                         row("회원탈퇴 - 구현중!")
                     }
                     .padding(.vertical, 8)
                     .background(Color.madiiElevated)
                     .clipShape(RoundedRectangle(cornerRadius: 32))
+                    
+                    // 현재 버전
+                    CurrentVersionView()
                 }
                 .padding(20)
                 
                 Spacer()
+            }
+            
+            if showLogoutSheet {
+                Color.black.opacity(0.8)
+                    .onTapGesture {
+                        withoutAnimation {
+                            showLogoutSheet = false
+                        }
+                    }
+                
+                VStack {
+                    Spacer()
+                    
+                    LogoutSheet_P3(showLogoutSheet: $showLogoutSheet)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 40)
+                }
+                .ignoresSafeArea()
+                .transition(.move(edge: .bottom))
             }
         }
     }

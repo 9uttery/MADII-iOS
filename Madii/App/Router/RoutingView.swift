@@ -42,11 +42,22 @@ struct RoutingView: View {
     private func finishLoadingView() {
         // 1.5초 후에 화면 전환
         Task {
+            let isSuccess = await reissueToken()
             try? await Task.sleep(for: .seconds(1.5))
             await MainActor.run {
                 withAnimation {
+                    router.isLoggedIn = isSuccess
                     router.isLoadingViewFinished = true
                 }
+            }
+        }
+    }
+    
+    private func reissueToken() async -> Bool {
+        await withCheckedContinuation { continuation in
+            UsersAPI.shared.reissueToken { isSuccess, response in
+                // TODO: response.hasProfile 여부에 따라 프로필 설정 화면
+                continuation.resume(returning: isSuccess)
             }
         }
     }

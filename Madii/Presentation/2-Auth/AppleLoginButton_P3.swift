@@ -27,7 +27,7 @@ struct AppleLoginButton_P3: View {
                 }
                 .padding(.leading, 20)
                 
-                Text("Apple 로그인")
+                Text("Apple 로그인 - 구현중!")
                     .madiiFont(.body1)
                     .foregroundStyle(Color.madiiNormal)
             }
