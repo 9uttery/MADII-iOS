@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct AppleLoginButton_P3: View {
-    @Environment(Router.self) var router
+    @Environment(LoginViewModel.self) var viewModel
     
     var body: some View {
         Button {
-            // TODO: 애플 로그인 구현
-//            router.isLoggedIn = true
+            viewModel.action(.appleLogin)
         } label: {
             ZStack {
                 Color.black
@@ -27,7 +26,7 @@ struct AppleLoginButton_P3: View {
                 }
                 .padding(.leading, 20)
                 
-                Text("Apple 로그인 - 구현중!")
+                Text("Apple 로그인")
                     .madiiFont(.body1)
                     .foregroundStyle(Color.madiiNormal)
             }

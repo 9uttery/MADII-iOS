@@ -36,6 +36,7 @@ struct HomeView_P3: View {
                         viewModel.action(.showAlbumList)
                     }
                     .padding(.bottom, 12)
+                    .padding(.horizontal, -20)
                     
                     if isFinishedGetJoy {
                         if viewModel.todayJoy.joyId == todayJoyId {

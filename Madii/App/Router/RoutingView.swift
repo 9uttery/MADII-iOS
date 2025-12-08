@@ -56,7 +56,8 @@ struct RoutingView: View {
     private func reissueToken() async -> Bool {
         await withCheckedContinuation { continuation in
             UsersAPI.shared.reissueToken { isSuccess, response in
-                // TODO: response.hasProfile 여부에 따라 프로필 설정 화면
+                var isSuccess: Bool = isSuccess
+                isSuccess = response.hasProfile
                 continuation.resume(returning: isSuccess)
             }
         }

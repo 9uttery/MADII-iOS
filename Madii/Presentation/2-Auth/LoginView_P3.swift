@@ -5,9 +5,12 @@
 //  Created by Anjin on 9/27/25.
 //
 
+import MadiiDesignSystem
 import SwiftUI
 
 struct LoginView_P3: View {
+    @Environment(LoginViewModel.self) var viewModel
+    
     var body: some View {
         ZStack {
             LoginBackground()
@@ -28,12 +31,33 @@ struct LoginView_P3: View {
                 
                 Spacer()
                 
-                VStack(spacing: 10) {
-                    // 카카오 로그인
-                    KakaoLoginButton_P3()
+                VStack(spacing: 28) {
+                    VStack(spacing: 10) {
+                        // 카카오 로그인
+                        KakaoLoginButton_P3()
+                        
+                        // 애플 로그인
+                        AppleLoginButton_P3()
+                    }
                     
-                    // 애플 로그인
-                    AppleLoginButton_P3()
+                    /*
+                     // TODO: 아이디 로그인, 회원가입 구현
+                    HStack(spacing: 10) {
+                        MadiiDesignSystem.MadiiButton(
+                            title: "아이디로 로그인",
+                            color: .mainColor,
+                            type: .medium,
+                            action: { viewModel.action(.loginWithID) }
+                        )
+                        
+                        MadiiDesignSystem.MadiiButton(
+                            title: "간편 회원가입",
+                            color: .mainColor,
+                            type: .medium,
+                            action: { viewModel.action(.signInWithID) }
+                        )
+                    }
+                     */
                 }
             }
             .padding(.top, 130)

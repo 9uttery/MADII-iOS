@@ -24,6 +24,14 @@ extension DIContainer {
         case .tab:
             MadiiTabView_P3()
             
+        // 로그인
+        case .loginWithID:
+            Text("아이디로 로그인\n구현중")
+        case .signInWithID:
+            Text("간편 회원가입\n구현중")
+        case .setProfile:
+            Text("소셜 로그인 후 프로필 설정\n구현중")
+            
         // 홈
         case .home:
             HomeView_P3(viewModel: homeViewModel())

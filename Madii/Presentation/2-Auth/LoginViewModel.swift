@@ -13,6 +13,7 @@ import Foundation
 @Observable
 class LoginViewModel {
     private let router: Router
+    private let appleLoginManager = AppleLoginManager()
     
     init(router: Router) {
         self.router = router
@@ -20,31 +21,76 @@ class LoginViewModel {
     
     enum Action {
         case kakaoLogin
+        case appleLogin
+        case signInWithID
+        case loginWithID
     }
     
     func action(_ action: Action) {
         switch action {
         case .kakaoLogin:
             kakaoLogin()
+        case .appleLogin:
+            appleLogin()
+        case .signInWithID:
+            router.push(.signInWithID)
+        case .loginWithID:
+            router.push(.loginWithID)
         }
     }
     
     private func login(idToken: String) {
         UsersAPI.shared.loginWithKakao(idToken: idToken) { isSuccess, response in
             if isSuccess {
-                // TODO: UserDefatuls 추가 필요 -> 이거 뭐임?
-//                hasEverLoggedIn = true
+                UserDefaultsService()
+                    .save(value: true, key: .hasEverOnboarded)
                 
                 if response.hasProfile {
                     self.router.isLoggedIn = true
                     print("DEBUG KakaoLoginButton: isSuccess true profile yes")
                 } else {
-                    // TODO: 프로필 화면 없으면 약관 동의 + 프로필 등록
-//                    showSignUpView = true
+                    self.router.push(.setProfile)
                     print("DEBUG KakaoLoginButton: isSuccess true profile no")
                 }
             } else {
                 print("DEBUG KakaoLoginButton: isSuccess false")
+            }
+        }
+    }
+    
+    private func loginWithApple(idToken: String) {
+        UsersAPI.shared.loginWithApple(idToken: idToken) { isSuccess, response in
+            if isSuccess {
+                UserDefaultsService()
+                    .save(value: true, key: .hasEverOnboarded)
+                
+                if response.hasProfile {
+                    self.router.isLoggedIn = true
+                    print("DEBUG AppleLoginButton: isSuccess true profile yes")
+                } else {
+                    self.router.push(.setProfile)
+                    print("DEBUG AppleLoginButton: isSuccess true profile no")
+                }
+            } else {
+                print("DEBUG AppleLoginButton: isSuccess false")
+            }
+        }
+    }
+    
+    private func appleLogin() {
+        appleLoginManager.signIn { result in
+            switch result {
+            case .success(let credential):
+                print("AppleLoginButton 로그인 성공:", credential.user)
+
+                if let idToken = credential.identityToken,
+                   let idTokenString = String(data: idToken, encoding: .utf8) {
+                    print("AppleLoginButton DEBUG identityToken:", idTokenString)
+                    self.loginWithApple(idToken: idTokenString)
+                }
+
+            case .failure(let error):
+                print("AppleLoginButton 애플 로그인 실패:", error)
             }
         }
     }
