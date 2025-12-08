@@ -95,6 +95,7 @@ struct DiaryReviewView: View {
                 router.push(.completeOhadol)
             }
         }
+        .opacity(isClickedImageButton ? 0.3 : 1)
         .sheet(isPresented: $isClickedImageButton) {
             PhotoPicker(
                 selectedImages: $selectedImages,

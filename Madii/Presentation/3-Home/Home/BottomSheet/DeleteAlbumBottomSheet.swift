@@ -57,6 +57,7 @@ struct DeleteAlbumBottomSheet: View {
         AlbumAPI.shared.deleteAlbums(albumId: albumIds) { isSuccess in
             if isSuccess {
                 print("Debug deleteAlbumsByAlbumId: isSuccess true")
+                albums = []
                 showDeleteAlbumBottomSheet = false
                 isDismiss = true
             } else {

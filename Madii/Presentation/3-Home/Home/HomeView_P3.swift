@@ -92,6 +92,7 @@ struct HomeView_P3: View {
             getTodayJoy()
         }
         .animation(.easeInOut, value: viewModel.isMonthly)
+        .opacity(showTodayJoyOptionBottomSheet || showSaveAlbumBottomSheet ? 0.3 : 1)
         .sheet(isPresented: $showTodayJoyOptionBottomSheet) {
             TodayJoyOptionBottomSheet(joyId: Binding(
                 get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
@@ -168,7 +169,6 @@ struct HomeView_P3: View {
     }
     
     private var todayJoyPlaceholder: some View {
-        
         ZStack {
             Image("todayJoy")
                 .resizable()
@@ -186,12 +186,11 @@ struct HomeView_P3: View {
                 } label: {
                     Text("클릭해 보세요!")
                         .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
-                        .padding(.vertical, 16)
                         .frame(width: UIScreen.main.bounds.width - 80)
+                        .padding(.vertical, 16)
                         .background(.gray100.opacity(0.52))
                         .cornerRadius(20)
                 }
-                .padding(20)
             }
             .padding(20)
         }

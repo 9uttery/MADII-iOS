@@ -100,6 +100,7 @@ struct AllAlbumListView_P3: View {
         .onChange(of: showAddNewAlbumBottomSheet) {
             getAlbums()
         }
+        .opacity(showAddNewAlbumBottomSheet ? 0.3 : 1)
         .sheet(isPresented: $showAddNewAlbumBottomSheet) {
             GeometryReader { geo in
                 AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet, album: .constant(Album(id: 0, title: "")))
