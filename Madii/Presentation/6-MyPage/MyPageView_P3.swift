@@ -58,7 +58,11 @@ struct MyPageView_P3: View {
                             row("로그아웃")
                         }
                         
-                        row("회원탈퇴 - 구현중!")
+                        Button {
+                            router.push(.signOut)
+                        } label: {
+                            row("회원탈퇴")
+                        }
                     }
                     .padding(.vertical, 8)
                     .background(Color.madiiElevated)

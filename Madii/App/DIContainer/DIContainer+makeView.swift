@@ -61,7 +61,7 @@ extension DIContainer {
         case .inquiry:
             InquiryView_P3()
         case .signOut:
-            EmptyView()
+            SignOutView_P3()
         }
     }
 }
