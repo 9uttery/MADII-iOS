@@ -568,6 +568,7 @@
 				"6-MyPage/MyPageView_P3.swift",
 				"6-MyPage/NoticeView_P3.swift",
 				"6-MyPage/NotificationView_P3.swift",
+				"6-MyPage/ProfileView_P3.swift",
 			);
 			target = 515EFC8A2AFCA0D100230647 /* Madii */;
 		};

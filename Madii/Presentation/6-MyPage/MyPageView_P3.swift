@@ -19,8 +19,12 @@ struct MyPageView_P3: View {
                 MyPageNavigationBar(title: "마이페이지")
                 
                 VStack(spacing: 20) {
-                    ProfileRow()
-                        .clipShape(RoundedRectangle(cornerRadius: 32))
+                    Button {
+                        router.push(.profile)
+                    } label: {
+                        ProfileRow()
+                            .clipShape(RoundedRectangle(cornerRadius: 32))
+                    }
                     
                     VStack(spacing: 4) {
                         Button {
@@ -136,7 +140,7 @@ private struct ProfileRow: View {
                     .clipShape(Circle())
             }
                 
-            Text("\(nickname) - 구현중!")
+            Text("\(nickname)")
                 .madiiFont(.subTitle)
                 .foregroundStyle(Color.madiiNormal)
             

@@ -53,7 +53,7 @@ extension DIContainer {
         case .myPage:
             MyPageView_P3()
         case .profile:
-            EmptyView()
+            ProfileView_P3()
         case .notification:
             NotificationView_P3()
         case .notice:
