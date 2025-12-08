@@ -25,7 +25,7 @@ class JoyAPI {
             "contents": contents
         ]
         
-        let dummy = PostJoyResponse(joyId: 0, joyIconNum: 0, contents: "")
+        let dummy = PostJoyResponse(joyId: 0, joyColorNum: 0, contents: "")
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<PostJoyResponse>.self) { response in
                 switch response.result {
@@ -95,7 +95,7 @@ class JoyAPI {
             "joyColorNum": joyColorNum
         ]
         
-        let dummy = PostJoyResponse(joyId: 0, joyIconNum: 0, contents: "")
+        let dummy = PostJoyResponse(joyId: 0, joyColorNum: 0, contents: "")
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: BaseResponse<PostJoyResponse>.self) { response in
                 switch response.result {
@@ -125,6 +125,7 @@ class JoyAPI {
 }
 
 struct PostJoyResponse: Codable {
-    let joyId, joyIconNum: Int
+    let joyId: Int
+    let joyColorNum: Int
     let contents: String
 }

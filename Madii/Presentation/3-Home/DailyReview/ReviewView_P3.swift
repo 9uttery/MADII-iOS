@@ -67,11 +67,13 @@ struct ReviewView_P3: View {
         .onAppear {
 //            getAchievementByDate()
         }
+        .background(.madiiDepth)
         .onChange(of: cancelDailyReview) {
             if cancelDailyReview {
                 router.pop(times: 2)
             }
         }
+        .opacity(showCancelDailyReviewBottomSheet ? 0.3 : 1)
         .sheet(isPresented: $showCancelDailyReviewBottomSheet) {
             GeometryReader { geo in
                 CancelDailyReviewBottomSheet(showCancelDailyReviewBottomSheet: $showCancelDailyReviewBottomSheet, cancelDailyReview: $cancelDailyReview)

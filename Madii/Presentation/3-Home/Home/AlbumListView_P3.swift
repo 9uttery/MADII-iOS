@@ -45,7 +45,6 @@ struct AlbumListView_P3: View {
                 Spacer()
                 
                 Button {
-                    viewModel.selectedAlbums = []
                     viewModel.isSelect
                         ? showDeleteAlbumsBottomSheet = true
                         : viewModel.action(.toggleSelect)
@@ -151,6 +150,7 @@ struct AlbumListView_P3: View {
                 viewModel.action(.loadAlbums)
             }
         }
+        .opacity(showDeleteAlbumsBottomSheet || viewModel.showNewAlbumBottomSheet ? 0.3 : 1)
         .sheet(isPresented: $showDeleteAlbumsBottomSheet) {
             GeometryReader { geo in
                 DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, isDismiss: $isDismiss, albums: $viewModel.selectedAlbums)

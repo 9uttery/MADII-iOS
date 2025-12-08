@@ -42,7 +42,8 @@ struct AlbumDetailView_P3: View {
             }
             toastLayer
         }
-        .dismissKeyboardOnTap() 
+        .dismissKeyboardOnTap()
+        .background(.madiiDepth)
         .onAppear(perform: onAppear)
         .onAppear {
             print(viewModel.albumCoverId)
@@ -60,6 +61,7 @@ struct AlbumDetailView_P3: View {
         .onChange(of: viewModel.albumId) {
             viewModel.action(.loadAlbum)
         }
+        .opacity(showJoyOptionBottomSheet || showJoyOptionBottomSheet || showDeleteJoyBottomSheet || showJoyEllipsisBottomSheet || showReportAlbumBottomSheet || showAlbumSavedBottomSheet || showReportReasonBottomSheet || showAlbumOptionBottomSheet || showAlbumChangePublicBottomSheet || showDeleteAlbumBottomSheet ? 0.3 : 1)
         .onChange(of: showDeleteJoyBottomSheet) { viewModel.action(.loadAlbum) }
         .onChange(of: showAlbumChangePublicBottomSheet) { viewModel.action(.loadAlbum) }
         .sheet(isPresented: $showJoyOptionBottomSheet) { joyOptionSheet }
@@ -174,7 +176,19 @@ private extension AlbumDetailView_P3 {
             Text(viewModel.albumTitle)
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, 4)
+                .padding(.bottom, 8)
+            
+            if viewModel.isMine {
+                HStack {
+                    Image(viewModel.isPublic ? "unlock" : "lock")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                    
+                    Text(viewModel.isPublic ? "전체 공개" : "나만 보기")
+                        .madiiFont(font: .madiiCaption, color: .madiiAlternative)
+                }
+                .padding(.bottom, 8)
+            }
             
             Text(viewModel.albumDescription)
                 .madiiFont(font: .caption, color: .white.opacity(0.43))

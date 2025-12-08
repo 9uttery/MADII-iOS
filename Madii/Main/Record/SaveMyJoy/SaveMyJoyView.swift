@@ -71,7 +71,7 @@ struct SaveMyJoyView: View {
             if isSuccess {
                 hideKeyboard()
                 myNewJoy = ""
-                joy = Joy(joyId: newJoy.joyId, icon: newJoy.joyIconNum, title: newJoy.contents)
+                joy = Joy(joyId: newJoy.joyId, icon: newJoy.joyColorNum, title: newJoy.contents)
                 
                 withAnimation { showSaveJoyToast = true }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {

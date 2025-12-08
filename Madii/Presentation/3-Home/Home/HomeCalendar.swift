@@ -79,75 +79,105 @@ struct HomeCalendar: View {
                     .padding(.horizontal, 16)
                 }
                 
-                if isOhadol {
+                List {
                     ForEach(joys) { joy in
-                        HStack(spacing: 12) {
-                            Circle()
-                                .frame(width: 12, height: 12)
-                                .foregroundStyle((joy.icon % 6 + 1).intToColor)
-                            
-                            Text(joy.title)
-                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                                .lineSpacing(9.6)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
-                                .layoutPriority(-1)
-                            
-                            Spacer()
-                            
-                            HStack(spacing: 4) {
-                                ForEach(joy.selectedEmotions) { emotion in
-                                    Text(emotion.title)
-                                        .madiiFont(font: .caption, color: emotion.color)
-                                        .padding(.vertical, 4.5)
-                                        .padding(.horizontal, 8)
-                                        .background(emotion.color.opacity(0.08))
-                                        .cornerRadius(8)
-                                        .lineLimit(1)
-                                        .layoutPriority(1)
-
+                        JoyRowView(
+                            joy: joy,
+                            selectedDate: selectedDate,
+                            onDelete: {
+                                deleteJoy(achievementId: joy.achievementId)
+                                isDeleted = true
+                            },
+                            onEdit: {
+                                editJoyId = joy.joyId!
+                                editJoyTitle = joy.title
+                                showRenameJoyBottomSheet = true
+                            },
+                            onPlayToggle: {
+                                if joy.isAchieved {
+                                    cancelJoy(achievementId: joy.achievementId)
+                                } else {
+                                    playJoy(achievementId: joy.achievementId)
                                 }
                             }
-                            .padding(.trailing, 22)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 40)
-                        .padding(.top, 16)
-                        .padding(.leading, 26)
-                        .background(.madiiElevated)
+                        )
                     }
-                } else {
-                    List {
-                        ForEach(joys) { joy in
-                            JoyRowView(
-                                joy: joy,
-                                selectedDate: selectedDate,
-                                onDelete: {
-                                    deleteJoy(achievementId: joy.achievementId)
-                                    isDeleted = true
-                                },
-                                onEdit: {
-                                    editJoyId = joy.joyId!
-                                    editJoyTitle = joy.title
-                                    showRenameJoyBottomSheet = true
-                                },
-                                onPlayToggle: {
-                                    if joy.isAchieved {
-                                        cancelJoy(achievementId: joy.achievementId)
-                                    } else {
-                                        playJoy(achievementId: joy.achievementId)
-                                    }
-                                }
-                            )
-                        }
-                    }
-                    .listStyle(.plain)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56 * CGFloat(joys.count))
-                    .environment(\.defaultMinListRowHeight, 40)
-                    .background(Color.madiiElevated)
-                    .padding(.top, joys.isEmpty ? 0 : 16)
                 }
+                .listStyle(.plain)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56 * CGFloat(joys.count))
+                .environment(\.defaultMinListRowHeight, 40)
+                .background(Color.madiiElevated)
+                .padding(.top, joys.isEmpty ? 0 : 16)
+//                if isOhadol {
+//                    ForEach(joys) { joy in
+//                        HStack(spacing: 12) {
+//                            Circle()
+//                                .frame(width: 12, height: 12)
+//                                .foregroundStyle((joy.icon % 6 + 1).intToColor)
+//                            
+//                            Text(joy.title)
+//                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+//                                .lineSpacing(9.6)
+//                                .lineLimit(1)
+//                                .truncationMode(.tail)
+//                                .layoutPriority(-1)
+//                            
+//                            Spacer()
+//                            
+//                            HStack(spacing: 4) {
+//                                ForEach(joy.selectedEmotions) { emotion in
+//                                    Text(emotion.title)
+//                                        .madiiFont(font: .caption, color: emotion.color)
+//                                        .padding(.vertical, 4.5)
+//                                        .padding(.horizontal, 8)
+//                                        .background(emotion.color.opacity(0.08))
+//                                        .cornerRadius(8)
+//                                        .lineLimit(1)
+//                                        .layoutPriority(1)
+//
+//                                }
+//                            }
+//                            .padding(.trailing, 22)
+//                        }
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .frame(height: 40)
+//                        .padding(.top, 16)
+//                        .padding(.leading, 26)
+//                        .background(.madiiElevated)
+//                    }
+//                } else {
+//                    List {
+//                        ForEach(joys) { joy in
+//                            JoyRowView(
+//                                joy: joy,
+//                                selectedDate: selectedDate,
+//                                onDelete: {
+//                                    deleteJoy(achievementId: joy.achievementId)
+//                                    isDeleted = true
+//                                },
+//                                onEdit: {
+//                                    editJoyId = joy.joyId!
+//                                    editJoyTitle = joy.title
+//                                    showRenameJoyBottomSheet = true
+//                                },
+//                                onPlayToggle: {
+//                                    if joy.isAchieved {
+//                                        cancelJoy(achievementId: joy.achievementId)
+//                                    } else {
+//                                        playJoy(achievementId: joy.achievementId)
+//                                    }
+//                                }
+//                            )
+//                        }
+//                    }
+//                    .listStyle(.plain)
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: 56 * CGFloat(joys.count))
+//                    .environment(\.defaultMinListRowHeight, 40)
+//                    .background(Color.madiiElevated)
+//                    .padding(.top, joys.isEmpty ? 0 : 16)
+//                }
             }
             .madiiBorderContainerStyle(paddingHorizontal: 0)
             .padding(.bottom, 16)
@@ -193,7 +223,7 @@ struct HomeCalendar: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .madiiBorderContainerStyle()
+                .madiiBorderContainerStyle(cornerRadius: 32)
                 .padding(.bottom, 16)
                 
                 VStack(alignment: .leading, spacing: 16) {
@@ -220,7 +250,7 @@ struct HomeCalendar: View {
                     .padding(.horizontal, 12)
                     .padding(.bottom, 8)
                 }
-                .madiiBorderContainerStyle()
+                .madiiBorderContainerStyle(cornerRadius: 32)
                 .padding(.bottom, 16)
             }
             
@@ -239,6 +269,7 @@ struct HomeCalendar: View {
                 .frame(height: 100)
         }
         .scrollIndicators(.hidden)
+        .opacity(showRenameJoyBottomSheet ? 0.3 : 1)
         .sheet(isPresented: $showRenameJoyBottomSheet) {
             RenameJoyBottomSheet(showRenameJoyBottomSheet: $showRenameJoyBottomSheet, newJoyTitle: $editJoyTitle, isSuccessEditJoy: $isSuccessEditJoy, joyId: $editJoyId)
                 .presentationDetents([.height(304)])
@@ -271,6 +302,9 @@ struct HomeCalendar: View {
                                 icon: dto.joyIconNum,
                                 title: dto.contents
                             )
+                        }
+                        if !selectedDate.isSameDay(as: Date()) && selectedDate < Date() {
+                            playJoy(achievementId: joys.first?.achievementId ?? 0)
                         }
                     } else {
                         print("Debug postAchievements: isSuccess false")
@@ -327,7 +361,6 @@ struct HomeCalendar: View {
                                 title: dto.contents
                             )
                         }
-                        print("안녕히가세요\(joys)")
                     } else {
                         joys = []
                         print("Debug getAchievementByDate: isSuccess false")

@@ -29,18 +29,17 @@ struct JoyRowView: View {
             Spacer()
 
             if joy.selectedEmotions.isEmpty {
-                if selectedDate.isSameDay(as: Date()) {
-                    Button {
-                        onPlayToggle()
-                    } label: {
-                        Image(systemName: "checkmark.circle")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
-                            .padding(4)
-                    }
-                    .buttonStyle(.borderless) 
+                Button {
+                    onPlayToggle()
+                    print("hello")
+                } label: {
+                    Image(systemName: "checkmark.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
+                        .padding(4)
                 }
+                .buttonStyle(.borderless)
             } else {
                 ForEach(joy.selectedEmotions) { emotion in
                     Text(emotion.title)
