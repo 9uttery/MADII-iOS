@@ -13,6 +13,7 @@ struct AddNewAlbumBottomSheet: View {
     @State var title: String = ""
     @State var describe: String = ""
     @State var isError: Bool = false
+    @Binding var showSuccessToast: Bool
     @Binding var album: Album
     
     var body: some View {
@@ -51,8 +52,8 @@ struct AddNewAlbumBottomSheet: View {
                 .padding(12)
                 .background(.madiiGray30)
                 .cornerRadius(12)
-                .padding(.bottom, 12)
                 .roundedBorder(cornerRadius: 12, color: isError ? .madiiNegative : .clear)
+                .padding(.bottom, 12)
                 
                 Text("*필수로 작성해야 해요")
                     .madiiFont(font: .caption, color: isError ? .madiiNegative : .madiiNeutral)
@@ -109,7 +110,6 @@ struct AddNewAlbumBottomSheet: View {
                             postNewAlbum()
                         }
                     }
-                    .disabled(title.isEmpty)
                 }
             }
             .padding(.bottom, 40)
@@ -129,6 +129,7 @@ struct AddNewAlbumBottomSheet: View {
                 case .success(let data):
                     print("앨범 생성 성공 \(data)")
                     album = Album(id: data.first?.albumId ?? 0, title: data.first?.name ?? "")
+                    showSuccessToast = true
                     showAddNewAlbumBottomSheet = false
                 case .failure(let failure):
                     print("앨범 생성 실패 \(failure)")

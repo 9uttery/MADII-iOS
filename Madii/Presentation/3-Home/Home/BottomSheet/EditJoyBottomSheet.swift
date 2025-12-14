@@ -109,6 +109,7 @@ struct EditJoyBottomSheet: View {
         .sheet(isPresented: $showAddNewAlbumBottomSheet) {
             AddNewAlbumBottomSheet(
                 showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet,
+                showSuccessToast: .constant(false),
                 album: $album
             )
                 .presentationDetents([.height(503)])
