@@ -105,7 +105,7 @@ struct EditJoyBottomSheet: View {
             getAllAlbums()
             getSavedAlbumsIdByJoy()
         }
-        .opacity(showAddNewAlbumBottomSheet ? 0.3 : 1)
+        .opacity(showAddNewAlbumBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showAddNewAlbumBottomSheet) {
             AddNewAlbumBottomSheet(
                 showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet,

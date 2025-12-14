@@ -12,6 +12,7 @@ struct AddNewAlbumBottomSheet: View {
     @Binding var showAddNewAlbumBottomSheet: Bool
     @State var title: String = ""
     @State var describe: String = ""
+    @State var isError: Bool = false
     @Binding var album: Album
     
     var body: some View {
@@ -51,9 +52,10 @@ struct AddNewAlbumBottomSheet: View {
                 .background(.madiiGray30)
                 .cornerRadius(12)
                 .padding(.bottom, 12)
+                .roundedBorder(cornerRadius: 12, color: isError ? .madiiNegative : .clear)
                 
                 Text("*필수로 작성해야 해요")
-                    .madiiFont(font: .caption, color: .madiiNeutral)
+                    .madiiFont(font: .caption, color: isError ? .madiiNegative : .madiiNeutral)
                     .padding(.bottom, 40)
                 
                 Text("앨범 소개")
@@ -100,7 +102,12 @@ struct AddNewAlbumBottomSheet: View {
                     .frame(width: 82)
                     
                     MadiiDesignSystem.MadiiButton(title: "만들기", color: .mainColor) {
-                        postNewAlbum()
+                        if title.isEmpty {
+                            isError = true
+                        } else {
+                            isError = false
+                            postNewAlbum()
+                        }
                     }
                     .disabled(title.isEmpty)
                 }

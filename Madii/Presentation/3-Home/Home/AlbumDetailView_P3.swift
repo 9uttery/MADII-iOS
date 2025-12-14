@@ -61,7 +61,7 @@ struct AlbumDetailView_P3: View {
         .onChange(of: viewModel.albumId) {
             viewModel.action(.loadAlbum)
         }
-        .opacity(showJoyOptionBottomSheet || showJoyOptionBottomSheet || showDeleteJoyBottomSheet || showJoyEllipsisBottomSheet || showReportAlbumBottomSheet || showAlbumSavedBottomSheet || showReportReasonBottomSheet || showAlbumOptionBottomSheet || showAlbumChangePublicBottomSheet || showDeleteAlbumBottomSheet ? 0.3 : 1)
+        .opacity(showJoyOptionBottomSheet || showJoyOptionBottomSheet || showDeleteJoyBottomSheet || showJoyEllipsisBottomSheet || showReportAlbumBottomSheet || showAlbumSavedBottomSheet || showReportReasonBottomSheet || showAlbumOptionBottomSheet || showAlbumChangePublicBottomSheet || showDeleteAlbumBottomSheet ? 0.8 : 1)
         .onChange(of: showDeleteJoyBottomSheet) { viewModel.action(.loadAlbum) }
         .onChange(of: showAlbumChangePublicBottomSheet) { viewModel.action(.loadAlbum) }
         .sheet(isPresented: $showJoyOptionBottomSheet) { joyOptionSheet }

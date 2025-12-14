@@ -269,7 +269,7 @@ struct HomeCalendar: View {
                 .frame(height: 100)
         }
         .scrollIndicators(.hidden)
-        .opacity(showRenameJoyBottomSheet ? 0.3 : 1)
+        .opacity(showRenameJoyBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showRenameJoyBottomSheet) {
             RenameJoyBottomSheet(showRenameJoyBottomSheet: $showRenameJoyBottomSheet, newJoyTitle: $editJoyTitle, isSuccessEditJoy: $isSuccessEditJoy, joyId: $editJoyId)
                 .presentationDetents([.height(304)])
@@ -361,6 +361,7 @@ struct HomeCalendar: View {
                                 title: dto.contents
                             )
                         }
+                        print(joys)
                     } else {
                         joys = []
                         print("Debug getAchievementByDate: isSuccess false")

@@ -73,7 +73,7 @@ struct ReviewView_P3: View {
                 router.pop(times: 2)
             }
         }
-        .opacity(showCancelDailyReviewBottomSheet ? 0.3 : 1)
+        .opacity(showCancelDailyReviewBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showCancelDailyReviewBottomSheet) {
             GeometryReader { geo in
                 CancelDailyReviewBottomSheet(showCancelDailyReviewBottomSheet: $showCancelDailyReviewBottomSheet, cancelDailyReview: $cancelDailyReview)

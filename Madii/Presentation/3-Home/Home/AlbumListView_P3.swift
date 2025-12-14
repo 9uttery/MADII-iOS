@@ -71,27 +71,25 @@ struct AlbumListView_P3: View {
             
             ScrollView {
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0, alignment: .top), count: 2), spacing: 24) {
-                    if !viewModel.isSelect {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Button {
-                                viewModel.action(.createAlbum)
-                            } label: {
-                                Image("plusStroke")
-                                    .resizable()
-                                    .foregroundStyle(.madiiGreen100)
-                                    .frame(width: 48, height: 48)
-                                    .padding(UIScreen.main.bounds.width / 4 - 37)
-                                    .background(.gray100.opacity(0.08))
-                                    .cornerRadius(32)
-                            }
-                            
-                            Text("새로운 앨범")
-                                .madiiFont(font: .madiiBody4, color: .madiiGreen100)
-                                .frame(height: 22, alignment: .center)
-                                .padding(.horizontal, 8)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Button {
+                            viewModel.action(.createAlbum)
+                        } label: {
+                            Image("plusStroke")
+                                .resizable()
+                                .foregroundStyle(.madiiGreen100)
+                                .frame(width: 48, height: 48)
+                                .padding(UIScreen.main.bounds.width / 4 - 37)
+                                .background(.gray100.opacity(0.08))
+                                .cornerRadius(32)
                         }
-                        .frame(height: UIScreen.main.bounds.width / 2 + 8)
+                        
+                        Text("새로운 앨범")
+                            .madiiFont(font: .madiiBody4, color: .madiiGreen100)
+                            .frame(height: 22, alignment: .center)
+                            .padding(.horizontal, 8)
                     }
+                    .frame(height: UIScreen.main.bounds.width / 2 + 8)
                     
                     ForEach(viewModel.albums) { album in
                         Button {
@@ -150,7 +148,7 @@ struct AlbumListView_P3: View {
                 viewModel.action(.loadAlbums)
             }
         }
-        .opacity(showDeleteAlbumsBottomSheet || viewModel.showNewAlbumBottomSheet ? 0.3 : 1)
+        .opacity(showDeleteAlbumsBottomSheet || viewModel.showNewAlbumBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showDeleteAlbumsBottomSheet) {
             GeometryReader { geo in
                 DeleteAlbumBottomSheet(showDeleteAlbumBottomSheet: $showDeleteAlbumsBottomSheet, isDismiss: $isDismiss, albums: $viewModel.selectedAlbums)

@@ -93,7 +93,7 @@ struct HomeView_P3: View {
             getTodayJoy()
         }
         .animation(.easeInOut, value: viewModel.isMonthly)
-        .opacity(showTodayJoyOptionBottomSheet || showSaveAlbumBottomSheet ? 0.3 : 1)
+        .opacity(showTodayJoyOptionBottomSheet || showSaveAlbumBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showTodayJoyOptionBottomSheet) {
             TodayJoyOptionBottomSheet(joyId: Binding(
                 get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
