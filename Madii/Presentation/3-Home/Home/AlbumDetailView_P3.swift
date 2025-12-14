@@ -186,6 +186,7 @@ private extension AlbumDetailView_P3 {
                     
                     Text(viewModel.isPublic ? "전체 공개" : "나만 보기")
                         .madiiFont(font: .madiiCaption, color: .madiiAlternative)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 8)
             }
