@@ -284,6 +284,7 @@ class UsersAPI {
                 case .success(let response):
                     guard let data = response.data else {
                         print("DEBUG(reissue token): data nil")
+                        completion(false, LoginResponse(accessToken: "", refreshToken: "", agreedMarketing: false, hasProfile: false))
                         return
                     }
                     
