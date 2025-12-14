@@ -88,6 +88,16 @@ struct HomeCalendarView: View {
             Spacer()
             
             Button {
+                selectedDay = Date()
+                currentDate = Date()
+            } label: {
+                Text("오늘")
+                    .madiiFont(font: .madiiBody3, color: selectedDay.isSameDay(as: Date()) ? .madiiGreen40 : .madiiGreen100)
+            }
+            .disabled(selectedDay.isSameDay(as: Date()))
+            .padding(.trailing, 16)
+            
+            Button {
                 isMonthly.toggle()
                 print(weekIndex)
             } label: {
