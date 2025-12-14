@@ -39,7 +39,6 @@ struct FeelingReviewView: View {
                                 
                                 Text(todayJoys[index].title)
                                     .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                                    .frame(height: 26)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
@@ -62,6 +61,7 @@ struct FeelingReviewView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, 19)
                             .padding(.leading, 26)
+                            .frame(height: 64)
                             .background(.madiiElevated)
                             .cornerRadius(20)
                             .overlay(
