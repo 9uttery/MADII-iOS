@@ -11,7 +11,7 @@ import SwiftUI
 
 extension Int {
     var intToColor: Color {
-        switch self / 7 {
+        switch self % 7 {
         case 0:
             return .madiiRedOrange
         case 1:

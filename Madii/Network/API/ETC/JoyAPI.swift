@@ -126,6 +126,6 @@ class JoyAPI {
 
 struct PostJoyResponse: Codable {
     let joyId: Int
-    let joyColorNum: Int
+    let joyColorNum: Int?
     let contents: String
 }
