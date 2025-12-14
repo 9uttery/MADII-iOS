@@ -78,7 +78,7 @@ class HomeViewModel_P3 {
             }
         }
     }
-    private func getJoy() {
+    func getJoy() {
         DailySummaryAPI.shared.getDailySummary(date: Date()) { isSuccess, dailySummary in
             if isSuccess {
                 self.playListJoys = dailySummary.savingJoys.map { dto in

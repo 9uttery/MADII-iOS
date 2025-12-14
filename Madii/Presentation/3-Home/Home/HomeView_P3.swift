@@ -177,8 +177,10 @@ struct HomeView_P3: View {
                 .cornerRadius(40)
                 .clipped()
             
-            VStack(spacing: 6) {
+            VStack {
                 Image("todayClover")
+                
+                Spacer()
                 
                 Button {
                     withAnimation(.easeInOut(duration: 0.4)) {
@@ -215,6 +217,26 @@ struct HomeView_P3: View {
                 isFinishedGetJoy = true
             } else {
                 print("DEBUG HomeTodayJoyView getTodayJoy isSuccess false")
+            }
+        }
+    }
+    
+    private func playJoy() {
+        AchievementsAPI.shared.playJoy(joyId: viewModel.todayJoy.joyId ?? 0) { isSuccess, isDuplicate in
+            if isSuccess {
+                print("DEBUG playJoy success")
+                if isDuplicate {
+                    print("DEBUG playJoy duplicate")
+                    self.viewModel.isDuplicated = true
+                } else {
+                    if selectedDate.isSameDay(as: Date()) {
+                        self.viewModel.getJoy()
+                    }
+                    self.viewModel.isPlayJoy = true
+                }
+            } else {
+                print("debug playJoy: isSuccess false")
+                self.viewModel.isDuplicated = true
             }
         }
     }
