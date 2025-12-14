@@ -18,7 +18,8 @@ struct ArchivingView_P3: View {
         VStack {
             HStack {
                 Text("아카이브")
-                    .madiiFont(font: .madiiTitle, color: .madiiAlternative)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiAlternative)
                 
                 Spacer()
                 
@@ -31,6 +32,7 @@ struct ArchivingView_P3: View {
                 }
             }
             .padding(.vertical, 10)
+            .padding(.horizontal, 24)
             
             Spacer()
             
@@ -44,6 +46,5 @@ struct ArchivingView_P3: View {
             
             Spacer()
         }
-        .padding(.horizontal, 20)
     }
 }
