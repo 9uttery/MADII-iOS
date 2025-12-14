@@ -25,7 +25,9 @@ struct InquiryView_P3: View {
                         .frame(width: 111, height: 85)
                         .padding(.bottom, 32)
                     
-                    Text("madii.service.cs@gmail.com로\n문의해 주세요")
+                    (Text("madii.service.cs@gmail.com")
+                        .underline()
+                    + Text("로\n문의해 주세요"))
                         .multilineTextAlignment(.center)
                 }
                 

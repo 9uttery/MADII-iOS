@@ -188,6 +188,7 @@ struct HomeView_P3: View {
                     Text("클릭해 보세요!")
                         .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
                         .frame(width: UIScreen.main.bounds.width - 80)
+                        .frame(height: 16)
                         .padding(.vertical, 16)
                         .background(.gray100.opacity(0.52))
                         .cornerRadius(20)

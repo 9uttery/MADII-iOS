@@ -66,6 +66,7 @@ struct FeelingReviewView: View {
                             .frame(height: 64)
                             .background(.madiiElevated)
                             .cornerRadius(20)
+                            .animation(nil, value: clickedNum)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(
@@ -129,8 +130,6 @@ struct FeelingReviewView: View {
             .disabled(isNextButtonDisabled)
             .opacity(isNextButtonDisabled ? 0.4 : 1.0)
         }
-        .animation(.easeInOut, value: clickedNum)
-        .animation(.easeInOut, value: todayJoys)
     }
     
     func toggleEmotion(_ emotion: Emotion, for joyIndex: Int) {
