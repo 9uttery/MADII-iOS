@@ -46,6 +46,8 @@ struct FeelingReviewView: View {
                                     .allowsTightening(false)
                                     .layoutPriority(-1)
                                 
+                                Spacer(minLength: 0)
+                                
                                 HStack(spacing: 4) {
                                     ForEach(todayJoys[index].selectedEmotions) { emotion in
                                         Text(emotion.title)
@@ -58,6 +60,7 @@ struct FeelingReviewView: View {
                                             .layoutPriority(1)
                                     }
                                 }
+                                .frame(alignment: .trailing)
                                 .padding(.trailing, 12)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
