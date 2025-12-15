@@ -26,11 +26,12 @@ extension DIContainer {
             
         // 로그인
         case .loginWithID:
+            // TODO: 태우야 여기 해쥬
             Text("아이디로 로그인\n구현중")
         case .signInWithID:
-            Text("간편 회원가입\n구현중")
+            SignUpView_P3(loginType: .id)
         case .setProfile:
-            Text("소셜 로그인 후 프로필 설정\n구현중")
+            SignUpView_P3(loginType: .apple)
             
         // 홈
         case .home:

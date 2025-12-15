@@ -518,11 +518,15 @@
 				"1-Onboarding/OnboardingStep.swift",
 				"1-Onboarding/OnboardingView_P3.swift",
 				"1-Onboarding/SplashView_P3.swift",
-				"2-Auth/AppleLoginButton_P3.swift",
-				"2-Auth/AppleLoginManager.swift",
-				"2-Auth/KakaoLoginButton_P3.swift",
 				"2-Auth/LoginView_P3.swift",
 				"2-Auth/LoginViewModel.swift",
+				"2-Auth/SignUp/0-Term/ServiceTerm.swift",
+				"2-Auth/SignUp/0-Term/ServiceTermView_P3.swift",
+				"2-Auth/SignUp/0-Term/TermRow_P3.swift",
+				"2-Auth/SignUpView_P3.swift",
+				"2-Auth/SocialLogin/AppleLoginButton_P3.swift",
+				"2-Auth/SocialLogin/AppleLoginManager.swift",
+				"2-Auth/SocialLogin/KakaoLoginButton_P3.swift",
 				"3-Home/DailyReview/CancelDailyReviewBottomSheet.swift",
 				"3-Home/DailyReview/CompleteReviewView.swift",
 				"3-Home/DailyReview/DailyReviewView_P3.swift",
@@ -2095,7 +2099,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2136,7 +2140,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
