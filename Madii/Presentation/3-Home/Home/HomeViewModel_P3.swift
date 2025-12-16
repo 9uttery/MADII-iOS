@@ -20,6 +20,7 @@ class HomeViewModel_P3 {
     var finishedJoys: [Joy] = []
     var isPlayJoy: Bool = false
     var isDuplicated: Bool = false
+    var selectedDate: Date = Date()
 
     init(router: Router) {
         self.router = router
@@ -69,7 +70,9 @@ class HomeViewModel_P3 {
                     print("DEBUG playJoy duplicate")
                     self.isDuplicated = true
                 } else {
-                    self.getJoy()
+                    if self.selectedDate.isSameDay(as: Date()) {
+                        self.getJoy()
+                    }
                     self.isPlayJoy = true
                 }
             } else {

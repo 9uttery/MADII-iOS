@@ -16,7 +16,6 @@ struct HomeView_P3: View {
     @State var album: Album = Album(id: 0, title: "")
     @State var isOhadol: Bool = false
     @State var canOhadol: Bool = false
-    @State var selectedDate: Date = Date()
     @State var showTodayJoyOptionBottomSheet: Bool = false
     @State var showSaveAlbumBottomSheet: Bool = false
     @State var showAddNewAlbumBottomSheet: Bool = false
@@ -50,9 +49,9 @@ struct HomeView_P3: View {
                     
                     if !isOhadol && canOhadol {
                         Button {
-                            router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: selectedDate))
+                            router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: viewModel.selectedDate))
                         } label: {
-                            Text("\(selectedDate < Date() && !selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
+                            Text("\(viewModel.selectedDate < Date() && !viewModel.selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
                                 .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
                                 .padding(.vertical, 16)
                                 .frame(maxWidth: .infinity)
@@ -62,7 +61,7 @@ struct HomeView_P3: View {
                         .padding(.bottom, 16)
                     }
                     
-                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
+                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
                 }
                 .padding(.horizontal, 20)
             }
@@ -229,7 +228,7 @@ struct HomeView_P3: View {
                     print("DEBUG playJoy duplicate")
                     self.viewModel.isDuplicated = true
                 } else {
-                    if selectedDate.isSameDay(as: Date()) {
+                    if viewModel.selectedDate.isSameDay(as: Date()) {
                         self.viewModel.getJoy()
                     }
                     self.viewModel.isPlayJoy = true

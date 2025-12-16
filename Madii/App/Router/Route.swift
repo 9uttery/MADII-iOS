@@ -19,6 +19,7 @@ enum Route: Hashable, Identifiable {
     case loginWithID
     case signInWithID
     case setProfile
+    case findPassword
     
     // Tab
     case home
