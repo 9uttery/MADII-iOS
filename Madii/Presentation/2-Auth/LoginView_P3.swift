@@ -40,7 +40,6 @@ struct LoginView_P3: View {
                         AppleLoginButton_P3()
                     }
                     
-                    /*
                      // TODO: 아이디 로그인, 회원가입 구현
                     HStack(spacing: 10) {
                         MadiiDesignSystem.MadiiButton(
@@ -57,7 +56,6 @@ struct LoginView_P3: View {
                             action: { viewModel.action(.signInWithID) }
                         )
                     }
-                     */
                 }
             }
             .padding(.top, 130)
