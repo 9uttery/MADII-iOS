@@ -48,4 +48,12 @@ final class DIContainer {
     func archivingViewModel() -> ArchivingViewModel_P3 {
         return ArchivingViewModel_P3(router: router)
     }
+    
+    func loginWithIDViewModel() -> LoginWithIDViewModel {
+        return LoginWithIDViewModel(router: router)
+    }
+    
+    func findPasswordViewModel() -> FindPasswordViewModel {
+        return FindPasswordViewModel(router: router)
+    }
 }

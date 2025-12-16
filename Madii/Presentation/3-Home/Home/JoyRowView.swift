@@ -39,7 +39,7 @@ struct JoyRowView: View {
                         .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
                         .padding(4)
                 }
-                .buttonStyle(.borderless)
+                .buttonStyle(.plain)
             } else {
                 ForEach(joy.selectedEmotions) { emotion in
                     Text(emotion.title)
@@ -55,18 +55,24 @@ struct JoyRowView: View {
         .frame(height: 40)
         .listRowBackground(Color.madiiElevated)
         .listRowSeparator(.hidden)
-        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            Button(action: onDelete) {
-                SwipeButton(title: "삭제", color: .madiiNegative)
-                    .frame(width: 50, height: 30)
+        .if(joy.selectedEmotions.isEmpty) { view in
+            view.swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                Button(action: onDelete) {
+                    SwipeButton(title: "삭제", color: .madiiNegative)
+                        .frame(width: 50, height: 30)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .tint(.clear)
+                
+                Button(action: onEdit) {
+                    SwipeButton(title: "수정", color: .madiiGray35)
+                        .frame(width: 50, height: 30)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .tint(.clear)
             }
-            .tint(.clear)
-            
-            Button(action: onEdit) {
-                SwipeButton(title: "수정", color: .madiiGray35)
-                    .frame(width: 50, height: 30)
-            }
-            .tint(.clear)
         }
         .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
     }
