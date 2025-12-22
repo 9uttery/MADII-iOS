@@ -30,6 +30,7 @@ struct TodayJoyOptionBottomSheet: View {
             
             Button {
                 postJoyPlaylist()
+                AnalyticsManager.shared.logEvent(name: "오늘의 소확행 선물 오플리 추가")
             } label: {
                 Text("오늘의 플레이리스트에 추가")
                     .madiiFont(font: .madiiBody1, color: .madiiNormal)

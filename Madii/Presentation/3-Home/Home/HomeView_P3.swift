@@ -22,6 +22,7 @@ struct HomeView_P3: View {
     @State var isDeleted: Bool = false
     @State private var isFinishedGetJoy: Bool = false
     @State private var isSuccessEditJoy: Bool = false
+    @State private var counter: Int = 0
 
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -29,43 +30,46 @@ struct HomeView_P3: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 0) {
-                    MadiiHomeNavigation {
-                        viewModel.action(.showAlbumList)
-                    }
-                    .padding(.bottom, 12)
-                    .padding(.horizontal, -20)
-                    
-                    if isFinishedGetJoy {
-                        if viewModel.todayJoy.joyId == todayJoyId {
-                            todayJoyCard
-                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                        } else {
-                            todayJoyPlaceholder
-                                .transition(.move(edge: .top).combined(with: .opacity))
-                        }
-                    }
-                    
-                    if !isOhadol && canOhadol {
-                        Button {
-                            router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: viewModel.selectedDate))
-                        } label: {
-                            Text("\(viewModel.selectedDate < Date() && !viewModel.selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
-                                .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
-                                .padding(.vertical, 16)
-                                .frame(maxWidth: .infinity)
-                                .background(.madiiGreen100)
-                                .cornerRadius(20)
-                        }
-                        .padding(.bottom, 16)
-                    }
-                    
-                    HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
+            VStack(spacing: 0) {
+                MadiiHomeNavigation {
+                    viewModel.action(.showAlbumList)
+                    AnalyticsManager.shared.logEvent(name: "소확행 앨범 진입")
                 }
-                .padding(.horizontal, 20)
+                .padding(.bottom, 12)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        if isFinishedGetJoy {
+                            if viewModel.todayJoy.joyId == todayJoyId {
+                                todayJoyCard
+                                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                            } else {
+                                todayJoyPlaceholder
+                                    .transition(.move(edge: .top).combined(with: .opacity))
+                            }
+                            ParticleView(counter: $counter)
+                        }
+                        
+                        if !isOhadol && canOhadol {
+                            Button {
+                                router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: viewModel.selectedDate))
+                            } label: {
+                                Text("\(viewModel.selectedDate < Date() && !viewModel.selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
+                                    .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
+                                    .padding(.vertical, 16)
+                                    .frame(maxWidth: .infinity)
+                                    .background(.madiiGreen100)
+                                    .cornerRadius(20)
+                            }
+                            .padding(.bottom, 16)
+                        }
+                        
+                        HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
+                    }
+                    .padding(.horizontal, 20)
+                }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
             
             if viewModel.isPlayJoy {
                 MadiiDesignSystem.MadiiToast(title: "오늘의 플레이리스트에 추가되었어요", isShowToast: $viewModel.isPlayJoy)
@@ -90,6 +94,7 @@ struct HomeView_P3: View {
         .onAppear {
             getUserNickname()
             getTodayJoy()
+            AnalyticsManager.shared.logEvent(name: "홈화면 진입")
         }
         .animation(.easeInOut, value: viewModel.isMonthly)
         .opacity(showTodayJoyOptionBottomSheet || showSaveAlbumBottomSheet ? 0.8 : 1)
@@ -184,6 +189,8 @@ struct HomeView_P3: View {
                 Button {
                     withAnimation(.easeInOut(duration: 0.4)) {
                         viewModel.action(.loadTodayJoy)
+                        counter += 1
+                        AnalyticsManager.shared.logEvent(name: "오늘의 소확행 선물 클릭")
                     }
                 } label: {
                     Text("클릭해 보세요!")

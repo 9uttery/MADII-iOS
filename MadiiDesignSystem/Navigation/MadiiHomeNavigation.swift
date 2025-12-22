@@ -15,7 +15,7 @@ public struct MadiiHomeNavigation: View {
     }
     public var body: some View {
         HStack {
-            Image("madii")
+            Image("madiiLogo")
                 .resizable()
                 .frame(width: 104, height: 22)
             

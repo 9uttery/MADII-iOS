@@ -92,6 +92,7 @@ struct DiaryReviewView: View {
             
             MadiiDesignSystem.MadiiButton(title: "저장하기", color: .violet) {
                 clickCompleteButton()
+                AnalyticsManager.shared.logEvent(name: "오늘 하루 돌아보기 완료")
                 router.push(.completeOhadol)
             }
         }

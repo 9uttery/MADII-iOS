@@ -46,5 +46,8 @@ struct ArchivingView_P3: View {
             
             Spacer()
         }
+        .onAppear {
+            AnalyticsManager.shared.logEvent(name: "아카이브 진입")
+        }
     }
 }

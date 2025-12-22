@@ -33,7 +33,7 @@ struct HomeCalendarView: View {
             calendarHeader
             calendarBody
         }
-        .padding(.bottom, 32)
+        .padding(.bottom, 24)
         .onAppear {
             getCalendarEmojiList()
         }

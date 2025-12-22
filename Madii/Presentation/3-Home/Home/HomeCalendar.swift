@@ -98,6 +98,7 @@ struct HomeCalendar: View {
                                     cancelJoy(achievementId: joy.achievementId)
                                 } else {
                                     playJoy(achievementId: joy.achievementId)
+                                    AnalyticsManager.shared.logEvent(name: "소확행 실천")
                                 }
                             }
                         )
@@ -109,75 +110,6 @@ struct HomeCalendar: View {
                 .environment(\.defaultMinListRowHeight, 40)
                 .background(Color.madiiElevated)
                 .padding(.top, joys.isEmpty ? 0 : 16)
-//                if isOhadol {
-//                    ForEach(joys) { joy in
-//                        HStack(spacing: 12) {
-//                            Circle()
-//                                .frame(width: 12, height: 12)
-//                                .foregroundStyle((joy.icon % 6 + 1).intToColor)
-//                            
-//                            Text(joy.title)
-//                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
-//                                .lineSpacing(9.6)
-//                                .lineLimit(1)
-//                                .truncationMode(.tail)
-//                                .layoutPriority(-1)
-//                            
-//                            Spacer()
-//                            
-//                            HStack(spacing: 4) {
-//                                ForEach(joy.selectedEmotions) { emotion in
-//                                    Text(emotion.title)
-//                                        .madiiFont(font: .caption, color: emotion.color)
-//                                        .padding(.vertical, 4.5)
-//                                        .padding(.horizontal, 8)
-//                                        .background(emotion.color.opacity(0.08))
-//                                        .cornerRadius(8)
-//                                        .lineLimit(1)
-//                                        .layoutPriority(1)
-//
-//                                }
-//                            }
-//                            .padding(.trailing, 22)
-//                        }
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .frame(height: 40)
-//                        .padding(.top, 16)
-//                        .padding(.leading, 26)
-//                        .background(.madiiElevated)
-//                    }
-//                } else {
-//                    List {
-//                        ForEach(joys) { joy in
-//                            JoyRowView(
-//                                joy: joy,
-//                                selectedDate: selectedDate,
-//                                onDelete: {
-//                                    deleteJoy(achievementId: joy.achievementId)
-//                                    isDeleted = true
-//                                },
-//                                onEdit: {
-//                                    editJoyId = joy.joyId!
-//                                    editJoyTitle = joy.title
-//                                    showRenameJoyBottomSheet = true
-//                                },
-//                                onPlayToggle: {
-//                                    if joy.isAchieved {
-//                                        cancelJoy(achievementId: joy.achievementId)
-//                                    } else {
-//                                        playJoy(achievementId: joy.achievementId)
-//                                    }
-//                                }
-//                            )
-//                        }
-//                    }
-//                    .listStyle(.plain)
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 56 * CGFloat(joys.count))
-//                    .environment(\.defaultMinListRowHeight, 40)
-//                    .background(Color.madiiElevated)
-//                    .padding(.top, joys.isEmpty ? 0 : 16)
-//                }
             }
             .madiiBorderContainerStyle(paddingHorizontal: 0)
             .padding(.bottom, 16)
@@ -303,6 +235,7 @@ struct HomeCalendar: View {
                                 title: dto.contents
                             )
                         }
+                        AnalyticsManager.shared.logEvent(name: "오플리에 소확행 추가")
                         if !selectedDate.isSameDay(as: Date()) && selectedDate < Date() {
                             playJoy(achievementId: joys.first?.achievementId ?? 0)
                         }

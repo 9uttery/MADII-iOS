@@ -76,6 +76,7 @@ struct JoyOptionBottomSheet: View {
                     isPlayJoy = true
                 }
                 print("Debug plyJoy: post isSuccess true")
+                AnalyticsManager.shared.logEvent(name: "소확행 오늘의 플레이리스트에 추가(더보기)")
             } else {
                 print("Debug plyJoy: post isSuccess false")
                 showJoyOptionBottomSheet = false

@@ -31,17 +31,8 @@ struct AllAlbumListView_P3: View {
                     
                     Spacer()
                     
-                    Button {
-                        showAddNewAlbumBottomSheet = true
-                    } label: {
-                        Text("추가")
-                            .madiiFont(font: .madiiBody3, color: .madiiContrast)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 12)
-                            .background(.madiiGreen100)
-                            .cornerRadius(10)
-                    }
-                    
+                    Color.clear
+                        .frame(width: 24, height: 24)
                 }
                 .padding(.horizontal, 20)
                 .frame(height: 64)
@@ -51,6 +42,7 @@ struct AllAlbumListView_P3: View {
                     VStack(spacing: 24) {
                         ForEach(playAlbums) { album in
                             Button {
+                                AnalyticsManager.shared.logEvent(name: "앨범 선택")
                                 router.push(.albumDetail(albumId: album.albumId, popNum: 1))
                             } label: {
                                 HStack(spacing: 12) {
@@ -81,7 +73,7 @@ struct AllAlbumListView_P3: View {
                                 .padding(.bottom, 16)
                             
                             Button {
-                                showAddNewAlbumBottomSheet = true
+                                router.push(.albumList)
                             } label: {
                                 Text("소확행 앨범 추가")
                                     .madiiFont(font: .madiiSubTitle, color: .madiiContrast)

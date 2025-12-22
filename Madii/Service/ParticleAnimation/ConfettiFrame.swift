@@ -15,7 +15,7 @@ struct ConfettiFrame: View {
     @State var opacity: Double = 0.0
 
     var body: some View {
-        ConfettiItem(shape: getShape(), color: getColor())
+        ConfettiItem(shape: getShape(), color: [.madiiGray100.opacity(0.16), .madiiGray100.opacity(0.36), .madiiGray100.opacity(0.74)].randomElement()!)
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
             .onAppear {

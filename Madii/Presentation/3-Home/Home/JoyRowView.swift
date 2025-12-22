@@ -25,21 +25,22 @@ struct JoyRowView: View {
                 .madiiFont(font: .madiiBody2, color: .madiiNormal)
                 .lineSpacing(9.6)
                 .lineLimit(1)
+                .padding(.trailing, 12)
 
             Spacer()
 
             if joy.selectedEmotions.isEmpty {
-                Button {
-                    onPlayToggle()
-                    print("hello")
-                } label: {
-                    Image(systemName: "checkmark.circle")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
-                        .padding(4)
-                }
-                .buttonStyle(.plain)
+                Image(systemName: "checkmark.circle")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
+                    .padding(12)
+                    .contentShape(Rectangle())
+                    .highPriorityGesture(
+                        TapGesture().onEnded {
+                            onPlayToggle()
+                        }
+                    )
             } else {
                 ForEach(joy.selectedEmotions) { emotion in
                     Text(emotion.title)
@@ -55,22 +56,21 @@ struct JoyRowView: View {
         .frame(height: 40)
         .listRowBackground(Color.madiiElevated)
         .listRowSeparator(.hidden)
-        .if(joy.selectedEmotions.isEmpty) { view in
-            view.swipeActions(edge: .trailing, allowsFullSwipe: false) {
+        .contentShape(Rectangle())
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            if joy.selectedEmotions.isEmpty {
                 Button(action: onDelete) {
                     SwipeButton(title: "삭제", color: .madiiNegative)
                         .frame(width: 50, height: 30)
                         .contentShape(Rectangle())
                 }
-                .buttonStyle(.plain)
                 .tint(.clear)
-                
+
                 Button(action: onEdit) {
                     SwipeButton(title: "수정", color: .madiiGray35)
                         .frame(width: 50, height: 30)
                         .contentShape(Rectangle())
                 }
-                .buttonStyle(.plain)
                 .tint(.clear)
             }
         }

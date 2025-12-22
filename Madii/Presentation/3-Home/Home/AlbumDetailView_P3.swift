@@ -227,6 +227,22 @@ private extension AlbumDetailView_P3 {
             .padding(.vertical, 16)
             .background(.madiiElevated)
             .cornerRadius(40)
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 0.0),   // FFFFFF
+                                .init(color: Color(red: 0.239, green: 0.761, blue: 1.0).opacity(0.1), location: 0.33), // 3DC2FF
+                                .init(color: Color(red: 0.831, green: 0.471, blue: 1.0).opacity(0.1), location: 0.66), // D478FF
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 1.0)
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            )
         } else {
             VStack(spacing: 16) {
                 ForEach(viewModel.joyResponses, id: \.joyId) { joy in
@@ -241,19 +257,39 @@ private extension AlbumDetailView_P3 {
             .padding(.horizontal, 16)
             .background(.madiiElevated)
             .cornerRadius(32)
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 0.0),   // FFFFFF
+                                .init(color: Color(red: 0.239, green: 0.761, blue: 1.0).opacity(0.1), location: 0.33), // 3DC2FF
+                                .init(color: Color(red: 0.831, green: 0.471, blue: 1.0).opacity(0.1), location: 0.66), // D478FF
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 1.0)
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            )
         }
     }
     
     func joyRow(_ joy: GetAlbumByIdResponseJoyInfo) -> some View {
         HStack(spacing: 12) {
-            Circle()
-                .foregroundStyle(joy.joyIconNum.intToColor)
-                .frame(width: 12, height: 12)
-            
-            Text(joy.contents)
-                .madiiFont(font: .madiiBody2, color: .madiiNormal)
-                .lineSpacing(9.6)
-            
+            Button {
+                postJoyPlaylist(joyId: joy.joyId)
+            } label: {
+                Circle()
+                    .foregroundStyle(joy.joyIconNum.intToColor)
+                    .frame(width: 12, height: 12)
+                
+                Text(joy.contents)
+                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .lineSpacing(9.6)
+                    .padding(.trailing, 12)
+            }
             Spacer()
             
             Button {
@@ -303,6 +339,7 @@ private extension AlbumDetailView_P3 {
             Text("나를 위한 행복 앨범 모음")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 8)
                 .padding(.bottom, 4)
             
             VStack(alignment: .leading, spacing: 16) {
@@ -326,8 +363,24 @@ private extension AlbumDetailView_P3 {
             }
             .padding(.vertical, 28)
             .padding(.horizontal, 20)
-            .background(.madiiBox)
+            .background(.madiiElevated)
             .cornerRadius(40)
+            .overlay(
+                RoundedRectangle(cornerRadius: 40)
+                    .stroke(
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 0.0),   // FFFFFF
+                                .init(color: Color(red: 0.239, green: 0.761, blue: 1.0).opacity(0.1), location: 0.33), // 3DC2FF
+                                .init(color: Color(red: 0.831, green: 0.471, blue: 1.0).opacity(0.1), location: 0.66), // D478FF
+                                .init(color: Color(red: 1.0, green: 1.0, blue: 1.0).opacity(0.1), location: 1.0)
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            )
         }
         .padding(.top, 40)
     }
@@ -481,6 +534,7 @@ private extension AlbumDetailView_P3 {
         AlbumAPI.shared.postBookmarksByAlbumId(albumId: viewModel.albumId) { isSuccess in
             if isSuccess {
                 print("Debug PostBookmarksByAlbumId: isSuccess true")
+                AnalyticsManager.shared.logEvent(name: "앨범 저장")
             } else {
                 print("Debug PostBookmarksByAlbumId: isSuccess false")
             }
@@ -532,6 +586,26 @@ private extension AlbumDetailView_P3 {
             viewModel.joyTitle = ""
         } else {
             viewModel.action(.addJoy)
+        }
+    }
+    
+    func postJoyPlaylist(joyId: Int) {
+        AchievementsAPI().playJoy(joyId: joyId) { isSuccess, isDuplicated in
+            if isSuccess {
+                if isDuplicated {
+                    showJoyEllipsisBottomSheet = false
+                    self.isDuplicated = true
+                } else {
+                    showJoyEllipsisBottomSheet = false
+                    isPlayJoy = true
+                }
+                print("Debug plyJoy: post isSuccess true")
+                AnalyticsManager.shared.logEvent(name: "소확행 오늘의 플레이리스트에 추가(플레이스홀더 클릭)")
+            } else {
+                print("Debug plyJoy: post isSuccess false")
+                showJoyEllipsisBottomSheet = false
+                self.isDuplicated = true
+            }
         }
     }
 }

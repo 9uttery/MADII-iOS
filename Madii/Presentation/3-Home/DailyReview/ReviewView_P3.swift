@@ -26,9 +26,11 @@ struct ReviewView_P3: View {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.madiiAlternative)
                 }
+                
                 Spacer()
+                
                 Text(date.toKoreanString())
-                    .font(.headline)
+                    .font(.madiiSubTitle)
                     .frame(maxWidth: .infinity, alignment: .center)
                 Spacer()
             }

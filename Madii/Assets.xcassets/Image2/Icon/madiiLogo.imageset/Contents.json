@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bookmark.png",
+      "filename" : "madiiLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bookmark-2.png",
+      "filename" : "madiiLogo2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bookmark-3.png",
+      "filename" : "madiiLogo3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

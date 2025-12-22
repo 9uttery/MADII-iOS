@@ -294,11 +294,15 @@ struct RecommendJoyView_P3: View {
             
             MadiiDesignSystem.MadiiButton(title: selectedJoy == nil ? "완료" : "오늘의 플레이리스트에 추가", color: .violet) {
                 playJoy()
+                AnalyticsManager.shared.logEvent(name: "나만의 취향저격 소확행_오늘의 플레이리스트에 추가")
                 router.push(.completeRecommend(joy: selectedJoy ?? GetJoyResponseJoy(joyId: 0, joyIconNum: 0, contents: "", isJoySaved: false)))
             }
                 .disabled(selectedJoy == nil)
         }
         .padding(.horizontal, 20)
+        .onAppear {
+            AnalyticsManager.shared.logEvent(name: "나만의 취향저격 소확행 진입")
+        }
         .background(
             LinearGradient(
                 gradient: Gradient(stops: [
