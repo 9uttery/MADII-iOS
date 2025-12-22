@@ -144,6 +144,7 @@ struct EditJoyBottomSheet: View {
                     dto.isSaved ? dto.albumId : nil
                 }
                 selectedAlbumIds = Array(Set(selectedAlbumIds + serverIds))
+                AnalyticsManager.shared.logEvent(name: "소확행 저장")
             } else {
                 print("debug getAlbumsWithJoySavedInfo: isSuccess false")
             }

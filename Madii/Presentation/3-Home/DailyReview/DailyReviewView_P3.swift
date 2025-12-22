@@ -56,6 +56,8 @@ struct DailyReviewView_P3: View {
                         Text(todayJoys[index].title)
                             .madiiFont(font: .madiiBody2, color: .madiiNormal)
                             .lineSpacing(9.6)
+                            .padding(.leading, 8)
+                            .padding(.trailing, 12)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 19)
@@ -98,11 +100,11 @@ struct DailyReviewView_P3: View {
             )
         )
         .onAppear {
-            isActive = true // 화면 들어올 때 활성화
-
+            isActive = true
+            AnalyticsManager.shared.logEvent(name: "오늘 하루 돌아보기 진입")
             isHeaderVisible = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                guard isActive else { return } // 👈 화면 나갔으면 중단
+                guard isActive else { return }
                 withAnimation(.easeOut(duration: 0.5)) {
                     isHeaderVisible = true
                 }

@@ -61,6 +61,7 @@ struct ExplorationView_P3: View {
                     
                     ForEach(albums, id: \.self) { album in
                         Button {
+                            AnalyticsManager.shared.logEvent(name: "앨범 선택")
                             router.push(.albumDetail(albumId: album.id, popNum : 1))
                         } label: {
                             HStack(spacing: 12) {
@@ -124,6 +125,7 @@ struct ExplorationView_P3: View {
         .scrollIndicators(.hidden)
         .onAppear {
             getAllAlbums()
+            AnalyticsManager.shared.logEvent(name: "탐색 진입")
         }
     }
     
