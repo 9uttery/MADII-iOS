@@ -18,7 +18,7 @@ enum SignUpStep {
 @Observable
 class SignUpViewModel {
     var loginType: LoginType
-    var currentStepIndex = 1
+    var currentStepIndex = 0
     var signUpSteps: [SignUpStep] {
         switch loginType {
         case .kakao, .apple:
@@ -33,19 +33,93 @@ class SignUpViewModel {
         .termOfUse: false, .privacyPolicy: false, .marketing: false
     ]
     
+    // 2. 이메일
+    var email: String = ""
+    var emailType: EmailView_P3.EmailType = .none
+    var showVerificationCode: Bool = false
+    var code: String = ""
+    var codeType: EmailView_P3.CodeType = .sending
+    var showSendedCodeToast: Bool = false
+    
+    // MARK: init
     init(loginType: LoginType) {
         self.loginType = loginType
     }
     
     func backButtonTapped() {
-        if currentStepIndex > 0 {
+        let currentStep = signUpSteps[currentStepIndex]
+        switch currentStep {
+        case .term:
+            // dismiss
+            print("dismiss")
+        case .email:
+            resetEmailState()
+            currentStepIndex -= 1
+        case .password:
+            currentStepIndex -= 1
+        case .profile:
             currentStepIndex -= 1
         }
     }
     
     func showNextStep() {
-        if currentStepIndex < signUpSteps.count - 1 {
+        let currentStep = signUpSteps[currentStepIndex]
+        switch currentStep {
+        case .term:
             currentStepIndex += 1
+        case .email:
+            hideKeyboard()
+            if showVerificationCode == false {
+                sendCode()
+            } else {
+                verifyCode()
+            }
+        case .password:
+            currentStepIndex += 1
+        case .profile:
+            print("login")
+        }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    private func resetEmailState() {
+        email = ""
+        emailType = .none
+        showVerificationCode = false
+        codeType = .sending
+        showSendedCodeToast = false
+    }
+    
+    func sendCode() {
+        showVerificationCode = true
+        codeType = .sending
+        
+        // 인증번호 이메일 전송
+        UsersAPI.shared.sendVerificationCodeEmail(email: email) { isSuccess in
+            if isSuccess {
+                // 이메일 전송 성공
+                self.codeType = .sended
+                
+                withAnimation { self.showSendedCodeToast = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.showSendedCodeToast = false
+                }
+            } else {
+                // TODO: 이메일 전송 실패 처리
+            }
+        }
+    }
+    
+    private func verifyCode() {
+        UsersAPI.shared.verifyCode(email: email, code: code) { isSuccess in
+            if isSuccess {
+                self.currentStepIndex += 1
+            } else {
+                self.codeType = .wrong
+            }
         }
     }
 }
@@ -98,42 +172,25 @@ struct SignUpView_P3: View {
         }
     }
     
+    // true면 disable
     private func nextButtonDisabled() -> Bool {
         switch currentStep {
         case .term:
             let use = viewModel.agreeStatus[.termOfUse] ?? false
             let privacy = viewModel.agreeStatus[.privacyPolicy] ?? false
             return use && privacy ? false : true
-        case .email: return true
+        case .email:
+            if viewModel.showVerificationCode == false {
+                return viewModel.emailType == .possible ? false : true
+            } else {
+                if viewModel.codeType == .wrong {
+                    return true
+                } else {
+                    return viewModel.code.count >= 6 ? false : true
+                }
+            }
         case .password: return true
         case .profile: return true
-        }
-    }
-}
-
-struct EmailView_P3: View {
-    @State private var email: String = ""
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 40) {
-                VStack(spacing: 28) {
-                    HStack {
-                        Text("이메일을 입력해 주세요")
-                            .madiiFont(.title2)
-                            .foregroundStyle(Color.madiiNormal)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 4)
-                    
-                    MadiiDesignSystem.MadiiTextField(
-                        type: .constant(.error),
-                        text: $email,
-                        placeholder: "ex) madii@happy.com"
-                    )
-                }
-                
-                Spacer()
-            }
         }
     }
 }
