@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConfettiItem: View {
     @State var shape: AnyView
-    @State var color: Color
+    @State var color: Color = [.madiiGray100.opacity(0.16), .madiiGray100.opacity(0.36), .madiiGray100.opacity(0.74)].randomElement()!
     
     @State var move = false
     @State var anchor = CGFloat(Int.random(in: 0...1))

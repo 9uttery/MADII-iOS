@@ -41,7 +41,7 @@ class ConfettiCenterVM: ObservableObject {
     init(confettiNumber: Int = 10,
          confettiTypes: [ConfettiType] = ConfettiType.allCases,
 //         colors: [Color] = [.random(), .random(), .random(), .random(),.random(), .random(), .random()],
-         colors: [Color] = [Color.red, Color.blue, .orange],
+         colors: [Color] = [Color.madiiGray100.opacity(0.16), Color.madiiGray100.opacity(0.35), .madiiGray100.opacity(0.74)],
          confettiSize: CGFloat = 10.0,
          dropHeight: CGFloat = 600.0,
          fadesOut: Bool = true,
