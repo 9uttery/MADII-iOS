@@ -101,7 +101,7 @@ struct MyPageView_P3: View {
     private func row(_ title: String) -> some View {
         HStack {
             Text(title)
-                .madiiFont(.subTitle)
+                .madiiFont(.body2)
                 .foregroundStyle(Color.madiiNormal)
             
             Spacer()
@@ -111,7 +111,7 @@ struct MyPageView_P3: View {
                 .frame(width: 24, height: 24)
         }
         .padding(.leading, 22)
-        .padding(.trailing, 17)
+        .padding(.trailing, 18)
         .padding(.vertical, 16)
         .frame(maxHeight: 58)
     }
