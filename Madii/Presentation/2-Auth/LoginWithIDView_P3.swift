@@ -20,14 +20,18 @@ struct LoginWithIDView_P3: View {
             MadiiNavigationBar_P3(title: "로그인")
             
             Text("이메일")
-                .madiiFont(font: .title2, color: .madiiNormal)
+                .madiiFont(.title2)
+                .foregroundStyle(Color.madiiNormal)
+                .padding(.leading, 4)
                 .padding(.top, 20)
                 .padding(.bottom, 28)
             
             MadiiDesignSystem.MadiiTextField(text: $viewModel.email, placeholder: "이메일을 입력해주세요")
             
             Text("비밀번호")
-                .madiiFont(font: .title2, color: .madiiNormal)
+                .madiiFont(.title2)
+                .foregroundStyle(Color.madiiNormal)
+                .padding(.leading, 4)
                 .padding(.top, 60)
                 .padding(.bottom, 28)
             
