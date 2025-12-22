@@ -21,7 +21,7 @@ struct FeelingReviewView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("행복 속 어떤 감정을 느끼셨나요?")
+            Text("행복 속 어떤 감정을 느꼈나요?")
                 .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 40)
