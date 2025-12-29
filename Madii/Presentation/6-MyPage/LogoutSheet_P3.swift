@@ -61,7 +61,8 @@ struct LogoutSheet_P3: View {
                 }
             }
         }
-        .padding(.vertical, 16)
+        .padding(.top, 16)
+        .padding(.bottom, 40)
         .padding(.horizontal, 20)
         .background(Color.madiiElevated)
         .clipShape(RoundedRectangle(cornerRadius: 40))

@@ -15,30 +15,35 @@ struct MadiiTabBar_P3: View {
             VStack {
                 Spacer()
                 
-                HStack(spacing: 60) {
-                    Spacer()
-                    
-                    ForEach(MadiiTab_P3.allCases, id: \.self) { tab in
-                        Button {
-                            router.selectedTab = tab
-                        } label: {
-                            VStack(spacing: 4) {
-                                let isSelected = router.selectedTab == tab
-                                Image(isSelected ? tab.selectedIcon : tab.unselectedIcon)
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                
-                                Text(tab.title)
-                                    .madiiFont(.caption).bold()
-                                    .foregroundStyle(isSelected ? Color.madiiGreen100 : Color.white.opacity(0.28))
+                VStack(spacing: 0) {
+                    HStack(alignment: .top, spacing: 60) {
+                        Spacer()
+                        
+                        ForEach(MadiiTab_P3.allCases, id: \.self) { tab in
+                            Button {
+                                router.selectedTab = tab
+                            } label: {
+                                VStack(spacing: 4) {
+                                    let isSelected = router.selectedTab == tab
+                                    Image(isSelected ? tab.selectedIcon : tab.unselectedIcon)
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                    
+                                    Text(tab.title)
+                                        .madiiFont(.caption).bold()
+                                        .foregroundStyle(isSelected ? Color.madiiGreen100 : Color.white.opacity(0.28))
+                                }
+                                .frame(width: 48)
                             }
-                            .frame(width: 48)
                         }
+                        
+                        Spacer()
                     }
+                    .padding(.top, 16)
                     
                     Spacer()
                 }
-                .frame(width: geo.size.width, height: 86)
+                .frame(width: geo.size.width, height: 90)
                 .background {
                     Color.madiiGray25
                         .clipShape(

@@ -71,14 +71,14 @@ class LoginWithIDViewModel {
     func validateLogin() {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
-        let passwordRegex = #"^(?=.*[A-Za-z])(?=.*\d)(?=.*[!_*@])[A-Za-z\d!_*@]{8,}$"#
+//        let passwordRegex = #"^(?=.*[A-Za-z])(?=.*\d)(?=.*[!_*@])[A-Za-z\d!_*@]{8,}$"#
         
         let isEmailValid = NSPredicate(format: "SELF MATCHES %@", emailRegex)
             .evaluate(with: self.email)
         
-        let isPasswordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-            .evaluate(with: self.password)
+//        let isPasswordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+//            .evaluate(with: self.password)
         
-        self.validate = isEmailValid && isPasswordValid
+        self.validate = isEmailValid && self.password.isEmpty == false
     }
 }

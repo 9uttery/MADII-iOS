@@ -66,8 +66,7 @@ class SignUpViewModel {
         let currentStep = signUpSteps[currentStepIndex]
         switch currentStep {
         case .term:
-            // dismiss
-            print("dismiss")
+            router.pop()
         case .email:
             resetEmailState()
             currentStepIndex -= 1
