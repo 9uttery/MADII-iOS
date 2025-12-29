@@ -133,7 +133,7 @@ struct AddNewAlbumBottomSheet: View {
                     showAddNewAlbumBottomSheet = false
                 case .failure(let failure):
                     print("앨범 생성 실패 \(failure)")
+                }
             }
-        }
     }
 }

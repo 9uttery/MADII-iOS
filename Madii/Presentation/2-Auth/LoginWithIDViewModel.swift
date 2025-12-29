@@ -43,8 +43,8 @@ class LoginWithIDViewModel {
                 // api 통신 성공
                 if response.hasProfile {
                     // 프로필 저장 완료 -> 메인 화면으로
-    //                    showMainView = true
                     self.router.isLoggedIn = true
+                    self.router.popToRoot()
                 } else {
                     // 프로필 저장 전 -> 프로필 설정 화면으로
                     print("DEBUG(LoginWithIdView): login() hasProfile false")
@@ -53,10 +53,9 @@ class LoginWithIDViewModel {
                 withAnimation {
                     self.loginError = error
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    withAnimation {
-                        self.loginError = nil
-                    }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.loginError = nil
                 }
                 
                 // api 통신 실패 || 계정 정보 없음
@@ -69,12 +68,10 @@ class LoginWithIDViewModel {
         router.push(.findPassword)
     }
 
-    func validateLogin(){
-        let emailRegex =
-        #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
+    func validateLogin() {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
-        let passwordRegex =
-        #"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"#
+        let passwordRegex = #"^(?=.*[A-Za-z])(?=.*\d)(?=.*[!_*@])[A-Za-z\d!_*@]{8,}$"#
         
         let isEmailValid = NSPredicate(format: "SELF MATCHES %@", emailRegex)
             .evaluate(with: self.email)

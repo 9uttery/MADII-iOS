@@ -5,11 +5,11 @@
 //  Created by 정태우 on 9/27/25.
 //
 
-import PhotosUI
 import Alamofire
 import CryptoKit
 import Foundation
 import KeychainSwift
+import PhotosUI
 import SwiftUI
 
 class DailySummaryAPI {
@@ -174,7 +174,14 @@ class DailySummaryAPI {
     }
     
     // 오늘 하루 돌아보기 생성
-    func postDailySummary(date: Date, satisfaction: Int, diaryContent: String, savingJoys: [SavingJoysRequestDTO], images: [UIImage], completion:  @escaping (_ isSuccess: Bool, _ dailySummary: PostDailySummary) -> Void) {
+    func postDailySummary(
+        date: Date,
+        satisfaction: Int,
+        diaryContent: String,
+        savingJoys: [SavingJoysRequestDTO],
+        images: [UIImage],
+        completion: @escaping (_ isSuccess: Bool, _ dailySummary: PostDailySummary) -> Void
+    ) {
         let url = "\(baseUrl)/daily-summary?date=\(date.serverDateFormat)"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"

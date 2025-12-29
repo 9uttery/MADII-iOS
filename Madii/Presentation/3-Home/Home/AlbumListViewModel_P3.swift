@@ -57,7 +57,7 @@ class AlbumListViewModel_P3 {
     }
     
     private func getAllAlbums() {
-        RecordAPI.shared.getAlbums() { isSuccess, albums in
+        RecordAPI.shared.getAlbums { isSuccess, albums in
             if isSuccess {
                 print("Debug getAlbums: Success")
                 DispatchQueue.main.async {
