@@ -41,6 +41,11 @@ class SignUpViewModel {
     var codeType: EmailView_P3.CodeType = .sending
     var showSendedCodeToast: Bool = false
     
+    // 3. 비밀번호
+    var password: String = ""
+    var showCheckPassword: Bool = false
+    var checkPassword: Bool = false
+    
     // MARK: init
     init(loginType: LoginType) {
         self.loginType = loginType
@@ -62,6 +67,7 @@ class SignUpViewModel {
         }
     }
     
+    // 다음 버튼 동작
     func showNextStep() {
         let currentStep = signUpSteps[currentStepIndex]
         switch currentStep {
@@ -75,7 +81,17 @@ class SignUpViewModel {
                 verifyCode()
             }
         case .password:
-            currentStepIndex += 1
+            if showCheckPassword == false {
+                // 비밀번호 1
+                showCheckPassword = true
+            } else {
+                // 비밀번호 2
+                if checkPassword {
+                    showCheckPassword = false
+                    checkPassword = false
+                    currentStepIndex += 1
+                }
+            }
         case .profile:
             print("login")
         }
@@ -166,7 +182,7 @@ struct SignUpView_P3: View {
         case .email:
             EmailView_P3()
         case .password:
-            Text("password")
+            PasswordView_P3()
         case .profile:
             Text("profile")
         }
@@ -189,9 +205,19 @@ struct SignUpView_P3: View {
                     return viewModel.code.count >= 6 ? false : true
                 }
             }
-        case .password: return true
+        case .password:
+            if viewModel.showCheckPassword == false {
+                return isValidPassword(viewModel.password) == false
+            } else {
+                return viewModel.checkPassword == false
+            }
         case .profile: return true
         }
+    }
+    
+    private func isValidPassword(_ text: String) -> Bool {
+        let pattern = #"^(?=.*[A-Za-z])(?=.*\d)(?=.*[!_*@])[A-Za-z\d!_*@]{8,}$"#
+        return text.range(of: pattern, options: .regularExpression) != nil
     }
 }
 

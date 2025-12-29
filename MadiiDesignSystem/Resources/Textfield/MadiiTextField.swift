@@ -18,6 +18,7 @@ public struct MadiiTextField: View {
     @State public var originType: TextFieldType = .basic
     public let placeholder: String
     @FocusState private var isTextFieldFocused: Bool
+    public var isSecureTextField: Bool
     public let action: (() -> Void)?
     
     public init(
@@ -25,12 +26,14 @@ public struct MadiiTextField: View {
         text: Binding<String>,
         isPlus: Bool = false,
         placeholder: String,
+        isSecureTextField: Bool = false,
         action: (() -> Void)? = nil
     ) {
         self._type = type
         self._text = text
         self.isPlus = isPlus
         self.placeholder = placeholder
+        self.isSecureTextField = isSecureTextField
         self.action = action
     }
     
@@ -48,22 +51,41 @@ public struct MadiiTextField: View {
                 }
             }
             
-            TextField("", text: $text)
-                .placeholder(when: text.isEmpty) {
-                    Text(placeholder)
-                        .madiiFont(.body2)
-                        .foregroundStyle(.secondary)
-                }
-                .madiiFont(.body2)
-                .foregroundStyle(.madiiNeutral)
-                .frame(maxWidth: .infinity)
-                .frame(height: 26)
-                .focused($isTextFieldFocused)
-                .onSubmit {
-                    if isPlus {
-                        action?()
+            if isSecureTextField {
+                SecureField("", text: $text)
+                    .placeholder(when: text.isEmpty) {
+                        Text(placeholder)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.secondary)
                     }
-                }
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNeutral)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 26)
+                    .focused($isTextFieldFocused)
+                    .onSubmit {
+                        if isPlus {
+                            action?()
+                        }
+                    }
+            } else {
+                TextField("", text: $text)
+                    .placeholder(when: text.isEmpty) {
+                        Text(placeholder)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.secondary)
+                    }
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNeutral)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 26)
+                    .focused($isTextFieldFocused)
+                    .onSubmit {
+                        if isPlus {
+                            action?()
+                        }
+                    }
+            }
         }
         .padding(12)
         .background(.madiiGray30)

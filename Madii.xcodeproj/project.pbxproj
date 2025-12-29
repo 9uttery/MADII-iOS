@@ -528,6 +528,8 @@
 				"2-Auth/SignUp/0-Term/ServiceTerm.swift",
 				"2-Auth/SignUp/0-Term/ServiceTermView_P3.swift",
 				"2-Auth/SignUp/0-Term/TermRow_P3.swift",
+				"2-Auth/SignUp/1-Email/EmailView_P3.swift",
+				"2-Auth/SignUp/1-Email/PasswordView_P3.swift",
 				"2-Auth/SignUpView_P3.swift",
 				"2-Auth/SocialLogin/AppleLoginButton_P3.swift",
 				"2-Auth/SocialLogin/AppleLoginManager.swift",
@@ -2104,7 +2106,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2145,7 +2147,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Madii/Madii.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Madii/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
