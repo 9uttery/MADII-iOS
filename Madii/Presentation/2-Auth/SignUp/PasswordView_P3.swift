@@ -55,7 +55,6 @@ private struct PasswordTextFieldView: View {
                     isSecureTextField: true
                 )
                 .padding(1)
-                .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .onChange(of: password) { _, newValue in
                     viewModel.password = newValue
@@ -117,7 +116,6 @@ private struct CheckPasswordView: View {
                     isSecureTextField: true
                 )
                 .padding(1)
-                .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .onChange(of: reenteredPassword) { _, _ in
                     checkPassword()

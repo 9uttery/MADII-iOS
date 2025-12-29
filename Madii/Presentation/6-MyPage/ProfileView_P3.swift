@@ -124,13 +124,14 @@ struct ProfileView_P3: View {
     }
 }
 
-private struct ProfileImageView: View {
+struct ProfileImageView: View {
     @Binding var showProfileImageSheet: Bool
     @Binding var image: UIImage
     @Binding var url: String
     
     var body: some View {
         Button {
+            hideKeyboard()
             withAnimation {
                 self.showProfileImageSheet = true
             }
@@ -158,7 +159,7 @@ private struct ProfileImageView: View {
     }
 }
 
-private struct ProfileImageSheet: View {
+struct ProfileImageSheet: View {
     @Binding var showProfileImageSheet: Bool
     @Binding var image: UIImage
     @Binding var url: String
@@ -233,7 +234,7 @@ private struct ProfileImageSheet: View {
     }
 }
 
-private struct NicknameTextField: View {
+struct NicknameTextField: View {
     @Binding var nickname: String
     @Binding var isNicknameVaild: Bool
     

@@ -17,6 +17,8 @@ enum SignUpStep {
 
 @Observable
 class SignUpViewModel {
+    private let router: Router
+    
     var loginType: LoginType
     var currentStepIndex = 0
     var signUpSteps: [SignUpStep] {
@@ -46,8 +48,17 @@ class SignUpViewModel {
     var showCheckPassword: Bool = false
     var checkPassword: Bool = false
     
+    // 4. 프로필
+    var showProfileImageSheet: Bool = false
+    var image: UIImage = UIImage(named: "defaultProfile") ?? UIImage()
+    var url: String = ""
+    var showImageSheet = false
+    var nickname: String = ""
+    var isNicknameVaild: Bool = true
+    
     // MARK: init
-    init(loginType: LoginType) {
+    init(router: Router, loginType: LoginType) {
+        self.router = router
         self.loginType = loginType
     }
     
@@ -93,7 +104,48 @@ class SignUpViewModel {
                 }
             }
         case .profile:
-            print("login")
+            if isNicknameVaild {
+                if loginType == .id {
+                    // 일반 회원가입
+                    UsersAPI.shared.signUpWithId(
+                        id: email,
+                        password: password,
+                        agree: agreeStatus[.marketing] ?? false
+                    ) { isSuccess, _ in
+                        if isSuccess {
+                            print("🌟 일반 회원가입 성공")
+                            self.setprofile()
+                        } else {
+                            print("🚨 일반 회원가입 실패")
+                        }
+                    }
+                } else {
+                    // 소셜 프로필 추가
+                    UsersAPI.shared.editMarketingAgree(
+                        agree: agreeStatus[.marketing] ?? false
+                    ) { isSuccess in
+                        if isSuccess {
+                            print("🌟 소셜 마케팅 동의 여부 추가 성공")
+                            self.setprofile()
+                        } else {
+                            print("🚨 소셜 마케팅 동의 여부 추가 실패")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func setprofile() {
+        ProfileAPI.shared.postUsersProfile(nickname: nickname, image: image) { isSuccess in
+            if isSuccess {
+                self.router.isLoggedIn = true
+                self.router.popToRoot()
+//                showCompleteSignUpView = true
+                print("🌟 프로필 설정 성공")
+            } else {
+                print("🚨 프로필 설정 실패")
+            }
         }
     }
     
@@ -146,8 +198,8 @@ struct SignUpView_P3: View {
         viewModel.signUpSteps[viewModel.currentStepIndex]
     }
     
-    init(loginType: LoginType) {
-        viewModel = SignUpViewModel(loginType: loginType)
+    init(router: Router, loginType: LoginType) {
+        viewModel = SignUpViewModel(router: router, loginType: loginType)
     }
     
     var body: some View {
@@ -170,6 +222,30 @@ struct SignUpView_P3: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
             }
+            
+            if viewModel.showProfileImageSheet {
+                Color.black.opacity(0.8)
+                    .onTapGesture {
+                        withoutAnimation {
+                            viewModel.showProfileImageSheet = false
+                        }
+                    }
+                
+                VStack {
+                    Spacer()
+                    
+                    ProfileImageSheet(
+                        showProfileImageSheet: $viewModel.showProfileImageSheet,
+                        image: $viewModel.image,
+                        url: $viewModel.url,
+                        showImageSheet: $viewModel.showImageSheet
+                    )
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 40)
+                }
+                .ignoresSafeArea()
+                .transition(.move(edge: .bottom))
+            }
         }
         .environment(viewModel)
     }
@@ -184,7 +260,7 @@ struct SignUpView_P3: View {
         case .password:
             PasswordView_P3()
         case .profile:
-            Text("profile")
+            ProfileSettingView_P3(viewModel: viewModel)
         }
     }
     
@@ -211,7 +287,8 @@ struct SignUpView_P3: View {
             } else {
                 return viewModel.checkPassword == false
             }
-        case .profile: return true
+        case .profile:
+            return viewModel.isNicknameVaild == false || viewModel.nickname.isEmpty
         }
     }
     
@@ -253,8 +330,4 @@ private struct SignUpNavigationBar: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 12)
     }
-}
-
-#Preview {
-    SignUpView_P3(loginType: .id)
 }
