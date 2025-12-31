@@ -22,6 +22,7 @@ struct EmailView_P3: View {
                     
                     if viewModel.showVerificationCode {
                         CodeTextField()
+                            .disabled(viewModel.isCodeVerified)
                     }
                     
                     Spacer()
@@ -139,10 +140,11 @@ private struct CodeTextField: View {
     @State private var code: String = ""
     @State private var textFieldType: TextFieldType = .basic
     var helperMessage: String {
+        if viewModel.isCodeVerified { return "인증번호가 일치해요" }
         switch viewModel.codeType {
-        case .sending: "이메일로 인증번호를 전송하고 있어요"
-        case .sended: ""
-        case .wrong: "인증번호가 일치하지 않아요"
+        case .sending: return "이메일로 인증번호를 전송하고 있어요"
+        case .sended: return ""
+        case .wrong: return "인증번호가 일치하지 않아요"
         }
     }
     
@@ -165,6 +167,22 @@ private struct CodeTextField: View {
                 .padding(1)
                 .keyboardType(.numberPad)
                 .textInputAutocapitalization(.never)
+                .overlay(alignment: .trailing) {
+                    Button {
+                        viewModel.verifyCode()
+                    } label: {
+                        Text("인증하기")
+                            .madiiFont(.body3)
+                            .foregroundStyle(code.isEmpty ? Color.madiiStrong : Color.madiiContrast)
+                            .frame(height: 22)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 4)
+                            .background(code.isEmpty ? Color.white.opacity(0.35) : Color.madiiGreen100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    .disabled(code.isEmpty)
+                    .padding(.trailing, 12)
+                }
                 .onChange(of: code) { _, newValue in
                     viewModel.code = newValue
                     if viewModel.codeType == .wrong {

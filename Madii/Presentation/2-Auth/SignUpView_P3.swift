@@ -42,6 +42,7 @@ class SignUpViewModel {
     var code: String = ""
     var codeType: EmailView_P3.CodeType = .sending
     var showSendedCodeToast: Bool = false
+    var isCodeVerified: Bool = false
     
     // 3. 비밀번호
     var password: String = ""
@@ -71,6 +72,10 @@ class SignUpViewModel {
             resetEmailState()
             currentStepIndex -= 1
         case .password:
+            showVerificationCode = false
+            code = ""
+            codeType = .sending
+            isCodeVerified = false
             currentStepIndex -= 1
         case .profile:
             currentStepIndex -= 1
@@ -88,7 +93,10 @@ class SignUpViewModel {
             if showVerificationCode == false {
                 sendCode()
             } else {
-                verifyCode()
+                if isCodeVerified {
+                    code = ""
+                    currentStepIndex += 1
+                }
             }
         case .password:
             if showCheckPassword == false {
@@ -158,6 +166,7 @@ class SignUpViewModel {
         showVerificationCode = false
         codeType = .sending
         showSendedCodeToast = false
+        isCodeVerified = false
     }
     
     func sendCode() {
@@ -180,10 +189,12 @@ class SignUpViewModel {
         }
     }
     
-    private func verifyCode() {
+    func verifyCode() {
         UsersAPI.shared.verifyCode(email: email, code: code) { isSuccess in
             if isSuccess {
-                self.currentStepIndex += 1
+                withAnimation {
+                    self.isCodeVerified = true
+                }
             } else {
                 self.codeType = .wrong
             }
@@ -274,11 +285,7 @@ struct SignUpView_P3: View {
             if viewModel.showVerificationCode == false {
                 return viewModel.emailType == .possible ? false : true
             } else {
-                if viewModel.codeType == .wrong {
-                    return true
-                } else {
-                    return viewModel.code.count >= 6 ? false : true
-                }
+                return viewModel.isCodeVerified == false
             }
         case .password:
             if viewModel.showCheckPassword == false {
