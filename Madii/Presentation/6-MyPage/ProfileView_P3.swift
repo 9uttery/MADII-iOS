@@ -237,6 +237,9 @@ struct ProfileImageSheet: View {
 struct NicknameTextField: View {
     @Binding var nickname: String
     @Binding var isNicknameVaild: Bool
+    var helperMessage: String {
+        (nickname.isEmpty || isNicknameVaild) ? "한글/영문/숫자만 입력할 수 있어요" : "특수문자는 사용할 수 없어요"
+    }
     
     var body: some View {
         VStack(spacing: 12) {
@@ -257,9 +260,9 @@ struct NicknameTextField: View {
             }
             
             HStack {
-                Text("한글/영문/숫자만 입력할 수 있어요")
+                Text(helperMessage)
                     .madiiFont(.caption)
-                    .foregroundStyle(isNicknameVaild ? Color.madiiNeutral : Color.madiiNegative)
+                    .foregroundStyle((nickname.isEmpty || isNicknameVaild) ? Color.madiiNeutral : Color.madiiNegative)
                 
                 Spacer()
             }
