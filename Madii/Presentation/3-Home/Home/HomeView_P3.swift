@@ -59,6 +59,7 @@ struct HomeView_P3: View {
                                     .cornerRadius(20)
                             }
                             .padding(.bottom, 16)
+                            .transition(.move(edge: .top).combined(with: .opacity))
                         }
                         
                         HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
