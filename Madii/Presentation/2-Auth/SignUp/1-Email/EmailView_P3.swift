@@ -173,14 +173,14 @@ private struct CodeTextField: View {
                     } label: {
                         Text("인증하기")
                             .madiiFont(.body3)
-                            .foregroundStyle(code.isEmpty ? Color.madiiStrong : Color.madiiContrast)
+                            .foregroundStyle(activeVerifyButton() ? Color.madiiStrong : Color.madiiContrast)
                             .frame(height: 22)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 4)
-                            .background(code.isEmpty ? Color.white.opacity(0.35) : Color.madiiGreen100)
+                            .background(activeVerifyButton() ? Color.white.opacity(0.35) : Color.madiiGreen100)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    .disabled(code.isEmpty)
+                    .disabled(activeVerifyButton())
                     .padding(.trailing, 12)
                 }
                 .onChange(of: code) { _, newValue in
@@ -214,5 +214,9 @@ private struct CodeTextField: View {
                 .padding(.horizontal, 4)
             }
         }
+    }
+    
+    private func activeVerifyButton() -> Bool {
+        code.count < 6
     }
 }

@@ -60,7 +60,6 @@ private struct PasswordTextFieldView: View {
                     viewModel.password = newValue
                     checkValidatePassword()
                 }
-                .disabled(viewModel.showCheckPassword)
                 
                 Text(helperMessage)
                     .madiiFont(.caption)
@@ -81,6 +80,9 @@ private struct PasswordTextFieldView: View {
     private func checkValidatePassword() {
         if isValidPassword(password) {
             passwordTextFieldType = .basic
+            withAnimation {
+                viewModel.showCheckPassword = true
+            }
         } else {
             passwordTextFieldType = .error
         }

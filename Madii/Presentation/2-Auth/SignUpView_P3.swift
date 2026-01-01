@@ -76,6 +76,7 @@ class SignUpViewModel {
             code = ""
             codeType = .sending
             isCodeVerified = false
+            showCheckPassword = false
             currentStepIndex -= 1
         case .profile:
             currentStepIndex -= 1
@@ -99,16 +100,11 @@ class SignUpViewModel {
                 }
             }
         case .password:
-            if showCheckPassword == false {
-                // 비밀번호 1
-                showCheckPassword = true
-            } else {
-                // 비밀번호 2
-                if checkPassword {
-                    showCheckPassword = false
-                    checkPassword = false
-                    currentStepIndex += 1
-                }
+            // 비밀번호 2
+            if checkPassword {
+                showCheckPassword = false
+                checkPassword = false
+                currentStepIndex += 1
             }
         case .profile:
             if isNicknameVaild {
@@ -288,11 +284,7 @@ struct SignUpView_P3: View {
                 return viewModel.isCodeVerified == false
             }
         case .password:
-            if viewModel.showCheckPassword == false {
-                return isValidPassword(viewModel.password) == false
-            } else {
-                return viewModel.checkPassword == false
-            }
+            return viewModel.checkPassword == false
         case .profile:
             return viewModel.isNicknameVaild == false || viewModel.nickname.isEmpty
         }
