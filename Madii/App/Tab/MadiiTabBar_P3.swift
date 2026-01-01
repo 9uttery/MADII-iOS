@@ -21,7 +21,9 @@ struct MadiiTabBar_P3: View {
                         
                         ForEach(MadiiTab_P3.allCases, id: \.self) { tab in
                             Button {
-                                router.selectedTab = tab
+                                withAnimation {
+                                    router.selectedTab = tab
+                                }
                             } label: {
                                 VStack(spacing: 4) {
                                     let isSelected = router.selectedTab == tab
