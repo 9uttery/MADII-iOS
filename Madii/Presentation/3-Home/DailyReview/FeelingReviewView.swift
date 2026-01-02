@@ -22,7 +22,8 @@ struct FeelingReviewView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("행복 속 어떤 감정을 느꼈나요?")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 40)
             
@@ -38,7 +39,8 @@ struct FeelingReviewView: View {
                                     .foregroundStyle(.madiiGreen100)
                                 
                                 Text(todayJoys[index].title)
-                                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                    .madiiFont(.body2)
+                                    .foregroundStyle(.madiiNormal)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
@@ -51,7 +53,8 @@ struct FeelingReviewView: View {
                                 HStack(spacing: 4) {
                                     ForEach(todayJoys[index].selectedEmotions) { emotion in
                                         Text(emotion.title)
-                                            .madiiFont(font: .caption, color: emotion.color)
+                                            .madiiFont(.caption)
+                                            .foregroundStyle(emotion.color)
                                             .padding(.vertical, 4.5)
                                             .padding(.horizontal, 8)
                                             .background(emotion.color.opacity(0.08))
@@ -101,7 +104,8 @@ struct FeelingReviewView: View {
                         toggleEmotion(emotion, for: clickedNum)
                     } label: {
                         Text(emotion.title)
-                            .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                            .madiiFont(.body3)
+                            .foregroundStyle(.madiiNormal)
                             .frame(height: 22)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 4)
@@ -123,7 +127,8 @@ struct FeelingReviewView: View {
             .padding(.bottom, 16)
             
             Text("감정은 최대 2개까지 선택할 수 있어요")
-                .madiiFont(font: .caption, color: .madiiAlternative)
+                .madiiFont(.caption)
+                .foregroundStyle(.madiiAlternative)
                 
             Spacer()
             

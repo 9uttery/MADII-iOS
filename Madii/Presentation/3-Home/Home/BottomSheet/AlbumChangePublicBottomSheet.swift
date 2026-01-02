@@ -21,13 +21,15 @@ struct AlbumChangePublicBottomSheet: View {
                 .padding(.top, 16)
             
             Text("앨범을 전체 공개하시겠어요?")
-                .madiiFont(font: .madiiTitle, color: .madiiStrong)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiStrong)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
                 .padding(.bottom, 24)
             
             Text("공개 시 다시 비공개로 변경할 수 없어요")
-                .madiiFont(font: .madiiBody2, color: .madiiStrong)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiStrong)
                 .lineSpacing(9.6)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 40)

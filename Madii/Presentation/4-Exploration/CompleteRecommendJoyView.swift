@@ -17,7 +17,8 @@ struct CompleteRecommendJoyView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("\(appStatus.nickname)님을 위한\n소확행이에요!")
-                .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiNormal)
                 .padding(.top, 96)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -29,7 +30,8 @@ struct CompleteRecommendJoyView: View {
                     .cornerRadius(28)
                 
                 Text(joy.contents)
-                    .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
+                    .madiiFont(.subTitle)
+                    .foregroundStyle(.madiiGray100)
             }
             .padding(.vertical, 28)
             .padding(.horizontal, 24)
@@ -48,7 +50,8 @@ struct CompleteRecommendJoyView: View {
             .padding(.vertical, 28)
             
             Text("소확행을 실천하러 가볼까요?")
-                .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                .madiiFont(.body3)
+                .foregroundStyle(.madiiNormal)
             
             Spacer()
                 .frame(maxWidth: .infinity)

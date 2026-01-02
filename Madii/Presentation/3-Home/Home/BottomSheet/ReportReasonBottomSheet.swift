@@ -26,7 +26,8 @@ struct ReportReasonBottomSheet: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text("신고 이유를 알려주세요")
-                    .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiNormal)
                     .padding(.bottom, 16)
                 
                 ForEach(options, id: \.self) { option in
@@ -34,7 +35,8 @@ struct ReportReasonBottomSheet: View {
                         selectedOption = option
                     } label: {
                         Text(option)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.madiiNormal)
                             .lineSpacing(9.6)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)

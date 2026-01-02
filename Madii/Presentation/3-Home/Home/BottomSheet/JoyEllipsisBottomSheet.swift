@@ -24,7 +24,8 @@ struct JoyEllipsisBottomSheet: View {
                 .padding(.top, 16)
             
             Text(joyTitle)
-                .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 40)
             
@@ -32,7 +33,8 @@ struct JoyEllipsisBottomSheet: View {
                 postJoyPlaylist()
             } label: {
                 Text("오늘의 플레이리스트에 추가하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 28)
@@ -42,7 +44,8 @@ struct JoyEllipsisBottomSheet: View {
                 showAlbumSavedBottomSheet = true
             } label: {
                 Text("앨범에 저장하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 40)

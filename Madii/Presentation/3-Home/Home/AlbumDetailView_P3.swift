@@ -91,7 +91,8 @@ private extension AlbumDetailView_P3 {
             if viewModel.isEdit {
                 Button(action: editAlbum) {
                     Text("완료")
-                        .madiiFont(font: .madiiBody3, color: .madiiNormal)
+                        .madiiFont(.body3)
+                        .foregroundStyle(.madiiNormal)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 12)
                         .background(.madiiContrast)
@@ -153,7 +154,8 @@ private extension AlbumDetailView_P3 {
     var albumInfo: some View {
         if viewModel.isEdit {
             Text("앨범 제목")
-                .madiiFont(font: .madiiBody2, color: .madiiNeutral)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiNeutral)
                 .lineSpacing(9.6)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 4)
@@ -162,11 +164,13 @@ private extension AlbumDetailView_P3 {
                 text: $viewModel.newAlbumTitle,
                 placeholder: "앨범명을 작성해주세요"
             )
-            .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+            .madiiFont(.subTitle)
+            .foregroundStyle(.madiiNormal)
             .padding(.bottom, 20)
             
             Text("앨범 설명")
-                .madiiFont(font: .madiiBody2, color: .madiiNeutral)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiNeutral)
                 .lineSpacing(9.6)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 4)
@@ -175,11 +179,13 @@ private extension AlbumDetailView_P3 {
                 text: $viewModel.newAlbumDescription,
                 placeholder: "앨범 소개글을 작성해주세요"
             )
-            .madiiFont(font: .caption, color: .white.opacity(0.43))
+            .madiiFont(.caption)
+            .foregroundStyle(.white.opacity(0.43))
             .padding(.bottom, 20)
         } else {
             Text(viewModel.albumTitle)
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 8)
             
@@ -190,14 +196,16 @@ private extension AlbumDetailView_P3 {
                         .frame(width: 16, height: 16)
                     
                     Text(viewModel.isPublic ? "전체 공개" : "나만 보기")
-                        .madiiFont(font: .madiiCaption, color: .madiiAlternative)
+                        .madiiFont(.caption)
+                        .foregroundStyle(.madiiAlternative)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 8)
             }
             
             Text(viewModel.albumDescription)
-                .madiiFont(font: .caption, color: .white.opacity(0.43))
+                .madiiFont(.caption)
+                .foregroundStyle(.white.opacity(0.43))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 20)
         }
@@ -291,7 +299,8 @@ private extension AlbumDetailView_P3 {
                     .frame(width: 12, height: 12)
                 
                 Text(joy.contents)
-                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNormal)
                     .lineSpacing(9.6)
                     .padding(.trailing, 12)
             }
@@ -328,7 +337,8 @@ private extension AlbumDetailView_P3 {
             }
             
             TextField("행복 추가하기", text: $viewModel.joyTitle)
-                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiNormal)
                 .lineSpacing(9.6)
                 .onSubmit {
                     addJoy()
@@ -342,7 +352,8 @@ private extension AlbumDetailView_P3 {
     var otherAlbumsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("나를 위한 행복 앨범 모음")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 8)
                 .padding(.bottom, 4)
@@ -359,7 +370,8 @@ private extension AlbumDetailView_P3 {
                                 .cornerRadius(12)
                             
                             Text(album.title)
-                                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                .madiiFont(.body2)
+                                .foregroundStyle(.madiiNormal)
                                 .lineSpacing(9.6)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }

@@ -21,7 +21,8 @@ struct ReportAlbumBottomSheet: View {
                 .padding(.top, 16)
             
             Text(albumTitle)
-                .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 40)
             
@@ -30,7 +31,8 @@ struct ReportAlbumBottomSheet: View {
                 showReportReasonBottomSheet = true
             } label: {
                 Text("신고하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 40)

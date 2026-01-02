@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "todayClover.png",
+      "filename" : "Content-10.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "todayClover2.png",
+      "filename" : "Content-11.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "todayClover3.png",
+      "filename" : "Content-12.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

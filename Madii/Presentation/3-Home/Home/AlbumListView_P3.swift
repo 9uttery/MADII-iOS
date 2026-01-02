@@ -21,57 +21,60 @@ struct AlbumListView_P3: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack {
-                HStack {
-                    Button {
-                        viewModel.action(viewModel.isSelect ? .toggleSelect : .popView)
-                    } label: {
-                        if viewModel.isSelect {
-                            Text("취소")
-                                .madiiFont(font: .madiiBody3, color: .madiiNormal)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 12)
-                                .background(.madiiContrast)
-                                .cornerRadius(10)
-                        } else {
-                            Image("arrowBack")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .opacity(0.43)
+                ZStack {
+                    HStack {
+                        Button {
+                            viewModel.action(viewModel.isSelect ? .toggleSelect : .popView)
+                        } label: {
+                            if viewModel.isSelect {
+                                Text("취소")
+                                    .madiiFont(.body3)
+                                    .foregroundStyle(.madiiNormal)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 12)
+                                    .background(.madiiContrast)
+                                    .cornerRadius(10)
+                            } else {
+                                Image("arrowBack")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .opacity(0.43)
+                            }
+                        }
+
+                        Spacer()
+
+                        Button {
+                            viewModel.isSelect
+                            ? showDeleteAlbumsBottomSheet = true
+                            : viewModel.action(.toggleSelect)
+                        } label: {
+                            if viewModel.isSelect {
+                                Text("삭제")
+                                    .madiiFont(.body3)
+                                    .foregroundStyle(.madiiStrong)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 12)
+                                    .background(viewModel.selectedAlbums.isEmpty ? .madiiContrast : .madiiNegative)
+                                    .cornerRadius(10)
+                            } else {
+                                Text("편집")
+                                    .madiiFont(.body3)
+                                    .foregroundStyle(.madiiNormal)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 12)
+                                    .background(.madiiBox)
+                                    .cornerRadius(10)
+                            }
                         }
                     }
-                    
-                    Spacer()
-                    
+
                     Text("행복 앨범")
-                        .madiiFont(font: .madiiSubTitle, color: .white.opacity(0.97))
-                    
-                    Spacer()
-                    
-                    Button {
-                        viewModel.isSelect
-                        ? showDeleteAlbumsBottomSheet = true
-                        : viewModel.action(.toggleSelect)
-                    } label: {
-                        if viewModel.isSelect {
-                            Text("삭제")
-                                .madiiFont(font: .madiiBody3, color: .madiiStrong)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 12)
-                                .background(viewModel.selectedAlbums.isEmpty ? .madiiContrast : .madiiNegative)
-                                .cornerRadius(10)
-                        } else {
-                            Text("편집")
-                                .madiiFont(font: .madiiBody3, color: .madiiNormal)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 12)
-                                .background(.madiiBox)
-                                .cornerRadius(10)
-                        }
-                    }
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.white.opacity(0.97))
                 }
                 .padding(.horizontal, 20)
                 .frame(height: 64)
-                
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0, alignment: .top), count: 2), spacing: 24) {
                         VStack(alignment: .leading, spacing: 12) {
@@ -88,7 +91,8 @@ struct AlbumListView_P3: View {
                             }
                             
                             Text("새로운 앨범")
-                                .madiiFont(font: .madiiBody4, color: .madiiGreen100)
+                                .madiiFont(.caption)
+                                .foregroundStyle(.madiiGreen100)
                                 .frame(height: 22, alignment: .center)
                                 .padding(.horizontal, 8)
                         }
@@ -125,7 +129,8 @@ struct AlbumListView_P3: View {
                                     }
                                     
                                     Text(album.title)
-                                        .madiiFont(font: .madiiBody3, color: .white)
+                                        .madiiFont(.body3)
+                                        .foregroundStyle(.white)
                                         .multilineTextAlignment(.leading)
                                         .frame(maxWidth: 152, alignment: .leading)
                                         .padding(.horizontal, 8)

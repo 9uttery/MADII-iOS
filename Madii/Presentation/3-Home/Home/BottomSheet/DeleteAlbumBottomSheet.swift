@@ -22,13 +22,15 @@ struct DeleteAlbumBottomSheet: View {
                 .padding(.top, 16)
             
             Text("선택한 앨범을 삭제하시겠어요?")
-                .madiiFont(font: .madiiTitle, color: .madiiStrong)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiStrong)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
                 .padding(.bottom, 24)
             
             Text("앨범 속 행복 기록도 함께 삭제돼요\n삭제된 기록은 복원되지 않아요")
-                .madiiFont(font: .madiiBody2, color: .madiiStrong)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiStrong)
                 .lineSpacing(9.6)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 40)

@@ -20,11 +20,14 @@ struct ExplorationView_P3: View {
                 ZStack {
                     Image("recommendJoy")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 204)
+                        .frame(maxWidth: .infinity)
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 0) {
                         Text("취향저격 소확행")
-                            .madiiFont(font: .caption, color: .madiiNormal)
+                            .madiiFont(.caption)
+                            .foregroundStyle(.madiiNormal)
+                            .frame(height: 19)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
                             .background(.madiiGray100.opacity(0.16))
@@ -32,14 +35,16 @@ struct ExplorationView_P3: View {
                             .padding(.bottom, 8)
                         
                         Text("나에게 꼭 맞는\n소확행을 찾아보세요!")
-                            .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
+                            .madiiFont(.subTitle)
+                            .foregroundStyle(.madiiGray100)
                             .padding(.bottom, 16)
                         
                         Button {
                             router.push(.recommend)
                         } label: {
                             Text("나만의 소확행 찾기")
-                                .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
+                                .madiiFont(.subTitle)
+                                .foregroundStyle(.madiiStrong)
                                 .padding(.vertical, 16)
                                 .frame(maxWidth: .infinity)
                                 .background(.gray100.opacity(0.52))
@@ -53,7 +58,8 @@ struct ExplorationView_P3: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("행복을 재생해요")
-                        .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.madiiNormal)
                         .padding(.top, 24)
                         .padding(.leading, 16)
                         .padding(.bottom, 32)
@@ -71,7 +77,8 @@ struct ExplorationView_P3: View {
                                     .cornerRadius(12)
                                 
                                 Text(album.title)
-                                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                    .madiiFont(.body2)
+                                    .foregroundStyle(.madiiNormal)
                                     .lineSpacing(9.6)
                                 
                                 Spacer()
@@ -91,7 +98,8 @@ struct ExplorationView_P3: View {
                         router.push(.allAlbumList)
                     } label: {
                         Text("더보기")
-                            .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
+                            .madiiFont(.subTitle)
+                            .foregroundStyle(.madiiContrast)
                             .frame(maxWidth: .infinity)
                             .padding(.top, 16)
                             .padding(.bottom, 20)

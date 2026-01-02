@@ -52,7 +52,8 @@ struct HomeView_P3: View {
                                 router.push(.dailyReview(todayJoys: viewModel.finishedJoys, visibleJoys: Array(repeating: false, count: viewModel.finishedJoys.count), date: viewModel.selectedDate))
                             } label: {
                                 Text("\(viewModel.selectedDate < Date() && !viewModel.selectedDate.isSameDay(as: Date()) ? "" : "오늘 ")하루 돌아보기")
-                                    .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
+                                    .madiiFont(.subTitle)
+                                    .foregroundStyle(.madiiContrast)
                                     .padding(.vertical, 16)
                                     .frame(maxWidth: .infinity)
                                     .background(.madiiGreen100)
@@ -116,6 +117,9 @@ struct HomeView_P3: View {
                     .presentationBackground(.clear)
             }
         }
+        .onChange(of: viewModel.isPlayJoy) {
+            viewModel.action(.loadTodayJoy)
+        }
     }
     
     private var todayJoyCard: some View {
@@ -132,16 +136,17 @@ struct HomeView_P3: View {
                         .frame(width: 12.6, height: 12.36)
                     
                     Text("오늘의 소확행 선물")
-                        .madiiFont(font: .caption, color: .madiiGreen100)
+                        .madiiFont(.caption)
+                        .foregroundStyle(.madiiGreen100)
                         .padding(.vertical, 4.5)
                 }
                 .padding(.horizontal, 8)
                 .background(.madiiGreen10)
-                .cornerRadius(8)
+                .cornerRadius(90)
                 
                 Text(viewModel.todayJoy.title)
-                    .madiiFont(font: .madiiBody2, color: .madiiGray100)
-                    .lineSpacing(9.6)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiGray100)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack(spacing: 8) {
@@ -175,14 +180,14 @@ struct HomeView_P3: View {
         ZStack {
             Image("todayJoy")
                 .resizable()
-                .scaledToFit()
+                .frame(maxWidth: .infinity)
+                .frame(height: 260)
                 .cornerRadius(40)
-                .clipped()
             
-            VStack {
+            VStack(spacing: 6) {
                 Image("todayClover")
-                
-                Spacer()
+                    .resizable()
+                    .frame(width: 141, height: 155)
                 
                 Button {
                     withAnimation(.easeInOut(duration: 0.4)) {
@@ -192,9 +197,10 @@ struct HomeView_P3: View {
                     }
                 } label: {
                     Text("클릭해 보세요!")
-                        .madiiFont(font: .madiiSubTitle, color: .madiiStrong)
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.madiiStrong)
                         .frame(width: UIScreen.main.bounds.width - 80)
-                        .frame(height: 16)
+                        .frame(height: 27)
                         .padding(.vertical, 16)
                         .background(.gray100.opacity(0.52))
                         .cornerRadius(20)

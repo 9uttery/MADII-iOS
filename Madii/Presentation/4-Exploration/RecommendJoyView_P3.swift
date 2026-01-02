@@ -21,7 +21,8 @@ struct RecommendJoyView_P3: View {
             MadiiNavigationBar_P3(title: "취향저격 소확행")
             
             Text("키워드를 선택해 나만을 위한 소확행을 찾아보세요")
-                .madiiFont(font: .madiiBody3, color: .madiiNeutral)
+                .madiiFont(.body3)
+                .foregroundStyle(.madiiNeutral)
                 .padding(.vertical, 20)
             
             HStack(spacing: 12) {
@@ -166,7 +167,8 @@ struct RecommendJoyView_P3: View {
                             .foregroundStyle(recommendJoys[0].joyIconNum.intToColor)
                         
                         Text(recommendJoys[0].contents)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.madiiNormal)
                             .lineSpacing(9.6)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
@@ -215,7 +217,8 @@ struct RecommendJoyView_P3: View {
                             .foregroundStyle(recommendJoys[1].joyIconNum.intToColor)
                         
                         Text(recommendJoys[1].contents)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.madiiNormal)
                             .lineSpacing(9.6)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
@@ -264,7 +267,8 @@ struct RecommendJoyView_P3: View {
                             .foregroundStyle(recommendJoys[2].joyIconNum.intToColor)
                         
                         Text(recommendJoys[2].contents)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.madiiNormal)
                             .lineSpacing(9.6)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(height: 26)
@@ -286,7 +290,8 @@ struct RecommendJoyView_P3: View {
                     selectedJoy = nil
                 } label: {
                     Text("다시 고르기")
-                        .madiiFont(font: .madiiBody3, color: .madiiNeutral)
+                        .madiiFont(.body3)
+                        .foregroundStyle(.madiiNeutral)
                         .underline()
                 }
                 .padding(.bottom, 16)

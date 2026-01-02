@@ -22,17 +22,20 @@ struct DiaryReviewView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("오늘의 마음을 짧게 남겨보세요")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
                 .padding(.top, 12)
                 .padding(.bottom, 4)
             
             Text("꼭 기록하지 않아도 괜찮아요")
-                .madiiFont(font: .caption, color: .gray100.opacity(0.43))
+                .madiiFont(.caption)
+                .foregroundStyle(.gray100.opacity(0.43))
                 .padding(.bottom, 40)
             
             VStack(alignment: .trailing) {
                 TextEditor(text: $diaryContent)
-                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNormal)
                     .lineSpacing(9.6)
                     .frame(maxWidth: .infinity)
                     .frame(height: 182)
@@ -41,7 +44,8 @@ struct DiaryReviewView: View {
                         Group {
                             if diaryContent.isEmpty {
                                 Text("오늘의 마음을 짧게 남겨보세요")
-                                    .madiiFont(font: .madiiBody2, color: .madiiAlternative)
+                                    .madiiFont(.body2)
+                                    .foregroundStyle(.madiiAlternative)
                                     .lineSpacing(25.6)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.leading, 4)

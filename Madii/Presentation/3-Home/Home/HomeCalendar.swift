@@ -54,7 +54,8 @@ struct HomeCalendar: View {
                     .padding(.bottom, 32)
                 
                 Text("\(prefixText)\(selectedDate.toKoreanString())")
-                    .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                    .madiiFont(.subTitle)
+                    .foregroundStyle(.madiiNormal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 16)
@@ -117,7 +118,8 @@ struct HomeCalendar: View {
             if isOhadol {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("하루 만족도")
-                        .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.madiiNormal)
                     
                     HStack {
                         Image("satisfaction1")
@@ -160,11 +162,13 @@ struct HomeCalendar: View {
                 
                 VStack(alignment: .leading, spacing: 16) {
                     Text("하루 기록")
-                        .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.madiiNormal)
                         .padding(.bottom, 4)
                     
                     Text(diary)
-                        .madiiFont(font: .madiiBody2, color: .gray100.opacity(0.74))
+                        .madiiFont(.body2)
+                        .foregroundStyle(.gray100.opacity(0.74))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(9.6)
                         .multilineTextAlignment(.leading)
@@ -188,7 +192,8 @@ struct HomeCalendar: View {
             
             if !isOhadol && !canOhadol {
                 Text(selectedDate < Date() && !selectedDate.isSameDay(as: Date()) ? "하루 돌아보기" : "오늘 하루 돌아보기")
-                    .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                    .madiiFont(.subTitle)
+                    .foregroundStyle(.madiiNormal)
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
                     .background(.madiiContrast)
