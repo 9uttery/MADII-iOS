@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InquiryView: View {
     @State private var isShowingMailView = false
-    @State private var result: Result<MFMailComposeResult, Error>? = nil
+    @State private var result: Result<MFMailComposeResult, Error>?
     
     var body: some View {
         VStack {

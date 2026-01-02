@@ -103,7 +103,9 @@ struct MyProfileView: View {
                     
                     MadiiTextField(placeHolder: "닉네임을 입력해주세요", text: self.$nickname, strokeColor: self.strokeColor(), limit: 10)
                         .textFieldHelperMessage(name == nickname ? "" : self.helperMessage, color: self.strokeColor())
-                        .onChange(of: self.nickname) { self.checkValidNickname($0) }
+                        .onChange(of: self.nickname) { _, newValue in
+                            self.checkValidNickname(newValue)
+                        }
                 }
                 .padding(.top, 28)
                 .padding(.horizontal, 24)

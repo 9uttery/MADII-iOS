@@ -13,20 +13,26 @@ struct MadiiNavigationBar_P3: View {
     @State var title: String = ""
     @State var popNum: Int = 1
     var body: some View {
-        HStack {
-            Button {
-                router.pop(times: popNum)
-            } label: {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.madiiAlternative)
+        ZStack {
+            HStack {
+                Button {
+                    router.pop(times: popNum)
+                } label: {
+                    Image(.arrowBack)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .colorMultiply(.madiiAlternative)
+                }
+                
+                Spacer()
             }
-            Spacer()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+            
             Text(title)
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
-            Spacer()
         }
-        .padding()
     }
 }
 

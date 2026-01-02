@@ -316,7 +316,9 @@ struct HomeCalendar: View {
             if isSuccess {
                 print("Debug postJoySatisfaction: isSuccess true")
                 getJoy()
-                canOhadol = true
+                withAnimation {
+                    canOhadol = true
+                }
             } else {
                 print("Debug postJoySatisfaction: isSuccess false")
             }

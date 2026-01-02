@@ -9,6 +9,15 @@ import SwiftUI
 
 enum LoginError {
     case nonexistence, wrongPassword
+    
+    var description: String {
+        switch self {
+        case .nonexistence:
+            return "존재하지 않는 계정이에요\n이메일을 다시 확인해 주세요"
+        case .wrongPassword:
+            return "비밀번호가 일치하지 않아요\n다시 확인해 주세요"
+        }
+    }
 }
 
 struct LoginWithIdView: View {

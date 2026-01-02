@@ -30,12 +30,12 @@ public struct MadiiToast: View {
             
             Text(title)
                 .madiiFont(.body3)
-                .foregroundStyle(.madiiElevated)
+                .foregroundStyle(.madiiElevatedDS)
         }
         .padding(.vertical, 12)
         .padding(.leading, 20)
         .padding(.trailing, 28)
-        .background(.madiiStrong)
+        .background(.madiiStrongDS)
         .cornerRadius(90)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

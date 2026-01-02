@@ -342,7 +342,7 @@ class RecordAPI {
                     let statusCode = response.status
                     if statusCode == 200 {
                         // status 200으로 -> isSuccess: true
-                        print("DEBUG(editJoy): success")
+                        print("DEBUG(editJoy): success \(data)")
                         completion(true)
                     } else {
                         // status 200 아님 -> isSuccess: false

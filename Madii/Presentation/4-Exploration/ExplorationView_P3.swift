@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ExplorationView_P3: View {
     @Environment(Router.self) var router
-    @State var albums: [Album] = [Album(id: 0, title: "안녕하세요"), Album(id: 0, title: "잘가세요"), Album(id: 0, title: "진짜요?"), Album(id: 0, title: "행복하세요"), Album(id: 0, title: "좋아요"), Album(id: 0, title: "좋아요")]
+    @State var albums: [Album] = []
     
     var body: some View {
         ScrollView {
@@ -68,7 +68,7 @@ struct ExplorationView_P3: View {
                     ForEach(albums, id: \.self) { album in
                         Button {
                             AnalyticsManager.shared.logEvent(name: "앨범 선택")
-                            router.push(.albumDetail(albumId: album.id, popNum : 1))
+                            router.push(.albumDetail(albumId: album.id, popNum: 1))
                         } label: {
                             HStack(spacing: 12) {
                                 Image("Cover\(album.backgroundColorNum)")

@@ -61,7 +61,7 @@ struct MadiiTabView: View {
             }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .onChange(of: tabIndex) { newValue in
+        .onChange(of: tabIndex) { _, newValue in
             if newValue == .calendar {
                 showPlaylistBar = false
             } else {

@@ -53,9 +53,9 @@ public struct MadiiButton: View {
     
     func backgroundColor() -> Color {
         switch color {
-        case .neutral: return .madiiContrast
+        case .neutral: return .madiiContrastDS
         case .mainColor: return .madiiGreen100
-        case .opacity: return .madiiStrong.opacity(0.35)
+        case .opacity: return .madiiStrongDS.opacity(0.35)
         case .violet: return .madiiViolet
         case .red: return .madiiNegative
         }
@@ -63,8 +63,8 @@ public struct MadiiButton: View {
     
     func foregroundColor() -> Color {
         switch color {
-        case .neutral, .opacity, .violet, .red: return .madiiStrong
-        case .mainColor: return .madiiContrast
+        case .neutral, .opacity, .violet, .red: return .madiiStrongDS
+        case .mainColor: return .madiiContrastDS
         }
     }
     

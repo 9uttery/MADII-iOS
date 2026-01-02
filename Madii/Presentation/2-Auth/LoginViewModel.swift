@@ -5,10 +5,10 @@
 //  Created by Anjin on 10/18/25.
 //
 
+import Foundation
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
-import Foundation
 
 @Observable
 class LoginViewModel {

@@ -27,7 +27,11 @@ class Router {
     }
     
     // 사용자 로그인 여부
-    var isLoggedIn: Bool = false
+    var isLoggedIn: Bool = false {
+        willSet {
+            hasEverOnboarded = true
+        }
+    }
     
     init(
         onboardingRepository: OnboardingRepository,

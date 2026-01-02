@@ -106,7 +106,7 @@ struct AllAlbumListView_P3: View {
         }
         .opacity(showAddNewAlbumBottomSheet ? 0.8 : 1)
         .sheet(isPresented: $showAddNewAlbumBottomSheet) {
-            GeometryReader { geo in
+            GeometryReader { _ in
                 AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $showAddNewAlbumBottomSheet, showSuccessToast: $showSuccessToast, album: .constant(Album(id: 0, title: "")))
                     .presentationDetents([.height(503)])
                     .presentationDragIndicator(.hidden)

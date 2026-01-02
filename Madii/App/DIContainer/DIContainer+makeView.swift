@@ -28,9 +28,9 @@ extension DIContainer {
         case .loginWithID:
             LoginWithIDView_P3(viewModel: loginWithIDViewModel())
         case .signInWithID:
-            SignUpView_P3(loginType: .id)
+            SignUpView_P3(router: router, loginType: .id)
         case .setProfile:
-            SignUpView_P3(loginType: .apple)
+            SignUpView_P3(router: router, loginType: .apple)
         case .findPassword:
             FindPasswordView_P3(viewModel: findPasswordViewModel())
             

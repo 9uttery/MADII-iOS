@@ -184,7 +184,3 @@ struct ManyAchievedJoyView: View {
         }
     }
 }
-
-//#Preview {
-//    ManyAchievedJoyView()
-//}

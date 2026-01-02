@@ -35,7 +35,6 @@ class ReviewViewModel_P3 {
             popView()
         }
     }
-
     
     private func popView() {
         router.pop()

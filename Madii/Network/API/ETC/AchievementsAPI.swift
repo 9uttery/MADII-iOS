@@ -277,7 +277,7 @@ class AchievementsAPI {
         ]
         let parameters: [String: Any] = [
             "achievementId": achievementId,
-            "satisfaction": satisfacton
+            "satisfaction": satisfacton ?? ""
         ]
         
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
@@ -310,7 +310,7 @@ class AchievementsAPI {
         ]
         let parameters: [String: Any] = [
             "achievementId": achievementId,
-            "satisfaction": satisfacton,
+            "satisfaction": satisfacton ?? "",
             "date": date.serverDateFormat
         ]
         

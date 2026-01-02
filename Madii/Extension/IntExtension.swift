@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 extension Int {
     var intToColor: Color {
         switch self % 7 {

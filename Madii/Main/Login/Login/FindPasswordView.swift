@@ -45,8 +45,7 @@ struct FindPasswordView: View {
             if showSendedEmailToast {
                 ToastMessage(title: "이메일로 인증번호가 전송되었어요")
             }
-            
-            // TODO: CS 문의하기 버튼
+
             NavigationLink {
                 InquiryView()
             } label: {

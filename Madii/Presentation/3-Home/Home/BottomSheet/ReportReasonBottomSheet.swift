@@ -77,7 +77,7 @@ struct ReportReasonBottomSheet: View {
     }
     
     func reportAlbum() {
-        if selectedOption.isEmpty == false{
+        if selectedOption.isEmpty == false {
             AlbumAPI.shared.reportAlbum(albumId: albumId, contents: selectedOption) { isSuccess in
                 if isSuccess {
                     print("신고 성공")
