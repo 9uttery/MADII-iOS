@@ -23,7 +23,8 @@ struct CompleteReviewView: View {
                     .frame(width: 12.6, height: 12.36)
                 
                 Text("\(Date().year)년 \(Date().toKoreanString())")
-                    .madiiFont(font: .caption, color: .madiiGreen100)
+                    .madiiFont(.caption)
+                    .foregroundStyle(.madiiGreen100)
                     .padding(.vertical, 4.5)
             }
             .padding(.horizontal, 8)
@@ -32,7 +33,8 @@ struct CompleteReviewView: View {
             .padding(.bottom, 12)
             
             Text("오늘의 행복이 저장되었어요!")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
                 .padding(.bottom, 28)
             
             VStack(spacing: 20) {
@@ -42,7 +44,8 @@ struct CompleteReviewView: View {
                     .cornerRadius(28)
                 
                 Text("\(appStatus.nickname)님의 행복")
-                    .madiiFont(font: .madiiSubTitle, color: .madiiGray100)
+                    .madiiFont(.subTitle)
+                    .foregroundStyle(.madiiGray100)
             }
             .padding(.vertical, 28)
             .padding(.horizontal, 24)
@@ -76,7 +79,8 @@ struct CompleteReviewView: View {
             .padding(.bottom, 28)
             
             Text("저장 후에는 수정이 어려워요")
-                .madiiFont(font: .caption, color: .madiiAlternative)
+                .madiiFont(.caption)
+                .foregroundStyle(.madiiAlternative)
             
             Spacer()
             

@@ -22,7 +22,8 @@ struct JoyRowView: View {
                 .padding(.leading, 4)
 
             Text(joy.title)
-                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiNormal)
                 .lineSpacing(9.6)
                 .lineLimit(1)
                 .padding(.trailing, 12)
@@ -44,7 +45,8 @@ struct JoyRowView: View {
             } else {
                 ForEach(joy.selectedEmotions) { emotion in
                     Text(emotion.title)
-                        .madiiFont(font: .caption, color: emotion.color)
+                        .madiiFont(.caption)
+                        .foregroundStyle(emotion.color)
                         .padding(.vertical, 4.5)
                         .padding(.horizontal, 8)
                         .background(emotion.color.opacity(0.08))

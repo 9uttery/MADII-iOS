@@ -25,7 +25,8 @@ struct JoyOptionBottomSheet: View {
                 .padding(.top, 16)
             
             Text(joyTitle)
-                .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiNormal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 48)
             
@@ -33,7 +34,8 @@ struct JoyOptionBottomSheet: View {
                 postJoyPlaylist()
             } label: {
                 Text("오늘의 플레이리스트에 추가하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNeutral)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNeutral)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 28)
@@ -43,7 +45,8 @@ struct JoyOptionBottomSheet: View {
                 showEditJoyBottomSheeet = true
             } label: {
                 Text("수정하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNeutral)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNeutral)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 28)
@@ -53,7 +56,8 @@ struct JoyOptionBottomSheet: View {
                 showDeleteJoyBottomSheet = true
             } label: {
                 Text("삭제하기")
-                    .madiiFont(font: .madiiBody1, color: .madiiNeutral)
+                    .madiiFont(.body1)
+                    .foregroundStyle(.madiiNeutral)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, 40)

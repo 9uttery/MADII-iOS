@@ -21,12 +21,14 @@ struct CloseEditAlbumBottomSheet: View {
                 .padding(.top, 16)
             
             Text("앨범 편집 종료")
-                .madiiFont(font: .madiiTitle, color: .madiiStrong)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiStrong)
                 .padding(.top, 40)
                 .padding(.bottom, 24)
             
             Text("지금 돌아가면 앨범 수정 내용이 삭제됩니다.")
-                .madiiFont(font: .madiiBody2, color: .madiiStrong)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiStrong)
                 .lineSpacing(9.6)
                 .padding(.bottom, 40)
             

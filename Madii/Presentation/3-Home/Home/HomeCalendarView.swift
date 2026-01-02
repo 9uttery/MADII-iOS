@@ -64,7 +64,8 @@ struct HomeCalendarView: View {
             }
             
             Text("\(currentDate.month)월")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
             
             Button {
                 if isMonthly {
@@ -92,7 +93,8 @@ struct HomeCalendarView: View {
                 currentDate = Date()
             } label: {
                 Text("오늘")
-                    .madiiFont(font: .madiiBody3, color: selectedDay.isSameDay(as: Date()) ? .madiiGreen40 : .madiiGreen100)
+                    .madiiFont(.body3)
+                    .foregroundStyle(selectedDay.isSameDay(as: Date()) ? .madiiGreen40 : .madiiGreen100)
             }
             .disabled(selectedDay.isSameDay(as: Date()))
             .padding(.trailing, 16)
@@ -103,7 +105,8 @@ struct HomeCalendarView: View {
             } label: {
                 HStack(spacing: 0) {
                     Text(isMonthly ? "월" : "주")
-                        .madiiFont(font: .caption, color: .madiiNeutral)
+                        .madiiFont(.caption)
+                        .foregroundStyle(.madiiNeutral)
                         .padding(.leading, 8)
                     Image(isMonthly ? "caretDown" : "caretUp")
                         .padding(.trailing, 2)
@@ -124,10 +127,8 @@ struct HomeCalendarView: View {
             HStack {
                 ForEach(daysOfWeek, id: \.self) { day in
                     Text(day)
-                        .madiiFont(
-                            font: .madiiBody2,
-                            color: daysOfWeek.firstIndex(of: day) == todayWeekdayIndex ? .madiiGreen100 : .madiiAlternative
-                        )
+                        .madiiFont(.body2)
+                        .foregroundStyle(daysOfWeek.firstIndex(of: day) == todayWeekdayIndex ? .madiiGreen100 : .madiiAlternative)
                         .lineSpacing(9.6)
                         .frame(maxWidth: .infinity)
                 }
@@ -177,10 +178,8 @@ struct HomeCalendarView: View {
             let isCurrentMonth = Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .month)
             
             Text(dateString(date))
-                .madiiFont(
-                    font: .madiiBody1,
-                    color: selectedDay.isSameDay(as: date) ? .madiiContrast : (isToday ? .madiiNormal : !isToday ? .madiiAlternative : (isCurrentMonth ? .primary : .secondary))
-                )
+                .madiiFont(.body1)
+                .foregroundStyle(selectedDay.isSameDay(as: date) ? .madiiContrast : (isToday ? .madiiNormal : !isToday ? .madiiAlternative : (isCurrentMonth ? .primary : .secondary)))
                 .frame(maxWidth: .infinity)
                 .frame(width: 36, height: 36)
                 .background(selectedDay.isSameDay(as: date) ? Color.madiiGreen100 : .clear)

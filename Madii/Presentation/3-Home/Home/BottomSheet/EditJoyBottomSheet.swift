@@ -24,11 +24,13 @@ struct EditJoyBottomSheet: View {
         VStack {
             VStack(alignment: .leading, spacing: 0) {
                 Text("어떤 행복이었나요?")
-                    .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiNormal)
                     .padding(.bottom, 16)
                 
                 Text(joyTitle)
-                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNormal)
                     .frame(height: 26)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(12)
@@ -37,7 +39,8 @@ struct EditJoyBottomSheet: View {
                     .padding(.bottom, 40)
                 
                 Text("어떤 앨범에 저장할까요?")
-                    .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiNormal)
                     .padding(.bottom, 16)
                 
                 Button {
@@ -60,7 +63,8 @@ struct EditJoyBottomSheet: View {
                                 }
                             } label: {
                                 Text(album.title)
-                                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                    .madiiFont(.body2)
+                                    .foregroundStyle(.madiiNormal)
                                     .frame(height: 26)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(12)

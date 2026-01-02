@@ -27,12 +27,14 @@ struct AlbumOptionBottomSheet: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text(albumTitle)
-                    .madiiFont(font: .madiiTitle, color: .madiiNormal)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiNormal)
                     .padding(.top, 40)
                     .padding(.bottom, 10)
                 
                 Text(albumDescription)
-                    .madiiFont(font: .madiiBody3, color: .madiiAlternative)
+                    .madiiFont(.body3)
+                    .foregroundStyle(.madiiAlternative)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 40)
                 
@@ -42,7 +44,8 @@ struct AlbumOptionBottomSheet: View {
                     joyTitle = ""
                 } label: {
                     Text("앨범 편집")
-                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                        .madiiFont(.body1)
+                        .foregroundStyle(.madiiNormal)
                 }
                 .padding(.bottom, 28)
                 
@@ -51,13 +54,15 @@ struct AlbumOptionBottomSheet: View {
                     showDeleteAlbumBottomSheet = true
                 } label: {
                     Text("삭제하기")
-                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                        .madiiFont(.body1)
+                        .foregroundStyle(.madiiNormal)
                 }
                 .padding(.bottom, 28)
                 
                 HStack {
                     Text("전체 공개")
-                        .madiiFont(font: .madiiBody1, color: .madiiNormal)
+                        .madiiFont(.body1)
+                        .foregroundStyle(.madiiNormal)
                     
                     Spacer()
                     

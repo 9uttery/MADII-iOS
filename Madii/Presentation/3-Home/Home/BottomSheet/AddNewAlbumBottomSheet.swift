@@ -27,17 +27,20 @@ struct AddNewAlbumBottomSheet: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text("어떤 앨범인가요?")
-                    .madiiFont(font: .madiiTitle, color: .white)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.white)
                     .padding(.bottom, 16)
                 
                 Text("앨범명을 작성해주세요")
-                    .madiiFont(font: .madiiBody2, color: .madiiNeutral)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNeutral)
                     .lineSpacing(9.6)
                     .padding(.bottom, 4)
                 
                 HStack {
                     TextField("앨범명", text: $title)
-                        .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                        .madiiFont(.body2)
+                        .foregroundStyle(.madiiNormal)
                         .frame(height: 26)
                         .onChange(of: title) {
                             if title.count > 30 {
@@ -46,7 +49,8 @@ struct AddNewAlbumBottomSheet: View {
                         }
                     
                     Text("\(title.count)/30")
-                        .madiiFont(font: .madiiBody2, color: .madiiAlternative)
+                        .madiiFont(.body2)
+                        .foregroundStyle(.madiiAlternative)
                         .lineSpacing(9.6)
                 }
                 .padding(12)
@@ -56,16 +60,19 @@ struct AddNewAlbumBottomSheet: View {
                 .padding(.bottom, 12)
                 
                 Text("*필수로 작성해야 해요")
-                    .madiiFont(font: .caption, color: isError ? .madiiNegative : .madiiNeutral)
+                    .madiiFont(.caption)
+                    .foregroundStyle(isError ? .madiiNegative : .madiiNeutral)
                     .padding(.bottom, 40)
                 
                 Text("앨범 소개")
-                    .madiiFont(font: .madiiBody2, color: .white)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.white)
                     .lineSpacing(9.6)
                     .padding(.bottom, 4)
                 
                 TextEditor(text: $describe)
-                    .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                    .madiiFont(.body2)
+                    .foregroundStyle(.madiiNormal)
                     .lineSpacing(9.6)
                     .frame(maxWidth: .infinity)
                     .frame(height: 52)
@@ -78,7 +85,8 @@ struct AddNewAlbumBottomSheet: View {
                         Group {
                             if describe.isEmpty {
                                 Text("앨범 소개글을 작성해주세요")
-                                    .madiiFont(font: .madiiBody2, color: .madiiAlternative)
+                                    .madiiFont(.body2)
+                                    .foregroundStyle(.madiiAlternative)
                                     .lineSpacing(9.6)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(12)
@@ -89,7 +97,8 @@ struct AddNewAlbumBottomSheet: View {
                     .overlay(
                         Group {
                             Text("\(describe.count)/30")
-                                .madiiFont(font: .madiiBody2, color: .madiiAlternative)
+                                .madiiFont(.body2)
+                                .foregroundStyle(.madiiAlternative)
                                 .lineSpacing(9.6)
                                 .padding(12)
                         }, alignment: .bottomTrailing

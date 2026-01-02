@@ -28,7 +28,8 @@ struct DailyReviewView_P3: View {
                     .frame(width: 12.6, height: 12.36)
                 
                 Text(Date().toKoreanString())
-                    .madiiFont(font: .caption, color: .madiiGreen100)
+                    .madiiFont(.caption)
+                    .foregroundStyle(.madiiGreen100)
                     .padding(.vertical, 4.5)
             }
             .padding(.horizontal, 8)
@@ -39,7 +40,8 @@ struct DailyReviewView_P3: View {
             .offset(y: isHeaderVisible ? 0 : 20)
             
             Text("오늘도 행복한 순간들이 함께 했네요!\n행복을 따라, 오늘을 정리해봐요.")
-                .madiiFont(font: .madiiBody1, color: .gray100.opacity(0.97))
+                .madiiFont(.body1)
+                .foregroundStyle(.gray100.opacity(0.97))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 60)
@@ -54,7 +56,8 @@ struct DailyReviewView_P3: View {
                             .foregroundStyle(.madiiGreen100)
 
                         Text(todayJoys[index].title)
-                            .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                            .madiiFont(.body2)
+                            .foregroundStyle(.madiiNormal)
                             .lineSpacing(9.6)
                             .padding(.leading, 8)
                             .padding(.trailing, 12)

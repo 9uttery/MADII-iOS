@@ -27,7 +27,8 @@ struct AllAlbumListView_P3: View {
                     Spacer()
                     
                     Text("행복을 재생해요")
-                        .madiiFont(font: .madiiSubTitle, color: .gray100.opacity(0.97))
+                        .madiiFont(.subTitle)
+                        .foregroundStyle(.gray100.opacity(0.97))
                     
                     Spacer()
                     
@@ -52,7 +53,8 @@ struct AllAlbumListView_P3: View {
                                         .cornerRadius(12)
                                     
                                     Text(album.name)
-                                        .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                                        .madiiFont(.body2)
+                                        .foregroundStyle(.madiiNormal)
                                         .multilineTextAlignment(.leading)
                                     
                                     Spacer()
@@ -67,7 +69,8 @@ struct AllAlbumListView_P3: View {
                         
                         VStack(spacing: 0) {
                             Text("마지막이에요!\n나만의 소확행 앨범을 만들어보세요")
-                                .madiiFont(font: .madiiBody3, color: .madiiNeutral)
+                                .madiiFont(.body3)
+                                .foregroundStyle(.madiiNeutral)
                                 .multilineTextAlignment(.center)
                                 .padding(.top, 28)
                                 .padding(.bottom, 16)
@@ -76,7 +79,8 @@ struct AllAlbumListView_P3: View {
                                 router.push(.albumList)
                             } label: {
                                 Text("소확행 앨범 추가")
-                                    .madiiFont(font: .madiiSubTitle, color: .madiiContrast)
+                                    .madiiFont(.subTitle)
+                                    .foregroundStyle(.madiiContrast)
                                     .padding(.vertical, 16)
                                     .padding(.horizontal, 24)
                                     .background(.madiiGreen100)

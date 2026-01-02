@@ -18,7 +18,8 @@ struct RecommendButton: View {
             action?(isClicked)
         } label: {
             Text(title)
-                .madiiFont(font: .madiiBody2, color: isClicked ? .madiiContrast : .madiiStrong)
+                .madiiFont(.body2)
+                .foregroundStyle(isClicked ? .madiiContrast : .madiiStrong)
                 .frame(height: 26)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 20)

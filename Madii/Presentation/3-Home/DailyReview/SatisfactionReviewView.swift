@@ -15,7 +15,8 @@ struct SatisfactionReviewView: View {
     var body: some View {
         VStack {
             Text("오늘 하루 얼마나 만족하셨나요?")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNormal)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNormal)
             
             Image("satisfaction\(satisfaction.intToSatisfaction)")
                 .resizable()
@@ -27,12 +28,14 @@ struct SatisfactionReviewView: View {
             
             HStack {
                 Text("힘든 하루였어요")
-                    .madiiFont(font: .caption, color: .madiiAlternative)
+                    .madiiFont(.caption)
+                    .foregroundStyle(.madiiAlternative)
                 
                 Spacer()
                 
                 Text("행복이 가득했어요")
-                    .madiiFont(font: .caption, color: .madiiAlternative)
+                    .madiiFont(.caption)
+                    .foregroundStyle(.madiiAlternative)
             }
             
             Spacer()

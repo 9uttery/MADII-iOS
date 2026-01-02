@@ -21,7 +21,8 @@ struct CancelDailyReviewBottomSheet: View {
                 .padding(.top, 16)
             
             Text("기록을 그만두시겠어요?")
-                .madiiFont(font: .madiiTitle, color: .madiiStrong)
+                .madiiFont(.title1)
+                .foregroundStyle(.madiiStrong)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 40)
                 .padding(.bottom, 24)

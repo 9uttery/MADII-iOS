@@ -21,7 +21,8 @@ struct AlbumDetailJoyRowView: View {
                 .padding(.leading, 4)
 
             Text(joy.contents)
-                .madiiFont(font: .madiiBody2, color: .madiiNormal)
+                .madiiFont(.body2)
+                .foregroundStyle(.madiiNormal)
                 .lineSpacing(9.6)
                 .lineLimit(1)
 

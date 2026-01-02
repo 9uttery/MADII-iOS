@@ -20,14 +20,16 @@ struct LoginWithIDView_P3: View {
             MadiiNavigationBar_P3(title: "로그인")
             
             Text("이메일")
-                .madiiFont(font: .title2, color: .madiiNormal)
+                .madiiFont(.title2)
+                .foregroundStyle(.madiiNormal)
                 .padding(.top, 20)
                 .padding(.bottom, 28)
             
             MadiiDesignSystem.MadiiTextField(text: $viewModel.email, placeholder: "이메일을 입력해주세요")
             
             Text("비밀번호")
-                .madiiFont(font: .title2, color: .madiiNormal)
+                .madiiFont(.title2)
+                .foregroundStyle(.madiiNormal)
                 .padding(.top, 60)
                 .padding(.bottom, 28)
             
@@ -55,7 +57,8 @@ struct LoginWithIDView_P3: View {
                 viewModel.action(.findPassword)
             } label: {
                 Text("비밀번호 찾기")
-                    .madiiFont(font: .madiiBody3, color: .madiiNeutral)
+                    .madiiFont(.body3)
+                    .foregroundStyle(.madiiNeutral)
                     .underline()
             }
             .frame(maxWidth: .infinity, alignment: .center)

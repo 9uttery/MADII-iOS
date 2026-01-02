@@ -12,7 +12,8 @@ struct ArchivingView: View {
         VStack {
             HStack {
                 Text("아카이빙")
-                    .madiiFont(font: .madiiTitle, color: .madiiAlternative)
+                    .madiiFont(.title1)
+                    .foregroundStyle(.madiiAlternative)
                 
                 Spacer()
                 
@@ -33,7 +34,8 @@ struct ArchivingView: View {
                 .frame(width: 120, height: 120)
             
             Text("새로운 기능이 곧\n업데이트될 예정이에요!")
-                .madiiFont(font: .madiiSubTitle, color: .madiiNeutral)
+                .madiiFont(.subTitle)
+                .foregroundStyle(.madiiNeutral)
                 .multilineTextAlignment(.center)
             
             Spacer()
