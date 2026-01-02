@@ -54,7 +54,7 @@ struct CalendarView: View {
             .scrollIndicators(.hidden)
         }
         .navigationTitle("")
-        .onChange(of: clickedDate) { date in
+        .onChange(of: clickedDate) { _, date in
             selectedDate = date
         }
         .analyticsScreen(name: "캘린더뷰")

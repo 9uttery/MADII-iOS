@@ -98,4 +98,3 @@ struct LogoutSheet_P3: View {
         }
     }
 }
-

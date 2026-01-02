@@ -47,7 +47,7 @@ public struct MadiiTextField: View {
                     Image("plusSquare")
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundStyle(text.isEmpty ? .secondary : Color.madiiNeutral)
+                        .foregroundStyle(text.isEmpty ? .secondary : Color.madiiNeutralDS)
                 }
             }
             
@@ -59,7 +59,7 @@ public struct MadiiTextField: View {
                             .foregroundStyle(.secondary)
                     }
                     .madiiFont(.body2)
-                    .foregroundStyle(.madiiNeutral)
+                    .foregroundStyle(.madiiNeutralDS)
                     .frame(maxWidth: .infinity)
                     .frame(height: 26)
                     .focused($isTextFieldFocused)
@@ -76,7 +76,7 @@ public struct MadiiTextField: View {
                             .foregroundStyle(.secondary)
                     }
                     .madiiFont(.body2)
-                    .foregroundStyle(.madiiNeutral)
+                    .foregroundStyle(.madiiNeutralDS)
                     .frame(maxWidth: .infinity)
                     .frame(height: 26)
                     .focused($isTextFieldFocused)
@@ -88,7 +88,7 @@ public struct MadiiTextField: View {
             }
         }
         .padding(12)
-        .background(.madiiGray30)
+        .background(.madiiGray30DS)
         .cornerRadius(12)
         .roundedBorder(cornerRadius: 12, color: borderColor())
         .onAppear {

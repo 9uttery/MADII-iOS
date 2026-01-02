@@ -18,7 +18,7 @@ public struct MadiiTabNavigation: View {
         HStack {
             Text(tabTitle)
                 .madiiFont(.title1)
-                .foregroundStyle(.madiiAlternative)
+                .foregroundStyle(.madiiAlternativeDS)
                 .padding(.vertical, 10)
                 .padding(.leading, 24)
             

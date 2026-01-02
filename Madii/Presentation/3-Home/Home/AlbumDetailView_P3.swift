@@ -113,7 +113,12 @@ private extension AlbumDetailView_P3 {
                 if !viewModel.isMine {
                     Button {
                         viewModel.isAlbumSaved.toggle()
-                        viewModel.isAlbumSaved ? postBookmark() : deleteBookmark()
+                        
+                        if viewModel.isAlbumSaved {
+                            postBookmark()
+                        } else {
+                            deleteBookmark()
+                        }
                     } label: {
                         Image(viewModel.isAlbumSaved ? "bookmark_active" : "bookmark")
                             .resizable()

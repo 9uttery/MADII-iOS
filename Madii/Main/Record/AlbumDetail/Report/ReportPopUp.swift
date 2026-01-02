@@ -52,9 +52,7 @@ struct ReportPopUp: View {
                                 TextField("기타", text: $etc)
                                     .madiiFont(font: .madiiBody3, color: .white)
                                     .multilineTextAlignment(.leading)
-                                    .onChange(of: etc) { _ in
-                                        selectedOption = etc
-                                    }
+                                    .onChange(of: etc) { selectedOption = etc }
                                 
                                 Spacer()
                             }

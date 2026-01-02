@@ -293,7 +293,7 @@ struct TodayPlaylistView: View {
     private func deleteAchivement(id: Int) {
         AchievementsAPI.shared.deleteJoy(achievementId: id) { isSuccess, todayJoys  in
             if isSuccess {
-                print("DEBUG PlaylistBar deleteJoy: isSuccess true")
+                print("DEBUG PlaylistBar deleteJoy: isSuccess true, todayJoys \(todayJoys)")
                 getPlaylist()
             } else {
                 print("DEBUG PlaylistBar deleteJoy: isSuccess false")
@@ -301,7 +301,3 @@ struct TodayPlaylistView: View {
         }
     }
 }
-
-//#Preview {
-//    TodayPlaylistView(showPlaylist: .constant(true))
-//}

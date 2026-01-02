@@ -154,7 +154,7 @@ struct EditJoyBottomSheet: View {
     func editJoy() {
         RecordAPI.shared.editJoy(joyId: joyId, contents: joyTitle, beforeAlbumIds: originalAlbumIds, afterAlbumIds: selectedAlbumIds) { isSuccess, joyResponse in
             if isSuccess {
-                print("debug editJoy: isSuccess true")
+                print("debug editJoy: isSuccess true \(joyResponse)")
                 showEditJoyBottomSheet = false
             } else {
                 print("debug editJoy: isSuccess false")

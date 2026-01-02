@@ -63,9 +63,9 @@ struct CalendarDays: View {
             }
         }
         .onAppear { getJoyIcons() }
-        .onChange(of: selectedDate) {
+        .onChange(of: selectedDate) { _, newValue in
             getJoyIcons()
-            print($0)
+            print(newValue)
         }
 //        .navigationDestination(isPresented: $showDailyJoyView) {
 //            DailyJoyView(date: selectedDate)

@@ -118,7 +118,7 @@ struct DiaryReviewView: View {
             )
         }
         
-        DailySummaryAPI.shared.postDailySummary(date: date, satisfaction: satisfaction, diaryContent: diaryContent, savingJoys: savingJoysDTO, images: selectedImages) { isSuccess, postDailySummary in
+        DailySummaryAPI.shared.postDailySummary(date: date, satisfaction: satisfaction, diaryContent: diaryContent, savingJoys: savingJoysDTO, images: selectedImages) { isSuccess, _ in
             if isSuccess {
                 
             } else {

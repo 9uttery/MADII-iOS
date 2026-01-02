@@ -40,7 +40,7 @@ struct LoginView_P3: View {
                         AppleLoginButton_P3()
                     }
                     
-                     // TODO: 아이디 로그인, 회원가입 구현
+                    // 아이디 로그인, 회원가입
                     HStack(spacing: 10) {
                         MadiiDesignSystem.MadiiButton(
                             title: "아이디로 로그인",

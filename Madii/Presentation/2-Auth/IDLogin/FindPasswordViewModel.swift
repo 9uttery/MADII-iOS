@@ -20,28 +20,22 @@ class FindPasswordViewModel {
         self.router = router
     }
     
-    enum Action {
-    }
+    enum Action { }
     
-    func action(_ action: Action) {
-        switch action {
-        }
-    }
+    func action(_ action: Action) { }
     
-    private func loginWithID() {
-        
-    }
+    private func loginWithID() { }
     
     private func findPassword() {
         router.push(.findPassword)
     }
     
-    func emailValidate(){
+    func emailValidate() {
         let emailRegex =
         #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
         
-        let passwordRegex =
-        #"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"#
+//        let passwordRegex =
+//        #"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"#
         
         let isEmailValid = NSPredicate(format: "SELF MATCHES %@", emailRegex)
             .evaluate(with: self.email)

@@ -166,7 +166,7 @@ struct AlbumListView_P3: View {
             }
         }
         .sheet(isPresented: $viewModel.showNewAlbumBottomSheet) {
-            GeometryReader { geo in
+            GeometryReader { _ in
                 AddNewAlbumBottomSheet(showAddNewAlbumBottomSheet: $viewModel.showNewAlbumBottomSheet, showSuccessToast: $showSuccessToast, album: .constant(Album(id: 0, title: "")))
                     .presentationDetents([.height(503)])
                     .presentationDragIndicator(.hidden)

@@ -18,7 +18,7 @@ class HomeAPI {
     func getJoyToday(completion: @escaping (_ isSuccess: Bool, _ todayJoy: GetTodayJoyResponseJoy) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.string(from: Date())
+//        let date = dateFormatter.string(from: Date())
 //        let url = "\(baseUrl)/joy/today?date=\(date)"
         let url = "\(baseUrl)/joy/today"
         let headers: HTTPHeaders = [
