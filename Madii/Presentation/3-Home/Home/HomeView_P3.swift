@@ -11,7 +11,7 @@ import SwiftUI
 struct HomeView_P3: View {
     @Environment(Router.self) var router
     @EnvironmentObject var appStatus: AppStatus
-    @Bindable var viewModel: HomeViewModel_P3
+    @State private var viewModel: HomeViewModel_P3
 
     @AppStorage("todayJoyId") var todayJoyId: Int = 0
     @State var album: Album = Album(id: 0, title: "")
@@ -24,6 +24,10 @@ struct HomeView_P3: View {
     @State private var isFinishedGetJoy: Bool = false
     @State private var isSuccessEditJoy: Bool = false
     @State private var counter: Int = 0
+    
+    init(viewModel: HomeViewModel_P3) {
+        _viewModel = State(initialValue: viewModel)
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
