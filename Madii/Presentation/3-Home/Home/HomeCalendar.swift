@@ -26,6 +26,7 @@ struct HomeCalendar: View {
     @State var diary: String = ""
     @State var images: [String] = []
     @Binding var isDeleted: Bool
+    @Binding var showTooLongToast: Bool
     
     var prefixText: String {
         if selectedDate.isSameDay(as: Date()) {
@@ -250,6 +251,7 @@ struct HomeCalendar: View {
                 }
             } else {
                 print("Debug postJoy: isSuccess false")
+                showTooLongToast = true
             }
         }
     }
