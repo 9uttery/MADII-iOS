@@ -24,6 +24,7 @@ struct HomeView_P3: View {
     @State private var isFinishedGetJoy: Bool = false
     @State private var isSuccessEditJoy: Bool = false
     @State private var counter: Int = 0
+    @State private var showTooLongToast: Bool = false
     
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -67,7 +68,7 @@ struct HomeView_P3: View {
                             .transition(.move(edge: .top).combined(with: .opacity))
                         }
                         
-                        HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted)
+                        HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted, showTooLongToast: $showTooLongToast)
                     }
                     .padding(.horizontal, 20)
                 }
@@ -91,6 +92,11 @@ struct HomeView_P3: View {
             
             if isSuccessEditJoy {
                 MadiiDesignSystem.MadiiToast(title: "행복이 수정되었어요", isShowToast: $isSuccessEditJoy)
+                    .padding(.bottom, 100)
+            }
+            
+            if showTooLongToast {
+                MadiiDesignSystem.MadiiToast(type: .error, title: "행복은 최대 30글자까지 입력할 수 있어요", isShowToast: $showTooLongToast)
                     .padding(.bottom, 100)
             }
         }
