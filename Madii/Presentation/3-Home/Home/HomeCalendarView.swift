@@ -120,10 +120,18 @@ struct HomeCalendarView: View {
     }
 
     private var calendarBody: some View {
-        VStack(spacing: 0) {
-            let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]
-            let todayWeekdayIndex = Calendar.current.component(.weekday, from: selectedDay) - 1
-            
+        let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]
+        let todayWeekdayIndex = Calendar.current.component(.weekday, from: selectedDay) - 1
+        var calendarHeight: CGFloat {
+            if isMonthly {
+                let weeks = numberOfWeeksInMonth(for: selectedDay)
+                return CGFloat(weeks * 36 + (weeks - 1) * 12 + 16)
+            } else {
+                return 56
+            }
+        }
+        
+        return VStack(spacing: 0) {
             HStack {
                 ForEach(daysOfWeek, id: \.self) { day in
                     Text(day)
@@ -134,37 +142,43 @@ struct HomeCalendarView: View {
                 }
             }
 
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
-                ForEach(days, id: \.self) { item in
-                    switch item {
-                    case .empty:
-                        Color.clear
-                            .frame(height: 36)
-
-                    case .date(let date):
-                        Button {
-                            selectedDay = date
-                            if isMonthly {
-                                let calendar = Calendar.current
-                                if !calendar.isDate(date, equalTo: currentDate, toGranularity: .month) {
-                                    withAnimation {
-                                        currentDate = date
-                                    }
-                                }
-                            }
-                        } label: {
-                            dayCell(for: date)
-                        }
-                    }
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible()), count: 7),
+                spacing: 12
+            ) {
+                ForEach(days.indices, id: \.self) { index in
+                    calendarCell(days[index])
                 }
             }
-            .frame(height: CGFloat(
-                isMonthly ? numberOfWeeksInMonth(for: selectedDay) * 36 + (numberOfWeeksInMonth(for: selectedDay) - 1) * 12 + 16 : 56)
-            )
+            .frame(height: calendarHeight)
             .clipped()
             .contentShape(Rectangle())
         }
         .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    private func calendarCell(_ item: DayItem) -> some View {
+        switch item {
+        case .empty:
+            Color.clear
+                .frame(height: 36)
+
+        case .date(let date):
+            Button {
+                selectedDay = date
+                if isMonthly {
+                    let calendar = Calendar.current
+                    if !calendar.isDate(date, equalTo: currentDate, toGranularity: .month) {
+                        withAnimation {
+                            currentDate = date
+                        }
+                    }
+                }
+            } label: {
+                dayCell(for: date)
+            }
+        }
     }
 
     @ViewBuilder
