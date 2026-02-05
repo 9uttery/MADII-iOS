@@ -63,19 +63,25 @@ struct HomeCalendar: View {
                 
                 if selectedDate.isSameDay(as: Date()) && !isOhadol {
                     MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 기록해보세요") {
-                        postJoy()
+                        if !joyTitle.isEmpty {
+                            postJoy()
+                        }
                         joyTitle = ""
                     }
                     .padding(.horizontal, 16)
                 } else if !selectedDate.isSameDay(as: Date()) && selectedDate < Date() {
                     MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "잊고 지나갔던 행복을 기록해보세요") {
-                        postJoy()
+                        if !joyTitle.isEmpty {
+                            postJoy()
+                        }
                         joyTitle = ""
                     }
                     .padding(.horizontal, 16)
                 } else if !selectedDate.isSameDay(as: Date()) && selectedDate > Date() {
                     MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "마음 속 행복을 기록해보세요") {
-                        postJoy()
+                        if !joyTitle.isEmpty {
+                            postJoy()
+                        }
                         joyTitle = ""
                     }
                     .padding(.horizontal, 16)
@@ -314,6 +320,7 @@ struct HomeCalendar: View {
     }
     
     private func playJoy(achievementId: Int) {
+        print("\(achievementId) \(selectedDate)")
         AchievementsAPI.shared.postJoySatisfaction(date: selectedDate, achievementId: achievementId, satisfacton: nil) { isSuccess in
             if isSuccess {
                 print("Debug postJoySatisfaction: isSuccess true")

@@ -310,7 +310,7 @@ class AchievementsAPI {
         ]
         let parameters: [String: Any] = [
             "achievementId": achievementId,
-            "satisfaction": satisfacton ?? "",
+            "satisfaction": satisfacton ?? "SO_SO",
             "date": date.serverDateFormat
         ]
         
