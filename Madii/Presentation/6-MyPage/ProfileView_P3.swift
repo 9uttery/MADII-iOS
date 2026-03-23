@@ -271,7 +271,7 @@ struct NicknameTextField: View {
     }
     
     private func checkValidNickname() {
-        let nicknameRegEx = "^[가-힣a-zA-Z0-9]*$"
+        let nicknameRegEx = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]*$"
         let nicknamePred = NSPredicate(format: "SELF MATCHES %@", nicknameRegEx)
         self.isNicknameVaild = nicknamePred.evaluate(with: nickname)
         if nickname.isEmpty { self.isNicknameVaild = false }
