@@ -28,6 +28,7 @@ struct AlbumDetailView_P3: View {
     @State private var showDeleteAlbumBottomSheet = false
     @State private var tempJoyIdCounter: Int = -1
     @State private var isDismiss: Bool = false
+    @State private var showSavedToast: Bool = false
 
     init(viewModel: AlbumDetailViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -410,10 +411,13 @@ private extension AlbumDetailView_P3 {
                 MadiiDesignSystem.MadiiToast(title: "오늘의 플레이리스트에 추가되었어요", isShowToast: $isPlayJoy)
             }
             if isDuplicated {
-                MadiiDesignSystem.MadiiToast(type: .error, title: "이미 플레이리스트에 있어요", isShowToast: $isDuplicated)
+                MadiiDesignSystem.MadiiToast(type: .error, title: "이미 추가된 소확행이에요", isShowToast: $isDuplicated)
             }
             if showReportToast {
                 MadiiDesignSystem.MadiiToast(title: "신고가 완료되었어요. 신고 처리가 완료되면\n알림함에서 결과를 확인할 수 있어요", isShowToast: $showReportToast)
+            }
+            if showSavedToast {
+                MadiiDesignSystem.MadiiToast(title: "행복이 앨범에 저장되었어요", isShowToast: $showSavedToast)
             }
         }
     }
@@ -441,7 +445,8 @@ private extension AlbumDetailView_P3 {
             EditJoyBottomSheet(
                 showEditJoyBottomSheet: $showEditJoyBottomSheet,
                 joyId: $selectedJoyId,
-                joyTitle: $selectedJoyTitle
+                joyTitle: $selectedJoyTitle,
+                showSavedToast: $showSavedToast
             )
             .presentationDetents([.height(564 + geo.safeAreaInsets.bottom)])
             .presentationDragIndicator(.hidden)
