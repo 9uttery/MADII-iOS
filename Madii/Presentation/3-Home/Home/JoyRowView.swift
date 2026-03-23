@@ -15,11 +15,12 @@ struct JoyRowView: View {
     let onPlayToggle: () -> Void
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 0) {
             Circle()
                 .frame(width: 12, height: 12)
                 .foregroundStyle((joy.icon % 6 + 1).intToColor)
                 .padding(.leading, 4)
+                .padding(.trailing, 12)
 
             Text(joy.title)
                 .madiiFont(.body2)
