@@ -84,6 +84,7 @@ struct ReviewView_P3: View {
                     .presentationBackground(.clear)
             }
         }
+        .background(DisableSwipeBack())
     }
     
     func getAchievementByDate() {
