@@ -27,7 +27,9 @@ struct HomeCalendar: View {
     @State var images: [String] = []
     @Binding var isDeleted: Bool
     @Binding var showTooLongToast: Bool
-    
+    @FocusState private var isJoyFieldFocused: Bool
+    @Binding var keyboardHeight: CGFloat
+
     var prefixText: String {
         if selectedDate.isSameDay(as: Date()) {
             return "오늘, "
@@ -39,6 +41,16 @@ struct HomeCalendar: View {
             return "어제, "
         } else {
             return ""
+        }
+    }
+    
+    var placeholder: String {
+        if selectedDate.isSameDay(as: Date()) && !isOhadol {
+            return "오늘의 행복을 기록해보세요"
+        } else if selectedDate < Date() {
+            return "잊고 지나갔던 행복을 기록해보세요"
+        } else {
+            return "마음 속 행복을 기록해보세요"
         }
     }
 
@@ -61,29 +73,20 @@ struct HomeCalendar: View {
                     .padding(.horizontal, 20)
                     .padding(.bottom, 16)
                 
-                if selectedDate.isSameDay(as: Date()) && !isOhadol {
-                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "오늘의 행복을 기록해보세요") {
+                if !isOhadol {
+                    MadiiDesignSystem.MadiiTextField(
+                        type: $type,
+                        text: $joyTitle,
+                        isPlus: true,
+                        placeholder: placeholder
+                    ) {
                         if !joyTitle.isEmpty {
                             postJoy()
                         }
                         joyTitle = ""
                     }
-                    .padding(.horizontal, 16)
-                } else if !selectedDate.isSameDay(as: Date()) && selectedDate < Date() {
-                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "잊고 지나갔던 행복을 기록해보세요") {
-                        if !joyTitle.isEmpty {
-                            postJoy()
-                        }
-                        joyTitle = ""
-                    }
-                    .padding(.horizontal, 16)
-                } else if !selectedDate.isSameDay(as: Date()) && selectedDate > Date() {
-                    MadiiDesignSystem.MadiiTextField(type: $type, text: $joyTitle, isPlus: true, placeholder: "마음 속 행복을 기록해보세요") {
-                        if !joyTitle.isEmpty {
-                            postJoy()
-                        }
-                        joyTitle = ""
-                    }
+                    .focused($isJoyFieldFocused)
+                    .id("joyTextField")
                     .padding(.horizontal, 16)
                 }
                 
@@ -229,7 +232,29 @@ struct HomeCalendar: View {
         .onChange(of: isSuccessEditJoy) {
             getJoy()
         }
-        .dismissKeyboardOnTap() 
+        .dismissKeyboardOnTap()
+        .safeAreaInset(edge: .bottom) {
+            Color.clear.frame(height: 300)
+        }
+        .onAppear {
+            NotificationCenter.default.addObserver(
+                forName: UIResponder.keyboardWillShowNotification,
+                object: nil,
+                queue: .main
+            ) { notification in
+                if let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    keyboardHeight = frame.height - 100
+                }
+            }
+
+            NotificationCenter.default.addObserver(
+                forName: UIResponder.keyboardWillHideNotification,
+                object: nil,
+                queue: .main
+            ) { _ in
+                keyboardHeight = 0
+            }
+        }
     }
     
     private func postJoy() {
