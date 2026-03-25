@@ -25,6 +25,8 @@ struct HomeView_P3: View {
     @State private var isSuccessEditJoy: Bool = false
     @State private var counter: Int = 0
     @State private var showTooLongToast: Bool = false
+    @State private var keyboardHeight: CGFloat = 0
+    @State private var showSavedToast: Bool = false
     
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -68,9 +70,22 @@ struct HomeView_P3: View {
                             .transition(.move(edge: .top).combined(with: .opacity))
                         }
                         
-                        HomeCalendar(isMonthly: $viewModel.isMonthly, joys: $viewModel.playListJoys, selectedDate: $viewModel.selectedDate, isSuccessEditJoy: $isSuccessEditJoy, isOhadol: $isOhadol, finishedJoys: $viewModel.finishedJoys, canOhadol: $canOhadol, isDeleted: $isDeleted, showTooLongToast: $showTooLongToast)
+                        HomeCalendar(
+                            isMonthly: $viewModel.isMonthly,
+                            joys: $viewModel.playListJoys,
+                            selectedDate: $viewModel.selectedDate,
+                            isSuccessEditJoy: $isSuccessEditJoy,
+                            isOhadol: $isOhadol,
+                            finishedJoys: $viewModel.finishedJoys,
+                            canOhadol: $canOhadol,
+                            isDeleted: $isDeleted,
+                            showTooLongToast: $showTooLongToast,
+                            keyboardHeight: $keyboardHeight
+                        )
                     }
                     .padding(.horizontal, 20)
+                    .offset(y: -keyboardHeight)
+                    .animation(.easeOut(duration: 0.25), value: keyboardHeight)
                 }
                 .scrollIndicators(.hidden)
             }
@@ -81,7 +96,7 @@ struct HomeView_P3: View {
             }
             
             if viewModel.isDuplicated {
-                MadiiDesignSystem.MadiiToast(type: .error, title: "이미 플레이리스트에 있어요", isShowToast: $viewModel.isDuplicated)
+                MadiiDesignSystem.MadiiToast(type: .error, title: "이미 추가된 소확행이에요", isShowToast: $viewModel.isDuplicated)
                     .padding(.bottom, 100)
             }
             
@@ -98,6 +113,10 @@ struct HomeView_P3: View {
             if showTooLongToast {
                 MadiiDesignSystem.MadiiToast(type: .error, title: "행복은 최대 30글자까지 입력할 수 있어요", isShowToast: $showTooLongToast)
                     .padding(.bottom, 100)
+            }
+            
+            if showSavedToast {
+                MadiiDesignSystem.MadiiToast(title: "행복이 앨범에 저장되었어요", isShowToast: $showSavedToast)
             }
         }
         .onAppear {
@@ -121,7 +140,7 @@ struct HomeView_P3: View {
                 EditJoyBottomSheet(showEditJoyBottomSheet: $showSaveAlbumBottomSheet, joyId: Binding(
                     get: { viewModel.todayJoy.joyId ?? 0 },   // 기본값 0 또는 적절한 값
                     set: { viewModel.todayJoy.joyId = $0 }
-                ), joyTitle: $viewModel.todayJoy.title)
+                ), joyTitle: $viewModel.todayJoy.title, showSavedToast: $showSavedToast)
                     .presentationDetents([.height(608 + geo.safeAreaInsets.bottom)])
                     .presentationDragIndicator(.hidden)
                     .presentationBackground(.clear)

@@ -148,6 +148,13 @@ struct FeelingReviewView: View {
         } else if todayJoys[joyIndex].selectedEmotions.count < 2 {
             // 2개 미만일 때만 추가
             todayJoys[joyIndex].selectedEmotions.append(emotion)
+            if todayJoys[joyIndex].selectedEmotions.count == 2 {
+                if clickedNum < todayJoys.count - 1 {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        clickedNum += 1
+                    }
+                }
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ struct CompleteReviewView: View {
                 .padding(.bottom, 28)
             
             VStack(spacing: 20) {
-                Image("CoverA")
+                Image("Cover\(Int.random(in: 1...8))")
                     .resizable()
                     .frame(width: 232, height: 232)
                     .cornerRadius(28)

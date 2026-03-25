@@ -19,6 +19,7 @@ struct EditJoyBottomSheet: View {
     @State private var selectedAlbumIds: [Int] = []
     @State private var originalAlbumIds: [Int] = []
     @State private var newAlbumTitlte: String = ""
+    @Binding var showSavedToast: Bool
     
     var body: some View {
         VStack {
@@ -148,6 +149,7 @@ struct EditJoyBottomSheet: View {
                     dto.isSaved ? dto.albumId : nil
                 }
                 selectedAlbumIds = Array(Set(selectedAlbumIds + serverIds))
+                showSavedToast = true
                 AnalyticsManager.shared.logEvent(name: "소확행 저장")
             } else {
                 print("debug getAlbumsWithJoySavedInfo: isSuccess false")
