@@ -11,6 +11,9 @@ import SwiftUI
 struct SatisfactionReviewView: View {
     @Binding var tabNum: Int
     @Binding var satisfaction: Int
+    @Binding var showJoyBottomSheet: Bool
+    @Binding var savingJoys: [Joy]
+    @State var date: Date
     
     var body: some View {
         VStack {
@@ -45,9 +48,11 @@ struct SatisfactionReviewView: View {
             }
         }
         .animation(.easeIn, value: satisfaction)
+        .sheet(isPresented: $showJoyBottomSheet) {
+            JoyBottomSheet(joys: $savingJoys, date: date)
+                .presentationDetents([.height(CGFloat(168 + savingJoys.count * 76))])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
+        }
     }
-}
-
-#Preview {
-    SatisfactionReviewView(tabNum: .constant(0), satisfaction: .constant(0))
 }
