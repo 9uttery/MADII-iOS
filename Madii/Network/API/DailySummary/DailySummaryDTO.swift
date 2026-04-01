@@ -59,3 +59,14 @@ struct PostDailySummaryListDTO: Codable {
     let attachedImages: [String]
     let diaryContent: String
 }
+
+struct PostDailySummaryCompletionDTO: Codable {
+    let completedDates: [SatisfactionDate]
+    let totalCompletedCount: Int
+    let unfinishedPlaylistDates: [DateDTO]
+    let totalUnfinishedPlaylistCount: Int
+}
+
+struct DateDTO: Codable {
+    let date: String
+}

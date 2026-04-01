@@ -17,6 +17,7 @@ struct HomeCalendarView: View {
     @State private var currentDate = Date()
     @Binding var selectedDay: Date
     @State var satisfactions: [SatisfactionDate] = []
+    @State var unfinishedDate: [Date] = []
 
     var days: [DayItem] {
         if isMonthly {
@@ -190,6 +191,9 @@ struct HomeCalendarView: View {
         } else {
             let isToday = Calendar.current.isDateInToday(date)
             let isCurrentMonth = Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .month)
+            let isUnfinished = unfinishedDate.contains {
+                $0.isSameDay(as: date)
+            }
             
             Text(dateString(date))
                 .madiiFont(.body1)
@@ -204,7 +208,13 @@ struct HomeCalendarView: View {
                             style: StrokeStyle(lineWidth: 1, lineCap: .butt, dash: [1, 1])
                         )
                         .frame(width: 36, height: 36)
-                        .foregroundStyle(selectedDay.isSameDay(as: date) || date > Date() || date.isSameDay(as: Date()) ? .clear : .madiiAssistive)
+                        .foregroundStyle(
+                            selectedDay.isSameDay(as: date) || date > Date() || date.isSameDay(as: Date())
+                            ? .clear
+                            : isUnfinished
+                                ? .madiiGreen100
+                                : .madiiAssistive
+                        )
                 )
         }
     }
@@ -289,6 +299,20 @@ struct HomeCalendarView: View {
     }
     
     func getCalendarEmojiList() {
+        DailySummaryAPI.shared.getDailySummaryCompletion(date: selectedDay) { isSuccess, dailySummary in
+            if isSuccess {
+                satisfactions = []
+                satisfactions = dailySummary.completedDates.map { dto in
+                    SatisfactionDate(date: dto.date, satisfaction: dto.satisfaction)
+                }
+                unfinishedDate = []
+                unfinishedDate = dailySummary.unfinishedPlaylistDates.map { dto in
+                    Date.ymdFormatter.date(from: dto.date) ?? Date()
+                }
+            } else {
+                print("Debug getDailySummaryList: isSuccess false")
+            }
+        }
         DailySummaryAPI.shared.getDailySummaryList(date: selectedDay) { isSuccess, dailySummary in
             if isSuccess {
                 print("Debug getDailySummaryList: isSuccess true")
