@@ -27,6 +27,7 @@ struct HomeView_P3: View {
     @State private var showTooLongToast: Bool = false
     @State private var keyboardHeight: CGFloat = 0
     @State private var showSavedToast: Bool = false
+    @State var showWriteOhadolToast: Bool = false
     
     init(viewModel: HomeViewModel_P3) {
         _viewModel = State(initialValue: viewModel)
@@ -80,7 +81,8 @@ struct HomeView_P3: View {
                             canOhadol: $canOhadol,
                             isDeleted: $isDeleted,
                             showTooLongToast: $showTooLongToast,
-                            keyboardHeight: $keyboardHeight
+                            keyboardHeight: $keyboardHeight,
+                            showWriteOhadolToast: $showWriteOhadolToast
                         )
                     }
                     .padding(.horizontal, 20)
@@ -110,6 +112,11 @@ struct HomeView_P3: View {
                     .padding(.bottom, 100)
             }
             
+            if showWriteOhadolToast {
+                MadiiDesignSystem.MadiiToast(title: "행복을 실천했어요! 오늘 하루도 기록해보세요", isShowToast: $showWriteOhadolToast)
+                    .padding(.bottom, 100)
+            }
+            
             if showTooLongToast {
                 MadiiDesignSystem.MadiiToast(type: .error, title: "행복은 최대 30글자까지 입력할 수 있어요", isShowToast: $showTooLongToast)
                     .padding(.bottom, 100)
@@ -117,6 +124,7 @@ struct HomeView_P3: View {
             
             if showSavedToast {
                 MadiiDesignSystem.MadiiToast(title: "행복이 앨범에 저장되었어요", isShowToast: $showSavedToast)
+                    .padding(.bottom, 100)
             }
         }
         .onAppear {

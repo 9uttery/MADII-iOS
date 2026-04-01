@@ -29,6 +29,9 @@ struct HomeCalendar: View {
     @Binding var showTooLongToast: Bool
     @FocusState private var isJoyFieldFocused: Bool
     @Binding var keyboardHeight: CGFloat
+    @State var showJoyTitleBottomSheet: Bool = false
+    @State var clickedJoyTitle: String = ""
+    @Binding var showWriteOhadolToast: Bool
 
     var prefixText: String {
         if selectedDate.isSameDay(as: Date()) {
@@ -108,10 +111,14 @@ struct HomeCalendar: View {
                                 if joy.isAchieved {
                                     cancelJoy(achievementId: joy.achievementId)
                                 } else {
+                                    if !joys.contains(where: { $0.isAchieved }) {
+                                        showWriteOhadolToast = true
+                                    }
                                     playJoy(achievementId: joy.achievementId)
                                     AnalyticsManager.shared.logEvent(name: "소확행 실천")
                                 }
-                            }
+                            }, clickedButton: $showJoyTitleBottomSheet,
+                            clickedJoyTitle: $clickedJoyTitle
                         )
                     }
                 }
@@ -254,6 +261,12 @@ struct HomeCalendar: View {
             ) { _ in
                 keyboardHeight = 0
             }
+        }
+        .sheet(isPresented: $showJoyTitleBottomSheet) {
+            JoyTitleBottomSheet(joyTitle: $clickedJoyTitle, showJoyTitleBottomSheet: $showJoyTitleBottomSheet)
+                .presentationDetents([.height(290)])
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.clear)
         }
     }
     

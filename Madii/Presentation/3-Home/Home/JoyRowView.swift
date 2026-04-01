@@ -13,6 +13,8 @@ struct JoyRowView: View {
     let onDelete: () -> Void
     let onEdit: () -> Void
     let onPlayToggle: () -> Void
+    @Binding var clickedButton: Bool
+    @Binding var clickedJoyTitle: String
 
     var body: some View {
         HStack(spacing: 0) {
@@ -28,7 +30,14 @@ struct JoyRowView: View {
                 .lineSpacing(9.6)
                 .lineLimit(1)
                 .padding(.trailing, 12)
-
+                .contentShape(Rectangle())
+                .simultaneousGesture(
+                    TapGesture().onEnded {
+                        clickedButton = true
+                        clickedJoyTitle = joy.title
+                    }
+                )
+                
             Spacer()
 
             if joy.selectedEmotions.isEmpty {
@@ -38,7 +47,7 @@ struct JoyRowView: View {
                     .foregroundStyle(joy.isAchieved ? .madiiLime : .madiiAlternative)
                     .padding(12)
                     .contentShape(Rectangle())
-                    .highPriorityGesture(
+                    .simultaneousGesture(
                         TapGesture().onEnded {
                             onPlayToggle()
                         }
@@ -59,7 +68,6 @@ struct JoyRowView: View {
         .frame(height: 40)
         .listRowBackground(Color.madiiElevated)
         .listRowSeparator(.hidden)
-        .contentShape(Rectangle())
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             if joy.selectedEmotions.isEmpty {
                 Button(action: onDelete) {

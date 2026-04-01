@@ -5,6 +5,7 @@
 //  Created by 정태우 on 8/10/25.
 //
 
+import MadiiDesignSystem
 import SwiftUI
 
 struct ReviewView_P3: View {
@@ -16,6 +17,7 @@ struct ReviewView_P3: View {
     @State var savingJoys: [Joy] = [Joy(title: "안녕kaklsdjfalkdjflaksdjfalksdfjalskdjfalskdfjalksdfjalksdfjalksdfdf"), Joy(title: "안녕하세요"), Joy(title: "안녕안녕하세용")]
     @State var showCancelDailyReviewBottomSheet: Bool = false
     @State var cancelDailyReview: Bool = false
+    @State var showJoyBottomSheet: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,10 +31,24 @@ struct ReviewView_P3: View {
                 
                 Spacer()
                 
-                Text(date.toKoreanString())
+                Text("\(date.toKoreanString()) 소확행")
                     .font(.madiiSubTitle)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 Spacer()
+                
+                if tabNum == 1 {
+                    Button {
+                        showJoyBottomSheet = true
+                    } label: {
+                        Text("소확행 보기")
+                            .madiiFont(font: .madiiBody3, color: .madiiStrong)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 17)
+                            .background(.madiiViolet)
+                            .cornerRadius(10)
+                    }
+                }
             }
             .padding()
             
@@ -60,7 +76,7 @@ struct ReviewView_P3: View {
             if tabNum == 0 {
                 FeelingReviewView(tabNum: $tabNum, todayJoys: $savingJoys)
             } else if tabNum == 1 {
-                SatisfactionReviewView(tabNum: $tabNum, satisfaction: $satisfaction)
+                SatisfactionReviewView(tabNum: $tabNum, satisfaction: $satisfaction, showJoyBottomSheet: $showJoyBottomSheet, savingJoys: $savingJoys, date: date)
             } else {
                 DiaryReviewView(tabNum: $tabNum, date: $date, satisfaction: $satisfaction, savingJoys: $savingJoys)
             }

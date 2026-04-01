@@ -229,4 +229,48 @@ class DailySummaryAPI {
             }
         }
     }
+    
+    // 달력 이모티콘 가져오기
+    func getDailySummaryCompletion(date: Date, completion: @escaping (_ isSuccess: Bool, _ dailySummary: PostDailySummaryCompletionDTO) -> Void) {
+        let calendar = Calendar.current
+        
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startOfMonth))!
+        let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+        let endOfWeek = calendar.date(byAdding: .day, value: 6, to: calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: endOfMonth))!)!
+        
+        // 포맷
+        let startDateString = startOfWeek.serverDateFormat
+        let endDateString = endOfWeek.serverDateFormat
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(keychain.get("accessToken") ?? "")"
+        ]
+        
+        let url = "\(baseUrl)/daily-summary/completion?startDate=\(startDateString)&endDate=\(endDateString)"
+        print(url)
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: BaseResponse<PostDailySummaryCompletionDTO>.self) { response in
+                switch response.result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        print("DEBUG(getDailySummaryList): data nil")
+                        completion(false, PostDailySummaryCompletionDTO(completedDates: [], totalCompletedCount: 0, unfinishedPlaylistDates: [], totalUnfinishedPlaylistCount: 0))
+                        return
+                    }
+                    let statusCode = response.status
+                    if statusCode == 200 {
+                        print("DEBUG(getDailySummaryList): success")
+                        completion(true, data)
+                    } else {
+                        print("DEBUG(getDailySummaryList): status \(statusCode))")
+                        completion(false, data)
+                    }
+                case .failure(let error):
+                    print("DEBUG(getDailySummaryList): error \(error))")
+                    completion(false, PostDailySummaryCompletionDTO(completedDates: [], totalCompletedCount: 0, unfinishedPlaylistDates: [], totalUnfinishedPlaylistCount: 0))
+                }
+            }
+    }
 }
